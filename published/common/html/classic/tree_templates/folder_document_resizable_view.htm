@@ -1,0 +1,157 @@
+<script language="javascript" src="../../../common/html/classic/styles/calendar.js"></script>
+<script language="javascript" src="../../../common/html/classic/styles/wbscommon.js"></script>
+<script language="javascript" src="../../../common/help/helpopen.js"></script>
+<script language="javascript">
+	<? assign var=lowerAppID value=$curAPP_ID|lower ?>
+	<? assign var=testFileName value="../../../"|cat:$curAPP_ID|cat:"/help/"|cat:$language|cat:"/"|cat:$lowerAppID|cat:".htm" ?>
+
+	if ( parent.frames['topFrame'] ) {
+		<? if $testFileName|fileexists ?>
+			parent.frames['topFrame'].curAppID = '<? $curAPP_ID ?>';
+		<? else ?>
+			parent.frames['topFrame'].curAppID = 'NOHELP';
+		<? /if ?>
+	}
+
+	document.treeViewName = "<? $curAPP_ID|cat:$currentUser ?>";
+
+</script>
+
+<?include file="../../../common/html/classic/submenus.tpl" menu=$menuLinks ?>
+<?include file="../../../common/html/classic/calendarsetup.tpl" dateformat=$dateformat monthes=$monthNames weekdays=$weekdayNames weekstart="monday"?>
+<?include file="../../../common/html/classic/htmlareasetup.tpl"?>
+
+<table border=0 cellspacing=0 cellpadding=0 class="restdv_main">
+	<!-- Header row -->
+	<tr>
+		<td colspan=3 id="restdv_banner" valign="top" height=<? $headerHeight ?>>
+			<!-- Page header -->
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="pageHeader"> 
+						<? if $pageIcon != "" ?>
+						<img src="<? $pageIcon ?>" width="34" height="34" hspace="0" align="absmiddle" class="icon"> 
+						<? /if ?>
+						<? $pageTitle ?>
+					</td>
+				</tr>
+			</table>
+
+			<!-- Toolbar -->
+			<? include file=$toolbar ?>
+
+			<!-- Extra top panel -->
+			<? if $extraTopPanel ?>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="treeDocExtraPanelID">
+				<tr>
+					<td class="treeExtraTopPanel" colspan=<? $colspan ?>><? include file=$extraTopPanel ?></td>
+				</tr>
+			</table>
+			<? /if ?>
+			<!-- /Extra top panel -->
+
+			<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr margins=20 ?>
+
+			<!-- Folder header -->
+			<table height=27 width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr class="treeHeaderPanel">
+					<td class="treeHeaderPanelHolder">
+						<table height=27 width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="treeHeaderPanelText">
+									<? if $foldersImage ?>
+										<? if $showFoldersHint == "" ?>
+											<? assign var=showFoldersHint value=$kernelStrings.app_treeshowfld_hint ?>
+										<? /if ?>
+										<a href="<? $foldersImage ?>" title="<? $showFoldersHint ?>"><img src="<? "images/tree_icon.gif"|stylesetitem:"classic":$styleSet ?>" style="margin-top: 2px" border="0" align="left"></a>
+									<? /if ?>
+									<span title="<? $rightPanelHeader|htmlsafe:true:true ?>"><? $rightPanelHeader|htmlsafe:true:true|trunc_str:50 ?></span><? $rightPanelHeaderAdditionalInfo ?>
+								</td>
+								<? if $topPanelFile ?>
+									<td class="treeHeaderPanelText" align=right style="padding-right: 5px" width=50><? include file=$topPanelFile ?></td>
+								<? /if ?>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<? if $extraSubHeaderFile ?>
+				<? include file=$extraSubHeaderFile ?>
+			<? /if ?>
+		</td>
+	</tr>
+	<!-- Resizable panels row -->
+	<tr>
+		<!-- Left panel -->
+		<? if !$hideLeftPanel ?>
+			<td valign="top" class="restdv_treetd" id="treetd" style="width: <? $treePanelWidth|cat:"px" ?>">
+				<div class="restdv_leftpanel treePanel" id="treediv" style="width: <? $treePanelWidth|cat:"px" ?>">
+
+					<? if !$hideLeftHeader ?>
+						<script language="JavaScript">
+							treeLeftPanelHeaderH = 20;
+						</script>
+
+						<table cellpadding=0 cellspacing=0 border=0 width="100%">
+							<tr>
+								<td class="treeLeftPanelHeader" height=20>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align=left><? if $leftPanelHeaderLink ?><a href="<? $leftPanelHeaderLink ?>"><? /if ?><b><? $leftPanelHeader ?></b><? if $leftPanelHeaderLink ?></a><? /if ?></td>
+											<? if $closeFoldersLink ?>
+												<? if $hideFoldersHint == "" ?>
+													<? assign var=hideFoldersHint value=$kernelStrings.app_treehidefld_hint ?>
+												<? /if ?>
+												<td align=right valign=middle><a title="<? $hideFoldersHint ?>" href="<? $closeFoldersLink ?>"><img src="../../../common/html/classic/images/close_icon.gif" border="0" width="10" height="11" style="margin-top: 2px; margin-right: 5px;"></a></td>
+											<? /if ?>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					<? /if ?>
+					<!-- /Left panel header -->
+
+					<? if $leftPanelHeaderFile ?>
+						<div style="width: 100%" id="leftPanelHeader" class=darkCells>
+							<? include file=$leftPanelHeaderFile ?>
+						</div>
+					<? /if ?>
+					<div style="<? if !$y_only_scroll ?> overflow: auto; <? else ?>overflow-y: auto; <? /if ?> width: 100%; height: 100%; <? $extraTocStyle ?>" id="leftscrolldiv">
+						<!-- Left panel content -->
+						<? include file=$leftPanel ?>
+						<!-- /Left panel content -->
+					</div>
+					<? if $leftPanelFooter ?>
+						<div style="width: 100%" id="leftPanelFooter" class=darkCells>
+							<? include file=$leftPanelFooter ?>
+						</div>
+					<? /if ?>
+				</div>
+			</td>
+			<!-- Splitter -->
+			<td class="restdv_splitter" valign=top>
+				<div id="splitter" class="restdv_splitterBtn" unselectable="on">
+					<img src="../../../common/html/classic/images/5pixsep.gif">
+				</div>
+			</td>
+		<? /if ?>
+		<!-- Right panel -->
+		<td valign="top" id="contenttd">
+			<div class="restdv_rightpanel treePanel" id="contentdiv" unselectable="on" <? $extraContentStyle ?>>
+				<?include file=$rightTopPanel ?>
+
+				<? if !$hidePages ?>
+					<?include file=tree_pages.htm ?>
+				<? /if ?>
+				<!-- /Right panel - top bar -->
+				<? if !$hideBottomPanel ?>
+					<!-- Right panel - bottom bar -->
+					<?include file=$rightBottomPanel ?>
+					<!-- /Right panel - bottom bar -->
+				<? /if ?>
+			</div>
+		</td>
+	</tr>
+</table>

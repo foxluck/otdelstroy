@@ -1,0 +1,28 @@
+{* successful regitration notification *}
+<h1>{lbl_email_youve_registered_at} {$smarty.const.CONF_SHOP_NAME}</h1>
+
+<h2>{lbl_email_your_registration_info}</h2>
+
+{if $smarty.const.CONF_ENABLE_REGCONFIRMATION}
+<p>{'email_regconfirmation'|translate|replace:"[code]":"<b>`$ActCode`</b>"|replace:"[codeurl]":$ActURL}</p>
+
+{/if}
+<p>{lbl_usr_custinfo_login}: {$login|escape:'html'}
+<br />{lbl_usr_custinfo_password}: {$cust_password|escape:'html'}
+<br />{lbl_usr_custinfo_first_name}: {$first_name|escape:'html'}
+<br />{lbl_usr_custinfo_last_name}: {$last_name|escape:'html'}
+<br />{lbl_usr_custinfo_email}: {$Email|escape:'html'}
+{if $additional_field_values}
+{section name=i loop=$additional_field_values}
+<br />{$additional_field_values[i].reg_field_name|escape:'html'}: {$additional_field_values[i].reg_field_value|escape:'html'}
+{/section}	
+{/if}
+{if $addresses}
+<br />{lbl_usr_addresses_added}:
+{section name=i loop=$addresses}
+<br />{$addresses[i].addressStr}
+{/section}
+{/if}</p>
+
+<p>{lbl_email_bestregards}, {$smarty.const.CONF_SHOP_NAME}
+<br />{$smarty.const.CONF_SHOP_URL}</p>

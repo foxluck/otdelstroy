@@ -1,0 +1,388 @@
+<!-- commonsettings.html -->
+<? assign var="invalidFieldMarkup" value='  style="color: #FF0000;"'?>
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<h2 class="page-title"><? $waStrings.cmn_set_page_title ?></h2>
+<br>
+			<? if $errorStr ?>
+			<table cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td<? $invalidFieldMarkup ?>>
+								
+								<? $errorStr ?>
+							</td>
+						</tr>
+
+				</table>
+			<? /if ?>
+
+
+
+		<? if !$fatalError ?>
+		
+         <table border="0" cellpadding="5" cellspacing="0" class="settings-table">
+          <tr>
+            <td colspan="2" class="form-required-field"><? $waStrings.forms_req_fields ?></td>
+          </tr>
+
+          
+          <tr style="background-color: #eee;">
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr style="background-color: #eee;">
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=COMPANY text=$invalidFieldMarkup?>>
+              
+              <? $waStrings.cmn_set_gen_company ?>:&nbsp;*&nbsp;</td>
+            <td><input name="commondata[COMPANY]" value="<? $commondata.COMPANY ?>" type="text" class="big-control"></td>
+          </tr>
+          <tr style="background-color: #eee;">
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=LICENSE text=$invalidFieldMarkup?>>
+              
+              <? $waStrings.cmn_set_gen_license ?>:&nbsp;*&nbsp;</td>
+            <td><input name="commondata[LICENSE]" value="<? $commondata.LICENSE ?>" type="text" class="big-control" ></td>
+          </tr>
+          <tr style="background-color: #eee;" class="comment">
+            <td colspan="2"><?if $commondata.LICENSE?>&nbsp;<?else?>
+            <? if $smarty.get.register_now?>
+            <span style="color:red;font-weight: bolder;"><?'not_registered_instruction'|translate?></span>
+            <?else?><?'not_registered_description'|translate?><?/if?>
+            <?/if?></td>
+          </tr>
+
+
+
+
+<tr>
+            <td colspan="2"><div class="formSection"><? $waStrings.cmn_set_sys_name ?></div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=DATA_PATH text=$invalidFieldMarkup  ?>>
+              <? $waStrings.cmn_set_sys_opt1 ?>:&nbsp;*&nbsp;</td>
+            <td><input name="commondata[DATA_PATH]" value="<? $commondata.DATA_PATH ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_sys_desc1 ?><br>
+            			<? $waStrings.cmn_set_sys_desc2 ?><br>
+            			<b><? $waStrings.lbl_form_note ?> </b>: <? $waStrings.cmn_set_sys_note1 ?>
+	</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+
+           <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=WBS_INSTALL_PATH text=$invalidFieldMarkup  ?>>
+              <? $waStrings.wbs_install_path ?>:&nbsp;</td>
+            <td><input name="commondata[WBS_INSTALL_PATH]" value="<? $commondata.WBS_INSTALL_PATH ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.wbs_install_path_desc ?>
+	</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=MEMLIMIT text=$invalidFieldMarkup  ?>>
+             
+              <? $waStrings.cmn_set_sys_opt2 ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[MEMLIMIT]" value="<? $commondata.MEMLIMIT ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_sys_desc3 ?><br>
+						<b><? $waStrings.lbl_form_note ?> </b>: <? $waStrings.cmn_set_sys_note2 ?> <? $defavalmem ?> <? $waStrings.cmn_set_sys_note3 ?>
+						</td>
+          </tr>
+
+
+
+          <tr>
+            <td colspan="2"><div class="formSection"><? $waStrings.cmn_set_web_name ?></div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=TIMEOUT text=$invalidFieldMarkup?>>
+              <? $waStrings.cmn_set_web_opt1 ?>:&nbsp;*&nbsp;
+            </td>
+            <td>
+            	<input name="commondata[TIMEOUT]" value="<? $commondata.TIMEOUT ?>" type="text" class="control">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_web_desc1 ?></td>
+          </tr>
+          <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=PORT text=$invalidFieldMarkup  ?>>
+              
+              <? $waStrings.cmn_set_web_opt4 ?>:&nbsp;*&nbsp;</td>
+            <td width="300"><input name="commondata[PORT]" value="<? $commondata.PORT ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_web_desc4 ?><br>
+            <b><? $waStrings.lbl_form_note ?> </b>: <? $waStrings.cmn_set_web_note4 ?>
+						</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="nobr"><? $waStrings.cmn_set_web_opt2 ?>:&nbsp;</td>
+            <td><input type="checkbox" name="commondata[EMAIL]" value="1" <? switchedOutput str1="checked" str2="" val=$commondata.EMAIL true_val=1 ?>></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_web_desc2 ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><? $waStrings.cmn_set_web_opt3 ?>:&nbsp;</td>
+            <td><input name="commondata[ROBOTEMAIL]" value="<? $commondata.ROBOTEMAIL ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.cmn_set_web_dsc3 ?><br>
+
+						<b><? $waStrings.lbl_form_note ?> </b>: <? $waStrings.cmn_set_web_note3 ?>						</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          
+          <!-- SMTP -->
+		<tr>
+			<td colspan="2"><div class="formSection"><? "wbs_smtp_settings"|translate?></div></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="comment"><? "wbs_smtp_description"|translate?></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+          <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=SMTP_HOST text=$invalidFieldMarkup  ?>>
+              
+              <? "smtp_host"|translate ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[SMTP_HOST]" value="<? $commondata.SMTP_HOST ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? "smtp_host_desc"|translate ?></td>
+          </tr>
+          <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=SMTP_PORT text=$invalidFieldMarkup  ?>>
+              
+              <? "smtp_port"|translate ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[SMTP_PORT]" value="<? $commondata.SMTP_PORT ?>" type="text" class="control"></td>
+          </tr>
+
+          
+         <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=SMTP_USER text=$invalidFieldMarkup  ?>>
+              
+              <? "smtp_user"|translate ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[SMTP_USER]" value="<? $commondata.SMTP_USER ?>" type="text" class="control"></td>
+          </tr>
+
+          
+         <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=SMTP_PASSWORD text=$invalidFieldMarkup  ?>>
+              
+              <? "smtp_password"|translate ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[SMTP_PASSWORD]" value="<? $commondata.SMTP_PASSWORD ?>" type="text" class="control"></td>
+          </tr>
+
+    <?*      
+         <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=SMTP_HELO text=$invalidFieldMarkup  ?>>
+              
+              <? "smtp_helo"|translate ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[SMTP_HELO]" value="<? $commondata.SMTP_HELO ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? "smtp_helo_desc"|translate ?></td>
+          </tr>
+      *?>    
+         
+
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+<!-- proxy -->
+			<tr>
+            <td colspan="2"><div class="formSection"><? $waStrings.wbs_proxy_settings?></div></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="comment"><? $waStrings.wbs_proxy_description?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+          <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=PROXY_HOST text=$invalidFieldMarkup  ?>>
+              
+              <? $waStrings.wbs_proxy_host ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[PROXY_HOST]" value="<? $commondata.PROXY_HOST ?>" type="text" class="control"></td>
+          </tr>
+           <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=PROXY_PORT text=$invalidFieldMarkup  ?>>
+              
+              <? $waStrings.wbs_proxy_port ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[PROXY_PORT]" value="<? $commondata.PROXY_PORT ?>" type="text" class="control"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.wbs_proxy_user_desc ?>
+						</td>
+          </tr>          
+           <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=PROXY_USER text=$invalidFieldMarkup  ?>>
+              
+              <? $waStrings.wbs_proxy_user ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[PROXY_USER]" value="<? $commondata.PROXY_USER ?>" type="text" class="control"></td>
+          </tr>
+          
+    
+           <tr>
+            <td class="nobr"<? conditionalOutput invalidField=$invalidField field=PROXY_PASS text=$invalidFieldMarkup  ?>>
+              
+              <? $waStrings.wbs_proxy_pass ?>:&nbsp;</td>
+            <td width="300"><input name="commondata[PROXY_PASS]" value="<? $commondata.PROXY_PASS ?>" type="text" class="control"></td>
+          </tr>
+
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+<!-- time zone -->
+          <tr>
+            <td colspan="2"><div class="formSection"><? $waStrings.cmn_set_time_name ?></div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+          <tr>
+            	<td class="nobr"><? $waStrings.cmn_set_time_opt1 ?>:&nbsp;</td>
+            	<td><input type="checkbox" onchange="checkTZ()" name="commondata[SERVER_TZ]" value="1" <? switchedOutput str1="checked" str2="" val=$commondata.SERVER_TZ true_val=1 ?>  id="tzenable"></td>
+          </tr>
+	<tr>
+           	<td>&nbsp;</td>
+            	<td>&nbsp;</td>
+          	</tr>
+          	<tr>
+		<td<? conditionalOutput invalidField=$invalidField field=T text=$invalidFieldMarkup  ?>>
+           	<? $waStrings.cmn_set_time_opt2 ?>:&nbsp;
+        </td>
+		<td>
+			<select onchange="checkDST()"  name="commondata[SERVER_TIME_ZONE_ID]" class="FormControl" id="timezone">
+
+			<? foreach from=$timeZones key=ID item=tz name=tzLoop ?>
+				<option value='<? $tz.ID ?>' <? if $tz.DST==true ?> class="hasdst" <? else ?> class="nodst" <? /if ?> <? if $commondata.SERVER_TIME_ZONE_ID==$tz.ID ?> selected <? /if ?>><? $tz.NAME ?></option>
+			<? /foreach ?>
+
+			</select>
+		</td>
+	</tr>
+	<tr>
+           	<td>&nbsp;</td>
+            	<td>&nbsp;</td>
+          	</tr>
+          <tr>
+            	<td class="nobr"><? $waStrings.cmn_set_time_opt3 ?>:&nbsp;</td>
+            	<td><input type="checkbox" name="commondata[SERVER_TIME_ZONE_DST]" value="1" <? switchedOutput str1="checked" str2="" val=$commondata.SERVER_TIME_ZONE_DST true_val=1 ?>  id="tzdst"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><input name="edited" type="hidden" id="edited3" value="1">
+              &nbsp;&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"> <input type="submit" name="savebtn" value="<? $waStrings.btn_save ?>">
+
+            </td>
+          </tr>
+
+          
+        </table>
+        
+
+    <? /if ?>
+  </form>
+<? /strip ?>
+
+<script type="text/javascript">
+<!--
+checkDST = function()
+{
+	if (  document.getElementById('timezone').item(document.getElementById('timezone').selectedIndex).className == "nodst" )
+	{
+		document.getElementById('tzdst').disabled = true;
+	}
+	else
+	{
+		document.getElementById('tzdst').disabled = false;
+	}
+}
+
+checkTZ = function()
+{
+	var tzenable = document.getElementById('tzenable');
+
+	if ( tzenable.checked == true )
+	{
+		document.getElementById('timezone').disabled = false;
+		document.getElementById('tzdst').disabled = false;
+
+		checkDST();
+	}
+	else
+	{
+		document.getElementById('timezone').disabled = true;
+		document.getElementById('tzdst').disabled = true;
+	}
+}
+onLoad = function()
+{
+	checkTZ();
+	focusControl(<? if $invalidField ?>'commondata[<?$invalidField?>]'<?else?>'commondata[COMPANY]'<?/if?>);
+}
+//alert(document.body.onload);
+onLoad();
+//-->
+</script>
+<!-- /commonsettings.html -->

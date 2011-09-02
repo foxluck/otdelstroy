@@ -1,0 +1,80 @@
+	<h1 class="breadcrumbs">
+		<a href="{'?ukey=languages'|set_query_html}">{lbl_pgn_languages}</a>
+		&raquo;
+		<a href="{'ukey=locals'|set_query_html}">{lbl_pgn_edit_locals}: {$Language->getName()|escape:'html'}</a>
+		&raquo;
+		{$CurrentDivision.name|translate}
+	</h1>
+	<p>
+	{'loc_language'|translate}: {if $Language->getThumbnailURL()}<img alt="{'loc_flag'|translate}" src="{$Language->getThumbnailURL()}" /> {/if}<strong>{$Language->getName()|escape:'html'}</strong>
+	</p>
+	
+	<p>
+	<form method="post" action="{''|set_query_html}">
+	<input type="text" size="26" name="searchstr" value="{$searchstr|escape:'html'}" />
+	<input type="submit" name="find" value="{'loc_find'|translate}" />
+
+	{if $smarty.const.SCCONF_LOC_SWITCHER == 1}
+	{if $smarty.get.lang_id == 1}	
+	<a href="{'lang_id=2'|set_query_html}">English</a>
+	{else}
+	<a href="{'lang_id=1'|set_query_html}">Russian</a>
+	{/if}
+	{/if}
+	</form>
+	</p>
+
+{if $searchstr !== null}
+	<hr />
+	<h2>{'loc_search_results'|translate}</h2>
+	{$MessageBlock}
+{if $records_num}
+	<form method="post" action="{''|set_query_html}">
+		<input type="hidden" name="local_group" value="{$locals_type|escape:'html'}" />
+		<table cellpadding="4" cellspacing="0" id="locals_tbl" style="width:100%;" class="grid">
+		<tr class="gridsheader">
+			<td>{'loc_local_id'|translate}</td>
+			{if $Language->id ne $DefLanguage->id}
+			<td>{'loc_local_defvalue'|translate|replace:'%s':$DefLanguage->getName()}</td>{/if}
+			<td>
+			{'loc_local_value'|translate}
+			</td>
+			<td width="1%">&nbsp;</td>
+		</tr>
+		{foreach from=$LocalStrings item=local}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>{$local.id_search}</td>
+			{if $Language->id ne $DefLanguage->id}
+			<td>{$local.defvalue|linewrap:'<br>':40}</td>
+			{/if}
+			<td width="{if $Language->id ne $DefLanguage->id}50{else}70{/if}%">
+			{if ($local.value|count_characters:true)>50}
+			{assign var=rows value=$local.value|count_characters:true}
+			{assign var=rows value=$rows/60}
+			{if $rows>3}
+				{assign var=rows value=$rows|string_format:'%d'}
+			{else}
+				{assign var=rows value=3}
+			{/if}
+			<textarea name="locals[{$local.id}]" class="loc_local_value" rows="{$rows}" cols="40">{$local.value|escape:'html'}</textarea>
+			{else}
+			<input class="loc_local_value" type="text" size="40" name="locals[{$local.id}]" value="{$local.value|escape:'html'}" />
+			{/if}
+			</td>
+			<td>
+				<a href='{"local_id=`$local.id`&act=delloc"|set_query_html}' title="{'loc_q_remove_local'|translate}" onclick="return window.confirm('{'loc_del_confirmation'|translate}');"><img align="left" alt="{'loc_q_remove_local'|translate}" src="{$smarty.const.URL_IMAGES}/remove.gif" /></a>
+			</td>
+		</tr>
+		{/foreach}
+		<tr class="gridsfooter">
+			<td colspan="{if $Language->id ne $DefLanguage->id}4{else}3{/if}">
+				<br />
+				<input type="submit" value="{'btn_save'|translate}" name="save_locals" />
+			</td>
+		</tr>
+		</table>
+	</form>
+{else}
+	{'loc_no_searchresults'|translate}
+{/if}
+{/if}

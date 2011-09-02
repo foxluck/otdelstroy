@@ -1,0 +1,13 @@
+<table width="100%" border="0" cellspacing="1" cellpadding="10">
+{section name=op loop=$ChildShortHTMLs}
+{if $ChildShortHTMLs[op].tpl ne ''}
+	{cycle values='<tr valign="top">,' name="begin"}
+	<td width="50%"> 
+	<h3><u>{$ChildShortHTMLs[op].name}:</u></h3>
+	{include file=$ChildShortHTMLs[op].tpl}
+	</td>
+	{cycle values=',</tr>' name="end"}
+{/if}
+{/section}
+</tr>
+</table>

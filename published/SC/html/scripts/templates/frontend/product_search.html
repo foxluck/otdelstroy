@@ -1,0 +1,8 @@
+<form action="{'?ukey=search'|set_query_html}" method="get">
+{assign var=_str value='search_products'|transcape}
+{if !$smarty.const.MOD_REWRITE_SUPPORT}
+<input type="hidden" name="ukey" value="search" >
+{/if}
+<input type="text" id="searchstring" name="searchstring" value='{$searchstring|default:$_str}' title="{'search_products'|transcape}" class="input_message" >
+<input type="submit" value="{'btn_find'|transcape}" >
+</form>

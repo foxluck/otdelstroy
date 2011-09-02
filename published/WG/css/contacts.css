@@ -1,0 +1,6 @@
+form.wbs-sign-up select {margin-right: 5px}
+form.wbs-sign-up label {display: block;}
+form.wbs-sign-up label.error {color: red; font-size: 90%}
+form.wbs-sign-up input.error, form.wbs-sign-up select.error {border: 1px solid red;}
+form.wbs-sign-up div.error {display: none; color: red; font-size: 90%}
+form.wbs-sign-up .form-message {display: none; color: green}

@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Export2Froogle</Name>
+		<File>class.export2froogle.php</File>
+		<Title>Эксопорт списка товаров во Froogle(www.froogle.com)</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

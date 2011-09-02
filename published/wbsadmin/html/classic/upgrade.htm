@@ -1,0 +1,81 @@
+<!-- upgrade.html -->
+<table border="0" cellpadding="0" cellspacing="2" width=500>
+	<? if $currentVersion||$newestVersion ?>
+	<tr>
+		<td height="21" colspan="2" class="formSection">&nbsp;Current
+		setup information</td>
+	</tr>
+	<? if $currentVersion ?>
+	<tr>
+		<td>Your WebAsyst installation version:</td>
+		<td><? $currentVersion ?></td>
+	</tr>
+	<? if $installDate ?>
+	<tr>
+		<td>Install date:</td>
+		<td><? $installDate ?></td>
+	</tr>
+	<? /if ?>
+	<? /if ?>
+	<? if $downloadedVersion ?>
+	<tr>
+		<td>Downloaded installation version:</td>
+		<td><? $downloadedVersion ?></td>
+	</tr>
+	<? /if ?>
+	<? if $newestVersion && $newestVersion>$currentVersion?>
+	<tr>
+		<td>Newest WebAsyst version available:</td>
+		<td><?  $newestVersion ?></td>
+	</tr>
+	<? if $updateSize ?>
+	<tr>
+		<td>Update download size:</td>
+		<td><?  $updateSize ?> MB</td>
+	</tr>
+	<? /if ?>
+	<? /if ?>
+	<? /if ?>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<? if $report ?>
+	<tr>
+		<td height="21" colspan="2" class="formSection"><? $reportHeader ?></td>
+	</tr>
+
+	<tr>
+		<td colspan="2"><? $report ?></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<? /if ?>
+	<? if $details ?>
+	<tr>
+		<td height="21" colspan="2" class="formSection"><? $detailsHeader ?></td>
+	</tr>
+
+	<tr>
+		<td colspan="2">
+		<div
+			style="overflow:auto;width:100%;height:500px;border:1px dotted red;"><? $details ?></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<? /if ?>
+	<? if $button ?>
+	<tr>
+		<td height="21" colspan="2" class="formSection">Performed actions</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2"><? $button ?></td>
+	</tr>
+	<? /if ?>
+</table>
+<!-- /upgrade.html -->

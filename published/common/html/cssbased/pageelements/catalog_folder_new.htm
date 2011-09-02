@@ -1,0 +1,103 @@
+<script>
+
+	var foldersTree;
+	var foldersEditor;
+	
+	Ext.onReady(function(){
+    // shorthand
+    var Tree = Ext.tree;
+    
+    foldersTree = new Tree.TreePanel('tree-div', {
+        animate:false, 
+        enableDD:false,
+        containerScroll: false,
+        ddAppendOnly: true,
+        rootVisible: false
+    });
+    
+    foldersTree.loadSelectedNode = function () {
+    	node = this.getSelectionModel().getSelectedNode();
+    	if (node.attributes.link)
+    		loadPage (node.attributes.link);
+    }
+    
+    foldersTree.addListener("click", onTreeClick);
+    foldersTree.addListener("textchange", onTextChanged);
+    foldersTree.addListener("beforemove", onTreeBeforeMove);
+    <? if ($onTreeNodeMoved) ?>
+    	foldersTree.addListener('move', <? $onTreeNodeMoved ?>);
+    <? /if ?>
+    
+    var node;
+    var parentNode;
+    var rootNode;
+    var parentNodes = new Array ();
+    var selectedNode = null;
+    
+    <? include file="../../../common/html/cssbased/pageelements/catalog_folder_new.elem.htm" parentId=false ?>
+    //rootNode = parentNodes[''];
+    node = new Tree.TreeNode({text: 'ROOT'});
+    node.appendChild(parentNodes['']);
+    rootNode = node;
+    foldersTree.setRootNode(rootNode);
+    
+    // render the foldersTree
+    foldersTree.render();
+    //rootNode.expand();
+    
+    <? if ($currentFolder == TREE_AVAILABLE_FOLDERS) ?>
+    	var currentNode = parentNodes[""];
+    <? else ?>
+    	var currentNode = parentNodes["<? $currentFolder ?>"];
+    <? /if ?>
+    
+    foldersTree.lastNode = currentNode;
+    currentNode.ensureVisible ();
+    currentNode.select ();
+    if (currentNode == parentNodes[''])
+    	currentNode.expand ();
+    
+    foldersEditor = new Ext.tree.TreeEditor(foldersTree, {
+        allowBlank:false,
+        blankText:'A name is required',
+        selectOnFocus:true,
+        ignoreNoChange: true
+    });
+    foldersEditor.addListener("beforeshow", onTreeEditorBeforeShow);
+    
+    if (document.onTreeLoaded != null) {
+    	document.onTreeLoaded (foldersTree);
+    }
+});
+
+function onTreeClick (node, e) {
+	if (node.attributes.link!= null) {
+		foldersTree.lastNode = node;
+		loadPage (node.attributes.link);
+	}
+}
+
+function onTreeBeforeMove(tree, node, oldParent,newParent, index) {
+	if (node.attributes.editable == false) {
+		alert("<? $kernelStrings.app_folderactionrights_error ?>");
+		return false;
+	}
+}
+
+function onTreeEditorBeforeShow(comp) {
+	var node = foldersTree.getSelectionModel().getSelectedNode();
+	if(node == null || node.attributes.editable == null)
+		return false;
+	
+	if (node.attributes.editable == false)	{
+		alert("<? $kernelStrings.app_folderrenamenorights_error ?>");
+		return false;
+	}
+}
+
+
+
+			
+</script>
+
+<div id="tree-div" style=""></div>

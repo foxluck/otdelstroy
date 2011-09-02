@@ -1,0 +1,70 @@
+widget_name_long	Common	Widget full name	Формы Подписки
+widget_name_short	Common	Widget short name	Формы Подписки
+
+subtype_inplace_igoogle_title	igoogle	Subtype Inplace Title	Форма подписки
+subtype_inplace_igoogle_description	igoogle	Subtype Inplace Description	Разместите на своем сайте или в блоге простой виджет с формой подписки для превращения посетителей в подписчиков. Информация о подписчиках будет записываться непосредственно в базу ВебАсист Контакты в нужную папку. Если вы хотите отправлять подписчикам Запрос на подтверждение, включите соответствующую опцию.
+
+type_widgetsform_title	Widget Screen	type title	Формы Подписки
+type_widget_name	Widget Screen	type title	Форма Подписки
+type_widget_createname	Widget Screen	type title	Форму Подписки
+type_widgetsform_desc	Widget Screen	type desc	Описание Форм Подписки
+type_widgetsform_desc	Widget Screen	type desc	Форма Подписки - это виджет, который вы можете поместить на свой вебсайт, блог или email. Информация, введенная посетителем в этом виджете будет автоматически отправлена в базу данных вашего Менеджера Контактов. Это отличный способ организовать подписчиков в централизованном онлайн хранилище.
+type_widgetsform_short_desc	Widget Screen	type short desc	Виджет для регистрации подписчиков в Менеджере Контактов
+
+field_width_label	Fields	Width	Ширина
+field_height_label	Fields	Height	Высота
+field_bgcolor_label	Fields	Bgcolor	Фон формы
+field_doptin_label	Fields	Bgcolor	Подтверждение
+field_doptin_desc	Fields	Doptin comment	Подписчику будет отправлен запрос на подтверждение.
+field_title_label	Fields	Title	Заголовок
+field_title_bgcolor_label	Fields	Title	Фон заголовка
+field_title_color_label	Fields	Title	Цвет текста
+field_savebtn_label	Fields	Save button	Кнопка
+field_signuptext_label	Fields	Signup text	Благодарность
+field_signuptext_desc	Fields	Signup desc	Это сообщение появится после успешной подписки.
+field_folder_label	Fields	Folder	Папка контактов
+field_cmfields_label	Fields	CMFields	Поля
+field_wglang_desc	Fields	Lang	Этот язык будет использоваться для системных сообщений.
+field_emailtext_label	Fields	Bgcolor	Текст письма
+field_emailtext_desc	Fields	Signup desc	Это сообщение будет отправлено контакту для подтверждения.
+
+subtype_simple_name	Subtypes	Subtype name	Форма подписки (Только Email)
+subtype_simple_desc	Subtypes	Subtype desc	Простая форма, в которой подписчику нужно ввести только свой адрес электронной почты.
+subtype_main_name	Subtypes	Subtype name	Форма подписки (Имя и Email)
+subtype_main_desc	Subtypes	Subtype desc	Такая форма позволит персонифицировать вашу базу данных подписчиков.
+subtype_photo_name	Subtypes	Subtype name	Форма подписки (Имя, Email и Фото)
+subtype_photo_desc	Subtypes	Subtype desc	С помощью этой формы вы узнаете не только имена, но и увидите лица своих подписчиков.
+subtype_custom_name	Subtypes	Subtype name	Форма подписки (Собственная)
+subtype_custom_desc	Subtypes	Subtype desc	Эта форма может включать любые поля на ваше усмотрение. Используйте эту форму для сбора более подробной информации о ваших подписчиках.
+
+swg_accountalreadyregistred_message	SWidget	error message	Указанный EMail уже зарегистрирован
+swg_wrongmailformat_message	SWidget	error message	Неправильный формат Email
+swg_emptymail_message	SWidget	error message	Пожалуйста заполните требуемые поля: Email
+wg_nophotofield_error	Widget	error message	Не найдено поле "Photo"
+
+sparam_email_label	SWidget	param label	Email
+sparam_name_label	SWidget	param label	Ваше имя
+sparam_photo_label	SWidget	param label	Фото
+
+simple_sparam_title_default	SWidget (Subtype SIMPLE)	param default	Ваш Email:
+sparam_title_default	SWidget	param default	Подписка
+sparam_signuptext_default	SWidget	param default	Спасибо!
+sparam_savebtn_default	SWidget	param default	Отправить		
+
+custom_emaildoptin_error	Widget	Error string	Функция подтверждения подписки не может быть включена без поля Email
+photo_emaildoptin_error	Widget	Error string	Функция подтверждения подписки не может быть включена без поля Email
+wg_emptyfolder_error	Widget	Error string	Пожалуйста, выберите папку Менеджера Контактов
+wrong_dateformat_error	Widget	Error string	Неверное значение в поле Год
+
+error_title	Widget	Error title	Ошибка
+
+amwg_savetoapply_messagetitle	Add/mod widget	Save to apply title	Изменения
+amwg_savetoapply_message	Add/mod widget	Save to apply message	Вы должны сохранить виджет, для принятия измений
+amwg_savetoapplybtn_label	Add/mod widget	Save to apply button	Применить Изменения
+
+place_general_title	Widget customize dialog	Place general title	Общая
+place_color_title	Widget customize dialog	Place color title	Цвет
+place_size_title	Widget customize dialog	Place size title	Размер
+place_text_title	Widget customize dialog	Place text title	Текст
+place_contacts_title	Widget customize dialog	Place contacts title	Контакты
+place_fields_title	Widget customize dialog	Place fields title	Поля

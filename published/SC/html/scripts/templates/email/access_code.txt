@@ -1,0 +1,10 @@
+{* access code for customer *}
+<p>{lbl_email_hello}, {$extra.customer_firstname}</p>
+
+<p>{"ordr_mcode_body"|translate|replace:'%ORDER_ID%':$extra.orderID_view}
+{assign var=time value=$expire/60}
+<p>{"ordr_mcode_comment"|translate|replace:'%MCODE%':$code|replace:'%TIME%':$time}</p>
+<p>{lbl_email_bestregards}, {$smarty.const.CONF_SHOP_NAME}
+<br/>
+<a href="http://{$smarty.const.CONF_SHOP_URL}">http://{$smarty.const.CONF_SHOP_URL}</a>
+</p>

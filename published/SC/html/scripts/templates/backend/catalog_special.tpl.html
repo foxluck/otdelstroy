@@ -1,0 +1,49 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+{* special offers on the homepage *}
+<p>
+{if $save_successful ne NULL}
+{$save_successful}
+{/if}
+
+<p>
+{assign var="caturl" value="&did=&ukey=categorygoods"|set_query}
+{"prdspecial_special_offers_desc"|translate|replace:"[url]":$caturl}
+
+<form action="" method=POST>
+
+<table cellpadding=6 cellspacing=1 bgcolor=#BEDDDB>
+
+ <tr>
+ <td align=center bgcolor=#BEDDDB>{"prdset_product_name"|translate}</td>
+ <td align=center bgcolor=#BEDDDB>{"str_sort_order"|translate}</td>
+ <td>&nbsp;</td>
+ </tr>
+
+{section name=i loop=$offers}
+
+ <input type=hidden name="offer_productID_{$offers[i][0]}" value="{$offers[i][1]}">
+
+ <tr bgcolor=white>
+ <td><a href="{"&did=&ukey=categorygoods&categoryID=`$offers[i][3]`"|set_query}">{$offers[i][4]}</a></td>
+ <td align=center><input type=text size=5 name="offer_sort_{$offers[i][0]}" value="{$offers[i][2]}"></td>
+ <td><a href="{"&delete=`$offers[i][0]`"|set_query}"><img src="images/remove.jpg" border=0 alt="{"btn_delete"|translate}"></a></td>
+ </tr>
+
+{sectionelse}
+
+ <tr bgcolor=white>
+ <td colspan=3><nobr>{"prdspecial_no_special_offers"|translate}</nobr></td>
+ </tr>
+
+{/section}
+
+</table>
+
+<p>
+<input type=hidden name="dpt" value="catalog">
+<input type=hidden name="sub" value="special">
+<input type=hidden name="save_offers" value="yes">
+
+<input type=submit value="{"btn_save"|translate}">
+
+</form>

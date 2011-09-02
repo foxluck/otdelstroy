@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Web Based Systems</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../../common/html/classic/styles/WebMenuFramed.js"></script>
+<script language="javascript" src="../../../common/help/helpopen.js"></script>
+<script language="javascript">
+	
+	var curAppID = "NOHELP";
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td onmouseover="MenuBar.blur(event)" height="34" background="<? "images/topbk.gif"|stylesetitem:"classic":$styleSet ?>" class="greatHeader" nowrap><? if $showLogo ?><img src="getlogo.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" align="absmiddle" height="24">&nbsp;<?/if?><? $companyName ?></td>
+    <td onmouseover="MenuBar.blur(event)" align="right" valign="middle" background="<? "images/topbk.gif"|stylesetitem:"classic":$styleSet ?>" class="largeText_normal" nowrap><? $currentUserName|htmlsafe:true:true|trunc_str:33:"...":true ?>&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="510" height="23" background="<? "images/menubar.gif"|stylesetitem:"classic":$styleSet ?>"><?include file="menubar.tpl" menu=$menuLinks ?></td>
+    <td onmouseover="MenuBar.blur(event)" height="23" align="right" valign="top" background="<? "images/menubar.gif"|stylesetitem:"classic":$styleSet ?>" nowrap style="smallFont"><div style="padding-top: 4px; padding-right: 10px; font-size: 11px;" class=topMenuLinks>
+		<a style="font-size: 11px" href="javascript://" onClick="openHelp('<? $helpURL ?>')"><? $kernelStrings.app_helplink_text?></a> | 
+		<a href="../../../AA/html/scripts/logout.php" target="_top" style="font-size: 11px"><? $kernelStrings.app_logoutlink_text?></a>
+	</div></td>
+  </tr>
+</table>
+</body>
+</html>

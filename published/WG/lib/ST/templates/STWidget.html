@@ -1,0 +1,74 @@
+<style type="text/css">
+body { background:url(bg.gif)}
+	.wbs-st-form table.form { background:#F0F0F0; border-collapse:collapse; border: 1px solid {{$params.TITLEBGCOLOR}}}
+	.wbs-st-form table.form td {padding:0.25em 0.5em; margin: 0}
+	.wbs-st-form table.form td.title { padding: 5px; background-color: {{$params.TITLEBGCOLOR}}; color: {{$params.TITLECOLOR}}}
+	.wbs-st-form label { display:block }
+	.wbs-st-form .classTypeDiv label { display:inline;}
+	.wbs-st-form p {margin:0;padding:0;}
+    .wbs-st-form h4 {margin:0;padding:0;}
+    .wbs-st-form .text {width:100%}
+    .wbs-st-form img.captcha {display:none}
+</style>
+{{$scripts}}
+{{$form_tag}}
+<input type="hidden" value="save" name="action"></input>
+<input class="encoding" type="hidden" value="" name="encoding"></input>
+<input class="source" type="hidden" value="" name="source"></input>     
+<table class="form" align="center" width="{{$params.WIDTH}}">
+	<tr><td class="title">{{$params.TITLE}}</td></tr>
+	<tr><td>
+{{foreach from=$params.FIELDS item=label key=field}}
+        <label>{{if $label != ''}}{{$label}}{{else}}{{$params.LABELS.$field}}{{/if}}</label>
+{{if $field eq 'text'}}
+        <textarea name="{{$field}}" class="text required" rows="7"></textarea>
+{{elseif $field eq 'captcha'}}
+        {{$captcha}}
+{{elseif $field eq 'email'}}
+        <input type="text" name="{{$field}}" class="text email required"/>
+{{else}}
+        <input type="text" name="{{$field}}" class="text required"/>
+{{/if}}
+{{/foreach}}	
+{{if $classes|@count gt 0}}
+        <label>[`Classifiers`]</label>
+{{foreach from=$classes key=key item=clType}}
+        <div class="classTypeDiv">
+        <h4>{{$clType.name}}</h4>
+{{if $clType.is_menu eq 1}}
+			<p><select {{if $clType.multiple eq 1}} multiple="" size="{{$clType.classes|@count}}"{{/if}} name="classes[]">
+                <option value=""></option>
+{{foreach from=$clType.classes item=classes}}
+                <option value="{{$classes.id}}">{{$classes.name}}</option>
+{{/foreach}}
+			</select></p>
+{{else}}
+{{if $clType.multiple eq 1}}
+{{foreach from=$clType.classes item=classes}}
+                <p><input type="checkbox" id="cltype[{{$clType.id}}][{{$classes.id}}]" name="classes[]" value="{{$classes.id}}"></input><label for="cltype[{{$clType.id}}][{{$classes.id}}]">{{$classes.name}}</label></p>
+{{/foreach}}
+{{else}}
+{{foreach from=$clType.classes item=classes}}
+	            <p><input type="radio" id="cltype[{{$clType.id}}][{{$classes.id}}]" 
+	            name="classes[]" value="{{$classes.id}}"></input><label for="cltype[{{$clType.id}}][{{$classes.id}}]">{{$classes.name}}</label></p>
+{{/foreach}}
+	            <input class="selectedvalue" type="hidden">
+{{/if}}
+{{/if}}
+		</div>
+{{/foreach}}    
+{{/if}}
+        </td>
+	</tr>
+	<tr><td>
+        <div class="error"></div>
+        <input type="hidden" id="CHARSET" value=""/>
+        <input type="hidden" id="REDIRECT" value="{{$params.REDIRECT}}"/>
+        <input type="hidden" id="NEWWINDOW" value="{{$params.NEWWINDOW}}"/>
+        <input type="submit" value="{{$params.SAVEBUTTON}}" />
+	</td></tr>
+	<tr><td>
+        <div class="wbs-st-form-msg" style="display:none">{{$params.AFTERTEXT}}</div>
+	</td></tr>
+</table>
+</form>

@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>LinkExchange</Name>
+		<File>class.linkexchange.php</File>
+		<Title>Обмен ссылками</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

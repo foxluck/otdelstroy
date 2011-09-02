@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<script language="JavaScript" type="text/JavaScript">
+		<!--
+			function returnToReports()
+			{
+				location.href=location.href="accessdiagrams.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>";
+			}
+
+			function processForm( formObj )
+			{
+				if ( !getComboItemNum( 'included_users[]' ) ) {
+					alert( "<? $kernelStrings.rprdu_selectusers_note ?>" );
+					return;
+				}
+
+				fillSelectedLists( new Array('included_users[]') );
+				formObj =  document.forms[0];
+
+				formObj.target="_blank";
+				formObj.submit();
+			}
+
+			function cancelForm( formObj )
+			{
+				returnToReports();
+			}
+		//-->
+		</script>
+
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+
+			<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.rprdu_selectusers_note|cat:":" ?><? /wbs_note ?>
+
+			<? wbs_formLayout caption=$pageTitle ?>
+
+				<? wbs_formContent ?>
+					<tr>
+						<td>
+							<? wbs_dualComboBox
+								leftCaption=$kernelStrings.cml_included_label
+								rightCaption=$kernelStrings.cml_notincluded_label
+
+								leftVariableName="included_users"
+								rightVariableName="notincluded_users"
+
+								leftValues=$included_users
+								rightValues=$notincluded_users
+
+								leftNames=$included_users_names
+								rightNames=$notincluded_users_names
+
+								showUpDown=false
+								separated=true
+
+								rows=8
+								width=250
+							?>
+						</td>
+					</tr>
+					<tr>
+						<td><? wbs_note width="500px"?><? $kernelStrings.rprdu_usernum_note ?><? /wbs_note ?></td>
+					</tr>
+				<? /wbs_formContent ?>
+
+				<? wbs_formButtonsPanel ?>
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.rp_runreport_btn name="runreport" link="javascript:processForm(this.form);" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" link="javascript:cancelForm(this.form);"?>
+						<? /wbs_buttonSet ?>
+				<? /wbs_formButtonsPanel ?>
+
+			<? /wbs_formLayout?>
+
+			<input type="hidden" name="contactlist" value="<? $contactlist ?>"/>
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+	<? if !$fatalError ?>
+
+		<? assign var=checkedCbImg value="images/menucb_checkedflag.gif"|stylesetitem:"classic":$styleSet ?>
+		<? assign var=unCheckedCbImg value="images/menucb_unchecked.gif"|stylesetitem:"classic":$styleSet ?>
+
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr> 
+				<td class="formField">
+					<b><? $kernelStrings.app_note_text|cat:": " ?></b><? $kernelStrings.rprdu_groupnum_note ?>
+				</td>
+			</tr>
+			<tr height=5>
+				<td></td>
+			</tr>
+		</table>
+
+		<? $renderData ?>
+
+		</table>
+	<? /if ?>
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="contactlist" value="<? $contactlist ?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!-- modulesmod.html -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="cform">
+	<? assign var="invalidFieldMarkup" value="<span style='color: #FF0000'>" ?>
+			<h2 class="page-title"><a href="setup.php?section=sms"><? $waStrings.smscp_page_name ?></a> &raquo; <? $waStrings.smsm_page_title ?></h2>
+				<br>
+
+			<table border="0" cellpadding="0" cellspacing="0" width=100%>
+			<tr>
+			<td>
+				<? if $errorStr ?>
+				<table cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<td width="1">&nbsp;</td>
+						<td>
+							<? $invalidFieldMarkup ?>
+							<? $errorStr|nl2br ?>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+				</table>
+				<? /if ?>
+
+				<? if !$fatalError ?>
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="pageHeader">
+							<? $moduleDescription ?>
+						</td>
+					</tr>
+				</table>
+				<? /if ?>
+
+		<? if !$fatalError ?>
+
+	<? assign var=controlWidth value=400 ?>
+	<? assign var=width value=250 ?>
+
+	<p></p>
+
+	<table border=0 cellpadding=0 cellspacing=2 width="100%">
+
+	<? foreach from=$fieldArray item=field key=fieldname?>
+	<tr>
+		<td valign=top width=20% class="nobr"><? $field.LABEL|cat:":&nbsp;" ?></td>
+		<td valign=top <? if $readOnly ?>class=readonly_control<? /if ?>><? include file="../../../common/html/classic/autoforms/customcontrol.htm" fieldData=$field width=$controlWidth name="valuesArray["|cat:$field.DBFIELD|cat:"]" datasource=$valuesArray datasourcename="valuesArray" ?></td>
+	</tr>
+	<? /foreach ?>
+
+	<tr><td><br><br> </td>
+	<tr><td class="nobr"><input type=submit name="savebtn" value="<? $waStrings.btn_save ?>" >&nbsp;&nbsp;&nbsp;<input type=submit name="cancelbtn" value="<? $waStrings.btn_cancel ?>" ></td>
+		<td><input type=submit name="disablebtn" value="<? $waStrings.btn_disable ?>" ></td></tr>
+	</table>
+
+	<? else ?>
+		<input type=submit name="cancelbtn" value="<? $waStrings.btn_cancel ?>" >
+	<? /if ?>
+
+
+		<input name="id" type="hidden" id="id" value="<? $id ?>">
+		<input name="class" type="hidden" id="class" value="<? $currentClass ?>">
+		<input name="edited" type="hidden" id="edited" value="1">
+		<input type="hidden" name="btndummy">
+
+		</p>
+		</td>
+		</tr>
+		</table>
+	<input name="hostData[DBSETTINGS][IP_ADDRESS]" type="hidden" value="">
+	</form>
+<? /strip ?>
+<!-- /modulesmod.html -->

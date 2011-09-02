@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{{csscombine file="`$url.css`contact-edit.css"}}
+	{{$url.css}}users-common.css
+	{{$url.css}}users-edit.css
+{{/csscombine}}
+
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+<script type="text/javascript" src="{{$url.common}}js/wbs-common.js"></script>
+<style type="text/css">
+	input.title {font-size:22px; font-weight: bold; margin-bottom: 3px; vertical-align:middle;}
+</style>
+</head>
+<body>
+<div id="header">
+	<div id="toolbar_new" class="contact-tools">
+	  <div class="backlink">
+	    <span>&larr;</span><a href="index.php" onclick="if (parent) {parent.document.app.selectGroup({{$group.UG_ID}}); return false}">[`Back`]</a>
+	  </div> 		  
+	</div>
+</div>
+<div id="scroll" style="position:relative">
+	<div id="content" style="padding: 10px 10px 10px 20px">
+		<h2>[`Edit user group`]</h2>
+		<br />
+		<div style="padding-left: 25px; font-size:16px; line-height: 26px; float:left; padding-right: 5px">[`Group name`]: </div> 
+		<div style="font-size:22px; font-weight: bold; float:left">
+			<div id="group-name" style="padding: 3px; border: 1px solid #D8E0E5; cursor: pointer; min-width: 400px">{{$group.UG_NAME}}</div>
+		</div>
+
+		<br style="clear:left" /><br />
+		<ul id="groups-tabs" class="big-tabs">
+			<li id="tab-users" {{if $active=='users'}}class="tab-current"{{/if}}><a href="javascript:void(0)">[`Users`]</a></li>
+			<li id="tab-rights" {{if $active=='access'}}class="tab-current"{{/if}}><a href="javascript:void(0)">[`Access rights`]</a></li>
+			<li class="no"><div id="onload-message" style="border:0; margin-top: 7px"></div></li>
+		</ul>
+		<div id="groups-tabs-content" class="tabs-content">
+		{{if $active=='users'}}
+			{{include file="GroupsUsers.html"}}
+		{{else}}
+			{{include file="GroupsRights.html"}}
+		{{/if}}
+		</div>
+   </div>
+</div>
+<script type="text/javascript">
+var resize = function () {
+	$("#scroll").height($(window).height() - $("#header").height());
+}
+$(document).ready(resize);
+$(window).resize(resize);
+
+function groupNameChanged(name) {
+	if (name.replace(/\s/gi, "").length == 0) {
+		$("#input-rename .error").html("[`This feld is required`].").css({"color":"red", "font-size":"12px", "font-weight":"normal"});
+		return false;
+	} else {
+		$("#input-rename .error").empty().hide();
+	}
+	$.post("?mod=groups&act=rename&ajax=1", {id:{{$group.UG_ID}}, newName:name}, function (response) {
+		if (response.status == 'OK') {
+			parent.document.app.currentFolder.Name = name;
+			parent.document.app.groupsList.groupModified();
+		}
+	}, "json");
+	return true;
+}
+
+$("#group-name").click(function () {
+	var val = $(this).html();
+	var div = $('<div id="input-rename"><input class="title" type="text" style="width:400px" value="' + val + '" /><div class="error"></div></div>');
+	var link = $('<input type="button" value="[`Save`]" />').click(function () {
+		var val = $(this).parent().children('input').val();
+		if (groupNameChanged(val)) { 
+			$(this).parent().prev().html(val).show();
+			$(this).parent().remove();
+		}
+	})
+	
+	div.append(link);
+	link = $('<input type="button" value="[`Cancel`]" />').click(function () {
+		$(this).parent().prev().show();
+		$(this).parent().remove();
+	});
+	div.append(link);
+	$(this).hide();
+	$(this).parent().append(div);
+	$("#input-rename input.title").focus().select();
+}).mouseup(function(e){
+    e.preventDefault();
+});;
+
+$("#groups-tabs li").click(function () {
+	if ($(this).hasClass('no')) {
+		return false;
+	}
+	var id = $(this).attr('id').replace(/tab\-/, '');
+	var url = document.location.href.replace(/#/, '') + (document.location.href.indexOf('?') == -1 ? '?' : '&') + "ajax=1&tab=" + id;
+	$("#groups-tabs-content").load(url);
+	$("#groups-tabs li.tab-current").removeClass('tab-current');
+	$(this).addClass('tab-current');
+});
+</script>
+</body>
+</html>
+
+

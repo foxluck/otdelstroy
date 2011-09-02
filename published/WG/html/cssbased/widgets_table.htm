@@ -1,0 +1,23 @@
+<? foreach from=$types item=typeData key=typeKey ?>
+	<table>
+		<tr>
+			<td width="200">
+				<span class='FormCaption' style='display:inline'><? $typeData.WT_NAME ?></span>
+				<a href='<? $typeData.addURL ?>'>(<? $wgStrings.wg_add_label ?>)</a>
+			</td>
+		</tr>
+	</table>
+	
+	<? if $typeData.widgets ?>
+		<table class='SimpleList' width="500">
+			<? foreach from=$typeData.widgets key=WG_ID item=wgData name=curLoop ?>
+				<tr>
+					<td style='border: 0px solid red; width: 10px' width="10">&nbsp;</td>
+					<td width="20"><a href='<? $wgData.editURL ?>'><? $wgData.WG_ID|htmlsafe:true:true ?></a></td>
+					<td width="*"><a href='<? $wgData.editURL ?>'><? $wgStrings.wg_author_label ?>: <? $wgData.WG_CREATED_BY ?></a></td>
+					<td><a href='<? $wgData.editURL ?>'><? $wgStrings.wg_createdatetime_label ?>: <? $wgData.createdDatetime ?></a></td>
+				</tr>
+			<? /foreach ?>
+		</table>
+	<? /if ?>	
+<? /foreach ?>

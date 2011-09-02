@@ -1,0 +1,112 @@
+<!-- wbsadmin.html -->
+<?* strip *?>
+<? if $passwordRequered ?>
+<? assign var="invalidFieldMarkup" value=" style='color: #FF0000'" ?>
+<div id="message-block" class="error_block">
+<h2><? $waStrings.wbs_auth_title ?></h2>
+<p><? $waStrings.wbs_auth_description ?></p>
+<p<? $invalidFieldMarkup ?>><? $errorStr ?></p>
+<form method="POST" action="">
+<table>
+<tr>
+<td align="right" <? conditionalOutput invalidField=$invalidField field=LOGIN text=$invalidFieldMarkup?>><? $waStrings.49 ?>:&nbsp;</td><td><input type="text" name="user[LOGIN]" id="userLOGIN" class="control" value="<? $user.LOGIN?>"></td>
+</tr>
+<tr>
+<td align="right" <? conditionalOutput invalidField=$invalidField field=PASSWORD1 text=$invalidFieldMarkup?>><? $waStrings.50 ?>:&nbsp;</td><td><input type="password" name="user[PASSWORD1]" id="userPASSWORD1" class="control"></td>
+</tr>
+<tr>
+<td align="right" <? conditionalOutput invalidField=$invalidField field=PASSWORD2 text=$invalidFieldMarkup?>><? $waStrings.wbs_auth_pass_confirm ?>:&nbsp;</td><td><input type="password" name="user[PASSWORD2]" id="userPASSWORD2" class="control"></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><input type="submit" name="setpassword"></td>
+</tr>
+</table>
+</form>
+</div>
+<? /if ?>
+<div class="i-col-container">
+		<div class="i-col70">
+		<div class="i-leftfloat double-size">
+				<div <?if $activeSection eq 'update'?>class="active" <?/if?>style="background-image:url('../classic/images/update.gif');">
+				<h2>
+					<a href="<?$smarty.const.PAGE_WA_UPDATE?>" title="<?"section_update"|translate?>"><?"section_update"|translate?></a>
+				</h2>
+				<?if $updateDescription?><?$updateDescription?><?/if?>
+				<p><?"upd_m_wa_ver"|translate?>&nbsp;<b><?$systemInfo.localVersion?></b>&nbsp;<?"upd_m_wa_date"|translate?>&nbsp;<?$systemInfo.installDate?></p>
+				<p><?"section_update_description"|translate?>&nbsp;</p>
+				</div>
+			</div>
+			<!--i-leftfloat-->
+			<div class="i-leftfloat">
+				<div  <?if $activeSection eq 'setup'?>class="active" <?/if?>style="background-image:url('../classic/images/setup.gif');">
+    			<h2><a href="<?$smarty.const.PAGE_SECTION_SETUP?>"><?"section_setup"|translate?></a></h2>
+    			<p><?"section_setup_description"|translate?></p>
+    			<?if $setupDescription ?><?$setupDescription?><?/if?>
+    			</div>
+				
+				<? if $availableMigration&&!$noDatabase ?>
+    			<div <?if $activeSection eq 'migrate'?>class="active" <?/if?>style="background-image:url('../classic/images/migrate.gif');">
+				<h2><a href="<?$smarty.const.PAGE_WA_MIGRATE?>" ><?"migrate_header"|translate?></a></h2>
+				<p><?"migrate_desc"|translate?></p>
+				</div>
+				<? /if ?>
+    		</div>
+    		<div class="i-leftfloat">
+    			<div <?if $activeSection eq 'diagnostic'?>class="active" <?/if?>style="background-image:url('../classic/images/diagnostic.gif');">
+				<h2><a href="<?$smarty.const.PAGE_SECTION_DIAGNOSTIC?>" title="<?"section_diagnostic"|translate?>"><?"section_diagnostic"|translate?></a></h2>
+				<p><?"section_diagnostic_description"|translate?></p>
+				<!--<p><?$systemConfiguration.SERVER?></p>
+				<p><?$systemConfiguration.MySQL?></p>-->
+				</div>
+    			
+    		</div>
+    		
+			<!--/i-leftfloat-->
+			</div>	
+			<div class="i-col30">
+			<div class="i-colorbord i-p-padd">
+				<h2><?"upd_m_installed_app"|translate?></h2>
+				<? foreach from=$app_data item=var key=app_id?>
+						<p><img class="app" src="../classic/images/<? $app_id ?>35.gif" alt="" title=""><? $var.APPLICATION.LOCAL_NAME ?>
+							<span class="i-subscr-link">
+								<? if $var.updateAvailable==true && $systemInfo.webVersion?>
+									<? $waStrings.upd_m_updapp_av ?> <a href="updatewa.php?action=changelog&app_id=<? $app_id ?>" style="font-weight: bold;"><? $waStrings.upd_m_inf_upd_desc ?>
+									</a>
+								<? elseif $systemInfo.webVersion ?>
+									<? $waStrings.upd_m_upd_no ?>
+								<? /if ?>
+							</span> 
+						</p>
+				<? /foreach ?>
+				<!-- 
+				<p class="i-size13"><a href="updatewa.php"><? $waStrings.upd_m_update_link ?></a></p>
+				 -->
+
+				<p style="padding-bottom: 20px;"><a href="updatewa.php?action=changelog&amp;full_change_log=1"><?"upd_m_view_full_changelog"|translate?></a></p>
+
+
+				<? if $availableApplications ?>				
+					<div <?if $activeSection eq 'buymore'?>class="active" style="padding: 10px;"<?else?>style="border-top: 1px solid #ddd; padding-top: 15px; border-bottom: 1px solid #ddd;padding-bottom: 15px;"<?/if?> ><? $availableApplications ?></div>
+				<? /if ?>
+				
+				<p style="margin-top: 20px; font-size: 100%;">
+				&rarr; <a href="../../../../login/" style="font-weight: bold;"><? $waStrings.install_link_db ?></a></p>
+				
+				<p><? $waStrings.support_title ?>:<br>
+				&mdash; <a href="<? $waStrings.support_website_link ?>"><? $waStrings.support_website ?></a><br>
+				&mdash; <a href="<? $waStrings.support_helpcenter_link ?>"><? $waStrings.support_helpcenter ?></a><br>
+				&mdash; <a href="<? $waStrings.support_forum_link ?>"><? $waStrings.support_forum ?></a>
+				</p>				
+			</div>
+		</div>
+		
+	</div>
+
+
+
+	<? if $winclientAvailable ?>
+        <p><strong><a href="#" name=winURL><script type="text/javascript" language="JavaScript">makeLinkURL( 4, 'common/win/webasystwinsetup.exe', 'winURL', false )</script><? $waStrings.wawc_link ?></a></strong></p>
+	<? /if ?>
+<?* /strip *?>
+<!-- /wbsadmin.html -->

@@ -1,0 +1,413 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+
+<link href="./greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+ul#product-pictures-container li table{ldelim}
+	width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE+26};
+	height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE+36};
+{rdelim}
+ul#product-pictures-container li table td.img_container{ldelim}
+	height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE+6};
+{rdelim}
+</style>
+
+{php}include DIR_ROOT.'/tinymce/tiny_mce_config.php';{/php}
+
+<script type="text/javascript">
+	translate.prdset_msg_choosen_relatedproduct = '{"prdset_msg_choosen_relatedproduct"|translate|escape:"html"}';
+	translate.prdset_msg_confirm_pict_delete = '{"prdset_msg_confirm_pict_delete"|translate|escape:"html"}';
+	translate.prdset_btn_delete_pict = '{"prdset_btn_delete_pict"|translate|escape:"html"}';
+	translate.prdset_btn_setdefault_pict = '{"prdset_btn_setdefault_pict"|translate|escape:"html"}';
+	translate.prdset_msg_loading_products = '{"prdset_msg_loading_products"|translate|escape:"html"}';
+	translate.prdset_btn_hide_products = '{"prdset_btn_hide_products"|translate|escape:"html"}';
+	translate.prdset_btn_next_products = '{"prdset_btn_next_products"|translate|escape:"html"}';
+	translate.prdset_btn_prev_products = '{"prdset_btn_prev_products"|translate|escape:"html"}';
+	translate.btn_delete = '{"btn_delete"|translate|escape:"html"}';
+</script>
+
+{if $product.productID}
+<h1>{$CurrentDivision.name|translate}: {$product.name}</h1>
+{else}
+<h1>{lbl_prdset_addproduct}</h1>
+{/if}
+
+<a href='{"ukey=categorygoods&productID=&did="|set_query_html}'>{lbl_prdset_lnk_to_product_list}</a>
+
+{$MessageBlock}
+<br />
+
+<div>
+<ul id="edmod">
+	<li class="tab" id="tab-simple-options"><a href='#simple' id="lnk-simple-options">{lbl_prdset_tab_simple}</a></li>
+	<li class="tab" id="tab-advanced-options"><a href='#advanced' id="lnk-advanced-options">{lbl_prdset_tab_advanced}</a></li>
+</ul>
+</div>
+<br />
+<br />
+
+<form enctype="multipart/form-data" action="{''|set_query_html}" method="post" name="MainForm" id="product-settings-form">
+<input type="hidden" name="action" id="action-name" value="save_product" />
+<input type="hidden" name="productID" id="product-id" value="{$product.productID|escape:'html'}" />
+<input type="hidden" name="make_slug" id="make-slug-id" value="{if $product.productID<=0}1{/if}" />
+
+<div id="container-simple-options" style="display:none;">
+<table width="50%">
+<tr>
+	<td width="1%" nowrap><strong>{lbl_prdset_product_name}: </strong></td>
+	<td>
+		{html_text name="name" values=$product table=$smarty.const.PRODUCTS_TABLE style="width:100%"}
+	</td>
+</tr>
+
+<tr>
+	<td nowrap>{lbl_str_price}: </td>
+	<td>
+		<input name="Price" value="{$product.Price|escape:'html'}" size="6" type="text" style="text-align:right;" /> {$default_currency.currency_iso_3}
+	</td>
+</tr>
+
+<tr>
+	<td nowrap>{lbl_prdset_str_category}: </td>
+	<td>
+		<div id="product-category-name">
+		{foreach from=$product_category.calculated_path item=_crumb name=_frcrumbs}
+		{if $_crumb.categoryID ne 1 && $product_category.categoryID ne $_crumb.categoryID}{$_crumb.name|escape:'html'}&nbsp;&gt;{/if}
+		{/foreach}
+		{$product_category.name}
+		</div>
+		<input name="categoryID" id="product-category-categoryID" value="{$product_category.categoryID|escape:'html'}" type="hidden" />
+		<a href="#choose_category" id="choose-parentcategory-handler">{lbl_prdset_lnk_choose_parentcategory}</a>
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2">
+<!-- Description -->
+		{lbl_str_description}:<br />
+		{html_textarea name="description" values=$product rows=3 cols=40 style="width:100%" class="mceEditor" id="prd-description"}
+<!-- Brief description -->
+		<br />
+		<div>
+		{lbl_prdset_description_brief}:<br />
+		{html_textarea name="brief_description" values=$product rows=3 cols=40 style="width:100%" class="mceEditor"}
+		</div>
+<!-- Tags -->
+
+		<br />
+		<div id="tags-container">
+		{lbl_prdset_str_tags}:
+		{html_text name="tags" id="tags" values=$product_tags style="width:100%"}
+		{$tags_cloud}
+		</div>
+<!-- Meta settings -->
+		<br />
+
+		<fieldset>
+			<legend>{lbl_prdset_str_meta}</legend>
+			<table width="100%">
+			
+			<tr>
+				<td width="1%" nowrap="nowrap">{lbl_prdset_str_metakeywords}: </td>
+				<td>
+					{html_text name="meta_keywords" values=$product style="width:100%" class="prd_metakeywords"}
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="1%" nowrap="nowrap">{lbl_prdset_str_metadescription}: </td>
+				<td>
+					{html_textarea name="meta_description" values=$product rows=2 cols=35 style="width:100%;" class="prd_metadescription"}
+				</td>
+			</tr>
+			
+			</table>
+		</fieldset>
+<!-- Pictures -->
+		<br />
+		<fieldset>
+			<legend>{lbl_prdset_str_images}</legend>
+			<div id="yooo"></div>
+			<ul id="product-pictures-container">
+			{foreach from=$pictures item=_picture}
+			{if $_picture.thumbnail_exists}
+			<li id="picture-container-{$_picture.photoID}" {if $_picture.default_picture}class="default_picture"{/if}>
+			<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="img_container">{if $_picture.large_picture}<a href="./products_pictures/{$_picture.large_picture.file}" class="new_window" wnd_width="{$_picture.large_picture.width}" wnd_height="{$_picture.large_picture.height}">{/if}<img src="./products_pictures/{$_picture.thumbnail|escape:'html'}" />{if $_picture.large_picture}</a>{/if}</td>
+			</tr>
+			<tr>
+				<td>
+				<a href="#set_default" class="set_default_picture_handlers" photoID="{$_picture.photoID}">{lbl_prdset_btn_setdefault_pict}</a>
+				<a href="#delete_picture" class="delete_picture_handlers" photoID="{$_picture.photoID}"><img src="./images/remove.gif" alt="{lbl_prdset_btn_delete_pict|escape:'html'}" /></a>
+				</td>
+			</tr>
+			</table>
+			</li>
+			{/if}
+			{/foreach}
+			<li id="upload-picture-container" style="clear: left; white-space: nowrap;">
+				<br />
+				<input id="set-default" name="set_default" type="hidden" value="0" />
+				<input id="upload-browse" name="upload_picture" type="file" />
+				<img src="./images/processing.gif" id="processing-image" style="display:none;" />
+				<input id="do-upload-handler" value="{'btn_upload'|translate|escape:'html'}" type="button" class="button" />
+			</li>
+			</ul>
+		</fieldset>
+<!-- Extra options -->
+		<br />
+		<fieldset>
+			<legend><a href="#options" id="show-options-handler">{lbl_prdset_str_extraoptions}</a></legend>
+	
+				<div id='ConfiguratorTable'{if $showConfiguratorTable eq 0} style="display:none;"{/if}>
+				<table cellpadding="4" width="100%">
+				{foreach from=$options item=option name=fe_options}
+				{assign var="option_row" value=$option.option_row}
+				{assign var="value_row" value=$option.option_value}
+				{assign var="ValueCount" value=$option.value_count}
+					<tr>
+						<td align="left" width="25%">	<b>{$option_row.name}</b></td>
+						<td>
+							<input name='option_radio_type_{$option_row.optionID}' id='opt_undef_{$option_row.optionID}' type='radio' value="UN_DEFINED" {if $value_row.option_value eq '' and $value_row.option_type eq 0} checked="checked"{/if} />
+						</td>
+						<td>
+							<label for="opt_undef_{$option_row.optionID}">{"str_not_defined"|translate}</label>
+						</td>
+					</tr>
+					<tr> 
+						<td>&nbsp;</td>
+						<td valign='top'> 
+							<input name='option_radio_type_{$option_row.optionID}' id="opt_any_{$option_row.optionID}" type='radio' value="ANY_VALUE" {if $value_row.option_type eq 0 && $value_row.option_value ne ''} checked="checked"{/if} /> 
+						</td>
+						<td>
+							<label for="opt_any_{$option_row.optionID}">{"prdset_custom_value"|translate} </label>
+							{html_text dbfield="option_value" name="option_value_%lang%_`$option_row.optionID`" values=$value_row style="width:100%;"}
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td valign='top'>
+							<input name='option_radio_type_{$option_row.optionID}' id="opt_nval_{$option_row.optionID}" type='radio' value="N_VALUES" {if $value_row.option_type eq 1} checked="checked"{/if} />
+						</td>
+						<td>
+							<label for="opt_nval_{$option_row.optionID}">
+								{"prdset_selectable_from_values"|translate} (<span id="option-values-num-{$option_row.optionID}">{$ValueCount}</span> {"prdset_option_value_variants"|translate})<br />
+								<a name="option_value_configurator_{$option_row.optionID}" optionID='{$option_row.optionID}' href='{"?ukey=option_value_configurator&optionID=`$option_row.optionID`&productID=`$smarty.get.productID`"|set_query_html}' onclick="return optionsSettingsManager.showSettings(this);">{"prdset_choose_selectable_option_values"|translate}...</a>
+							</label>
+						</td>
+					</tr>
+					{if !$smarty.foreach.fe_options.last}
+					<tr>
+						<td colspan="3"><hr width="100%" /></td>
+					</tr>
+					{/if}
+				{/foreach}
+				</table>
+				</div>
+		</fieldset>
+	</td>
+</tr>
+</table>
+</div>
+
+<div id="container-advanced-options" style="display:none;">
+
+<table>
+
+{if $product.date_added ne ''}
+<tr>
+	<td>{lbl_prdset_date_added}: </td>
+	<td><strong>{$product.date_added}</strong></td>
+</tr>
+{/if}
+	
+{if $product.date_modified ne ''}
+<tr>
+	<td>{lbl_prdset_date_modified}: </td>
+	<td><strong>{$product.date_modified}</strong></td>
+</tr>
+{/if}
+
+<tr>
+	<td>{lbl_prdset_product_code}: </td>
+	<td><input type="text" name="product_code" value="{$product.product_code|escape:'html'}" /></td>
+</tr>
+
+<tr>
+	<td>{lbl_prdset_slug}: </td>
+	<td><input type="text" name="slug" value="{$product.slug|escape:'html'}" /></td>
+</tr>
+
+<tr>
+	<td>{lbl_prdset_str_invisible}: </td>
+	<td><input type="checkbox" name="product_invisible" value="1" {if !$product.enabled}checked{/if} /></td>
+</tr>
+
+<tr>
+	<td>{lbl_prdset_str_ordering_available}: </td>
+	<td><input type="checkbox" name="ordering_available" value="1" {if $product.ordering_available}checked{/if} /></td>
+</tr>
+
+{if $smarty.const.CONF_CHECKSTOCK eq 1}
+<tr>
+	<td>{lbl_str_in_stock}: </td>
+	<td><input type="text" name="in_stock" value="{$is|escape:'html'}" /></td>
+</tr>
+{/if}
+
+<tr>
+	<td>{"tax_type"|translate}: </td>
+	<td>
+		<select name='tax_class'>
+			<option value='null'>{"str_not_defined"|translate}</option>
+		{section name=j loop=$tax_classes}
+			<option value="{$tax_classes[j].classID}"{if $product.classID eq $tax_classes[j].classID} selected="selected"{/if}>
+			{$tax_classes[j].name|escape:'html'}
+			</option>
+		{/section}
+		</select>
+	</td>
+</tr>
+
+{if $smarty.get.productID ne ''}
+<tr>
+	<td>{"prdset_product_rating"|translate}: </td>
+	<td><input type="text" name="rating" value="{$product.customers_rating|escape:'html'}" /></td>
+</tr>
+{/if}
+
+<tr>
+	<td>{"prdset_product_listprice"|translate}: 
+	<div class="field_descr">{"str_number_only"|translate}</div></td>
+	<td><input name="list_price" value="{$product.list_price|escape:'html'}" size="6" type="text" style="text-align:right;" /> {$default_currency.currency_iso_3}</td>
+</tr>
+
+<tr>
+	<td>{"prdset_handling_charge"|translate}: </td>
+	<td><input name="shipping_freight" value="{$product.shipping_freight|escape:'html'}" size="6" type="text" style="text-align:right;" /> {$default_currency.currency_iso_3}</td>
+</tr>
+
+<tr>
+	<td>{"prdset_weight"|translate}: </td>
+	<td><input name='weight' value='{$product.weight|escape:"html"}' size="6" type="text" style="text-align:right;" /> {$smarty.const.CONF_WEIGHT_UNIT}</td>
+</tr>
+
+<tr>
+	<td>{"prdset_free_shipping"|translate}: 
+	<div class="field_descr">{lbl_prdset_freeshipping_description}</div></td>
+	<td><input type="checkbox" name='free_shipping'{if $product.free_shipping ne ''} checked="checked"{/if} value='1' /></td>
+</tr>
+
+<tr>
+	<td>{"prdset_min_qunatity_to_order"|translate}: </td>
+	<td><input type="text" name='min_order_amount' value='{$product.min_order_amount|escape:"html"}' /></td>
+</tr>
+
+<tr>
+	<td>{lbl_str_sort_order}: </td>
+	<td><input type="text" name='sort_order' value='{$product.sort_order|escape:"html"}' /></td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+	<td valign="top">{"str_related_items"|translate}: </td>
+	<td>
+		<div id="related-products-container">
+		{section name=j loop=$RelatedItems}
+			<div id="related-product-{$RelatedItems[j].productID|escape:'html'}">
+				{$RelatedItems[j].name|escape:'html'}
+				<input name="related_products[]" value="{$RelatedItems[j].productID|escape:'html'}" type="hidden" />
+				<a href='#remove_relatedproduct' class="remove_relatedproduct_handler" productID="{$RelatedItems[j].productID|escape:'html'}"><img src="images/remove.gif" border="0" hspace="6" alt="{"btn_delete"|translate}" /></a>
+			</div>
+		{/section}
+		</div>
+		<div><a href="#add_related_product" id="add-related-product-handler">{"btn_add"|translate|escape:"html"}</a></div>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+	<td valign="top">{"prdset_product_extra_categories"|translate}: </td>
+	<td>
+		<div id="appendedcategories-block">
+		{section name=j loop=$appended_categories}
+			<div id="appended-category-{$appended_categories[j].categoryID|escape:'html'}">
+				{foreach from=$appended_categories[j].calculated_path item=_crumb name=_frcrumbs}
+				{if $_crumb.categoryID ne 1 && $appended_categories[j].categoryID ne $_crumb.categoryID}{$_crumb.name|escape:'html'}&nbsp;&gt;{/if}
+				{/foreach}
+				{$appended_categories[j].category_name}
+				<input name="appended_categories[]" value="{$appended_categories[j].categoryID|escape:'html'}" type="hidden" />
+				<a href='#remove_appendedcategory' class="remove_appendedcategory_handler" categoryID="{$appended_categories[j].categoryID|escape:'html'}"><img src="images/remove.gif" border="0" hspace="6" alt="{"btn_delete"|translate}" /></a>
+			</div>
+		{/section}
+		</div>
+		<div>
+			<a href="#add_appended_parent" id="add-appended-parent-handler">{"btn_add"|translate|escape:"html"}</a>
+		</div>
+	</td>
+</tr>
+</table>
+
+<br />
+<fieldset style="width:60%;">
+	<legend>
+		<input type="checkbox" name="ProductIsProgram" value="1" id="product-isprogram-handler"{if $product.eproduct_filename ne ''} checked="checked"{/if} />
+		<label for="product-isprogram-handler">{"prdset_product_is_downloadable"|translate}</label>
+	</legend>
+	
+	<div id='FileNameTable'{if $product.eproduct_filename eq ''} style="display:none;"{/if}>
+	<table cellspacing="5">
+		<tr>
+			<td valign="top">{"prdset_product_filename"|translate}: </td>
+			<td>
+				<input type="file" name="eproduct_filename" value="{$product.eproduct_filename|escape:'html'}" /><br />
+				{if $product.eproduct_exists eq 1}{$product.eproduct_filename}{else}{"str_file_is_not_uploaded"|translate}{/if}
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">{"prdset_download_is_available_for"|translate}: </td>
+			<td>
+				<select name="eproduct_available_days">
+				{foreach item='value' from=$eproduct_available_days}
+					<option value='{$value|escape:"html"}'{if $product.eproduct_available_days eq $value} selected="selected"{/if}>{$value|escape:"html"}</option>
+				{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">{"prdset_download_max_number_allowed"|translate}: </td>
+			<td><input type="text" size="4" name="eproduct_download_times" value="{$product.eproduct_download_times|escape:'html'}" /></td>
+		</tr>
+	</table>
+	</div>
+</fieldset>
+		
+</div>
+
+{if $smarty.const.CONF_CHECKSTOCK ne 1}<input type="hidden" name="in_stock" value="{$is|escape:'html'}" />{/if}
+<br />
+<input type="submit" class="button" id="btn-save-product" name="save_product" value="{'btn_save'|translate|escape:'html'}" />
+
+</form>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/product_settings.js"></script>
+<script type="text/javascript">
+	var GB_ROOT_DIR = './greybox/';
+	var product_id = "{$product.productID}";
+{literal}
+	if(getCookie('prdset_tab') && getCookie('prdset_prd_id') == product_id){
+	
+		prdset_selectTab(getCookie('prdset_tab'));
+	}else{
+		
+		prdset_selectTab('simple');
+	}
+	setCookie('prdset_prd_id', product_id);
+	ProductIsProgramHandler();
+{/literal}
+</script>
+<script type='text/javascript' src='./greybox/AJS.js'></script>
+<script type='text/javascript' src='./greybox/gb_scripts.js'></script>

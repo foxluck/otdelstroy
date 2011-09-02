@@ -1,0 +1,124 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../../wbsadmin/html/classic/wbsadmin.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/javascript">
+<!--
+function focusControl(objName) {
+
+	<? if $invalidField ?>
+		<? "objName = '"|cat:$invalidField|cat:"'" ?>;
+	<? /if ?>
+	
+	if ( objName == "hostData[DB_CREATE_OPTIONS][CREATE_OPTION]" )
+		return;
+	
+	var obj = MM_findObj(objName); 
+	if (obj)
+		obj.focus( );
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function appSelected( app_cb, parents, slaves ) {
+	if ( app_cb.checked ) {			
+		for (var i = 0; i < parents.length; i++)       
+			if ( parents[i] != "" ) {
+				for (var j = 0; j < document.cform.elements.length; j++)       
+					if ( document.cform.elements[j].name == ("app_list["+parents[i]+"]"))
+						document.cform.elements[j].checked = true;
+			}
+	} else {
+		for (var i = 0; i < slaves.length; i++)       
+			if ( slaves[i] != "" ) {
+				for (var j = 0; j < document.cform.elements.length; j++)       
+					if ( document.cform.elements[j].name == ("app_list["+slaves[i] + "]") )
+						document.cform.elements[j].checked = false;
+			}
+	}
+}
+
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="5" topmargin="5" marginwidth="5" marginheight="5" class="default" onLoad="focusControl(<? if $action == "new" ?>'hostData[DBSETTINGS][DB_KEY]'<?else?>'hostData[DBSETTINGS][EXPIRE_DATE]'<?/if?>)">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="cform">
+  <? assign var="invalidFieldMarkup" value="<span style='color: #FF0000'>" ?>
+  <h2 class="page-title"><? $pageTitle ?></h2>  
+        <? if $errorStr ?>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr> 
+            <td width="1">&nbsp;</td>
+            <td colspan="2">
+              <? $invalidFieldMarkup ?>
+              <? $errorStr ?>
+            </td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td width="21">&nbsp;</td>
+            <td width="9">&nbsp;</td>
+          </tr>
+        </table>
+        <? /if ?>
+        <? if !$fatalError ?>
+		  <table border="0">
+			<tr>
+			  <td width="20px">&nbsp;</td>
+			  <td>
+				<p class="pageHeader"><? $DB_KEY ?></p>
+				<? if $logRecord.OPTION_MODIFICATION ?>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="padding-right: 10px" class="formSection">Option</td>
+							<td style="padding-right: 10px" class="formSection">Old Value</td>
+							<td class="formSection">New Value</td>
+						</tr>
+							<? assign var=curClass value="" ?>
+							<? foreach from=$logRecord.OPTION_MODIFICATION item=mr ?>
+								<? if $mr.CLASS != $curClass ?>
+									<? assign var=curClass value=$mr.CLASS ?>
+									<? assign var=classNameIndex value=$modificationClassesNames.$curClass ?>
+									<? assign var=className value=$db_locStrings[$classNameIndex] ?>
+									<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td class="formSubSection" colspan="3"><? $className ?></td>
+									</tr>
+								<? /if ?>
+								<? assign var=curName value=$mr.NAME ?>
+								<? assign var=optionNameIndex value=$modificationOptionNames.$curName ?>
+								<? assign var=optionName value=$db_locStrings[$optionNameIndex] ?>
+								<tr>
+									<td><? $optionName|cat:"&nbsp;" ?></td>									
+									<td><? if ($mr.PREV != "") ?><? if $optionName != "Password" ?><? $mr.PREV ?><?else?>*****<? /if ?><?else?><? "<empty>"|htmlsafe:true:true ?><?/if?>&nbsp;</td>
+									<td><? if ($mr.NEW != "") ?><? if $optionName != "Password" ?><? $mr.NEW ?><?else?>*****<? /if ?><?else?><? "<empty>"|htmlsafe:true:true ?><?/if?></td>
+								</tr>							
+							<? /foreach ?>
+					</table>
+				<? /if ?>
+				<p>
+					<? if $logRecord.APPLICATIONS_ADDED ?>Added Application(s): <?$logRecord.APPLICATIONS_ADDED?><br><? /if ?>
+					<? if $logRecord.APPLICATIONS_REMOVED ?>Removed Application(s): <?$logRecord.APPLICATIONS_REMOVED?><? /if ?>
+				</p>
+				<input name="sorting" type="hidden" value="<? $sorting ?>"> <input name="edited" type="hidden" value="1"> 
+				<input name="action" type="hidden" value="<? $action ?>">
+				<input name="DB_KEY" type="hidden" value="<? $DB_KEY ?>"> 
+				<p><input type="submit" name="cancelbtn" value="Close"></p>
+			</td>
+			</tr>
+		  </table>
+	  <? /if ?>
+  </form>
+<? /strip ?>
+</body>
+</html>

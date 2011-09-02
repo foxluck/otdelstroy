@@ -1,0 +1,118 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta property="fb:app_id" content="{$smarty.const.CONF_FACEBOOK_APP_ID}"> <!-- Replace app id with your own-->
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <base href="{$smarty.const.CONF_FULL_SHOP_URL}">
+
+<!-- Head start -->
+	{include file="head.html"}
+<!-- Head end -->
+ 
+  {if $overridestyles}<link rel="stylesheet" href="{$URL_THEME_OFFSET}/overridestyles.css" type="text/css" />{/if}
+		
+  <!-- <link rel="stylesheet" href="{$URL_THEME_OFFSET}/main.css" type="text/css" /> -->
+  
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/html.css" type="text/css" />
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/formalize_fb.css" type="text/css" />
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/general.css" type="text/css" />
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/facebook.css" type="text/css" />
+ 
+  
+<script type="text/javascript" src="{$smarty.const.URL_COMMON}/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/jquery.formalize.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/fb.frame.js"></script>
+<script type="text/javascript">
+<!--		
+{$current_currency_js}
+var ORIG_URL = '{$smarty.const.CONF_FULL_SHOP_URL}';
+var ORIG_LANG_URL = '{"?"|set_query_html}';
+window.currDispTemplate = defaultCurrency.display_template;
+var translate = {ldelim}{rdelim};
+translate.cnfrm_unsubscribe = '{"cnfrm_unsubscribe"|transcape}';
+translate.err_input_email = '{"err_input_email"|transcape}';
+translate.err_input_nickname = '{"err_input_nickname"|transcape}';
+translate.err_input_message_subject = '{"err_input_message_subject"|transcape}';
+translate.err_input_price = '{"err_input_price"|transcape}';
+//-->
+</script>
+
+</head>
+<body style="padding:6px;background: #fff;">
+  <div id="fb-root"></div>
+<script>
+  //var fb_app_id = '{$smarty.const.CONF_FACEBOOK_APP_ID}'
+  var locale = '{$lang_iso2}';
+  {literal}
+  var fb_locale = 'en_US';
+  switch(locale){
+	case 'ru':fb_locale = 'ru_RU';break;
+  	case 'fr':fb_locale = 'fr_FR';break;
+  	case 'de':fb_locale = 'de_DE';break;
+  }
+  function scrollTo(x,y){
+	$("body").append('<iframe id="scrollTop" style="border:none;width:1px;height:1px;position:absolute;top:-10000px;left:-100px;" src="http://static.ak.facebook.com/xd_receiver_v0.4.php?r=1#%7B%22id%22%3A0%2C%22sc%22%3Anull%2C%22sf%22%3A%22%22%2C%22sr%22%3A2%2C%22h%22%3A%22iframeOuterServer%22%2C%22sid%22%3A%220.957%22%2C%22t%22%3A0%7D%5B0%2C%22iframeInnerClient%22%2C%22scrollTo%22%2C%7B%22x%22%3A'+x+'%2C%22y%22%3A'+y+'%7D%2Cfalse%5D" onload="$(\'#scrollTop\').remove();"></iframe>');
+	}
+    window.fbAsyncInit = function() {
+      //Replace appId with your own
+      FB.init({/*appId: fb_app_id, */status: true, cookie: true,
+               xfbml: true});
+      FB.Canvas.setAutoResize();
+    };
+    (function() {
+      var e = document.createElement('script'); e.async = true;
+      e.src = document.location.protocol +
+        '//connect.facebook.net/'+fb_locale+'/all.js';
+      document.getElementById('fb-root').appendChild(e);
+    }());
+    scrollTo(0,0);
+    {/literal}
+</script>
+
+  <div id="content">
+    <div id="container">
+       <div id="main-content">
+          
+        <ul class="site-info">
+        {if $CurrentDivision.ukey != 'cart'} 
+		 <li class="shcart">{cpt_shopping_cart_info overridestyle=''}</li>
+		{/if}
+		<li class="shopname">
+         <a href="{'?ukey=home'|set_query_html}">{$smarty.const.CONF_SHOP_NAME|escape:'html'}</a></li>
+         <li class="vlike">
+        
+        {if !$page_not_found404}
+          	<fb:like show_faces="false" href="{if $smarty.const.CONF_FACEBOOK_LIKE_URL && ($smarty.const.CONF_FACEBOOK_LIKE_URL ne 'CONF_FACEBOOK_LIKE_URL')}{$smarty.const.CONF_FACEBOOK_LIKE_URL}{else}{$smarty.const.CONF_FULL_SHOP_URL}{/if}"></fb:like>
+		{/if}</li>
+		
+		
+        </ul>
+
+        
+		</div>
+		
+          {if $page_not_found404}
+			{include file="404.html"}
+		{else}
+		<!-- BEGIN {$main_body_tpl} -->
+			{include file=$main_body_tpl}
+		<!-- END {$main_body_tpl} -->
+		{/if}
+		 
+		
+		{if $show_powered_by }
+		{if $show_powered_by_link}
+ 		<div class="footer">{lbl_powered_by_external}</div>
+		{else}
+ 		<div class="footer">{lbl_powered_by_text}</div>
+		{/if}
+		{/if}
+      </div>
+     
+    </div>
+    {if !$page_not_found404}{$GOOGLE_ANALYTICS_CODE}{/if}
+</body>
+</html>

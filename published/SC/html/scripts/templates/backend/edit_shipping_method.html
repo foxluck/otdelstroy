@@ -1,0 +1,78 @@
+<h1 class="breadcrumbs">
+	<a href='{"?did="|set_query_html}'>{lbl_shp_shipping_types}</a>
+	&raquo;
+	{'shp_edit_method'|translate}{if $shipping_method.Name}: {$shipping_method.Name|escape:'html'}{/if}
+</h1>
+
+{$MessageBlock}
+
+<form action='{""|set_query_html}' method="post" enctype="multipart/form-data" name="shipping_method_form">
+<input name="action" value="save_method" type="hidden" />
+<input name="sid" value="{$SID}" type="hidden" />
+
+<table cellspacing="0" cellpadding="5">
+<tr>
+	<td>{'enabled'|translate}:</td>
+	<td>
+		<input type="checkbox" name="Enabled" {if $shipping_method.Enabled} checked{/if} value="1" />
+	</td>
+</tr>
+<tr>
+	<td width="250">{"str_name"|translate}:</td>
+	<td>
+		{html_text name="Name" values=$shipping_method style="width:250px;"}
+	</td>
+</tr>
+<tr>
+	<td colspan="2">{"str_description"|translate}:
+		<br />
+		{html_textarea rows="2" cols="30" name="description" values=$shipping_method style="width:510px;"}
+	</td>
+</tr>
+<tr>
+	<td colspan="2">{"shp_email_comments_text"|translate}:
+		<br />
+		{html_textarea rows="2" cols="30" name="email_comments_text" values=$shipping_method style="width:510px;"}
+	</td>
+</tr>
+<tr>
+	<td valign="top" width="250">{"str_logo"|translate}:</td>
+	<td>
+		<input type="text" name="logo" value="{$shipping_method.logo|escape:'html'}" style="width:250px;"/>
+		{if $shipping_method.logo}<br/><img src="{$shipping_method.logo|escape:'html'}" alt="" />{/if}
+	</td>
+</tr>
+
+{if $settings}
+<tr>
+	<td colspan="2">
+	<br />
+	<strong>{'shp_module_settings'|translate|replace:'%MODULE_NAME%':$moduleEntry->title}</strong>
+	{if $moduleEntry->description}<p>{$moduleEntry->description}</p>{/if}
+	</td>
+</tr>
+
+{section name=i loop=$settings}
+{if $controls[i] ne -1}
+<tr> 
+	<td width="250" valign="top">{$settings[i].settings_title}:
+		<div class="notice">{$settings[i].settings_description}</div>
+	</td>
+	<td valign="top">
+		{$controls[i]}
+	</td>
+</tr>
+{/if}
+{/section}
+{/if}
+
+<tr>
+	<td colspan="2">
+		<input value="{'btn_save'|transcape}" type="submit" />
+		<input value="{'btn_cancel'|transcape}" type="button" onclick="document.location.href = '{'?did='|set_query_html}';" />
+	</td>
+</tr>
+
+</table>
+
+</form>

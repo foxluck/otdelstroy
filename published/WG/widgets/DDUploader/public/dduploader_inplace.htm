@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<style>
+	body {font-size: 8pt; margin: 0px; padding: 0px; }	
+	table tr td {font-size: 10pt}
+	
+	#ADDFORM {height: 1px}
+	*html #BUTTONADD {width: 60px; }
+	#TITLE {height: 22px}
+	*html #TITLE {height: 32px; }
+	
+	<? math equation="x-30" x=$widgetParams.WIDTH|default:100 assign=w ?>
+	#SBSCErrorBlock {position: absolute; top: 40px; left: 20px; width: <? $w ?>px; ; overflow-y: auto; background: #F0F0F0; border: 1px solid #8B0000}
+	.SBSCError {font-style: italic}
+</style>
+
+<script src="<? $WG_SRC ?>widgets/_common/public/js/mootools.js"></script>
+
+<script>
+	function fieldChanged (fieldName, value) {
+		if (fieldName == "WIDTH")
+			document.getElementById ("BORDER").style.width = value;
+		if (fieldName == "BGCOLOR")
+			document.getElementById ("FORM").style.background = value;
+		if (fieldName == "TITLE")
+			document.getElementById ("TITLE").innerHTML = value;
+		if (fieldName == "TITLECOLOR")
+			document.getElementById ("TITLE").style.color = value;
+			if (fieldName == "BORDERCOLOR")
+			document.getElementById ("BORDER").style.background = value;
+		/*if (fieldName == "TITLE_bgcolor") {
+			document.getElementById ("TITLE").style.background = value;
+			document.getElementById ("BOTTOM").style.background = value;
+		}*/
+		if (fieldName == "SHOWBORDER")
+			window.parent.needRefresh	= true;
+			//tm_modalBOX('<font class=f1><? $widgetStrings.amwg_savetoapply_messagetitle	?></font>','120');
+		//}
+	}
+	
+	function toStart () {
+		document.location.href=document.location.href;
+	}	
+	
+	function hideError () {
+		document.getElementById("SBSCErrorBlock").style.display = "none";
+		var objs = document.getElementsByTagName ("select");
+		for (i = 0; i < objs.length; i++) {
+			var obj = objs[i];
+			obj.style.visibility = "visible";
+		}
+	}
+	
+	function showError () {
+		var objs = document.getElementsByTagName ("select");
+		for (i = 0; i < objs.length; i++) {
+			var obj = objs[i];
+			obj.style.visibility = "hidden";
+		}
+		var width = 0;
+		width = document.documentElement.clientWidth;
+		if (width == 0)
+			width = document.body.clientWidth;
+			
+		
+		if (width > 0)
+			document.getElementById("SBSCErrorBlock").style.left = (width - <? $w ?>) / 2 ;
+	}
+	
+	var showed = false;
+	function showHideAddForm () {
+		var obj = document.getElementById("ADDFORM");
+		var obj2 = document.getElementById("SCROLLFORM");	
+		var formheight = 54;
+		
+		var st = new Fx.Style("ADDFORM", "height");
+		var st2 = new Fx.Style("SCROLLFORM", "height");
+		if (!showed) {
+			//obj.style.display = "block";
+			
+			//obj2.style.display = "none";
+			showed = true;
+			st.start(0,formheight);
+			var newHeight = parseInt(obj2.style.height)- formheight;
+			st2.start(newHeight);
+			
+		} else {
+			showed = false;
+			//obj.style.display = "none";
+			var newHeight = parseInt(obj2.style.height)+ formheight;
+			st.start(1);
+			st2.start (newHeight);
+			//obj2.style.display = "block";
+		}
+		
+		var fx = new Fx.Scroll("SCROLLFORM");
+		//fx.scrollTo (0,0);
+		
+		return false;
+	}
+	
+	function deleteFile (encId) {
+		if (!confirm("<? $widgetStrings.up_filedelete_message ?>"))
+			return;
+		document.getElementById("action").value = "delete";
+		document.getElementById("fileId").value = encId;
+		document.getElementById("form1").submit ();
+		//return false;
+	}
+</script>
+
+<body style='<? if $params.mode == "preview" ?>background: URL("<? $WG_SRC ?>bg.gif"); padding-top: 9px<? elseif $params.mode == "previewEdit"?>padding-top: 10px; padding-left: 10px; background-color: transparent;<? /if ?>; '>
+
+<? if $params.mode != 'previewEdit' ?><center><? /if ?>
+<form id='form1' method='post' enctype='multipart/form-data' action=''>
+<input id='action' type='hidden' name='action' value='add'>
+<input id='fileId' type='hidden' name='fileId' value=''>
+
+<? if $errorStr ?>
+	<table id='SBSCErrorBlock' cellspacing="0" cellpadding="0" height="0">
+		<tr><td style='background: darkred; color: white; font-weight: bold; padding: 3px'><? $wgStrings.error_title ?></td></tr>
+		<tr><td style='padding: 4px; height: 50px; overflow-y: auto; overflow-x: auto' valign='top'>
+			<? $errorStr ?>
+			<BR>
+			<span style='border: 1px solid #999999; color: #666666; background: #E0E0E0; float:right; padding-left: 3px; padding-right: 3px; cursor: pointer' onClick='hideError();'>OK</span>
+		</td></tr>
+	</table>
+<? /if ?>
+
+
+<? assign var=wwidth value=$widgetParams.WIDTH ?>
+<? if !$wwidth ?><? assign var=wwidth value=350 ?><? /if ?>
+<? assign var=wheight value=$widgetParams.HEIGHT ?>
+<table cellspacing='0' cellpadding='0' width="<? $wwidth ?>px;" height="<? $wheight ?>px" style='border: 1px solid <? $widgetParams.BORDERCOLOR ?>'><tr>
+<td id='BORDER' style='background: <? $widgetParams.BORDERCOLOR ?>;'>
+	<div style='font-weight: bold; overflow-y: hidden; padding: 5px 15px; color: <? $widgetParams.TITLECOLOR ?>' id='TITLE'><input id='BUTTONADD' onClick='showHideAddForm()' type='button' style='border: 0px; margin-top: 3px; color: <? $widgetParams.BORDERCOLOR ?>; float:right; background: <? $widgetParams.TITLECOLOR ?>' value='<? $widgetStrings.up_addfile_label ?>' title='<? $widgetStrings.up_addfile_title ?>' ><img style='float:left' src='<? $WG_SRC ?>widgets/DDUploader/public/img/widget.gif'><span style='font-size: 1.2em; padding-left: 7px'><? $widgetData.WG_DESC ?></span></div>
+	
+	<div id='ADDFORM' style='display: block; height: 1px; overflow: hidden; margin-bottom: 3px; padding-left: 10px'>
+		<? math equation="x/10-10" x=$wwidth assign=size ?>
+		<!--input name="MAX_FILE_SIZE" type='hidden' value='<? $MAXFILESIZEBYTES ?>'-->
+		<input style='margin-top: 2px' type='file' name='file' size='<? $size ?>'>
+		<BR>
+		<div style='text-align: center; padding-top: 3px'>
+			<input id='SAVEBTN' type='submit' value='<? $widgetStrings.up_uploadbtn_label ?>'>
+			<input id='SAVEBTN' type='button' value='<? $widgetStrings.up_cancelbtn_label ?>' onClick='showHideAddForm()'>
+		</div>
+	</div>
+	
+	<? math assign=fheight equation="x-34" x=$wheight ?>
+	<div id='SCROLLFORM' style='width: <? $wwidth ?>px; height: <? $fheight ?>px; overflow: auto; background: <? $widgetParams.BGCOLOR ?>'>
+		<div id='FORM' style='padding-top: 13px; background: <? $widgetParams.BGCOLOR ?>'>
+			<div id='FILESFORM'>
+				<? include file="files_list.htm" ?>
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+	<tr>
+		<td><div style='border-top: 1px solid #999; background: <? $widgetParams.BGCOLOR ?>; padding: 0px; font-size: 8pt; padding-right: 5px; text-align: right'><a style='text-decoration: none' target='_blank' href='http://www.webasyst.net'>WebAsyst</a></div></td>
+	</tr>
+</table>
+</form>
+</center>
+
+<? if $errorStr ?>
+	<script>
+		showError ();
+	</script>
+<? /if ?>

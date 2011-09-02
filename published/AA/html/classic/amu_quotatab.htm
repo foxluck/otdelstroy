@@ -1,0 +1,36 @@
+<p><? $kernelStrings.amu_quotas_note ?></p>
+
+<table cellpadding=0 cellspacing=0 border=0 width="100%">
+
+	<? foreach from=$quotableApplications key=app_id item=app_data name=apploop ?>
+
+		<!-- Application name -->
+		<tr>
+			<td><strong><? appName APP_ID=$app_id language=$language ?></strong></td>
+		</tr>
+
+		<tr>
+			<td height=5></td>
+		</tr>
+
+		<tr>
+			<td>
+				<table cellpadding=1 cellspacing=1 border=0>
+					<tr>
+						<td><? conditionalOutput invalidField=$invalidField field="diskquotas"|cat:"["|cat:$app_id|cat:"]" text=#invalidFieldHighlight# ?><? $kernelStrings.amu_storagespacequota_label|cat:":&nbsp;" ?></td>
+						<td>
+							<input type=text name="diskquotas[<? $app_id ?>]" value="<? $diskquotas.$app_id|htmlsafe:true:true ?>" class=control size=15>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class=smallFont><? $kernelStrings.amu_leaveblankquotas_text ?></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	<? foreachelse ?>
+		<p><? $kernelStrings.amu_noquotas_text ?></p>
+	<? /foreach ?>
+</table>

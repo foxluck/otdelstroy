@@ -1,0 +1,568 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WebAsyst\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-12-11 17:56+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: Russian Federation\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+# PHP System String
+msgid "Error"
+msgstr ""
+
+msgid "Mobile phone must contain from 7 to 12 numbers"
+msgstr ""
+
+# System templates (index.html etc.)
+msgid "Welcome"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "ACCOUNT NOT CONFIRMED"
+msgstr ""
+
+msgid "What's this?"
+msgstr ""
+
+msgid "Extend account"
+msgstr ""
+
+msgid "Menu position"
+msgstr ""
+
+msgid "Top"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Bottom"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+msgid "Icons and Names"
+msgstr ""
+
+msgid "Icons only"
+msgstr ""
+
+msgid "Names only"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Full screen"
+msgstr ""
+
+msgid "Exit full screen"
+msgstr ""
+
+msgid "Loading"
+msgstr ""
+
+# Applications
+msgid "Files"
+msgstr ""
+
+msgid "Photos"
+msgstr ""
+
+msgid "Contacts"
+msgstr ""
+
+msgid "Mail"
+msgstr ""
+
+msgid "Projects"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "General Ledger"
+msgstr ""
+
+msgid "Issue Tracker"
+msgstr ""
+
+msgid "Merchant"
+msgstr ""
+
+msgid "Pages"
+msgstr ""
+
+msgid "Shopping Cart"
+msgstr ""
+
+# Contact Fields
+msgid "Contact ID"
+msgstr ""
+
+msgid "Contact type"
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "Adding date"
+msgstr ""
+
+msgid "Added by"
+msgstr ""
+
+msgid "Adding application"
+msgstr ""
+
+msgid "Adding method"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Modified by"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Main section"
+msgstr ""
+
+msgid "Subscriber status"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Middle name"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Phone numbers"
+msgstr ""
+
+msgid "Home phone"
+msgstr ""
+
+msgid "Work phone"
+msgstr ""
+
+msgid "Mobile phone"
+msgstr ""
+
+msgid "Home fax"
+msgstr ""
+
+msgid "Work fax"
+msgstr ""
+
+msgid "Instant messengers"
+msgstr ""
+
+msgid "ICQ"
+msgstr ""
+
+msgid "MSN"
+msgstr ""
+
+msgid "Skype"
+msgstr ""
+
+msgid "Home address"
+msgstr ""
+
+msgid "Street address"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "Postal code"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Personal information"
+msgstr ""
+
+msgid "Date of birth"
+msgstr ""
+
+msgid "Personal website"
+msgstr ""
+
+msgid "Work address"
+msgstr ""
+
+msgid "Company website"
+msgstr ""
+
+msgid "Misc"
+msgstr ""
+
+msgid "Other info"
+msgstr ""
+
+# Contact types
+msgid "Person"
+msgstr ""
+
+msgid "Add a new person"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "Add a new company"
+msgstr ""
+
+# System errors
+msgid "Number of characters can not exceed "
+msgstr ""
+
+# System
+msgid "no folder"
+msgstr ""
+
+msgid "Available folders"
+msgstr ""
+
+msgid "New folder"
+msgstr ""
+
+msgid "Primary name"
+msgstr ""
+
+# Rights
+msgid "Available depratments"
+msgstr ""
+
+msgid "Available books"
+msgstr ""
+
+msgid "Can create books"
+msgstr ""
+
+msgid "Available actions with books"
+msgstr ""
+
+msgid "Has access to book list"
+msgstr ""
+
+msgid "Can use tools"
+msgstr ""
+
+msgid "Project manager"
+msgstr ""
+
+msgid "Available projects"
+msgstr ""
+
+msgid "Can manage customers"
+msgstr ""
+
+msgid "Has access to project list"
+msgstr ""
+
+msgid "Can create albums"
+msgstr ""
+
+msgid "Can manage albums (and see the list of all albums)"
+msgstr ""
+
+msgid "Can modify public gallery design"
+msgstr ""
+
+msgid "Can create and manage collections"
+msgstr ""
+
+msgid "Can edit personal user settings"
+msgstr ""
+
+msgid "Can edit personal contact information"
+msgstr ""
+
+msgid "Referal partners"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "Gifts"
+msgstr ""
+
+msgid "Discount"
+msgstr ""
+
+msgid "Cleanup expired accounts"
+msgstr ""
+
+msgid "WebAsyst hosted accounts"
+msgstr ""
+
+msgid "The average rate of USD"
+msgstr ""
+
+msgid "Refund & Chargeback"
+msgstr ""
+
+msgid "Information blocks"
+msgstr ""
+
+msgid "Messages"
+msgstr ""
+
+msgid "Requisites"
+msgstr ""
+
+msgid "Product list"
+msgstr ""
+
+msgid "Search customer"
+msgstr ""
+
+msgid "License list"
+msgstr ""
+
+msgid "Can access \"Inbox\""
+msgstr ""
+
+msgid "Is notified on issue assignment"
+msgstr ""
+
+msgid "Can manage workflow"
+msgstr ""
+
+msgid "Has access to settings"
+msgstr ""
+
+msgid "Has access to types of operations"
+msgstr ""
+
+msgid "Has access to accounts"
+msgstr ""
+
+msgid "Can use balance"
+msgstr ""
+
+msgid "Can use operations"
+msgstr ""
+
+msgid "Inherited from projects"
+msgstr ""
+
+msgid "Can see other users' permissions"
+msgstr ""
+
+msgid "Is notified on folder update"
+msgstr ""
+
+msgid "Has access to recycle bin and settings"
+msgstr ""
+
+msgid "Can manage widgets"
+msgstr ""
+
+msgid "Available functions"
+msgstr ""
+
+msgid "Available actions with folders"
+msgstr ""
+
+msgid "Can create root folders"
+msgstr ""
+
+msgid "Can use reports"
+msgstr ""
+
+msgid "Available albums"
+msgstr ""
+
+msgid "Available actions with albums"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "invited user, login not created yet"
+msgstr ""
+
+msgid "login disabled"
+msgstr ""
+
+msgid "Personal settings"
+msgstr ""
+
+msgid "Has private folder"
+msgstr ""
+
+#Folders
+msgid "All contacts"
+msgstr ""
+
+msgid "Private"
+msgstr ""
+
+msgid "Public"
+msgstr ""
+
+#Methods
+msgid "Added by user"
+msgstr ""
+
+msgid "Subscription via Sign-up form"
+msgstr ""
+
+msgid "Added by administrator"
+msgstr ""
+
+msgid "Subscription via invitation"
+msgstr ""
+
+# Forms
+msgid "Signup"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Thank you!"
+msgstr ""
+
+msgid "Please confirm your subscription"
+msgstr ""
+
+msgid "<p>{COMPANY_NAME} has just received a sign-up request from your address: {EMAILADDRESS}</p><p>Please click this link to confirm your subscription:<br />{CONFIRM_SUBSCRIPTION_URL}</p><p>Thank you.</p>"
+msgstr ""
+
+msgid "Type these numbers"
+msgstr ""
+
+msgid "Your account has been expired.'"
+msgstr ""
+
+msgid "Your account will expire in %s day(s)."
+msgstr ""
+
+msgid "Full name"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Text (single line)"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Numeric"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Text (multiple lines)"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Store customers"
+msgstr ""
+
+msgid "ACCOUNT LIMIT"
+msgstr ""
+
+msgid "Upgrade account"
+msgstr ""
+
+msgid "Please refer to your account administrator."
+msgstr ""
+
+msgid "Insert variable"
+msgstr ""
+
+msgid "Recipient's parameters"
+msgstr ""
+
+msgid "My personal parameters"
+msgstr ""
+
+msgid "Company parameters"
+msgstr ""
+
+msgid "Contact name"
+msgstr ""
+
+msgid "Сompany name"
+msgstr ""
+
+msgid "Contact email"
+msgstr ""
+
+msgid "Contact phone"
+msgstr ""
+
+msgid "Contact fax"
+msgstr ""
+
+msgid "Subscription management"
+msgstr ""
+
+msgid "Subscriber's personal page"
+msgstr ""
+
+msgid "Instant unsubscribing"
+msgstr ""
+

@@ -1,0 +1,89 @@
+app_name_long	Common	Application full name	Виджеты
+app_name_short	Common	Application short name	Виджеты
+
+wg_page_title	Widgets	Page title	Хранилище виджетов
+wg_add_label	Widgets	Add label	Создать виджет
+
+wg_createdby_label	Widgets	Created datetime label	by
+wg_addwidget_menu	Widgets	menu	Создать 
+wg_repository_menu	Widgets	menu	Назад
+wg_deleteconfirm_message	Widgets	Message	Вы действительно хотите удалить этот виджет?
+
+wg_id_title	Widgets	Table title	Код
+wg_created_title	Widgets	Table title	Создан
+wg_type_title	Widgets	Table title	Тип
+wg_desc_title	Widgets	Table title	Описание
+wg_author_title	Widgets	Table title	Автор
+wg_delete_label	Widgets	Label	Удалить
+wg_preview_label	Widgets	Label	просмотр
+wg_wgtype_title	Widgets	Table title	Тип виджета
+wg_sendbyemail_label	Widgets	Send by email Label	Отправить
+wg_changeaddress_label	Widgets	Send change address Label	Изменить адрес ссылки
+wg_customize_label	Widgets	Customize Label	Настроить
+wg_embed_label	Widgets	Embed Label	Встроить
+wg_delete_message	Widgets	Delete message	Вы действительно хотите удалить этот виджет?
+wg_deletelink_message	Widgets	Delete message	Вы действительно хотите удалить эту ссылку?
+
+ty_page_title	Types	Page title	Хранилище виджетов
+ty_page_caption	Types	Page title	Типы виджетов
+
+
+amwg_addpage_title	Add/mod widget	Page title	Создать
+amwg_modpage_title	Add/mod widget	Page title	Изменить
+amwg_wghtml_label	Add/mod widget	Widget insert HTML	Скопируйте и вставьте этот HTML код  в свой блог или веб-страницу
+amwg_wgpermalink_label	Add/mod widget	Widget insert permalink	Постоянная ссылка на виджет
+amwg_wglink_label	Add/mod widget	Widget insert Link	Используйте этот код чтобы открыть виджет в новом окне
+amwg_wglinkopen_label	Add/mod widget	Widget open Link label	открыть в новом окне
+amwg_showproperties_label	Add/mod widget	Show properties label	Показать настройки
+amwg_hideproperties_label	Add/mod widget	Show properties label	Скрыть настройки
+amwg_oruseb_label	Add/mod widget	Widget show more embed or label	или рассмотрите другие
+amwg_moreemb_label	Add/mod widget	Widget show more embed	варианты использования
+amwg_addemb_label	Add/mod widget	Widget show more embed	Дополнительные варианты использования
+amwg_hideaddemb_label	Add/mod widget	Widget show more embed	Скрыть
+amwg_wglinksample_label	Add/mod widget	Widget insert Link	открыть
+amwg_permalink_label	Add/mod widget	Widget premalink 	Постоянный адрес для этого виджета
+amwg_wgdesc_label	Add/mod widget	Widget Desc	Описание
+amwg_wglang_label	Add/mod widget	Widget Language	Язык виджета
+amwg_typepadinstall_label	Add/mod widget	Type pad install	Установить виджет на TypePad
+amwg_preview_label	Add/mod widget	Preview label	Просмотр
+
+amwg_save_menu	Widget	menu	Сохранить
+amwg_saveclose_menu	Widget	menu	Сохранить и закрыть
+amwg_cancel_menu	Widget	menu	Отмена
+amwg_delete_menu	Widget	menu	Удалить
+
+amwg_created_label	Add/mod widget	Created label	Создан
+amwg_modified_label	Add/mod widget	Modified label	Изменен
+amwg_preview_btn	Add/mod widget	Preview button	Предпросмотр
+
+
+amwg_colorpick_label	Add/mod widget	Color pick button	выбрать
+
+widgets_noright_error	Widgets	No right	Вы не имеете прав для создания/изменения виджетов этого типа
+widgets_noapp_error	Widgets	No right	Требуемые для создания виджета приложения не установлены
+
+message_title	Widget	Message Title	Сообщение
+
+vwwg_address_label	Widgets	Address	Адрес
+vwwg_delete_label	Widgets	Delete	Удалить
+vwwg_emaillink_label	Widgets	Email this link	Отправить Email
+vwwg_changeurllink_label	Widgets	Email this link	Изменить адрес ссылки
+vwwg_preview_label	Widgets	Preview label	Вид
+
+vwwg_embeddialog_title	Widgets	Embed dialog title	Настройка виджета
+
+
+createwg_captcha_label	Create widget	Captcha label	Введите цифры показанные ниже
+createwg_captchaerror_message	Create widget	Captcha error message	Введите символы, которые изображены на картинке
+createwg_submit_label	Create widget	Submit label	Создать
+
+wgedit_subtitle_note	Edit widget	Subtitle note	Используйте этот адрес для управления виджетом
+wgedit_customize_button	Edit widget	Customize Button	Настроить
+
+wg_page_header	Widgets	Page header	Виджеты
+wg_what_is_page_header	Widgets	Page header	Что такое "Виджеты"?
+wg_page_text	Widgets	Widgets page text	<b>Виджет</b> - это фрагмент HTML-кода, который можно встроить на страницу вашего сайт или в блог для того, чтобы реализовать какую-либо функцию.
+wg_types_text	Widgets	Types text	Вы можете создать виджеты следующего типа
+wg_types_text_dd	Widgets	Available Widgets	В WebAsyst Файлах вы можете создать виджеты следующего типа
+wg_create_text	Widgets	Create text	Чтобы создать новый виджет, перейдите в любую доступную папку и воспользуйтесь командой создания виджета в меню действий.
+wg_availablewidgets_label	Widgets	Available Widgets	Доступные виджеты

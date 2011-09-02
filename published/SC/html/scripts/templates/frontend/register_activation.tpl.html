@@ -1,0 +1,37 @@
+{if !$smarty.get.order2}
+
+<div style="text-align:center;">
+
+{if $ActOk}
+	{assign var=_account_url value="?ukey=office"|set_query}
+	{"usrreg_confirm_success"|translate|replace:'%ACCOUNT_URL%':$_account_url}
+{else}
+{if $ActErr}<div class="error_msg_f">{"usrreg_confirm_err_wrong_actcode"|translate}</div>{/if}
+{if $NoAct}<div class="error_msg_f">{"usrreg_confirm_notactivated"|translate}</div>{/if}
+<form method="get">
+	<input type="hidden" name="ukey" value="act_customer" >
+	{"usrreg_confirm_type_code"|translate}  <input type="text" name="act_code" value="{$ActCode}" >
+	<br />
+	<br />
+	<input type="submit" value="{"btn_activate"|translate}" >
+</form>
+{/if}
+</div>
+
+{else}{* !$smarty.get.order2 *}
+<center>
+	{if $smarty.const.CONF_ENABLE_REGCONFIRMATION}
+		<form method="get" action="" style="text-align:center;">
+			<input type="hidden" name="order2" value="{$smarty.get.order2}" >
+			<input type="hidden" name="ukey" value="act_customer" >
+			{"usrreg_confirm_type_code"|translate}
+			{if $ActErr}<div class="error_msg_f">{"usrreg_confirm_err_wrong_actcode"|translate}</div>{/if}
+			{if $NoAct}<div class="error_msg_f">{"usrreg_confirm_notactivated"|translate}</div>{/if}
+			<br />  <input type="text" name="act_code" value="{$ActCode}" >
+			<br />
+			<br />
+			<input type="submit" value="{"btn_activate"|translate}" >
+		</form>
+	{/if}
+</center>
+{/if}{* !$smarty.get.order2 *}

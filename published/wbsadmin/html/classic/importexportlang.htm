@@ -1,0 +1,156 @@
+<!-- importexportlang.html -->
+<script language="JavaScript" type="text/javascript">
+<!--
+function setCreateOpt( opt )
+{
+	thisForm = document.forms[0];
+
+	for ( i = 0; i < thisForm.elements.length; i++ )
+		if (thisForm.elements[i].type == 'radio')
+			if ( thisForm.elements[i].name == "createopt" && thisForm.elements[i].value == opt ) {
+				thisForm.elements[i].checked = true;
+				break;
+			}
+}
+
+//-->
+</script>
+<!-- here -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<h2 class="page-title"><a href="<?$smarty.const.PAGE_DB_LANGUAGES?>"><? $waStrings.lll_page_title ?></a> &raquo; <? $waStrings.51 ?></h2>
+<br>
+	<? assign var="invalidFieldMarkup" value=' style="color: #FF0000" ' ?>
+	<? if $errorStr ?>
+
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width=30>&nbsp;</td>
+				<td<? $invalidFieldMarkup ?>><? $errorStr ?></td>
+			</tr>
+			<tr><td colspan=2>&nbsp;</td></tr>
+		</table>
+	<? /if ?>
+	<? if !$fatalError ?>
+	<table width="100%" border="0" cellpadding="1" cellspacing="0">
+		<tr>
+			<td bgcolor="#FFFFFF">
+			<? if !$showMessages ?>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td colspan=2>
+								<b><? $waStrings.llli_lang ?>: </b><? $langData.NAME|htmlsafe:true:true ?>&nbsp;(&nbsp;<? $langData.ID|htmlsafe:true:true ?>&nbsp;)
+								&nbsp; &nbsp; <b><? $waStrings.llli_encoding ?>: </b> <? $langData.ENCODING|htmlsafe:true:true ?>
+
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><input name="langData[NAME]" type="hidden" class="readonlyControl" value="<? $langData.NAME|htmlsafe:true:true ?>" style="width: 200" readonly>
+										<input name="langData[ID]" type="hidden" class="readonlyControl" value="<? $langData.ID|htmlsafe:true:true ?>" style="width: 100" readonly></td>
+								<td><input name="langData[ENCODING]" type="hidden" class="readonlyControl" value="<? $langData.ENCODING|htmlsafe:true:true ?>" style="width: 200" readonly></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<input name="edited" type="hidden" value="1">
+									<input name="action" type="hidden" value="<? $action ?>">
+									<input name="lang" type="hidden" value="<? $lang ?>">
+									&nbsp;&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan=2><p><? $waStrings.llli_desc4 ?><p>&nbsp;
+								</td>
+							</tr>
+								<tr>
+									<td align=right><input type=radio name="createopt" value=0 <? switchedOutput str1="checked" str2="" val=$createopt true_val=0 ?>></td>
+									<td>
+											<table border=0 cellpadding=0 cellspacing=0>
+												<tr>
+													<td><? $waStrings.llli_from_exist ?>: &nbsp;</td>
+													<td>
+														<select name="copy_lang_id" class="control" onChange="setCreateOpt(0)">
+															<? html_options values=$lang_ids selected=$copy_lang_id output=$lang_names ?>
+														</select>
+													</td>
+												</tr>
+											</table>
+									</td>
+								</tr>
+								<tr>
+									<td colspan=2>&nbsp;</td>
+								</tr>
+								<tr>
+									<td align=right valign=top><input type=radio name="createopt" value=1 <? switchedOutput str1="checked" str2="" val=$createopt true_val=1 ?>></td>
+									<td>
+
+											<table border=0 cellpadding=2 cellspacing=0 width=500>
+												<tr>
+													<td<? conditionalOutput invalidField=$invalidField field=FILE text=$invalidFieldMarkup ?>>
+													<? $waStrings.llli_from_file ?>:&nbsp;<input type=file name="importfile" style="width: 200px"  onChange="setCreateOpt(1)">
+												</td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td class=smallFont>
+														 <b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.llli_note ?>
+														 <blockquote>
+																 <? $waStrings.llli_app_id ?><br>
+																 <? $waStrings.llli_string_id ?><br>
+																 <? $waStrings.llli_group ?><br>
+																 <? $waStrings.llli_str_desc ?><br>
+																 <? $waStrings.llli_str_value ?>
+														 </blockquote>
+													</td>
+												</tr>
+											</table>
+									</td>
+								</tr>
+								<tr><td colspan=2>&nbsp;</td></tr>
+								<tr>
+									<td align=right><input type="checkbox" name="replacelocfiles" value=1 <? switchedOutput str1="checked" str2="" val=$replacelocfiles true_val=1 ?>></td>
+									<td><? $waStrings.llli_str_replace ?></td>
+								</tr>
+								<tr>
+									<td colspan=2><br><br><br></td>
+								</tr>
+							<tr>
+								<td colspan="2">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tr>
+											<td>
+														<input type="submit" name="savebtn" value="<? $waStrings.llli_btn_import ?>"> &nbsp; <input name="cancelbtn" type="submit" value="<? $waStrings.btn_cancel ?>">
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					<? else ?>
+						<table cellpadding=2 cellspacing=0 border=0>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><? $messageStack ?>
+										<br><br>
+								</td>
+							</tr>
+							<tr>
+								<td><input name="cancelbtn" type="submit" value="OK"></td>
+							</tr>
+						</table>
+					<? /if ?>
+			</td>
+		</tr>
+	</table>
+	<? else ?>
+		<input name="cancelbtn" type="submit" value="<? $waStrings.btn_cancel ?>">
+	<? /if ?>
+	<input type=hidden name=lang_id value="<? $lang_id ?>">
+	<input type=hidden name=app_id value="<? $app_id ?>">
+	<input type=hidden name=type_id value="<? $type_id ?>">
+	</form>
+<? /strip ?>
+<!-- /importexportlang.html -->

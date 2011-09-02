@@ -1,0 +1,80 @@
+<script type="text/javascript">
+var contact_new = {user_id: "{{$user_id}}", user_status: "{{$user_status}}", status: "{{$status}}", contact_id: '{{$contact_id}}', last_time: "{{$last_time}}"};
+if (contact_new.user_id != contact.user_id) {
+	location.href = location.href;
+}
+$("#last_time").html(contact_new.last_time);
+
+var UserControl;
+$(document).ready(function () {	
+	UserControl = new WbsEditUser({compose_mail: 1, editable: {{if $right.contact>=3 || $right.admin}}1{{else}}0{{/if}}, type: {{$type}}, super_main_fields: {{$super_main_fields}}, main_fields: {{$main_fields}}, groups: {{$js}}, contact: "{{$contact_id}}", saveUrl: "?mod=users&act=edit&ajax=1", photoField: "{{$photo_field}}"});
+	$(".DateField").datepicker({
+		yearRange: '1900:2050', 
+		closeAtTop: false, 
+		buttonImage: "{{$url.common}}img/calendar.gif", 
+		buttonImageOnly: true, 
+		showOn: "button", 
+		showOtherMonths: true, 
+		firstDay: 1, 
+		dateFormat: '{{$dateFormat}}'
+	});
+}); 
+
+WbsData.set({countries:{{$countries}}});
+</script>
+
+<div class="usertop">
+   <table class="contact" cellspacing="0" cellpadding="0" border="0">
+     <tr>
+     {{if $photo_field}}
+     <td class="photo">
+	  	<div id="CURRENT_PHOTO">
+		<div id="{{$photo_field}}" class="field" >
+			<div class="edit"></div>
+		</div>
+		</div>
+	  </td>	
+	  {{/if}}
+      <td class="{{if $photo_field}}contacts {{/if}}group{{if 3>$right.contact}} not-editable{{/if}}" id="CONTACT">
+	   <div class="large inline l" id="display_name"><div class="edit" title="Click to edit">{{$name}}</div></div>
+	   <div id="editMain" style="padding-top:40px"></div>
+	   <div style="clear:both; height:10px">&nbsp;</div>
+	  </td>
+	 
+	</tr>
+   </table>
+</div>
+
+{{if $right.contact}}
+{{foreach name=groups from=$fields item = g}}
+{{if $smarty.foreach.groups.index}}
+<div id="group{{$smarty.foreach.groups.index}}" class="group{{if 3>$right.contact}} not-editable{{/if}}"><div class="title"><a class="title click" title="Click to edit">{{$g.name}}</a></div></div>
+{{/if}}
+{{/foreach}}
+{{if !$is_mw}}<div id="FOLDER" class="group"><div class="title" ></div></div>{{/if}}
+<div class="group" id="bottom_save" style="display:none; padding-bottom:10px"></div>
+{{if !$is_mw}}
+<div class="group" id="META">
+	<div class="title">
+		<a href="javascript:void(0)" onclick="$(this).next().toggle()" class="title click" >[`Additional information`]</a>
+		<div class="create-info" style="display:none">
+[`Contact ID`]: {{$contact_info.C_ID}}<br />
+[`Adding date`]: {{if $contact_info.C_CREATEDATETIME}}{{$contact_info.C_CREATEDATETIME}}{{else}}&lt;[`unknown`]&gt;{{/if}}<br />
+[`Added by`]: {{if $contact_info.C_CREATENAME}}{{$contact_info.C_CREATENAME}}{{else}}&lt;[`unknown`]&gt;{{/if}}<br />
+[`Adding application`]: {{$contact_info.C_CREATEAPP_ID}}<br />
+[`Adding method`]: {{$contact_info.C_CREATEMETHOD}}<br />
+		{{if $contact_info.C_MODIFYDATETIME}}
+			<div class="modify-info">
+				[`Last changes made by`] {{if $contact_info.C_MODIFYNAME}}{{$contact_info.C_MODIFYNAME}}{{else}}&lt;[`unknown`]&gt;{{/if}}  {{$contact_info.C_MODIFYDATETIME}} <br />
+			</div>
+		{{/if}}
+		{{if $right.admin}}
+		<div class="modify-info">
+		[`Personal page`]: <a target="_blank" href="{{$link}}">{{$link}}</a>
+		</div>
+		{{/if}}
+		</div> 
+	</div>	
+</div>
+{{/if}}
+{{/if}}

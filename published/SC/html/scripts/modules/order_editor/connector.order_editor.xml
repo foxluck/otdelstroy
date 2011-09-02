@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>order_editor</Name>
+		<File>class.order_editor.php</File>
+		<Title>Редактор заказов</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

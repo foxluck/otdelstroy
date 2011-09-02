@@ -1,0 +1,77 @@
+<style>
+	.FilesTable tr td {padding: 3px}
+	.FilesTable tr td a {font-weight: bold}
+	.FilesTable tr.Title td {border-bottom: 1px solid #BBB; font-weight: bold}
+	.FilesTable .SubFile {font-size: 0.8em; padding: 0px; padding-bottom: 4px}
+	.FilesTable td.Icon {padding: 0px; padding-top: 0px; border: 1px solid red;}
+	.FilesTable tr td.Filename {padding-right: 20px}
+	.FilesTable div.FileDesc {border-bottom: 1px solid #BBB}
+</style>
+
+
+<h2 style='margin-top: 0px; margin-bottom: 0px'><? $widgetData.WG_DESC ?></h2>
+<font style='font-size: 10pt; color: #999'><? $widgetData.WG_CREATED_BY ?> <? $widgetData.WG_CREATED_DATETIME ?></font>
+<BR><BR>
+
+<? assign var=view value=$widgetData.params.VIEW_MODE ?>
+
+<table class='FilesTable' cellspacing=0 cellpadding=0 style='text-align: left'>
+	<? if $view == 0 ?>
+		<tr	class='Title'>
+			<td>&nbsp;</td>
+			<td width="300"><? $ddStrings.ca_filename_label ?></td>
+			<td align='center'><? $ddStrings.app_type_field ?></td>
+			<td align='center'><? $ddStrings.app_size_field ?></td>
+		</tr>
+		<? foreach item=file from=$filesList ?>
+			<tr>
+				<td align='center' width="40">
+				<img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=16 os=win ?>"  border="0" align=center></td>
+				<td class='Filename' nowrap><a target='_blank' href='<? $file.ROW_URL ?>'><? $file.DL_FILENAME ?></a></td>
+				<td><? $file.DL_FILETYPE ?></td>
+				<td nowrap style='padding-left: 20px'><? $file.DL_FILESIZE ?></td>
+			</tr>
+		<? /foreach ?>
+	<? elseif $view == 1 || $view==2 ?>
+		<? foreach item=file from=$filesList ?>
+			<tr height="15" >
+				<td valign='top' align='center' <? if view==1 ?>class='Icon'<? /if ?> width="40" style='padding-top: 0px;'>
+					<? if $view == "2" ?>
+						<? wbs_thumbnail src=$file.THUMB_URL URL=$file.ROW_URL target='_blank' ?>						
+					<? else ?>
+						<a target='_blank' href='<? $file.ROW_URL ?>'><img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=32 os=win ?>"  border="0" align=center></a>
+					<? /if ?>
+				</td>
+				<td valign='top'>
+					<a class='Filename' target='_blank' href='<? $file.ROW_URL ?>'><? $file.DL_FILENAME ?></a>
+					<div class='SubFile'>
+						<? if $file.DL_DESC ?><div class='FileDesc'><? $file.DL_DESC|htmlsafe:true:true ?></div><? /if ?>
+						<span style='padding-right: 10px'><? $ddStrings.app_type_field ?>: <? $file.DL_FILETYPE ?></span>
+						<? $ddStrings.app_size_field ?>: <? $file.DL_FILESIZE ?>
+					</div>				
+				</td>
+			</tr>
+		<? /foreach ?>
+	<? elseif $view == 3 ?>
+		<tr><td>
+		<? foreach item=file from=$filesList ?>
+			<div style="float: left; width: 110px; height: 160px; padding: 0 0 0 5px; text-align: center">
+				<? assign var=truncDesc value=$file.DL_DESC|htmlsafe:true:true|trunc_str:"10" ?>
+					
+					<? assign var=thumbTitle value=$file.DL_FILENAME|cat:". "|cat:$file.DL_FILESIZE|htmlsafe:true:true?>
+					<? if $truncDesc != "" ?>
+						<? assign var=thumbTitle value=$thumbTitle|cat:". "|cat:$truncDesc ?>
+					<? /if ?>
+
+					<? wbs_thumbnail src=$file.THUMB_URL URL=$file.ROW_URL target='_blank' ?>
+					<small><a target="_blank" href="<?$file.ROW_URL?>" class=activelink><? $file.DL_FILENAME|truncate:10:"..."|htmlsafe:true:true ?></a> 
+					<BR>
+					<? $file.DL_FILESIZE ?>  (<? $file.DL_FILETYPE ?>)</small>
+					
+
+			</div>
+		<? /foreach ?>
+		</td></tr>
+	
+	<? /if ?>
+</table>

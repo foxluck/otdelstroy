@@ -1,0 +1,39 @@
+<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><? $kernelStrings.cv_entriesnum_label ?>&nbsp;</td>
+		<td>
+			<select name="recordsPerPage" class="control">
+				<? html_options values=$recordsPerPageIDs selected=$recordsPerPage output=$recordsPerPageIDs ?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+</table>
+
+<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td colspan=2><? $kernelStrings.cv_screen_viewopt_label ?></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<table cellpadding=2 cellspacing=0 border=0 style='margin-left: 20px'>
+				<tr>
+					<td><input type=radio name="folderViewMode" value=local <? switchedOutput val=$folderViewMode true_val=local str1="checked" ?>></td>
+					<td><? $kernelStrings.cv_screen_applutocurrent_label ?></td>
+				</tr>
+				<tr>
+					<td><input type=radio name="folderViewMode" value=global <? switchedOutput val=$folderViewMode true_val=global str1="checked" ?>></td>
+					<td><? $kernelStrings.cv_screen_applutoall_label ?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+</table>

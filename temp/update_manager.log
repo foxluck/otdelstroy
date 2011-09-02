@@ -1,0 +1,785 @@
+11.08.31 07:11:05  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 07:11:05 *** close log
+11.08.31 07:13:46  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 07:13:46 *** close log
+11.08.31 07:22:53  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 07:22:53 *** close log
+11.08.31 07:43:07  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 07:43:07 *** close log
+11.08.31 08:04:07  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 08:04:07 *** close log
+11.08.31 08:24:21  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 08:24:21 *** close log
+11.08.31 08:44:36  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 08:44:36 *** close log
+11.08.31 09:04:50  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 09:04:51 *** close log
+11.08.31 09:25:04  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 09:25:04 *** close log
+11.08.31 09:45:16  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 09:45:16 *** close log
+11.08.31 10:06:12  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 10:06:12 *** close log
+11.08.31 10:26:23  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 10:26:23 *** close log
+11.08.31 10:46:36  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 10:46:36 *** close log
+11.08.31 11:06:54  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 11:06:54 *** close log
+11.08.31 11:27:10  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 11:27:10 *** close log
+11.08.31 11:47:22  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 11:47:22 *** close log
+11.08.31 12:07:35  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 12:07:35 *** close log
+11.08.31 12:27:46  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 12:27:46 *** close log
+11.08.31 12:47:57  [update_available] a:4:{i:0;i:305;i:1;s:10:"2011-08-10";i:2;i:10;i:3;a:2:{s:2:"SC";b:1;s:6:"KERNEL";b:1;}}
+11.08.31 12:47:57 *** close log
+11.08.31 12:57:56  [download] a:2:{s:6:"source";s:15:"my.webasyst.net";s:7:"prepare";b:1;}
+11.08.31 12:57:58  [download] a:4:{s:6:"source";N;s:4:"size";i:17218138;s:12:"downloadSize";N;s:8:"progress";d:0;}
+11.08.31 12:57:59  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:208896;s:8:"progress";d:1;}
+11.08.31 12:57:59  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:413696;s:8:"progress";d:2;}
+11.08.31 12:57:59  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:618496;s:8:"progress";d:4;}
+11.08.31 12:58:00  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:823296;s:8:"progress";d:5;}
+11.08.31 12:58:00  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1028096;s:8:"progress";d:6;}
+11.08.31 12:58:00  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1232896;s:8:"progress";d:7;}
+11.08.31 12:58:00  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1437696;s:8:"progress";d:8;}
+11.08.31 12:58:00  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1642496;s:8:"progress";d:10;}
+11.08.31 12:58:01  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1847296;s:8:"progress";d:11;}
+11.08.31 12:58:01  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2052096;s:8:"progress";d:12;}
+11.08.31 12:58:01  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2256896;s:8:"progress";d:13;}
+11.08.31 12:58:02  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2461696;s:8:"progress";d:14;}
+11.08.31 12:58:02  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2666496;s:8:"progress";d:15;}
+11.08.31 12:58:02  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2871296;s:8:"progress";d:17;}
+11.08.31 12:58:02  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3076096;s:8:"progress";d:18;}
+11.08.31 12:58:02  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3280896;s:8:"progress";d:19;}
+11.08.31 12:58:03  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3485696;s:8:"progress";d:20;}
+11.08.31 12:58:03  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3690496;s:8:"progress";d:21;}
+11.08.31 12:58:04  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3895296;s:8:"progress";d:23;}
+11.08.31 12:58:04  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4100096;s:8:"progress";d:24;}
+11.08.31 12:58:04  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4304896;s:8:"progress";d:25;}
+11.08.31 12:58:05  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4509696;s:8:"progress";d:26;}
+11.08.31 12:58:05  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4714496;s:8:"progress";d:27;}
+11.08.31 12:58:05  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4919296;s:8:"progress";d:29;}
+11.08.31 12:58:05  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5124096;s:8:"progress";d:30;}
+11.08.31 12:58:06  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5328896;s:8:"progress";d:31;}
+11.08.31 12:58:06  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5533696;s:8:"progress";d:32;}
+11.08.31 12:58:06  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5738496;s:8:"progress";d:33;}
+11.08.31 12:58:07  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5943296;s:8:"progress";d:35;}
+11.08.31 12:58:07  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6148096;s:8:"progress";d:36;}
+11.08.31 12:58:07  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6352896;s:8:"progress";d:37;}
+11.08.31 12:58:08  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6557696;s:8:"progress";d:38;}
+11.08.31 12:58:08  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6762496;s:8:"progress";d:39;}
+11.08.31 12:58:08  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6967296;s:8:"progress";d:40;}
+11.08.31 12:58:08  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7172096;s:8:"progress";d:42;}
+11.08.31 12:58:09  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7376896;s:8:"progress";d:43;}
+11.08.31 12:58:09  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7581696;s:8:"progress";d:44;}
+11.08.31 12:58:09  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7786496;s:8:"progress";d:45;}
+11.08.31 12:58:10  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7991296;s:8:"progress";d:46;}
+11.08.31 12:58:10  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8196096;s:8:"progress";d:48;}
+11.08.31 12:58:10  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8400896;s:8:"progress";d:49;}
+11.08.31 12:58:11  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8605696;s:8:"progress";d:50;}
+11.08.31 12:58:11  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8810496;s:8:"progress";d:51;}
+11.08.31 12:58:11  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9015296;s:8:"progress";d:52;}
+11.08.31 12:58:11  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9220096;s:8:"progress";d:54;}
+11.08.31 12:58:12  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9424896;s:8:"progress";d:55;}
+11.08.31 12:58:12  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9629696;s:8:"progress";d:56;}
+11.08.31 12:58:12  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9834496;s:8:"progress";d:57;}
+11.08.31 12:58:13  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10039296;s:8:"progress";d:58;}
+11.08.31 12:58:13  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10244096;s:8:"progress";d:59;}
+11.08.31 12:58:13  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10448896;s:8:"progress";d:61;}
+11.08.31 12:58:14  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10653696;s:8:"progress";d:62;}
+11.08.31 12:58:14  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10858496;s:8:"progress";d:63;}
+11.08.31 12:58:14  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11063296;s:8:"progress";d:64;}
+11.08.31 12:58:14  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11268096;s:8:"progress";d:65;}
+11.08.31 12:58:15  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11472896;s:8:"progress";d:67;}
+11.08.31 12:58:15  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11677696;s:8:"progress";d:68;}
+11.08.31 12:58:15  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11882496;s:8:"progress";d:69;}
+11.08.31 12:58:16  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12087296;s:8:"progress";d:70;}
+11.08.31 12:58:16  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12292096;s:8:"progress";d:71;}
+11.08.31 12:58:16  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12496896;s:8:"progress";d:73;}
+11.08.31 12:58:17  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12701696;s:8:"progress";d:74;}
+11.08.31 12:58:17  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12906496;s:8:"progress";d:75;}
+11.08.31 12:58:17  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13111296;s:8:"progress";d:76;}
+11.08.31 12:58:18  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13316096;s:8:"progress";d:77;}
+11.08.31 12:58:18  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13520896;s:8:"progress";d:79;}
+11.08.31 12:58:18  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13725696;s:8:"progress";d:80;}
+11.08.31 12:58:19  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13930496;s:8:"progress";d:81;}
+11.08.31 12:58:19  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14135296;s:8:"progress";d:82;}
+11.08.31 12:58:19  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14340096;s:8:"progress";d:83;}
+11.08.31 12:58:19  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14544896;s:8:"progress";d:84;}
+11.08.31 12:58:20  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14749696;s:8:"progress";d:86;}
+11.08.31 12:58:20  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14954496;s:8:"progress";d:87;}
+11.08.31 12:58:20  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15159296;s:8:"progress";d:88;}
+11.08.31 12:58:21  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15364096;s:8:"progress";d:89;}
+11.08.31 12:58:21  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15568896;s:8:"progress";d:90;}
+11.08.31 12:58:21  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15773696;s:8:"progress";d:92;}
+11.08.31 12:58:22  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15978496;s:8:"progress";d:93;}
+11.08.31 12:58:22  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16183296;s:8:"progress";d:94;}
+11.08.31 12:58:22  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16388096;s:8:"progress";d:95;}
+11.08.31 12:58:22  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16592896;s:8:"progress";d:96;}
+11.08.31 12:58:23  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16797696;s:8:"progress";d:98;}
+11.08.31 12:58:23  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:17002496;s:8:"progress";d:99;}
+11.08.31 12:58:23  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:17207296;s:8:"progress";d:100;}
+11.08.31 12:58:23  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:38:"array (
+  0 => 10842,
+  1 => 204800,
+)";s:12:"downloadSize";i:17218138;s:8:"progress";d:100;}
+11.08.31 12:58:23  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:34:"array (
+  0 => 0,
+  1 => 204800,
+)";s:12:"downloadSize";i:17218138;s:8:"progress";d:100;}
+11.08.31 12:58:23  [download_complete] time required: 27.237s MD5:6b054d8e1dcd8ef5fb744f7cf55c44ff
+11.08.31 12:58:23  [unpack] 
+11.08.31 12:58:24  [unpack_complete] a:3:{s:4:"time";s:5:"0.807";s:14:"destiny folder";s:47:"/home/kedr/domains/otdelstroy31.ru/public_html/";s:7:"version";i:305;}
+11.08.31 12:58:24  [install_scripts] Updating scripts...
+11.08.31 12:58:24  [install_scripts] Update start: Aug'31 2011 12:58:24
+11.08.31 12:58:24  [install_scripts] Old version: 300
+11.08.31 12:58:24  [install_scripts] New version: 305
+11.08.31 12:58:24  [install_scripts] Updating scripts...
+11.08.31 12:58:24  [install_scripts] install in progress
+11.08.31 12:59:14  [install_restart] a:3:{i:0;i:-1;i:1;i:1314795554;i:2;i:-1;}
+11.08.31 12:59:14 exit to resume on clean update
+11.08.31 12:59:14 *** close log
+11.08.31 12:59:16  [install_scripts] resume install at -1 of 
+11.08.31 12:59:16 continue because process time is 0.019914150238
+11.08.31 12:59:16  [install_scripts] Complete
+11.08.31 12:59:16  [install_scripts] Upgrading scripts Successfully
+11.08.31 12:59:16  [update_metada] Updating database structure...
+11.08.31 12:59:16  [update_metada] Updating database structure...
+11.08.31 12:59:16  [install_scripts] Updating database KEDROTDELSTROY
+11.08.31 12:59:16 Updating application: Kernel
+11.08.31 12:59:16  [install_scripts] 
+11.08.31 12:59:16  [install_scripts] 
+11.08.31 12:59:16 Complete.
+
+11.08.31 12:59:16 Update complete: Aug'31 2011 12:59:16
+11.08.31 12:59:16  [install_complete] Update complete: Aug'31 2011 12:59:16
+11.08.31 12:59:17 *** close log
+11.08.31 12:59:17  [none] Update info showed
+11.08.31 12:59:18 *** close log
+11.08.31 14:42:23  [none] 
+11.08.31 14:42:23  [download] a:2:{s:6:"source";s:15:"my.webasyst.net";s:7:"prepare";b:1;}
+11.08.31 14:42:25  [download] a:4:{s:6:"source";N;s:4:"size";i:17218138;s:12:"downloadSize";N;s:8:"progress";d:0;}
+11.08.31 14:42:26  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:208896;s:8:"progress";d:1;}
+11.08.31 14:42:26  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:413696;s:8:"progress";d:2;}
+11.08.31 14:42:26  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:618496;s:8:"progress";d:4;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:823296;s:8:"progress";d:5;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1028096;s:8:"progress";d:6;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1232896;s:8:"progress";d:7;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1437696;s:8:"progress";d:8;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1642496;s:8:"progress";d:10;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:1847296;s:8:"progress";d:11;}
+11.08.31 14:42:27  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2052096;s:8:"progress";d:12;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2256896;s:8:"progress";d:13;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2461696;s:8:"progress";d:14;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2666496;s:8:"progress";d:15;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:2871296;s:8:"progress";d:17;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3076096;s:8:"progress";d:18;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3280896;s:8:"progress";d:19;}
+11.08.31 14:42:28  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3485696;s:8:"progress";d:20;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3690496;s:8:"progress";d:21;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:3895296;s:8:"progress";d:23;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4100096;s:8:"progress";d:24;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4304896;s:8:"progress";d:25;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4509696;s:8:"progress";d:26;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4714496;s:8:"progress";d:27;}
+11.08.31 14:42:29  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:4919296;s:8:"progress";d:29;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5124096;s:8:"progress";d:30;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5328896;s:8:"progress";d:31;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5533696;s:8:"progress";d:32;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5738496;s:8:"progress";d:33;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:5943296;s:8:"progress";d:35;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6148096;s:8:"progress";d:36;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6352896;s:8:"progress";d:37;}
+11.08.31 14:42:30  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6557696;s:8:"progress";d:38;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6762496;s:8:"progress";d:39;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:6967296;s:8:"progress";d:40;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7172096;s:8:"progress";d:42;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7376896;s:8:"progress";d:43;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7581696;s:8:"progress";d:44;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7786496;s:8:"progress";d:45;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:7991296;s:8:"progress";d:46;}
+11.08.31 14:42:31  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8196096;s:8:"progress";d:48;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8400896;s:8:"progress";d:49;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8605696;s:8:"progress";d:50;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:8810496;s:8:"progress";d:51;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9015296;s:8:"progress";d:52;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9220096;s:8:"progress";d:54;}
+11.08.31 14:42:32  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9424896;s:8:"progress";d:55;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9629696;s:8:"progress";d:56;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:9834496;s:8:"progress";d:57;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10039296;s:8:"progress";d:58;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10244096;s:8:"progress";d:59;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10448896;s:8:"progress";d:61;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10653696;s:8:"progress";d:62;}
+11.08.31 14:42:33  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:10858496;s:8:"progress";d:63;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11063296;s:8:"progress";d:64;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11268096;s:8:"progress";d:65;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11472896;s:8:"progress";d:67;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11677696;s:8:"progress";d:68;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:11882496;s:8:"progress";d:69;}
+11.08.31 14:42:34  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12087296;s:8:"progress";d:70;}
+11.08.31 14:42:35  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12292096;s:8:"progress";d:71;}
+11.08.31 14:42:35  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12496896;s:8:"progress";d:73;}
+11.08.31 14:42:35  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12701696;s:8:"progress";d:74;}
+11.08.31 14:42:35  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:12906496;s:8:"progress";d:75;}
+11.08.31 14:42:35  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13111296;s:8:"progress";d:76;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13316096;s:8:"progress";d:77;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13520896;s:8:"progress";d:79;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13725696;s:8:"progress";d:80;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:13930496;s:8:"progress";d:81;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14135296;s:8:"progress";d:82;}
+11.08.31 14:42:36  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14340096;s:8:"progress";d:83;}
+11.08.31 14:42:37  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14544896;s:8:"progress";d:84;}
+11.08.31 14:42:37  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14749696;s:8:"progress";d:86;}
+11.08.31 14:42:37  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:14954496;s:8:"progress";d:87;}
+11.08.31 14:42:37  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15159296;s:8:"progress";d:88;}
+11.08.31 14:42:37  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15364096;s:8:"progress";d:89;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15568896;s:8:"progress";d:90;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15773696;s:8:"progress";d:92;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:15978496;s:8:"progress";d:93;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16183296;s:8:"progress";d:94;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16388096;s:8:"progress";d:95;}
+11.08.31 14:42:38  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16592896;s:8:"progress";d:96;}
+11.08.31 14:42:39  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:16797696;s:8:"progress";d:98;}
+11.08.31 14:42:39  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:17002496;s:8:"progress";d:99;}
+11.08.31 14:42:39  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:39:"array (
+  0 => 204800,
+  1 => 204800,
+)";s:12:"downloadSize";i:17207296;s:8:"progress";d:100;}
+11.08.31 14:42:39  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:38:"array (
+  0 => 10842,
+  1 => 204800,
+)";s:12:"downloadSize";i:17218138;s:8:"progress";d:100;}
+11.08.31 14:42:39  [download] a:5:{s:6:"source";N;s:4:"size";i:17218138;s:5:"delta";s:34:"array (
+  0 => 0,
+  1 => 204800,
+)";s:12:"downloadSize";i:17218138;s:8:"progress";d:100;}
+11.08.31 14:42:39  [download_complete] time required: 15.898s MD5:6b054d8e1dcd8ef5fb744f7cf55c44ff
+11.08.31 14:42:39  [unpack] 
+11.08.31 14:42:40  [unpack_complete] a:3:{s:4:"time";s:5:"1.055";s:14:"destiny folder";s:47:"/home/kedr/domains/otdelstroy31.ru/public_html/";s:7:"version";i:305;}
+11.08.31 14:42:40  [install_scripts] Updating scripts...
+11.08.31 14:42:40  [install_scripts] Update start: Aug'31 2011 14:42:40
+11.08.31 14:42:40  [install_scripts] Old version: 305
+11.08.31 14:42:40  [install_scripts] New version: 305
+11.08.31 14:42:40  [install_scripts] Updating scripts...
+11.08.31 14:42:40  [install_scripts] install in progress
+11.08.31 14:43:35  [install_restart] a:3:{i:0;i:-1;i:1;i:1314801815;i:2;i:-1;}
+11.08.31 14:43:35 exit to resume on clean update
+11.08.31 14:43:35 *** close log
+11.08.31 14:43:36  [install_scripts] resume install at -1 of 
+11.08.31 14:43:36 continue because process time is 0.0206861495972
+11.08.31 14:43:36  [install_scripts] Complete
+11.08.31 14:43:36  [install_scripts] Upgrading scripts Successfully
+11.08.31 14:43:36  [update_metada] Updating database structure...
+11.08.31 14:43:36  [update_metada] Updating database structure...
+11.08.31 14:43:36 No metadata update required
+
+11.08.31 14:43:36 Update complete: Aug'31 2011 14:43:36
+11.08.31 14:43:36  [install_complete] Update complete: Aug'31 2011 14:43:36
+11.08.31 14:43:37 *** close log
+11.08.31 14:43:38  [none] Update info showed
+11.08.31 14:43:38 *** close log

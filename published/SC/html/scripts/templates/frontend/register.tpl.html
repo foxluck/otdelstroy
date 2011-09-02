@@ -1,0 +1,529 @@
+{* registration form *}
+
+{if $order ne NULL}
+	<p>{"checkout_continue_tip"|translate}</p>
+{/if}
+
+<form action="{if $order}{"order=yes"|set_query}{/if}" method="post"  name="RegisterForm">
+
+<table width="70%" align="center">
+	<tr>
+		<td colspan="2" align="center">
+			<b><u>{"usrreg_registration_form"|translate}</u></b><br /><br />
+{*
+@features "Trial product"
+@state begin
+*}
+				{if $overflowCustomers}
+				<div class="error_msg_f">{$smarty.const.TRIAL_STRING_CUSTOMERS_OVERFLOW|replace:'[NUM]':$smarty.const.TRIAL_MAX_CUSTOMERS_NUM}</div>
+				<p>{$smarty.const.TRIAL_STRING_LIMITATIONS}
+				{/if}
+{*
+@features "Trial product"
+@state end
+*}
+				{"usrreg_required_regform_fields_descr"|translate}<br /><br />
+			{if $reg_error ne NULL}
+				<font color="red"><b>{$reg_error}</b></font><br /><br />
+			{/if}
+		</td>
+	</tr>
+
+	<!-- STRING AUTHORIZATION FIELDS (LOGIN, PASSWORD) -->
+	<tr>
+		<td colspan="2" align="center" class="small">
+			<div style="background-color:#{$smarty.const.CONF_MIDDLE_COLOR};" class="regheader">
+				{"usrreg_authorization_fields"|translate}
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%" align="right">
+			<font color="red">*</font> {"usr_custinfo_login"|translate}
+		</td>
+		<td><input type="text" name="login" value="{$login|escape:'html'}" ></td>
+	</tr>
+	<tr>
+		<td align="right"><font color=red>*</font> {"usr_custinfo_password"|translate}</td>
+		<td><input type="password" name="cust_password1" value="{$cust_password1|escape:'html'}" ></td>
+	</tr>
+	<tr>
+		<td align="right"><font color=red>*</font> {"usrreg_customer_confirm_password"|translate}</td>
+		<td><input type="password" name="cust_password2" value="{$cust_password2|escape:'html'}" ></td>
+	</tr>
+
+	<!-- GENERAL INFORMATION (FIRST NAME, LAST NAME, EMAIL ) -->
+	<tr>
+		<td colspan="2" align="center" class="small">
+			<div style="background-color:#{$smarty.const.CONF_MIDDLE_COLOR};" class="regheader">
+				{"str_general_information"|translate}
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+{*
+@features "Affiliate program"
+@state begin
+*}
+		{if $SessionRefererLogin || $smarty.const.CONF_AFFILIATE_PROGRAM_ENABLED eq 0}
+			<input name="affiliationLogin" type="hidden" value="{$SessionRefererLogin|escape:'html'}" >
+		{/if}
+{*
+@features "Affiliate program"
+@state end
+*}
+			<font color=red>*</font> {"usr_custinfo_first_name"|translate}
+		</td>
+		<td>
+			<input type="text" name="first_name" value="{$first_name|escape:'html'}" >
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><font color=red>*</font> {"usr_custinfo_last_name"|translate}</td>
+		<td><input type="text" name="last_name" value="{$last_name|escape:'html'}" ></td>
+	</tr>
+	<tr>
+		<td align="right"><font color=red>*</font> {"usr_custinfo_email"|translate}</td>
+		<td><input type="text" name="email" value="{$email|escape:'html'}"></td>
+	</tr>
+	<tr>
+		<td align="right"><input type="checkbox" name="subscribed4news"{if $subscribed4news == 1} checked="checked"{/if} ></td>
+		<td>{"usrreg_subscribe_for_blognews"|translate}</td>
+	</tr> 
+
+	<!-- ADDITIONAL FIELDS (SEE  admin.php?dpt=custord&sub=reg_fields URL) -->
+	{section name=i loop=$additional_fields}
+	<tr>
+		<td align="right">
+			{if $additional_fields[i].reg_field_required}
+				<font color=red>*</font> 
+			{/if}
+			{$additional_fields[i].reg_field_name|escape:'html'}:
+		</td>
+		<td>
+			<input type='text' name='additional_field_{$additional_fields[i].reg_field_ID}' value='{$additional_field_values[i].reg_field_value|escape:'html'}' >
+		</td>
+	</tr>
+	{/section}
+
+{*
+@features "Affiliate program"
+@state begin
+*}
+{if !$SessionRefererLogin && $smarty.const.CONF_AFFILIATE_PROGRAM_ENABLED eq 1}
+	<tr>
+		<td align="right">{"usr_custinfo_referrer"|translate}</td>
+		<td><input type="text" name="affiliationLogin" value="{$affiliationLogin|escape:'html'}" ></td>
+	</tr>
+{/if}
+{*
+@features "Affiliate program"
+@state end
+*}
+	<tr>
+		<td colspan="2" align="center" class="small">
+			<div style="background-color:#{$smarty.const.CONF_MIDDLE_COLOR};" class="regheader">
+			{if $order ne NULL}
+				{"str_addresses"|translate}
+			{else}
+				{"str_address"|translate}
+			{/if}
+			</div>
+		</td>
+	</tr>
+
+	<!-- DELIVERY ADDRESS (COUNTRY, AREA(STATE), INDEX, CITY, ADDRESS) -->
+	<tr>
+		<td colspan="2" align="center">
+			{if $smarty.const.CONF_ADDRESSFORM_ADDRESS eq 2}
+				<input type="hidden" name="address" value="" >
+			{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_CITY eq 2}
+				<input type="hidden" name="city" value="" >
+			{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_STATE eq 2}
+				{if !$zones}
+					<input type="hidden" name='state' value='' >
+				{else}
+					<input type="hidden" name='zoneID' value='0' >
+				{/if}
+			{/if}			
+			{if $smarty.const.CONF_ADDRESSFORM_ZIP eq 2}
+				<input type='hidden' name='zip' value='' >
+			{/if}
+			
+			<table>
+			{if $order ne NULL}
+				<tr>
+					<td rowspan="7">
+						{if $order ne NULL}<b>{"ordr_shipping_address"|translate}</b>{/if}
+					</td>
+					<td colspan="2" align="right">
+						<font color=red>*</font> {"ordr_shipping_first_name"|translate}
+					</td>
+					<td>
+						<input type="text" name="receiver_first_name" value="{$receiver_first_name|escape:'html'}" 
+							onblur='billingAddressCheckHandler()' onchange='billingAddressCheckHandler()' >
+					</td>
+				</tr>
+	
+	
+				<tr>
+					<td colspan="2" align="right"><font color=red>*</font> {"ordr_shipping_last_name"|translate}</td>
+					<td>
+						<input type="text" name="receiver_last_name" value="{$receiver_last_name|escape:'html'}"
+								onblur='billingAddressCheckHandler()' onchange='billingAddressCheckHandler()' >
+					</td>
+				</tr>
+			{/if}{* $order ne NULL *}
+
+			{if $smarty.const.CONF_ADDRESSFORM_ADDRESS ne 2}
+				<tr>
+					<td colspan="2" align="right">
+						{if $smarty.const.CONF_ADDRESSFORM_ADDRESS eq 0}<font color=red>*</font>{/if} {"str_address"|translate}
+					</td>
+					<td>
+						<textarea name="address" rows="4" onchange='billingAddressCheckHandler()'>{$address|escape:'html'}</textarea>
+					</td>
+				</tr>
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_CITY ne 2}
+				<tr>
+					<td colspan="2" align="right">
+						{if $smarty.const.CONF_ADDRESSFORM_CITY eq 0}<font color=red>*</font>{/if} {"usr_custinfo_city"|translate}
+					</td>
+					<td>
+						<input type="text" name="city" value="{$city|escape:'html'}"
+							onblur='billingAddressCheckHandler()' onchange='billingAddressCheckHandler()' >
+					</td>
+				</tr>
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_STATE ne 2}
+				<tr>
+					<td colspan="2" align="right">
+						{if $smarty.const.CONF_ADDRESSFORM_STATE eq 0}<font color=red>*</font>{/if} {"usr_custinfo_state"|translate}
+					</td>
+					<td>
+						{if !$zones}
+							<input type="text" name="state" value="{$state|escape:'html'}" onchange='billingAddressCheckHandler()' >
+						{else}
+							<select name="zoneID" onchange='billingAddressCheckHandler()'>
+							{section name=i loop=$zones}
+								<option value="{$zones[i].zoneID}"{if $zones[i].zoneID == $zoneID} selected="selected"{/if}>
+									{$zones[i].zone_name|escape:'html'}
+								</option>
+							{/section}
+							</select>
+						{/if}
+					</td>
+				</tr>
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_ZIP ne 2}
+				<tr>
+					<td colspan="2" align="right">
+						{if $smarty.const.CONF_ADDRESSFORM_ZIP eq 0}<font color=red>*</font>{/if} {"usr_custinfo_zip"|translate}
+					</td>
+					<td>
+						<input type="text" name="zip" value="{$zip|escape:'html'}" onblur='billingAddressCheckHandler()' onchange='billingAddressCheckHandler()' >
+					</td>
+				</tr>
+			{/if}
+				<tr>
+					<td colspan="2" align="right">
+						{if $countries}<font color=red>*</font> {"usr_custinfo_country"|translate}{/if}
+					</td>
+					<td>
+						{if $countries}
+						<select name="countryID" onchange='billingAddressCheckHandler(); changeCountryHandler();'>
+						{foreach from=$countries item=country}
+							<option value="country.countryID}"
+								{if $countryID ne NULL}
+									{if $country.countryID == $countryID}selected="selected"{/if}
+								{else}
+									{if $country.countryID == $smarty.const.CONF_DEFAULT_COUNTRY}selected="selected"{/if}
+								{/if}
+								>
+								{$country.country_name|escape:'html'}
+							</option>
+						{/foreach}
+			 			</select>
+						{else}
+						<input type="hidden" name='countryID' value='NULL' >
+						{/if} 
+					</td>
+				</tr>
+			</table>
+
+			{literal}
+			<script language='JavaScript' type="text/javascript">
+			function billingAddressCheckHandler(){
+				return;
+			}
+			</script>
+			{/literal}
+		</td>
+	<tr>
+
+	{if $order ne NULL}
+	<tr>
+		<td colspan="2" align="center">
+			<table>
+				<tr>
+					<td rowspan="8"><b>{"ordr_billing_address"|translate}</b></td>
+					<td colspan="3">
+						<input type="checkbox" name='billing_address_check' value='1'
+							onclick='billingAddressCheckHandler()'{if $billing_address_check} checked="checked"{/if} >
+						{"str_same_as_shipping_address"|translate}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><font color=red>*</font> {"ordr_billing_first_name"|translate}</td>
+					<td><input type="text" name='payer_first_name' value="{$payer_first_name}|escape:'html'" ></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><font color=red>*</font> {"ordr_billing_last_name"|translate}</td>
+					<td><input type="text" name='payer_last_name' value="{$payer_last_name|escape:'html'}" ></td>
+				</tr>
+			{if $smarty.const.CONF_ADDRESSFORM_ADDRESS ne 2}
+				<tr>
+					<td colspan=2 align=right>
+						{if $smarty.const.CONF_ADDRESSFORM_ADDRESS eq 0}<font color=red>*</font>{/if}
+						{"str_address"|translate}
+					</td>
+					<td>
+						<textarea name="billingAddress" rows=4 
+								value='{$billingAddress|escape:"html"}'>{$billingAddress}</textarea>
+					</td>
+				</tr>
+			{else}
+			<input type=hidden name='billingAddress' value=''>
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_CITY ne 2}
+			<tr>
+				<td colspan=2 align=right>
+					{if $smarty.const.CONF_ADDRESSFORM_CITY eq 0}<font color=red>*</font>{/if}
+					{"usr_custinfo_city"|translate}
+				</td>
+				<td>
+					<input type="text" name="billingCity" 
+						value="{$billingCity|escape:'html'}">
+				</td>
+			</tr>
+			{else}
+			<input type=hidden name='billingCity' value=''>
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_STATE ne 2}
+			<tr>
+				<td colspan=2 align=right>
+					{if $smarty.const.CONF_ADDRESSFORM_STATE eq 0}<font color=red>*</font>{/if}
+					{"usr_custinfo_state"|translate}
+				</td>
+				<td>
+					{if !$billingZones}
+					<input type="text" name="billingState" 
+						value="{$billingState|escape:'html'}">
+					{else}
+						<select name=billingZoneID>
+							{section name=i loop=$billingZones}
+								<option value={$billingZones[i].zoneID}
+								{if $billingZones[i].zoneID == $billingZoneID}
+									selected
+								{/if}
+								>
+									{$billingZones[i].zone_name|escape:'html'}
+								</option>
+							{/section}
+						</select>
+					{/if}
+				</td>
+			</tr>
+			{else}
+				{if !$billingZones}
+					<input type="hidden" name="billingState" value="">
+				{else}
+					<input type="hidden" name="billingZoneID" value="">
+				{/if}
+			{/if}
+
+			{if $smarty.const.CONF_ADDRESSFORM_ZIP ne 2}
+			<tr>
+				<td colspan=2 align=right>
+					{if $smarty.const.CONF_ADDRESSFORM_ZIP eq 0}<font color=red>*</font>{/if}
+					{"usr_custinfo_zip"|translate}
+				</td>
+				<td>
+					<input type="text" name="billingZip" 
+						value="{$billingZip|escape:'html'}">
+				</td>
+			</tr>
+			{else}
+			<input type=hidden name='billingZip' value=''>
+			{/if}
+
+			<tr>
+				<td colspan=2 align=right>
+					{if $countries}
+						<font color=red>*</font> 
+							{"usr_custinfo_country"|translate}
+					{/if}
+				</td>
+				<td>
+					{if $countries}
+						<select name=billingCountryID
+							onchange='JavaScript:changeCountryHandler();'
+						>
+							{foreach from=$countries item=country}
+							<option value={$country.countryID}
+								{if $billingCountryID ne NULL}
+									{if $country.countryID == $billingCountryID}
+										selected
+									{/if}
+								{else}
+									{if $country.countryID == $smarty.const.CONF_DEFAULT_COUNTRY}
+										selected
+									{/if}
+								{/if}
+							>
+								{$country.country_name|escape:'html'}
+							</option>
+							{/foreach}
+		 				</select>
+					{else}
+						<input type=hidden name='billingCountryID' value='NULL'>
+					{/if}
+				</td>
+			</tr>
+
+			</table>
+
+			<input type=hidden value='' name='billing_address_checkHiddenField'>
+
+			{literal}
+			<script type="text/javascript" language='JavaScript'>
+				function billingAddressCheckHandler()
+				{
+					if ( (document.RegisterForm.billingCountryID.value != 
+							document.RegisterForm.countryID.value) && 
+						 	document.RegisterForm.billing_address_check.checked )
+					{
+							document.RegisterForm.submit();
+							return;
+					}
+			{/literal}
+
+					document.RegisterForm.payer_first_name.disabled = 
+						document.RegisterForm.billing_address_check.checked;
+					document.RegisterForm.payer_last_name.disabled = 
+						document.RegisterForm.billing_address_check.checked;
+					document.RegisterForm.billingCountryID.disabled =
+						document.RegisterForm.billing_address_check.checked;
+					{if !$billingZones}
+						document.RegisterForm.billingState.disabled = 
+							document.RegisterForm.billing_address_check.checked;
+					{else}
+						document.RegisterForm.billingZoneID.disabled = 
+							document.RegisterForm.billing_address_check.checked;						
+					{/if}
+					document.RegisterForm.billingZip.disabled = 
+						document.RegisterForm.billing_address_check.checked;
+					document.RegisterForm.billingCity.disabled =
+						document.RegisterForm.billing_address_check.checked;
+					document.RegisterForm.billingAddress.disabled = 
+						document.RegisterForm.billing_address_check.checked;
+
+			{literal}
+					if ( document.RegisterForm.billing_address_check.checked )
+					{
+			{/literal}
+						document.RegisterForm.payer_first_name.value =
+							document.RegisterForm.receiver_first_name.value;
+						document.RegisterForm.payer_last_name.value =
+							document.RegisterForm.receiver_last_name.value;
+						document.RegisterForm.billingCountryID.value =
+							document.RegisterForm.countryID.value;
+						{if !$billingZones}
+							document.RegisterForm.billingState.value = 
+								document.RegisterForm.state.value;
+						{else}
+							document.RegisterForm.billingZoneID.value = 
+								document.RegisterForm.zoneID.value;
+						{/if}
+						document.RegisterForm.billingZip.value = 
+							document.RegisterForm.zip.value;
+						document.RegisterForm.billingCity.value =
+							document.RegisterForm.city.value
+						document.RegisterForm.billingAddress.value = 
+							document.RegisterForm.address.value; 
+			{literal}
+					}
+				}
+
+				billingAddressCheckHandler();
+			</script>
+			{/literal}
+
+		</td>
+	</tr>
+		
+	{/if}
+	{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+	<tr>
+		<td colspan=2 align=center>
+			<div class="small" style="color: black;width:80%; padding: 3px; text-align: left; background-color:#{$smarty.const.CONF_MIDDLE_COLOR}">
+				{"usrreg_confirmation_code"|translate}
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" align="right" border="0" />
+		</td>
+		<td align="left">
+			<input name="fConfirmationCode" style="color:#aaaaaa" value="{"str_enter_ccode"|translate}" type="text" onfocus="if(this.value=='{"str_enter_ccode"|translate}')
+			{literal}
+			{this.style.color='#000000';this.value='';}
+			{/literal}" onblur="if(this.value=='')
+			{literal}{{/literal}this.style.color='#aaaaaa';this.value='{"str_enter_ccode"|translate}'{literal}}{/literal}" >
+		</td>
+	</tr>
+	{/if}
+	<tr>
+		<td align="center" colspan="2">
+			<br />
+			<input type="submit" value="{"btn_ok"|translate}" name="save" >
+			<input type="reset" value="{"btn_reset"|translate}" >
+		</td>
+	</tr>
+</table>
+
+{literal}
+		<script type="text/javascript" language='JavaScript'>
+
+		function changeCountryHandler()
+		{
+				document.RegisterForm.submit();
+		}
+
+		</script>
+{/literal}
+
+{if $order ne NULL}
+	<input type=hidden name=order value=1>
+{/if}
+
+{if $order_without_billing_address ne NULL}
+	<input type=hidden name=order_without_billing_address value=1>
+{/if}
+
+</form>
+
+
+{if $reg_updating && $log != $smarty.const.ADMIN_LOGIN}
+<p>[ <a class=bold href="javascript:confirmUnsubscribe();">{"lnk_terminate_account"|translate}</a> ]</p>
+{/if}

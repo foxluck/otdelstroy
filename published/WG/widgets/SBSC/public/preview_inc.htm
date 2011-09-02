@@ -1,0 +1,21 @@
+<script>
+// JAVASCRIPT
+
+function $(v) { return(document.getElementById(v)); }
+function $S(v) { return($(v).style); }
+function agent(v) { return(Math.max(navigator.userAgent.toLowerCase().indexOf(v),0)); }
+function isset(v) { return((typeof(v)=='undefined' || v.length==0)?false:true); }
+function XYwin(v) { var z=agent('msie')?Array(document.body.clientHeight,document.body.clientWidth):Array(window.innerHeight,window.innerWidth); return(isset(v)?z[v]:z); }
+
+function tm_modalTOG() { document.onclick=function(){ $S('tm_modalBG').display='none'; $S('tm_modalBOX').display='none'; document.onclick=function(){}; }; }
+function tm_modalBOX(v,b) { setTimeout("tm_modalTOG()",100); $S('tm_modalBG').height=XYwin(0)+'px'; $S('tm_modalBG').display='block'; $('tm_modalBOX').innerHTML="<? $widgetStrings.amwg_savetoapplybtn_label ?>"; $S('tm_modalBOX').left=Math.round((XYwin(1)-b)/2)+'px'; $S('tm_modalBOX').width=b+'px'; $S('tm_modalBOX').display='block'; }
+</script>
+
+<div id="tm_modalBG"></div><div id="tm_modalBOX"  onmousedown="document.onclick=function(){};" onmouseup="setTimeout('tm_modalTOG()',1);" onClick='parent.processTextButton("savebtn");' style='cursor:pointer'></div>
+
+<style>
+.f1 {color: #755721; font-weight: bold; font-size: 10pt}
+#tm_modalBG { font-family: verdana; display: none; position: absolute; background: #000; opacity: 0.4; -moz-opacity: 0.4; -khtml-opacity: 0.4; filter: alpha(opacity=40); width: 100%; height: 100%; }
+#tm_modalBOX { font-family: verdana; font-size: 10pt; display: none; position: absolute; background: #FAEF63; color: black; text-align: center; border: 1px solid #636D61; top: 30px; z-index: 100; padding: 5px; padding-left: 0px; padding-right: 0px; cursor:poniter}
+.tm_modalX { }
+</style>

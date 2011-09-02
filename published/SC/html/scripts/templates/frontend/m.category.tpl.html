@@ -1,0 +1,58 @@
+{* category view *}
+	<a href="{"?"|set_query}">{"lnk_homepage"|translate}</a> {$BREADCRUMB_DELIMITER}
+	{section name=i loop=$product_category_path}
+	{if $product_category_path[i].categoryID != 1}
+	<a href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'}</a>{if !$smarty.section.i.last} {$BREADCRUMB_DELIMITER}{/if}
+	{/if}
+	{/section}
+
+	{* description *}
+	{if $selected_category.description}<div>{$selected_category.description}</div>{/if}
+	
+	<br />
+
+<center>
+
+{if $subcategories_to_be_shown}
+<div class="background1" style="padding:6px;text-align:center;">
+{/if}
+{section name=i loop=$subcategories_to_be_shown}
+ <a href="{"?categoryID=`$subcategories_to_be_shown[i][0]`"|set_query_html}">{$subcategories_to_be_shown[i][1]}</a>
+ ({$subcategories_to_be_shown[i][2]})
+{/section}
+
+{if $products_to_show}
+
+	{if $string_product_sort}<p id="cat_product_sort">{$string_product_sort}</p>{/if}
+	
+	
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+		
+	 {section name=i1 loop=$products_to_show}
+		{if $smarty.section.i1.index is div by $smarty.const.CONF_COLUMNS_PER_PAGE}<tr>{/if}
+		{include file="product_brief.html" product_info=$products_to_show[i1]}
+	
+		<br />
+		<br />
+	  {/section}
+	 
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+
+{else}
+<p>
+	{if $search_with_change_category_ability && !$advanced_search_in_category}
+		&nbsp;
+	{else}
+		{if $advanced_search_in_category}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"srch_no_matches_found"|translate} >
+		{else}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"str_empty_category"|translate} >
+		{/if}
+	{/if}
+</p>
+{/if}
+
+</center>
+
+
+</div>

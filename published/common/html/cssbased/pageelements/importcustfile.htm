@@ -1,0 +1,85 @@
+<!-- Scheme editor for importing custom CSV files -->
+
+<? if $width == "" ?>
+	<? assign var=width value=300 ?>
+<? /if ?>
+
+<? if $height == "" ?>
+	<? assign var=height value=300 ?>
+<? /if ?>
+
+<? if $space_left == "" ?>
+	<? assign var=space_left value=0 ?>
+<? /if ?>
+
+<? assign var=groupColors value='' ?>
+<? assign var=lastColorUsed value=-1 ?>
+
+<!-- scrollable area -->
+<? wbs_scrollableArea width=$width|cat:"px" height=$height|cat:"px" class="StandardPadding" ?>
+	<!-- Scheme table -->
+	<table class="FormLayout" width=100%>
+		<!-- Scheme header -->
+		<tr> 
+			<th align="left"><strong><? $kernelStrings.app_importingcols_label ?></strong></th>
+			<th width="10" align="left">&nbsp;</th>
+			<th align="left"><strong><? $dbColumnName ?></strong></th>
+		</tr>
+
+		<!-- Scheme content -->
+		<? foreach from=$csv_headers item=header key=headerIndex name=columnLoop ?>
+			<tr <? if ($smarty.foreach.columnLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<? /if ?>>
+				<td><? $header|htmlsafe:true:true ?></td>
+				<td>&nbsp;</td>
+				<td>
+					<select class="FormControl" style="width: 100%" name="csv_headerdblink[<? $headerIndex ?>]">
+						<option value=""><? $kernelStrings.app_selectcolumn_item|htmlsafe:true:true ?></option>
+
+						<? foreach from=$csv_dbscheme item=schemeData key=fieldID ?>
+							<? assign var=selected value="" ?>
+							<? if $csv_headerdblink.$headerIndex == $fieldID ?>
+								<? assign var=selected value="selected" ?>
+							<?/if?>
+
+							<? assign var=itemColor value="" ?>
+							<? if $schemeData.csv_dbrequired ?>
+								<? assign var=itemColor value="style='color: red'" ?>
+							<? /if ?>
+
+							<? if $schemeData.csv_dbrequiredgroup ?>
+								<? assign var=reqGroupName value=$schemeData.csv_dbrequiredgroup ?>
+
+								<? if $groupColors.$reqGroupName ?>
+									<? assign var=itemColor value="style='color: "|cat:$groupColors.$reqGroupName|cat:"'" ?>
+								<? else ?>
+									<? if $lastColorUsed < $maxPresetColor ?>
+										<? math equation="x+1" x=$lastColorUsed assign=lastColorUsed ?>
+									<? else ?>
+										<? assign var=lastColorUsed value=0 ?>
+									<? /if ?>
+
+									<? assign_array var=groupColors index=$reqGroupName value=$groupColorsPresets.$lastColorUsed ?>
+
+									<? assign var=itemColor value="style='color: "|cat:$groupColors.$reqGroupName|cat:"'" ?>
+								<? /if ?>
+							<? /if ?>
+
+							<option value="<? $fieldID ?>" <? $selected ?> <? $itemColor ?>><? $schemeData.csv_dbname|htmlsafe:true:true ?></option>
+						<? /foreach ?>
+					</select>
+				</td>
+			</tr>
+		<? /foreach ?>
+	</table>
+
+<? /wbs_scrollableArea ?>
+
+<table class="FormLayout">
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><input type=checkbox name="csv_importfirstline" id="ImportFirstLine" value=1 <? switchedOutput val=$csv_importfirstline true_val=1 str1="checked" ?>></td>
+		<td><? wbs_label text=$kernelStrings.app_importfirst_label for="ImportFirstLine" skipColon=true?></td>
+	</tr>
+</table>

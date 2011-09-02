@@ -1,0 +1,70 @@
+{* export products and categories into a CSV file *}
+
+<h1>{$CurrentDivision.name|transcape}</h1>
+
+{if $excel_export_successful eq 1}
+<p>
+<font color=blue class=cat><b>{"prdexport_csv_msg_successful"|translate}</b></font><br>
+
+<p>
+<a href="get_file.php?getFileParam={$getFileParam}">{"btn_download"|translate}</a> ({$excel_filesize} Kb)
+
+{else}
+
+<p>
+{if $excel_errormsg ne NULL}
+<font color=red><b>{$excel_errormsg}</b></font>
+{/if}
+
+<form action="" method="post">
+
+<p>{"prdexport_csv_descr"|translate}</p>
+
+<table>
+<tr>
+	<td><input type=checkbox name=categ_1></td>
+	<td><b>{"prdcat_category_root"|translate}</b></td>
+</tr>
+{section name=i loop=$categories}
+<tr>
+	<td><input type="checkbox" name="categ_{$categories[i][0]}" checked id="categ_{$categories[i][0]}"></td>
+	<td><label for="categ_{$categories[i][0]}">{$categories[i][1]|escape:'html'}</label></td>
+</tr>
+{/section}
+</table>
+
+	<p>
+	<table cellpadding=3>
+	<tr>
+		<td>
+		{"prdimport_csvl_delimeter"|translate}
+		</td>
+		<td>
+			<select name="delimiter">
+				<option value=";">{"prdimport_csv_delimeter_semicolon"|translate} (;)</option>
+				<option value=",">{"prdimport_csvl_delimeter_comma"|translate} (,)</option>
+				<option value="\t">{"prdimport_csvl_delimeter_tab"|translate}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>{"prdimport_file_charset"|translate}:</td>
+		<td>
+			<select name="charset">
+			{foreach from=$charsets item=_charset}
+			<option value="{$_charset|escape:'html'}" {if $default_charset eq $_charset}selected="selected"{/if}>{$_charset|escape:'html'}</option>
+			{/foreach}
+			</select>
+		</td>
+	</tr>
+	</table>
+
+<p>
+	<input type=submit value="{"prdexport_csv_btn_export"|translate}">
+	<input type=hidden name=dpt value=catalog>
+	<input type=hidden name=sub value=excel_export>
+	<input type=hidden name=excel_export value=excel>
+
+</form>
+
+{/if}

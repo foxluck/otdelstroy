@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<wbsparams>
+	<param name="module_description" special="yes">Dummy SMS module</param>
+	<param name="module_classname" special="yes">smsdummy</param>
+
+         <param name="simcharge" type="radio" default="0" label="Simulate charge">
+		<option value="0">Delivery</option>
+		<option value="1">Pending</option>
+                 <option value="3">Canceled</option>
+	</param>
+
+	<param name="cost" type="float" default="0.07" label="One Credit Price (USD)" />
+	<param name="reserve" type="float" default="0.11" label="Reserve Charge (USD)" />
+</wbsparams>

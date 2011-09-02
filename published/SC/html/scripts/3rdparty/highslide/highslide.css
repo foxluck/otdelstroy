@@ -1,0 +1,126 @@
+.highslide {
+	cursor: url(graphics/zoomin.cur), pointer;
+    outline: none;
+}
+.highslide img {
+	border: 2px solid gray;
+}
+.highslide:hover img {
+	border: 2px solid white;
+}
+
+.highslide-image {
+    border: 2px solid white;
+}
+.highslide-image-blur {
+}
+.highslide-caption {
+    display: none;
+    
+    border: 2px solid white;
+    border-top: none;
+    font-size: 10pt;
+    padding: 5px;
+    background-color: white;
+}
+.highslide-loading {
+    display: block;
+	color: white;
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+    text-decoration: none;
+	padding: 3px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+    background-color: black;
+    /*
+    padding-left: 22px;
+    background-image: url(graphics/loader.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+    */
+}
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+
+.highslide-move {
+    cursor: move;
+}
+
+.highslide-overlay {
+	display: none;
+}
+
+/* Necessary for functionality */
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}
+
+.control {
+	float: right;
+    display: block;
+    position: relative;
+	margin: 0 5px;
+	font-size: 9pt;
+    font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.control:hover {
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.control, .control * {
+	color: #666;
+}
+
+/* Controlbar example */
+.controlbar a {	
+	display: block;
+	float: left;
+	/*margin: 0px 0 0 4px;*/	
+	height: 27px;
+}
+.controlbar a:hover {
+	background-image: url(graphics/controlbar4-hover.gif);
+}
+.controlbar .previous {
+	width: 50px;
+}
+.controlbar .next {
+	width: 40px;
+	background-position: -50px 0;
+}
+.controlbar .close {
+	background: url(graphics/controlbar4.gif);
+	width: 36px;
+	background-position: -130px 0;
+}
+.controlbar {	
+	background: url(graphics/controlbar4.gif);
+	width: 127px;
+	height: 34px;
+}
+.highslide-full-expand {
+        background: url(graphics/fullexpand.gif);
+        width: 45px;
+        height: 44px;
+}

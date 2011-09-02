@@ -1,0 +1,51 @@
+action_save	Сохранить
+action_cancel	Отмена
+action_close	Закрыть
+action_create	Создать
+action_search	Найти
+
+tab_links	Мои ссылки
+tab_widgets	Виджеты
+
+lbl_sorting	Сортировка
+
+menu_folder	Действия с папкой
+action_rename	Переименовать
+action_copy	Копировать
+action_move	Переместить
+action_delete	Удалить
+
+title_copy_folder	Копировать папку
+title_move_folder	Переместить папку
+
+lbl_table_sorting	Сортировка
+lbl_table_pages	Страницы
+lbl_your_access_rights	Ваши права доступа
+
+rights_no	Нет прав
+rights_read	Чтение
+rights_write	Запись
+rights_full	Полные
+
+lbl_folder	Папка
+lbl_to_folder	Куда
+lbl_or	Или
+lbl_upgrade_account	Улучшите Аккаунт
+
+title_create_widget	Создать виджет
+
+message_loading_widget_types	Загрузка типов виджетов
+message_creating_widget	Создается виджет
+lbl_create_widget_for	Создать виджет "%s" для
+
+lbl_what_are_my_links	Что такое "Мои ссылки"?
+lbl_what_are_widgets	Что такое "Виджеты"?
+
+lbl_desc_root_folder	<корневая папка>
+
+
+message_not_selected_folder	Пожалуйста, выберите папку.
+lbl_select_folder	<выбрать папку>
+
+message_confirm_folder_delete	Вы действительно хотите удалить эту папку?
+lbl_open_in_new_window	Открыть в новом окне

@@ -1,0 +1,24 @@
+<script type="text/javascript" src="{{$url.js}}users-rights.js"></script>
+<script type="text/javascript">
+WbsData.set({'url.common' : "{{$url.common}}", 'url.app' : "{{$url.app}}"});
+var right_id = "{{$group.UG_ID}}";
+var apps = {{$apps}};
+var self_rights = false;
+$(document).ready(function () {
+	renderApps(apps, true);
+});
+</script>
+<style type="text/css">
+select {color: #000}
+#apps table {width: 100%}
+#apps table td {color: #333333}
+#apps tr.title td {line-height: 23px}
+.filetree span.folder, li.expandable span.folder {padding-top: 3px; height: 16px}
+.filetree li span.access, div.folder span.access {height: 16px}
+div.title.light {border-bottom: 1px solid #D8DADC}
+</style>
+
+<div id="apps" class="group">
+	<p>[`Customize access rights for this group in the form below. All users included into this group will automatically inherit specified access rights.`]</p>
+	<div id="loading"><img style="vertical-align:middle" width="16" height="16" src="{{$url.common}}templates/img/loading.gif" /> [`Loading`]...</div>
+</div>

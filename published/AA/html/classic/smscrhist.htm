@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<? include file="../../../common/html/classic/header.htm" ?>
+<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+<? if !$fatalError ?>
+
+	<? if !$smsDisabled ?>
+
+		<h1><? if $systemUser != 1 ?><? $userName?> (<? $userID?>)<? /if ?></h1>
+
+		<? if ( $showPageSelector ) ?>
+		<table width="98%" border="0" cellspacing="0" cellpadding="0" align=center>
+			<tr>
+			<td align="right"><table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td align="right" valign="middle">
+					<? $kernelStrings.ul_page_label|cat:":&nbsp;" ?>
+					</td>
+					<td><select name="currentPage" class="control" onChange="this.form.submit()">
+						<? html_options values=$pages selected=$currentPage output=$pages ?>
+					</select></td>
+					<td align="right" valign="middle">
+					<? "&nbsp;"|cat:$kernelStrings.ul_of_label|cat:" "|cat:$pagesNum ?>
+					</td>
+				</tr>
+				</table></td>
+			</tr>
+			<tr>
+			<td align="right"><img src="../../../common/html/classic/images/5pixsep.gif" width="5" height="5"></td>
+			</tr>
+		</table>
+		<? /if ?>
+
+		<table border=0 width=98%>
+		<tr>
+			<td colspan=2>
+
+			<table border="0" cellspacing="2" cellpadding="0" class="list" width=100%>
+			<tr>
+				<th align="left" width=10%><? $kernelStrings.sms_date_title ?></th>
+				<th align="left" width=30%><? $kernelStrings.sms_action_title ?></th>
+				<th align="left" width=8%><? $kernelStrings.sms_credit_title ?></th>
+				<th align="left" width=15%><? if $systemUser == 1 ?><? $kernelStrings.sms_source_title ?><? else ?><? $kernelStrings.sms_modifiedby_title ?><? /if ?></th>
+			</tr>
+			<? foreach from=$quoteHist item=balance name=balanceLoop?>
+				<tr <? if ($smarty.foreach.balanceLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if ?>>
+					<td><? $balance.SMSG_DATETIME ?></td>
+					<td><? if $balance.SMSG_QS == "ADD" ?><? $kernelStrings.sms_add_action_title ?><? else ?><? $kernelStrings.sms_set_action_title ?> <? /if ?></td>
+					<td><? $balance.SMSG_QTY ?></td>
+					<td><? $balance.SMSG_SOURCE ?></td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td colspan=4 align=center>No entries.</td>
+				</tr>
+
+			<? /foreach ?>
+
+			</table>
+
+			</td>
+		</tr>
+		</table>
+		<br>
+				<br><br>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_back_btn formname="form" leftSpace=10 ?>
+
+	<? else ?>
+			<? $kernelStrings.sms_screen_sms_disabled ?>
+	<? /if ?>
+<? else ?>
+<? /if ?>
+
+<input name="edited" type="hidden" id="edited" value="1">
+<input name="U_ID" type="hidden" id="U_ID" value="<? $U_ID ?>">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

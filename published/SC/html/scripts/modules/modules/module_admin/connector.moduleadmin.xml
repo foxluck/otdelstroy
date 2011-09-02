@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>ModuleAdmin</Name>
+		<File>class.moduleadmin.php</File>
+		<Title>Управление модулями</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

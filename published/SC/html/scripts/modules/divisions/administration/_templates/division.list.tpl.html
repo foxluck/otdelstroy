@@ -1,0 +1,152 @@
+	<div style="padding:15px;">
+	{if $CurrDivision->ID}
+	<h1>{$CurrDivision->getName()|translate}</h1>
+	<a href="{"?did=`$CurrDivision->ID`"|set_query}" target="_blank">{'btn_goto_division'|translate}</a>
+	<hr />
+	<form method="post">
+	<input type="hidden" id="fACTION" name="fACTION" value="SAVEDIV" />
+	<input type="hidden" name="fDATA[xID]" value="{$CurrDivision->ID}" />
+	<table>
+		<tr>
+			<td class="lcolumnr">{'div_enable_fld'|translate}</td>
+			<td>
+				<input type="checkbox" name="fDATA[xEnabled]" value="1" {if $CurrDivision->Enabled eq 1} checked="checked"{/if} />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_id_fld'|translate}</td>
+			<td>
+				<input type="text" value="{$CurrDivision->ID}" disabled="disabled" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_pid_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xParentID]" value="{$CurrDivision->ParentID|escape:'html'}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_priority_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xPriority]" value="{$CurrDivision->Priority|escape:'html'}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_name_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xName]" value="{$CurrDivision->Name|escape:'html'}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_ukey_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xUnicKey]" value="{$CurrDivision->UnicKey}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_key_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xKey]" value="{$CurrDivision->Key}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_connected_interfaces'|translate}</td>
+			<td>
+			
+				<select name="fDATA[newInterface]">
+					<option>-</option>
+				{foreach from=$Interfaces item=_ModInterfaces}
+					<optgroup label="{$_ModInterfaces.key}">
+					{foreach from=$_ModInterfaces.interfaces item=_Interface key=_IntID}
+					<option value="{$_ModInterfaces.configID}_{$_Interface.key}">{$_Interface.name}</option>
+					{/foreach}
+					</optgroup>
+				{/foreach}
+				</select> <input type="submit" value="{'btn_add'|translate}" />
+				
+				{count item=IntsNum array=$CurrDivInterfaces}
+				{if $IntsNum}
+				<table>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>{'int_heritable'|translate}</td>
+					<td>{'int_priority'|translate}</td>
+					<td></td>
+				</tr>
+				{foreach from=$CurrDivInterfaces item=_DivInterface}
+				<tr>
+					<td>{$_DivInterface.ModConfigID}</td>
+					<td>{$_DivInterface.name} [{$_DivInterface.key}]</td>
+					<td align="center"><input type="checkbox" name="fDATA[IntsDATA][{$_DivInterface.xInterface}][Inheritable]" value="1"{if $_DivInterface.xInheritable} checked="checked"{/if}" /></td>
+					<td align="center"><input type="text" size="2" name="fDATA[IntsDATA][{$_DivInterface.xInterface}][Priority]" value="{$_DivInterface.xPriority}" /></td>
+					<td><a href="{"fACTION=DELETE_INTERFACE&delete_int=`$_DivInterface.xInterface`"|set_query}">{'btn_delete'|translate}</a></tD>
+				</tr>
+				{/foreach}
+				</table>
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_template_fld'|translate}</td>
+			<td>
+				<input name="fDATA[xTemplate]" value="{$CurrDivision->Template}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{'div_cross_key'|translate}</td>
+			<td>
+				<input name="fDATA[xLinkDivisionUKey]" value="{$CurrDivision->LinkDivisionUKey|escape:'html'}" />
+			</td>
+		</tr>
+	{foreach from=$CurrDivision->CustomSettings item=_CustSetting}
+		<tr>
+			<td class="lcolumnr">{$_CustSetting.xName} [{$_CustSetting.xKey}]</td>
+			<td valign="top">
+				<input name="fDATA[CustomSettings][{$_CustSetting.xKey}]" value="{$_CustSetting.xValue}" />
+			</td>
+		</tr>
+	{/foreach}
+		<tr>
+			<td class="lcolumnr">{'div_extra_field'|translate}</td>
+			<td>
+				<a href="javascript:void(0)" onclick="if(document.getElementById('newDivSetting').style.display!='block')document.getElementById('newDivSetting').style.display='block'; else document.getElementById('newDivSetting').style.display='none';">{'btn_add'|translate}</a>
+				<div id="newDivSetting">
+				<table>
+					<tr>
+						<td class="lcolumnr">{'div_etxrafld_name'|translate}</td>
+						<td><input name="fDATA[newSetting][xName]" /></td>
+					</tr>
+					<tr>
+						<td class="lcolumnr">{'div_extrafld_key'}</td>
+						<td><input name="fDATA[newSetting][xKey]" /></td>
+					</tr>
+					<tr>
+						<td class="lcolumnr"></td>
+						<td><input type="submit" value="{'btn_add'|translate}" /></td>
+					</tr>
+				</table>
+				</div>
+				<script type="text/javascript">
+					document.getElementById('newDivSetting').style.display='none';
+				</script>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+			<input type="submit" value="{'btn_save'|translate}" />&nbsp;&nbsp;
+			<input type="submit" name="delete_div" value="{'btn_delete'|translate}" onclick="getLayer('fACTION').value='DELETEDIV'" />
+			</td>
+		</tr>
+	</table>
+	</form>
+	{else}
+	<h3>Root</h3>
+	{/if}{* $CurrDivision->ID *}
+	</div>

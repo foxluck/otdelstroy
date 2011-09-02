@@ -1,0 +1,50 @@
+{if $smarty.const.CONF_VOTING_FOR_PRODUCTS eq 'True'}
+
+{if $PAGE_VIEW ne 'mobile'}
+<table cellpadding="0" cellspacing="0"><tr><td>
+{if !$CPT_CONSTRUCTOR_MODE}
+<div>
+{if $product_info.customer_votes > 0 || $CPT_CONSTRUCTOR_MODE} {* rating *}
+	<div class="current-rating1"><div class="current-rating1-back">&nbsp;</div><div class="current-rating1-front" style="width: {$product_info.customers_rating*20}px;">&nbsp;</div></div>
+	<div style="width: 100px;text-align: center;">
+		{"vote_numerofvotes"|translate}: {$product_info.customer_votes}
+	</div>
+{/if}
+
+{if !$printable_version && !$vote_completed}
+<script language="JavaScript" type="text/javascript">
+<!--
+function vote(score)
+{ldelim}
+	
+    /*
+	var base="{""|set_query_html}";
+	document.location.href=base+'&vote=yes&mark='+score;
+    */
+    var url = window.location.href;
+    url += '&vote=yes&mark='+score;
+    window.location = url;
+	return false;
+{rdelim}
+-->
+</script>
+	<ul class="unit-rating" style="width:100px;">
+		<li class="current-rating" style="width:100px;">&nbsp;</li>
+		<li><a rel="nofollow" href='javascript:void(0)' onclick='javascript:vote("1");' title='{"vote_puny"|translate}' class="r1-unit rater">{"vote_puny"|translate}</a></li>
+		<li><a rel="nofollow" href='javascript:void(0)' onclick='javascript:vote("2");' title='{"vote_poor"|translate}' class="r2-unit rater">{"vote_poor"|translate}</a></li>
+		<li><a rel="nofollow" href='javascript:void(0)' onclick='javascript:vote("3");' title='{"vote_average"|translate}' class="r3-unit rater">{"vote_average"|translate}</a></li>
+		<li><a rel="nofollow" href='javascript:void(0)' onclick='javascript:vote("4");' title='{"vote_good"|translate}' class="r4-unit rater">{"vote_good"|translate}</a></li>
+		<li><a rel="nofollow" href='javascript:void(0)' onclick='javascript:vote("5");' title='{"vote_excellent"|translate}' class="r5-unit rater">{"vote_excellent"|translate}</a></li>
+	</ul>
+	<div style="width: 100px;text-align: center;">{lbl_btn_vote}</div>
+{/if}
+</div>
+
+{else}
+	<div class="current-rating1"></div>
+{/if}
+</td></tr></table>
+
+{/if}
+
+{/if}

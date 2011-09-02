@@ -1,0 +1,94 @@
+{* product discussion *}
+<table cellpadding="0" cellspacing="0">
+<tr>
+	{if $selected_category[3] && $PAGE_VIEW ne 'mobile'}
+	<td rowspan=2 valign=top width="1%">
+		<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category[3]|escape:'url'}" alt="{$selected_category[1]}">
+	</td>
+	{/if}
+
+	<td width="70%">
+	<a href="{'?'|set_query_html}" class="cat">{"lnk_homepage"|translate}</a>
+	{section name=i loop=$product_category_path}
+		{if $product_category_path[i].categoryID != 1}
+			{$BREADCRUMB_DELIMITER} <a class="cat" href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name}</a>
+		{/if}
+	{/section}
+	</td>
+</tr>
+</table>
+
+{assign var="_product_url" value="ukey=product&productID=`$productID`"|set_query_html}
+{assign var="_product_name" value=$product_name}
+<h1>{'prddiscussion_title'|translate|replace:'%PRODUCT_NAME%':$_product_name|replace:'%PRODUCT_URL%':$_product_url}{if $rss_link}&nbsp;<a href="{$smarty.const.URL_ROOT}/{$rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0" style="padding-left:10px;"></a>{/if}</h1>
+
+{if $GridRows}
+
+
+	{foreach from=$GridRows item=_review}
+	<div class="review_block">
+	
+		<h3 class="review_title"><a name="{$_review.DID}"></a>{$_review.Topic|escape:'html'|linewrap:'\n':50}</h3>
+		
+		<div class="review_date">{$_review.Author|escape:'html'|linewrap} ({$_review.add_time_str})</div>
+		
+		<div class="review_content">{$_review.Body|escape:'html'|nl2br|linewrap}</div>
+		
+	</div>
+	{/foreach}
+	<p>{include file="../backend/lister.tpl.html"}</p>
+{else}
+	<p>{"prddiscussion_no_posts_on_item_string"|translate}</p>
+{/if}
+
+<a name="add-review"></a>
+<h2>{"prddiscussion_add_message"|translate}</h2>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" name="formD" onSubmit="return validate_disc(this);">
+<table cellspacing="0" cellpadding="6">
+<tr>
+	<td align="right">{"str_your_name"|translate}:</td>
+	<td><input type="text" name="nick" value="{$new_topic.nick|escape:'html'}" ></td>
+</tr>
+<tr>
+	<td align=right>{"str_subject"|translate}:</td>
+	<td><input type="text" name="topic" value="{$new_topic.topic|escape:'html'}" ></td>
+</tr>
+<tr>
+<tr>
+	<td align="right" valign="top">{"prddiscussion_body"|translate}:</td>
+	<td>
+		<textarea name="body" cols="50" rows="10">{$new_topic.body|escape:'html'}</textarea>
+	</td>
+</tr>
+{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tbody class="background1">
+<tr>
+	<td colspan="2">{"str_enter_ccode"|translate}</td>
+</tr>
+<tr>
+	<td align="right">
+		<img src="{$conf_image}" alt="code" align="right" />
+	</td>
+	<td align="left">
+		<input name="fConfirmationCode" type="text" >
+	</td>
+</tr>
+</tbody>
+{/if}
+<tr>
+	<td>&nbsp;</td>
+	<td>
+		<input type="submit" value="{"btn_post_message"|translate}" >
+		<input type="hidden" name="add_topic" value="yes" >
+		<input type="hidden" name="productID" value="{$productID}" >
+		<input type="hidden" name="discuss" value="yes" >
+	</td>
+</tr>
+</table>
+</form>

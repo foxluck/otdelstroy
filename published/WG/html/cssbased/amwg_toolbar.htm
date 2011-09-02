@@ -1,0 +1,24 @@
+<? if !$haventRights ?>
+	<? wbs_toolbarItem?>
+		<? wbs_button caption==$wgStrings.amwg_save_menu name='savebtn' ?>
+	<? /wbs_toolbarItem ?>
+
+	<? wbs_toolbarItem?>
+		<? wbs_button caption==$wgStrings.amwg_saveclose_menu name='saveclosebtn' ?>
+	<? /wbs_toolbarItem ?>
+
+	<? wbs_toolbarItem?>
+		<? wbs_button caption==$wgStrings.amwg_cancel_menu name='cancelbtn' ?>
+	<? /wbs_toolbarItem ?>
+
+	<? if $action != ACTION_NEW ?>
+		<? wbs_toolbarItem ?>
+			<? wbs_buttonSetButton caption=$wgStrings.amwg_delete_menu name="deletebtn" onClick='return confirm(\''|cat:$wgStrings.wg_deleteconfirm_message|cat:'\');' ?>
+		<? /wbs_toolbarItem ?>
+	<? /if ?>
+<? /if ?>
+<!--
+<? wbs_toolbarItem?>
+	<? wbs_button caption==$wgStrings.wg_repository_menu name="cancelbtn" ?>
+<? /wbs_toolbarItem ?>
+-->

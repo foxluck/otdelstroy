@@ -1,0 +1,22 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="init.js">
+    <function name="InitLayout" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+        <property name="screenMode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+        </property>
+        <property name="img" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            <unknown name="src" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            </unknown>
+        </property>
+        <property name="img2" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            <unknown name="src" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            </unknown>
+        </property>
+        <property name="img3" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            <unknown name="src" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            </unknown>
+        </property>
+        <property name="img4" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            <unknown name="src" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false">
+            </unknown>
+        </property>
+    </function>
+</javascript>

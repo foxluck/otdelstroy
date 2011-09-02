@@ -1,0 +1,338 @@
+<!-- firststep.html -->
+<div class="i-col-container">
+	<div class="i-col80">
+		<div style="padding-right: 20px;">
+<?* strip *?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<? assign var="invalidFieldMarkup" value=' style="color: #FF0000"'?>
+
+<? if !$fatalError ?>
+	<? if !$profileCreated ?>
+		<? if !$profileCreated ?>
+	<h1><?"install_step2_title"|translate ?></h1>
+		<? else ?>
+    <h1><?"install_step2_finish"|translate ?></h1>
+		<? /if ?>
+	<br>
+        <? if $errorStr ?>
+	<p<? $invalidFieldMarkup ?>><? $errorStr ?></p>
+        <? /if ?>
+        
+        <? if $infoStr ?>
+	<p><? $infoStr ?></p>
+        <? /if ?>
+
+	<table border="0" cellpadding="5" cellspacing="0" class="settings-table" style="width: 100%;">
+		<tr>
+			<td colspan="2" class="form-required-field"><? $waStrings.forms_req_fields ?></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+<!-- MySQL Settings-->
+		<tr style="background-color: #eee;">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr style="background-color: #eee;">
+			<td<? conditionalOutput invalidField=$invalidField field=HOST text=$invalidFieldMarkup  ?>>
+				<?"addserv_gr2_opt1"|translate?>:&nbsp;*
+			</td>
+			<td>
+				<input name="serverData[HOST]" type="text" class="big-control" value="<? $serverData.HOST ?>">
+			</td>
+		</tr>
+		<tr style="background-color: #eee;">
+			<td>&nbsp;</td>
+			<td<? conditionalOutput invalidField=$invalidField field=PORT text=$invalidFieldMarkup?>>
+				<?"addserv_gr2_opt3"|translate ?>:&nbsp;
+            	<input name="serverData[PORT]" type="text" class="control" value="<? $serverData.PORT ?>">
+            </td>
+		</tr>
+		<tr style="background-color: #eee;">
+			<td>&nbsp;</td>
+			<td class="comment"><?"addserv_gr2_desc1"|translate?></td>
+		</tr>
+		<tr style="background-color: #eee;">
+			<td>&nbsp;</td>
+			<td class="comment"><?"addserv_gr2_desc3"|translate?></td>
+		</tr>
+<!-- Server name -->		
+		<tr style="background-color: #eee;">
+			<td>&nbsp;</td>
+			<td>&nbsp;
+				<input type="hidden" name="serverData[SERVER_NAME]" value="<? $serverData.SERVER_NAME ?>">
+				<input type="hidden" name="action" value="<? $action ?>">
+				<input type="hidden" name="edited" value="1"> 
+				<input type="hidden" name="languagesPacked" value="<? $languagesPacked ?>">
+				<input type="hidden" name="languageToDelete">
+			</td>
+		</tr>
+
+        <tr style="background-color: #eee;"> 
+			<td class="nobr"
+			<? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][DATABASE_USER_EXISTING] text=$invalidFieldMarkup ?>
+			<? conditionalOutput invalidField=$invalidField field=ADMIN_USERNAME text=$invalidFieldMarkup ?>>
+			<? $waStrings.dbmgm_gr2_username ?>:  *</td>
+			<td><input name="hostData[DB_CREATE_OPTIONS][DATABASE_USER_EXISTING]" type="text" class="big-control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_USER_EXISTING ?>"></td>
+		</tr>
+		<tr style="background-color: #eee;"> 
+			<td class="nobr"<? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][PASSWORD_EXISTING] text=$invalidFieldMarkup ?><? conditionalOutput invalidField=$invalidField field=ADMIN_PASSWORD text=$invalidFieldMarkup ?>><? $waStrings.dbmgm_gr2_pwd ?>:&nbsp;*</td>
+			<td><input name="hostData[DB_CREATE_OPTIONS][PASSWORD_EXISTING]" type="text" class="big-control" value="<? $hostData.DB_CREATE_OPTIONS.PASSWORD_EXISTING ?>"></td>
+		</tr>
+		<tr style="background-color: #eee;">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+
+		<tr style="background-color: #fff;">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td colspan="2" style="background-color: #fff;">
+				<table border="0">
+					
+			        <tr>
+						<td style="padding: 0px;">
+							<input type="radio" onClick="onSelectFocus('use_dbname')" name="hostData[DB_CREATE_OPTIONS][CREATE_OPTION]" value="use" id="use" <? switchedOutput str1="checked" str2="" val=$hostData.DB_CREATE_OPTIONS.CREATE_OPTION true_val="use" ?>>
+						</td>
+						<td colspan="2" style="padding: 0px;" class="nobr" <? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][CREATE_OPTION] text=$invalidFieldMarkup ?>>
+							<label for="use"><? $waStrings.dbmgm_gr2_sel2 ?></label>:
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td<? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][DATABASE_EXISTING]" text=$invalidFieldMarkup ?>>
+							<? $waStrings.dbmgm_gr2_dbname ?>:&nbsp;*&nbsp;</td>
+						<td>
+							<input name="hostData[DB_CREATE_OPTIONS][DATABASE_EXISTING]"  id="use_dbname" type="text" class="big-control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_EXISTING ?>" onfocus="onFocusSelect('use', 'new');">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td style="padding: 0px;" width="20">
+							<input type="radio" onClick="onSelectFocus('new_dbname')" name="hostData[DB_CREATE_OPTIONS][CREATE_OPTION]" value="new" id="new" <? switchedOutput str1="checked" str2="" val=$hostData.DB_CREATE_OPTIONS.CREATE_OPTION true_val="new" ?>>
+						</td>
+						<td colspan="2" style="padding: 0px;" width="100%" class="nobr" <? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][CREATE_OPTION] text=$invalidFieldMarkup ?>>
+							<label for="new"><? $waStrings.dbmgm_gr2_sel1 ?></label>:
+						</td>
+					</tr>
+		
+					<tr>
+						<td>&nbsp;</td>
+						<td width="30%" <? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][DATABASE_NEW]" text=$invalidFieldMarkup ?>>
+							<? $waStrings.dbmgm_gr2_dbname ?>:&nbsp;*&nbsp;
+						</td>
+						<td width="70%">
+							<input name="hostData[DB_CREATE_OPTIONS][DATABASE_NEW]" id="new_dbname" type="text" class="big-control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_NEW ?>" onfocus="onFocusSelect('new', 'use');">
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class=comment>
+							<b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr5_note1 ?>
+						</td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+		<tr style="background-color: #fff;">
+			<td colspan="2">&nbsp;</td>
+		</tr>
+        <tr>
+			<td colspan="2">
+				<div class="formSection"><? $waStrings.cmn_set_sys_name ?></div>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+            <td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td<? conditionalOutput invalidField=$invalidField field=WBS_INSTALL_PATH text=$invalidFieldMarkup  ?>>
+				<? $waStrings.wbs_install_path ?>:&nbsp;
+			</td>
+            <td>
+            	<input name="commondata[WBS_INSTALL_PATH]" value="<? $commondata.WBS_INSTALL_PATH ?>" type="text" class="control">
+           	</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td class="comment">
+				<p class="comment"><? $waStrings.wbs_install_path_desc ?></p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+                  <!--             -->
+		<tr>
+			<td colspan="2">
+				<div class="formSection"><? $waStrings.dbmgm_gr5_name ?></div>
+			</td>
+		</tr>
+		<tr>
+            <td colspan="2" class="comment">
+	      <? $waStrings.dbmgm_gr5_desc1 ?>
+	      </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+
+
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][LOGINNAME] text=$invalidFieldMarkup?>>
+              <? $waStrings.dbmgm_gr5_login ?>:&nbsp;*</td>
+            <td>
+             
+              <input name="hostData[FIRSTLOGIN][LOGINNAME]" type="text" class="control" style="font-weight: bold;" value="<? $hostData.FIRSTLOGIN.LOGINNAME|htmlsafe:true:true ?>" maxlength="20">
+             
+            </td>
+          </tr>
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][PASSWORD1] text=$invalidFieldMarkup  ?>>
+              <? $waStrings.dbmgm_gr5_pwd ?>:&nbsp;*</td>
+            <td>
+           <input name="hostData[FIRSTLOGIN][PASSWORD1]" type="text" class="control" style="font-weight: bold;" maxlength="50" value="<? $hostData.FIRSTLOGIN.PASSWORD1 ?>"></td>
+             
+          </tr>
+          <tr>
+            <td colspan="2" class="comment"><? $waStrings.dbmgm_gr5_desc2 ?>
+			    </td>
+          </tr>
+
+
+          <tr>
+            <td colspan="2">&nbsp;
+            </td>
+          </tr>
+
+ 
+           <tr>
+            <td height="24"<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][EMAIL] text=$invalidFieldMarkup  ?>>
+              <? $waStrings.dbmgm_gr5_email ?>:&nbsp;*
+              </td>
+            <td>
+             
+              <input name="hostData[FIRSTLOGIN][EMAIL]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.EMAIL|htmlsafe:true:true ?>" maxlength="50">
+            </td>
+          </tr>
+          
+
+
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][FIRSTNAME] text=$invalidFieldMarkup  ?>>
+              <? $waStrings.dbmgm_gr5_firstname ?>:&nbsp;*</td>
+            <td>
+ 
+              <input name="hostData[FIRSTLOGIN][FIRSTNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.FIRSTNAME|htmlsafe:true:true ?>" maxlength="20">
+
+            </td>
+          </tr>
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][LASTNAME] text=$invalidFieldMarkup  ?>>
+              <? $waStrings.dbmgm_gr5_lastname ?>:&nbsp;*</td>
+            <td>
+             
+              <input name="hostData[FIRSTLOGIN][LASTNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.LASTNAME|htmlsafe:true:true ?>" maxlength="24">
+
+            </td>
+          </tr>
+
+
+          <tr>
+            <td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][COMPANYNAME] text=$invalidFieldMarkup  ?>>
+              <? $waStrings.dbmgm_gr5_company ?>:&nbsp;*</td>
+              <td>
+ 
+              <input name="hostData[FIRSTLOGIN][COMPANYNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.COMPANYNAME|htmlsafe:true:true ?>" maxlength="20">
+
+            </td>
+          </tr>
+
+
+          <tr>
+            <td colspan="2">
+                     <input type="submit" name="savebtn" value="<? $buttonCaption ?>">
+            </td>
+          </tr>
+        </table>
+   <? else ?>
+   
+<div class="i-wrapper">
+	<h2><? $title?></h2><br>
+	<div  style="background:#eeeeee;padding:20px;width:500px;">
+		<h2><? $waStrings.install_link_db ?></h2>
+		<br>
+		<p><b><a href="#" name=loginURL><script language="JavaScript" type="text/javascript">makeLinkURL( 5, '<? $loginURL ?>', 'loginURL', true );</script></a></b></p>
+		<p class="comment"><? $waStrings.install_link_db_comment ?></p>
+		<br>
+		<!-- <p><? $waStrings.install_work_dbkey ?>:  <b><? " "|cat:$DB_KEY|cat:" " ?></b><br> -->
+		<p><? $waStrings.install_link_login ?>&nbsp;<b><? $hostData.FIRSTLOGIN.FIRSTNAME ?>&nbsp;<? $hostData.FIRSTLOGIN.LASTNAME ?></b>&nbsp;<? $waStrings.install_link_login_use ?>:</p>
+		<p><? $waStrings.dbmgm_gr5_login ?>:&nbsp;<b><? " "|cat:$hostData.FIRSTLOGIN.LOGINNAME|cat:" " ?></b></p>
+		<p><? $waStrings.dbmgm_gr5_pwd ?>:&nbsp;<b><? " "|cat:$hostData.FIRSTLOGIN.PASSWORD1|cat:" " ?></b></p>
+		<hr size="1">
+		<p><? $waStrings.install_link_login ?>&nbsp;<b>Administrator</b>&nbsp;<? $waStrings.install_link_login_use ?>:</p>
+		<p><? $waStrings.dbmgm_gr5_login ?>:&nbsp;<b>ADMINISTRATOR</b></p>
+		<p><? $waStrings.dbmgm_gr5_pwd ?>:&nbsp;<b><? " "|cat:$hostData.FIRSTLOGIN.PASSWORD1|cat:" " ?></b></p>
+		<p class="comment"><? $waStrings.admin_link_comment ?></p>
+	</div>
+	<div style="padding:20px;">
+		<h2><? $waStrings.install_link_wba ?></h2><!-- <strong>WebAsyst Administrator</strong> -->
+		<br>
+		<p><b><a href="#" name=adminURL><script language="JavaScript" type="text/javascript">makeLinkURL( 5, '<? $adminURL ?>', 'adminURL', true )</script></a></b></p>
+		<p class="comment"><? $waStrings.install_link_wba_comment ?></p>
+		<br>
+		<br>
+	<? if $htaccessReplaced ?>
+		<p><b><font color="red"><? $waStrings.wbs_user_htaccess ?></font></b></p>
+		<br>
+	<? /if?>
+		<p><b><font color="green"><? $waStrings.install_finish_notice ?></font></b></p>
+	</div>
+</div>
+        <? /if ?>
+   <? /if ?>
+  </form>
+<?* /strip *?>
+		</div>
+	</div>
+
+
+	<div class="i-col20">
+		<div class="i-colorbord i-p-padd">
+			<div class="steps">
+				<? $step?>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+onLoad = function()
+{
+	<? if $invalidField ?>
+	<?if $invalidField eq 'ADMIN_USERNAME'?>
+		if(focusControl('hostData[DB_CREATE_OPTIONS][DATABASE_USER_EXISTING]'))return;
+	<?/if?>
+	
+//	hostData[DB_CREATE_OPTIONS][DATABASE_NEW]
+	if(focusControl('<?$invalidField?>'))return;
+	if(focusControl('hostdata[<?$invalidField?>]'))return;
+	if(focusControl('serverdata[<?$invalidField?>]'))return;
+	alert('<?$invalidField?>');	
+	<?else?>
+	<?/if?>
+	
+}
+//alert(document.body.onload);
+onLoad();
+//-->
+</script>
+<!-- /firststep.html -->

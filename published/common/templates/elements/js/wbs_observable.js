@@ -1,0 +1,1 @@
+WbsObservable = newClass(Ext.util.Observable, {});

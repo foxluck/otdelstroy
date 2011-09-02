@@ -1,0 +1,55 @@
+{* order statuses *}
+<h1>{lbl_pgn_order_statuses}</h1>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post">
+	<table border="0" cellpadding="5" cellspacing="1" bgcolor="#BEDDDB">
+	<tr bgcolor="#BEDDDB">
+		<td align="center">{"str_status"|translate}</td>
+		<td align="center">{"str_sort_order"|translate}</td>
+		<td align="center">&nbsp;</td>
+	</tr>
+	{section name=i loop=$order_statues}
+	<tr bgcolor="white">
+		<td align="center">
+			{html_text dbfield="status_name" name="status_name_%lang%_`$order_statues[i].statusID`" values=$order_statues[i]}
+		</td>
+		<td align="center">
+			<input type="text" name="sort_order_{$order_statues[i].statusID}" value="{$order_statues[i].sort_order|escape:'html'}" />
+		</td>
+		<td align="center">
+			<a href="javascript:confirmDelete({$order_statues[i].statusID},'{"cnfrm_delete"|translate}', '{"delete="|set_query_html}&amp;delete=');">
+				<img src="images/remove.jpg" border="0" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	</tr>
+	{/section}
+
+	<tr>
+		<td colspan="3" align="center" bgcolor="#BEDDEB">
+			{"btn_add"|translate}:
+		</td>
+	</tr>
+
+	<tr bgcolor="white">
+		<td align="center">
+			{html_text name="status_name"}
+		</td>
+		<td align="center">
+			<input type="text" name="sort_order" value="" />
+		</td>
+		<td align="center">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+
+	<p>
+		<input type="submit" value="{"btn_save"|translate}" name="save" />
+	</p>
+	<input type="hidden" name="save_successfull" value="1" />
+	<input type="hidden" name="dpt" value="custord" />
+	<input type="hidden" name="sub" value="order_statuses" />
+
+</form>

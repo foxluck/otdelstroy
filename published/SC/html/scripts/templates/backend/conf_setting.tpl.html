@@ -1,0 +1,36 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+
+<h1>{$CurrentDivision.name|translate}</h1>
+<div>
+<ul id="edmod">
+	{section name=i loop=$setting_groups}
+	<li class="tab{if $settings_groupID == $setting_groups[i].settings_groupID} current{/if}"><a href='{"&settings_groupID=`$setting_groups[i].settings_groupID`"|set_query_html}'>{$setting_groups[i].settings_group_name|translate}</a></li>
+	{/section}
+</ul>
+</div>
+<br />
+{* web shop setting *}
+<form action='{"&settings_groupID=`$settings_groupID`"|set_query_html}' method="post" enctype="multipart/form-data">
+
+	<table class="grid" width="100%">
+	{section name=i loop=$settings}
+	<tr class="{cycle values='gridline,gridline1'}"> 
+		<td align="right" valign="top">
+			<strong>{$settings[i].settings_title|translate}</strong>:
+			<br>{$settings[i].settings_description|translate}
+		</td>
+		<td align="left" valign="top">{$controls[i]}</td>
+	</tr>
+	{/section}
+		
+	<tr class="gridsfooter">
+		<td></td>
+		<td width="50%"><input type="submit" name="save" value="{"btn_save"|translate}" /></td>
+	</tr>
+	</table>
+	
+</form>
+
+<script type="text/javascript">
+Nifty("li.tab","top same-height");
+</script>

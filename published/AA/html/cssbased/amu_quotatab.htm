@@ -1,0 +1,36 @@
+<? wbs_note displayNoteMarker=false smallFont=false ?><? $kernelStrings.amu_quotas_note ?><? /wbs_note ?>
+
+<table class="FormLayout" width="100%">
+
+	<? foreach from=$quotableApplications key=app_id item=app_data name=apploop ?>
+
+		<!-- Application name -->
+		<tr>
+			<td class="FormSection"><? appName APP_ID=$app_id language=$language ?></td>
+		</tr>
+
+		<tr>
+			<td height=5></td>
+		</tr>
+
+		<tr>
+			<td>
+				<table class="FormLayout" >
+					<tr>
+						<td><? wbs_label fieldName="diskquotas"|cat:"["|cat:$app_id|cat:"]" for="diskquotas"|cat:"["|cat:$app_id|cat:"]" text=$kernelStrings.amu_storagespacequota_label ?></td>
+						<td>
+							<input type=text name="diskquotas[<? $app_id ?>]" id="diskquotas[<? $app_id ?>]" value="<? $diskquotas.$app_id|htmlsafe:true:true ?>" class="FormControl" size=15/>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><? wbs_note displayNoteMarker=false ?><? $kernelStrings.amu_leaveblankquotas_text ?><? /wbs_note ?></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	<? foreachelse ?>
+		<? wbs_note displayNoteMarker=false smallFont=false ?><? $kernelStrings.amu_noquotas_text ?><? /wbs_note ?>
+	<? /foreach ?>
+</table>

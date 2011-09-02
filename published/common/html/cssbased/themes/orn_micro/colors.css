@@ -1,0 +1,6 @@
+#menu-block {background:#ddebd4;}
+#top-line {  background:url(micro.gif) left 17px repeat; border:none;}
+#logo-block .label { color:#41453e;/* background:#fff;font-size:30px; line-height:38px; margin:10px; font-weight:bold;padding:0 10px; border:dashed 1px #2994ff;*/ }
+#top-line #user-block, #top-line a { color:#000; /*background:#fff;*/}
+/*#top-line #user-block {border:dashed 1px #2994ff; padding-right:5px; margin-top:10px;}
+*/

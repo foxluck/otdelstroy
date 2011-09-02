@@ -1,0 +1,67 @@
+<h1>Экспорт товаров в Яндекс.Маркет</h1>
+
+{if $yandex_export_successful eq 1}
+<p>
+<font color=blue class=cat><b>Товары успешно экспортированы в XML-файл для Яндекс.Маркет!</b></font><br>
+
+<p>
+Адрес файла (URL): <b>{"ukey=get_yandex"|set_query:$smarty.const.CONF_FULL_SHOP_URL}</b>
+
+<p>
+<a href='{"ukey=get_yandex&download=1"|set_query}'>Скачать файл</a> ({$yandex_filesize} Кб)
+
+{else}
+
+<p>
+{if $yandex_errormsg ne NULL}
+<font color=red><b>{$yandex_errormsg}</b></font>
+{/if}
+
+<form action="" method=post name="form_export">
+	<input type="hidden" name="yandex_export" value="" />
+	<ol style="1">
+	<li>
+		<b class="header2">Выберите категории и товары</b>
+		{include file="backend/product_tree.tpl.html"}
+	</li>
+	<li>
+		<b class="header2">Выберите параметры</b>
+
+	<p>Цены на товары в магазине, экспортируемые в XML-файл для Яндекс.Маркет, указываются в рублях (RUR).<br>Пожалуйста, укажите курс рубля в Вашем магазине - введите сколько условных единиц (у.е.) в магазине составляют 1 рубль.<br>
+	Например, если Вы введете 5, то это будет означать, что 1 рубль = 5 у.е. магазина.<br>
+	Рекомендуется вводить тот курс, который Вы указали для валюты "Рубли" (если таковая определена) в разделе "Настройки->Валюты".
+
+	<p>1 рубль = <input type=text name=yandex_rur_rate value=1> у.е.
+
+	<p>
+	Какие описания товаров экспортировать в файл?<br>
+	ВАЖНО: Описание не должно содержать HTML-тэгов и по размеру не может быть более 255 символов<br>(если 
+описание выходит за пределы допустимого значения,то текст обрезается и в конце проставляется многоточие)<br>
+	<select name=yandex_export_description>
+		<option value=0>Не экспорировать описания</option>
+		<option value=1>Полное описание</option>
+		<option value=2 selected>Краткое описание</option>
+	</select>
+
+	{if $smarty.const.CONF_CHECKSTOCK eq 1}
+	<p>
+	<input type="checkbox" name="yandex_dont_export_negative_stock" value="1" id="id_yenstock" class="checknomarging" /><label for="id_yenstock">  Не экспортировать товары с нулевым остатком на складе</label><br>
+	{/if}
+	<p>Экспорт названий товаров:
+	<br />
+	<select name="yandex_export_product_name">
+		<option value="only_name">только название товара</option>
+		<option value="path_and_name">путь к категории товара + название товара</option>
+	</select>
+	</p>
+	</li>
+	</ol>
+	<p>
+	<input type=button onclick="document.form_export.elements['yandex_export'].value='yandex_export';document.form_export.submit(); return false;" value="Экспортировать товары в XML-файл">
+	<input type=hidden name=dpt value=modules>
+	<input type=hidden name=sub value=yandex>
+	<input type=hidden name=_export value="" />
+
+</form>
+
+{/if}

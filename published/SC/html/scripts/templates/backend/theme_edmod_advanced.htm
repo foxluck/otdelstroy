@@ -1,0 +1,44 @@
+{if $templated_changed}
+<script type="text/javascript">
+beforeUnloadHandler_contentChanged = true;
+</script>
+{/if}
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<table width="100%" style="height:100%;">
+<tr>
+	<td valign="top" height="100%">
+		<textarea id="template-content" style="width:100%;height:100%;" wrap="off">{$template|escape:'html'}</textarea>
+	</td>
+	<td id="cpt-right-panel">
+		<form action="{''|set_query_html}" method="post" style="display:inline;" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="save_template" />
+			<input type="hidden" name="template" id="sending-template-content" value="" />
+			<div style="text-align:center;">
+			<input type="button" value="{lbl_thm_btn_save_tpl}" id="save-template-hndl" />
+			</div>
+		</form>
+		<br />
+{if $tpl_id eq 'general_layout' or $tpl_id eq 'home_page' or $tpl_id eq 'product_info'}
+		<ul id="components-list">
+		{foreach from=$components item=component}
+		<li>
+			<a href="javascript:void(0)" class="cpt_expand_act" id="cpt-expand-act-{$component.id}">{$component.name|translate}</a> 
+		<div class="cpt_settings">
+			
+			<div style="display:none" id="cpt-lsettings-{$component.id}" class="cpt_lsettings">
+			<form style="display:inline;" class="cpt_dontblock" action="{''|set_query_html}" method="post" id="cptlsettings-form-{$component.id|escape:'html'}" enctype="multipart/form-data">
+				<input type="hidden" name="action" value="CPT_PREPARE_SMARTYCODE" />
+				<input type="hidden" name="component_id" value="{$component.id|escape:'html'}" />{$component.__lsettings_form}
+				<p><input type="submit" value="{'thm_btn_embed'|translate}" id="cptlsettings-submit-{$component.id|escape:'html'}" class="cptlsettings_submit" /></p>
+			</form>
+			</div>
+		</div>
+		</li>
+			{/foreach}
+		</ul>
+{/if}
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/cpt_advinsert.js"></script>

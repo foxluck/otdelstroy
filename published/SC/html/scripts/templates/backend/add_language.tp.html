@@ -1,0 +1,43 @@
+	<h1>{$CurrentDivision.name}</h1>
+
+	<form action="{''|set_query_html}" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="lang_id" value="{$language.id}" />
+	<table>
+	<tr>
+		<td>{'loc_lang_name'|translate}: </td>
+		<td><input type="text" size="25" name="lang_name" value="{$language.name}" /></td>
+	</tr>
+	<tr>
+		<td valign="top">{'loc_lang_iso2'|translate}: </td>
+		<td>
+			<input type="text" maxlength="2" size="2" name="lang_iso2" value="{$language.iso2}" />
+			<div class="field_descr">{'loc_langiso2_descr'|translate}</div>
+		</td>
+	</tr>
+	<tr>
+		<td>{'loc_lang_enable'|translate}: </td>
+		<td><input type="checkbox" value="1" name="lang_enabled" {if $language.enabled} checked="checked"{/if} /></td>
+	</tr>
+	<tr>
+		<td valign="top">{'loc_lang_icon'|translate}:</td>
+		<td>
+			{if $language.thumbnail_url}
+			<img src="{$language.thumbnail_url}" />
+			{/if}
+			<div class="field_descr">
+			{'loc_langicon_upload'|translate}: 	<input type="file" name="upload_thumbnail" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<br />
+			<input type="submit" value="{'loc_btn_addlang'|translate}" name="addmod" />
+		</td>
+	</tr>
+	</table>
+	</form>
+	
+	<hr />	
+	<a href="{'?ukey=languages'|set_query_html}">{'loc_languages'|translate}</a>

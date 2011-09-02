@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" nospace="1" ?>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+     		 <td class="pageTopPanel"><? include file="../../../common/html/classic/toolbar_button.htm" align="default" link=$printURL target="_blank" picture="images/buttons/print.gif"|stylesetitem:"classic":$styleSet  caption=$kernelStrings.app_print_btn formname="form"?></td>
+		</tr>
+	</table>	
+	<? include file="../../../common/html/classic/toppanel_fix.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+  <strong><? $kernelStrings.sys_space_title ?></strong> 
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="20">&nbsp;</td>
+      <td> 
+        <? $kernelStrings.sys_database_label|cat:":&nbsp;" ?>
+      </td>
+      <td> 
+        <? $db_size ?>
+      </td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+      <td> 
+        <? $kernelStrings.sys_files_label|cat:":&nbsp;" ?>
+      </td>
+      <td> 
+        <? $attachmentsSize ?>
+      </td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+      <td> 
+        <? $kernelStrings.sys_total_label|cat:":&nbsp;" ?>
+      </td>
+      <td> 
+        <? $totalSize|cat:" "|cat:$ratio ?>
+      </td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  <? if $totalLimit > 0 ?>
+    <tr> 
+      <td>&nbsp;</td>
+      <td> 
+        <? $kernelStrings.sys_totallimit_label|cat:":&nbsp;" ?>
+      </td>
+      <td> 
+        <? $totalLimit?>
+      </td>
+    </tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+  <? /if ?>
+  </table>
+  <strong><? $kernelStrings.sys_dataformat_label|cat:":&nbsp;" ?></strong><? $dateFormat ?>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><b><? $kernelStrings.sys_expinterval_text|cat:":&nbsp;" ?></b></td>
+      <td><? $db_timeout ?>&nbsp;</td>
+	  <td><? include file="../../../common/html/classic/button.htm" align="left" name="changeexpbtn" caption=$kernelStrings.sys_change_btn formname="form"?></td>
+    </tr>
+  </table>
+
+  <? /if ?>
+  <input name="edited" type="hidden" id="edited" value="1">
+  <input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+<? /strip ?>
+</body>
+</html>

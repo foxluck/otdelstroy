@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<TYPE>
+	<!-- Contact fields -->
+	<FIELDGROUP LONG_NAME="app_contactgroup_title" SHORT_NAME="app_contactgroup_title" ID="CONTACT">
+		<FIELD ID="C_FIRSTNAME" DBFIELD="C_FIRSTNAME" LONG_NAME="app_longname_firstname" SHORT_NAME="app_shortname_firstname" ALIGN="left" TYPE="TEXT" MAXLEN="50" REQUIRED_GROUP="CONTACT"/>
+
+		<FIELD ID="C_LASTNAME" DBFIELD="C_LASTNAME" LONG_NAME="app_longname_lastname" SHORT_NAME="app_shortname_lastname" ALIGN="left" TYPE="TEXT" MAXLEN="50" REQUIRED_GROUP="CONTACT"/>
+
+		<FIELD ID="C_MIDDLENAME" DBFIELD="C_MIDDLENAME" LONG_NAME="app_longname_midname" SHORT_NAME="app_shortname_midname" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_NICKNAME" DBFIELD="C_NICKNAME" LONG_NAME="app_longname_nickname" SHORT_NAME="app_shortname_nickname" ALIGN="left" TYPE="TEXT" MAXLEN="255" REQUIRED_GROUP="CONTACT"/>
+
+		<FIELD ID="C_EMAILADDRESS" DBFIELD="C_EMAILADDRESS" LONG_NAME="app_longname_email" SHORT_NAME="app_shortname_email" ALIGN="left" TYPE="EMAIL" MAXLEN="255" REQUIRED_GROUP="CONTACT"/>
+	</FIELDGROUP>
+
+	<!-- Phones fields -->
+	<FIELDGROUP LONG_NAME="app_phonesgroup_title" SHORT_NAME="app_phonesgroup_title" ID="PHONES">
+		<FIELD ID="C_HOMEPHONE" DBFIELD="C_HOMEPHONE" LONG_NAME="app_longname_homeph" SHORT_NAME="app_shortname_homeph" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_BUSINESSPHONE" DBFIELD="C_BUSINESSPHONE" LONG_NAME="app_longname_workph" SHORT_NAME="app_shortname_workph" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_MOBILEPHONE" DBFIELD="C_MOBILEPHONE" LONG_NAME="app_longname_mobileph" SHORT_NAME="app_shortname_mobileph" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_HOMEFAX" DBFIELD="C_HOMEFAX" LONG_NAME="app_longname_fax" SHORT_NAME="app_shortname_fax" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_PAGER" DBFIELD="C_PAGER" LONG_NAME="app_longname_pager" SHORT_NAME="app_shortname_pager" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+
+		<FIELD ID="C_BUSINESSFAX" DBFIELD="C_BUSINESSFAX" LONG_NAME="app_longname_workfax" SHORT_NAME="app_shortname_workfax" ALIGN="left" TYPE="TEXT" MAXLEN="50"/>
+	</FIELDGROUP>
+
+	<!-- Home address fields -->
+	<FIELDGROUP LONG_NAME="app_group_home" SHORT_NAME="app_group_home" ID="HOME">
+		<FIELD ID="C_HOMESTREET" DBFIELD="C_HOMESTREET" LONG_NAME="app_longname_homestreet" SHORT_NAME="app_shortname_homestreet" ALIGN="left" TYPE="TEXT" MAXLEN="" HIDETAG="1"/>
+
+		<FIELD ID="C_HOMECITY" DBFIELD="C_HOMECITY" LONG_NAME="app_longname_homecity" SHORT_NAME="app_shortname_homecity" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_HOMESTATE" DBFIELD="C_HOMESTATE" LONG_NAME="app_longname_homestate" SHORT_NAME="app_shortname_homestate" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_HOMEPOSTALCODE" DBFIELD="C_HOMEPOSTALCODE" LONG_NAME="app_longname_homepostcode" SHORT_NAME="app_shortname_homepostcode" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_HOMECOUNTRY" DBFIELD="C_HOMECOUNTRY" LONG_NAME="app_longname_homecountry" SHORT_NAME="app_shortname_homecountry" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_PERSONALWEBPAGE" DBFIELD="C_PERSONALWEBPAGE" LONG_NAME="app_longname_perspage" SHORT_NAME="app_shortname_perspage" ALIGN="left" TYPE="URL" MAXLEN="255" HIDETAG="1"/>
+
+		<FIELD ID="C_BIRTHDAY" DBFIELD="C_BIRTHDAY" LONG_NAME="app_longname_birthday" SHORT_NAME="app_shortname_birthday" ALIGN="left" TYPE="DATE"/>
+	</FIELDGROUP>
+
+	<!-- Business fields -->
+	<FIELDGROUP LONG_NAME="app_group_business" SHORT_NAME="app_group_business" ID="BUSINESS">
+		<FIELD ID="C_COMPANY" DBFIELD="C_COMPANY" LONG_NAME="app_longname_company" SHORT_NAME="app_shortname_company" ALIGN="left" TYPE="TEXT" MAXLEN="255" HIDETAG="1"/>
+
+		<FIELD ID="C_DEPARTMENT" DBFIELD="C_DEPARTMENT" LONG_NAME="app_longname_department" SHORT_NAME="app_shortname_department" ALIGN="left" TYPE="TEXT" MAXLEN="255" HIDETAG="1"/>
+
+		<FIELD ID="C_JOBTITLE" DBFIELD="C_JOBTITLE" LONG_NAME="app_longname_jobtitle" SHORT_NAME="app_shortname_jobtitle" ALIGN="left" TYPE="TEXT" MAXLEN="255" HIDETAG="1"/>
+
+		<FIELD ID="C_BUSINESSSTREET" DBFIELD="C_BUSINESSSTREET" LONG_NAME="app_longname_workstreet" SHORT_NAME="app_shortname_workstreet" ALIGN="left" TYPE="TEXT" MAXLEN="" HIDETAG="1"/>
+
+		<FIELD ID="C_BUSINESSCITY" DBFIELD="C_BUSINESSCITY" LONG_NAME="app_longname_workcity" SHORT_NAME="app_shortname_workcity" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_BUSINESSSTATE" DBFIELD="C_BUSINESSSTATE" LONG_NAME="app_longname_workstate" SHORT_NAME="app_shortname_workstate" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_BUSINESSPOSTALCODE" DBFIELD="C_BUSINESSPOSTALCODE" LONG_NAME="app_longname_workpostcode" SHORT_NAME="app_shortname_workpostcode" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_BUSINESSCOUNTRY" DBFIELD="C_BUSINESSCOUNTRY" LONG_NAME="app_longname_workcountry" SHORT_NAME="app_shortname_workcountry" ALIGN="left" TYPE="TEXT" MAXLEN="50" HIDETAG="1"/>
+
+		<FIELD ID="C_OFFICELOCATION" DBFIELD="C_OFFICELOCATION" LONG_NAME="app_longname_officelocation" SHORT_NAME="app_shortname_officelocation" ALIGN="left" TYPE="TEXT" MAXLEN=""/>
+
+		<FIELD ID="C_BUSINESSWEBPAGE" DBFIELD="C_BUSINESSWEBPAGE" LONG_NAME="app_longname_buspage" SHORT_NAME="app_shortname_buspage" ALIGN="left" TYPE="URL" MAXLEN="255" HIDETAG="1"/>
+	</FIELDGROUP>
+
+	<!-- Photo -->
+	<FIELDGROUP LONG_NAME="app_group_photo" SHORT_NAME="app_group_photo" ID="PHOTO">
+		<FIELD ID="C_X_PHOTO" MAXLEN="" TYPE="IMAGE" DECPLACES="0" MENU="" UNIQUE="0" MANDATORY="0" DBFIELD="C_X_PHOTO" LONG_NAME="app_longname_photo" SHORT_NAME="app_shortname_workcity" />
+	</FIELDGROUP>
+	
+	<!-- Notes -->
+	<FIELDGROUP LONG_NAME="app_group_notes" SHORT_NAME="app_group_notes" ID="NOTES">
+		<FIELD ID="C_NOTES" DBFIELD="C_NOTES" LONG_NAME="app_longname_notes" SHORT_NAME="app_shortname_notes" ALIGN="left" TYPE="MEMO" EDITOR_ROWS="7" HIDETAG="1"/>
+	</FIELDGROUP>
+</TYPE>

@@ -1,0 +1,206 @@
+html{
+ margin: 0px;
+ padding: 0px;
+}
+body{
+ margin: 0px;
+ padding: 0px;
+ background-color: white;
+}
+
+p, body, font, div, td
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-size:		100%;
+}
+h1
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-size:		17px;
+  color:			black;
+}
+h3
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-size:		15px;
+  color:			black;
+}
+h4
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-size:		14px;
+  color:			black;
+}
+a
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-weight:		bold;
+  color:			navy;
+}
+.no_underline
+{ text-decoration:		none;
+}
+.small
+{ font-size:		9px;
+}
+.faq
+{ font-size:		14px;
+}
+.faq_gray
+{ font-size:		14px;
+  color:			#666666;
+}
+.faq_olive
+{ font-size:		14px;
+  color:			#3A6135;
+}
+.big
+{ font-size:		16px;
+  text-decoration:	none;
+
+}
+.cat
+{ font-size:		14px;
+}
+.standard
+{ font-weight:		normal;
+}
+.standardsmall
+{ font-weight:		normal;
+  font-size:		9px;
+}
+.light
+{ color:			white;
+}
+.lightsmall
+{ color:			white;
+  font-size:		9px;
+}
+.lightmenu
+{ color:			white;
+  text-decoration:	none;
+}
+.lightstandard
+{ color:			white;
+  font-weight:		normal;
+}
+.middle
+{ color:			#F0B5B5;
+}
+.olive
+{ color:			#163106;
+  font-weight:		normal;
+  font-size:		9px;
+}
+.cart
+{
+  font-size:		11px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:			1px;
+  font-weight:		bold;
+  color:			#F0B5B5;
+  background-color:  transparent;
+}
+.cartsmall
+{
+  font-size:		9px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:			1px;
+  font-weight:		bold;
+  color:			#F0B5B5;
+  background-color:  transparent;
+}
+.totalPrice
+{ font-family:		georgia, verdana,arial,helvetica,sans-serif;
+  font-size:	    16px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:		1px;
+  font-weight:		bold;
+  color:		red;
+  background-color:  transparent;
+}
+
+.login
+{ font-size:	    12px;
+  font-weight:		normal;
+  BORDER-BOTTOM:	1px solid;	
+  BORDER-LEFT:		1px solid;
+  BORDER-RIGHT:		1px solid;	
+  BORDER-TOP:		1px solid;
+  margin:			1px;
+  font-weight:		none;
+  color:			black;
+  background-color: white;
+}
+
+.myaccount_tab_bottom
+{
+  BORDER-BOTTOM:	1px solid;
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		1px solid;
+  BORDER-TOP:		0px solid;
+  BORDER-COLOR:		#82A1DD;
+  text-align:		center;
+  margin:			1px;
+}
+
+.myaccount_tab_top
+{
+  BORDER-BOTTOM:	0px solid;
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		1px solid;
+  BORDER-TOP:		1px solid;
+  BORDER-COLOR:		#82A1DD;
+  text-align:		center;
+  margin:			1px;
+}
+
+.myAccount_bottomright {
+  BORDER-BOTTOM: 1px dotted #A9C0FF;
+  BORDER-RIGHT: 1px dotted #A9C0FF;
+}
+.myAccount_bottom {
+  BORDER-BOTTOM: 1px dotted #A9C0FF;
+}
+.myAccount_right {
+  BORDER-RIGHT: 1px dotted #A9C0FF;
+}
+
+.comparison_button
+{
+  BORDER-BOTTOM:	1px solid;	
+  BORDER-LEFT:		1px solid;
+  BORDER-RIGHT:		1px solid;	
+  BORDER-TOP:		1px solid;
+  background-color:  #D2E7FF;
+}
+
+.pageSeparator {
+	BORDER-BOTTOM: 2px dotted #A9C0FF
+}
+
+/*************************/
+a.admdivslst:hover,a.admdivslst:link,a.admdivslst:visited,a.admdivslst:active{text-decoration: none;color: blue;font-weight:normal;font-size:10pt;}
+a.admdivslst:hover{color: navy;}
+
+a.h_admdivslst:hover,a.h_admdivslst:link,a.h_admdivslst:visited,a.h_admdivslst:active{text-decoration: none;color: #888888;font-weight:normal;font-size:10pt;}
+a.h_admdivslst:hover{color: #555555;}
+
+/***********/
+#alex-test div#cpt-survey *{
+color: green!important;
+}
+
+.current_prd_thumbnail img{
+	border: #999 3px solid;
+}
+a.prd_thumbnail img{
+	border: #FFF 3px solid;
+}
+a.prd_thumbnail:hover img{
+	border: #999 3px solid;
+}

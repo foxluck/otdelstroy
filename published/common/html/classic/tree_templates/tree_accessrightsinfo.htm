@@ -1,0 +1,133 @@
+<? if !$noBackButton ?>
+	<? include file="../../../common/html/classic/button.htm" align="" name="cancelbtn" caption=$kernelStrings.app_back_btn formname="form"?>
+<? /if ?>
+
+<table cellpadding=0 cellspacing=0 border=0>
+	<? if !$noBackButton ?>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	<? /if ?>
+	<tr>
+		<td class=largeText_normal><? $folderName ?></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<? if !$noSelfRightsLabel ?>
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td>
+				<? $kernelStrings.app_treeselfaccessrights_label|cat:": " ?>
+				<? assign var=rightShort value=$tree_access_mode_names.$thisUserRights ?>
+				<? $kernelStrings.$rightShort ?> - 
+				<? assign var=longKeyindex value=$tree_access_mode_long_names.$thisUserRights ?>
+				<? $kernelStrings.$longKeyindex|cat:"." ?>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+<? /if ?>
+
+<? if !$folderIsShared ?>
+	<? $kernelStrings.app_treefoldernotshared_text|cat:"." ?>
+<? else ?>
+	<? $kernelStrings.app_treefoldershared_text|cat:":" ?>
+<? /if ?>
+
+<!-- Users table -->
+<? if $folderUsers ?>
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><b><? $kernelStrings.app_treeusers_title ?></b></td>
+		</tr>
+		<tr>
+			<td height=5></td>
+		</tr>
+	</table>
+
+	<table  border="0" cellspacing="0" cellpadding="0" class="complexList" width="500">
+		<tr class="head">
+			<th align="left"><? $kernelStrings.app_treename_title ?></th>
+			<th width=80 align="left"><? $kernelStrings.app_treeuserid_title ?></th>
+			<th width=80 align="center" class=noRightBorder><? $kernelStrings.app_treerights_title ?></th>
+		</tr>
+
+		<? foreach from=$folderUsers item=userData key=U_ID name=userLoop ?>
+			<? assign var=rights value=$userData.RIGHTS ?>
+			<tr <? if ($smarty.foreach.userLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if 	?>>
+				<td><? $userData.USER_NAME|htmlsafe:true:true ?></td>
+				<td><? $U_ID ?></td>
+				<td align=center><? assign var=rightShort value=$tree_access_mode_names.$rights ?><? $kernelStrings.$rightShort ?></td>
+			</tr>
+		<? /foreach ?>
+	</table>
+
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+<? /if ?>
+
+<!-- Groups table -->
+<? if $folderGroups ?>
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td><b><? $kernelStrings.app_treegroups_title ?></b></td>
+		</tr>
+		<tr>
+			<td height=5></td>
+		</tr>
+	</table>
+
+	<table  border="0" cellspacing="0" cellpadding="0" class="complexList" width="500">
+		<tr class="head">
+			<th align="left"><? $kernelStrings.app_treegroupname_label ?></th>
+			<th width=80 align="center" class=noRightBorder><? $kernelStrings.app_treerights_title ?></th>
+		</tr>
+
+		<? foreach from=$folderGroups item=groupData key=UG_ID name=groupLoop ?>
+			<? assign var=rights value=$groupData.RIGHTS ?>
+			<tr <? if ($smarty.foreach.groupLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if 	?>>
+				<td><? $groupData.GROUP_NAME|htmlsafe:true:true ?></td>
+				<td align=center><? assign var=rightShort value=$tree_access_mode_names.$rights ?><? $kernelStrings.$rightShort ?></td>
+			</tr>
+		<? /foreach ?>
+	</table>
+
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+<? /if ?>
+
+<table cellpadding=0 cellspacing=0 border=0>
+	<tr>
+		<td valign=top class=smallFont><b><? $kernelStrings.app_note_text|cat:":&nbsp;" ?></b></td>
+		<td class=smallFont><? $kernelStrings.app_treerightslegend_text|nl2br ?></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<? if !$changeRightsInstruction ?>
+		<tr>
+			<td colspan=2 class=smallFont><? $kernelStrings.app_treemodrightstip_text ?></td>
+		<tr>
+		<tr>
+			<td colspan=2>&nbsp;</td>
+		</tr>
+	<? /if ?>
+</table>
+
+<? if !$noBackButton ?>
+	<? include file="../../../common/html/classic/button.htm" align="" name="cancelbtn" caption=$kernelStrings.app_back_btn formname="form"?>
+<? /if ?>

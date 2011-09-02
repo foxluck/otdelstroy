@@ -1,0 +1,111 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+	function returnToReports()
+	{
+		location.href=location.href="accessdiagrams.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>";
+	}
+
+	function processForm( formObj )
+	{
+		if ( !getComboItemNum( 'included_users[]' ) ) {
+			alert( "<? $kernelStrings.rprdu_selectusers_note ?>" );
+			return;
+		}
+
+		fillSelectedLists( new Array('included_users[]') );
+		formObj =  document.forms[0];
+
+		formObj.target="_blank";
+		formObj.submit();
+	}
+
+	function cancelForm( formObj )
+	{
+		returnToReports();
+	}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+	<? if !$fatalError ?>
+
+	<table cellpadding=0 cellspacing=0 border=0>
+		<tr>
+			<td colspan=2><? $kernelStrings.rprdu_selectusers_note|cat:":" ?></tr>
+		</tr>
+		<tr>
+			<td colspan=2>&nbsp;</tr>
+		</tr>
+		<tr>
+			<td colspan=2 style="padding-left: 1px">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td class=readonly_control><? $kernelStrings.cml_included_label ?></td>
+						<td width=5></td>
+						<td>&nbsp;</td>
+						<td width=5></td>
+						<td class=readonly_control><? $kernelStrings.cml_notincluded_label ?></td>
+					</tr>
+					<tr height=3>
+						<td colspan=5></td>
+					</tr>
+					<tr>
+						<td>
+							<select name="included_users[]" class="control" multiple="true" size="8" style="width:200px" onDblClick="moveComboItems('included_users[]', 'notincluded_users[]', true )"">
+								<? html_options values=$included_users output=$included_users_names?>
+							</select>
+						</td>
+						<td><span style="width: 5px"/></td>
+						<td>
+							<p>
+							<a href="javascript: moveComboItems('notincluded_users[]', 'included_users[]' )"><img src="<? "images/buttons/moveLeft.gif"|stylesetitem:"classic":$styleSet ?>" width="30" height="22" border="0"></a><br>
+							<a href="javascript: moveComboItems('included_users[]', 'notincluded_users[]', true )"><img src="<? "images/buttons/moveRight.gif"|stylesetitem:"classic":$styleSet ?>" width="30" height="22" border="0"></a></p>
+						</td>
+						<td><span style="width: 5px"/></td>
+						<td>
+							<select name="notincluded_users[]" class="control" multiple="true"  size="8" style="width:200px" onDblClick="moveComboItems('notincluded_users[]', 'included_users[]' )"">
+								<? html_options values=$notincluded_users output=$notincluded_users_names?>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<tr>
+				<td colspan=2>&nbsp;</tr>
+			</tr>
+			<tr>
+				<td colspan=2 class=smallFont style="padding-left: 1px" width=450><b><? $kernelStrings.app_note_text|cat:": " ?></b><? $kernelStrings.rprdu_usernum_note ?></tr>
+			</tr>
+			<tr>
+				<td colspan=2>&nbsp;</tr>
+			</tr>
+			<tr>
+				<td colspan=2>
+					<? include file="../../../common/html/classic/button.htm" align="left" name="runreport" caption=$kernelStrings.rp_runreport_btn formname="form" space_right=10 link="javascript:processForm(this.form);"?>
+					<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" link="javascript:cancelForm(this.form);"?>
+				</tr>
+			</tr>
+		</tr>
+		</table>
+
+	<? /if ?>
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="contactlist" value="<? $contactlist ?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/category.js"></script>
+{* category view *}
+<div class="clearfix" id="cat_path">
+<table cellpadding="0" border="0" class="cat_path_in_productpage">
+	<tr>
+	{if $selected_category.picture}
+	<td><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category.picture|escape:'url'}" alt="{$selected_category.name|escape:'html'}" title="{$selected_category.name|escape:'html'}" >
+	</td>
+	{/if}
+	<td><a href="{"?"|set_query}">{"lnk_homepage"|translate}</a>&nbsp;{$BREADCRUMB_DELIMITER}
+		{section name=i loop=$product_category_path}
+		{if $product_category_path[i].categoryID != 1}
+		<a href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'|default:"(no name)"}</a>{if !$smarty.section.i.last}&nbsp;{$BREADCRUMB_DELIMITER}{/if}
+		{/if}
+		{/section}
+	</td>
+	</tr>
+	</table>
+	</div>
+	<div class="clearfix" id="cat_top_tree">
+{*
+@features "Search products by params"
+*}
+		{if $allow_products_search}
+		{include file="advanced_search_in_category.tpl.html"}
+		{/if}
+{*
+@features
+*}
+		
+		<div id="cat_info_left_block">
+		{* description *}
+		{$selected_category.description}
+		{if $subcategories_to_be_shown}
+		{* show subcategories *}
+		<p>{section name=i loop=$subcategories_to_be_shown}
+		{if $subcategories_to_be_shown[i][3]}
+			{assign var=_sub_category_url value="?categoryID=`$subcategories_to_be_shown[i][0]`&category_slug=`$subcategories_to_be_shown[i][3]`"|set_query_html}
+		{else}
+		{assign var=_sub_category_url value="?categoryID=`$subcategories_to_be_shown[i][0]`"|set_query_html}
+		{/if}
+		 <a href="{$_sub_category_url}">{$subcategories_to_be_shown[i][1]}</a>
+		 ({$subcategories_to_be_shown[i][2]})<br>
+		{/section}</p>
+		{/if}
+		</div>
+
+</div>
+
+<center>
+{if $products_to_show}
+
+{*
+ * @features "Products comparison"
+*}
+{include file="comparison_products_button.html"}
+{*
+ * @features
+*}
+
+
+{if $string_product_sort}<p id="cat_product_sort">{$string_product_sort}</p>{/if}
+
+
+{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+	
+<table cellspacing="15" border="0">
+  {foreach from=$products_to_show item=product_item name=product_brief}
+	{if $smarty.foreach.product_brief.index is div by $smarty.const.CONF_COLUMNS_PER_PAGE}<tr>{/if}
+<td style="background: url(images/bg_root.jpg); border: 1px solid #7988ae; padding: 15px;" width="600" valign="top" width="{math equation="100 / x" x=$smarty.const.CONF_COLUMNS_PER_PAGE format="%d%%"}">
+		{include file="product_brief.html" product_info=$product_item}
+	</td>
+	{if ($smarty.foreach.product_brief.index+1) is div by $smarty.const.CONF_COLUMNS_PER_PAGE}</tr>{elseif $smarty.foreach.product_brief.last}</tr>{/if}
+  {/foreach}
+</table> 
+ 
+{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+
+{*
+ * @features "Products comparison"
+*}
+{include file="comparison_products_button.html"}
+{*
+ * @features
+*}
+
+{else}
+<p>
+	{if $search_with_change_category_ability && !$advanced_search_in_category}
+		&nbsp;
+	{else}
+		{if $advanced_search_in_category}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"srch_no_matches_found"|translate} >
+		{else}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"str_empty_category"|translate} >
+		{/if}
+	{/if}
+</p>
+{/if}
+
+</center>

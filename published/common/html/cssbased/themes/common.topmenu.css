@@ -1,0 +1,1048 @@
+#Wrap
+{
+	background: #FFFFFF;
+}
+
+#ContentWrapper
+{
+	background: white;
+}
+
+#ContentScroller
+{
+	background: white;
+}
+
+#Content
+{
+	background: white;
+	color: #000;
+}
+
+#HeaderContainer
+{
+	/* background: #F2F2F2; 
+	border-bottom: 1px #505050 solid;*/
+}
+
+#Header
+{
+	background: transparent;
+	color: #000000;
+
+	font: 1.9em Trebuchet MS, Arial, sans-serif;
+/*	margin-left: 20px;*/
+}
+
+#UserName
+{
+	background: transparent;
+	color: #000000;
+
+	font: 1.5em Trebuchet MS, Arial, sans-serif;
+}
+
+#PageTitlePanel
+{
+	background: #9B9B9B;
+}
+
+#PageTitle
+{
+	color: white;
+	background: transparent;
+/*	background: transparent url(pagetitlebg.gif) no-repeat left center;
+	padding-left: 30px; */
+
+	font: 1.6em Trebuchet MS, Arial, sans-serif;
+}
+
+	
+#Footer
+{
+	font: 0.9em Trebuchet MS, Arial, Helvetica, sans-serif;
+	color: #000;
+	padding: 2px 5px 0 0;
+}
+
+#Footer a
+{
+	color: #0000FF;
+	text-decoration: none;
+}
+
+#Logout
+{
+	background: transparent;
+	font: 0.8em Trebuchet MS, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+#Logout a
+{
+	color: #000000;
+	text-decoration: none;
+}
+
+/*
+	Main Menu
+*/
+
+
+#MainMenu ul li a
+{
+	color: white;
+}
+
+#MainMenu .MenuBlock {background: white; }
+
+
+
+/*
+	Error block
+*/
+
+span.ErrorBlock, span.MessageBlock
+{
+	border: 0px solid #ccc;
+	background: #E0E0E0;
+
+}
+
+span.ErrorBlock span, span.MessageBlock span
+{
+	min-height: 40px;
+	padding: 10px;
+	color: #000;
+	font-weight: normal;
+}
+
+span.MessageBlock span {
+	color: green; font-weight: bold;
+}
+
+/*
+	Forms
+*/
+
+.FormControl
+{
+	border: 1px solid #CCCCCC;
+}
+
+td.FormSection
+{
+	font-weight: bold;
+}
+
+table.FormBlock tr.FormContent
+{
+	background: #FCFCFC;
+}
+
+tr.FormContent td
+{
+	border-top: solid 1px #EEE;
+	border-bottom: solid 1px #EEE;
+}
+
+table.FormLayout td
+{
+	border: none!important;
+}
+
+
+
+label.ErrorLabel
+{
+	font-weight: bold;
+	color: #f00;
+}
+
+
+legend
+{
+	background: #F7F7EF;
+}
+
+fieldset
+{
+	border-top: 1px solid #E4D2B0;
+}
+
+input.Button
+{
+	border: 1px solid #D7D7D7;
+	color: #000000;
+	background: #D7D7D7;
+}
+
+
+
+dl.MessageBox dt
+{
+	color: #000;
+	font: 2em Trebuchet MS, Arial, Helvetica, sans-serif;
+}
+
+dl.MessageBox dd
+{
+	display: block;
+	padding: 0 0 10px 0;
+	margin: 0;
+}
+
+/*
+	Toolbar
+*/
+
+#Toolbar
+{
+	/*background: #F5F5F5;
+	border-bottom: 1px solid #E1E1E1;
+	height: 25px;*/
+}
+
+div#Toolbar a.Button, div#Toolbar a.Button:hover
+{
+	color: #000000;
+	text-decoration: none;
+	font: 1.1em Trebuchet MS, Arial, sans-serif;
+}
+
+
+#Toolbar ul li
+{
+	color: #000000;
+}
+#Toolbar ul li.TBItem.print-view {float: left; margin:5px 0 0 50px; }
+#Toolbar ul li.TBItem.print-view a { color:#000;}
+#Toolbar ul li.TBItem.print-view a:hover { text-decoration:underline;}
+#Toolbar ul li.TBItem.print-view a img { vertical-align:middle; padding:0 5px 0 0; text-decoration:none;}
+
+div#Toolbar a.Button:hover
+{
+	color: #000000!important;
+}
+
+
+/*
+	Toolbar Controls
+*/
+
+#Toolbar input
+{
+	border: 1px solid #CCCCCC;
+	font-size: 1.3em;
+}
+
+#Toolbar label
+{
+	color: #000;
+	font-size: 1.1em;
+}
+
+/* Toolbar dropdown menus */
+
+#Toolbar ul li a:hover table ul li, #Toolbar ul li:hover table ul li
+{
+	background: #FFFFFF;
+}
+
+* html #Toolbar ul li a:hover table ul li, * html #Toolbar ul li:hover table ul li
+{
+	font-size: 0.9em;
+}
+
+#Toolbar ul li a table ul, #Toolbar ul li table ul
+{
+	border: 1px solid #7C7C7C;
+}
+
+
+#Toolbar ul li a:hover table ul, #Toolbar ul li:hover table ul
+{
+	background: #FFFFFF;
+
+}
+
+#Toolbar ul li a:hover, #Toolbar ul li:hover a, #Toolbar ul li:hover
+{
+	color: #000;
+}
+
+#Toolbar ul li a:hover table ul li a, #Toolbar ul li a:hover table ul li a:visited,
+#Toolbar ul li:hover table ul li a, #Toolbar ul li:hover table ul li a:visited
+{
+	background: #FFF;
+	color: #000;
+}
+
+#Toolbar ul li a:hover table ul li.disabled a, #Toolbar ul li a:hover table ul li.disabled a:visited,
+#Toolbar ul li:hover table ul li.disabled a, #Toolbar ul li:hover table ul li.disabled a:visited
+{
+	color: #999;
+}
+
+#Toolbar ul li a:hover table ul li a:hover, #Toolbar ul li:hover table ul li a:hover
+{
+	color: #000;
+	text-decoration: none;
+	background: #B3CEEA;
+}
+
+/* Header and footer items */
+#Toolbar ul li a:hover table ul li.ToolbarMenuHeader, #Toolbar ul li:hover table ul li.ToolbarMenuHeader
+{
+	display: none;
+}
+
+#Toolbar ul li a:hover table ul li.ToolbarMenuFooter, #Toolbar ul li:hover table ul li.ToolbarMenuFooter
+{
+	display: none;
+}
+
+#Toolbar ul li a:hover table ul li.ToolbarMenuHeader div, #Toolbar ul li:hover table ul li.ToolbarMenuHeader div
+{
+	display: none;
+}
+
+#Toolbar ul li a:hover table ul li.ToolbarMenuFooter div, #Toolbar ul li:hover table ul li.ToolbarMenuFooter div
+{
+	display: none;
+}
+
+/* Checked and unckecked menus */
+
+#Toolbar ul li a:hover table ul li.CheckedMenu a, #Toolbar ul li a:hover table ul li.CheckedMenu a:visited,
+#Toolbar ul li:hover table ul li.CheckedMenu a, #Toolbar ul li:hover table ul li.CheckedMenu a:visited
+{
+	background: #FFF url(checkedmenu.gif) no-repeat left center;
+	background-position: 6px 8px;
+}
+
+#Toolbar ul li a:hover table ul li.UncheckedMenu a, #Toolbar ul li a:hover table ul li.UncheckedMenu a:visited,
+#Toolbar ul li:hover table ul li.UncheckedMenu a, #Toolbar ul li:hover table ul li.UncheckedMenu a:visited
+{
+	background: #FFF url(uncheckedmenu.gif) no-repeat left center;
+	background-position: 6px 8px;
+}
+
+#Toolbar ul li a:hover table ul li.CheckedMenu a:hover, #Toolbar ul li:hover table ul li.CheckedMenu a:hover
+{
+	color: #000;
+	text-decoration: none;
+	background: #B3CEEA url(checkedmenu_hover.gif) no-repeat left center;
+	background-position: 6px 8px;
+}
+
+#Toolbar ul li a:hover table ul li.UncheckedMenu a:hover, #Toolbar ul li:hover table ul li.UncheckedMenu a:hover
+{
+	color: #000;
+	text-decoration: none;
+	background: #B3CEEA url(uncheckedmenu_hover.gif) no-repeat left center;
+	background-position: 6px 8px;
+}
+
+#SubToolbar {padding-top: 0px; padding-left: 10px; }
+#SubToolbar div {margin-top: 6px; font-size: 1.5em; padding: 2px}
+
+/*
+	Tables
+*/
+
+/* Simple List */
+
+table.SimpleList thead
+{
+	background: #F7F7F7;
+}
+
+table.SimpleList
+{
+	border: 1px solid #BFBFBF;
+}
+
+table.SimpleList.RightsItemTable thead
+{
+	background: #F7F7F7;
+}
+
+table.FormLayout table.SimpleList thead
+{
+	background: #F7F7F7;
+}
+
+table.SimpleList.RightsItemTable thead tr
+{
+	background: transparent;
+}
+
+table.SimpleList thead tr td
+{
+	background: #F7F7F7;
+	border-bottom: 1px solid #BFBFBF;
+}
+
+table.FormLayout table.SimpleList thead tr
+{
+	background: #F7F7F7;
+}
+
+* html table.SimpleList thead tr
+{
+	background: #F7F7F7;
+}
+
+table.SimpleList tbody
+{
+	background: #FFF;
+}
+
+table.SimpleList tr.Odd
+{
+	background: #F7F7F7;
+}
+
+table.SimpleList tbody tr:hover
+{
+	background: #F7F7F7;
+}
+
+table.SimpleList td a, table.SimpleList th a
+{
+	color: #000000;
+	text-decoration: none;
+}
+
+table.SimpleList thead th
+{
+	border-bottom: 1px solid #BFBFBF;
+}
+
+table.SimpleList tfoot th
+{
+	border-top: 1px solid #BFBFBF;
+}
+
+table.SimpleList tfoot
+{
+	background: #F7F7F7;
+}
+
+.SimpleList_BorderRight
+{
+	border-right: 1px solid #BFBFBF;
+}
+
+.SimpleList_BorderLeft
+{
+	border-left: 1px solid #BFBFBF;
+}
+
+.SimpleList_BorderTop
+{
+	border-top: 1px solid #BFBFBF;
+}
+
+.SimpleList_BorderBottom
+{
+	border-bottom: 1px solid #BFBFBF;
+}
+
+.SimpleList_Border
+{
+	border: 1px solid #BFBFBF;
+}
+
+.SimpleList_BgHeader
+{
+	background: #F7F7F7;
+}
+
+.SimpleList_BgBody
+{
+	background: #FFFFFF;
+}
+
+table.SimpleList a.GaudyLink
+{
+	color: #00F;
+}
+
+/* Note Block */
+
+table.NoteBlock
+{
+	border: 1px solid #BFBFBF;
+}
+
+table.NoteBlock thead
+{
+	background: #F7F7F7;
+}
+
+* html table.NoteBlock thead tr
+{
+	background: #F7F7F7;
+}
+
+table.NoteBlock tbody
+{
+	background: #FFF;
+}
+
+table.NoteBlock thead th
+{
+	border-bottom: 1px solid #BFBFBF;
+}
+
+/*
+	Report Table
+*/
+
+table.ReportTable tbody th
+{
+	background: #EFEFE8;
+}
+
+/* Grid */
+
+table.Grid
+{
+	border: hidden;
+}
+
+table.Grid thead
+{
+	background: #F7F7F7;
+}
+
+table.Grid thead tr
+{
+	background: #F7F7F7;
+}
+
+* html table.Grid thead tr
+{
+	background: #F7F7F7;
+}
+
+table.Grid tbody
+{
+	background: white;
+	border-bottom: solid 1px #9B9B9B!important;
+}
+
+table.Grid tbody tr:hover
+{
+	background: #F7F7F7;
+}
+
+table.Grid td
+{
+}
+
+table.Grid td a, table.Grid th a
+{
+	color: #000;
+	text-decoration: none;
+}
+
+table.Grid thead th
+{
+	border-bottom: 1px solid #DCDCDC;
+	border-right: solid 1px #DCDCDC!important;
+}
+
+table.Grid tr.Odd
+{
+	background: #F7F7F7;
+}
+
+/* List Header */
+
+
+
+table.ListHeader td
+{
+	font-size: 0.9em;
+	border-bottom: solid 1px #BFBFBF;
+}
+
+table.ListHeader td, table.ListHeader td a
+{
+	color: #000;
+}
+
+/* List */
+
+table.List tr:hover
+{
+	background: #F7F7F7;
+}
+
+table.ListItem td
+{
+	font-size: 0.9em;
+}
+
+table.ListItem thead th a
+{
+	color: #000;
+	text-decoration: none; 
+	font-size: 1.15em;
+}
+
+table.ListItem thead th a:hover
+{
+	text-decoration: none; 
+	padding-bottom: 2px;
+	white-space: nowrap;
+}
+
+/* Sortable columns */
+
+a.asc
+{
+	background: transparent url(ascImg.gif) no-repeat right center;
+	padding-right: 10px;
+}
+
+a.desc
+{
+	background: transparent url(descImg.gif) no-repeat right center;
+	padding-right: 10px;
+}
+
+a.waiting {
+	background: transparent url(loading.gif) no-repeat right center;
+	/*padding-right: 17px;*/
+}
+
+table.ListHeader a.waiting {
+	padding-right: 20px;
+}
+
+/* Other table classes */
+
+tr.NoRecords:hover td
+{
+	background: #F7F7F7;
+}
+
+td.Important, td.Important a
+{
+	color: red!important;
+}
+
+tr.ListSubheader
+{
+	background: #F7F7F7!important;
+}
+
+tr.ListSubheader td a
+{
+	color: #000!important;
+}
+
+/*
+	Splitter
+*/
+
+td.SplitterHandle
+{
+	background: #DDDDDF;
+}
+
+div.SplitterPanelHeader
+{
+	padding-left: 5px;
+	color: black;
+	background: #72B4F5;
+	border-bottom: 1px solid #DCDCDC;
+	height: 26px;
+}
+
+div.SplitterPanelHeader.Active
+{
+	color: black;
+	background: #DDDDFF;
+}
+
+div.SplitterHeaderPanelDiv
+{
+	padding: 2px 4px 0 4px;
+	background: #DDDDFF;
+	font: 1.0em Trebuchet MS, Arial, Helvetica, sans-serif;
+}
+
+div.SplitterPanelHeader.Active div.SplitterHeaderPanelDiv
+{
+}
+
+div.SplitterHeaderPanelDiv a
+{
+	color: #7C873C;
+}
+
+div.SplitterPanelHeader.Active div.SplitterHeaderPanelDiv a
+{
+	color: black;
+}
+
+div.SplitterPanelHeader.Active span.SplitterClosePanelBtn
+{
+	background: transparent url(closepanelbtn.gif) no-repeat left center;
+}
+
+span.SplitterClosePanelBtn
+{
+	background: transparent url(closepanelbtn.gif) no-repeat;
+	background-position: 0 3px;
+}
+
+a:hover span.SplitterClosePanelBtn
+{
+	text-decoration: none!important;
+}
+
+span.SplitterHeaderTreeBtn
+{
+	background: transparent url(splitterTree.gif) no-repeat;
+}
+
+div#SplitterHeader
+{
+	border-bottom: 1px solid #DCDCDC;
+	background: #F5F5F5;
+}
+
+
+
+/*
+	Links
+*/
+
+a
+{
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+/*
+	Treeview
+*/
+
+.treeCatalogRow
+{
+	font: 1.0em Trebuchet MS, Arial, Helvetica, sans-serif;
+}
+
+.treeCatalogRow a
+{
+	color: #000;
+	text-decoration: none;
+}
+
+.treeCatalogRow a:hover
+{
+	text-decoration: underline;
+}
+
+.treeCatalogRowCurrent
+{
+	color: #fff;
+	background: #00F;
+}
+
+.treeCatalogRowCurrent a
+{
+	color: #fff;
+}
+
+#TreePageListTable
+{
+	border-top: solid 1px #9B9B9B;
+}
+
+/*
+	Thumbnails
+*/
+
+div.Thumbnail div div
+{
+	background: transparent url(thumbnail.gif) no-repeat;
+}
+
+div.Thumbnail div div table tr:hover
+{
+	background: transparent;
+}
+
+/*
+	Note class
+*/
+
+dl.Note dt.ImportantNote
+{
+	color: #EE9414;
+}
+
+/*
+	Tabbed forms
+*/
+
+div.TabbedForm dl.TabbedFormList dt.TabPage
+{
+	background: #FFFFFF;
+	border-top: solid 3px #EEE;
+	border-bottom: solid 1px #EEE;
+}
+
+/* Vertical tabs */
+
+div.TabbedForm table.VerticaslTabForm  dl.TabbedFormList dd a span
+{
+	background: #F7F7F7;
+}
+
+div.TabbedForm table.VerticaslTabForm dl.TabbedFormList dd.Active a span
+{
+	background: #EEE;
+}
+
+div.TabbedForm table.VerticaslTabForm dl.TabbedFormList dt.TabPage
+{
+	background: #FFFFFF;
+	border-top: none;
+	border-left: solid 3px #EEE;
+}
+
+/*
+	Tab bar
+*/
+
+div.TabBar
+{
+	border-bottom: solid 3px #EEE;
+	height: 24px;
+}
+
+div.TabBarFooter
+{
+	border-top: 1px solid #F6DF93;
+}
+
+/* 
+	Icon Buttons
+*/
+
+a.IconButton span.Up
+{
+	background: transparent url(picbtnMoveUp.gif) no-repeat left top;
+}
+
+a.IconButton span.Down
+{
+	background: transparent url(picbtnMoveDown.gif) no-repeat left top;
+}
+
+a.IconButton span.Left
+{
+	background: transparent url(picbtnMoveLeft.gif) no-repeat left top;
+}
+
+a.IconButton span.Right
+{
+	background: transparent url(picbtnMoveRight.gif) no-repeat left top;
+}
+
+/*
+	Scrollable area
+*/
+
+div.ScrollableArea
+{
+	border: 1px solid #F7F7F7;
+	background: white;
+}
+
+div.TabbedForm div.ScrollableArea
+{
+	background: #FBFBFB;
+	border: 1px solid #F7F7F7;
+}
+
+/*
+	Font styles
+*/
+
+em a, em a
+{
+	color: #00F!important;
+}
+
+/*
+	Rights table
+*/
+
+table.RightsTable tr.RightsContainer
+{
+	border-bottom: 2px solid #BFBFBF;
+}
+
+* html table.RightsTable tr.RightsContainer th
+{
+	border-bottom: 2px solid #BFBFBF!important;
+}
+/*
+	Sections
+*/
+
+div.SectionHeader
+{
+	border-bottom: 2px solid #BFBFBF!important;
+}
+
+div.SimpleCollapsed
+{
+	background: url(menuclp.gif) no-repeat left center; padding-left: 12px;
+}
+div.SimpleExpanded
+{
+	background: url(menuexp.gif) no-repeat left center; padding-left: 12px;
+}
+
+
+
+
+
+
+
+
+
+a.Button
+{
+	background: #E0E0E0;
+	color: #000000;
+	text-decoration: none;
+	font: 0.9em Trebuchet MS, Arial, sans-serif;
+	
+	display: block; float: left;
+	padding: 4px 4px;
+	text-align: center;
+}
+* html a.Button
+{
+}
+
+
+
+a.Button:hover
+{
+	text-decoration: none
+}
+
+
+
+
+
+
+
+
+
+
+
+
+div.TabbedForm dl.TabbedFormList dd.Tab a, div.TabbedForm dl.TabbedFormList dd.Tab a:visited {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab.Active a, div.TabbedForm dl.TabbedFormList dd.Tab.Active a:visited
+{
+	color: white;
+	font-weight: bold;
+}
+
+
+
+
+
+
+span.CheckedImg
+{
+	width: 10px!important;
+	background: transparent url(checked.gif) no-repeat left center;
+	background-position: 0 5px;
+}
+
+span.UnCheckedImg
+{
+	width: 10px!important;
+	background: transparent url(unchecked.gif) no-repeat left center;
+	background-position: 0 5px;
+}
+
+#WALogoText {color: #999; font-size: 1.25em; font-family: "Trebuchet MS"}
+
+/*
+    Select Contacts div
+*/
+div.popUpContactsDiv {
+    background: #F3F1C6;
+    border: 1px solid #ECEBD1;
+    color: #875910;
+}
+
+
+
+
+
+#MyMessageBox {position: absolute; display: none; left: 200px; top: 200px; width: 200px; height: 30px; border: 1px solid #999; padding: 10px; background: #DDD}
+.MessageBlock {padding: 20px; padding-top: 10px; font-size: 16pt; color: #999; text-align; center; background: white}
+
+.PopupDialog {visibility: hidden; position: absolute; top: 0px; left: 0px}
+
+
+.FullScreenBlock {position: absolute; color: white; right: 10px; margin-top: 10px; font-size: 1em}
+.FullScreenBlock a {color: white}
+#FullScreenOn {color: white; background: URL("fullscreen.gif") no-repeat right; padding-right: 20px; margin-right: 10px}
+#FullScreenOff {color: white; background: URL("fullscreen_off.gif") no-repeat right; padding-right: 20px; margin-right: 10px; }
+#FullScreenOff a {text-decoration: underline}
+
+.HeaderLinks {font-weight: bold}
+
+.LeftBased {float: left;}
+
+#inline-list ul li, #inline-list ul li a {
+	display:inline;
+	color:#1B8DFC;
+	font-size:13px;
+	text-decoration:underline;
+}
+#inline-list ul li {
+	padding-right: 10px;
+}
+#inline-list ul {
+	display:inline;
+	margin:0pt;
+	padding:0pt;
+}
+
+.grsmall, .grsmall a {
+color:#666;
+font-size:12px;
+padding-top:5px;
+}
+
+.hidden   {visibility: hidden;}
+.visible  {visibility: visible !important}
+.selected {background: #FFFFD1;}

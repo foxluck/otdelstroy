@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<wbsparams>
+		<param name="module_description" special="yes">Clickatell SMS gateway</param>
+		<param name="module_classname" special="yes">smsgateway</param>
+
+		<param name="user" type="text" default="Username" label="Username" />
+		<param name="password" type="text" default="Password" label="Password" />
+		<param name="host" type="text" default="api.clickatell.com" label="URL" />
+		<param name="api_id" type="numeric" default="0" label="API ID" />
+
+		<param name="unicode" type="radio" default="0" label="Unicode">
+						<option value="0">Off (Every message can contain up to 160 characters)</option>
+						<option value="1">Delivers text as Unicode (max 70 characters per message); mbstrings PHP extension required</option>
+		</param>
+
+		<param name="queue" type="select" default="3" label="Delivery Queue">
+						<option value="1">Use first / primary user queue (highest priority)</option>
+						<option value="2">Use second user queue</option>
+						<option value="3">Use third user queue (lowest priority)</option>
+		</param>
+
+
+		<param name="fromtype" type="radio" default="1" label="Sender Address">
+						<option value="1">Company Name (as specified in Database properties)</option>
+						<option value="2">Custom</option>
+		</param>
+
+		<param name="from" type="text" default="" label="Custom Sender Address" />
+
+		<param name="cost" type="float" default="0.07" label="One Credit Price (USD)" />
+		<param name="reserve" type="float" default="0.11" label="Reserve Charge (USD)" />
+
+</wbsparams>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<? wbs_initLayout ?>
+</head>
+<body>
+	<? wbs_pageLayout ?>
+		<? wbs_errorBlock ?>
+
+		<? wbs_formCaption text=$kernelStrings.app_admingreeting_text ?>
+
+		<? wbs_note displayNoteMarker=false smallFont=false width="600px"  ?>
+			<? $adminStr ?>
+		<? /wbs_note ?>
+
+		<? wbs_note displayNoteMarker=false smallFont=false width="600px"  ?>
+			<font color="#FF0000"><? $kernelStrings.app_adminexpl_text ?></font>
+		<? /wbs_note ?>
+
+		<? wbs_note displayNoteMarker=false smallFont=false width="600px" ?>
+			<? $kernelStrings.app_adminnote_text ?>
+		<? /wbs_note ?>
+
+
+	<? /wbs_pageLayout ?>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<h1>{lbl_pgn_sms_notifications}</h1>
+
+<p>{lbl_smshosted_description}</p>
+
+{$MessageBlock}
+
+<form method="post" action="{''|set_query_html}">
+	<input type="hidden" name="action" value="save" />
+	<input type="hidden" name="gwID" value="0" />
+	
+	<table cellpadding="6" cellspacing="0">
+	<tr>
+		<td valign="top" style="width:450px;">{"sms_phone_list_descr"|translate}</td>
+		<td valign="top">{$PhoneNumbersHTML}</td>
+	</tr>
+	<tr>
+		<td valign="top">{"sms_sending_allowed_timeframe"|translate}</td>
+		<td valign="top">{$SendPeriodHTML}</td>
+	</tr>
+	</table>
+
+	<p>
+		<input type='submit' name="save" value='{"btn_save"|translate}' />
+	</p>
+</form>

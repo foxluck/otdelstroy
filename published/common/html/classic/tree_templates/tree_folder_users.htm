@@ -1,0 +1,61 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeSharedListTable">
+	<tr>
+		<td class="treeSharedListHeader" style="border-right: 1px solid #C5BEAF">&nbsp;</td>
+		<td class="treeSharedListHeader" style="border-right: 1px solid #C5BEAF" width=50><? $kernelStrings.app_treeread_label ?></td>
+		<td class="treeSharedListHeader" style="border-right: 1px solid #C5BEAF" width=50><? $kernelStrings.app_treewrite_label ?></td>
+		<td class="treeSharedListHeader" width=50><? $kernelStrings.app_treefolder_label ?></td>
+	</tr>
+	<!-- My permissions row -->
+	<tr bgcolor=<? #evenRowsColor# ?>>
+		<td class="treeSharedMidCell"><? " "|cat:$kernelStrings.app_treemyperms_label ?></nobr></td>
+		<td class="treeSharedMidCell"><? if $folderUsers.MYPERMISSIONS.RIGHTS >= 0 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+		<td class="treeSharedMidCell"><? if $folderUsers.MYPERMISSIONS.RIGHTS >= 1 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+		<td class="treeSharedListCell"><? if $folderUsers.MYPERMISSIONS.RIGHTS >= 2 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+	</tr>
+	<? if $showSharedPanel ?>
+		<? count var=$folderUsers.USERS assign=userNum ?>
+		<? count var=$folderUsers.GROUPS assign=groupsNum ?>
+		<tr>
+			<!-- Personal permissions header -->
+			<td class="treeSharedListCell <? if $userNum ?>treeSharedBottomBorder<? /if ?> treeSharedTopBorder" colspan=4 bgcolor=<? #oddRowsColor#?>><? $kernelStrings.app_treeuserindperms_text ?><? if !$userNum ?><? ": "|cat:$kernelStrings.app_treenoperms_text|htmlsafe:true:true ?><? /if ?></td>
+		</tr>
+		
+		<!-- Personal permissions records -->
+		<? foreach from=$folderUsers.USERS item=userData key=listUserID name=userLoop ?>
+			<tr>
+				<td class="treeSharedMidCell"><nobr><? $userData.USER_NAME ?></nobr></td>
+				<td class="treeSharedMidCell"><? if $userData.RIGHTS >= 0 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+				<td class="treeSharedMidCell"><? if $userData.RIGHTS >= 1 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+				<td class="treeSharedListCell"><? if $userData.RIGHTS >= 2 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+			</tr>
+		<? /foreach ?>
+		<? if $folderUsers.USERSLIMITED ?>
+			<!-- Limit information row -->
+			<td class="treeSharedMidCell"><? $userLimitStr ?><a href="<? $userShowAllLink ?>" class=treeSharedListCell><? $kernelStrings.app_listshowall_text|htmlsafe:true:true ?></a></td>
+			<td class="treeSharedMidCell">&nbsp;</td>
+			<td class="treeSharedMidCell">&nbsp;</td>
+			<td class="treeSharedListCell">&nbsp;</td>
+		<? /if ?>
+
+		<tr>
+			<!-- Group permissions header -->
+			<td class="treeSharedListCell treeSharedTopBorder <? if $groupsNum ?>treeSharedBottomBorder<? /if ?>" colspan=4 bgcolor=<? #oddRowsColor#?>><? $kernelStrings.app_treeusergroupperms_text ?><? if !$groupsNum ?><? ": "|cat:$kernelStrings.app_treenoperms_text|htmlsafe:true:true ?><? /if ?></td>
+		</tr>
+		<!-- GROUPS permissions records -->
+		<? foreach from=$folderUsers.GROUPS item=userData key=listUserID name=userLoop ?>
+			<tr>
+				<td class="treeSharedMidCell"><nobr><? $userData.GROUP_NAME ?></nobr></td>
+				<td class="treeSharedMidCell"><? if $userData.RIGHTS >= 0 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+				<td class="treeSharedMidCell"><? if $userData.RIGHTS >= 1 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+				<td class="treeSharedListCell"><? if $userData.RIGHTS >= 2 ?><span class=treeSharedEnabled><? $kernelStrings.app_treeyes_label ?></span><? else ?><span class=treeSharedDisabled><? $kernelStrings.app_treeno_label ?></span><? /if ?></td>
+			</tr>
+		<? /foreach ?>
+		<? if $folderUsers.GROUPSLIMITED ?>
+			<!-- Limit information row -->
+			<td class="treeSharedMidCell"><? $groupLimitStr ?><a href="<? $groupShowAllLink ?>" class=treeSharedListCell><? $kernelStrings.app_listshowall_text|htmlsafe:true:true ?></a></td>
+			<td class="treeSharedMidCell">&nbsp;</td>
+			<td class="treeSharedMidCell">&nbsp;</td>
+			<td class="treeSharedListCell">&nbsp;</td>
+		<? /if ?>
+	<? /if ?>
+</table>

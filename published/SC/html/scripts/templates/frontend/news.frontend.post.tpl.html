@@ -1,0 +1,18 @@
+<h1>{lbl_news}{if $rss_link}&nbsp;<a href="{$smarty.const.URL_ROOT}/{$rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0"  style="padding-left:10px;"></a>{/if}</h1>
+
+<div class="post_block">
+	<h2 class="post_title">{$news_posts[0].title}</h2>
+	
+	<div class="post_date">{$news_posts[0].add_date}</div>
+	
+	<div class="post_content">
+	{if $news_posts[0].picture_exists}
+		<img alt="{$news_posts[0].title|escape:html}" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$news_posts[0].picture|escape:'url'}" hspace="20" vspace="20" align="left" />
+	{/if}
+	{$news_posts[0].textToPublication}
+	</div>
+</div>
+<br />
+<div class="news_viewall">
+    <a href="{"?ukey=news"|set_query}">{"blog_view_all_posts"|translate}...</a>
+</div>

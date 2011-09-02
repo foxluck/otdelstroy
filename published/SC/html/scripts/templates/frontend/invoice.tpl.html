@@ -1,0 +1,205 @@
+{* printable invoice *}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<link rel=STYLESHEET href="style1.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}">
+<title>{"str_invoice_title"|translate}{if $error eq ""} :: {"ordr_order"|translate} #{$order.orderID}{/if}</title>
+</head>
+
+<body onLoad="window.print();" style="background-color:#FFFFFF;background-image:none;">
+
+{if $error ne ""}
+
+	<p>{$error}
+
+{else}
+
+<center>
+			<p><font class=big><b>{$smarty.const.CONF_SHOP_NAME}</b></font>
+			<br>{$smarty.const.CONF_SHOP_URL}
+
+			<h1>{"str_invoice_title"|translate}</h1>
+
+			<table border="0" cellspacing="1" cellpadding="7">
+
+				<tr>
+					<td>
+						<strong>
+							<font class=faq>
+								<u>{"ordr_order"|translate}</u>
+							</font>
+						</strong>
+					</td>
+					<td>
+						<strong>
+							<font class=faq>
+								<u>{lbl_payment}</u>
+							</font>
+						</strong>
+					</td>
+					<td>
+						<strong>
+							<font class=faq>
+								<u>{lbl_shipping}</u>
+							</font>
+						</strong>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<td>
+						<table border=0>
+							<tr>
+								<td>{"ordr_order_time"|translate}: <b>{$order.order_time}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_id"|translate}: <b>{$order.orderID}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_customer"|translate}: <b>{$order.customer_firstname} {$order.customer_lastname}</b></td>
+							</tr>
+							<tr>
+								<td>{"usr_custinfo_email"|translate} <b>{$order.customer_email}</b></td>
+							</tr>
+
+
+						</table>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>{lbl_payment}: <b>{$order.payment_type}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_payee"|translate}: <b>{$order.billing_firstname} {$order.billing_lastname}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_billing_address"|translate}:<br>
+									<b>{if $order.billing_address ne ""}{$order.billing_address|replace:"<":"&lt;"}<br>{/if}
+							{if $order.billing_city ne ""}{$order.billing_city|replace:"<":"&lt;"}{/if}
+							{if $order.billing_state ne ""}{$order.billing_state|replace:"<":"&lt;"}{/if}
+							{if $order.billing_zip ne ""}{$order.billing_zip|replace:"<":"&lt;"}<br>{/if}{if $order.billing_country ne ""}{$order.billing_country|replace:"<":"&lt;"}{/if}</b>
+								</td>
+							</tr>
+
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td>{lbl_shipping}: <b>{$order.shipping_type}</b> {if $order.shippingServiceInfo}({$order.shippingServiceInfo}){/if}</td>
+					</tr>
+					<tr>
+						<td>{"ordr_recipient"|translate}: <b>{$order.shipping_firstname} {$order.shipping_lastname}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_shipping_address"|translate}:<br>
+							<b>{if $order.shipping_address ne ""}{$order.shipping_address|replace:"<":"&lt;"}<br>{/if}
+							{if $order.shipping_city ne ""}{$order.shipping_city|replace:"<":"&lt;"}{/if}
+							{if $order.shipping_state ne ""}{$order.shipping_state|replace:"<":"&lt;"}{/if}
+							{if $order.shipping_zip ne ""}{$order.shipping_zip|replace:"<":"&lt;"}<br>{/if}{if $order.shipping_country ne ""}{$order.shipping_country|replace:"<":"&lt;"}{/if}</b>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr valign="top"> 
+          	<td colspan="3">
+				<strong>
+					<font class=faq><u>{"ordr_ordered_products"|translate}</u></font>
+				</strong>
+			</td>
+       </tr>
+
+		<tr>
+			<td colspan="3">
+
+				<table width="100%" border="0" cellpadding="5" cellspacing="1" 
+					bgcolor=#{$smarty.const.CONF_DARK_COLOR}>
+
+					<tr bgcolor=#{$smarty.const.CONF_MIDDLE_COLOR}> 
+                		<td><strong>{"prdset_product_name"|translate}</strong></td>
+                		<td align="center"><strong>{"cart_product_quantity"|translate}</strong></td>
+                		<td align="center"><strong>{"ordr_tax"|translate}</strong></td>
+                		<td align="right"><strong>{"ordr_itemprice_excluding_tax"|translate}</strong></td>
+              		</tr>
+
+					{section name=i loop=$orderContent}
+					<tr bgcolor=#{$smarty.const.CONF_LIGHT_COLOR}> 
+                		<td>
+							{$orderContent[i].name}
+
+							{if $orderContent[i].eproduct_filename}
+								{if $completed_order_status}
+									{if $completed_order_status == $order.statusID}
+
+										<a href='get_file.php?getFileParam={$orderContent[i].getFileParam}'>
+											{"btn_download"|translate} {$orderContent[i].file_size} b
+										</a>
+	
+										{if $orderContent[i].day_count_remainder > 0}
+											- {"prdset_download_is_available_for"|translate} 
+												{$orderContent[i].day_count_remainder}
+											{"msg_days"|translate}
+											{if $orderContent[i].load_counter_remainder != 0}
+												,
+												{"prd_download_downloads_left"|translate} 
+													{$orderContent[i].load_counter_remainder}
+												{"prd_download_str_downloads"|translate}
+											{/if}
+										{/if}
+									{/if}
+								{/if}
+							{/if}
+
+						</td>
+                		<td align="center">{$orderContent[i].Quantity}</td>
+                		<td align="center">{$orderContent[i].tax} %</td>
+                		<td align="right">{$orderContent[i].PriceToShow}</td>
+              		</tr>
+					{/section}
+				</table>
+
+			</td>
+		</tr>
+
+		<tr>
+
+			<td colspan="3">
+
+			<table width="100%" border="0">
+
+				<tr>
+					<td width="80%" align="right">{"ordr_subtotal"|translate}:</td>
+					<td width="20%" align="right">{$order.clear_total_priceToShow}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right">{"usr_custinfo_group_discount"|translate}:</td>
+					<td width="20%" align="right">{$order.order_discount}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right">{"ordr_shipping_handling_cost"|translate}:</td>
+					<td width="20%" align="right">{$order.shipping_costToShow}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right"><b>{"str_total"|translate}</b></td>
+					<td width="20%" align="right"><b>{$order.order_amountToShow}</b></td>
+				</tr>
+			</table>
+
+			</td>
+			
+		</tr>
+
+	</table>
+
+</center>
+
+{/if}
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<? if $showPromt ?>
+	<option class=treeFolderSelector_noaccess value=-3><? $kernelStrings.app_treeselfld_item|htmlsafe:true:true ?></option>
+<? /if ?>
+
+<? foreach from=$folders key=curListFolderID item=folder ?>
+	<? if $folder->TREE_ACCESS_RIGHTS != -1 || $showAnyRights ?>
+		<? if $curListFolderID != RECYCLED ?>
+			<? assign var=listFoldeName value=$folder->NAME|htmlsafe:true:true|html_substr:50:'...' ?>
+		<? else ?>
+			<? assign var=listFoldeName value=$kernelStrings.app_treerecycled_name ?>	
+		<? /if ?>
+		<? if ($folder->TREE_ACCESS_RIGHTS == "0" || $folder->TREE_ACCESS_RIGHTS == "-1" || $folder->TREE_ACCESS_RIGHTS == "-2") && $showAnyRights && $denyNoAccess ?>
+			<? assign var=listFolderID value=$folder->TREE_ACCESS_RIGHTS ?>
+		<? else ?>
+			<? assign var=listFolderID value=$folder->curID ?>
+		<? /if ?>
+		<option <? if $folder->TREE_ACCESS_RIGHTS == 0 || $folder->TREE_ACCESS_RIGHTS == -1 || $folder->TREE_ACCESS_RIGHTS == -2 ?>class=treeFolderSelector_noaccess<? /if ?> value="<? $listFolderID ?>" <? switchedOutput val=$selectedID true_val=$curListFolderID str1="selected" ?>><? $folder->OFFSET_STR|cat:$listFoldeName ?></option>
+	<? /if ?>
+<? /foreach ?>

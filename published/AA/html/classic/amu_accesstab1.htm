@@ -1,0 +1,332 @@
+<? assign var=checkedCbImg value="images/menucb_checkedflag.gif"|stylesetitem:"classic":$styleSet ?>
+<? assign var=unCheckedCbImg value="images/menucb_unchecked.gif"|stylesetitem:"classic":$styleSet ?>
+<input type=hidden name=prevAccessTypeValue value="<? $contactData.U_ACCESSTYPE ?>">
+<input type=hidden name="contactData[U_ACCESSTYPE]" value="<? $contactData.U_ACCESSTYPE ?>">
+
+<table border=0 cellpadding=0 cellspacing=0 id="ACCESS_TABLE">
+	<tr>
+		<td>
+			<b><? $kernelStrings.app_note_text|cat:": " ?></b><? $accessTabNote ?>
+		</td>
+	<tr>
+		<td class=smallFont>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+			<? if !$noAccessGranted ?>
+				<!-- Access scrollable area -->
+
+			<? assign var=tabHeight value=335 ?>
+			<? if !$userIsDeleted && $foldersFound ?>
+				<? assign var=tabHeight value=425?>
+			<? /if  ?>
+
+				<div style="overflow: auto; width: 680px; height: <? $tabHeight ?>px;" class=framearea>
+
+					<table cellpadding=0 cellspacing=0 border=0 width="100%" class="complexList noborders">
+						<!-- Diagram header -->
+						<tr>
+							<td>&nbsp;</td>
+							<td width=150 align=center colspan=3 class=leftBorder><? $kernelStrings.usa_indqualifier_label ?></td>
+							<td class=leftBorder width=70 align=center><? $kernelStrings.usa_groupqualifier_label ?></td>
+						</tr>
+
+						<!-- Personal settings section -->
+						<tr class=listSubheader>
+							<td><strong><? $kernelStrings.amu_perssettings_title ?></strong></td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height=5></td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder height=5>&nbsp;</td>
+						</tr>
+
+						<!-- Change password -->
+						<tr>
+							<td class=accessItem><? $kernelStrings.amu_perspassword_label ?></td>
+							<td align=center valign=top colspan=3 class=leftBorder><input type=checkbox value=1 name="contactData[changePasssRight]" <? switchedOutput val=$contactData.changePasssRight true_val=1 str1="checked" ?>></td>
+							<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupData.changePasssRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+						</tr>
+
+						<!-- Change look and feel -->
+						<tr>
+							<td class=accessItem><? $kernelStrings.amu_perslookandfeel_label ?></td>
+							<td align=center valign=top colspan=3 class=leftBorder><input type=checkbox value=1 name="contactData[changeTemplateRight]" <? switchedOutput val=$contactData.changeTemplateRight true_val=1 str1="checked" ?>></td>
+							<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupData.changeTemplateRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+						</tr>
+
+						<!-- Name and contacts -->
+						<tr>
+							<td class=accessItem><? $kernelStrings.amu_persnameandcont_label ?></td>
+							<td align=center valign=top colspan=3 class=leftBorder><input type=checkbox value=1 name="contactData[changeNameRight]" <? switchedOutput val=$contactData.changeNameRight true_val=1 str1="checked" ?>></td>
+							<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupData.changeNameRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+						</tr>
+
+						<!-- Enable/Disable email notifications --->
+						<tr>
+							<td class=accessItem><? $kernelStrings.amu_persswitchemail_label ?></td>
+							<td align=center valign=top colspan=3 class=leftBorder><input type=checkbox value=1 name="contactData[switchEmailRight]" <? switchedOutput val=$contactData.switchEmailRight true_val=1 str1="checked" ?>></td>
+							<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupData.switchEmailRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+						</tr>
+
+						<!-- Direct access section -->
+						<tr>
+							<td>&nbsp;</td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder>&nbsp;</td>
+						</tr>
+						<tr class=listSubheader>
+							<td><strong><? $kernelStrings.amu_directaccess_title ?></strong></td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height=5></td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder height=5>&nbsp;</td>
+						</tr>
+
+						<tr>
+							<td class=accessItem valign=top>
+								<p><? $kernelStrings.amu_diraccess_text ?></p>
+								<p class=smallFont><? $kernelStrings.amu_directaccess_text ?></p>
+							</td>
+							<td align=center valign=top colspan=3 class=leftBorder><input type=checkbox name="contactData[ALLOW_DRACCESS]" value=1 <? switchedOutput val=$contactData.ALLOW_DRACCESS true_val=1 str1="checked" ?>></td>
+							<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupData.ALLOW_DRACCESS true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+						</tr>
+
+						<tr>
+							<td>&nbsp;</td>
+							<td colspan=3 class=leftBorder>&nbsp;</td>
+							<td class=leftBorder>&nbsp;</td>
+						</tr>
+
+					<!-- Applications settings -->
+						<? foreach from=$appObjectList key=app_id item=app_data name=apploop ?>
+
+							<!-- Application name -->
+							<tr class=listSubheader>
+								<td><strong><? appName APP_ID=$app_id language=$language ?></strong></td>
+								<td colspan=3 class=leftBorder>&nbsp;</td>
+								<td class=leftBorder>&nbsp;</td>
+							</tr>
+							<tr>
+								<td height=5></td>
+								<td colspan=3 class=leftBorder>&nbsp;</td>
+								<td class=leftBorder height=5>&nbsp;</td>
+							</tr>
+
+							<!-- Application screens -->
+							<? foreach from=$app_data.PAGES key=scr_id item=var name=pageloop ?>
+								<tr>
+									<? assign var=groupValue value=$groupAppObjectList.$app_id.PAGES.$scr_id ?>
+
+									<td class="smallFont accessItem"><? scrName APP_ID=$app_id SCR_ID=$scr_id language=$language ?></td>
+									<td align=center valign=top colspan=3 class=leftBorder><input name="access_cb[<? $app_id  ?>][<? $scr_id ?>]" value="1" type="checkbox" <? switchedOutput val=$var true_val=1 str1="checked" ?>></td>
+									<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupValue true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+								</tr>
+							<? /foreach ?>
+
+							<!-- Auxiliary rights -->
+							<? foreach from=$app_data.AUXRIGHTS item=var ?>
+								<? assign var=rightId value=$var.ID ?>
+								<? assign var=groupValue value=$groupAppObjectList.$app_id.AUXRIGHTS.$rightId.ENABLED ?>
+
+								<tr>
+									<td class="smallFont accessItem"><? $var.NAME ?></td>
+									<td align=center valign=top colspan=3 class=leftBorder><input name="auxrights_cb[<? $app_id  ?>][<? $var.ID?>]" value="1" type="checkbox" <? switchedOutput val=$auxrights_cb.$app_id.$rightId true_val=1 str1="checked" ?>></td>
+									<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupValue true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+								</tr>
+							<? /foreach ?>
+
+							<!-- Application notifications -->
+							<? foreach from=$app_data.MAIL key=mn_id item=var ?>
+								<tr>
+									<? assign var=groupValue value=$groupAppObjectList.$app_id.MAIL.$mn_id ?>
+
+									<td class="smallFont accessItem"><? mnName APP_ID=$app_id mnID=$mn_id language=$language ?></td>
+									<td align=center valign=top colspan=3 class=leftBorder><input name="mail_cb[<? $app_id  ?>][<? $mn_id ?>]" value="1" type="checkbox" <? switchedOutput val=$var true_val=1 str1="checked" ?>></td>
+									<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupValue true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+								</tr>
+							<? /foreach ?>
+
+							<!-- Tree/document applications settings -->
+
+							<? if $app_data.FOLDERS != "NOFOLDERS" ?>
+								<? assign var=folders value=$app_data.FOLDERS ?>
+								<? count assign=settingsNum var=$folders ?>
+
+								<!-- Additional tree/document parameters -->
+
+								<tr>
+									<? assign var=groupValue value=$groupAppObjectList.$app_id.ROOTRIGHTS ?>
+								<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS == null || ( $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null && $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ROOT.$lng != "" ) ?>
+									<td class="smallFont accessItem">
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<?$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ROOT.$lng?>
+									<? else ?>
+										<?$kernelStrings.app_treerootfolders_label?>
+									<? /if ?>
+									</td>
+									<td align=center valign=top colspan=3 class=leftBorder><input name="canCreateRoot[<? $app_id ?>]" type="checkbox" value=1 <? switchedOutput val=$canCreateRoot.$app_id true_val=1 str1="checked"?>></td>
+									<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupValue true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+								<? else ?>
+									<input name="canCreateRoot[<? $app_id ?>]" type="hidden" value=1>
+								<? /if ?>
+								</tr>
+
+								<tr>
+									<? assign var=groupValue value=$groupAppObjectList.$app_id.SHOWSHARED ?>
+
+								<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS == null || ( $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null && $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ACCESS.$lng != "" ) ?>
+
+									<td class="smallFont accessItem">
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<?$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ACCESS.$lng?>
+									<? else ?>
+										<?$kernelStrings.app_treeflduserscb_label?>
+									<? /if ?>
+									</td>
+									<td align=center valign=top colspan=3 class=leftBorder><input name="showSharedPanel[<? $app_id ?>]" type="checkbox" value=1 <? switchedOutput val=$showSharedPanel.$app_id true_val=1 str1="checked"?>></td>
+									<td class=leftBorder align=center valign=top><img class=accessCbImg src="<? switchedOutput val=$groupValue true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0></td>
+								<? else ?>
+									<input name="showSharedPanel[<? $app_id ?>]" type="hidden" value=0>
+								<? /if ?>
+								</tr>
+
+								<tr>
+									<td>&nbsp;</td>
+									<td colspan=3 class=leftBorder>&nbsp;</td>
+									<td class=leftBorder>&nbsp;</td>
+								</tr>
+
+								<!-- Application folders header -->
+								<tr class="listSubheader">
+									<td class="appFoldersHeader bottomBorder">
+									<b>
+									<? appName APP_ID=$app_id language=$language ?>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<? " "|cat:$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ITEM.$lng?>
+									<? else ?>
+										<? " "|cat:$kernelStrings.usa_folders_title ?>
+									<? /if ?>
+									</b>
+									</td>
+									<td colspan=3 class="bottomBorder leftBorder">&nbsp;</td>
+									<td class="leftBorder bottomBorder">&nbsp;
+										<!-- Init application rights container -->
+
+										<script language=JavaScript>
+											var <? "appRightsControl"|cat:$app_id ?> = new appRightsContrainer();
+										</script>
+									</td>
+								</tr>
+
+								<tr class=listSubheader>
+									<td class=accessItem>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<? $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ITEMNAME.$lng?>
+									<? else ?>
+										<? $kernelStrings.app_treefurfldname_title ?>
+									<? /if ?>
+									</td>
+									<td width=50 align=center class=leftBorder><nobr><input onClick="<? "appRightsControl"|cat:$app_id|cat:".setAppRights(this, 0)" ?>" name="userRightsCBAll[0]" type="checkbox" value="1"><br><span class=smallFont>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<? $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.READ.$lng?>
+									<? else ?>
+										<? $kernelStrings.app_treeread_label ?>
+									<? /if ?>
+									</span></nobr></td>
+									<td width=50 align=center><nobr><input onClick="<? "appRightsControl"|cat:$app_id|cat:".setAppRights(this, 1)" ?>" name="userRightsCBAll[1]" type="checkbox" value="1"><br><span class=smallFont>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<? $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.WRITE.$lng?>
+									<? else ?>
+										<? $kernelStrings.app_treewrite_label ?>
+									<? /if ?>
+									</span></nobr></td>
+									<td width=50 align=center><nobr><input onClick="<? "appRightsControl"|cat:$app_id|cat:".setAppRights(this, 2)" ?>" name="userRightsCBAll[2]" type="checkbox" value="1"><br><span class=smallFont>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<? $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.FOLDER.$lng?>
+									<? else ?>
+										<? $kernelStrings.app_treefolder_label ?>
+									<? /if ?>
+									</span></nobr></td>
+									<td class=leftBorder>&nbsp;</td>
+								</tr>
+
+								<tr>
+									<td height=5></td>
+									<td colspan=3 class=leftBorder>&nbsp;</td>
+									<td class=leftBorder height=5>&nbsp;</td>
+								</tr>
+
+								<!-- Folder list -->
+								<? foreach from=$folders key=DF_ID item=folderData name=folderLoop ?>
+										<? math equation="15 + offset*10" offset=$folderData->OFFSET assign="padding" ?>
+
+										<!-- Add application checkbox IDs to the application rights container -->
+
+										<script language=JavaScript>
+											<? "appRightsControl"|cat:$app_id|cat:".addCheckbox(0, '"|cat:"userRightsCB["|cat:$app_id|cat:"]["|cat:$DF_ID|cat:"][0]')" ?>
+											<? "appRightsControl"|cat:$app_id|cat:".addCheckbox(1, '"|cat:"userRightsCB["|cat:$app_id|cat:"]["|cat:$DF_ID|cat:"][1]')" ?>
+											<? "appRightsControl"|cat:$app_id|cat:".addCheckbox(2, '"|cat:"userRightsCB["|cat:$app_id|cat:"]["|cat:$DF_ID|cat:"][2]')" ?>
+										</script>
+
+										<tr <? if ($smarty.foreach.folderLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=#FFFFFF<? /if ?>>
+											<td class="catalogRowSmall smallFont" style="padding-left: <? $padding|cat:"px" ?>"><img border="0" src="../../../common/html/classic/images/folder_open.gif" width="14" height="12">&nbsp;<? $folderData->NAME|trunc_str:30|htmlsafe:true:true ?></td>
+											<td align=center class=leftBorder><input onClick="updateMultiAppFolderCb( this, '<? $DF_ID ?>', '<? $app_id ?>', 0 )" ID="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][0]" name="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][0]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$app_id.$DF_ID.0 true_val=1 str1="checked" ?>></td>
+											<td align=center><input onClick="updateMultiAppFolderCb( this, '<? $DF_ID ?>', '<? $app_id ?>', 1 )" ID="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][1]" name="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][1]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$app_id.$DF_ID.1 true_val=1 str1="checked" ?>></td>
+											<td align=center><input onClick="updateMultiAppFolderCb( this, '<? $DF_ID ?>', '<? $app_id ?>', 2 )" ID="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][2]" name="userRightsCB[<? $app_id ?>][<? $DF_ID ?>][2]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$app_id.$DF_ID.2 true_val=1 str1="checked" ?>></td>
+											<td class="smallFont leftBorder" align=center>
+												<? assign var=emptyStr value='' ?>
+												<? assign var=groupValue value=$groupAppObjectList.$app_id.FOLDERRIGHTS.$emptyStr.RIGHTS.$DF_ID ?>
+												<? if strlen($groupValue) && $groupValue >= 0 ?>
+													<? assign var=rightShort value=$tree_access_mode_names.$groupValue ?>
+													<? $kernelStrings.$rightShort|sureecho ?>
+												<? else ?>
+													-
+												<? /if ?>
+											</td>
+										</tr>
+
+								<? foreachelse ?>
+									<tr>
+										<td colspan="5" class="noentries" align="center"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></td>
+									</tr>
+								<? /foreach ?>
+
+								<? /if ?>
+
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan=3 class=leftBorder>&nbsp;</td>
+								<td class=leftBorder>&nbsp;</td>
+							</tr>
+
+						<? /foreach ?>
+
+					</table>
+
+				</div>
+			<? else ?>
+				<table cellpadding=0 cellspacing=0 border=0>
+					<tr>
+						<td class=framearea_disabled style="width: 580px; height: 245px" align=center valign=middle>
+							<? $kernelStrings.amu_noaccess_label|nl2br ?>
+						</td>
+					</tr>
+				</table>
+			<? /if ?>
+		</td>
+	</tr>
+</table>
+
+<table border=0 cellpadding=0 cellspacing=0 id="RELOAD_TABLE" style="display:none">
+	<tr>
+		<td width=580 height=395 align=center valign=middle>
+			<? $kernelStrings.amc_accessupdate_message|nl2br ?>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,18 @@
+{* currency type selection form *}
+<span class="light">{"lnk_change_currency"|translate}</span>
+<form action="{''|set_query_html}" method="post" name="ChangeCurrencyForm">
+	{literal}
+	<script language='JavaScript' type="text/javascript">
+		function _changeCurrency(){
+			document.ChangeCurrencyForm.submit();
+		}
+	</script>
+	{/literal}
+	<select name='current_currency' onchange='_changeCurrency()'>
+		{section name=i loop=$currencies}
+		<option value='{$currencies[i].CID}'	{if $currencies[i].CID eq $current_currency} selected="selected"{/if}>
+			{$currencies[i].Name}
+		</option>
+		{/section}
+	</select>
+</form>

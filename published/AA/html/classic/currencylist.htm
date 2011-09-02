@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" nospace=1 ?>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="pageTopPanel"><? include file="../../../common/html/classic/toolbar_button.htm" align="default" name="addbtn" caption=$kernelStrings.cl_addcur_btn formname="form"?></td>
+    </tr>
+  </table>
+  <? include file="../../../common/html/classic/toppanel_fix.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+  <table border="0" cellspacing="0" cellpadding="0" class="list">
+    <th align="left"><? $kernelStrings.cl_id_title ?></th>
+    <th align="left"><? $kernelStrings.cl_name_title ?></th>
+	<? foreach from=$currencyList item=cur_data key=cur_id name=curLoop ?>
+    <tr<? if ($smarty.foreach.curLoop.iteration % 2) == 0 ?> bgcolor="<? #oddRowsColor#?>"<? /if ?>>
+		<td width="100" valign="middle" class="default"><a href="<? $cur_data.EDIT_URL ?>"><? $cur_id ?></a></td>
+		<td width="300" valign="middle" class="default"><nobr><a href="<? $cur_data.EDIT_URL ?>"><? $cur_data.CUR_NAME ?></a></nobr></td>
+    </tr>
+    <? foreachelse ?>
+    <tr align="center"<? if ($smarty.section.userSec.index % 2) != 0 ?> bgcolor="<? #oddRowsColor#?>"<? /if ?>> 
+	  <td colspan="2" class="default"><? $kernelStrings.ul_norecords_text ?></td>
+    </tr>
+    <? /foreach ?>
+  </table>
+  <? else ?>
+  <? /if ?>
+  <input name="edited" type="hidden" id="edited" value="1">
+  <input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

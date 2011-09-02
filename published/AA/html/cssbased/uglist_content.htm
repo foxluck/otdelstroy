@@ -1,0 +1,244 @@
+<? if $viewMode == "GRID" ?>
+	<!-- Grid mode view -->
+
+	<table class="Grid">
+		<thead>
+			<tr>
+				<? if $numUsers ?>
+					<th scope="col" style="width: 10px"><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"/></th>
+
+					<? if $userRecordsFound && (!$groupsMode || $searchString != "") && $canManageUsers ?>
+						<th scope="col" style="width: 16px"><img align="top" src="../../../common/html/classic/images/userpic.gif" border="0" width="16" height="16"></th>
+					<? /if ?>
+				<? /if ?>
+
+				<? foreach from=$visibleColumns item=columnID ?>
+					<? if $columnID != 'U_ID' ?>
+						<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+						<? assign var=columnName value=$colDescription.SHORT_NAME ?>
+
+							<th scope="col">
+								<? if $colDescription.TYPE != "IMAGE" ?>
+									<? wbs_sortColumn status=$sorting field=$columnID ?><? $columnName|htmlsafe:true:true ?><? /wbs_sortColumn ?>
+								<? else ?>
+									<? $columnName|htmlsafe:true:true ?>
+								<? /if ?>
+							</th>
+					<? else ?>
+						<th scope="col"><? wbs_sortColumn status=$sorting field="U_ID" ?><? $kernelStrings.app_treeid_title ?><? /wbs_sortColumn ?></th>
+					<? /if ?>
+				<? /foreach ?>
+			</tr>
+		</thead>
+		<tbody>
+			<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+
+				<? assign var=subscrClass value="" ?>
+				<? if $groupItem.C_SUBSCRIBER == -1 ?>
+					<? assign var=subscrClass value="cm_subscriber_pending" ?>
+				<? elseif $groupItem.C_SUBSCRIBER == 1 ?>
+
+					<? assign var=subscrClass value="cm_subscriber" ?>
+				<? /if ?>
+
+				<tr class="<? wbs_oddItem index=$smarty.foreach.itemLoop.iteration ?>">
+					<? assign var=itemclass value="" ?>
+					<? if $groupItem.U_STATUS == 2 && $canManageUsers ?>
+						<? assign var=itemclass value="dampedText" ?>
+					<? /if ?>
+
+					<? if $numUsers ?>
+						<td style="width: 10px"><input type="checkbox" name="document[<? $groupItem.C_ID ?>]" value="<? $groupItem.C_ID ?>"/><input type=hidden name="contactrights[<?$groupItem.C_ID?>]" value="<? $groupItem.CFA_RIGHTS ?>"/></td>
+
+						<? if $userRecordsFound && (!$groupsMode || $searchString != "") && $canManageUsers ?>
+							<? if $groupItem.U_ID != "" ?>
+								<? assign var=alt value=$kernelStrings.cman_userid_label|cat:": "|cat:$groupItem.U_ID ?>
+								<? if $groupItem.U_STATUS == 0 ?>
+									<td width="16px" style="width: 16px;"><img alt="<? $alt ?>" title="<? $alt ?>" src='../../../common/html/classic/images/userpic.gif' border=0 width="16" height="16"></td>
+								<? elseif $groupItem.U_STATUS == 1 ?>
+									<td style="width: 16px; padding-top: 2px"><img src='../../../common/html/classic/images/userpicdeleted.gif' align="top" border=0 width="16" height="16"></td>
+								<? elseif $groupItem.U_STATUS == 2 ?>
+									<? assign var=alt value=$alt|cat:" ("|cat:$kernelStrings.app_lockedstatus_name|cat:")" ?>
+									<td style="width: 16px; padding-top: 2px"><img alt="<? $alt ?>" title="<? $alt ?>"align="top"  src='../../../common/html/classic/images/userpiclocked.gif' border=0 width=16 height=16></td>
+								<? /if ?>
+							<? else ?>
+								<td width="16px" style="width: 16px; padding-top: 2px">&nbsp;</td>
+							<? /if ?>
+						<? /if ?>
+
+					<? /if ?>
+
+					<? foreach from=$visibleColumns item=columnID ?>
+						<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+							<? assign var=fieldValue value=$groupItem.$columnID ?>
+
+						<? assign var=linkStart value="" ?>
+						<? assign var=linkEnd value="" ?>
+
+						<? if $colDescription.TYPE == "URL" ?>
+							<? assign var=linkStart value="<A target=_blank href='"|cat:$groupItem.$columnID|cat:"'>" ?>
+							<? assign var=linkEnd value="</A>" ?>
+						<? /if ?>
+
+						<td valign=top align=left class="<? $itemclass ?>">
+							<? if $colDescription.TYPE == "URL" ?>
+								<? if $fieldValue != "" ?>
+									<? $linkStart|cat:$fieldValue|trim|sureecho|cat:$linkEnd ?>
+								<? else ?>
+									&nbsp;
+								<? /if ?>
+							<? elseif $colDescription.TYPE == "IMAGE" ?>
+								<? if $fieldValue.FILENAME != "" ?>
+									<? include file="../../../common/html/classic/autoforms/imagefield.htm" fieldData=$fieldValue ?>
+								<? else ?>
+									&lt;<? $kernelStrings.app_noimage_label ?>&gt;
+								<? /if ?>
+							<? else ?>
+								<? if $columnID == "NAME" ?>
+									<? if $groupItem.$columnID != "" ?>
+										<a href="<? $groupItem.ROW_URL ?>"><? $groupItem.$columnID|htmlsafe:true:true|trim|sureecho ?></a>
+									<? else ?>
+										&lt;<a href="<? $groupItem.ROW_URL ?>" class=activeLink><? $kernelStrings.app_noname_text ?></a>&gt;
+									<? /if ?>
+								<? else ?>
+									<a href="<? $groupItem.ROW_URL ?>"><? $groupItem.$columnID|htmlsafe:true:true|trim|sureecho ?></a>
+								<? /if ?>
+							<? /if ?>
+						</td>
+					<? /foreach ?>
+
+				</tr>
+			<? foreachelse ?>
+				<? math equation="x + 2" x=$numColumns assign=numColumns?>
+				<tr class="NoRecords">
+					<td colspan="<? $numColumns ?>">
+						<? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?>
+					</td>
+				</tr>
+			<? /foreach ?>
+		</tbody>
+	</table>
+
+
+<? else ?>
+	<!-- List mode view -->
+
+	<table class="List">
+		<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+			<tr>
+				<td style="width: 10px">
+					<input type="checkbox" name="document[<? $groupItem.C_ID ?>]" value="<? $groupItem.C_ID ?>"/>
+					<input type=hidden name="contactrights[<?$groupItem.C_ID?>]" value="<? $groupItem.CFA_RIGHTS ?>"/>
+				</td>
+
+				<? if $listViewImage != "NOIMG" ?>
+					<? assign var=fieldData value=$groupItem.$listViewImage ?>
+					<td width="96">
+						<? if $fieldData.FILENAME ?>
+							<? wbs_thumbnail src=$fieldData.THUMB_URL URL=$groupItem.ROW_URL target='_self' ?>
+						<? else ?>
+							<? wbs_thumbnail URL=$groupItem.ROW_URL target='_self' ?>
+						<? /if ?>
+					</td>
+				<? /if ?>
+
+				<? assign var=subscrClass value="" ?>
+
+				<? if $groupItem.C_SUBSCRIBER == -1 ?>
+					<? assign var=subscrClass value="cm_subscriber_pending" ?>
+				<? elseif $groupItem.C_SUBSCRIBER == 1 ?>
+
+					<? assign var=subscrClass value="cm_subscriber" ?>
+				<? /if ?>
+
+				<td>
+					<table class="ListItem">
+						<thead>
+							<tr>
+								<th scope="col" class="<? $subscrClass ?>">
+										<? if $groupItem.NAME != "" ?>
+											<a href="<? $groupItem.ROW_URL ?>"><? $groupItem.NAME|htmlsafe:true:true ?></a>
+										<? else ?>
+											&lt;<a href="<? $groupItem.ROW_URL ?>"><? $kernelStrings.app_noname_text ?></a>&gt;
+										<? /if ?>
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<? if $groupItem.U_ID != "" && $canManageUsers ?>
+								<tr>
+									<td class="<? if $groupItem.U_STATUS == 2 ?>dampedText<? /if ?>">
+										<? "<b>"|cat:$kernelStrings.cman_user_label|cat:"</b>: "|cat:$groupItem.U_ID|cat:" (" ?><? $statusNames[$groupItem.U_STATUS]|cat:")" ?>
+									</td>
+								</tr>
+							<? /if ?>
+
+							<!-- Other fields -->
+							<? foreach from=$typeDescription item=groupData ?>
+									<? assign var=groupText value="" ?>
+
+									<!-- Fill group text -->
+									<? foreach from=$groupData.FIELDS item=fieldData name=fieldloop ?>
+										<? assign var=fieldID value=$fieldData.ID ?>
+										<? assign var=fieldDesc value=$fieldData.SHORT_NAME ?>
+										<? assign var=fieldValue value=$groupItem.$fieldID ?>
+
+										<? assign var=tag value=" ("|cat:$fieldDesc|cat:")" ?>
+										<? if $fieldData.HIDETAG ?>
+											<? assign var=tag value="" ?>
+										<? /if ?>
+
+										<? assign var=linkStart value="" ?>
+										<? assign var=linkEnd value="" ?>
+
+										<? if $fieldData.TYPE == "URL" ?>
+											<? assign var=linkStart value="<A target=_blank href='"|cat:$fieldValue|cat:"'>" ?>
+											<? assign var=linkEnd value="</A>" ?>
+										<? elseif $fieldData.TYPE == "EMAIL" ?>
+											<? assign var=linkStart value="<A href='mailto:"|cat:$fieldValue|cat:"'>" ?>
+											<? assign var=linkEnd value="</A>" ?>
+										<? /if ?>
+
+										<? if $fieldData.TYPE != "IMAGE" ?>
+											<? if $fieldValue != "" ?>
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$linkStart|cat:$fieldValue|cat:$linkEnd|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$linkStart|cat:$fieldValue|cat:$linkEnd|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? else ?>
+											<? if $fieldValue.FILENAME != "" ?>
+												<? assign var=imgLink value="<a target='_blank' href='"|cat:$fieldValue.FILE_URL|cat:"'>" ?>
+												<? assign var=imageText value="&lt;"|cat:$imgLink|cat:$kernelStrings.app_image_text|cat:"</a>&gt;" ?>
+
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$linkStart|cat:$imageText|cat:$linkEnd|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$linkStart|cat:$imageText|cat:$linkEnd|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? /if ?>
+									<? /foreach ?>
+
+									<!-- Output group data if group text is not empty -->
+									<? if $groupText != "" ?>
+										<tr>
+											<td><? $groupData.LONG_NAME|htmlsafe:true:true|cat:": "|cat:$groupText ?></td>
+										</tr>
+									<? /if ?>
+							<? /foreach ?>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		<? foreachelse ?>
+			<tr class="NoRecords">
+				<td colspan="3">
+					<? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?>
+				</td>
+			</tr>
+		<? /foreach ?>
+	</table>
+<? /if ?>

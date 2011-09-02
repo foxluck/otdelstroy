@@ -1,0 +1,659 @@
+html, body, div, span, applet, object, iframe,
+h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+h1 {margin-bottom:5px; margin-top:3px; }
+h2 { font-size:19pt; font-weight:normal; color:#444; margin:10px 15px 10px 25px;}
+
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+a.compose-message, a.send-sms {font-size: 80%}
+
+a.open-url {margin-left: 5px;}
+a.open-url img {float: none}
+
+#header div.info-message {background: yellow; margin-left: 30%; display: inline}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+#block_save_main div.error, #bottom_save .error {color: red; margin-bottom:10px; font-weight:bold;}
+
+body {font-family: "Trebuchet MS";	font-size:14px;}
+
+#toolbar_new {min-width:800px;}
+div.invite-info {clear: both; background-color: #FAF6C8; padding: 5px; margin: 5px 10px;}
+
+#contact_help table td {vertical-align: middle}
+#contact {padding-left: 13px}
+#editMain {padding-top:10px;}
+
+#FOLDER div.label {font-weight: normal; padding-left: 10px; text-align: left; width: 10%}
+#FOLDER div.buttons div.label {padding-left: 0px;}
+
+td.add-contact #FOLDER div.label {font-weight: normal; padding-left: 0px; width: auto}
+td.add-contact #FOLDER div.field {margin-left: 0}
+
+#header div.toolbar {padding: 10px 10px 10px 30px}
+
+#META {
+	color:#666666;
+	font-size:12px;
+	line-height:15px;
+	padding-bottom: 10px;
+}
+
+#info-message div.info-message {float: left; background: yellow; margin-top: -7px; padding: 3px; width: auto;}
+#info-message div.info-message.with-close { padding-right: 70px; position: relative;}
+#info-message div.info-message-close {right: 0; top: 0; position: absolute;}
+
+#onload-message.right {float: left; background: yellow; margin-top: -7px; padding: 3px; width: auto;}
+
+
+div.field.e div.label {padding-top: 2px}
+
+#META div.title {background-color: #F6F6F6}
+#META div.title, #META div.create-info {font-size: 12px; font-weight: normal}
+#META div.title a.title {padding-top: 5px; padding-bottom: 5px;}
+#META div.create-info {
+	padding: 0px 15px 5px 20px;
+}
+
+#META div.create-info div.modify-info {border-top: 1px solid #D8E0E5; margin-top: 5px; padding-top: 5px}
+
+#edit_quotas div.edit span.small {font-color: #666; font-size: 12px; font-weight: normal; padding-left: 5px;}
+#edit_quotas div.edit input {width: 75px}
+
+#scroll {overflow: auto;}
+div.usertop { padding:10px 0px 10px 10px;}
+td.contacts div.l div.label, td.contacts div.l div.edit, td.contacts div.field {padding-left: 10px}
+*html div.usertop {padding-right: 0px;}
+
+.top_panel td { vertical-align:top; white-space:nowrap;}
+.top_panel td.btn_td { padding:10px 20px 0 0; }
+.top_panel td.search-td {padding-right:110px;}
+.wbs-menu-btn-bg { float:left; //float:none;}
+
+td.btn_td div.wbs-menu-btn-bg, td.search-td div.search-container {z-index: 2}
+
+table.contact {width:100%;	padding: 0;	border:0; border-collapse:collapse;}
+table.contact td {vertical-align: top; margin: 0; }
+table.contact td.photo { vertical-align: top;  padding-left: 15px}
+table.contact td.user_rightbar { background:#F3F7F8; *width:auto; _width:auto; max-width:350px;/* width:expression(document.body.clientWidth < 200? "200px" : document.body.clientWidth > 300? "300px" : "auto");*/ }
+table.contact td.contacts_main { padding: 0 0 0 10px; margin: 0px; *width:650px!important; _width:650px!important;}
+*html table.contact td.contacts_main {padding-right: 30px}
+table.contact td.contact.usertop { padding: 0;}
+td.photo {width:10%;}
+*html td.photo {width:23%;}
+
+a.add_email {
+	display:block;
+	font-size:12px;
+	text-align:right;
+	width:247px;
+}
+
+#C_FIRSTNAME div.edit {padding-right: 0;}
+#C_EMAILADDRESS {padding-top: 40px}
+#C_MIDDLENAME div.edit {padding-right: 0; padding-left: 0;}
+#C_LASTNAME div.edit {padding-right: 0; padding-left: 0}
+#C_NICKNAME div.edit {padding-left: 0}
+
+.wrap-scroller { height:100%; *width:100%;}
+/*#ajax_result {padding: 10px 0 20px 10px}*/
+
+#C_EMAILADDRESS div.label {width: auto}
+
+div.hr {line-height: 1px; border-bottom:1px solid #C8C5BA;}
+
+.rigth-panel-block {
+padding: 10px 10px;
+
+}
+.rigth-panel-block {background:#FAF6C8;
+border-color:#FCF9DD #E1DEB4 #D4D0A9 #FBF8D2;
+border-style:solid;
+border-width:1px;
+padding:10px 10px 10px 15px;
+
+}
+
+.not-editable a, .not-editable div.edit {cursor: default !important}
+
+.rigth-panel-block.noactiveblock
+{ background:#EBEEF0;
+border-color:#F9FBFE #D7DBDE #C6C9CC #F7FAFD;
+
+}
+.noactiveblock .instead_oflink { display:none;}
+.instead_oflink h3 {  color:#223445; font-size:1.05em;line-height:1.2em; background:url(../img/left-arr-yell.gif) left 2px no-repeat; padding-left:18px;}
+.block_link { display:none;}
+.noactiveblock .block_link { display:block;}
+.noactiveblock a { display:inline; /*color:#223445;*/ font-size:1.05em; line-height:1.2em; font-weight:bold}
+.noactiveblock a img { vertical-align:middle; margin-right:3px;}
+.rigth-panel-block ul, .rigth-panel-block ul {
+	list-style: none; margin: 0; padding: 0;
+}
+.rigth-panel-block ul { padding: 0.7em 0 0 20px; margin-bottom:5px;} 
+.rigth-panel-block li {  padding: 0 0 0.5em 0; }
+.rigth-panel-block ul #ul_apps { margin:0; padding:0;}
+.rigth-panel-block p { margin: 0.5em 0 0.7em 0; }
+
+ul.light-right-menu,  ul.light-right-menu li { margin:0; padding:0;}
+
+ul.light-right-menu li { //height:16px;}
+ul.light-right-menu a { font-weight:bold; padding:0.25em 0;  font-size:0.95em; display:block; }
+ul.light-right-menu a img, ul.light-right-menu a span { vertical-align:top;}
+
+
+div.large div.edit div.field-type {font-size: 16px}
+div.edit div.field-type {padding: 5px; border: 1px solid #ccc; width: 150px; color: #666;}
+
+div.field div.link {padding: 7px 10px 0 0; font-size:0.85em;}
+
+div.field div.link input { vertical-align:middle;}
+div.label {float:left; clear:both;	padding:2px 5px 0 0; width: 25%; text-align: right; font-weight: bold}
+td.contacts div.label {width: 100px;}
+
+
+
+/* #CONTACT div.label, #contact div.edit {font-size: 16px;} */
+div.large div.label {font-size: 13px;}
+
+#CONTACT div.l div.label {text-align: left; font-size: 20px}
+#CONTACT div.l div.edit {font-size: 20px}
+
+#CONTACT div.large div.edit {
+	font-size: 24px;
+}
+
+#CONTACT div.large div.errors div.edit {
+		font-size: 14px;
+}
+
+.email div.edit, .edit input.email {
+	color: #0043A7;
+}
+div.edit, div.links {
+	float: left;
+	padding: 0;
+	white-space: pre-wrap; /* css-3 */ 
+	white-space: -moz-pre-wrap; /* Mozilla */ 
+	white-space: -pre-wrap; /* Opera 4-6 */ 
+	white-space: -o-pre-wrap; /* Opera 7 */ 
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+#CURRENT_PHOTO div.edit, #CURRENT_PHOTO div.label {
+	float: none;
+} 
+
+div.edit textarea {
+	font-size: 14px;
+	padding: 0; margin: 0;
+	font-family:"Trebuchet MS";
+}
+
+div.links a.b {
+	font-weight: bold;
+}
+.clearboth {
+	clear: both;
+}
+.contacts div.label {
+	text-align: right;
+}
+td.contacts input {
+	width: 200px;
+}
+
+div.large div.label {
+	padding-top: 2px;
+}
+
+#contact div.l div.edit {font-size: 20px}
+
+#contact div.large div.edit, .contacts .large div.edit {
+	font-size: 24px;
+	font-weight: bold;
+
+}
+#CONTACT div.edit { cursor:pointer;}
+
+div.large div.edit {
+	font-size: 24px;
+}
+div.large div.errors div.edit {
+	font-size: 14px;
+}
+#contact #C_NICKNAME div.edit {font-weight: normal}
+.large div.edit input {
+	font-size: 14px;
+}
+
+#contact div.edit input {
+	width: 250px;
+}
+
+div.title {
+	/*background:#EDF3F7;
+	border-color:#D8E0E5 #edf3f7  #D8E0E5 #edf3f7;*/
+	background:#EDF1F5;
+border-bottom:1px solid #E6ECF0;
+	border-width:0 0 1px 0;
+	border-style:solid;
+    //width: 100%;
+	font-size: 13pt;
+	color:#444;
+	font-weight: bold;
+	margin:0 10px 5px 0;
+	line-height: 140%;
+	clear:both;
+}
+*html div.title { font-weight:300;}
+div.title div.link {
+	float:right;
+	font-size:11px;
+	font-weight:normal;
+	padding-right:21px;
+	padding-top:3px;
+}
+
+div.title.hover div.link {
+	display:block;
+}
+
+div.title.light { background:none; border:none;color:#909397;
+font-size:14.5pt;}
+div.title a.title {
+display:block;
+padding: 0.25em 10px 0em 20px;
+	text-decoration: none;
+	color:#333;
+	cursor: pointer;
+}
+div.title a.title:hover { background:#e2e9ee;}
+div.title span { font-weight: normal; font-size:13px;position:absolute; top:0px; right:20px; color: #fff; display: block;  height: 16px; }
+div.title span img { vertical-align:middle; padding-right:3px;}
+div.field {
+	clear:left;
+	margin:0 20px 0 10px;
+	overflow:hidden;
+	width:auto!important;
+    font-size:13px;
+	line-height:16px;
+	padding:1px 0;
+}
+
+div.field p { margin:0; clear: left;}
+
+td.contacts div.field {
+	margin-left: 0;
+	clear:both;
+}
+div.edit.textarea {
+	padding: 0;
+	width: 100%;
+}
+div.edit.textarea textarea {
+	width: 91%;
+	height: 80px;
+}
+div.edit textarea {
+	width: 310px;
+	height: 50px;
+}
+
+div.edit.img {
+	width: 350px;
+	margin-top:10px;
+}
+td.photo div.edit.img {
+	width: 160px;
+	padding:0 0 0 10px;
+}
+
+.edit img {
+	float: left
+}
+
+td.photo .edit img {
+	float: none
+}
+
+div.field div.edit select {margin-left: -3px} 
+div.edit input {
+	font-family:Trebuchet MS;
+font-size:13px;
+margin:-3px 0 0 -3px;
+padding:1px;
+
+}
+*html div.edit input { margin-left:-10px;}
+*html #contact div.edit input { margin-left:0px;}
+
+a.delete_email {
+	font-size:12px;
+	padding-left:7px;
+}
+
+div.edit select {
+	width: 204px;
+}
+div.edit {
+	cursor: pointer;	
+	font-size:13px;
+padding:3px 0 0 2px;
+}
+div.usertop div.edit {
+	cursor: auto;
+}
+div.usertop div.edit input { margin-bottom:4px; //margin-bottom:2px;}
+div.inline {
+	display: inline
+}
+
+div.error div.edit input.error {
+	border:1px solid red;
+	padding: 1px;
+	margin: 1px 0;
+}
+.field_controls { padding:0.3em 0 0 0;}
+#FOLDER div.field { padding:0.8em 0 0 0;}
+#FOLDER div.title { border:none;}
+
+.group-select-container { padding:5px 20px;background:#F0F3F7; margin:0 20px;}
+.select-container { 
+padding:5px;}
+div.group {
+	clear:both;
+	margin: 0 0 0.5em 0;
+	padding:0 0 0 25px;
+	min-width:560px;
+
+	
+}
+div.group p { margin:0 0 1em 0;}
+
+
+
+div.help div.nd {padding-left: 110px; padding-top: 3px;}
+div.help br.nd {line-height:1px; clear: left}
+
+
+#toolbar_new a:hover {
+	text-decoration: underline;
+}
+#toolbar_new.btns_panel { text-align:center;}
+
+#toolbar_new.btns_panel ul { display:inline-block; margin:0 auto;}
+
+h2.big_header { font-size:24px; margin:10px 10px 10px 30px;}
+
+div.field_controls input { float:left; width:auto; margin:10px 3px 0 -3px;}
+div.field div.field_controls input { width:auto; margin-top: 0px;}
+div.blueline { border-top: 3px solid #416E98; padding-top:15px;}
+
+div.page_title {font-size:26px; margin-bottom: 5px;} 
+
+span.big {font-size:16px; font-weight: bold; white-space:nowrap;}
+
+div.help {padding-top: 15px; zoom:1;/*min-width: 210px; width:expression(document.body.clientWidth < 210? "210px": "auto" );*/}
+
+div.group.norightblock { margin-right:30px;}
+
+h2.big_header { font-size:24px; margin:10px 10px 10px 30px;}
+
+.edit img.ui-datepicker-trigger {float: none}
+
+#CURRENT_PHOTO {
+/*	overflow:hidden;
+*/	padding:0px;
+	position:relative;
+	width: 105px;
+	height: 130px;
+}
+
+#CURRENT_PHOTO div.field div.edit {
+	text-align: center;
+	display:table-cell;
+	vertical-align:middle;
+	border: 1px solid #D8DADC;
+	height: 100px; width: 100px;
+	margin: none;
+/*	position:relative;*/
+
+}
+#CURRENT_PHOTO div.field { padding:1px; margin:0;height: 115px;height: 135px;}
+*html #CURRENT_PHOTO div.field div.edit img {
+	margin-top: expression((parentNode.offsetHeight - this.offsetHeight)<0 ? "0" : (parentNode.offsetHeight - this.offsetHeight)/2 + "px");
+}
+
+a.button {
+	color:#FFFFFF;
+	display:block;
+	font-size:13px;
+	font-weight:bold;
+	line-height:200%;
+	padding:0 15px;
+	text-decoration:none;
+	
+	background:#7A9CBD none repeat scroll 0 0;
+	border-color:#93AFC9 #6784A0 #6784A0 #93AFC9;
+	border-style:solid;
+	border-width:1px;
+	text-align: center;
+	width: 70px;
+}
+
+div.error div.label {color: red;} 
+
+div.edit p {clear: left; display: block; font-size: 12px; text-align: left; padding-top: 5px}
+
+div.errors div.edit {color: red}
+
+table.contact img {border: 0}
+
+#CURRENT_PHOTO div.edit p { position: absolute; bottom: 10px;  text-align:center; display:block; height:12px;  left: 0px; z-index: 100;}
+
+
+.wbs-popwindow {background: #FFF; background: #F7F8FC; border: 1px solid #5A5A5A}
+.wbs-popwindow .wbs-popwindow-inner {padding: 5px}
+
+.wbs-popmenu ul, .wbs-popmenu ul li {list-style-image:none; list-style-position:outside; list-style-type:none; margin:0px; padding:0px; white-space: nowrap}
+
+.wbs-popmenu ul li .label {color: #8C8C8C; }
+.wbs-popmenu ul li .smalllabel {}
+.wbs-popmenu input.shared-url {width: 250px}
+
+.wbs-popmenu {background: #FFF; background: #F7F8FC}
+.wbs-popmenu ul {display: block; border: 1px solid #5A5A5A}
+.wbs-popmenu ul li {margin:0px; padding: 3px;display: block; cursor: pointer; padding-left: 12px; padding-right: 30px; }
+.wbs-popmenu ul li.nopadding {padding-right: 10px}
+.wbs-popmenu ul li.nopadding-nolink {padding-right: 10px; cursor: default}
+.wbs-popmenu ul li.separator {padding: 0px;}
+.wbs-popmenu ul li.separator div {border-top: 1px solid #999; margin-bottom: 3px}
+.wbs-popmenu ul li.highlight {background-color: #F0F0F0}
+.wbs-popmenu ul li.hidden {display: none}
+.wbs-popmenu ul li.disabled {cursor: default; color: #8C8C8C;}
+.wbs-popmenu ul li.disabled a {color: #8C8C8C; cursor: default}
+.wbs-popmenu ul li {color: #333; }
+.wbs-popmenu ul li a {color: #333; text-decoration: none}
+
+.wbs-popmenu ul li.unactive {cursor: default}
+.wbs-popmenu ul li.unactive a {cursor: default}
+
+.wbs-popmenu-img ul li {padding-left: 25px}
+.wbs-popmenu-img ul li.with-image {background-position: 5px 5px; background-repeat: no-repeat;}
+
+span.user.right {cursor: pointer}
+.treeview, .treeview ul {padding: 0; margin: 0;	list-style: none;}
+.treeview ul {background-color: white;	margin-top: 1px;}
+.treeview .hitarea {
+	background: url(../img/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {display: inline;float:none;}
+.treeview li {margin: 0; padding: 3px 0 3px 16px;}
+.treeview a.selected {background-color: #eee;}
+.treeview li { background: url(../img/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 0;}
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+.treeview li.last { background-position: 0 -2766px }
+
+.treeview li.last.collapsable .hitarea, .treeview li.last.expandable .hitarea { background-image: url(../img/treeview-default.gif); }   
+.treeview li.last.collapsable > .hitarea  { background-position: 0 -114px }
+.treeview li.last.expandable > .hitarea { background-position: -32px -70px }
+/*
+.treeview li.last div.collapsable-hitarea, .treeview li.last div.expandable-hitarea { background-position: 0; }
+*/
+.filetree li { padding: 3px 0 1px 16px; overflow: hidden; zoom:1; margin:0}
+.filetree span.folder, li.expandable span.folder {//position: relative; min-height: 15px; padding: 2px 0 0 19px; margin-right: 0; background-image: url(../img/folder-closed.gif); background-position: 0 0; background-repeat: no-repeat; float: left; display: block; max-width: 42%; margin-right: -300px; z-index:10}
+.filetree li.collapsable > span.folder { background-image:url(../img/folder.gif);}
+
+li div.folder {text-align: right; clear: right; overflow: hidden; overflow-y: hidden; height: 19px; min-width: 305px}
+div.folder span {display: block; text-align: center; float: right; width: 150px; background-color: #FFF; height: 19px}
+.filetree li span.access, div.folder span.access {background-color: #FAF6C8; min-height:15px}
+
+div.folder span.user {width: 151px; overflow-y: hidden;}
+*html div.folder span.user {margin-top: 0px; height: 19px; width: 153px;}
+div.folder span.user input {margin-right: 15px; margin-left: 15px;}
+*html div.folder span.user input {margin: 0px 15px}
+
+
+table.rights {padding: 0; border: 0; margin: 0; border-collapse: collapse;}
+table.rights td {vertical-align: middle; border: 1px solid #D8DADC; padding: 0;}
+table.rights td table {padding: 0; border: 0; margin: 0; border-collapse: collapse;}
+table.rights td table td {border: 0; text-align: center;}
+table.rights td.access, .treeview .access {background-color: #FAF6C8}
+.filetree li span.hover, .filetree li div.hover, .filetree li div.hover span { color: red; background-color: #F3F6F8 ;}
+td.right {text-align: center; vertical-align: middle}
+td.right select {width: 120px}
+td.right.left {text-align: left; vertical-align: middle; padding:0px 5px 5px 10px}
+
+
+table.rights tr.title { background-color:#F8F8F8; border-top:3px solid #e9e9e9;}
+table.rights tr.first td#info-message {font-size: 110%}
+table.rights tr.first td.right { background-color:#f2f6fa; border-top:1px solid #CAD7E0; font-size: 14px}
+table.rights tr.first td.wright { border-top:3px solid #DAE8F2; padding-top:2px;}
+table.rights tr.title.access-title { background-color:#f2f6fa; border-top:3px solid #DAE8F2;} 
+
+table.rights td.title {font-size: 13pt; padding: 2px 0 2px 10px;}
+#apps table.rights tr.title td.title {  color:#aaa; }
+#apps table.rights tr.title.access-title td.title  {color: #333333; }
+
+table.rights tr.section td.title {padding-left: 20px; font-size: 13px; color: #333333; font-weight: bold;}
+table.rights tr.section td.name {padding-left: 40px;}
+table.rights td.comment a {padding:3px 10px; font-size: 14px; font-weight: normal;}
+table.rights tr.section td.comment {padding-left: 20px; font-size: 13px;}
+table.rights td.folders {padding: 1px 0 1px 20px; margin-right: 0}
+table.rights td.title span {color: #666;}
+td.all input {margin: 3px 15px}
+
+table.rights tr.dn, table.rights tr.dn td {display:none}
+
+#editMain {margin-top: -5px; /*background-color: #FAF6C8;*/ margin-right: 5px;}
+.add-photo { width:105px;text-align:center; padding:0;}
+wbs-btn, /*.wbs-menu-btn,*/ .wbs-link-btn {
+cursor:pointer;
+float:left;
+height:23px;
+margin-left: 20px;
+} 
+
+.wbs-menu-btn .wbs-btn-adv {
+background-image:url(../img/menu-arr.gif);
+background-position:left 10px;
+float:left;
+width:10px;
+height:23px;
+background-repeat:no-repeat;
+}
+
+.wbs-btn-content {
+font-family:'Trebuchet MS';
+font-size:1em;
+line-height:23px;
+padding:0 5px;
+text-decoration:none;
+white-space:nowrap;
+}
+.wbs-btn-content {
+height:23px;
+}
+
+span.status1 {color: green; font-weight:bold;}
+span.status0 {color: #999999; font-weight:normal;}
+span.status-1 {color: red; font-weight:normal;}
+
+.helptext { font-size:0.8em; color:#787878; display:block; padding:0 0.5em;}
+
+.rights { font-size:0.85em; }
+.rights.grey { color:#787878;}
+.rights.red { color:#CC0000;}
+.rights.orange { color:#ed8812;}
+
+div.field.disabled {background: #eee; color: #666}
+
+div.link span.disabled {display: none}
+div.disabled div.link span.enabled {display: none}
+div.disabled div.link span.disabled {display: inline}
+
+div.block-title {margin: 5px 0}
+div.type-desc {margin-top: 10px}
+.remove-link {display:block; margin-right:10px; text-align:right; padding:0 0 0.5em 0; font-size:0.85em;}
+.smallfont { font-size:0.85em; line-height:1.2em;}
+ 
+div#block-add-note textarea { font-family:'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size:10.5pt;}
+.note-header a, .note-header a:visited { color:#777; text-decoration:underline; font-size:9pt;} 
+.note-header a:hover { color:#444; text-decoration:underline;}
+#apps { zoom:1;}
+
+.sendsms_wrapper{
+	margin:10px;
+}

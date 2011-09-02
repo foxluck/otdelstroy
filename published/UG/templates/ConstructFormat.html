@@ -1,0 +1,26 @@
+<form id="format-form">
+{{foreach from=$formats key=k item=f}}
+<label><input {{if $k==$current}}checked="checked"{{/if}} type="radio" name="format" value="{{$k}}" /> {{$f}}</label><br />
+{{/foreach}}
+<br />
+<input type="submit" value="[`Save`]" />
+<input type="button" onclick="$('#popup').wbsPopupClose();" value="[`Cancel`]" />
+<input type="hidden" name="type_id" value="{{$type_id}}" />
+</form>
+<script type="text/javascript">
+	if ($("#format-form input[type=radio]:checked").length == 0) {
+		$("#format-form input[type=radio]:first").attr('checked', 'checked');
+	}
+	$("#format-form").submit(function () {
+		$.post("?mod=construct&act=format&ajax=1", $(this).serialize(), function (response) {
+			if (response.status == 'OK') {
+				$("#format").html(response.data.format);
+				$("#popup").wbsPopupClose();
+			} else {
+				alert(response.error);
+			}
+		}, "json");
+		$("#dlg-move-desc").html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');	  
+		return false;		
+	});
+</script>

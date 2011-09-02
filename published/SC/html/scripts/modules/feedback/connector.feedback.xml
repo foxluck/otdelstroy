@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Feedback</Name>
+		<File>class.feedback.php</File>
+		<Title>Обратная связь</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

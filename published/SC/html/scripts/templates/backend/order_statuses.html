@@ -1,0 +1,106 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/color_picker.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/color_functions.js"></script>
+<link href="{$smarty.const.URL_CSS}/color_picker.css" rel="stylesheet" type="text/css" />
+
+{* order statuses *}
+<h1>{lbl_pgn_order_statuses}</h1>
+
+{$MessageBlock}
+<h2>{'ordsts_predefined_title'|translate}</h2>
+<p>
+{lbl_ordsts_predefined_description}
+</p>
+
+<form action="{''|set_query_html}" method="post" enctype="multipart/form-data">
+<input name="action" value="save_statuses" type="hidden" />
+
+<table id="tbl-methods" class="grid">
+<tr class="gridsheader">
+	<td>{'str_description'|translate}</td>
+	<td>&nbsp;</td>
+	<td>{"str_status"|translate}</td>
+	<td>{"str_color"|translate}</td>
+	<td>{"str_bold"|translate}</td>
+	<td>{"str_italic"|translate}</td>
+	
+</tr>
+{foreach from=$predefined_statuses item=_status}
+<tr class="{cycle values='gridline,gridline1' name='predefined'}">
+	<td class="field_descr" style="background-color: white;width:250px;"><em>{$_status.description}</em></td>
+	<td class="field_descr" style="background-color: white;">&rarr;</td>
+	<td>
+{*		<span style="{$_status._style}">{$_status.status_name}</span>*}
+		{html_text dbfield="status_name" name="status_name_%lang%_`$_status.statusID`" values=$_status style=$_status._style|cat:' width:250px;'}
+	</td>
+	<td nowrap="nowrap">
+	#<input name="color_{$_status.statusID}" value="{$_status.color|escape:'html'}" type="text" size="6" maxlength="6" />
+	<img src="images_common/color_picker/select_arrow.gif" onmouseover="this.src='images_common/color_picker/select_arrow_over.gif'" onmouseout="this.src='images_common/color_picker/select_arrow.gif'" onclick="showColorPicker(this,document.forms[0].color_{$_status.statusID})">
+	</td>
+	<td align="center"><input name="bold_{$_status.statusID}" {if $_status.bold}checked="checked"{/if} value="1" type="checkbox" /></td>
+	<td align="center"><input name="italic_{$_status.statusID}" {if $_status.italic}checked="checked"{/if} value="1" type="checkbox" /></td>
+	
+</tr>
+{/foreach}
+</table>
+
+<p>
+{lbl_ordsts_custom_description}
+</p>
+
+<h2>{lbl_ordsts_custom_title}</h2>
+
+<table id="tbl-methods" class="grid">
+{if $custom_statuses}
+<tr class="gridsheader">
+	<td>{"str_status"|translate}</td>
+	<td>{"str_color"|translate}</td>
+	<td>{"str_bold"|translate}</td>
+	<td>{"str_italic"|translate}</td>
+	<td>{"str_sort_order"|translate}</td>
+	<td>&nbsp;</td>
+</tr>
+{foreach from=$custom_statuses item=_status}
+<tr class="{cycle values='gridline,gridline1'}">
+	<td>
+		{html_text dbfield="status_name" name="status_name_%lang%_`$_status.statusID`" values=$_status style=$_status._style|cat:' width:250px;'}
+	</td>
+	<td>#<input name="color_{$_status.statusID}" value="{$_status.color|escape:'html'}" type="text" size="6" maxlength="6" />
+	<img src="images_common/color_picker/select_arrow.gif" onmouseover="this.src='images_common/color_picker/select_arrow_over.gif'" onmouseout="this.src='images_common/color_picker/select_arrow.gif'" onclick="showColorPicker(this,document.forms[0].color_{$_status.statusID})">
+	</td>
+	<td align="center"><input name="bold_{$_status.statusID}" {if $_status.bold}checked="checked"{/if} value="1" type="checkbox" /></td>
+	<td align="center"><input name="italic_{$_status.statusID}" {if $_status.italic}checked="checked"{/if} value="1" type="checkbox" /></td>
+	<td align="center">
+		<input name="sort_order_{$_status.statusID}" value="{$_status.sort_order|escape:'html'}" type="text" size="2" />
+	</td>
+	<td align="center">
+		<a href='{"action=delete_status&statusID=`$_status.statusID`"|set_query_html}' class="confirm_action" title="{'cnfrm_areyousure'|transcape}"><img align="middle" alt="{'btn_delete'|transcape}" src="images_common/remove.gif" /></a>
+	</td>
+</tr>
+{/foreach}
+{/if}
+<tr class="gridsheader">
+	<td colspan="6">
+		{"btn_add"|translate}:
+	</td>
+</tr>
+<tr>
+	<td>
+		{html_text name="status_name" style='width:250px;'}
+	</td>
+	<td>#<input name="color" value="000000" type="text" size="6" maxlength="6" />
+	<img src="images_common/color_picker/select_arrow.gif" onmouseover="this.src='images_common/color_picker/select_arrow_over.gif'" onmouseout="this.src='images_common/color_picker/select_arrow.gif'" onclick="showColorPicker(this,document.forms[0].color)">
+	</td>
+	<td align="center"><input name="bold" value="1" type="checkbox" /></td>
+	<td align="center"><input name="italic" value="1" type="checkbox" /></td>
+	<td align="center">
+		<input name="sort_order" type="text" size="2" />
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<p>
+	<input type="submit" value="{"btn_save"|translate}" name="save" />
+</p>
+
+</form>

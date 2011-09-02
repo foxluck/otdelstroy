@@ -1,0 +1,143 @@
+<form method="post" name="EditCustomerForm">
+<input type="hidden" name="action" value="save_contact_info" />
+<table class="address_form" cellspacing="0" cellpadding="3">
+	<tr>
+		<td><strong>{"usr_custinfo_login"|translate}</strong></td>
+		<td>{if $customerInfo.Login neq ''}{$customerInfo.Login}{else}<i>{"msg_no_customer_login"|translate}</i>{/if}</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_first_name"|translate}</strong></td>
+		<td>
+            <span id="first_name_txt">{$customerInfo.first_name}</span>
+            <input class="txt_or_sel" type="text" name="ci[first_name]" id="first_name_inp" value="{$customerInfo.first_name|escape:'html'}" style="display: none;" />
+        </td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_last_name"|translate}</strong></td>
+		<td>
+            <span id="last_name_txt">{$customerInfo.last_name}</span>
+            <input class="txt_or_sel" type="text" name="ci[last_name]" id="last_name_inp" value="{$customerInfo.last_name|escape:'html'}" style="display: none;" />
+        </td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_email"|translate}</strong></td>
+		<td>
+            {if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}
+                <span id="email_txt">{$customerInfo.Email}</span>
+                <input class="txt_or_sel" type="text" name="ci[Email]" id="email_inp" value="{$customerInfo.Email|escape:'html'}" style="display: none;" />
+            {else}
+                {"msg_safemode_info_blocked"|translate}
+            {/if}
+        </td>
+	</tr>
+    {foreach from=$reg_fields item=reg_fld}
+    <tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+    <tr>
+        <td><strong>{$reg_fld.reg_field_name}</strong></td>
+        <td>
+            <span id="rf_{$reg_fld.reg_field_ID}_txt">{$reg_fld.reg_field_value}</span>
+            <input class="txt_or_sel" type="text" name="ci[reg_field][{$reg_fld.reg_field_ID}]" id="rf_{$reg_fld.reg_field_ID}_txt" value="{$reg_fld.reg_field_value|escape:'html'}" style="display: none;" />
+        </td>
+    </tr>
+    {/foreach}
+    
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top"><strong>{"usrreg_subscribe_for_blognews"|translate}</strong></td>
+		<td>
+            <span id="subscribed4news_txt">{if $customerInfo.subscribed4news}{"str_answer_yes"|translate}{else}{"str_answer_no"|translate}{/if}</span>
+			<input id="subscribed4news_inp" type="checkbox" {if $customerInfo.subscribed4news}checked{/if} name = 'ci[subscribed4news]' value='1' style="display: none;" />
+		</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top">
+			<strong>{"str_group"|translate}</strong>
+		</td>
+		<td>
+            <span id="custgroupID_txt">{$cust_group_name}</span>
+			<select class="txt_or_sel" name='ci[custgroupID]' id="custgroupID_inp" style="display: none;">
+				<option value='null'>-</option>
+				{section name=i loop=$customer_groups}
+					<option value='{$customer_groups[i].custgroupID}' {if $customer_groups[i].custgroupID == $customerInfo.custgroupID}selected{/if}>
+						{$customer_groups[i].custgroup_name}
+					</option> 
+				{/section}
+			</select>
+		</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top"><strong>{"usr_account_state"|translate}</strong></td>
+		<td>
+            <span id="activated_txt">{if $customerInfo.ActivationCode}{"usr_account_notactivated"|translate}{else}{"usr_account_activated"|translate}{/if}</span>
+            <select class="txt_or_sel" name="ci[activated]" id="activated_inp" style="display: none">
+                <option value="0" {if $customerInfo.ActivationCode neq ''}selected="selected"{/if}>{"usr_account_notactivated"|translate}</option>
+                <option value="1" {if $customerInfo.ActivationCode eq ''}selected="selected"{/if}>{"usr_account_activated"|translate}</option>
+            </select>
+		</td>
+	</tr>
+	{if $customerInfo.ActivationCode}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_account_activation_key"|translate}</strong></td>
+		<td>{$customerInfo.ActivationCode}</td>
+	</tr>
+	{/if}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr id="form_buttons" style="display: none;">
+		<td></td>
+		<td>
+			<input value="{'btn_save'|transcape}" name="save" type="submit" />
+            <button type="button" onClick="hideEditForm();">{"btn_cancel"|translate}</button>
+			{*if $customerInfo.allowToDelete}
+			<input type="button" onclick="if(window.confirm('{"cnfrm_delete"|translate}'))document.location.href='{"&safemode=&deleteCustomerID=`$customerInfo.customerID`"|set_query}';" value="{"lnk_terminate_account"|translate}" />
+			{/if*}
+		</td>
+	</tr>
+</table>
+</form>
+
+<script type="text/javascript" language="JavaScript">
+{literal}
+
+function showEditForm()
+{
+    var frm = document.forms['EditCustomerForm'];
+    var j = 0;
+    for(i=0; i<frm.elements.length; i++)
+    {
+        if(frm.elements[i].type == 'submit' || frm.elements[i].type == 'button' || frm.elements[i].type == 'hidden') continue;
+        var txt_id = frm.elements[i].id.replace('_inp','_txt');
+        frm.elements[i].style.display = '';
+        document.getElementById(txt_id).style.display = 'none';
+        if(j % 2 == 0)
+        {
+            frm.elements[i].parentNode.parentNode.style.backgroundColor = '#FAFAE7';
+        };
+        j++;
+    };
+    document.getElementById('form_buttons').style.display = '';
+    document.getElementById('elink').style.display = 'none';
+};
+
+function hideEditForm()
+{
+    var frm = document.forms['EditCustomerForm'];
+    for(i=0; i<frm.elements.length; i++)
+    {
+        if(frm.elements[i].type == 'submit' || frm.elements[i].type == 'button' || frm.elements[i].type == 'hidden') continue;
+        var txt_id = frm.elements[i].id.replace('_inp','_txt');
+        frm.elements[i].style.display = 'none';
+        document.getElementById(txt_id).style.display = '';
+        frm.elements[i].parentNode.parentNode.style.backgroundColor = '#FFFFFF';
+    };
+    document.getElementById('form_buttons').style.display = 'none';
+    document.getElementById('elink').style.display = '';
+};
+
+{/literal}
+</script>

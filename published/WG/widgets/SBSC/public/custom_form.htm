@@ -1,0 +1,9 @@
+<? foreach from=$cmfields item=field key=fieldID ?>
+	<? if $field.type == 'CHECKBOX' ?>
+	<? include fieldName=$fieldID file="fields/f"|cat:$field.type|cat:".htm"|lower ?>	
+	<label style="display:inline" for="wbs-field<? $field.id ?>"><? $labelsCMFields.$fieldID|default:$field.name ?></label>	
+	<? else ?>
+	<label for="wbs-field<? $field.id ?>"><? $labelsCMFields.$fieldID|default:$field.name ?></label>
+	<? include fieldName=$fieldID file="fields/f"|cat:$field.type|cat:".htm"|lower ?>
+	<? /if ?>
+<? /foreach ?>

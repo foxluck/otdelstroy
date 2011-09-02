@@ -1,0 +1,82 @@
+<div style="margin:1em 0; padding-bottom:0.5em; color:gray; border-bottom:1px solid silver;">
+
+{{if $customer}}
+	<h4>[`MT customer data`]</h4>
+	<p>
+	[`Name`]: {{$customer.MTC_FIRSTNAME}} {{$customer.MTC_LASTNAME}}<br />
+	[`Email`]: {{$customer.MTC_EMAIL}}<br />
+	{{if $customer.MTC_COMPANY}}[`Company`]: {{$customer.MTC_COMPANY}}<br />{{/if}}
+	{{if $customer.MTC_PHONE}}[`Phone`]: {{$customer.MTC_PHONE}}<br />{{/if}}
+	{{if $customer.address}}[`Address`]: {{$customer.address}}<br />{{/if}}
+	{{if $customer.jur_address}}[`Juridical address`]: {{$customer.jur_address}}<br />{{/if}}
+	{{if $customer.MTC_INN}}[`Details`]:
+	[`INN`]: {{$customer.MTC_INN}}
+	{{if $customer.MTC_KPP}}[`KPP`]: {{$customer.MTC_KPP}}{{/if}}
+	{{if $customer.MTC_BANKACCOUNT}}[`Bank account`]: {{$customer.MTC_BANKACCOUNT}}{{/if}}
+	{{if $customer.MTC_BANKNAME}}[`Bank name`]: {{$customer.MTC_BANKNAME}}{{/if}}
+	{{if $customer.MTC_BANKBIK}}[`BIK`]: {{$customer.MTC_BANKBIK}}{{/if}}
+	{{if $customer.MTC_BANKCORACCOUNT}}[`Bank coraccount`]: {{$customer.MTC_BANKCORACCOUNT}}{{/if}}
+	<br />
+	{{/if}}
+	MTC_ID: {{$customer.MTC_ID}}
+	</p>
+{{else}}
+    <h4><i>[`MT customer: none`]</i></h4>
+{{/if}}
+
+
+	<h4 style="margin-top:1em">[`Assets`]</h4>
+	<p>
+	WAOS:
+	{{foreach from=$apps item=app name=appsLoop}}
+		{{$app.TITLE}}{{if $app.count>0}} ({{$app.count}}){{/if}}{{if !$smarty.foreach.appsLoop.last}},{{/if}}
+	{{foreachelse}}
+		[`no`]
+	{{/foreach}}
+	</p>
+	<p>
+	WAHOST:
+	{{foreach from=$wahost item=wah name=wahLoop}}
+		{{$wah.ACC_NAME}} / {{$wah.DB_KEY}}
+		{{if $wah.ACC_PLAN == 'FREE'}}
+			(<span style="color:green;">Free</span>)
+		{{else}}
+			({{$wah.plan}},
+			{{if $wah.expired}}<span style="color:red;">expired</span>{{else}}exp. {{$wah.ACC_BILLING_DATE|date_format}}{{/if}}){{/if}}{{if !$smarty.foreach.wahLoop.last}},{{/if}}
+	{{foreachelse}}
+		[`no`]
+	{{/foreach}}
+	</p>
+	<p>
+	ARHOST:
+	{{foreach from=$arhost item=arh name=arhLoop}}
+		{{$arh.MTAA_DOMAIN}}
+		({{$arh.plan}},
+		{{if $arh.expired}}<span style="color:red;">expired</span>{{else}}exp. {{$arh.MTAA_EXPIRE_DATE|date_format}}{{/if}}){{if !$smarty.foreach.arhLoop.last}},{{/if}}
+	{{foreachelse}}
+		[`no`]
+	{{/foreach}}
+	</p>
+	<p>
+	DOMAINS:
+	{{foreach from=$domains item=dom name=domLoop}}
+		{{$dom.MTDR_DOMAIN_NAME}}
+		({{if $dom.expired}}<span style="color:red;">[`expired`]</span>{{elseif $dom.new}}<span style="color:green;">[`not registered`]</span>{{else}}exp. {{$dom.MTDR_EXPIRE_DATE|date_format}}{{/if}}){{if !$smarty.foreach.domLoop.last}},{{/if}}
+	{{foreachelse}}
+		[`no`]
+	{{/foreach}}
+	</p>
+
+
+{{if $products}}
+	<h4 style="margin-top:1em">[`Orders`]</h4>
+    {{foreach from=$products key=stateId item=state}}
+		{{if $state}}
+        <p><b style="{{$state.style}}">{{$stateId}}: {{$state.count}}</b>&nbsp;({{$state.amount}})</p>
+        {{/if}}
+    {{/foreach}}
+{{else}}
+    <h4 style="margin-top:1em"><i>[`Orders: none`]</i></h4>
+{{/if}}
+	
+</div>

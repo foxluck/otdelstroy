@@ -1,0 +1,4 @@
+<? if $showFoldersHint == "" ?>
+	<? assign var=showFoldersHint value=$kernelStrings.app_treeshowfld_hint ?>
+<? /if ?>
+<a href="javascript:void(0)" id='SplitterShowLeftPanelBtn' onClick='SplitterShowLeftPanel()' title="<? $showFoldersHint ?>" style='padding: 0px; margin-right: 2px; text-decoration:none;<? if !$treePanelHide ?>display:none<? /if ?>'><span style='margin-top: 4px; height: 23px; background-position: top left' class="SplitterHeaderTreeBtn"/></a>

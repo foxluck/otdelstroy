@@ -1,0 +1,65 @@
+{* customer groups *}
+<h1>{"pgn_customer_groups"|translate}</h1>
+
+<form action="" method="post">
+
+<p>
+{"pgn_customer_groups_descr"|translate}
+
+<p>
+<table class="grid">
+<tr class="gridsheader"> 
+	<td>{"str_group"|translate}</td>
+	<td>{"usr_custinfo_group_discount"|translate}</td>
+	<td>{"str_sort_order"|translate}</td>
+	<td>{'btn_delete'|transcape}</td>
+</tr>
+
+{section name=i loop=$custgroups}
+<tr class="{cycle values='gridline,gridline1'}">
+	<td>
+		{html_text dbfield="custgroup_name" name="custgroup_name_%lang%_`$custgroups[i].custgroupID`" values=$custgroups[i] size="30"}
+	</td>
+	<td align="center">
+		<input size="3" type="text" name='custgroup_discount_{$custgroups[i].custgroupID}' value='{$custgroups[i].custgroup_discount|escape:"html"}' />
+	</td>
+	<td align="center">
+		<input size="3" type="text" name='sort_order_{$custgroups[i].custgroupID}' value='{$custgroups[i].sort_order|escape:"html"}' />	
+	</td>
+	<td align="center">
+		<a href="javascript:confirmDelete({$custgroups[i].custgroupID},'{"cnfrm_delete"|translate}','{"delete="|set_query_html}&amp;delete=');">
+			<img src="images_common/remove.gif" border="0" alt="{"btn_delete"|translate}" />
+		</a>
+	</td>
+</tr>
+{/section}
+
+<tr class="gridsheader_simple"> 
+	<td colspan="4">{"btn_add"|translate}</td>
+</tr>
+<tr class="gridsheader"> 
+	<td>{"str_group"|translate}</td>
+	<td>{"usr_custinfo_group_discount"|translate}</td>
+	<td>{"str_sort_order"|translate}</td>
+	<td></td>
+</tr>
+<tr bgcolor="white"> 
+	<td>
+		{html_text name='custgroup_name' size="30"}
+	</td>
+	<td align="center">
+		<input name='new_custgroup_discount' type="text" size="3" />
+	</td>
+	<td align="center">
+		<input name='new_sort_order' type="text" size="3" />
+	</td>
+	<td></td>
+</tr>
+</table>
+
+<p> 
+	<input type="hidden" name="save_custgroups" value="yes" />
+	<input name="submit" type="submit" value='{"btn_save"|translate}' />
+</p>
+
+</form>

@@ -1,0 +1,47 @@
+widget_name_long	Common	Widget full name	Files
+widget_name_short	Common	Widget short name	Files
+
+subtype_inplace_name	Subtypes	Subtype name	Список файлов
+subtype_inplace_desc	Subtypes	Subtype desc	Выводит список выбранных файлов или всю папку в настраиваемом формате с кнопкой Скачать. Простейший способ опубликовать коллекцию файлов на вашем сайте.
+
+created_datetime_label	Widget	Created Datetime Label	в
+wbs_block	Widget 	WBS Link block	Создан с помощью <a href='http://www.webasyst.ru/files/'><b>ВебАсист Файлы</b></a> - инструмент хранения и публикации файлов в Интернет.<BR>Вы можете использовать ВебАсист Файлы бесплатно. <a href='http://www.webasyst.ru/files/'>Создать аккаунт!</a>
+
+wg_added_title	Widget	added label	добавлен
+wg_justadded_title	Widget	just added label	только что добавлен
+wg_download_label	Widget	Download label	Скачать
+
+place_general_title	Widget customize dialog	Place general title	Общая
+place_color_title	Widget customize dialog	Place color title	Цвет
+place_size_title	Widget customize dialog	Place size title	Размер
+place_files_title	Widget customize dialog	Place files title	Файлы
+place_view_title	Widget customize dialog	Place view title	Вид
+
+
+
+field_folder_label	Fields	Folder	Папка
+field_width_label	Fields	Width	Ширина
+field_height_label	Fields	Height	Высота
+field_bodybgcolor_label	Fields	Bgcolor	Фон списка
+field_wglang_desc	Fields	Lang	Этот язык будет использоваться для системных сообщений
+field_titlebgcolor_label	Fields	Title	Фон заголовка
+field_titlecolor_label	Fields	Title	Цвет заголовка
+field_fileicon_label	Fields	File icon	Значок файла
+field_fileicon_value_no	Fields	File icon value "no"	нет значка
+field_fileicon_value_small	Fields	File icon value "small"	Маленький
+field_fileicon_value_large	Fields	File icon value "large"	Большой
+field_fileicon_value_thumbnail	Fields	File icon value "thumbnail"	Эскиз
+field_viewmode_label	Fields	Viewmode	Вид просмотра
+field_viewmode_value_grid	Fields	Viewmode value "grid"	Таблица
+field_viewmode_value_list	Fields	Viewmode value "list"	Список
+field_showdesc_label	Fields	ShowDesc	Описания файлов
+field_showtitles_label	Fields	ShowTitles	Заголовки колонок
+field_showsize_label	Fields	ShowSize	Размер
+field_showdate_label	Fields	ShowDate	Дата
+field_showborder_label	Fields	ShowBorder	Обрамление
+field_showdownloadlink_label	Fields	ShowDownloadLink	Ссылка "скачать"
+field_sorting_label	Fields	Sorting	Сортировать по
+field_sorting_value_filename	Fields	Sorting value "filename"	Имени файла
+field_sorting_value_dateasc	Fields	Sorting value "dateasc"	Дате (старые наверху)
+field_sorting_value_datedesc	Fields	Sorting value "datedesc"	Дате (новые наверху)
+field_files_label	Fields	Files	Файлы

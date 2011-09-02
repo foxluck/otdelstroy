@@ -1,0 +1,6 @@
+<? if $foldersImage ?>
+	<? if $showFoldersHint == "" ?>
+		<? assign var=showFoldersHint value=$kernelStrings.app_treeshowfld_hint ?>
+	<? /if ?>
+	<a href="<? $foldersImage ?>" title="<? $showFoldersHint ?>"><span class="SplitterHeaderTreeBtn"/>&nbsp;</a>
+<? /if ?>

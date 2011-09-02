@@ -1,0 +1,26 @@
+logout_btn	Выход
+help_btn	Помощь
+fullscreen_on	Полный экран
+fullscreen_off	Вернуться
+view_btn	Вид
+settings_btn	Аккаунт
+loading_lbl	Загрузка
+menu_position	Положение меню
+menu_type	Показывать
+menupos_top	Наверху
+menupos_left	Слева
+menupos_bottom	Внизу
+menupos_right	Справа
+menutype_iconslabels	Значки и названия
+menutype_onlyicons	Только значки
+menutype_onlylabels	Только названия
+fullscreen_on_lbl	На весь экран
+fullscreen_off_lbl	Свернуть
+viewselector_close_btn	Закрыть
+account_unconfirmed_message	АККАУНТ НЕ ПОДТВЕРЖДЕН
+account_unconfirmed_link	Что это значит?
+account_expired_link	Продлить аккаунт
+account_expired_message	Срок действия аккаунта истек.
+account_will_expire_message	Срок действия аккаунта истечет через %s дней.
+help_title	Справка
+welcome_title	Добро пожаловать

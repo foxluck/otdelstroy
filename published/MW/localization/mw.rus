@@ -1,0 +1,50 @@
+app_name_long	Common	Application full name	Мои настройки
+app_name_short	Common	Application short name	Мои настройки
+
+app_available_pages_name	Common	 Available Pages rights name	Страницы приложения
+app_available_functions_name	Common	 Available Functions	Функции приложения
+app_available_tabs_name	Common	 Available Tabs	Закладки пользователя
+
+cp_screen_long_name	Change Password	Change Password page full name	Сменить Пароль
+cp_screen_short_name	Change Password	Change Password page short name	Пароль
+cp_changecanceled_message	Change Password	Change password cancellation message	Ваш пароль не был изменен
+cp_changeaccepted_message	Change Password	Password change successfull message	Ваш пароль был изменен
+cp_oldpass_label	Change Password	Old password label	Старый пароль
+cp_newpass_label	Change Password	New password label	Новый пароль
+cp_confirmnewpass_label	Change Password	Confirm new password label	Подтверждение
+pf_screen_long_name	Preferences	Preferences page full name	Настройки
+pf_screen_short_name	Preferences	Preferences page short name	Настройки
+pf_changeaccepted_message	Preferences	Changes saved successfully message	Ваши личные настройки были изменены
+pf_changecanceled_message	Preferences	Personnal settings changes canceled message	Ваши личные настройки не были изменены
+pf_note_text	Preferences	Note for the Preferences screen	Изменение некоторых параметров может быть не разрешено вашим системным администратором
+pf_notificationscb_label	Preferences	Label for email notifications checkbox	Включить почтовые уведомления
+pf_timezone_label	Preferences	Label for timezone combobox	Часовой Пояс
+pf_timezone_dst_label	Preferences	Label for timezone combobox	Летнее Время
+
+lf_screen_long_name	Look and Feel	Look and Feel page full name	Оформление
+lf_screen_short_name	Look and Feel	Look and Feel page short name	Оформление
+lf_changeaccepted_message	Look and Feel	Look and Feel settings have been successfully changed message	Оформление было изменено
+lf_changecanceled_message	Look and Feel	Look and Feel settings chages have been canceled message	Оформление не было изменено
+lf_layouttopmenu_title	Look and Feel	Top menu layout title	Сверху
+lf_layoutleftsidemenu_title	Look and Feel	Leftside menu layout title	Слева
+lf_themebeach_title	Look and Feel	Beach color theme title	Пляж
+lf_themegarden_title	Look and Feel	Garden color theme title	Сад
+lf_themeoffice_title	Look and Feel	Office color theme title	Офис
+lf_seltheme_label	Look and Feel	Select Theme label	Выберите Тему
+lf_sellayout_label	Look and Feel	Select Layout label	Расположение Главного Меню
+lf_sellogo_label	Look and Feel	Select Layout label	Логотип
+lf_logoapp_title	Look and Feel	Application logo title	Логотип и название приложения
+lf_logocustom_title	Look and Feel	Application logo title	Собственный логотип
+amu_persnameandcont_label	Add/Modify User	Label "Name and Contact" for the Access tab	Может изменять Имя и Контактную информацию
+amu_persswitchemail_label	Add/Modify User	Label "Enable/Disable email notifications" for the Access tab	Может Включать/Отключать почтовые уведомления
+amu_directaccess_title	Add/Modify User	Direct access section title	Прямой Доступ
+amu_diraccess_text	Add/Modify User	Direct Access checkbox text	Разрешить прямой доступ
+amu_directaccess_text	Add/Modify User	Description for the direct access feature	Прямой доступ позволяет пользователям открывать любой доступный экран WebAsyst, минуя форму входа, вводом специального адреса в адресное поле обозревателя.
+
+
+amu_contact_title	Add/Modify User	Contact tab title	Контакт
+amu_user_title	Add/Modify User	Title for the User tab	Пользователь
+amu_groups_title	Add/Modify User	Title for the Groups tab	Группы
+amu_access_title	Add/Modify User	Title for the Access tab	Доступ
+amu_quota_title	Add/Modify User	Title for the Quota tab	Квоты
+amu_lookandfeel_title	Add/Modify User	Title for the Look And Feel tab	Оформление

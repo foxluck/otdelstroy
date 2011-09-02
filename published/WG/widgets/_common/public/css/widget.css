@@ -1,0 +1,74 @@
+/*
+	Thumbnails
+*/
+
+div.Thumbnail
+{
+	width: 120px;
+	height: 115px;
+	margin: 0;
+	padding: 5px 0 0 0;
+	vertical-align: middle;
+}
+
+div.Thumbnail div
+{
+	width: 120px;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	text-align: center!important;
+}
+
+div.Thumbnail a
+{
+	display: inline!important;
+}
+
+div.Thumbnail div div
+{
+	width: 110px;
+	height: 110px;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div span
+{
+	display: block;
+	padding-top: 45px;
+}
+
+div.Thumbnail div div img
+{
+	border: none;
+}
+
+div.Thumbnail div div table
+{
+	border-collapse: collapse;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div table td
+{
+	width: 110px;
+	height: 110px;
+	text-align: center!important;
+	vertical-align: middle!important;
+}
+
+div.Thumbnail div div
+{
+	background: transparent url(thumbnail.gif) no-repeat;
+}
+
+div.Thumbnail div div table tr:hover
+{
+	background: transparent;
+}
+.album_desc {
+	margin-top: 20px;
+}

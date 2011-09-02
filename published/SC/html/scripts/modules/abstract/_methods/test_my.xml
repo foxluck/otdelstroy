@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Test</name>
+		<key>test</key>
+	</interface>
+</interfaces>

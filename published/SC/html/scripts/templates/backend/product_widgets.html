@@ -1,0 +1,107 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{lbl_pwgt_description}
+
+<h2>{lbl_pwgt_product_widgets_ttl}</h2>
+{if $smarty.const.CONF_ON_WEBASYST}
+{assign var="js_src" value="`$smarty.const.BASE_URL`/shop/js/widget_checkout.js"|regex_replace:"/([^:])\/\//":"\\1/"}
+{else}
+{assign var="js_src" value="`$smarty.const.BASE_URL``$smarty.const.URL_JS`/widget_checkout.js"|regex_replace:"/([^:])\/\//":"\\1/"}
+{/if}
+
+<div class="marginblock">
+
+	<form method="get" action="{''|set_query_html}">
+	<input name="did" value="{$CurrentDivision.id}" type="hidden" />
+	<input name="searchstring" value="{$searchstring|escape:'html'}" type="text" size="30" />
+	<input value="{'pwgt_find_product'|transcape}" type="submit" />
+	</form>
+	{if $GridRows}
+		<div><strong>{lbl_search_results}</strong></div>	
+		
+		<p>{include file="backend/lister.tpl.html"}</p>
+		<table class="grid" width="600">	
+		{foreach from=$GridRows item=_row}
+		<tbody class="pwgt_wgt_block collapsed" id="pwgt-prdwgt-block-{$_row.productID}">
+		<tr id="pwgt-prdrow-{$_row.productID}" class="pwgt_prd_block">
+			<td width="1%" nowrap="nowrap"><a href='{"?ukey=product_widget&productID=`$_row.productID`&product_slug=`$_row.slug`&furl_enable=1"|set_query_html:$smarty.const.WIDGET_SHOP_URL}' class="pwgt_hndl_widget" rel="{$_row.productID}">{$_row.name|escape:'html'}</a></td>
+			<td width="1%" nowrap="nowrap">{$_row.price_str}</td>
+			<td></td>
+		</tr>
+		<tr id="pwgt-wgtrow-{$_row.productID}" class="pwgt_wgt_block highlight">
+			<td colspan="3">
+			<table width="100%">
+			<tr>
+				<td width="50%" valign="top">
+					<strong>{lbl_pwgt_product_detailed_info_ttl}</strong>
+					<p>
+					<textarea readonly="readonly" class="prd" rows="4" cols="40" wrap="hard" style="font-size:70%;width:100%;" onclick="this.select();" onfocus="this.select();"></textarea>
+					</p>
+					
+					<p><strong>{lbl_pwgt_preview}</strong></p>
+					
+					<div class="prd prd_frame"></div>
+					<p class="notice">{lbl_pwgt_product_detailed_info_dscr}</p>
+				</td>
+				<td width="50%" valign="top">
+					<strong>{lbl_pwgt_add2cart_ttl}</strong>
+				
+{capture name="_add2cart"}
+<script type="text/javascript" src='{$js_src}'></script>
+<a href='{"?ukey=cart&action=add_product&productID=`$_row.productID`&furl_enable=1&widgets=1"|set_query:$smarty.const.WIDGET_SHOP_URL}' rel="{$smarty.const.BASE_WA_URL}" target="_blank" onclick="if(sswgt_CartManager)return sswgt_CartManager.add2cart(this);" title="{$btn_add2cart_alt}"><img src='{$smarty.const.BASE_URL}{if $smarty.const.CONF_ON_WEBASYST}shop/{/if}{$button_add2cart_big}' alt="{$btn_add2cart_alt}" border='0' /></a>
+{*$smarty.const.CONF_FULL_SHOP_URL*}
+{/capture}
+					<p>
+					<textarea readonly="readonly" class="pwgt_add2cart" rows="4" cols="40" wrap="hard" style="font-size:70%;width:100%;" onclick="this.select();" onfocus="this.select();">{$smarty.capture._add2cart|escape:'html'}</textarea>
+					</p>
+					
+					<p><strong>{lbl_pwgt_preview}</strong></p>
+					
+					<div>{$smarty.capture._add2cart}</div>
+					<p class="notice">{lbl_pwgt_add2cart_dscr}</p>
+				</td>
+			</tr>
+			</table>
+			
+			<a href='{"?ukey=product_settings&productID=`$_row.productID`"|set_query_html}' target="_blank">{'pwgt_edit_product'|translate|replace:'%PRODUCT_NAME%':$_row.name}</a>
+			<br />
+			<a href='{"?ukey=product&productID=`$_row.productID`"|set_query_html}' target="_blank">{'pwgt_view_product'|translate|replace:'%PRODUCT_NAME%':$_row.name}</a>
+			<br />
+			
+			</td>
+		</tr>
+		<tr class="pwgt_wgt_block">
+			<td colspan="3">&nbsp;</td>
+		</tr>
+		</tbody>
+		{/foreach}
+		</table>
+		<p>{include file="backend/lister.tpl.html"}</p>
+	{elseif $searchstring}
+		{lbl_no_results}
+	{/if}
+</div>
+
+<h2>{lbl_pwgt_view_cart_ttl}</h2>
+
+<div class="marginblock">
+	<p>{lbl_pwgt_view_cart_dscr}</p>
+	
+{capture name="_viewcart"}
+<script type="text/javascript" src='{$js_src}'></script>
+<a href='{"?ukey=cart&furl_enable=1&widgets=1"|set_query:$smarty.const.WIDGET_SHOP_URL}' rel="{$smarty.const.BASE_WA_URL}" target="_blank" onclick="if(sswgt_CartManager)return sswgt_CartManager.go2cart(this);" title="{$btn_viewcart_alt}" ><img alt="{$btn_viewcart_alt}" src="{$smarty.const.BASE_URL}{if $smarty.const.CONF_ON_WEBASYST}shop/{/if}{$button_viewcart}" border="0" /></a>
+{*$smarty.const.CONF_FULL_SHOP_URL*}
+{/capture}
+	<textarea readonly="readonly" class="pwgt_viewcart" rows="4" cols="60" wrap="hard" style="font-size:70%" onclick="this.select();" onfocus="this.select();">{$smarty.capture._viewcart|escape:'html'}</textarea>
+	
+	<p><strong>{lbl_pwgt_preview}</strong></p>
+	
+	<div>{$smarty.capture._viewcart}</div>
+	<p>{lbl_pwgt_view_cart_note}</p>
+</div>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/product_widgets.js"></script>
+<script type="text/javascript">
+	iframe_width = "{$iframe_width}";
+	iframe_height = "{$iframe_height}";
+</script>

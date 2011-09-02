@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>HEAD variables definition</name>
+		<key>head</key>
+	</interface>
+</interfaces>

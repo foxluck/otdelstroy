@@ -1,0 +1,12 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{if $MessageBlock__success}
+{$MessageBlock__success}
+{else}
+<p>{'prdcat_erase_products_description'|translate}</p>
+
+<form action="{''|set_query_html}" method="post">
+<input name="action" value="erase_products" type="hidden" />
+<input value="{'prdcat_erase'|transcape}" class="confirm_action" title="{'prdcat_erase_confirmation'|transcape}" style="font-size: 120%;" type="submit" />
+</form>
+{/if}

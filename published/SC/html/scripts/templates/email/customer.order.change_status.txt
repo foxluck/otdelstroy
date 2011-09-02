@@ -1,0 +1,10 @@
+{* order notification for customer *}
+<p>{lbl_email_hello}, {$customer_firstname}</p>
+{if $_MSG_CHANGE_ORDER_STATUS}
+<p>{$_MSG_CHANGE_ORDER_STATUS}</p>
+
+{/if}{if $_ADMIN_COMMENT}<p>{$_ADMIN_COMMENT}</p>
+{/if}
+<p>{$order_status_url}</p>
+<p>{lbl_email_bestregards}, {$smarty.const.CONF_SHOP_NAME}
+<br/><a href="http://{$smarty.const.CONF_SHOP_URL}">http://{$smarty.const.CONF_SHOP_URL}</a></p>

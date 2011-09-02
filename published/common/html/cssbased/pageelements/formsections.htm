@@ -1,0 +1,12 @@
+<table class="FormLayout" width="<?$width?>">
+	<? foreach from=$tabs item=tabData name=tabloop ?>
+
+		<tr>
+			<td colspan=2><div id="<? "section_"|cat:$tabData.CUSTOM_ID ?>" class="SectionHeader"><a name="<? "section_"|cat:$tabData.CUSTOM_ID ?>"></a><? $tabData.NAME|htmlsafe:true:true ?></div></td>
+		</tr>
+
+		<? assign var=filePath value=$basePath|cat:"/"|cat:$tabData.FILE  ?>
+		<? include file=$filePath CUSTOM_ID=$tabData.CUSTOM_ID ?>
+
+	<? /foreach ?>
+</table>

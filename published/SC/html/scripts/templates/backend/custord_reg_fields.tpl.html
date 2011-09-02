@@ -1,0 +1,111 @@
+{$MessageBlock}
+<h1>{$CurrentDivision.name|translate}</h1>
+<form action="{''|set_query_html}" method="post">
+<input type="hidden" name="save_fields" value="yes" />
+
+	<p>
+	{"usr_custinfo_fields_descr"|translate}
+	</p>
+
+	<h2>{"regform_customfields_configurator"|translate}</h2>
+	
+	<table class="grid">
+	<tr class="gridsheader"> 
+		<td>{"usr_custinfo_custom_field_name"|translate}</td>
+		<td>{"usr_custinfo_custom_field_required"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td>{'btn_delete'|transcape}</td>
+	</tr>
+	{section name=i loop=$fields}
+	<tr class="{cycle values='gridline,gridline1'}"> 
+		<td> 
+			{html_text dbfield="reg_field_name" name="reg_field_name_%lang%_`$fields[i].reg_field_ID`" values=$fields[i] style="width: 250px;"}
+		</td>
+		<td align="center"> 
+			<input name='reg_field_required_{$fields[i].reg_field_ID}' type="checkbox" value='1'{if $fields[i].reg_field_required eq 1} checked{/if} />
+		</td>
+		<td>
+			<input name='sort_order_{$fields[i].reg_field_ID}' type="text" value='{$fields[i].sort_order|escape:'html'}' size="3" />
+		</td>
+		<td align="center">
+			<a href='{"delete=`$fields[i].reg_field_ID`"|set_query_html}' class="confirm_action" title='{"cnfrm_delete"|translate}'>
+				<img src="images_common/remove.gif" alt='{"btn_delete"|translate}' />
+			</a>
+		</td>
+	</tr>
+	{/section}
+
+	<tr class="gridsheader_simple">
+		<td colspan="4">{"btn_add"|translate}</td>
+	</tr>
+	<tr class="gridsheader"> 
+		<td>{"usr_custinfo_custom_field_name"|translate}</td>
+		<td>{"usr_custinfo_custom_field_required"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td></td>
+	</tr>
+	<tr> 
+		<td>
+			{html_text name="reg_field_name"  style="width: 250px;"}
+		</td>
+		<td align="center"> 
+			<input name='reg_field_required' type='checkbox' value='1' />
+		</td>
+		<td>
+			<input  type="text" name='sort_order' size="3" />
+		</td>
+		<td></td>
+	</tr>
+	</table>
+
+	<p> 
+		<input name="submit" type="submit" value='{"btn_save"|translate}' />
+	</p>
+
+</form>
+
+
+<h2>{"regform_address_configurator"|translate}</h2>
+
+<form action="{''|set_query_html}" method="post">
+<input type="hidden" name="save_address_form" value="yes" />
+
+	<table class="grid">
+	<tr class="gridsheader"> 
+		<td>{"usr_custinfo_custom_field_name"|translate}</td>
+		<td align="center">{"usr_custinfo_custom_field_required"|translate}</td>
+		<td align="center">{"regform_optional_field"|translate}</td>
+		<td align="center">{"regform_not_requested"|translate}</td>
+	</tr>
+	<tr class="gridline1"> 
+		<td><b>{"str_address"|translate}</b></td>
+		<td align="center"><input type="radio" name="addr_address" value="0" {if $smarty.const.CONF_ADDRESSFORM_ADDRESS==0} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_address" value="1" {if $smarty.const.CONF_ADDRESSFORM_ADDRESS==1} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_address" value="2" {if $smarty.const.CONF_ADDRESSFORM_ADDRESS==2} checked{/if} /></td>
+	</tr>
+	<tr  class="gridline"> 
+		<td><b>{"usr_custinfo_city"|translate}</b></td>
+		<td align="center"><input type="radio" name="addr_city" value="0" {if $smarty.const.CONF_ADDRESSFORM_CITY==0} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_city" value="1" {if $smarty.const.CONF_ADDRESSFORM_CITY==1} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_city" value="2" {if $smarty.const.CONF_ADDRESSFORM_CITY==2} checked{/if} /></td>
+	</tr>
+	<tr class="gridline1"> 
+		<td><b>{"usr_custinfo_state"|translate}</b></td>
+		<td align="center"><input type="radio" name="addr_state" value="0" {if $smarty.const.CONF_ADDRESSFORM_STATE==0} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_state" value="1" {if $smarty.const.CONF_ADDRESSFORM_STATE==1} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_state" value="2" {if $smarty.const.CONF_ADDRESSFORM_STATE==2} checked{/if} /></td>
+	</tr>
+	<tr  class="gridline"> 
+		<td><b>{"usr_custinfo_zip"|translate}</b></td>
+		<td align="center"><input type="radio" name="addr_zip" value="0" {if $smarty.const.CONF_ADDRESSFORM_ZIP==0} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_zip" value="1" {if $smarty.const.CONF_ADDRESSFORM_ZIP==1} checked{/if} /></td>
+		<td align="center"><input type="radio" name="addr_zip" value="2" {if $smarty.const.CONF_ADDRESSFORM_ZIP==2} checked{/if} /></td>
+	</tr>
+	<tr class="gridline1"> 
+		<td><b>{"usr_custinfo_country"|translate}</b></td>
+		<td align="center" colspan="3">{"regform_address_configurator_country_hint"|translate}</td>
+	</tr>
+	</table>
+
+	<p><input name="submit" type="submit" value='{"btn_save"|translate}' /></p>
+</form>

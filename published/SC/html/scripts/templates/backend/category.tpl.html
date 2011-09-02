@@ -1,0 +1,234 @@
+<h1>{$Title|escape:'html'}</h1>
+{$MessageBlock}
+		
+		<form enctype="multipart/form-data" action="{''|set_query_html}" method="post" name="MainForm">
+		<input name="action" value="save_category" type="hidden" />
+		<table style="table-layout:fixed;" cellpadding="5" cellspacing="0">
+		<!-- general parent -->
+		<tr>
+			<td class="lcolumnr">{"prdcat_category_parent"|translate}</td>
+			<td class="rcolumnl">
+				<select name="parent"
+					{if $smarty.const.CONF_FULLY_EXPAND_CATEGORIES_IN_ADMIN_MODE eq 0}
+						onChange="window.location='category.php?{if $categoryID}categoryID={$categoryID}&{/if}change_category='+document.MainForm.parent.value;"
+					{/if}>
+				{if $smarty.const.CONF_FULLY_EXPAND_CATEGORIES_IN_ADMIN_MODE eq 1}
+					<option value="1">{lbl_prdcat_category_root}</option>
+				{/if}
+				{foreach from=$Categories item=_Category}
+					<option value="{$_Category.categoryID}"{if $CoreCategory eq $_Category.categoryID} selected="selected"{/if}>
+					{"&nbsp;&nbsp;"|string_repeat:$_Category.level}{$_Category.name|escape:'html'}
+					</option>
+				{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="lcolumnr"><strong>{"prdcat_category_name"|translate}</strong></td>
+			<td>{html_text name="name" values=$CategoryInfo style="width:350px;"}</td>
+		</tr>
+
+		<tr>
+			<td class="lcolumnr">{"prdcat_category_logo"|translate}</td>
+			<td>
+				<input type="file" name="picture" />
+				<br />
+			{if $CategoryInfo.picture}
+				<font class="average"></font> <a class="small" href="#" onclick="{$CategoryInfo.picture_href}">{$CategoryInfo.picture}</a> - 
+				<a href='{"categoryID=`$CategoryInfo.categoryID`&action=remove_picture"|set_query}' title='{"cnfrm_delete_picture"|translate}' class="confirm_action">{"btn_delete"|translate}</a>
+			{elseif $categoryID}
+				<font class="average">{"str_image_not_uploaded"|translate}</font>
+			{/if}
+			</td>
+		</tr>
+
+		<tr>
+			<td class="lcolumnr">{"prdcat_category_descr"|translate}:</td>
+			<td>{html_textarea name="description" rows="7" class="mceEditor" cols="40" values=$CategoryInfo}</td>
+		</tr>
+
+		<tr>
+			<td  class="lcolumnr">{"prdset_meta_keywords"|translate}:</td>
+			<td>{html_text name="meta_keywords" style="width:350px" values=$CategoryInfo}</td>
+		</tr>
+		
+		<tr>
+			<td class="lcolumnr">{"prdset_meta_title"|translate}:</td>
+			<td>{html_text name="meta_title" style="width:350px;" values=$CategoryInfo}</td>
+		</tr>
+
+		<tr>
+			<td class="lcolumnr">{"prdset_meta_description"|translate}:</td>
+			<td>{html_textarea name="meta_description" style="width:350px;" rows=2 cols=35 values=$CategoryInfo}</td>
+		</tr>
+
+		<tr>
+			<td class="lcolumnr">{"str_sort_order"|translate}:</td>
+			<td><input type="text" name="sort_order" value="{$CategoryInfo.sort_order|escape:'html'}" size="13" /></td>
+		</tr>
+		<tr>
+			<td class="lcolumnr">{lbl_catset_slug}</td>
+			<td><input name="slug" value="{$CategoryInfo.slug|escape:'html'}" type="text" style="width:350px;" /></td>
+		</tr>
+
+			<tr>
+				<td class="lcolumnr">{"prdcat_allow_products_comparison"|translate}:</td>
+				<td><input type="checkbox" class="checknomarging" name="allow_products_comparison" value="1"{if $CategoryInfo.allow_products_comparison eq 1} checked="checked"{/if} />	</td>
+			</tr>
+
+			<tr>
+				<td class="lcolumnr">{"pgn_advanced_search"|translate}:</td>
+				<td>
+					<a href="JavaScript:SelectParametrsHideTable();">{"prdcat_advsearch_customoption_availablevalues"|translate}...</a>
+					<br />
+					{"prdcat_advsearch_prdcustopt_select_descr"|translate}
+					<input type="hidden" name="SelectParametrsHideTable_hidden" value="{$showSelectParametrsTable}" />
+
+					<script language='javascript' type="text/javascript"><!--{literal}
+						function SelectParametrsHideTable(){
+							
+							var obj = document.getElementById('SelectParametrsTable');
+							if ( obj.style.display == 'none' ){
+								obj.style.display = 'block';
+								document.MainForm.SelectParametrsHideTable_hidden.value='1';
+							}else{
+								obj.style.display = 'none';
+								document.MainForm.SelectParametrsHideTable_hidden.value='0';
+							}
+						}
+					{/literal}//-->
+					</script>
+					<br />
+					<table id="SelectParametrsTable">
+					{foreach from=$Options item=_Option}
+						<tr>
+							<td>
+								<table>
+									<tr>
+										<td colspan="3"><label><input type="checkbox" class="checknomarging" name="checkbox_param_{$_Option.optionID}"{if $_Option.isSet} checked="checked"{/if} onclick="Checkbox_param_Change_{$_Option.optionID}()" /> {$_Option.name}</label></td>
+									</tr>
+								{count array=$_Option.variants item=_VarNum}
+								{if $_VarNum}
+									<tr>
+										<td>&nbsp;</td>
+										<td colspan="2">
+											<input type="radio" class="inlradio" name="select_arbitrarily_{$_Option.optionID}" id="select_arbitrarily1_{$_Option.optionID}"{if $_Option.set_arbitrarily eq 1} checked="checked"{/if} value="1" onclick="Select_arbitrarily_Change_{$_Option.optionID}()" />
+											{"prdcat_advsearch_prdcustopt_input"|translate}
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td colspan="2">
+											<input type="radio" class="inlradio" name="select_arbitrarily_{$_Option.optionID}" id="select_arbitrarily2_{$_Option.optionID}"{if $_Option.set_arbitrarily eq 0} checked="checked"{/if} value="0" onclick="Select_arbitrarily_Change_{$_Option.optionID}()" />
+											{"prdcat_advsearch_prdcustopt_selectable"|translate}
+										</td>
+									</tr>
+								{foreach from=$_Option.variants item=_Variant}
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>
+											<label>
+											<input type="checkbox" class="checknomarging" name="checkbox_variant_{$_Variant.variantID}"{if $_Variant.isSet} checked="checked"{/if} />
+											{$_Variant.option_value}
+											</label>
+										</td>
+									</tr>
+								{/foreach}{*foreach from=$_Option.variants item=_Variant*}
+								{/if}{*if $_VarNum*}
+								</table>
+								<script language="javascript" type="text/javascript"><!--
+									function Checkbox_param_Change_{$_Option.optionID}()
+									{literal}{{/literal}
+										
+										_checked = document.MainForm.checkbox_param_{$_Option.optionID}.checked;
+	
+									{if $_VarNum}
+											document.MainForm.select_arbitrarily1_{$_Option.optionID}.disabled = !_checked;
+											document.MainForm.select_arbitrarily2_{$_Option.optionID}.disabled =!_checked;
+									{/if}
+										Select_arbitrarily_Change_{$_Option.optionID}();									
+									{literal}}{/literal}
+	
+									function Select_arbitrarily_Change_{$_Option.optionID}()
+									{literal}{{/literal}
+									
+									{if $_VarNum}
+										_enabled = document.MainForm.select_arbitrarily2_{$_Option.optionID}.checked && document.MainForm.checkbox_param_{$_Option.optionID}.checked;
+									{/if}
+									{foreach from=$_Option.variants item=_Variant}
+										document.MainForm.checkbox_variant_{$_Variant.variantID}.disabled = !_enabled;
+									{/foreach}{*foreach from=$_Option.variants item=_Variant*}
+									{literal}}{/literal}
+	
+									Checkbox_param_Change_{$_Option.optionID}();
+								//-->
+								</script>
+							</td>
+						</tr>
+					{/foreach}
+					</table>
+					{if $showSelectParametrsTable eq 0}{literal}
+					<script language="javascript" type="text/javascript"><!--
+						document.getElementById('SelectParametrsTable').style.display = 'none';
+					//-->
+					</script>
+					{/literal}{/if}
+				</td>
+			</tr>
+
+			<tr>
+				<td class="lcolumnr">{"prdcat_advsearch_in_this_category_allow"|translate}:
+					<div class="notice">{"prdcat_advsearch_in_this_category_allow_descr"|translate}</div>
+				</td>
+				<td><input type="checkbox" class="checknomarging" name="allow_products_search"	value="1"{if $CategoryInfo.allow_products_search eq 1} checked="checked"{/if} /></td>
+			</tr>
+
+			<tr>
+				<td class="lcolumnr">{"prdcat_show_products_from_subcategories"|translate}:</td>
+				<td><input type="checkbox" class="checknomarging" name="show_subcategories_products" value="1"{if $CategoryInfo.show_subcategories_products eq 1} checked="checked"{/if} /></td>
+			</tr>
+
+		</table>
+
+		<p>
+		<input type="submit" value="{"btn_save"|translate}" />
+		<input type="button" value="{"btn_cancel"|translate}" onclick="document.location.href='{"?ukey=categorygoods&categoryID="|set_query_html}'" />
+		{if $categoryID}
+		<input type="button" value="{"btn_delete"|translate}" onclick="if(window.confirm('{'translate("cnfrm_delete")'|transcape}'))document.location.href='{'action=delete_category'|set_query_html}';" />
+		{/if}
+		</p>
+	</form>
+{literal}
+<script type="text/javascript" src="./tinymce/tiny_mce.js"></script>
+<script type="text/javascript"><!--
+initArray = {
+	mode : "specific_textareas",
+	editor_selector : "mceEditor",
+	height: "200",
+	width : "100%",
+	theme : "advanced",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_path_location : "bottom",
+	theme_advanced_resizing : true,
+	dialog_type : "modal",
+	theme_advanced_resize_horizontal : false,
+	convert_urls : false,
+	relative_urls : false,
+	remove_script_host : false,
+	force_p_newlines : true,
+	force_br_newlines : false,
+	convert_newlines_to_brs : false,
+	remove_linebreaks : false,
+	fix_list_elements : true,
+	gecko_spellcheck : true,
+	entities : "38,amp,60,lt,62,gt",
+	plugins : "inlinepopups,paste",
+	content_css: url_current_theme_css
+};
+
+tinyMCE.init(initArray);
+//-->
+</script>
+{/literal}

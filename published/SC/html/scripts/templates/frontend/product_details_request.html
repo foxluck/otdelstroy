@@ -1,0 +1,73 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+{if $PAGE_VIEW ne 'printable'}
+<div class="pageSeparator"></div>
+<a name="product-request"></a>
+
+<p>
+	<a name="inquiry"></a>
+	{if $sent eq NULL}
+
+	<h2>{"feedback_title_productpage"|translate|replace:"[product_name]":"`$product_info.name`"|escape:'html'}</h2>
+
+	<p>{"feedback_description_general_2"|translate}</p>
+
+	{$MessageBlock__prd_request}
+
+	<input name="message_subject" value="{$product_info.name|escape:'html'}" type="hidden" >
+	<input name="productID" value="{$product_info.productID}" type="hidden" >
+	
+	{"str_your_name"|translate}:<br />
+	<input name="customer_name"  value="{$prd_request.customer_name|escape:'html'}" type="text" size="40" ><br />
+
+	{"usr_custinfo_email"|translate}<br />
+	<input name="customer_email" value="{$prd_request.customer_email|escape:'html'}" type="text" size="40" >
+
+
+	<p>{"feedback_description_productpage"|translate} {$product_info.name|escape:'html'}:<br>
+	<textarea name="message_text" cols="50" rows="10">{$prd_request.message_text|escape:'html'}</textarea>
+	</p>
+	
+	{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+		<br />
+		<table cellpadding="6" cellspacing="0">
+		<tr class="background1">
+			<td colspan="2">{"str_enter_ccode"|translate}</td>
+		</tr>
+<!--		{if $PAGE_VIEW eq 'mobile'} mobile view -->
+		<tr class="background1">
+			<td colspan="2" align="center">
+				<img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" />
+				<br />
+				<input name="fConfirmationCode" value="" type="text" >
+			</td>
+		</tr>
+<!--		{else} generic view -->
+		<tr class="background1">
+			<td align="right">
+				<img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" align="right" />
+			</td>
+			<td>
+				<input name="fConfirmationCode" value="" type="text" style="width:200px;" >
+			</td>
+		</tr>
+<!--		{/if} -->
+		</table>
+	{/if}
+
+	<p>
+	<input type="submit" name="request_information" value="OK">
+	</p>
+
+	{else}
+
+	<p><span class=faq style="color: blue; font-weight: bold;">{"feedback_msg_sent_successfully"|translate}</span></p>
+
+	{/if}
+{/if}
+{else}
+	<h2>{"feedback_title_productpage"|translate|replace:"[product_name]":"`$product_info.name`"|escape:'html'}</h2>
+
+	<p>{"feedback_description_general_2"|translate}</p>
+	
+	...
+{/if}

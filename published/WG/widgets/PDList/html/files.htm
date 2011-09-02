@@ -1,0 +1,10 @@
+<? if $filesList ?>
+<tr>
+	<td><? $widgetStrings.field_files_label ?>:</td>
+	<td>
+		<? foreach from=$filesList item=file ?>
+			<? $file.PL_FILENAME|truncate:30:"..." ?><BR>
+		<? /foreach ?>		
+	</td>
+</tr>
+<? /if ?>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title><? $pageTitle ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+		<link href="../classic/help_toc.css" rel="stylesheet" type="text/css">
+
+		<script language=JavaScript>
+			var items = new Array();
+			var selected = null;
+			
+			function goToItem (num, anchor) {
+				selectItem("item" + num);
+				var link = "link" + num;
+				if (num > 0) {
+					window.parent.frames["content"].location.href = document.getElementById( link).href + "#" + anchor;
+				}
+			}
+
+			function selectItem( obj )
+			{
+				if ( this.selected != null ) {
+					var prevObj = document.getElementById( this.selected );
+					if ( prevObj != null )
+						prevObj.className = "";
+				}
+
+				var thisObj = document.getElementById( obj );
+				if ( thisObj != null )
+					thisObj.className = "selected";
+
+				this.selected = obj;
+			}
+		</script>
+
+	</head>
+	<body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0 bgcolor=#47A6CE onLoad="goToItem('<? $selectedItem ?>', '<? $section ?>')">
+
+	<table border=0 cellpadding=3 width="100%">
+		<? foreach from=$appLinks key=itemKey item=appLink ?>
+
+			<script language=JavaScript>
+				items.push( "item<? $itemKey ?>" );
+			</script>
+
+			<tr>
+				<td class=tocTree align=left id="item<? $itemKey ?>" onClick="selectItem('item<? $itemKey ?>')">
+					<a id='link<? $itemKey ?>' href="<? $appLink.LINK ?>" hidefocus="true" class="treeitem" target="content"><img src="../classic/images/page.gif" border="0"><? $appLink.APP_NAME|htmlsafe:true:true ?></a>
+				</td>
+			</tr>
+		<? /foreach ?>
+	</table>
+
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<script type="text/javascript">window.isMSI = navigator.appVersion.search('MSI') == -1?false:true;</script>
+<form action="" method="post" name="form_configs">
+<input id="fACTION" name="fACTION" value="" type="hidden" />
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+	<tr bgcolor="#BEDDDB">
+		<td width="1%">&nbsp;</td>
+		<td width="30%">{"str_name"|translate}</td>
+		<td>{"str_description"|translate}</td>
+		<td width="1%">{lbl_mdl_enabled}</td>
+		<td width="1%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+	</tr>
+{section name=i loop=$Modules}
+	{cycle name="gridclass" values="gridline1,gridline" assign='row_class'}
+	<tr class='{$row_class}'>
+		<td valign="top">{if $Modules[i].single_installation and $Modules[i].configs_number>0}<input name="CONFIGIDS[]" value="{$Modules[i].Configs[0].id}" type="checkbox" class="checknomarging" />{else}&nbsp;{/if}</td>
+		<td valign="top">{$Modules[i].title|default:'&nbsp;'}</td>
+		<td valign="top">{$Modules[i].description|default:'&nbsp;'}</td>
+		<td valign="top" align="center">{if $Modules[i].single_installation and $Modules[i].configs_number>0}<input type="checkbox" disabled="1" {if $Modules[i].Configs[0].enabled}checked="1"{/if}{else}&nbsp;{/if}</td>
+		<td valign="top">{if $Modules[i].configs_number>0}<a 
+		{if $Modules[i].single_installation} href='{"?ukey=config_settings&configID=`$Modules[i].Configs[0].id`"|set_query}'{else} href="javascript:void(0)" onclick="
+		var tobj=document.getElementById('mconfigs_{$Modules[i].id}');
+		tobj.style.display = tobj.style.display != (window.isMSI?'block':'table-row')?(window.isMSI?'block':'table-row'):'none';
+		"{/if} class="bluehref">{$Modules[i].configs_number}</a>{else}&nbsp;{/if}</td>
+		<td class="endgrid" align="center" valign="top">{if ($Modules[i].single_installation eq '' or $Modules[i].single_installation eq 'false') or $Modules[i].configs_number ne 1}<a href='{"?ukey=module_installation&class=`$Modules[i].class_name`&file=`$Modules[i].class_dir`/`$Modules[i].class_file`"|set_query}' class="bluehref">{lbl_mdl_install}</a>{/if}&nbsp;</td>
+	</tr>
+	{if $Modules[i].configs_number>0}
+	<tr id="mconfigs_{$Modules[i].id}"{if $smarty.get.showConfigs ne $Modules[i].id} style="display:none;"{/if}><td colspan="6" class="cell_configs">
+		<table width="100%" border="0" cellpadding="5" cellspacing="0">
+		{foreach item=Config from=$Modules[i].Configs}
+		<tr class="{cycle values='gridline1,gridline'}">
+			<td valign="top" width="1%"><input name="CONFIGIDS[]" value="{$Config.id}" type="checkbox" class="checknomarging" /></td>
+			<td valign="top" width="30%" nowrap="nowrap"><a href='{"?ukey=config_settings&configID=`$Config.id`"|set_query}' class="bluehref">{$Config.title|default:"`$Modules[i].title` (`$Modules[i].id`)"}</a></td>
+			<td valign="top">{$Config.description|default:'&nbsp;'}</td>
+			<td valign="top" width="1%"><input type="checkbox" disabled="1"{if $Config.enabled} checked="1"{/if} /></td>
+		</tr>
+		{foreachelse}
+		<tr><td>&nbsp;</td></tr>
+		{/foreach}
+		</table>
+	</td></tr>
+	{/if}
+{/section}
+{cycle name="gridclass" values="gridline1,gridline" assign='row_class'}
+	<tr class="{$row_class}">
+		<td colspan="6" class="endgrid" style="border-top-width:1px!important;border-color:#333333;border-style:solid;">{lbl_mdl_selected_configs}: <a href="javascript:void(0)" onclick="document.getElementById('fACTION').value='ENABLE_CONFIGS';document.forms['form_configs'].submit();return false;" class="bluehref">{lbl_enable}</a>, <a href="javascript:void(0)" onclick="document.getElementById('fACTION').value='DISABLE_CONFIGS';document.forms['form_configs'].submit();return false;" class="bluehref">{lbl_disable}</a>, <a href="javascript:void(0)" onclick="document.getElementById('fACTION').value='DEINSTALL_CONFIGS';document.forms['form_configs'].submit();return false;" class="bluehref">{lbl_deinstall}</a></td>
+	</tr>
+</table>
+</form>

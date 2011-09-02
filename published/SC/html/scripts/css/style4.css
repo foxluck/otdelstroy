@@ -1,0 +1,84 @@
+/* style for template #4 */
+
+p, font
+{ font-family:		Tahoma;
+  font-size:		11px;
+}
+td
+{ font-family:		Tahoma;
+  font-size:		11px;
+}
+h1
+{ font-family:		Tahoma;
+  font-size:		18px;
+  color:			black;
+}
+.header
+{ font-family:		Arial;
+  font-size:		16px;
+  color:			white;
+  font-weight:		bold;
+  text-decoration:	underline;
+}
+.no_underline
+{ text-decoration:		none;
+}
+a
+{ font-family:		Tahoma;
+  font-weight:		bold;
+  font-size:		11px;
+  color:			navy;
+}
+.small
+{ font-size:		10px;
+}
+.faq
+{ font-size:		13px;
+}
+.big
+{ font-size:		18px;
+  text-decoration:		none;
+}
+.cat
+{ font-size:		16px;
+}
+.standard
+{ font-weight:		normal;
+}
+.light
+{ color:			white;
+}
+.lightsmall
+{ color:			white;
+  font-size:		10px;
+}
+.lightstandard
+{ color:			white;
+  font-weight:		normal;
+}
+.middle
+{ color:			white;
+}
+.cart
+{ font-family:		Tahoma;
+  font-size:		11px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:			1px;
+  font-weight:		bold;
+  color:			black;
+  background-color:  transparent;
+}
+.totalPrice
+{ font-size:	    	16px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:		1px;
+  font-weight:		bold;
+  color:		red;
+  background-color:  transparent;
+}

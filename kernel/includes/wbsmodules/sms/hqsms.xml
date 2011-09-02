@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<wbsparams>
+		<param name="module_description" special="yes">HQSMS SMS gateway</param>
+		<param name="module_classname" special="yes">smsgateway</param>
+
+		<param name="user" type="text" default="Username" label="Username" />
+		<param name="password" type="text" default="Password" label="Password" />
+		<param name="host" type="text" default="www.hqsms.com/api" label="URL" />
+
+		<param name="from" type="text" default="" label="Custom Sender Address" />
+
+		<param name="cost" type="float" default="1" label="One Credit Price (USD)" />
+		<param name="reserve" type="float" default="0.11" label="Reserve Charge (USD)" />
+
+</wbsparams>

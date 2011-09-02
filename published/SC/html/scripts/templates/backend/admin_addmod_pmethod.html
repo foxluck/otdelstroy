@@ -1,0 +1,83 @@
+<h1>{if $payment_method.PID}__Payment method settings__{else}__Payment method creation__{/if}</h1>
+<a href="{'?ukey=pmethod_list'|set_query_html}">__Return to payment method list__</a>
+<hr />
+<form action="{''|set_query_html}" method="post">
+	<table>
+	<tr>
+		<td>__Enabled__</td>
+		<td>
+		<input type="checkbox" name="enabled" value="1"{if $payment_method.Enabled} checked="checked"{/if} />
+		</td>
+	</tr>
+	<tr>
+		<td>__Name__</td>
+		<td>
+		<input type="text" name="name" value="{$payment_method.Name|escape:'html'}" />
+		</td>
+	</tr>
+	<tr>
+		<td>__Description__</td>
+		<td>
+		<textarea rows="5" cols="40" name="description">{$payment_method.description|escape:'html'}</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">__Ship methods to allow__</td>
+		<td>
+			<table>
+			{section name=j loop=$payment_method.ShippingMethodsToAllow}
+			<tr>
+				<td>
+				<input type="checkbox" name='ShippingMethodsToAllow_{$payment_method.ShippingMethodsToAllow[j].SID}'
+				{if $payment_method.ShippingMethodsToAllow[j].allow} checked="checked" {/if} />
+				</td>
+				<td>
+				{$payment_method.ShippingMethodsToAllow[j].name}
+				</td>
+			</tr>
+			{/section}
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>__Claculate tax__</td>
+		<td>
+		<input type="checkbox" name="calculate_tax" {if $payment_method.calculate_tax} checked="checked"{/if} />
+		</td>
+	</tr>
+	<tr>
+		<td>__Email comments text__</td>
+		<td>
+		<textarea name="email_comments_text" cols="20" rows="4">{$payment_method.email_comments_text|escape:'html'}</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>__Module__</td>
+		<td>
+		<select name='module_id'>
+			<option value='null'>--</option>
+			{section name=j loop=$payment_modules}
+			<option value='{$payment_modules[j]->get_id()}' {if $payment_modules[j]->get_id() == $payment_method.module_id} selected="selected"{/if}>
+				{$payment_modules[j]->title}
+			</option>
+		{/section}
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>__Sort index__</td>
+		<td>
+		<input type="text" name="sort_order" value="{$payment_method.sort_order|escape:'html'}" size="3" />
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+		<input type="submit" name="save" value="{if $payment_method.PID}{"btn_save"|translate}{else}{"btn_add"|translate}{/if}" />&nbsp;&nbsp;
+		{if $payment_method.PID}
+		<input type="button" value="{"btn_delete"|translate}" onclick="confirmDelete({$payment_method.PID},'{"cnfrm_delete"|translate}','{"delete="|set_query}&delete=');" />
+		{/if}
+		</td>
+	</tr>
+	</table>
+</form>

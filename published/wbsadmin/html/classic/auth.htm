@@ -1,0 +1,54 @@
+<form method="POST">
+<table border="0" class="settings-table" style="width: 400px; margin-left: 0px;">
+
+	
+	<tr>
+		<td colspan="3" align="center">&nbsp;<? if $fatalError ?><font color="Red"><? $errorStr ?></font><? /if ?></td>
+	</tr>
+	
+	<tr>
+		<td align="right" width="25%">
+			<?49|translate?>:&nbsp;
+		</td>
+		<td colspan="2">
+			<input type="text" name="user[LOGIN]" value="<? $user.LOGIN|escape:'html' ?>" class="big-control" style="width: 95%;">
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="padding-top: 10px;">
+			<?50|translate?>:&nbsp;
+		</td>
+		<td colspan="2" style="padding-top: 10px;">
+			<input type="password" name="user[PASSWORD]" value="<? $user.PASSWORD|escape:'html' ?>" class="big-control" style="width: 95%;">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			&nbsp;
+			<input type="hidden" name="user[CODE1]" value="<? $user.CODE1|escape:'html' ?>">
+			<input type="hidden" name="user[CODE2]" value="<? $user.CODE2|escape:'html' ?>">
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<td>
+<span id="password_reminder_link" class="nobr">
+				<a href='JavaScript:return true;' onclick="{var obj;obj=document.getElementById('password_reminder');if(obj)obj.style.display='block';obj=document.getElementById('password_reminder_link');if(obj)obj.style.display='none';}"><?"auth_remind_title"|translate?></a>
+			</span>
+
+		</td>
+		<td align="right" width="25%">
+			<input type="submit" value="<?65|translate?>">
+		</td>
+	</tr>
+
+
+	<tr>
+		<td colspan="3" style="padding-top: 20px;">
+						<span id="password_reminder" style="display:none;margin-left:20px;"  class="comment">
+				<?"auth_remind"|translate?>
+			</span>
+		</td>
+	</tr>
+</table>
+</form>

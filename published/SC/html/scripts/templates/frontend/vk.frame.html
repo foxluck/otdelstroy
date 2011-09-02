@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <base href="{$smarty.const.CONF_FULL_SHOP_URL}">
+<!-- Head start -->
+	{include file="head.html"}
+<!-- Head end -->
+  {if $overridestyles}<link rel="stylesheet" href="{$URL_THEME_OFFSET}/overridestyles.css" type="text/css" >{/if}
+ 
+  
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/html.css" type="text/css" >
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/formalize_vk.css" type="text/css" >
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/general.css" type="text/css" >
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/vkontakte.css" type="text/css" >
+
+<script type="text/javascript" src="{$smarty.const.URL_COMMON}/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/jquery.formalize.js"></script>
+
+<!-- VK -->
+<!-- {literal} hack for vkontakte-->
+<style type="text/css">
+	#cart_checkout_btn td {padding: 0;}
+</style>
+<!-- {/literal} -->
+{if $CurrentDivision.ukey != 'cart'} 
+<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>
+{/if}
+<script src="http://vkontakte.ru/js/api/xd_connection.js?2" type="text/javascript"></script>
+
+
+<script type="text/javascript">{literal}
+function setFrameSize()
+{
+	var content = document.getElementById('content');
+	
+	if(content){
+		var height = content.offsetHeight;
+		var width = content.offsetWidth;
+		if(VK){
+			width = Math.max(width,805);
+			VK.callMethod('resizeWindow', width, height);
+			VK.callMethod("scrollWindow",0,0);
+		}else{
+			//VK API missed
+		}
+	}else{
+		//content div not found
+	}
+	return true;
+}
+
+
+VK.init(function(){
+	//document.body.onload = function(){	setFrameSize();};
+	setTimeout(function() {	setFrameSize();},100);
+	setTimeout(function() {	setFrameSize();},200);
+	setTimeout(function() {	setFrameSize();},1000);
+	VK.addCallback('onWindowResized',setFrameSize);
+		});
+{/literal}</script>
+
+</head>
+<body>
+  <div id="content">
+    <div id="container">
+       <div id="main-content">
+          
+        <div class="site-info">
+		
+         {*cpt_logo file='facebook-logo.png'*}
+         <ul class="inline-blocks">
+         {if $CurrentDivision.ukey != 'cart'}   
+         <li class="shcart">{cpt_shopping_cart_info overridestyle=''}</li>
+		{/if}
+         <li class="shopname"> 
+         <a href="{'?ukey=home'|set_query_html}">{$smarty.const.CONF_SHOP_NAME|escape:'html'}</a>
+</li>
+         <li class="vklike">
+{if $CurrentDivision.ukey != 'cart'}         
+<div id="vk_like">
+ <script type="text/javascript"><!--
+ {literal}
+ var vk_share_url =document.URL.replace(/\/vkontakte(\/|\?|$)/,'/').replace(/(\?|&)store_mode=\b\w+\b(&)/,'$1');
+ document.write(VK.Share.button({url:vk_share_url},{type: "round", text: "Мне нравится"}));
+ --></script>
+{/literal}
+</div>
+{/if}</li>
+</ul>       
+        
+       
+		</div>
+		
+          {if $page_not_found404}
+			{include file="404.html"}
+		{else}
+		<!-- BEGIN main_body_tpl={$main_body_tpl} -->
+			{include file=$main_body_tpl}
+		<!-- END main_body_tpl-->
+		{/if}
+		 
+		
+		{*cpt_divisions_navigation divisions="mobile" view="horizontal"*}
+		
+		{if $show_powered_by }
+		{if $show_powered_by_link}
+ 		<div class="footer">{lbl_powered_by_external}</div>
+		{else}
+ 		<div class="footer">{lbl_powered_by_text}</div>
+		{/if}
+		{/if}
+		  </div>
+        
+
+
+      </div>
+      
+    </div>
+     {if !$page_not_found404}{$GOOGLE_ANALYTICS_CODE}{/if}
+</body>
+</html>

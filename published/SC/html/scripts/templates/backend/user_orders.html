@@ -1,0 +1,39 @@
+{if $GridRows}
+<table class="grid" width="100%">
+<tr class="gridsheader">
+	{include file="backend/gridheader.tpl.html"}
+</tr>
+	
+{foreach from=$GridRows item=_row}
+{assign var=_order_url value="did=&ukey=admin_order_detailed&orderID=`$_row.orderID`&rdid=`$CurrentDivision.id`"|set_query_html}
+<tr class="{cycle values="gridline1,gridline"}">
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.orderID_view}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.order_time}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.payment_type}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.shipping_type}{if $_row.shippingServiceInfo} ({$_row.shippingServiceInfo}){/if}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.order_amount}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.status_name}</a></td>
+</tr>	
+{/foreach}
+<tr style="height: 1px; background-color: #CCCCCC;"><td colspan="6" style="padding: 0px;"></td></tr>
+{if $orders_totals}
+<tr>
+    <td colspan="4"></td>
+    <td colspan="2">
+        <span style="font-size: 120%">{"str_total"|translate}:</span>
+        {foreach from=$orders_totals item=ot}
+        <br />
+        <span style="color: {$ot.color};{if $ot.bold} font-weight: bold;{/if}{if $ot.italic} font-style: italic;{/if}">{$ot.status_name}:</span>
+        <span style="color: {$ot.color}; font-weight: bold;">{$default_currency_code} {$ot.total}</span>
+        {/foreach}
+    </td>
+</tr>
+{/if}
+
+<tr class="gridsfooter"> 
+	<td colspan="{$GridHeadersNum}">{include file="backend/lister.tpl.html"}</td>
+</tr>
+</table>
+{else}
+	<p>{"srch_no_matches_found"|translate}</p>
+{/if}

@@ -1,0 +1,79 @@
+<!-- languages.html -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<h2 class="page-title"><? $waStrings.lll_page_title ?></h2><br>
+<? if !$fatalError ?>
+
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				&nbsp;
+			</td>
+			<td align="right">
+				<input name="addlanguage" type="submit" value="<? $waStrings.lll_add ?>">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp; </td>
+		</tr>
+	</table>
+	
+	<table width="100%" class="list">
+		<tr style="background-color: #eee;">
+			<td width=50><strong><? $waStrings.lll_id ?></strong></td>
+			<td><strong><? $waStrings.lll_name ?></strong></td>
+			<td><strong><? $waStrings.lll_encoding ?></strong></td>
+			<td align="center"><strong><? $waStrings.lll_properties ?></strong></td>
+			<td align="center" colspan="3"><strong><? $waStrings.lll_locstr ?></strong></td>
+		</tr>
+		<? foreach from=$sys_languages item=langData name=languageList?>
+		<tr class="list-item <?cycle values="background1,background2"?>">
+			<td align="left">
+				<? if $langData.ID=="eng" ?> <b> <? /if ?> &nbsp; <? $langData.ID ?> <? if $langData.ID=="eng" ?> </b> <? /if ?>
+			</td>
+			<td align="left">
+				<? if $langData.ID=="eng" ?> <b> <? /if ?> &nbsp; <? $langData.NAME ?> <? if $langData.ID=="eng" ?> </b> <? /if ?>
+			</td>
+			<td align="left">
+				<? if $langData.ID=="eng" ?> <b> <? /if ?> &nbsp; <? $langData.ENCODING ?> <? if $langData.ID=="eng" ?> </b> <? /if ?>
+			</td>
+			<td align="center">
+				<a href="<? $langData.ROW_URL ?>"><? $waStrings.lll_modify ?></a>
+			</td>
+			<td align="center">
+				<a href="<? $langData.LOC_URL ?>">
+					<? if $langData.ID!="eng" ?>
+						<? $waStrings.lll_edit ?>
+					<? else ?>
+						<? $waStrings.lll_view ?>
+					<? /if ?>
+				</a>&nbsp;
+			</td>
+			<td align="center">
+				<? if $langData.ID!="eng" ?>
+					<a href="<? $langData.IMPORT_URL ?>"><? $waStrings.lll_import ?></a>
+				<?else?>
+					&nbsp;
+				<? /if ?>
+			</td>
+			<td align="center">
+				<a href="<? $langData.EXPORT_URL ?>"><? $waStrings.lll_export ?></a> &nbsp;
+			</td>
+		</tr>
+		<? foreachelse ?>
+		<tr align="center">
+			<td colspan="3">&lt;<? $waStrings.lll_no_recods ?>&gt;</td>
+		</tr>
+		<? /foreach ?>
+	</table>
+	<br>
+	<b><? $waStrings.lbl_form_note ?>:</b> <? $waStrings.lll_note ?>
+<? /if ?>
+	<input type=hidden name=lang_id value="<? $lang_id ?>">
+	<input type=hidden name=app_id value="<? $app_id ?>">
+	<input type=hidden name=type_id value="<? $type_id ?>">
+
+	</form>
+<? /strip ?>
+<!-- /languages.html -->

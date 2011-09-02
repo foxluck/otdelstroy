@@ -1,0 +1,93 @@
+{* new orders list *}
+
+<h1>{'ordr_order_list'|transcape}</h1>
+
+<form method="get" action="" name="MainForm">
+	<input type="hidden" name="did" value="{$CurrentDivision.id}" />
+<table>
+	<tr>
+		<td valign="top">
+	{if $order_statuses}
+		<input class="inlradio" type="radio" name="order_search_type" value="SearchByStatusID"
+		{if $order_search_type == 'SearchByStatusID'}checked="checked"{/if}
+		onclick="order_search_typeClickHandler()" id="id_order_search_type2" /><label for="id_order_search_type2"> {"ordr_filter_by_status"|translate}</label>:
+
+		{foreach from=$order_statuses item=_status}
+		<div style="margin-left:20px;margin-top:3px;margin-bottom:3px;">
+		<input class="checknomarging" type="checkbox" name="checkbox_order_status_{$_status.statusID}" id="id_checkbox_order_status_{$_status.statusID}"
+		{if $_status.selected == 1} checked="checked"{/if} value="1" /><label for="id_checkbox_order_status_{$_status.statusID}" style="{$_status._style}"> {$_status.status_name}</label>
+		</div>
+		{/foreach}
+	{/if}
+		</td>
+		<td valign="top">
+		<input class="inlradio" type="radio" name="order_search_type" value="SearchByOrderID"
+		{if $order_search_type == 'SearchByOrderID' || $order_search_type == null}
+			checked="checked"
+		{/if}	onclick="order_search_typeClickHandler()" id="id_order_search_type1" /><label for="id_order_search_type1"> {"ordr_search_by_id"|translate}</label>: 
+		<div style="margin-left:40px;margin-top:3px;margin-bottom:3px;">
+		<input type="text" name="orderID_textbox" value="{$orderID}" />
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">
+			<input type="submit" value="{"btn_show"|translate}" name="search" />
+		</td>
+	</tr>
+</table>
+</form>
+	
+<script language="JavaScript" type="text/javascript">
+	function order_search_typeClickHandler()
+	{literal}{{/literal}
+		
+		if ( document.MainForm.order_search_type[1].checked )
+		{literal}{{/literal}
+			{foreach from=$order_statuses item=_status}
+				document.MainForm.checkbox_order_status_{$_status.statusID}.disabled = true;
+			{/foreach}
+			document.MainForm.orderID_textbox.disabled = false;
+		{literal}}{/literal}
+		else if ( document.MainForm.order_search_type[0].checked )
+		{literal}{{/literal}
+			{foreach from=$order_statuses item=_status}
+				document.MainForm.checkbox_order_status_{$_status.statusID}.disabled = false;
+			{/foreach}
+			document.MainForm.orderID_textbox.disabled = true;						
+		{literal}}{/literal}
+	{literal}}{/literal}
+	
+	order_search_typeClickHandler();
+</script>
+	
+	<p>
+	{if $orders}
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+	<tr class="gridsheader">
+		{include file="backend/gridheader.tpl.html"}
+	</tr>
+{section name=i loop=$orders}
+	{assign var=order_url value="ukey=admin_order_detailed&orderID=`$orders[i].orderID`&rdid=`$CurrentDivision.id`"|set_query}
+	{assign var=order_statusID value=$orders[i].statusID}
+	
+	<tr class="{cycle values="gridline1,gridline"}">
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].orderID}</a></td>
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].order_time}</a></td>
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].billing_firstname} {$orders[i].billing_lastname}</a></td>
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].payment_type|default:'&nbsp;'}</a></td>
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].shipping_type|default:'&nbsp;'}{if $orders[i].shippingServiceInfo} ({$orders[i].shippingServiceInfo}){/if}</a></td>
+		<td><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].order_amount}</a></td>
+		<td class="endgrid"><a href='{$order_url}' style="{$order_statuses[$order_statusID]._style}">{$orders[i].OrderStatus|default:'&nbsp;'}</a></td>
+	</tr>	
+{/section}
+	<tr class="gridsfooter"> 
+		<td colspan="7">&nbsp;{include file="backend/lister.tpl.html"}</td>
+	</tr>
+</table>
+<p>
+* <small>{"ordr_msg_about_prices"|translate}</small>
+</p>
+{else}
+	<p>{"srch_no_matches_found"|translate}
+{/if}

@@ -1,0 +1,61 @@
+<form id="delete-field-form">
+{{if $all == 1}}
+	{{if $n}}
+	[`{{$n}} contacts have values in this field. All data will be permanently removed.`] 
+	[`Delete anyway?`]
+	{{else}}
+	[`Are you sure you want to delete this field?`]
+	{{/if}} 
+{{elseif $all}}
+	<p style="color:red">[`This field is not used by other types of contacts. It will be permanently deleted.`]</p>
+{{else}}
+	{{if $n > 0}}
+	[`{{$n}} contacts of the type "{{$type}}" have values in this field. All data will be permanently removed. Disable this field anyway?`]
+	{{else}}
+	[`Are you sure you want to disable this field?`]
+	{{/if}}
+{{/if}}
+<br /><br />
+<div style="text-align: center">
+	<input type="submit" value="{{if $all}}[`Delete field`]{{else}}[`Disable field`]{{/if}}"/> 
+	<input onclick="$('#popup').wbsPopupClose()" type="button" value="[`Cancel`]" />
+</div>
+<input type="hidden" name="type_id" value="{{$type_id}}" />
+<input type="hidden" name="field_id" value="{{$field_id}}" />
+<input type="hidden" name="all" value="{{$all}}" /> 
+</form>
+<script type="text/javascript">
+$("#delete-field-form").submit(function () {
+	$.post("?mod=construct&act=deleteField&ajax=1", $(this).serialize() + "&delete=1", function (response) {
+		{{if $all}}
+		var s = $("#{{$field_id}}").parent();
+		$("#{{$field_id}}").remove();
+		if (s.children("div.field").length == 0) {
+			s.find("div.link").html('<a href="javascript:void(0)" onclick="editSection({{$section_id}})">[`Edit`]</a> | <a href="javascript:void(0)" onclick="deleteSection({{$section_id}})">[`Delete`]</a>');
+		}
+		{{else}}
+		if ($("#{{$field_id}}").hasClass('photo-field')) {
+			$("#disable-photo").removeClass('disabled').addClass('enabled').html('[`Enable photo`]');
+			$("#{{$field_id}} img").attr('src', $("#{{$field_id}} img").attr('src').replace(/([0-9]+.gif)/, "-disable$1"));			
+		} else {
+			$("#{{$field_id}}").addClass("disabled");
+			$("#{{$field_id}} span.req").remove();
+			$("#{{$field_id}} div.req input").removeAttr('checked');
+		}			
+		{{/if}}
+		$("#popup").wbsPopupClose();
+		if (parent && parent.document.app && response.data.listfields) { 
+			parent.document.listfields = response.data.listfields;
+			parent.document.photoField = response.data.photoField;
+			parent.document.dbfields = response.data.dbfields;
+		}
+	}, "json");
+	$("#dlg-move-desc").html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');	  
+	return false;
+});
+{{if !$all && !$n}}
+$(document).ready(function () {
+	$("#delete-field-form").submit();			
+});
+{{/if}}
+</script>

@@ -1,0 +1,164 @@
+
+.datatable table {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+	border-top:1px solid #DCDCDC;
+}
+
+.datatable thead tr {
+	background-color:#e4e9f3;
+	background-image: url(../templates/img/background-gradient-gray.gif);
+	background-position:right top;
+	background-repeat: repeat-x;
+}
+.datatable thead tr th {
+	padding: 1px 18px 1px 7px;
+	border-bottom:1px solid #DCDCDC !important;
+	border-right:1px solid #DCDCDC;
+	font-weight:normal;
+	text-align:left;
+    padding:1px 13px 1px 10px;
+	background-position:right center;
+	background-repeat:no-repeat;
+	vertical-align:top;
+
+}
+
+.datatable thead tr th.header {
+	background-image: url(../img/editablegrid/bg.gif);
+	cursor:pointer;
+	* cursor: hand;
+}
+.datatable thead tr th.header:hover { background-color:#E9EEF2;}
+.datatable tbody tr td {
+	padding:3px 3px 2px 7px;
+	/*border-right:1px solid #efefef;*/
+	text-align:center;
+	vertical-align:top;
+}
+
+.datatable tbody tr.odd {
+	background-color: #fff;
+}
+
+.datatable tbody tr.even {
+	background-color: #F8F8FC;
+}
+
+.datatable tbody tr:hover td {
+	background-color: #ffffd1;
+}
+
+.datatable thead tr th.headerSortUp {
+	background-image: url(../img/editablegrid/asc.gif);
+}
+.datatable thead tr th.headerSortDown {
+	background-image: url(../img/editablegrid/desc.gif);
+}
+.datatable select, .datatable input, .datatable textarea {
+	/*border: 1px solid #ddd; */
+}
+.datatable .TEXT input,.datatable .NUMERIC input, .datatable .VARCHAR input,.datatable .MOBILE input, .datatable .EMAIL input, .datatable .URL input{
+	width:95%;
+	padding: 3px; 
+}
+.datatable .SELECT select {
+	width:95%;
+}
+.datatable .DATE input {
+	width:80px;
+}
+.datatable .DATE {
+	min-width:110px;
+}
+ 
+table.datatable.replace_row td, .datatable tr.replace_row:hover td {
+	background-color: #E2E9EE;
+	padding:0px 3px 7px 7px;
+	
+}
+.datatable tr.multiedit_thead td, .datatable tr.multiedit_thead:hover td, .datatable tfoot tr.multiedit_tfoot td { padding:2px 7px 2px 7px; text-align:left; background:#E2E9EE; }
+.datatable tfoot tr.multiedit_tfoot td { padding:0px 0px 10px 0px; text-align:left; background:#fff; }
+.datatable tfoot .multiedit_tfoot_div {padding:5px 7px 5px 20px; background-color:#e2e9ee;}
+.datatable tfoot tr.multiedit_tfoot td input, .datatable tr.multiedit_thead td { font-size:.85em;}
+.datatable .replace_row td { }
+.datatable .DELETE.replace_row { white-space:nowrap; }
+.datatable .DELETE.replace_row *{ font-size:0.8em; }
+.datatable .replace_row .cancel { color:#444; text-decoration:underline; padding-left:2px;}
+.datatable .replace_row .cancel:hover { color:#444; text-decoration:none;}
+.datatable tfoot td { padding:7px;}
+.datatable .button {
+	padding:0;
+	margin:3px;
+	display: inline-block;
+	/*border: 1px solid #dcdcdc;
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;*/
+	/*-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;*/
+	position: relative;
+	cursor: pointer;
+	/*background-color: #eef4f7;*/
+}
+
+.datatable tfoot tr.multiedit_tfoot td input { background:none; border:none; color:#0043A7;  font-weight:bold; font-size:13px; font-family:'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; background:url(../img/editablegrid/apply.gif) left center no-repeat; text-align:left; padding:0 0 0 16px; margin:0; line-height:16px;}
+.datatable tfoot tr.multiedit_tfoot td input.button.cancel { color:#777; font-size:11px; text-decoration:underline; background:none;}
+
+#multiselect a {  
+	float:left;  
+	border: 1px solid #ddd;  
+	text-decoration: none;  
+	background-color: #fafafa;  
+	margin: 2px; 
+	width: 325px;  
+}  
+#multiselect {  
+	text-align: center;  
+	margin: 10px; 
+	float:left; 
+}  
+#multiselect select {  
+	border: 1px solid #ddd;  
+	width: 330px;  
+	height: 280px;  
+}  
+.datatable .error {
+	border:1px solid #cc0000;
+}
+.msg {
+	text-align:left;
+}
+.msg-yellow{
+	border:solid 1px #DEDEDE; 
+	background:#FFFFCC;
+	color:#222222;
+	padding:4px;
+	text-align:center;
+}
+.msg-ok{
+	border:solid 1px #349534; 
+	background:#C9FFCA;
+	color:#008000;
+	font-weight:bold;
+	padding:4px;
+	text-align:center;
+}
+.msg-error{
+color:red;
+	padding:5px;
+	font-weight:bold;
+
+}
+
+.datatable .tooltip{
+	font-size:7pt;
+	color: #cc0000;
+}
+.multi_edit { /*position:relative; top:-1em; margin-bottom:-1em;*/ margin:0 5px 5px 20px;}
+.multi_edit { background:url(../img/editablegrid/multiedit.gif) left top no-repeat; padding-left:20px; font-size:13px; font-weight:bold;}
+.change_fields { float:right; margin-right:10px;}
+.change_fields a { color:#777; text-decoration:underline; font-size:0.85em;}
+.change_fields a:hover { color:#444;}

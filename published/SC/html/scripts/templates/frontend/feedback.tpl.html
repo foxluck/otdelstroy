@@ -1,0 +1,53 @@
+{* feedback form *}
+
+<h1>{"pgn_feedback"|translate}</h1>
+
+{if $sent eq NULL}
+
+{$MessageBlock}
+
+<p>{"feedback_description_general"|translate}</p>
+
+<form name="form1" method="post" action="{''|set_query_html}">
+<div class="common_wrapper">
+	{"str_your_name"|translate}:<br>
+	<input name="customer_name" type="text" size="40" value="{$feedback_data.customer_name|escape:'html'}"><br>
+
+	{"usr_custinfo_email"|translate}<br>
+	<input name="customer_email" type="text" size="40" value="{$feedback_data.customer_email|escape:'html'}"><br>
+
+	{"str_subject"|translate}:<br>
+	<input name="message_subject" type="text" size="40" value="{$feedback_data.message_subject|escape:'html'}"><br>
+
+	{"feedback_message_text"|translate}:<br>
+	<textarea name="message_text" cols="60" rows="7">{$feedback_data.message_text|escape:'html'}</textarea>
+
+	{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+	<br />
+	<br />
+	<table cellpadding="6" cellspacing="0">
+	<tr class="background1">
+		<td colspan="2">{"str_enter_ccode"|translate}</td>
+	</tr>
+	<tr class="background1">
+		<td align="right"><img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" align="right" /></td>
+		<td>
+			<input name="fConfirmationCode" value="" type="text" style="width:200px;" >
+		</td>
+	</tr>
+	</table>
+	{/if}
+
+	<p>
+	<input type="submit" value="OK">
+	<input type="hidden" name="send" value="yes">
+	<input type="hidden" name="feedback" value="yes">
+	</p>
+</div>
+</form>
+
+{else}
+
+<p><span class=faq style="color: blue; font-weight: bold;">{"feedback_msg_sent_successfully"|translate}</span></p>
+
+{/if}

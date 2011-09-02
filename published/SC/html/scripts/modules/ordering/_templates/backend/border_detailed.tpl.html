@@ -1,0 +1,289 @@
+<h1>{"ordr_order"|translate} #{$order.orderID}</h1>
+<form name='MainForm' method="post">
+
+	<a href='{"did=`$smarty.get.rdid`&orders_detailed=&orderID="|set_query_html}'>{"ordr_back_to_order_list"|translate}</a>
+	|
+	<a href='{"?ukey=invoice&orderID=`$order.orderID`"|set_query}' class="new_window" wnd_width='700' wnd_height='500'>{"btn_open_invoice"|translate}</a>
+	<hr />
+	<table border="0" cellspacing="1" cellpadding="10">
+		<tr valign="top">
+			<td>
+				<h3><u>{"ordr_order"|translate}</u></h3>
+				<table>
+					<tr>
+						<td>{"ordr_id"|translate}: <b>{$order.orderID}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_order_time"|translate}: <b>{$order.order_time}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_customer"|translate}: <b>{$order.customer_firstname|replace:"<":"&lt;"} {$order.customer_lastname|replace:"<":"&lt;"}</b></td>
+					</tr>
+					<tr>
+						<td>{"usr_custinfo_email"|translate} {if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}<a href="mailto:{$order.customer_email|replace:'<':'&lt;'}">{$order.customer_email|replace:"<":"&lt;"}</a>{else}<b>{"msg_safemode_info_blocked"|translate}</b>{/if}</td>
+					</tr>
+
+					{section name=i loop=$order.reg_fields_values}
+					<tr>
+						<td>
+							{$order.reg_fields_values[i].reg_field_name}: <b>{$order.reg_fields_values[i].reg_field_value|replace:"<":"&lt;"}</b>
+						</td>
+					</tr>
+					{/section}
+
+					<tr>
+						<td>{"ordr_customer_ip"|translate}: <b>{$order.customer_ip}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_status"|translate}: <b>{$order.status_name}</b></td>
+					</tr>
+
+					{if $order.customers_comment}
+					<tr>
+						<td>{"ordr_comment"|translate}: <b>{$order.customers_comment|replace:"<":"&lt;"}</b></td>
+					</tr>
+					{/if}
+
+				</table>
+			</td>
+			<td>
+				<h3><u>{lbl_payment}</u></h3>
+				<table>
+					<tr>
+						<td>{lbl_payment}: <b>{$order.payment_type}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_payee"|translate}: <b>{$order.billing_firstname|replace:"<":"&lt;"} {$order.billing_lastname|replace:"<":"&lt;"}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_billing_address"|translate}:<br />
+							<b>{if $order.billing_address ne ""}{$order.billing_address|replace:"<":"&lt;"}<br />{/if}
+							{if $order.billing_city ne ""}{$order.billing_city|replace:"<":"&lt;"}{/if}
+							{if $order.billing_state ne ""}{$order.billing_state|replace:"<":"&lt;"}{/if}
+							{if $order.billing_zip ne ""}{$order.billing_zip|replace:"<":"&lt;"}<br />{/if}{if $order.billing_country ne ""}{$order.billing_country|replace:"<":"&lt;"}{/if}</b>
+						</td>
+					</tr>
+					{if $order.cc_number || $order.cc_holdername || $order.cc_expires || $order.cc_expires}
+						
+						<tr>
+							<td>{"ordr_ccinfo"|translate}</td>
+						</tr>
+
+						{if $https_connection_flag}
+
+							<tr>
+								<td>{"ordr_ccnumber"|translate}: <b>{$order.cc_number|replace:"<":"&lt;"}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_ccholdername"|translate}: <b>{$order.cc_holdername|replace:"<":"&lt;"}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_ccexpires"|translate}: <b>{$order.cc_expires|replace:"<":"&lt;"}</b></td>
+							</tr>
+							<tr>
+								<td>{"ordr_cccvv"|translate}: <b>{$order.cc_cvv|replace:"<":"&lt;"}</b></td>
+							</tr>
+
+						{else}
+
+							<tr>
+								<td>{"ordr_ccinfo_shown_only_in_https"|translate}</td>
+							</tr>
+
+						{/if}
+					{/if}
+				</table>
+			</td>
+			<td>
+				<h3><u>{lbl_shipping}</u></h3>
+				<table>
+					<tr>
+						<td>{lbl_shipping}: <b>{$order.shipping_type}</b> {if $order.shippingServiceInfo}({$order.shippingServiceInfo}){/if}</td>
+					</tr>
+					<tr>
+						<td>{"ordr_recipient"|translate}: <b>{$order.shipping_firstname|replace:"<":"&lt;"} {$order.shipping_lastname|replace:"<":"&lt;"}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_shipping_address"|translate}:<br />
+							<b>{if $order.shipping_address ne ""}{$order.shipping_address|replace:"<":"&lt;"}<br />{/if}
+							{if $order.shipping_city ne ""}{$order.shipping_city|replace:"<":"&lt;"}{/if}
+							{if $order.shipping_state ne ""}{$order.shipping_state|replace:"<":"&lt;"}{/if}
+							{if $order.shipping_zip ne ""}{$order.shipping_zip|replace:"<":"&lt;"}<br />{/if}{if $order.shipping_country ne ""}{$order.shipping_country|replace:"<":"&lt;"}{/if}</b>
+						</td>
+					</tr>
+				</table>
+			</td>
+		<tr>
+
+		<tr>
+			<td colspan="3">
+				<h3><u>{"ordr_ordered_products"|translate}</u></h3>
+			{if  $orderContent}
+				<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#56AFD6">
+
+					<tr bgcolor="#BEDDDB"> 
+                		<td><strong>{"prdset_product_name"|translate}</strong></td>
+                		<td align="center"><strong>{"cart_product_quantity"|translate}</strong></td>
+                		<td align="center"><strong>{"ordr_tax"|translate}</strong></td>
+                		<td align="right"><strong>{"ordr_itemprice_excluding_tax"|translate}</strong></td>
+              		</tr>
+
+					{section name=i loop=$orderContent}
+					<tr> 
+                		<td bgcolor="#FFFFFF">{$orderContent[i].name}</td>
+                		<td align="center" bgcolor="#FFFFFF">{$orderContent[i].Quantity}</td>
+                		<td align="center" bgcolor="#FFFFFF">
+							{if $orderContent[i].tax != null}
+								{$orderContent[i].tax} %
+							{/if}
+						</td>
+                		<td align="right" bgcolor="#FFFFFF">{$orderContent[i].PriceToShow}</td>
+              		</tr>
+					{/section}
+				</table>
+			{else}
+				&lt; {"srch_no_matches_found"|translate} &gt;
+			{/if}
+			</td>
+		</tr>
+
+		<tr>
+
+			<td colspan="3">
+
+			<table width="100%" border="0">
+
+				<tr>
+					<td width="80%" align="right">{"ordr_subtotal"|translate}:</td>
+					<td width="20%" align="right">{$order.clear_total_priceToShow}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right">{"usr_custinfo_group_discount"|translate}:</td>
+					<td width="20%" align="right">{$order.order_discount}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right">{"ordr_shipping_handling_cost"|translate}:</td>
+					<td width="20%" align="right">{$order.shipping_costToShow}</td>
+				</tr>
+				<tr>
+					<td width="80%" align="right"><b>{"str_total"|translate}</b></td>
+					<td width="20%" align="right"><b>{$order.order_amountToShow}</b></td>
+				</tr>
+			</table>
+
+			</td>
+			
+		</tr>
+
+
+		{if $order_status_report}
+		<tr>
+			<td colspan="3">
+	
+				<h3><u>{"ordr_order_processing_history"|translate}</u></h3>
+				<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#56AFD6">
+
+					<tr bgcolor="#BEDDDB">
+						<td>
+							<b>{"str_time"|translate}</b>
+						</td>
+						<td>
+							<b>{"ordr_comment"|translate}</b>
+						</td>
+						<td>
+							<b>{"str_status"|translate}</b>
+						</td>
+					</tr>
+
+					{section name=i loop=$order_status_report}
+					<tr bgcolor="white">
+						<td>
+							{$order_status_report[i].status_change_time}
+						</td>
+						<td>
+							{$order_status_report[i].status_comment}
+						</td>
+						<td>
+							{if  $order_status_report[i].status_name != 'translate("ordr_status_cancelled")'}
+								{$order_status_report[i].status_name}
+							{else}
+								{"ordr_status_cancelled"|translate}
+							{/if}
+						</td>
+					</tr>
+					{/section}
+
+				</table>
+
+			</td>
+		</tr>
+		{/if}
+
+		<tr>
+			<td colspan="3">
+				
+				<table>
+					<tr>
+						<td>
+						<b>{"ordr_change_status"|translate}</b>:
+		
+						<select name='status'>
+		
+							<option value='-1'>{"str_please_select"|translate}</option>
+		
+							{section name=i loop=$order_statuses}
+								<option value='{$order_statuses[i].statusID}'>
+									{$order_statuses[i].status_name}
+								</option>					
+							{/section}
+		
+						</select>
+						&nbsp;
+						<input type="hidden" name='orders_detailed' value='yes' />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<br />
+							<input name="notify_customer" value="1" type="checkbox" class="checknomarging" id="id_notify_customer" /><label for="id_notify_customer"> &nbsp;{"ordr_send_buyer_message"|translate}</label>
+							<div>
+							<br />
+							{"ordr_comment"|translate}:
+							<br />
+							&nbsp; <textarea name="status_comment" rows="7" cols="40" /></textarea>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input name="set_status" value="{"ordr_change_status"|translate}" type="hidden" />
+							<input type="button" value='{"ordr_change_status"|translate}'
+								onclick="if(document.MainForm.elements['status'][0].selected)return false;
+									document.MainForm.submit();
+									return false;" />
+						</td>
+					</tr>
+				</table>
+				
+			</td>
+		</tr>
+
+
+		{if $order.statusID == $cancledOrderStatus}
+		<tr>
+			<td colspan="3">
+
+				<input 
+						type="button" 
+						name='delete_order' 
+						value='{"btn_delete"|translate}'
+						onclick="JavaScript:confirmDelete( '{$order.orderID}', '{"cnfrm_delete"|translate}', '{"delete=yes&orderID="|set_query}&orderID=');"
+				 />
+
+			</td>
+		</tr>
+		{/if}
+
+	</table>
+
+</form>

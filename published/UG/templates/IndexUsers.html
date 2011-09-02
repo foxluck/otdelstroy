@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[`Users`]</title>
+<link rel="stylesheet" type="text/css" href="{{$url.common}}templates/css/common.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.common}}templates/elements/mainscreen_complex.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.common}}html/res/ext/resources/css/resizable.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.common}}html/res/ext/resources/css/tree.css" />
+{{csscombine file="`$url.css`contacts-index.css"}}
+	{{$url.css}}reset.css
+	{{$url.css}}users-common.css
+	{{$url.css}}users.css
+{{/csscombine}}
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+{{jscombine file="`$url.js`users-index.js"}}
+	{{$url.common}}js/jquery.wbs.popup.js
+	{{$url.common}}templates/js/common.new.js
+	{{$url.common}}html/res/ext/ext-small.js
+	{{$url.common}}html/res/ext/build/widgets/Resizable-min.js
+	{{$url.js}}complex.js
+	{{$url.js}}ug.js
+	{{$url.js}}users.js
+	{{$url.js}}users-common.js
+{{/jscombine}}
+<script type="text/javascript">
+	WbsCommon.setPublishedUrl("{{$url.published}}");
+	Ext.BLANK_IMAGE_URL = '{{$url.common}}html/res/ext/resources/images/default/s.gif';
+	
+	document.groupNodes = {{$groups}};
+	document.contactTypes = {{$contact_types}};
+	document.dbfields = {{$dbfields}};
+	document.listfields = {{$list_fields}};
+	document.photoField = {{$photoField}};
+	
+	document.fields = new Array();
+
+	function updateOnline() {
+		jQuery.get("index.php?mod=users&act=online", {} , function (response) {
+			if (response.status == 'OK') {
+				if (jQuery("#online").hasClass('selected') && jQuery("#online-num").html() != response.data) {
+					document.app.selectGroup('online');
+				}
+				jQuery("#online-num").html(response.data);
+			}
+		}, "json");
+		setTimeout(updateOnline, 30000);
+	}
+	
+	jQuery(document).ready(function() {
+		jQuery("#main-screen").height(jQuery(window).height() - jQuery("#header").height());
+		document.app = new UGApplication({	
+			right: {{$right_js}},
+			currentGroupId: "{{$group_id}}",
+			itemsOnPage: {{if $viewSettings.itemsOnPage}}{{$viewSettings.itemsOnPage}}{{else}}30{{/if}},
+			viewmodeApplyTo: "{{if $viewSettings.viewmodeApplyTo}}{{$viewSettings.viewmodeApplyTo}}{{/if}}"							
+			{{if $page}}, page: {{$page}}{{/if}} 
+		});
+		setTimeout(updateOnline, 30000);
+		init('groups');
+		document.getElementById("main-screen").style.visibility = "visible";
+		jQuery(window).resize();	
+		jQuery("#list_info div.info-message").fadeOut(5000, function () {jQuery(this).remove()});	
+	});
+	jQuery(window).resize(function () {
+		var h = jQuery(window).height() - jQuery("#header").height();
+		jQuery("#main-screen").height(jQuery(window).height() - jQuery("#header").height());
+	});
+</script>
+</head>
+<body>
+<div id='main-screen'>
+	<div class='screen-left-block'>
+		<div class='nav-bar' id='nav-bar'>
+			<div id='groups' class='acc-block'>
+				<div class="topfolders title"><ul>
+                    <li class="f-item"><a id="add-user" href="#"><img src="{{$url.img}}i-adduser.png" width="32" height="32"/>[`Add a new user`]</a></li>
+						<li><a class="select-group" id="all" href="#"><img src="{{$url.img}}i-allusers.png" width="32" height="32"/>[`All users`]</a></li>
+						<li><a class="select-group" id="online" href="#"><img src="{{$url.img}}i-onlineusers.png" width="32" height="32"/>[`Now online`] <nobr>(<span id="online-num">{{$online}}</span>)</nobr></a></li>
+						<li><a class="select-group" id="invited" href="#"><img src="{{$url.img}}i-invitedusers.png" width="32" height="32"/>[`Invited`]</a></li>
+						<li><a class="select-group" id="disabled" href="#"><img src="{{$url.img}}i-disableusers.png" width="32" height="32"/>[`Temporarily disabled`]</a></li></ul>
+					</div>			
+				<div class='content'>
+
+                    <div class='create-new-block' >
+					
+					<div class="sub user-groups">
+						<div class="h">[`Groups`]</div>
+						<a class="create-group" style="font-size:80%" href="#">[`Add`]</a>
+					</div>
+					</div>
+					<div id="groups-list">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='screen-main-block' style='margin-left: 0; height: 100%; overflow-y: auto; '>
+		<div class='screen-content-block' id='screen-content-block' style='overflow-y: hidden; overflow-x: hidden; overflow: hidden'>
+			<div id='main-container'>
+				<div id='main-header'>
+					<div id='control-panel' class='wbs-control-panel'>
+						<div id='nav-bar-expander' class='nav-bar-expander' style='margin-left: 10px'></div>			
+						<div id='group-title-container'></div>			
+						<div class='contacts-info'>
+							<div class="wbs-link-btn">
+								
+							</div>									
+							<div id='view-settings-block'>
+								<input type="button" id="users-actions-btn" value="[`Actions`]" />
+								<div style='text-align:right; float: left; padding-right: 3px; padding-top: 3px; width: 50px; overflow:hidden'>[`View`]:</div> 
+								<div id='viewmode-selector-wrapper'></div>
+								<div id='viewmode-print' class='viewmode-print'><img src="../common/templates/img/printer.gif" title='[`Print preview`]'></div>
+							</div>
+							<div id="list_info">{{if $message}}<div class="info-message onload">{{$message}}</div>{{/if}}</div>
+						</div>
+						<div class="hidden wbs-dlg-content-inner" id='dlg-content'>
+						</div>
+					</div>
+				</div>
+				<div id='main-content'></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wbs-dlg" id="popup" style="display: none;">
+	<div id="progress" style="display: none;">
+		<img src="{{$url.app}}img/ajax-loader.gif" />
+	</div>
+</div>
+
+</body>
+</html>

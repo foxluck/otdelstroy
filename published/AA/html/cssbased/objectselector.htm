@@ -1,0 +1,11 @@
+<select class="control" name="curObjectId" onChange="submitFolder(this)" style="width: 200px">
+	<? foreach from=$fullObjectList item=objectData ?>
+		<? assign var=listFoldeName value=$objectData->NAME|htmlsafe:true:true|trunc_str:50 ?>	
+		<? if ($objectData->RIGHT == "-1" || $objectData->RIGHT == "-2") ?>
+			<? assign var=listFolderID value=$objectData->RIGHT ?>
+		<? else ?>
+			<? assign var=listFolderID value=$objectData->ID ?>
+		<? /if ?>
+		<option <? if $objectData->RIGHT == -1 || $objectData->RIGHT == -2 ?>class=treeFolderSelector_noaccess<? /if ?> value="<? $listFolderID ?>" <? switchedOutput val=$objectData->ID true_val=$curObjectId str1="selected" ?>><? $objectData->OFFSET_STR|cat:$listFoldeName ?></option>
+	<? /foreach ?>
+</select>

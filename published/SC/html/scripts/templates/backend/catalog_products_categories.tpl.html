@@ -1,0 +1,238 @@
+{* products and categories view *}
+{$MessageBlock}
+{if $smarty.const.CONF_UPDATE_GCV ne 1}
+<form action="{''|set_query_html}" method="post">
+	<input type="submit" name="update_gc_value" value="{"prdimport_update_gc_value_button"|translate}" />
+	<input type="hidden" name="dpt" value="catalog" />
+	<input type="hidden" name="sub" value="products_categories" />
+	<input type="hidden" name="categoryID" value="{$categoryID}" />
+</form>
+{/if}
+
+<table border="0" bgcolor="#888888" cellspacing="1" width="100%">
+
+<tr>
+	<td width="220" bgcolor="#D2D2FF" align="center"><b>{"prdcat_category_title"|translate}</b></td>
+	<td bgcolor="#F5F5B2" align="center"><b>{"prd_productlist"|translate}</b></td>
+</tr>
+
+{* categories *}
+<tr>
+<td valign="top" bgcolor="#E2E2FF">
+
+	<table width="100%" border="0">
+	<tr>
+		<td>
+			<img style="visibility:hidden;" src="{$smarty.const.URL_IMAGES}/minus.gif" alt="{'btn_collapse'|translate}" border="0" />
+			<a href="{"&categoryID=1"|set_query_html}">
+				<b>{"prdcat_category_root"|translate}</b> 
+			</a>
+			({$products_in_root_category})
+		</td>
+
+		<td align="right">
+			&nbsp;
+		</td>
+	 </tr>
+	 {section name=i loop=$categories}
+	 <tr>
+		<td>
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						{section name=j loop=$categories[i].level max=$categories[i].level}
+							&nbsp;&nbsp;&nbsp;
+						{/section}
+					</td>
+					<td nowrap="nowrap">
+						{if !$categories[i].ExpandedCategory}
+							{if $categories[i].ExistSubCategories}
+								<a href='{"&expandCat=`$categories[i].categoryID`"|set_query_html}'><img src="{$smarty.const.URL_IMAGES}/plus.gif" alt="{'btn_expand'|translate}" border="0" /></a>
+							{else}
+								<img src="{$smarty.const.URL_IMAGES}/minus.gif" style="visibility:hidden;" />
+							{/if}
+						{else}
+							{if $categories[i].ExistSubCategories}
+								<a href='{"&shrinkCat=`$categories[i].categoryID`"|set_query_html}'><img src="{$smarty.const.URL_IMAGES}/minus.gif" alt="{'btn_collapse'|translate}" border="0" /></a>
+							{else}
+								<img src="{$smarty.const.URL_IMAGES}/minus.gif" style="visibility:hidden;" />
+							{/if}
+						{/if}
+					</td>
+
+					<td>
+						&nbsp;
+					</td>
+
+					<td nowrap="nowrap">
+						<a href='{"&categoryID=`$categories[i].categoryID`&expandCat=`$categories[i].categoryID`"|set_query_html}'
+							{if $categories[i].level ne 0} class="standard"{/if}>{$categories[i].name|default:"(no name)"}</a>
+						{if !$categories[i].ExpandedCategory}
+							({$categories[i].products_count_admin})
+						{else}
+							({$categories[i].products_count_category})
+						{/if}
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td align="right" nowrap="nowrap">
+			<font color="red">[</font>
+				<a class="small" href='{"?ukey=category_settings&categoryID=`$categories[i].categoryID`"|set_query_html}'>{lbl_btn_edit}</a>
+			<font color="red">]</font>
+		</td>
+	 </tr>
+	 {/section}
+
+
+
+	</table>
+
+	<br /><center>[ <a href='{"?ukey=category_settings&w=-1"|set_query_html}'>{"btn_addcategory"|translate}</a> ]</center><br />
+
+</td>
+
+
+{* products *}
+<td valign="top" bgcolor="#FFFFE2" align="center">
+
+
+	{if $categoryID ne 1}
+		<br /><center><b>{$category_name}:</b></center><br />
+	{else}
+		<br /><center><b>{"prdcat_category_root"|translate}:</b></center><br />
+	{/if}
+
+	{if $categoryID eq 1}
+		<p>{"prd_msg_root_warning"|translate}</p>
+	{/if}
+
+	{if not $products && not $searched_done}
+
+		<p style="text-align: center">{"str_empty_category"|translate}</p>
+
+	{else}
+
+		{if $couldntToDelete eq 1}
+			<font color="red">
+				<b>
+					{"prd_msg_could_not_delete"|translate}
+				</b>
+			</font>
+		{/if}
+
+		{if $couldntToDeleteThisProducts}
+			<font color="red">
+				<b>
+					{"prd_msg_could_not_delete_these_products"|translate}
+				</b>
+			</font>
+		{/if}
+
+		<form method="post" name="search_form" action='{$urlToSubmit|cat:"&search=yes"|escape:"html"}'>
+
+		<table border="0" cellspacing="1" cellpadding="3">
+			<tr>
+				<td colspan="3">
+					{"str_search_products_in_this_category"|translate}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="search_criteria">
+						<option value='name' {if $search_criteria == 'name'} selected="selected"{/if}>
+							{"prdset_product_name"|translate}
+						</option>
+						<option value='product_code' {if $search_criteria == 'product_code'} selected="selected"{/if}>
+							{"prdset_product_code"|translate}
+						</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" name="search_value" value="{$search_value}" />
+				</td>
+				<td>
+					<input type="submit" name="search" value="{"btn_find"|translate}" />
+				</td>
+			</tr>
+			{if $searched_done}
+			<tr>
+				<td>
+					{$searched_count}
+				</td>
+			</tr>
+			{/if}
+		</table>
+
+		</form>
+
+		<form action='{""|set_query_html}' method="post" name="form">
+		<input name="action" value="save_products" type="hidden" />
+		
+		{if $GridRows}
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+			<tr class="gridsheader">
+				{include file="backend/gridheader.tpl.html"}
+			</tr>
+		{section name=i loop=$GridRows}
+			{assign var=product_url value="?ukey=product_settings&productID=`$GridRows[i].productID`&categoryID=&expandCat="|set_query_html}
+			
+			<tr class="{cycle values='gridline1,gridline'}{if $GridRows[i].in_stock<=0 && $smarty.const.CONF_CHECKSTOCK} gridline_outofstock{/if}">
+			
+				<td><a href="{$product_url}">{$GridRows[i].product_code|escape:'html'}&nbsp;</a></td>
+				<td width="50%"><a href="{$product_url}">{$GridRows[i].name|escape:'html'}&nbsp;{if $GridRows[i].enabled ne 1}<span class="notice">{lbl_prep_invisible_in_storefront}</span>{/if}</a></td>
+				<td align="right"><a href="{$product_url}">{$GridRows[i].customers_rating}&nbsp;</a></td>
+				<td align="center"><input type="text" name="price_{$GridRows[i].productID}" size="5" value="{$GridRows[i].Price}" /></td>
+				{if $smarty.const.CONF_CHECKSTOCK eq 1}
+				<td><input type="text" name="left_{$GridRows[i].productID}" size="5" value="{$GridRows[i].in_stock}" /></td>
+				{/if}
+		{*
+				<td>{$GridRows[i].picture_count}</td>
+				<td>{$GridRows[i].thumbnail_count}</td>
+				<td>{$GridRows[i].enlarged_count}</td>
+		*}
+				<td align="right">{$GridRows[i].items_sold}{if !$GridRows[i].ordering_available}<div class="notice">{lbl_prd_ordering_not_available}</div>{/if}</td>
+				<td align="center">
+					{if $GridRows[i].picture_count ne 0}
+					<a href="admin.php?dpt=catalog&sub=special&new_offer={$products[i].productID}">
+						<img src="{$smarty.const.URL_IMAGES}/admin_special_offer.gif" border="0" alt="{"prdspecial_add_special_offer"|translate}" />
+					</a>
+					{else}
+						&nbsp;
+					{/if}
+				</td>
+				<td align="center"><input type='text' name='sort_order_{$GridRows[i].productID}' value="{$GridRows[i].sort_order}" size="2" /></td>
+				<td><a href='{"action=delete_product&productID=`$GridRows[i].productID`"|set_query_html}' title='{"cnfrm_delete"|transcape}' class="confirm_action"><img src="images_common/remove.gif" border="0" alt='{"btn_delete"|transcape}' /></a></td>
+			</tr>	
+		{/section}
+		
+			<tr class="gridsfooter"> 
+				<td colspan="{$GridHeadersNum}">&nbsp;{include file="backend/lister.tpl.html"}</td>
+			</tr>
+		</table>
+
+		{/if}
+		<br />
+
+		{if $searched_done}
+			<a href='admin.php?dpt=catalog&sub=products_categories&categoryID={$categoryID}'>
+				{"str_show_all_product_in_this_category"|translate}
+			</a>
+			&nbsp;
+		{/if}
+
+		{if $products}
+		<input type="submit" value='{"btn_save"|translate}' />
+		{/if}
+		<input value="{'btn_addproduct'|transcape}" type="button" onclick='document.location.href = "{"?ukey=product_settings&categoryID=`$categoryID`"|set_query_html}";' />
+		{if !$searched_done}
+			<input type="button" value="{"btn_delete_all"|translate}" onclick="confirmDelete(0,'{"cnfrm_delete"|translate}','{"&delete_all_products=1"|set_query_html}');" />
+		{/if}
+		</form>
+
+	  {/if}
+</td>
+
+
+</tr>
+</table>

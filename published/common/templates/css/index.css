@@ -1,0 +1,161 @@
+html,body {margin: 0px; padding: 0px; height: 100%; }
+body, table {font-family: "Trebuchet MS"; font-size: 10pt}
+ul, li {padding: 0px; margin: 0px; list-style:none }
+img {border: 0px}
+.clearfix {overflow: hidden; zoom: 1; }
+body {overflow: hidden}
+
+
+
+#top-line {overflow: hidden; padding: 0px;  zoom: 1; border-bottom:solid 1px #DEE4E8;}
+	#top-line #account-name {height: 100%; background-color: #F0F0F0; background-image: URL("../img/gradient_light.gif"); background-repeat: repeat-x; float: left; padding-left: 10px; padding-right: 10px; font-weight: bold}
+	#top-line #control-panel-link {margin-left: 10px}
+	#top-line #user-block {float: right; margin-right: 10px; color:blue; line-height:1.8em; text-align: right}
+	#top-line a { color:blue; text-decoration: none; font-weight: normal; margin-left: 5px;}
+		#top-line a:hover { text-decoration:underline;}
+	#top-line #user-block img { float:left; margin-right:2px;}
+	#top-line #user-block a.userlink { text-decoration:none;}
+	#top-line #user-block a.userlink:hover { border-bottom:dotted 1px; }
+	
+	#top-line #user-block .message {text-align: right; background: white; color: red; font-weight: bold; text-align: center; padding: 0px 5px} 
+	#top-line #user-block .message a {color: blue; text-decoration: underline}
+	
+
+
+body.minimized #menu-block {display: none}
+body.minimized #top-line {display: none}
+
+
+
+body.topmenu #menu-block {border-bottom-width: 2px; overflow:hidden;}
+	
+
+body.topmenu.onlyicons #apps, body.bottommenu.onlyicons #apps { height:55px;}
+body.topmenu.onlylabels #apps, body.bottommenu.onlylabels #apps { height:30px;}
+
+body.bottommenu #menu-block { position: absolute; bottom: 0px; height: auto;  border:none;width: 100%; }
+body.bottommenu #apps { border-top:solid 2px #999;}
+
+#ie-fix {position: absolute; top: 20px; right: 50px; display: block}
+#view-selector {top: 20px; right: 50px; width: 380px; border: 1px solid #999; padding: 0px; background: #E6EEF2; visibility: hidden}
+#view-selector .inner {padding: 10px}
+#view-selector div.clearfix {}
+#view-selector ul {clear: both; display: block; }
+#view-selector ul li {float: left; padding-right: 10px}
+#view-selector ul li input {float: left}
+#view-selector ul li img {float: left; margin-top: 2px; margin-left: 0px; margin-right: 2px}
+#view-selector #userpic {float: left; border: 1px solid #BBB; margin-right: 10px}
+#view-selector .menupos label {}
+
+#view-selector table.menupos {display: none}
+#view-selector.visible table.menupos {display: block}
+
+#view-selector table.menupos {border-collapse: collapse; background: white; }
+#view-selector table.menupos {border-top: 1px solid #AAA; border-left: 1px solid #AAA}
+#view-selector table.menupos tr td {border-bottom: 1px solid #AAA; border-right: 1px solid #AAA; }
+#view-selector table.menupos tr td {text-align: center; padding: 0px 5px; }
+#view-selector .menutype li {display: block; clear: both; width: 100%}
+
+
+body.rightmenu.iconslabels #menu-block, body.leftmenu.iconslabels #menu-block { width: 150px;}
+body.leftmenu #menu-block { float: left; }
+	body.leftmenu #menu-block .app-block {width: 100%; text-align: left; float: left; border-top: 0px; border-right: 0px; padding:0; }
+	body.leftmenu #menu-block .app-block a.app-label {font-size: 1em; font-weight:bold; line-height:46px; position:static; float: left;}
+	body.leftmenu #body-frame {float: left}
+	body.leftmenu #apps {clear: none; overflow: none; float: left; width: 100%; background:#F4F9FC url(../img/gradient_aapblock_left.gif) right top repeat-y;}
+	
+body.rightmenu #menu-block { float: right;}
+	body.rightmenu.iconslabels #menu-block .app-block { width: 100%; text-align: left; float:left; height:46px;}
+	body.leftmenu #menu-block .app-block img, body.rightmenu #menu-block .app-block img {float: left; margin:3px 7px 3px 8px;}
+	body.rightmenu #menu-block .app-block img { margin:3px 7px 3px 10px;}
+	body.rightmenu #menu-block .app-block a.app-label {font-size: 1em; font-weight:bold; line-height:46px; float: left;}
+	body.rightmenu #body-frame {float: left}
+	body.rightmenu #apps {clear: none; overflow: none; float: left; width: 100%; background:#F4F9FC url(../img/gradient_aapblock_right.gif) left top repeat-y;}
+	
+body.onlyicons #menu-block a.app-label {display: none}
+
+body.leftmenu.onlyicons #menu-block, body.rightmenu.onlyicons #menu-block { width: 55px;}
+
+body.leftmenu.onlylabels #menu-block, body.rightmenu.onlylabels #menu-block {width: 110px;}
+
+body.topmenu #menu-block, body.bottommenu #menu-block  {width: 100%}
+body.topmenu #menu-block { border-bottom:solid 2px #999; border-left:none; }
+body.rightmenu #menu-block, body.leftmenu #menu-block {  border-bottom:none; border-top:none; border-color:#fff;}
+
+body.rightmenu #menu-block {  border-left:1px solid #aaadaf;}
+
+body.rightmenu.iconslabels #menu-block { border-right:none;}
+ body.leftmenu.iconslabels #menu-block {  border-left:none;}
+#menu-block {background: #FFFFFF; border-style: solid; border-width: 0px;}
+#menu-block .app-block { position:relative; cursor: pointer;  float: left; text-align:center; border: 0px solid #FFF; border-top: 0px; border-left: 0px;}
+#menu-block .app-block a { //text-align:center;}
+
+#menu-block .app-block.highlight { background:#fafdff;}
+
+#menu-block .app-block img { margin-top: 8px; margin-bottom: 7px; height: 40px; width: 40px}
+#menu-block .app-block a.icon-link {display: block;  margin-left: auto; margin-right: auto;}
+#menu-block .app-block a.app-label { text-decoration: none; font-size: 0.9em; color:#222; display: block;}
+#menu-block .app-block.selected a.app-label { color:#fff; font-weight:bold;}
+body.onlylabels #menu-block img {display: none}
+	body.onlylabels  #menu-block .app-block{ margin:1px 1px 0 1px; padding:0;  height:30px;}
+	body.onlylabels #menu-block .app-block a.app-label {font-size: 1em; width: auto; padding:0 15px;font-weight:bold; line-height:30px;}
+	body.onlylabels #menu-block .app-block.selected a.app-label {font-weight: bold;/* color: white;*/}
+body.topmenu.iconslabels #apps, body.bottommenu.iconslabels #apps { /*height:75px;*/ //width:100%; overflow:hidden;}
+
+#menu-block .app-block.selected {background: orange; border-top-width: 1px; border-bottom-width: 0px}
+
+body.topmenu.iconslabels #menu-block .app-block, body.bottommenu.iconslabels #menu-block .app-block { /*height:75px; */ width: 75px}
+body.topmenu.onlylabels #menu-block .app-block, body.bottommenu.onlylabels #menu-block .app-block { height:30px;  width:auto; margin:0}
+body.topmenu.onlylabels #menu-block .app-block a.app-label, body.bottommenu.onlylabels #menu-block .app-block a.app-label { font-size: 1em; font-weight:bold; line-height:30px; float: left;}
+
+
+body.topmenu.onlyicons #menu-block .app-block, body.bottommenu.onlyicons  #menu-block .app-block { /*height:55px;*/  width:55; margin:0}
+
+body.leftmenu #menu-block .app-block, body.rightmenu #menu-block .app-block { margin:0; width:100%; border-bottom:solid 1px #DEE4E8;}
+body.leftmenu.iconslabels #menu-block .app-block, body.rightmenu.iconslabels #menu-block .app-block { height:46px;} 
+
+#logo-block {overflow-y: hidden; float: left}
+#logo-block img {float: left; margin: 5px; }
+#logo-block .label {font-size:25px; color: black; display: block; padding-left: 10px; /*margin-top: 5px;*/ float: left; line-height:44px;}
+
+#toggle-block {float: right; margin-right: 10px; position: static;}
+#toggle-block #fullscreen-off {display: none}
+
+#menu-block .app-block .arr { display:none;}
+#menu-block .app-block.selected .arr { display:block;  z-index:10;}
+body.topmenu #menu-block .app-block.selected .arr { width:100%; height:7px; position:absolute;left:0px; bottom:-7px;}
+body.bottommenu #menu-block .app-block.selected .arr { width:100%; height:7px; position:absolute;left:0px; top:-7px;}
+
+body.leftmenu #menu-block .app-block.selected .arr { width:7px; height:48px; position:absolute; right:-5px; top:0px;}
+body.rightmenu #menu-block .app-block.selected .arr { width:7px; height:48px; position:absolute; left:-5px; top:0px;}
+
+body.bottommenu #body-frame { border-bottom:solid 1px #EAEAEA; margin:0;}
+body.topmenu #body-frame { margin: 0px 0 0 0px;}
+body.leftmenu #body-frame { margin: 0px 0 0 0px; }
+body.rightmenu #body-frame { margin: 0 0 0 0; }
+
+#view-selector { z-index:50;}
+
+/*background menu*/
+body.topmenu #apps  { background:#F4F9FC url(../img/gradient_aapblock_top.gif) left bottom repeat-x; padding-right:1px;}
+body.bottommenu #apps { background:#F4F9FC url(../img/gradient_aapblock_bottom.gif) left top repeat-x; padding-right:1px;}
+
+body.topmenu #menu-block .app-block, body.bottommenu #menu-block .app-block { border-right: solid 1px #DEE4E8;}
+
+body.topmenu #menu-block .app-block .arr { background:url(../img/arr_top.gif) center top no-repeat; }
+body.bottommenu #menu-block .app-block .arr { background:url(../img/arr_bottom.gif) center top no-repeat; }
+body.leftmenu #menu-block .app-block .arr { background:url(../img/arr_left.gif) left top no-repeat; }
+body.rightmenu #menu-block .app-block .arr { background:url(../img/arr_right.gif) left top no-repeat; }
+
+
+body #menu-block .app-block.selected { background-color:#416e98; background-image:none;}
+body.topmenu.iconslabels .app-label { position:relative; top:-3px;}
+
+#fullscreen-block {font-size: 0.8em; padding-right: 12px; float: right; background: white}
+#fullscreen-block img {float: left; margin-right: 3px; margin-top: 3px; width: 13px; height: 10px}
+#fullscreen-block a {display: none; color: #999; text-decoration: underline}
+#fullscreen-block a:hover {color: #555; text-decoration: underline}
+	body.minimized #fullscreen-block .off {display: inline}
+	body.normal #fullscreen-block .on {display: inline}
+#loading-block {margin-right: 10px; background: #CC3333; color: white; font-weight: bold; padding-left: 5px; float: right}
+#body-top-right-block {width: auto; position: absolute; overflow: hidden; zoom: 1}

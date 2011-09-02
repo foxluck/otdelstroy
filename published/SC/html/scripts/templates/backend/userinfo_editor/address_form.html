@@ -1,0 +1,53 @@
+<form name="AddrForm_{$addr_id}" method="post">
+<input type="hidden" name="action" value="save_address" />
+<table class="address_form" id="addr_{$addr_id}_frm" border="0" cellspacing="0" style="display: none;" width="100%">
+    <colgroup>
+        <col width="30%" />
+        <col width="70%" />
+    </colgroup>
+    <tr class="odd_line">
+        <td nowrap="nowrap">{"usr_custinfo_first_name"|translate}:</td>
+        <td><input class="txt_or_sel" type="text" name="{$els_prefix}[first_name]" size="17" maxlength="255" value="{$addr_info.first_name|escape:'html'}" /></td>
+    </tr>
+    <tr>
+        <td nowrap="nowrap">{"usr_custinfo_last_name"|translate}:</td>
+        <td><input class="txt_or_sel"  type="text" name="{$els_prefix}[last_name]" size="17" maxlength="255" value="{$addr_info.last_name|escape:'html'}" /></td>
+    </tr>
+    <tr class="odd_line">
+        <td nowrap="nowrap" valign="top">{"str_address"|translate}:</td>
+        <td><textarea class="txt_or_sel"  name="{$els_prefix}[address]" rows="2" cols="17">{$addr_info.address|escape:'html'}</textarea></td>
+    </tr>
+    <tr>
+        <td nowrap="nowrap">{"usr_custinfo_city"|translate}:</td>
+        <td><input class="txt_or_sel" type="text" name="{$els_prefix}[city]" size="17" maxlength="255" value="{$addr_info.city|escape:'html'}" /></td>
+    </tr>
+    <tr class="odd_line">
+        <td nowrap="nowrap">{"usr_custinfo_state"|translate}:</td>
+        <td>
+        {if $states[$addr_id]}
+            {include file="backend/order_editor/states.html" states=$states[$addr_id] selected=$addr_info.zoneID name=$els_prefix|cat:'[zoneID]' class="txt_or_sel" }
+        {else}
+            <input class="txt_or_sel" type="text" name="{$els_prefix}[state]" size="17" maxlength="255" value="{$addr_info.state|escape:'html'}" />
+        {/if}
+        </td>
+    </tr>
+    <tr>
+        <td nowrap="nowrap">{"usr_custinfo_zip"|translate}:</td>
+        <td><input class="txt_or_sel" type="text" name="{$els_prefix}[zip]" size="17" maxlength="255" value="{$addr_info.zip|escape:'html'}"></td>
+    </tr>
+    <tr class="odd_line">
+        <td nowrap="nowrap">{"usr_custinfo_country"|translate}:</td>
+        <td>
+        {if $countries}
+            {html_options name=$els_prefix|cat:"[countryID]" options=$countries selected=$addr_info.countryID onChange="changeStates(this)"  class="txt_or_sel"}
+        {else}
+            <input class="txt_or_sel" type="text" name="{$els_prefix}[country]" size="17" maxlength="255" value="{$addr_info.country|escape:'html'}" />
+        {/if}
+        </td>
+    </tr>
+    <tr>
+        <td align="right"><button type="submit">{"btn_save"|translate}</button></td>
+        <td align="left"><button type="button" onClick="hideEditForm({$addr_id});">{"btn_cancel"|translate}</button></td>
+    </tr>
+</table>
+</form>

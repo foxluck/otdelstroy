@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Products</Name>
+		<File>class.products.php</File>
+		<Title>Предназначен для работы с продуктами</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

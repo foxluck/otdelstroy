@@ -1,0 +1,81 @@
+<style type="text/css">
+	div.popup-title {font-weight: bold; font-size: 20px; margin-bottom: 20px}
+	#construct-edit div.buttons {margin-top: 10px; text-align:center;}
+</style>
+<form id="construct-edit" method="post" action="">
+	<input type="hidden" name="type_id" value="{{$type_id}}" />
+	{{if $act != 'add'}}
+	<input type="hidden" name="section_id" value="{{$section.id}}" />
+	{{/if}}
+	<div class="block-title">[`Section name`]:</div>
+	<div style="height:100px">
+{{foreach from=$langs item=lang key=l}}
+<div class="lang" {{if !$section.name[$l] && ($act != 'add' || $l!=$user_lang)}}style="display:none"{{assign var="add_lang" value="1"}}{{/if}}>
+	<input {{if $l==$user_lang}}id="name-user-lang"{{/if}} type="text" name="name[]" value="{{$section.name[$l]}}" />
+	<select name="lang[]">
+	{{foreach from=$langs item=select_lang key=select_l}} 
+	<option value="{{$select_l}}" {{if $select_l == $l}}selected{{/if}}>{{$select_lang}}</option>
+	{{/foreach}}
+	</select>
+</div>
+{{/foreach}}
+{{if $add_lang}}
+<a href="javascript:void(0)" id="add_lang">[`Add name in other language`]</a>
+{{/if}} 
+	</div>
+	<div style="margin-top:10px">[`Place this section after`]: 
+		<select id="after" name="after">
+			{{foreach from=$sections item=s key=id}}
+				{{if $id != $section.id}}<option value="{{$id}}"{{if $id == $after_id}} selected{{/if}}>{{$s.name}}</option>{{/if}}
+			{{/foreach}}
+		</select><br />
+	</div>
+	<div class="buttons">
+		<input id="save" type="button" value="[`Save`]" />
+		<input type="button" value="[`Cancel`]" onClick="$('#popup').wbsPopupClose();" />
+	</div>
+</form>
+<script type="text/javascript">
+jQuery("#add_lang").click(function () {
+	jQuery("div.lang:hidden:first").show();
+	if (jQuery("div.lang:hidden:first").length == 0) {
+		jQuery(this).hide();
+	}
+});
+
+$("#save").click(function () {
+	{{if $act == 'add'}}
+	$.post("?mod=construct&act=addSection&ajax=1", $("#construct-edit").serialize() + "&save=1", function (response) {
+		var section = response.data;
+		var str = '<div id="section'+ section.id + '" class="group">' +
+		'<div class="title">' +		
+		'<div class="link">' +
+		'<a href="javascript:void(0)" onclick="editSection(\'' + section.id + '\')">[`Edit`]</a> | '+
+		'<a href="javascript:void(0)" onclick="deleteSection(\'' + section.id +  '\')">[`Delete`]</a>' +
+		'</div>' + 		
+		'<a class="title click" title="">' + section.name + '</a>' +
+		'</div></div>';
+		$(str).insertAfter($("#section" + section.after_id));
+		if (parent && parent.document.app) { 
+			parent.document.listfields = response.data.listfields;
+			parent.document.photoField = response.data.photoField;
+			parent.document.dbfields = response.data.dbfields;
+		}					
+		$("#popup").wbsPopupClose();
+	}, "json");
+	{{else}}
+	$.post("?mod=construct&act=editSection&ajax=1", $("#construct-edit").serialize() + "&save=1", function (response) {
+		var section = response.data;
+		$("#section" + section.id + " a.title").html(section.name);
+		var section_elem = $("#section" + section.id);
+		if (parent && parent.document.app && response.data.listfields) { 
+			parent.document.listfields = response.data.listfields;
+			parent.document.photoField = response.data.photoField;
+			parent.document.dbfields = response.data.dbfields;
+		}					
+		$("#popup").wbsPopupClose();
+	}, "json");			
+	{{/if}}
+	$("#dlg-move-desc").html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');		
+});
+</script>

@@ -1,0 +1,59 @@
+<script language="javascript" src="../../../common/html/classic/styles/calendar.js"></script>
+<script language="javascript" src="../../../common/html/classic/styles/wbscommon.js"></script>
+<script language="javascript" src="../../../common/help/helpopen.js"></script>
+<script language="javascript">
+	<? assign var=lowerAppID value=$curAPP_ID|lower ?>
+	<? assign var=testFileName value="../../../"|cat:$curAPP_ID|cat:"/help/"|cat:$language|cat:"/"|cat:$lowerAppID|cat:".htm" ?>
+
+	if ( parent.frames['topFrame'] ) {
+		<? if $testFileName|fileexists ?>
+			parent.frames['topFrame'].curAppID = '<? $curAPP_ID ?>';
+		<? else ?>
+			parent.frames['topFrame'].curAppID = 'NOHELP';
+		<? /if ?>
+	}
+
+</script>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+	<? if $extraHeader ?>
+		<?include file=$extraHeader ?>
+	<? /if ?>
+	<!-- Header row -->
+	<tr>
+  	<td colspan="3" height="20px">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="pageHeader"> 
+				  <? if $pageIcon != "" ?>
+				  <img src="<? $pageIcon ?>" width="34" height="34" hspace="0" align="absmiddle" class="icon"> 
+				  <? /if ?>
+				  <? $pageTitle ?>
+				</td>
+			</tr>
+		</table>
+	</td>
+  </tr>
+  <!-- /Header row -->
+  <? if !$nospace ?>
+	  <!-- Vertical space row-->
+	  <tr> 
+		<td colspan="3" style="height: 20">&nbsp;</td>
+	  </tr>
+	  <!-- /Vertical space row-->
+	  <tr> 
+		<td valign="top"> 
+		 <!-- Page content table -->	 
+		 <table cellpadding="0" cellspacing="0" border=0 height="100%" width="100%">
+			<tr>
+				<td class="default" width="<? #pageLeftMargin#?>"><img src="../../../common/html/classic/images/5pixsep.gif" width="<? #pageLeftMargin#?>" height="5"></td>
+				<td valign="top">
+  <? else ?>
+    <!-- Toolbar row-->
+		<? if !$noToolbar ?>
+			<tr>
+			<td colspan="3" height="20px">
+		<? /if ?>
+  <? /if ?>
+<?include file="../../../common/html/classic/submenus.tpl" menu=$menuLinks ?>
+<?include file="../../../common/html/classic/calendarsetup.tpl" dateformat=$dateformat monthes=$monthNames weekdays=$weekdayNames weekstart="monday"?>
+<?include file="../../../common/html/classic/htmlareasetup.tpl"?>

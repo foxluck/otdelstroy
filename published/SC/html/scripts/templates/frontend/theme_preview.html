@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<base href="{$smarty.const.CONF_FULL_SHOP_URL}" />
+<!-- Head start -->
+		{$tpl_head}
+<!-- Head end -->
+<script type="text/javascript" src="{$URL_THEME_OFFSET}/head.js"></script>
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/general.css" type="text/css" />
+		{if $overridestyles}<link rel="stylesheet" href="{$URL_THEME_OFFSET}/overridestyles.css" type="text/css" />
+		<link rel="stylesheet" href="{$URL_THEME_OFFSET}/main.css" type="text/css" />
+		{else}
+		
+		<link rel="stylesheet" href="{$tpl_css_path}/overridestyles.css" type="text/css" />	
+		<link rel="stylesheet" href="{$tpl_css_path}/main.css" type="text/css" />	
+		{/if}
+		
+		
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+	</head>
+	<body>
+	{$tpl_content}
+	<div style="position:fixed;color:transparent;width:100%;height:100%;z-index:9999;left:0;top:0;right:0;bottom:0;">&nbsp;</div>
+	</body>
+</html>

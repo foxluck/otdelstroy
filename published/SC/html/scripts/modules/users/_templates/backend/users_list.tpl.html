@@ -1,0 +1,94 @@
+<h1>{"pgn_customers"|translate}</h1>
+<form name="MainForm" method="get" action="{''|set_query}">
+	<input type="hidden" name="did" value="{$CurrentDivision.id}" />
+	<p>{"usr_customer_search_descr"|translate}</p>
+	<table border="0" cellspacing="1" cellpadding="5">
+		<tr>
+			<td>{"usr_custinfo_login"|translate}</td>
+			<td><input type="text" name="login" value='{$smarty.get.login|escape:'html'}'></td>
+			<td>{"usr_custinfo_first_name"|translate}</td>
+			<td><input type="text" name="first_name" value='{$smarty.get.first_name|escape:'html'}'></td>
+			<td>{"str_group"|translate}:</td>
+			<td>
+				<select name="custgroupID">
+					<option value='0'>{"str_any"|translate}</option>
+				{foreach from=$customer_groups item=f_CGroup}
+					<option value='{$f_CGroup.custgroupID}'{if $smarty.get.custgroupID == $f_CGroup.custgroupID} selected{/if}>{$f_CGroup.custgroup_name|escape:'html'}</option>
+				{/foreach}
+				</select>
+			</td>
+			<td><input type="submit" name="search" value="{"btn_find"|translate}"></td>
+		</tr>
+		<tr>
+			<td>{"usr_custinfo_email"|translate}</td>
+			<td><input type="text" name="email" value='{$smarty.get.email|escape:'html'}'></td>
+			<td>{"usr_custinfo_last_name"|translate}</td>
+			<td><input type="text" name="last_name" value='{$smarty.get.last_name|escape:'html'}'></td>
+			<td>{"str_status"|translate}:</td>
+			<td>
+				<select name="ActState">
+					<option value='-1'{if $smarty.get.ActState eq -1} selected="selected"{/if}>{"str_any"|translate}</option>
+					<option value='1'{if $smarty.get.ActState eq 1} selected="selected"{/if}>{"usr_account_activated"|translate}</option>
+					<option value='0'{if $smarty.get.ActState eq 0&&$smarty.get.ActState ne ''} selected="selected"{/if}>{"usr_account_notactivated"|translate}</option>
+				</select>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+	<p>{$search_result_string}</p>
+
+{if $GridRows}
+
+{if $navigator}<p>{$navigator}{/if}
+<p>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+	<tr class="gridsheader">
+		{include file="backend/gridheader.tpl.html"}
+		<td align="center">{lbl_btn_delete}</td>
+	</tr>
+{section name=i loop=$GridRows}
+	{assign var=customer_url value="did=&ukey=user_info&userID=`$GridRows[i].customerID`&rdid=`$CurrentDivision.id`"|set_query_html}
+	<tr class="{cycle values="gridline1,gridline"}">
+		<td><a href='{$customer_url}'>{$GridRows[i].Login|escape:'html'}</a></td>
+		<td><a href='{$customer_url}'>{$GridRows[i].first_name|escape:'html'}</a></td>
+		<td><a href='{$customer_url}'>{$GridRows[i].last_name|escape:'html'}</a></td>
+		<td><a href='{$customer_url}'>{if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}{$GridRows[i].Email|escape:'html'}{else}{"msg_safemode_info_blocked"|translate}{/if}</a></td>
+		<td><a href='{$customer_url}'>{assign var="custgroupID" value=$GridRows[i].custgroupID}{$customer_groups[$custgroupID].custgroup_name|escape:'html'}&nbsp;</a></td>
+		<td><a href='{$customer_url}'>{$GridRows[i].reg_datetime|escape:'html'}</a></td>
+		<td><a href='{$customer_url}'>
+		{if $GridRows[i].ActivationCode}
+			{"usr_account_notactivated"|translate}
+		{else}
+			{"usr_account_activated"|translate}
+		{/if}
+		</a>
+		</td>
+		<td style="vertical-align:middle!important;" align="center"><a href='{"deleteCustomerID=`$GridRows[i].customerID`"|set_query_html}' class="confirm_action" title="{'cnfrm_delete'|transcape}"><img src="images/remove.gif" border="0" alt="{"btn_delete"|translate}" /></a></td>
+	</tr>	
+{/section}
+	<tr class="gridsfooter"> 
+		<td colspan="8">&nbsp;{include file="backend/lister.tpl.html"}</td>
+	</tr>
+</table>
+
+<br>
+
+<p>
+	{if $customers_has_been_exported_succefully == 1}
+		{"msg_customers_exported_to_file"|translate}
+		<a href='{$urlToDownloadResult}'>{"btn_download"|translate}</a> ( {$file_size} b ) 
+	{else}
+	
+		<select name="charset">
+			{foreach from=$charsets item=_charset}
+			<option value="{$_charset|escape:'html'}" {if $default_charset eq $_charset}selected="selected"{/if}>{$_charset|escape:'html'}</option>
+			{/foreach}
+		</select>
+		
+		<input type=hidden name='count_to_export' value='{$count_to_export}'>
+		<input type=submit name='export_to_excel' value='{"usr_export_userlist_to_csv"|translate}'>
+	{/if}
+</p>
+{/if}
+
+</form>

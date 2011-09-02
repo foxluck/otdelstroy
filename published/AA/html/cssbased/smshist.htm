@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script src="../../../common/html/classic/styles/calendar.js" type="text/javascript"></script>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', '' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$smsDisabled ?>
+					<? if $systemUser != 1 ?>
+						<? wbs_formCaption text=$userName|cat:" ("|cat:$userID|cat:")" ?>
+					<? /if ?>
+
+					<table class="NameValueList">
+						<tr>
+							<td><? $kernelStrings.sms_history_total_sent|cat:":" ?></td>
+							<th scope="col"><? $totalNum ?></th>
+						</tr>
+					</table>
+
+					<? wbs_formLayout caption=$pageTitle ?>
+						<? wbs_formContent ?>
+							<tr class="SeparatedRow">
+								<td><? wbs_label text=$kernelStrings.sms_show_history_text ?></td>
+							</tr>
+							<tr>
+								<td>
+									<table class="FormLayout">
+										<tr>
+											<td><input type=radio id="type1" name=histtype value=1 <? wbs_checkboxStatus val=$histtype true_val=1 ?>/></td>
+											<td><? wbs_label for="type1" text=$kernelStrings.sms_period_last10day_text skipColon=true ?></td>
+										</tr>
+										<tr>
+											<td><input type=radio id="type2" name=histtype value=2 <? wbs_checkboxStatus val=$histtype true_val=2 ?>/></td>
+											<td>
+												<? wbs_label for="type2" text=$kernelStrings.sms_history_from_date_label ?>
+												<input type=text style="width: 100px" class="FormControl" id="fromdate" name="fromdate" value="<? $fromdate ?>" maxlength="15" 
+												<?include file="../../../common/html/classic/calendar.tpl" style="margin-left: 2px" name="fromdate"?>
+
+												<? wbs_label for="todate" text=$kernelStrings.sms_history_to_date_label fieldName="todate" ?>
+												<input type=text style="width: 100px" class="FormControl" name="todate" id="todate" value="<? $todate ?>" maxlength="15" >
+												<?include file="../../../common/html/classic/calendar.tpl" style="margin-left: 2px" name="todate"?>
+											</td>
+										</tr>
+										<tr>
+											<td><input type=radio id="type3" name=histtype value=3 <? wbs_checkboxStatus val=$histtype true_val=3 ?>/></td>
+											<td><? wbs_label for="type3" text=$kernelStrings.sms_period_allhistory_text skipColon=true ?></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						<? /wbs_formContent ?>
+
+						<? wbs_formButtonsPanel ?>
+								<? wbs_buttonSet ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.sms_history_get_btn name="histbtn" ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+								<? /wbs_buttonSet ?>
+						<? /wbs_formButtonsPanel ?>
+					<? /wbs_formLayout?>
+
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_screen_sms_disabled ?><? /wbs_note ?>
+				<? /if ?>
+
+			<? /if ?>
+
+			<? if $showHist ?>
+				<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_sorted_by_date_text ?><? /wbs_note ?>
+
+				<table class="SimpleList" width="100%">
+					<thead>
+						<tr>
+							<th scope="col"><? $kernelStrings.sms_date_title ?></th>
+							<th scope="col"><? $kernelStrings.sms_phone_title ?></th>
+							<th scope="col"><? $kernelStrings.sms_width_title ?></th>
+							<th scope="col"><? $kernelStrings.sms_app_title ?></th>
+							<th scope="col"><? $kernelStrings.sms_charge_title ?></th>
+							<th scope="col"><? $kernelStrings.sms_status_title ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<? foreach from=$smsHist item=balance name=balanceLoop?>
+							<tr class="<? wbs_oddItem index=$smarty.foreach.balanceLoop.iteration ?>">
+								<td class="NoBreak"><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_DATETIME ?></a></td>
+								<td><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_PHONE ?></a></td>
+								<td><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_WIDTH ?></a></td>
+								<td class="NoBreak"><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_APP ?></a></td>
+								<td <? if $balance.SMSH_CHARGED != 1?>class="Important"<? /if ?>>
+									<a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_CHARGE ?><? if $balance.SMSH_CHARGED != 1?>&nbsp;(R)<? /if ?></a>
+								</td>
+								<td <? if $balance.SMSH_CHARGED != 1?>class="Important"<? /if ?>>
+									<a href="<? $balance.TEXT_URL ?>"><nobr><? $balance.SMSH_STATUS ?></nobr></a>
+								</td>
+							</tr>
+						<? foreachelse ?>
+							<tr class="NoRecords">
+								<td colspan="6"><? $kernelStrings.sms_history_nosent_text ?></td>
+							</tr>
+						<? /foreach ?>
+					</tbody>
+				</table>
+
+				<? wbs_note displayNoteMarker=false ?>
+					<? include file="../../../common/html/cssbased/pageelements/list_pages.htm" ?>
+				<? /wbs_note ?>
+
+			<? /if ?>
+
+			<input name="U_ID" type="hidden" id="U_ID" value="<? $U_ID ?>"/>
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Pricelist</Name>
+		<File>class.pricelist.php</File>
+		<Title>Прайс лист на товары</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

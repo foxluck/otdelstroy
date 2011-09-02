@@ -1,0 +1,42 @@
+<? if $action == "new" ?>
+	<table class="FormLayout">
+			<tr class="SeparatedRow">
+				<td><? wbs_label for="FolderSelector" text=$parentFolderLabel ?></td>
+				<td>
+					<select class="FormControl" id="FolderSelector" name="parentFolderID"
+						<? if $updateOnFolderChange ?>
+							<? if $folderSelectorEvent == "" ?>
+								onChange="this.form.submit()"
+							<? else ?>
+								onChange="<? $folderSelectorEvent ?>"
+							<? /if ?>
+						<? /if ?>>
+						<? include file="../../../common/html/classic/tree_templates/tree_folders_selector.htm" selectedID=$parentFolderID showAnyRights=true denyNoAccess=true ?>
+					</select>
+				</td>
+			</tr>
+			<tr class="SeparatedRow">
+				<td class="FormCaption"><? $thisFolderName|htmlsafe ?></td>
+			</tr>
+	</table>
+<? else ?>
+	<? wbs_formCaption text=$thisFolderName|htmlsafe:true:true ?>
+<? /if ?>
+
+<input type=hidden name="folderData[DF_NAME]" value="<? $folderData.DF_NAME|htmlsafe:true:true ?>"/>
+<? wbs_tabForm basePath="../../../common/html/cssbased/pageelements" tabs=$tabs width="600px" height="330px" ?>
+
+	<? if $canPropogate ?>
+		<input type='checkbox' name='needPropogate' value='1'><? $kernelStrings.app_propagategrouprights_note ?>
+	<? /if ?>
+	
+	<? wbs_formButtonsPanel ?>
+
+		<? wbs_buttonSet ?>
+			<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" onClick=$onSave ?>
+			<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+		<? /wbs_buttonSet ?>
+
+	<? /wbs_formButtonsPanel ?>
+
+<? /wbs_tabForm ?>

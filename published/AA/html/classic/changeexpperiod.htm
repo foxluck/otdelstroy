@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+	function focusControl(objName) {
+		 var obj = MM_findObj(objName); 
+		 if (obj)
+			obj.focus( );
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+
+	function setPeriodType( type )
+	{
+		thisForm = document.forms[0];
+
+		for ( i = 0; i < thisForm.elements.length; i++ ) 
+			if (thisForm.elements[i].type == 'radio')
+				if ( thisForm.elements[i].name == "periodType[type]" && thisForm.elements[i].value == type ) {
+					thisForm.elements[i].checked = true;
+					break;
+				}				
+	}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default"  onLoad="focusControl('periodType[period]')">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+
+	<p><? $kernelStrings.sei_form_text ?></p>
+
+	<table border="0" cellspacing="2" cellpadding="0">
+		  <tr> 
+			<td align="right"><? $kernelStrings.sei_default_label|cat:" ("|cat:$defPeriod|cat:" "|cat:$kernelStrings.sei_min_label|cat:")" ?></td>
+			<td colspan=2><input type="radio" name="periodType[type]" value=0 <? switchedOutput str1="checked" str2="" val=$periodType.type true_val="0" ?>></td>
+		  </tr>
+		  <tr> 
+			<td align="right"><? $kernelStrings.sei_never_label ?></td>
+			<td colspan=2><input type="radio" name="periodType[type]" value=1 <? switchedOutput str1="checked" str2="" val=$periodType.type true_val="1" ?>></td>
+		  </tr>
+		  <tr> 
+			<td align="right"><? conditionalOutput invalidField=$invalidField field="period" text=#invalidFieldHighlight# ?><? $kernelStrings.sei_custom_label ?></td>
+			<td><input type="radio" name="periodType[type]" value=2 <? switchedOutput str1="checked" str2="" val=$periodType.type true_val="2" ?>></td>
+			<td><input onChange="setPeriodType(2)" type=text name="periodType[period]" value="<? $periodType.period|htmlsafe:true:true ?>" size=10 class=control></td>
+		  </tr>
+		  <tr>
+			<td colspan=4>&nbsp;</td>
+		  </tr>
+	</table>
+	<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_ok_btn formname="form" space_right=10 ?>
+	<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+
+
+  <? /if ?>
+  <input name="edited" type="hidden" id="edited" value="1">
+  <input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+<? /strip ?>
+</body>
+</html>

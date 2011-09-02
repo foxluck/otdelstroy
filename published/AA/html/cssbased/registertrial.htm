@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'trialdata' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$done ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.rt_form_title ?><? /wbs_note ?>
+
+					<? wbs_formLayout caption=$pageTitle ?>
+						<? wbs_formContent ?>
+								<tr>
+									<td><? wbs_label for="company" fieldName="company" text=$kernelStrings.rb_company_label ?></td>
+									<td><input name="trialdata[company]" type="text" id="company" class="FormControl" value="<? $trialdata.company|htmlsafe:true:true?>" size="50" maxlength="255"/></td>
+								</tr>
+								<tr>
+									<td><? wbs_label for="firstname" fieldName="firstname" text=$kernelStrings.rb_firstname_label ?></td>
+									<td><input name="trialdata[firstname]" id="firstname" type="text" class="FormControl" value="<? $trialdata.firstname|htmlsafe:true:true?>" size="50" maxlength="50"/></td>
+								</tr>
+								<tr class="SeparatedRow">
+									<td><? wbs_label for="lastname" fieldName="lastname" text=$kernelStrings.rb_lastname_label ?></td>
+									<td><input name="trialdata[lastname]" id="lastname" type="text" class="FormControl" value="<? $trialdata.lastname|htmlsafe:true:true?>" size="50" maxlength="50"/></td>
+								</tr>
+								<tr>
+									<td><? wbs_label for="email" fieldName="email" text=$kernelStrings.rb_email_label ?></td>
+									<td><input name="trialdata[email]" id="email" type="text" class="FormControl" value="<? $trialdata.email|htmlsafe:true:true?>" size="50" maxlength="50"/></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><? wbs_note width="300px" displayNoteMarker=false ?><? $kernelStrings.rb_email_note ?><? /wbs_note ?></td>
+								</tr>
+						<? /wbs_formContent ?>
+
+						<? wbs_formButtonsPanel ?>
+
+							<? wbs_buttonSet ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.rb_submit_btn name="savebtn" ?>
+							<? /wbs_buttonSet ?>
+
+						<? /wbs_formButtonsPanel ?>
+
+					<? /wbs_formLayout ?>
+
+					<? wbs_note ?><? $kernelStrings.rb_submit_note ?><? /wbs_note ?>
+				<? else ?>
+					<? wbs_formCaption text=$kernelStrings.rb_greeting|cat:" "|cat:$trialdata.firstname|cat:" "|cat:$trialdata.lastname|cat:","|htmlsafe:true:true ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><font color="red"><b><? $kernelStrings.rb_done1_label ?></b></font><? /wbs_note ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.rb_done2_label|cat:" " ?><b><? $trialdata.email|htmlsafe:true:true ?></b><? /wbs_note ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.rb_done7_label ?><? /wbs_note ?>
+
+					<? wbs_hr width="500px" ?>
+
+					<? wbs_note smallFont=false width="500px" ?>
+						<? $kernelStrings.rb_done3_label ?>
+						<ol class="List">
+							<li><? $kernelStrings.rb_done4_label ?></li>
+							<li><? $kernelStrings.rb_done5_label ?></li>
+						</ol>
+					<? /wbs_note ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.rb_done6_label ?><? /wbs_note ?>
+				<? /if ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

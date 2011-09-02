@@ -1,0 +1,51 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+
+<table>
+{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+{section name=i loop=$product_extra}
+	{if $product_extra[i].option_type != 0 }
+	{section name=k loop=$product_extra[i].option_show_times}
+	<tr>					
+		<td>
+			{$product_extra[i].name|escape:'html'}{if $product_extra[i].option_show_times > 1 }({counter name=option_show_times}):{else}:{/if}
+		</td>
+		<td>
+			{counter name=select_counter assign=_cnt}
+			<select name='option_{$_cnt}' class="product_option">
+			<option value='' rel="0">{"str_not_defined"|transcape}</option>
+			{section name=j loop=$product_extra[i].values_to_select}
+			<option value='{$product_extra[i].values_to_select[j].variantID}' rel='{$product_extra[i].values_to_select[j].price_surplus}'
+			{if $product_extra[i].values_to_select[j].variantID == $product_extra[i].variantID}selected="selected"{/if}>
+				{$product_extra[i].values_to_select[j].option_value}
+			</option>
+			{/section}
+			</select>
+		</td>
+	</tr>
+	{/section}
+	{/if}
+{/section}
+</table>
+
+{else}
+	<table>
+	<tr>					
+	<td>Color:			</td>
+	<td>
+	
+	<select name='option_select_1_71' onchange='GetCurrentCurrency_71()'>
+	<option value='0.00:8'>
+	white
+	</option>
+	<option value='0.00:5'>
+	
+	yellow
+	</option>
+	<option value='0.00:6'>
+	green
+	</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+{/if}

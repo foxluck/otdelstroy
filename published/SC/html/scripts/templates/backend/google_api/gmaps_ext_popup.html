@@ -1,0 +1,402 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script language="JavaScript" type="text/javascript">
+{literal}
+window.alert = function() { return false; };
+{/literal}
+</script>
+
+{if $smarty.const.CONF_GOOGLE_MAPS_API_KEY neq ''}
+<script type="text/javascript" language="JavaScript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$smarty.const.CONF_GOOGLE_MAPS_API_KEY}"></script>
+{/if}
+<script type="text/javascript" language="JavaScript">
+<!--
+{literal}
+
+var map_win;
+var current_show_addr;
+var rd_win;
+var render_from_ca = false;
+
+function showMapWindow(addr)
+{
+	G_INCOMPAT = false;
+    current_show_addr = addr;
+    render_from_ca = false;
+    // create the window on the first click and reuse on subsequent clicks
+    if(!map_win){
+        map_win = new Ext.Window({
+            el: '{/literal}{$map_win_name}{literal}',
+            layout: 'fit',
+            width: 707,
+            height: 500,
+            closeAction: 'hide',
+            plain: true,
+            autoScroll: false,
+            resizable: false,
+            modal: true,
+            
+            tbar: [
+             {
+                text: '{/literal}{"btn_change_addr"|translate}{literal}'
+               ,handler: function() { 
+                       Ext.Msg.show({
+                               title: '{/literal}{"str_address"|translate}{literal}',
+                               value: current_show_addr,
+                               width: 300,
+                               buttons: {'ok': '{/literal}{"btn_ok"|translate}{literal}', 'cancel': '{/literal}{"btn_cancel"|translate}{literal}'},
+                               multiline: true,
+                               icon: Ext.MessageBox.QUESTION,
+                               fn: function(btn, text) {
+                                current_show_addr = text;
+                                render_from_ca = true;
+                                if(btn == 'ok') renderMapForAddress(text.replace("\n"," "));
+                               }
+                        });       
+                 }
+               ,disabled: ({/literal}'{$smarty.const.CONF_GOOGLE_MAPS_API_KEY}'{literal} == '' || G_INCOMPAT ? true : false)
+             }
+            ,{
+                text: '{/literal}{"btn_make_route"|translate}{literal}'
+               ,handler: function() { showRDWindow(); }
+               ,disabled: ({/literal}'{$smarty.const.CONF_GOOGLE_MAPS_API_KEY}'{literal} == '' || G_INCOMPAT ? true : false)
+             }
+            ,{
+                text: '{/literal}{"btn_print"|translate}{literal}'
+               ,handler: function() {
+                    var map_center = map.getCenter().toUrlValue();
+                    window.open('http://maps.google.com/maps?ll='+map_center+'&z='+map.getZoom()+'&key={/literal}{$smarty.const.CONF_GOOGLE_MAPS_API_KEY}{literal}&pw=2');
+               }
+               ,disabled: ({/literal}'{$smarty.const.CONF_GOOGLE_MAPS_API_KEY}'{literal} == '' || G_INCOMPAT ? true : false)
+             }
+            ,{
+                text: ''
+               ,minWidth: 50
+               ,disabled: true
+             }
+            ,{
+                text: '{/literal}{"btn_close"|translate}{literal}',
+                handler: function(){
+                    map_win.hide();
+                }
+             }
+            ]
+        });
+    }
+    map_win.show(map_win);
+    
+    if('{/literal}{$smarty.const.CONF_GOOGLE_MAPS_API_KEY}{literal}' != '')
+    {
+        if(map == null)
+        {
+            gmap_initialize();
+        };
+        renderMapForAddress(addr);
+        return;
+    };    
+    
+};
+
+function showRDWindow()
+{
+    if(!rd_win)
+    {
+        rd_win = new Ext.Window({
+            el: '{/literal}{$map_win_name}{literal}_rd',
+            layout: 'fit',
+            width: 307,
+            height: 220,
+            closeAction: 'hide',
+            plain: true,
+            autoScroll: false,
+            resizable: false,
+            modal: true,
+            buttonAlign: 'center',
+            buttons: [
+                {
+                    text: '{/literal}{"btn_make_route_short"|translate}{literal}'
+                   ,handler: function() { renderDirection(); }
+                }
+               ,{
+                    text: '{/literal}{"btn_cancel"|translate}{literal}'
+                   ,handler: function() { rd_win.hide(); }
+                }
+            ]
+        });
+    };
+    
+    document.getElementById('{/literal}{$map_win_name}{literal}_rd_to').innerHTML = current_show_addr;
+    rd_win.show(rd_win);
+};
+
+var map = null;
+var geocoder = null;
+
+function gmap_initialize()
+{
+  if(G_INCOMPAT)
+  {
+    var el = document.getElementById('{/literal}{$map_canvas_name}{literal}');
+    var _html = '<center style="padding: 150px 20px 0px 20px;">';
+    _html += '{/literal}{"wrn_invalid_google_maps_api_key"|translate}{literal}';
+    _html += '<br\/><br\/><br\/>';
+    _html += '{/literal}{"lbl_enter_gmapi_key"|translate}{literal}: <input type="text" id="gmapi_key_val" value="" size="40" \/>';
+    _html += '<button id="gmapi_key_sbut" type="button" onClick="checkGMAPIKey();">{/literal}{"btn_save"|translate}{literal}<\/button>';
+    _html += '<\/center>';
+    el.innerHTML = _html;
+    return false;
+  };
+  if (GBrowserIsCompatible())
+  {
+    map = new GMap2(document.getElementById("{/literal}{$map_canvas_name}{literal}"), {size: new GSize(700,500)});
+    map.enableScrollWheelZoom();
+    var mapControl = new GMapTypeControl();
+    map.addControl(mapControl);
+    map.addControl(new GLargeMapControl());
+    geocoder = new GClientGeocoder();
+  }
+};
+
+function renderMapForAddress(address)
+{
+  if (geocoder)
+  {
+    geocoder.getLatLng(
+      address,
+      function(point) {
+        if (!point) {
+            Ext.Msg.show({
+               title: '{/literal}{"str_address"|translate}{literal}',
+               msg: '{/literal}{"lbl_not_found"|translate}{literal}',
+               value: address,
+               width: 300,
+               buttons: {'ok': '{/literal}{"btn_search_again"|translate}{literal}', 'cancel': '{/literal}{"btn_cancel"|translate}{literal}'},
+               multiline: true,
+               icon: Ext.MessageBox.WARNING,
+               fn: function(btn, text) {
+                current_show_addr = text;
+                if(btn == 'ok') renderMapForAddress(text.replace("\n"," "));
+                else if(!render_from_ca) map_win.hide();
+               }
+            });       
+      } else {
+          map.setCenter(point, 13);
+          var marker = new GMarker(point);
+          map.addOverlay(marker);
+          marker.openInfoWindowHtml(address);
+        }
+      }
+    );
+  }
+};
+
+var directions = null;
+var can_make_route_from = null;
+var can_make_route_to = null;
+
+function renderDirection()
+{
+    if(directions == null)
+        directions = new GDirections(map);
+    else
+        directions.clear();
+    
+    var addr_from = document.getElementById('{/literal}{$map_win_name}{literal}_rd_from').value.replace(/\s+/g,' ');
+    var addr_to = document.getElementById('{/literal}{$map_win_name}{literal}_rd_to').value.replace(/\s+/g,' ');
+
+    GEvent.addListener(directions, "load", onGDirectionsLoad);
+    GEvent.addListener(directions, "error", handleErrors);
+    //directions.load(addr_from+' to '+addr_to);
+    directions.load('from: '+addr_from+' to: '+addr_to);
+};
+
+function handleErrors()
+{
+   switch(directions.getStatus().code)
+   {
+        case G_GEO_UNKNOWN_ADDRESS:
+                emsg = '{/literal}{"gerr_geo_unknown_address"|translate}{literal}'; break;
+        case G_GEO_SERVER_ERROR:
+                emsg = '{/literal}{"gerr_geo_server_error"|translate}{literal}'; break;
+        case G_GEO_MISSING_QUERY:
+                emsg = '{/literal}{"gerr_geo_missing_query"|translate}{literal}'; break;
+        case G_GEO_BAD_KEY:
+                emsg = '{/literal}{"gerr_geo_bad_key"|translate}{literal}'; break;
+        case G_GEO_BAD_REQUEST:
+                emsg = '{/literal}{"gerr_geo_bad_request"|translate}{literal}'; break;
+        default: emsg = '{/literal}{"gerr_unknown"|translate}{literal}'; break;
+   };
+
+   Ext.Msg.show({
+        buttons: Ext.MessageBox.OK
+       ,icon: Ext.MessageBox.ERROR
+       ,title: '{/literal}{"lbl_error"|translate}{literal}'
+       ,msg: emsg
+     });
+   
+};
+
+function onGDirectionsLoad()
+{
+    if(directions.getStatus().code == G_GEO_SUCCESS)
+    {
+        rd_win.hide();
+        
+        if('{/literal}{$smarty.const.CONF_WAREHOUSE_ADDRESS}{literal}' == '' && !addr_cfg_saved)
+        {
+            saveAddrCfg();
+        };
+    };
+}; 
+
+var addr_cfg_saved = false;
+function saveAddrCfg()
+{
+    var addr_cfg = document.getElementById('{/literal}{$map_win_name}{literal}_rd_from').value;
+
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        addr_cfg_saved = true;
+    };
+    
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice&ukey=configuration'), true);
+        req.send({'action': 'ajax_set_setting', 'setting_name': 'CONF_WAREHOUSE_ADDRESS', 'setting_value': addr_cfg});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+function checkGMAPIKey()
+{
+var field_el = document.getElementById('gmapi_key_val');
+    
+    if(field_el.value == '')
+    {
+       Ext.Msg.show({
+            buttons: Ext.MessageBox.OK
+           ,icon: Ext.MessageBox.ERROR
+           ,title: '{/literal}{"lbl_error"|translate}{literal}'
+           ,msg: '{/literal}{"wrn_invalid_google_maps_api_key"|translate}{literal}'
+         });
+        field_el.focus();
+        return;
+    };
+    
+    if(!document.getElementById('gmapi_check_iframe'))
+    {
+        var gmf = document.createElement('IFRAME');
+        gmf.id = 'gmapi_check_iframe';
+        gmf.frameborder = 0;
+        gmf.height = 0;
+        gmf.width = 0;
+        gmf.marginheight = 0;
+        gmf.marginwidth = 0;
+        gmf.scrolling = 'no';
+        gmf.style.width = '0px';
+        gmf.style.height = '0px';
+        gmf.style.border = '0px';
+        gmf.style.visibility = 'hidden';
+        gmf.style.position = 'absolute';
+        document.body.appendChild(gmf);
+    }
+    else
+    {
+        var gmf = document.getElementById('gmapi_check_iframe');
+    };
+    
+    Ext.Msg.wait('{/literal}{"lbl_please_wait"|translate}{literal}', '{/literal}{"lbl_checking_api_key"|translate}{literal}');
+    
+    gmf.src = 'index.php?ukey=gmapi_key_checker&gmapi_key='+field_el.value;
+};
+
+function handleGMAPIKeyChecker(is_correct)
+{
+    var field_el = document.getElementById('gmapi_key_val');
+    
+    if(is_correct)
+    {
+        saveGMAPIKey(field_el.value);
+    }
+    else
+    {
+       Ext.Msg.hide();
+       Ext.Msg.show({
+            buttons: Ext.MessageBox.OK
+           ,icon: Ext.MessageBox.ERROR
+           ,title: '{/literal}{"lbl_error"|translate}{literal}'
+           ,msg: '{/literal}{"wrn_invalid_google_maps_api_key"|translate}{literal}'
+         });
+        field_el.focus();
+    };
+};
+
+function saveGMAPIKey(key_value)
+{
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        window.location.reload();
+    };
+    
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice&ukey=configuration'), true);
+        req.send({'action': 'ajax_set_setting', 'setting_name': 'CONF_GOOGLE_MAPS_API_KEY', 'setting_value': key_value});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+{/literal}
+//-->
+</script>
+
+<div id="{$map_win_name}" class="x-hidden">
+    <div class="x-window-header">{"lbl_address_lookup"|translate}</div>
+    <div class="x-window-body" id="{$map_canvas_name}">
+    {if $smarty.const.CONF_GOOGLE_MAPS_API_KEY eq ''}
+    <center style="padding: 150px 20px 0px 20px;">
+    {"wrn_no_google_maps_api_key"|translate}
+    <br/><br/><br/>
+    {"lbl_enter_gmapi_key"|translate}: <input type="text" id="gmapi_key_val" value="" size="40" />
+    <button id="gmapi_key_sbut" type="button" onClick="checkGMAPIKey();">{"btn_save"|translate}</button>
+    </center>
+    {/if}
+    </div>
+</div>
+
+<div id="{$map_win_name}_rd" class="x-hidden">
+    <div class="x-window-header">{"btn_make_route"|translate}</div>
+    <div class="x-window-body" id="{$map_canvas_name}_rd">
+        <table>
+            <tr>
+                <td valign="top" align="right">{"lbl_route_from"|translate}</td>
+                <td>
+                    <textarea id="{$map_win_name}_rd_from" cols="35" rows="3" style="border: solid 1px black;">{if $smarty.const.CONF_WAREHOUSE_ADDRESS neq ''}{$smarty.const.CONF_WAREHOUSE_ADDRESS}{else}{"msg_input_addr_from"|translate}{/if}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" align="right">{"lbl_route_to"|translate}</td>
+                <td>
+                    <textarea id="{$map_win_name}_rd_to" cols="35" rows="3" style="border: solid 1px black;"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

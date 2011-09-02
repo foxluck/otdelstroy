@@ -1,0 +1,195 @@
+{if $intable !== 0}
+{counter name='__af_cnt' assign='__af_cnt' print=false}
+<table cellspacing="0" class="cellpadding addressform">
+{/if}
+{if $asknames !== 0}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td><span class="asterisk">*</span>{lbl_usr_custinfo_first_name}</td>
+	<td>
+		<input name='{$name_space}[first_name]' value='{$address.first_name|escape:"html"}' type="text" rel="chk_first_name" class="autofill address_elem inputtext" >
+	</td>
+</tr>
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td><span class="asterisk">*</span>{lbl_usr_custinfo_last_name}</td>
+	<td>
+		<input name='{$name_space}[last_name]' value='{$address.last_name|escape:"html"}' type="text" rel="chk_last_name" class="autofill address_elem inputtext" >
+	</td>
+</tr>
+{/if}
+{if $smarty.const.CONF_ADDRESSFORM_ADDRESS ne 2}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td>{if $smarty.const.CONF_ADDRESSFORM_ADDRESS eq 0}<span class="asterisk">*</span>{/if}{lbl_str_address}</td>
+	<td>
+		<textarea name="{$name_space}[address]" class="address_elem" rows="4">{$address.address|escape:'html'}</textarea>
+	</td>
+</tr>
+{/if}
+{if $smarty.const.CONF_ADDRESSFORM_CITY ne 2}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td>{if $smarty.const.CONF_ADDRESSFORM_CITY eq 0}<span class="asterisk">*</span>{/if}{lbl_usr_custinfo_city}</td>
+	<td>
+		<input name="{$name_space}[city]" value="{$address.city|escape:'html'}" class="address_elem inputtext" type="text" >
+	</td>
+</tr>
+{/if}
+{if $smarty.const.CONF_ADDRESSFORM_STATE ne 2}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td>{if $smarty.const.CONF_ADDRESSFORM_STATE eq 0}<span class="asterisk">*</span>{/if}{lbl_usr_custinfo_state}</td>
+	<td>
+	{if !$zones[$name_space]}
+		<input name="{$name_space}[state]" value="{$address.state|escape:'html'}" type="text" class="address_elem inputtext" >
+	{else}
+		<select name="{$name_space}[zoneID]" class="address_elem">
+		{foreach from=$zones[$name_space] item=_zone}
+			<option value="{$_zone.zoneID}"{if $_zone.zoneID == $address.zoneID} selected{/if}>{$_zone.zone_name|escape:'html'}</option>
+		{/foreach}
+		</select>
+	{/if}
+	</td>
+</tr>
+{/if}
+{if $smarty.const.CONF_ADDRESSFORM_ZIP ne 2}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td>{if $smarty.const.CONF_ADDRESSFORM_ZIP eq 0}<span class="asterisk">*</span>{/if}{"usr_custinfo_zip"|translate}</td>
+	<td>
+		<input name="{$name_space}[zip]" value="{$address.zip|escape:'html'}" class="address_elem inputtext" >
+	</td>
+</tr>
+{/if}
+{if $countries}
+<tr class="row_{cycle name="__afcyycle`$__af_cnt`" values='odd,even'}">
+	<td><span class="asterisk">*</span>{"usr_custinfo_country"|translate}</td>
+	<td>
+		<select name="{$name_space}[countryID]" class="country_box address_elem" {if $form_name&&$ukey}onChange="changeStates(this)"{/if}>
+		{foreach from=$countries item=_country}
+			<option value="{$_country.countryID}"
+			{if $address.countryID}
+				{if $_country.countryID == $address.countryID}selected{/if}
+			{else}
+				{if $_country.countryID == $smarty.const.CONF_DEFAULT_COUNTRY}selected{/if}
+			{/if}
+			>{$_country.country_name|escape:'html'}</option>
+		{/foreach}
+		</select>
+	</td>
+</tr>
+{/if} 
+{if $intable !== 0}
+</table>
+{/if}
+{if $form_name && $ukey}
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+{literal}
+<script type="text/javascript">
+function changeStates(country_el)
+{
+    var country_id  = country_el.value;
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+    	
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        var states = req.responseJS.states;
+        var states_el;
+        try{
+			states_el = document.forms['{/literal}{$form_name}{literal}'].elements['{/literal}{$name_space}{literal}[zoneID]'];
+			if(!states_el)throw "err";
+		}catch(e){// IE fix
+			var form_el = document.forms['{/literal}{$form_name}{literal}'];
+    	    for (var i=0;i<form_el.length;i++){
+				if(form_el.elements[i].name == '{/literal}{$name_space}{literal}[zoneID]'){
+			  		states_el = form_el.elements[i];
+					break;
+				 }
+			}	
+		}
+
+        if(states.length > 0){
+            if(!states_el)
+            {
+	            var pn;
+            try{
+		            states_el = document.forms['{/literal}{$form_name}{literal}'].elements['{/literal}{$name_space}{literal}[state]'];
+        		    pn = states_el.parentNode;
+	            	pn.removeChild(states_el);
+                
+				}
+				catch(e){// IE fix
+					var form_el = document.forms['{/literal}{$form_name}{literal}'];
+    	            for (var i=0;i<form_el.length;i++)
+					{
+						if(form_el.elements[i].name == '{/literal}{$name_space}{literal}[state]'){
+					  		states_el = form_el.elements[i];
+					  		pn = states_el.parentNode;
+			            	pn.removeChild(states_el);
+							break;
+						 }
+					}	
+				}
+                
+                var dd = document.createElement('SELECT');
+                dd.name ='{/literal}{$name_space}{literal}[zoneID]';
+                dd.className = 'address_elem';
+                
+                pn.appendChild(dd);
+                states_el = dd;//document.forms['{/literal}{$form_name}{literal}'].elements['{/literal}{$name_space}{literal}[zoneID]'];
+            }
+            else
+            {
+                while(states_el.options.length > 0)
+                {
+                    states_el.remove(0);
+                };
+            };
+            
+            for(i=0; i<states.length; i++)
+	        {
+	            var opt = new Option();
+	            opt.value = states[i].zoneID;
+	            opt.text = states[i].zone_name;
+	            try
+	            {
+	                states_el.add(opt,null); // standards compliant
+	            }
+	            catch(ex)
+	            {
+	                states_el.add(opt); // IE only
+	            };        
+	        };
+        }
+        else
+        {
+            if(states_el)
+            {
+                var pn = states_el.parentNode;
+                pn.removeChild(states_el);
+                
+                var inp = document.createElement('INPUT');
+                inp.type = 'text';
+                inp.className = 'address_elem inputtext';
+                inp.name = '{/literal}{$name_space}{literal}[state]';
+                
+                pn.appendChild(inp);
+                //states_el = document.forms['{/literal}{$form_name}{literal}'].elements['{/literal}{$name_space}{literal}[state]'];
+            }
+        };
+        
+    };
+
+    try
+    {
+        req.open(null, set_query('?ukey={/literal}{$ukey}{literal}&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'ajax_get_states', 'country_id': country_id});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+</script>
+{/literal}
+{/if}

@@ -1,0 +1,81 @@
+<style>
+	.FilesTable tr td {padding: 3px; }
+	.FilesTable tr td a {font-weight: bold; text-decoration: none}
+	.FilesTable tr.Title td {border-bottom: 1px solid #BBB; font-weight: bold}
+	.FilesTable .SubFile {font-size: 0.8em; padding: 0px; padding-bottom: 4px}
+	.FilesTable td.Icon {padding: 0px; padding-top: 0px; border: 1px solid red;}
+	.FilesTable tr td.Filename {padding-right: 20px}
+	.FilesTable tr .DeleteLink {display: none; color: red; font-weight: bold}
+	.FilesTable tr.Selected {background: yellow}
+	.FilesTable tr .deleteBtn {display: none; position: relative; float: right; margin-right: 0px}
+	*html .FilesTable tr .deleteBtn {position: absolute; right: 10px; margin-right: 0px}
+	.FilesTable tr.Selected .deleteBtn {display: block}
+	.FilesTable tr .DeleteEmpty {width: 15px}
+	.FilesTable tr.Selected .DeleteEmpty {display: none; }
+	.FilesTable tr.Selected .DeleteLink {display: block; padding-left: 3px; padding-right: 3px}
+	.FilesTable div.FileDesc {border-bottom: 1px solid #BBB}
+	img {border: 0px}
+</style>
+
+<script>
+	oldTr = null;
+	function selectTr(tr) {
+		tr.className = "Selected";
+		var st = new Fx.Style(tr, "background-color");
+		st.set("#FFFF00");
+	}
+	
+	function deselectTr (tr) {
+		tr.className = "";
+		var st = new Fx.Style(tr, "background-color");
+		st.set("<? $widgetParams.BGCOLOR ?>");
+	}
+	
+	function showProperties (id) {
+		obj = document.getElementById("properties_" + id);
+		obj.style.display = (obj.style.display == "none") ? "block" : "none";
+	}
+	
+	function slowDeselect(id) {
+		obj = document.getElementById("d" + id);
+		var st = new Fx.Style(obj, "background-color", {duration: 3000});
+		st.start("#FFFF00", "<? $widgetParams.BGCOLOR ?>");
+		window.setTimeout("setNobg(" + id + ")", 3000);
+		window.setTimeout("ee()", 50);
+	}
+	
+	function ee() {
+		var fx = new Fx.Scroll("SCROLLFORM");
+		pos = $("selFile").getPosition().y-100;
+		fx.scrollTo (0,pos);
+	}
+	
+	function setNobg(id) {
+		obj = document.getElementById("d" + id);
+		var st = new Fx.Style(obj, "background-color");
+	}
+</script>
+
+<table class='FilesTable' border=0 cellspacing=0 cellpadding=0 style='text-align: left; width: 100%'>
+	<? foreach item=file from=$filesList ?>
+		<tr id='d<? $file.DL_ID ?>' <? if $selectFile == $file.DL_FILENAME ?>style='background: #FFFF00;'<? /if ?> <? if $widgetParams.CANDELETE ?>onMouseOver='selectTr(this)' onMouseOut='deselectTr(this)'<? /if ?> valign='top'>
+			<td width="13">&nbsp;</td>
+			<td align='center' width="20">
+				<img alt='<? $file.DL_FILESIZE ?> - <? $file.DISPLAY_DATETIME ?>' src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=16 os=win ?>"  border="0" align=center></td>
+			<td id='i<? $file.DL_ID ?>' width="*" nowrap class='Filename' title='<? $file.DL_FILESIZE ?> - <? $file.DISPLAY_DATETIME ?>'>
+				<a title='<? $widgetStrings.up_filedelete_title ?>' href='javascript:deleteFile("<? $file.ENC_DL_ID ?>")' class='deleteBtn'><img src='<? $WG_SRC ?>widgets/DDUploader/public/img/delete.gif'></a>
+				<a title='<? $file.DL_FILESIZE ?> - <? $file.DISPLAY_DATETIME ?>' target='_blank' href='<? $file.ROW_URL ?>'><? $file.DL_FILENAME ?></a>
+				<? if $selectFile == $file.DL_FILENAME ?>
+					<div id='selFile'></div>
+					<script>
+						slowDeselect("<? $file.DL_ID ?>");
+					</script>
+				<? /if ?>
+			</td>
+		</tr>
+	<? foreachelse ?>
+	<tr>
+		<td align='center'>&lt;<? if $filesErrorStr ?><? $filesErrorStr ?><? else ?><? $widgetStrings.up_nofiles_label ?><? /if ?>&gt;</td>
+	</tr>
+	<? /foreach ?>
+</table>

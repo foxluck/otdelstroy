@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>New order sms notifications</name>
+		<key>sms_wa</key>
+	</interface>
+</interfaces>

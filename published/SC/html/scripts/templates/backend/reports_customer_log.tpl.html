@@ -1,0 +1,70 @@
+{* reports: customer log *}
+<h1>{$CurrentDivision.name|translate}</h1>
+
+<form action="admin.php?dpt=reports&sub=customer_log" method=post>
+
+<table>
+
+
+{if $customer_log_report}
+
+	<tr>
+		<td>
+			<input type=submit value='{$smarty.const.ADMIN_REPORT_CLEAR}' name='clear'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+
+<table bgcolor=#56AFD6 cellspacing=1 cellpadding=3>
+<tr bgcolor=#BEDDDB>
+	<td>
+		<b>
+			{$smarty.const.ADMIN_CUSTOMER_LOGIN}
+		</b>
+	</td>
+	<td>
+		<b>
+			IP		
+		</b>
+	</td>
+	<td>
+		<b>
+			{$smarty.const.ADMIN_CUSTOMER_ENTER_TIME}
+		</b>
+	</td>
+</tr>
+
+
+{section name=i loop=$customer_log_report}
+<tr bgcolor=#FFFFFF>
+	<td>
+		{$customer_log_report[i].login}
+	</td>
+	<td>
+		{$customer_log_report[i].customer_ip}
+	</td>
+	<td>
+		{$customer_log_report[i].customer_logtime}
+	</td>
+</tr>
+{/section}
+
+</table>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<input type=submit value='{$smarty.const.ADMIN_REPORT_CLEAR}' name='clear'>
+		</td>
+	</tr>
+
+{else}
+	{$smarty.const.STRING_EMPTY_LIST}
+{/if}
+
+</table>
+
+</form>

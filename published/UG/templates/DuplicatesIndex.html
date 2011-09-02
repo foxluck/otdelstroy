@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>[`Contacts`]</title>
+        {{csscombine file="`$url.css`contacts-index.css"}}
+        {{$url.css}}reset.css
+        {{$url.css}}users-common.css
+        {{$url.css}}users.css
+        {{/csscombine}}
+        <style>
+            
+            .duplicate-list {
+                display: block;
+                padding: 20px 10px;
+            }
+			.num-dublicates { margin-left:1em; font-weight:bold;  font-size:13px; color:#000;}
+			.total-dublicates { margin-bottom:1.5em;}
+            p.dublicate-help { color:#444; font-size:1em; line-height:1.25em; margin-right:25%; padding-right:20px;margin-bottom:1.5em;}
+            .duplicate-content {
+                margin: 0 27% 0 0;
+            }
+            
+            .master .duplicate-content {
+                margin: 0 27% 0 0;
+            }
+            
+            .duplicate-right {
+                float: right;
+                width: 25%;
+            }
+            
+            .duplicate-wrapper {
+                display: block;
+                position: relative;
+                overflow: hidden;
+                zoom: 1;
+				border-right:1px dashed #E9E9E9
+
+            }
+            
+            .master .duplicate-wrapper {
+                border:solid 3px #CAD7E0;
+				 background:#F2F6FA;
+
+            }
+            
+            .duplicate-list .item {
+                margin-bottom: 10px;
+				padding-bottom:10px;
+				border-bottom: solid 2px #E6EAED;
+
+            }
+            .duplicate-list a.wrap-image {
+                display: block;
+                float: left;
+                height: 110px;
+                text-align: center;
+                width: 110px;
+				padding:5px;
+            }
+            
+            .duplicate-list .content {
+                margin: 0 0 0 124px;
+                padding: 5px;
+
+            }
+            .duplicate-list .master .content { border-right:none; }
+            .duplicate-list .thumbnail {
+                cursor: pointer;
+				background:url(img/thumbnail.gif) no-repeat center center;
+				
+            }
+            
+            .duplicate-list .thumbnail table {
+                height: 100%;
+                width: 100%;
+            }
+            
+            .thumbnail table tr td {
+               
+                padding: 0;
+                text-align: center;
+				vertical-align:middle;
+            }
+            
+            a.wrap-image img {
+                float: none;
+            }
+            
+            .item .name {
+            }
+            .item .name img { 
+				vertical-align:middle;
+				margin:0 2px 0 0;
+			}
+            .item .small-gray {
+                margin-top: 3px;
+                padding-top: 3px;
+                color: #787878;
+                line-height: 1.2em;
+            }
+            
+            .item .small-gray span {
+                font-size: 0.9em
+            }
+            
+            .duplicate-list li {
+                padding: 0.15em 0;
+            }
+            
+            .link-subsrc {
+                color: #787878;
+                margin: 0.25em 0 0.5em 1em;
+                font-size: 0.85em;
+            }
+            
+            .field-title {
+                color: #000;
+                padding-left: 0.5em;
+            }
+            
+			.duplicate-link { float:right; background:#CAD7E0; border:solid 1px #CAD7E0; padding:5px;}
+			.duplicate-link a { color:#223445; font-weight:bold; font-size:13px;}
+			.dublicate-contact-name { border-top: solid 3px #aaa ; margin:10px 0; padding:0.25em 0 0 0;}
+			.duplicate-controls { padding:0 20px 0 0;}
+        </style>
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <h1>Dublicates by name</h1>
+			<h4 class="total-dublicates">Total 99 dublicates found for 9 contacts</h4>
+            <p class="dublicate-help">Highlighted below are suggested "mastr" entries. Master have more additional information, e.g. user account, more contact information and link to associated content in other applications. Once you merge dublicates with master, only master record will stay and dublicates will be deleted. Empty master fields will be filled with the information stored in the same fields from dublicates. Link to dublicates from other WEbAsyst applications will be updated to link with master.</p>
+           <h2 class="dublicate-contact-name">Тупоршин Владимир Николаевич<span class="num-dublicates">(3 дубликата)</span></h2>
+            <div class="duplicate-list">
+                <div class="item master">
+                    <div class="duplicate-right">
+                        <ul class="duplicate-controls">
+                            <li>
+                                <a href="">Merge this contacts</a>
+                                <p class="link-subsrc">
+                                    This contacts will stay and 2 dublicates willbe merged with this contact
+                                </p>
+                            </li>
+                            <li>
+                                <a href="">Exclude from dublicates</a>
+                            </li>
+                            <li>
+                                <a href="">Delete this contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="duplicate-content">
+                        <div class="duplicate-wrapper">
+                            <div class="duplicate-link">
+                                <a href="">Suggested master</a>
+                            </div>
+                           
+						   <a class="wrap-image" href="">
+                           <div class="thumbnail">
+                           <table><tbody><tr><td><img src="img/empty-contact1.gif"></td></tr></tbody></table>
+                           </div>
+                           
+                           </a>
+                           <div class="content">
+                           <div class="name"><a href=""><img src="img/icon-user.gif" />Тупоршин Владимир Николаевич</a></div>
+                           <div class="small-gray">
+                           <span class="section-title">Обращение:</span><span class="field-title" title="Обращение">CEO</span><br><span class="section-title">Организация:</span><span class="field-title" title="Организация">WebAsyst, LLC</span><br><span class="section-title">Email:</span><span class="field-title" title="Email"><a href="">vladimir.tuporshin@webasyst.net</a></span><br><span class="section-title">Мгновенные сообщения:</span><span class="field-title" title="Skype">мой скайп</span><br><span class="section-title">Персональная информация:</span><span class="field-title" title="День рождения">00.00.0000</span>, <span class="field-title" title="name">3</span><br><span class="section-title">Рабочий адрес:</span><span class="field-title" title=""><a target="_blank" href="http://www.tuporshin.ru/">http://www.tuporshin.ru/</a></span><br>
+                           </div>
+                           </div>
+						   
+						   
+						   
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="item">   <!-- /end item -->
+                    <div class="duplicate-right">
+                        <ul class="duplicate-controls">
+                            <li>
+                                <a href="">Merge this contacts</a>
+                            </li>
+                            <li>
+                                <a href="">Exclude from dublicates</a>
+                            </li>
+                            <li>
+                                <a href="">Delete this contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="duplicate-content">
+                        <div class="duplicate-wrapper">
+                            <a class="wrap-image" href="">
+                                <div class="thumbnail">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="img/empty-contact1.gif">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                            <div class="content">
+                           <div class="name"><a href=""><img src="img/icon-user.gif" />Тупоршин Владимир Николаевич</a></div>
+                           <div class="small-gray">
+                          <span class="section-title">Email:</span><span class="field-title" title="Email"><a href="">vladimir.tuporshin@webasyst.net</a></span><br><span class="section-title">Мгновенные сообщения:</span><span class="field-title" title="Skype">мой скайп</span><br><span class="section-title">Персональная информация:</span><span class="field-title" title="День рождения">00.00.0000</span>, <span class="field-title" title="name">3</span><br><span class="section-title">Рабочий адрес:</span><span class="field-title" title=""><a target="_blank" href="http://www.tuporshin.ru/">http://www.tuporshin.ru/</a></span><br>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
+                   
+                </div> <!-- /end item -->
+                <div class="item">
+                    <div class="duplicate-right">
+                        <ul class="duplicate-controls">
+                            <li>
+                                <a href="">Merge this contacts</a>
+                            </li>
+                            <li>
+                                <a href="">Exclude from dublicates</a>
+                            </li>
+                            <li>
+                                <a href="">Delete this contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="duplicate-content">
+                        <div class="duplicate-wrapper">
+                            <a class="wrap-image" href="">
+                                <div class="thumbnail">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="img/empty-contact1.gif">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                            <div class="content">
+                           <div class="name"><a href=""><img src="img/icon-user.gif" />Тупоршин Владимир Николаевич</a></div>
+                           <div class="small-gray">
+                         <span class="section-title">Email:</span><span class="field-title" title="Email"><a href="">vladimir.tuporshin@webasyst.net</a></span><br><span class="section-title">Мгновенные сообщения:</span><span class="field-title" title="Skype">мой скайп</span><br><span class="section-title">Персональная информация:</span><span class="field-title" title="День рождения">00.00.0000</span>, <span class="field-title" title="name">3</span>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
+                 
+                </div>   <!-- /end item -->
+            </div>
+             <h2 class="dublicate-contact-name">Петрович Иван Семенович<span class="num-dublicates">(3 дубликата)</span></h2>
+             <div class="duplicate-list">
+             <div class="item master">
+                    <div class="duplicate-right">
+                        <ul class="duplicate-controls">
+                            <li>
+                                <a href="">Merge this contacts</a>
+                                <p class="link-subsrc">
+                                    This contacts will stay and 2 dublicates willbe merged with this contact
+                                </p>
+                            </li>
+                            <li>
+                                <a href="">Exclude from dublicates</a>
+                            </li>
+                            <li>
+                                <a href="">Delete this contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="duplicate-content">
+                        <div class="duplicate-wrapper">
+                            <div class="duplicate-link">
+                                <a href="">Suggested master</a>
+                            </div>
+                           
+						   <a class="wrap-image" href="">
+                           <div class="thumbnail">
+                           <table><tbody><tr><td><img src="img/empty-contact1.gif"></td></tr></tbody></table>
+                           </div>
+                           
+                           </a>
+                           <div class="content">
+                           <div class="name"><a href=""><img src="img/icon-user.gif" />Петрович Иван Семенович</a></div>
+                           <div class="small-gray">
+                           <span class="section-title">Обращение:</span><span class="field-title" title="Обращение">CEO</span><br><span class="section-title">Организация:</span><span class="field-title" title="Организация">WebAsyst, LLC</span><br><span class="section-title">Email:</span><span class="field-title" title="Email"><a href="">vladimir.tuporshin@webasyst.net</a></span><br><span class="section-title">Мгновенные сообщения:</span><span class="field-title" title="Skype">мой скайп</span><br><span class="section-title">Персональная информация:</span><span class="field-title" title="День рождения">00.00.0000</span>, <span class="field-title" title="name">3</span><br><span class="section-title">Рабочий адрес:</span><span class="field-title" title=""><a target="_blank" href="http://www.tuporshin.ru/">http://www.tuporshin.ru/</a></span><br>
+                           </div>
+                           </div>
+						   
+						   
+						   
+                        </div>
+                    </div>
+                 
+                </div>
+             <div class="item">  
+                    <div class="duplicate-right">
+                        <ul class="duplicate-controls">
+                            <li>
+                                <a href="">Merge this contacts</a>
+                            </li>
+                            <li>
+                                <a href="">Exclude from dublicates</a>
+                            </li>
+                            <li>
+                                <a href="">Delete this contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="duplicate-content">
+                        <div class="duplicate-wrapper">
+                            <a class="wrap-image" href="">
+                                <div class="thumbnail">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="img/empty-contact1.gif">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                            <div class="content">
+                           <div class="name"><a href=""><img src="img/icon-user.gif" />Петрович Иван Семенович</a></div>
+                           <div class="small-gray">
+                          <span class="section-title">Email:</span><span class="field-title" title="Email"><a href="">vladimir.tuporshin@webasyst.net</a></span><br>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
+                   
+                </div>
+             </div>
+             </div>
+            </body>
+        </html>

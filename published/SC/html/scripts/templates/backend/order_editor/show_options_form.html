@@ -1,0 +1,51 @@
+<table border="0" cellpadding="2" cellspacing="1">
+    <tr><th>{"div_etxrafld_name"|translate}</th><th>{"prdcustopt_value"|translate}</th></tr>
+    {foreach from=$options item=opt_item}
+    <tr>
+        <td align="right">{$opt_item.name}:</td>
+        <td>
+        {if $opt_item.option_type eq 1}
+        <select name="po" id="po_{$opt_item.optionID}" style="width: 200px;">
+            {foreach from=$opt_item.values_to_select item=opt_val}
+                <option value="{$opt_val.option_valueWithOutPrice|escape:'html'}" price="{$opt_val.price_surplus}" {if $opt_val.variantID eq $opt_item.variantID}selected="selected"{/if}>{$opt_val.option_value|escape:'html'}</option>
+            {/foreach}
+        </select>
+        {/if}
+        </td>
+    </tr>
+    {/foreach}
+    <tr>
+        <td colspan="2" align="center"><button type="button" onClick="onSelectClick();">{"btn_select"|translate}</button></td>
+    </tr>
+</table>
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+
+function onSelectClick()
+{
+{/literal}
+    var prod_obj = {ldelim}'product_id': '{$product_info.productID}', 'name': '{if $product_info.product_code}[{$product_info.product_code|escape:'html'}] {/if}{$product_info.name|escape:'html'}', 'price': {$product_info.Price}, 'have_options': '0'{rdelim};
+{literal}
+    var po = document.getElementsByName('po');
+    var selected = new Array();
+    var price_charge = 0;
+    
+    for(i=0; i<po.length; i++)
+    {
+        selected.push(po[i].options[po[i].selectedIndex].value);
+        price_charge += parseFloat(po[i].options[po[i].selectedIndex].attributes['price'].value);
+    };
+    
+    var options_string = '('+selected.join(', ')+')';
+    
+    prod_obj.name += ' '+options_string;
+    prod_obj.price += price_charge;
+    prod_obj.price = prod_obj.price.toString();
+    
+    parent.window.addProduct(prod_obj);
+    parent.window.closeFadeIFrame();
+};
+
+{/literal}
+</script>

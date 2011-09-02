@@ -1,0 +1,21 @@
+<? wbs_dualComboBox
+	leftCaption=$kernelStrings.app_included_label
+	rightCaption=$kernelStrings.app_notincluded_label
+
+	leftVariableName="included_groups"
+	rightVariableName="notincluded_groups"
+
+	leftValues=$included_groups
+	rightValues=$notincluded_groups
+
+	leftNames=$included_groups_names
+	rightNames=$notincluded_groups_names
+	onChange="triggerGroupChanges()"
+
+	separated=true
+
+	rows=14
+	width=335
+?>
+
+<? wbs_note smallFont=false width="700px" ?><? $kernelStrings.amu_groupperms_text ?><? /wbs_note ?>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Setup Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.default {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+h1 {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 16pt;
+	font-weight: normal;
+}
+body {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	color: #000000;
+}
+p {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	font-weight: normal;
+	color: #000000;
+}
+
+td {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	font-weight: normal;
+}
+
+.error {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333333;
+	font-weight: normal;
+	background-color: #FFBBBB;
+}
+.comment {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+-->
+</style>
+</head>
+
+<body>
+&lt;&lt; <a href="install.php">Back to install page </a>
+<h1>System requirements</h1>
+<p>Before installing WebAsyst Server make sure your system satisfies following requirements:</p>
+<p>1. PHP version 4.3.0 or higher</p>
+<blockquote>
+  <p> Necessary PHP extensions: DOMXML (for PHP 4.x.x only), DOM functions (for PHP 5.x.x), GD</p>
+  <p>NOTE: Refer PHP manual for PHP extensions installation.</p>
+</blockquote>
+<p>2. MySQL version 4.1.x, 5.0.</p>
+<p>3. Any standard web-server with PHP support, e.g. IIS or Apache.</p>
+<h1>Getting ready</h1>
+<p>Copy all files included in the installation archive into any directory on your
+  web-server available via HTTP (e.g. home/http/html/wbs). Then open install.php
+  page in a standard browser (e.g. Internet Explorer or Mozilla/Netscape). Exact
+  address of install.php page depends on directory where you have copied archive
+  files and settings of your browser. This address can look like in following
+  sample:</p>
+<p> http://www.yourcompany.com/wbs/install.php</p>
+<p> If your server corresponds to all system requirements specified above the
+  installation page will be opened. Otherwise you will see a page with information
+  about missing components.</p>
+<h1>Installation procedure</h1>
+<p>1. Click <strong>Install</strong> button. Installation script extracts WebAsyst
+  files and <strong>Installation complete</strong> page opens to display <strong>WebAsyst
+  Administrator</strong>.</p>
+<p> 2. In <strong>WebAsyst Administrato</strong>r you must create at least one MySQL
+  Server configuration record and one database for you to be able to login WebAsyst.
+  Follow <strong>WebAsyst Administrator</strong> instructions.</p>
+<h1>Security</h1>
+<p>Security level of your system will depend on how it is accessible via HTTP.
+  For higher security it’s recommended to setup WebAsyst Server into directory which
+  has no HTTP access and then create HTTP alias to wbs/published directory.</p>
+<p>&lt;&lt; <a href="install.php">Back to install page </a></p>
+</body>
+</html>

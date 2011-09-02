@@ -1,0 +1,115 @@
+{* catalog import from Excel *}
+{if $excel_import_result eq "ok"}
+<h1>{$CurrentDivision.name|transcape}&nbsp;&raquo;&nbsp;{lbl_prdimport_step}&nbsp;2/2</h1>
+<div class="success_block" ><span class="success_message">{"msg_update_successful"|translate}</span></div>
+{$limit_msg}
+<h2 style="margin-left:10px;">{"lbl_prdimport_report"|translate}</h2>
+<ul style="list-style-type:none">
+	<li>{"lbl_product_added"|translate}: <b>{$product_added}</b></li>
+	<li>{"lbl_product_modify"|translate}: <b>{$product_modify}</b></li>
+	<li>{"lbl_category_added"|translate}: <b>{$category_added}</b></li>
+</ul>
+{else}
+
+	{if $excel_import_configurator ne NULL}
+
+	<h1>{$CurrentDivision.name|transcape}
+	&raquo;
+	{lbl_prdimport_step} 2/2
+	</h1>
+	
+
+	  {* excel import configuration (columns definition) *}
+
+		<p>{"prdimport_csv_desc2"|translate}</p>
+		<p>{"prdimport_csv_desc3"|translate}</p>
+		<p>{$source_column_count}</p>
+		<div "style="color:#555; padding: 15px; text-style: italic; background-color: #f3f3f3">
+		{foreach from=$source_columns item=source_column key=source_column_key name=source_columns}
+		<span style="font-style:italic;background-color:#eee;padding:0px;margin:10px 2px;">{$source_column}</span>{if !$smarty.foreach.source_columns.last}, {/if}
+		{/foreach}
+		</div>
+		<br><br>
+
+
+	  <form action="{'msg='|set_query_html}" method="post">
+	  	<input type="checkbox" name="use_structure" value="1" checked="checked" id="sc-csv-use-structure"><label for="sc-csv-use-structure">{'prdimport_csv_use_structure'|translate}</label>
+	  	<br><br><br>
+
+		{$excel_import_configurator}
+
+		{*<p>{"prdimport_primary_column"|translate}
+			<select name=update_column>
+			{foreach from=$unique_columns key=_key item=_title}
+				<option value="{$_key}">{$_title}</option>
+			{/foreach}
+			</select><br>
+		{"prdimport_primary_column_desc"|translate}
+		*}
+		<p><input type=submit name=do_excel_import value="{"btn_ok"|translate}">
+		<input type=hidden name=dpt value=catalog>
+		<input type=hidden name=sub value=excel_import>
+		<input type=hidden name=number_of_titles_line value=$notl>
+		<input type=hidden name=delimeter value="{$delimeter}">
+		<input type=hidden name=filename value="{$file_excel_name}">
+
+	  </form>
+
+
+
+	{else}
+
+		<h1>{$CurrentDivision.name|transcape}
+		&raquo;
+		{lbl_prdimport_step} 1/2
+		</h1>
+		{$MessageBlock}
+		{* CSV file selection form *}
+
+		<p>
+		{if $excel_import_result eq "upload_file_error"}{"err_failed_to_upload_file"|translate}{/if}
+		{if $excel_import_result eq "update_column_error"}<p><b><font color=red>{"err_csvimport_update_column_is_not_set"|translate}</font></b>{/if}
+		</p>
+
+		<form enctype="multipart/form-data" action="{'msg='|set_query_html}" method="POST">
+		{"prdimport_csv_desc1"|translate}
+
+		<table cellpadding=3>
+		<tr>
+			<td>{"prdimport_csv_browse_for_file"|translate}:</td>
+			<td><input type="file" name="csv" /></td>
+		</tr>
+		<tr>
+			<td>
+			{"prdimport_csvl_delimeter"|translate}
+			</td>
+			<td>
+				<select name="delimeter">
+					<option value=";">{"prdimport_csv_delimeter_semicolon"|translate} (;)</option>
+					<option value=",">{"prdimport_csvl_delimeter_comma"|translate} (,)</option>
+					<option value="	">{"prdimport_csvl_delimeter_tab"|translate}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>{"prdimport_file_charset"|translate}:</td>
+			<td>
+				<select name="charset">
+				{foreach from=$charsets item=_charset}
+				<option value="{$_charset|escape:'html'}" {if $default_charset eq $_charset}selected="selected"{/if}>{$_charset|escape:'html'}</option>
+				{/foreach}
+				</select>
+			</td>
+		</tr>
+		</table>
+
+		<p>
+		<input type=submit value="{"btn_ok"|translate}">
+		<input type=hidden name=proceed value=1>
+		<input type=hidden name=dpt value="catalog">
+		<input type=hidden name=sub value="excel_import">
+
+		</form>
+
+	{/if}
+{/if}

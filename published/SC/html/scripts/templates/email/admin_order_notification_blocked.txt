@@ -1,0 +1,10 @@
+<h1>{lbl_ordr_id}: {$order.orderID_view} ({$order_time})</h1>
+
+<h2>{$smarty.const.CONF_SHOP_NAME}</h2>
+
+<h2>{lbl_str_total}: {$order_amount}</h2>
+
+<p>Order details are omitted because you exceeded number of orders that you can accept according to your current pricing plan (up to {$max_orders_per_month} orders per month).<br/>To continue using WebAsyst Shopping Cart you need to upgrade your account and increase allowed number of orders.</p>
+<br/>
+<p>Currently your storefront will continue to accept new orders, but order details will be hidden until you upgrade your account.</p>
+<p>To upgrade - login to your WebAsyst account and go to "Control Panel".</p>

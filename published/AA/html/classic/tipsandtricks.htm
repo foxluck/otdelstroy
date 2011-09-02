@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/includes/modules/JsHttpRequest/JsHttpRequest.js"></script>
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+
+<script language="JavaScript">
+
+	function loadTipsContent()
+	{
+		var req = new Subsys_JsHttpRequest_Js();
+
+		req.onreadystatechange = function() {
+			if (req.readyState == 4) {
+				if (req.responseJS) {
+					var cellObj = document.getElementById('contentCell');
+					if (cellObj) {
+						if ( req.responseJS.error != 0 )
+							cellObj.innerHTML = req.responseJS.data;
+						else {
+							cellObj.innerHTML = req.responseJS.data;
+						}
+					}
+				}
+			}
+		}
+
+		req.open('POST', 'gettipscontent.php?showQuickStart=<? $showQuickStart ?>&protocol=<? $protocol ?><? if $trans_sid ?><? "&"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>', true);
+		req.send({id:0});
+	}
+
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="loadTipsContent()">
+<? strip ?>
+	<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+		<input name="edited" type="hidden" id="edited" value="1">
+		<? include file="../../../common/html/classic/header.htm" nospace=1 noToolbar=1 ?>
+		<? include file="../../../common/html/classic/toppanel_fix.htm" nospace=1 noleftspace=1 ?>
+		<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+		<? if !$fatalError ?>
+			<table width="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+				<tr>
+					<td width="100%" height="100%" valign=middle align=center>
+						<div style="height: 15px"></div>
+						<table width=800 height=600 border=0 cellpadding=0 cellspacing=0>
+							<tr>
+								<td valign=top>
+									<table width="100%" height=30 border=0 cellpadding=0 cellspacing=0>
+										<tr>
+											<td width=5 height=5 background="<? "images/TipsAndTricks/headerlefttop.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/headerlefttop.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+											<td class=height=5 background="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+											<td width=5 height=5 background="<? "images/TipsAndTricks/headerrighttop.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/headerrighttop.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+										</tr>
+										<tr>
+											<td background="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>" width=5><img src="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+											<td class=tipsandtricks_header style="padding-bottom: 5px" ID=titleCell background="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>">
+												<? $kernelStrings.tt_page_title ?>
+											</td>
+											<td background="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>" width=5><img src="<? "images/TipsAndTricks/headerbg.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="100%" height="540" border=0 cellpadding=0 cellspacing=0>
+										<tr>
+											<td width=5 background="<? "images/TipsAndTricks/contentleft.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/contentleft.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+											<td valign=middle align=center style="padding: 0px;" ID=contentCell>
+												<img src="<? "images/progress.gif"|stylesetitem:"classic":$styleSet:"common" ?>" >
+											</td>
+											<td width=5 background="<? "images/TipsAndTricks/contentright.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/contentright.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign=bottom>
+									<table width="100%" height=30 border=0 cellpadding=0 cellspacing=0>
+										<tr>
+											<td width=5 background="<? "images/TipsAndTricks/footerleft.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/footerleft.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+											<td valign=middle background="<? "images/TipsAndTricks/footerbg.gif"|stylesetitem:"classic":$styleSet ?>">
+												<input type=checkbox value=1 name=showTtOnStartUp <? switchedOutput val=$showTtOnStartUp true_val=1 str1="checked" ?> onClick="this.form.submit()">
+												<? $kernelStrings.tt_openttonstartup_label ?>
+											</td>
+											<td width=5 background="<? "images/TipsAndTricks/footerright.gif"|stylesetitem:"classic":$styleSet ?>"><img src="<? "images/TipsAndTricks/footerright.gif"|stylesetitem:"classic":$styleSet ?>"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<div style="height: 15px"></div>
+					</td>
+				</tr>
+			</table>
+		<? /if ?>
+		<? include file="../../../common/html/classic/pagefooter.htm" norightspace=1 ?>
+	</form>
+<? /strip ?>
+</body>
+</html>

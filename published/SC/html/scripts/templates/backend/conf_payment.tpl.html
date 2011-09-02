@@ -1,0 +1,152 @@
+{* payment types configuration *}
+
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post">
+
+	<table cellpadding="5" cellspacing="1" width="95%" bgcolor="#BEDDDB" align="center">
+
+	<tr bgcolor="#BEDDDB" align="center">
+		<td>&nbsp;</td>
+		<td>{"str_name"|translate}</td>
+		<td>{"str_description"|translate}</td>
+		<td>{"mdl_shipping_methods_are_allowed"|translate}</td>
+		<td>{"pmnt_calctax_for_this_payment_type"|translate}</td>
+		<td>{"pmnt_email_comments_text"|translate}</td>
+		<td>{"mdl_name"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td>&nbsp;</td>
+	</tr>
+
+	{section name=i loop=$payment_types}
+
+	<tr bgcolor="white">
+		<td>
+			<input type="checkbox" name="Enabled_{$payment_types[i].PID}" {if $payment_types[i].Enabled} checked{/if} />
+		</td>
+		<td>
+			{html_text dbfield="Name" name="Name_%lang%_`$payment_types[i].PID`" values=$payment_types[i]}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" dbfield="description" name="description_%lang%_`$payment_types[i].PID`" values=$payment_types[i]}
+		</td>
+
+		<td>
+		<table>
+		{section name=j loop=$payment_types[i].ShippingMethodsToAllow}
+		<tr>
+			<td>
+			<input type="checkbox" name='ShippingMethodsToAllow_{$payment_types[i].PID}_{$payment_types[i].ShippingMethodsToAllow[j].SID}'
+				{if $payment_types[i].ShippingMethodsToAllow[j].allow == 1} checked{/if} />
+			</td>
+			<td>
+				{$payment_types[i].ShippingMethodsToAllow[j].name}
+			</td>
+		</tr>
+		{/section}
+		</table>
+		</td>
+
+		<td align="center">
+			<input type="checkbox" name="calculate_tax_{$payment_types[i].PID}"	 {if $payment_types[i].calculate_tax} checked{/if} />
+		</td>
+
+		<td>
+			{html_textarea rows="3" cols="30" dbfield="email_comments_text" name="email_comments_text_%lang%_`$payment_types[i].PID`" values=$payment_types[i]}
+		</td>
+
+		<td>
+			<select name='module_{$payment_types[i].PID}'>
+				<option value='null'>
+					--
+				</option>
+				{section name=j loop=$payment_modules}
+				<option value='{$payment_modules[j]->get_id()}'
+				{if $payment_modules[j]->get_id() == $payment_types[i].module_id}
+					selected {/if}>
+					{$payment_modules[j]->title}
+				</option>
+				{/section}
+			</select>
+		</td>
+
+		<td align="center">
+			<input type="text" name="sort_order_{$payment_types[i].PID}" value="{$payment_types[i].sort_order|escape:'html'}" size="3" />
+		</td>
+
+		<td>
+			<a href="javascript:confirmDelete({$payment_types[i].PID},'{"cnfrm_delete"|translate}','{"delete="|set_query_html}&amp;delete=');">
+				<img src="images/remove.jpg" border="0" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	</tr>
+	{/section}
+
+	<tr bgcolor="#56AFD6">
+		<td colspan="9" align="center">{"btn_add"|translate}:</td>
+	</tr>
+
+	<tr bgcolor="white">
+		<td>
+			<input type="checkbox" name="Enabled" checked />
+		</td>
+		<td>
+			{html_text name="Name"}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" name="description"}
+		</td>
+		<td>
+			<table>
+				{section name=j loop=$shipping_methods}
+				<tr>
+					<td>
+						<input type="checkbox" name='ShippingMethodsToAllow_{$shipping_methods[j].SID}' />
+					</td>
+					<td>
+						{$shipping_methods[j].Name}
+					</td>
+				</tr>
+				{/section}
+			</table>
+			&nbsp;
+		</td>
+
+		<td align="center">
+			<input type="checkbox" name="calculate_tax" />
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" name="email_comments_text"}
+		</td>
+		<td>
+			<select name='module'>
+				<option value='null'>
+					--
+				</option>
+				{section name=j loop=$payment_modules}
+				<option value='{$payment_modules[j]->get_id()}'>
+					{$payment_modules[j]->title}
+				</option>
+				{/section}
+			</select>
+		</td>
+
+		<td align="center">
+			<input type="text" name="sort_order" size="3" />
+		</td>
+
+		<td>&nbsp;</td>
+	</tr>
+
+
+	</table>
+
+	<p>
+		<input type="hidden" name="dpt" value="conf" />
+		<input type="hidden" name="sub" value="payment" />
+		<input type="hidden" name="save_payment" value="yes" />
+		<input type="submit" value="{"btn_save"|translate}" />
+
+</form>

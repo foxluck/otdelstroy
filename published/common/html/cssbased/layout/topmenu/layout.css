@@ -1,0 +1,654 @@
+/*
+	Outlook theme layout stylesheet
+*/
+
+html
+{
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+* html
+{
+	overflow: hidden;
+	padding: 0 0 91px 0;
+}
+
+form
+{
+	padding: 0;
+	margin: 0;
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	font:76%/140% Verdana, Arial, Helvetica, sans-serif;
+}
+
+#Wrap
+{
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 20px;
+}
+
+* html #Wrap
+{
+	margin-bottom: 0;
+}
+
+#HeaderContainer
+{
+	height: 105px;
+/*	overflow: hidden; */
+
+	padding: 0;
+	margin: 0;
+}
+
+#ContentWrapper
+{
+	position: absolute;
+
+	top: 70px;
+	bottom: 20px;
+	right: 0;
+	left: 200px;
+
+	padding: 0;
+	margin: 0;
+}
+
+* html #ContentWrapper
+{
+	position: fixed;
+	top: 105px;
+	height: 100%;
+
+	padding: 0;
+	margin: 30px 0 0 200px;
+}
+
+#ContentScroller
+{
+	overflow: auto;
+
+	width: 100%;
+	height: 100%;
+}
+
+#Content
+{
+	padding: 10px;
+}
+
+#Content.NotFullWidth {
+	margin-right: 10px;
+}
+
+
+#RightColumn
+{
+	display: none;
+}
+
+#LeftColumn
+{
+	display: none;
+}
+
+#FooterContainer
+{
+	height: 55px;
+
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 100%;
+	z-index: 12;
+}
+
+#Footer
+{
+	background: transparent;
+	float: left;
+	margin-left: 20px;
+	white-space: nowrap;
+}
+
+#Footer img {margin-right: 5px;}
+#Footer .ActiveItem img {border: 1px solid #999; background: white	}
+
+#Header
+{
+	position: absolute;
+	top: 1px;
+	left: 0;
+	height: 18px;
+	width: 50px;
+
+	text-align: right;
+	/*padding: 3px 11px 0 10px;*/
+	white-space: nowrap;
+	z-index: 10;
+}
+
+#UserName
+{
+	position: absolute;
+	top: 2px;
+	right: 0;
+	height: 18px;
+
+	text-align: right;
+	padding: 1px 5px 0 10px;
+	white-space: nowrap;
+	z-index: 12;
+}
+
+#PageTitlePanel
+{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+
+	top: 40px;
+	left: 0px;
+
+	height: 30px;
+	width: 100%;
+	z-index: 12;
+	min-width: 500px;
+}
+
+* html #PageTitlePanel
+{
+	left: 200px;
+	width: expression((document.body.clientWidth - 200)+'px');
+}
+
+#PageTitle
+{
+	padding: 3px 0 0 10px;
+	margin-left: 0;
+	float: left;
+	height: 30px;
+	white-space: nowrap;
+}
+
+* html #PageTitle
+{
+	margin-left: 0;
+}
+
+#Logout
+{
+	position: absolute;
+	top: 23px;
+	right: 0;
+	text-align: right;
+	padding: 2px 10px 0 10px;
+	white-space: nowrap;
+	z-index: 12;
+}
+
+* html #Logout
+{
+	position: relative;
+	float: right;
+	right: 0;
+}
+
+.CompanyLogo
+{
+	max-height: 100px;
+	max-width: 100px;
+	vertical-align: middle;
+}
+
+div#Header img.CompanyLogo
+{
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+* html div#Header img.CompanyLogo
+{
+	margin-bottom: 0;
+}
+
+/* html .CompanyLogo
+{
+	width: 35px;
+}*/
+
+
+/*
+	Error block
+*/
+
+span.ErrorBlock, span.MessageBlock
+{
+	display: block;
+/*		width: 700px; */
+	padding: 0;
+	margin: 0 0 10px 0;
+}
+
+span.ErrorBlock span, span.MessageBlock span
+{
+	display: block;
+/*	width: 700px!important; */
+	padding: 0;
+	margin: 0;
+}
+
+* html span.ErrorBlock span, 
+{
+	height: 40px;
+}
+* html span.MessageBlock span, 
+{
+	height: 40px;
+}
+
+/*
+	Forms
+*/
+
+table.FormBlock tr.FormCaption
+{
+	display: none;
+}
+
+label
+{
+	vertical-align: top;
+}
+
+thead th label
+{
+	float: left;
+	padding-top: 1px;
+	padding-left: 3px;
+}
+
+thead th input
+{
+	float: left;
+}
+
+table.FormBlock td
+{
+	padding: 0;
+	margin: 0;
+}
+
+table.FormLayout
+{
+	border-collapse: collapse;
+}
+
+table.FormBlock tr.FormContent td
+{
+	padding: 5px 10px;
+}
+
+table.FormLayout tr td, table.FormLayout tr th
+{
+	padding: 2px 5px 2px 0!important;
+	margin: 0;
+}
+
+
+
+.FormControl
+{
+	padding: 1px;
+}
+
+td.FormSection
+{
+	height: 30px!important;
+	vertical-align: top;
+}
+
+span.CheckedImg, span.UnCheckedImg
+{
+	display: block;
+	padding: 0;
+	width: 0;
+	height: 20px;
+}
+
+fieldset
+{
+	border-top: 1px solid gray;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding: 0;
+	margin: 0;
+}
+
+fieldset div.FieldsetContainer
+{
+	padding: 10px 0 0 10px;
+}
+
+legend
+{
+	padding: 0 5px 0 0;
+	margin: 0 5px 0 0;
+	font-weight: bold;
+}
+
+ul.ButtonSet
+{
+	height: 24px;
+}
+
+span.FormCaption
+{
+	font-size: 1.8em;
+	display: block;
+	padding-bottom: 15px;
+}
+
+input.Button
+{
+	border: 1px solid #E4D2B0;
+	color: #875910;
+	background: #F3EFD2;
+}
+
+/*
+	Message box classes
+*/
+
+dl.MessageBox
+{
+	display: block;
+	margin: 0;
+}
+
+dl.MessageBox dt
+{
+	display: block;
+	padding: 0 0 10px 0;
+	margin: 0;
+}
+
+dl.MessageBox dd
+{
+	display: block;
+	padding: 0 0 10px 0;
+	margin: 0;
+}
+
+
+
+
+/*
+	Tables
+*/
+
+/* Simple List */
+
+table.SimpleList thead th
+{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+table.SimpleList tbody td a, table.SimpleList tbody th a
+{
+	display: block;
+}
+
+table.SimpleList tfoot td
+{
+	font-weight: bold;
+}
+
+/* Note Block */
+
+table.NoteBlock thead th
+{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+table.NoteBlock tbody td
+{
+	padding: 10px;
+	font: 0.9em Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Horizontal Rule */
+
+div.hr
+{
+	border: none;
+	height: 13px;
+	margin: 3px 0;
+	padding: 0;
+}
+
+/*
+	Report Table
+*/
+
+table.ReportTable tbody th, table.ReportTable td
+{
+	font-size: 0.9em;
+}
+
+/* Grid */
+
+table.Grid thead th
+{
+	height: 20px;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+table.Grid tbody td
+{
+	padding-top: 2px;
+}
+
+table.Grid tbody td a, table.Grid tbody th a, table.Grid thead th a
+{
+	display: block;
+}
+
+/* Other table classes */
+
+tr.NoRecords td
+{
+	height: 30px;
+	vertical-align: middle;
+}
+
+/*
+	Treeview
+*/
+
+#TreePageListTable td
+{
+	font-size: 0.9em;
+}
+
+/*
+	Thumbnails
+*/
+
+div.Thumbnail div div
+{
+	font-size: 0.8em;
+}
+
+div.Thumbnail div div
+{
+	padding: 1px;
+}
+
+/*
+	Tabbed forms
+*/
+
+div.TabbedForm dl.TabbedFormList dd.Tab
+{
+	height: 17px;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab a span
+{
+	padding: 4px 10px 3px 5px;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab.Active a span
+{
+	padding: 4px 10px 3px 5px;
+}
+
+/*
+	Tab bar
+*/
+
+div.TabBar
+{
+	height: 24px;
+	margin-left: 5px;
+	padding-left: 0;
+}
+
+div.TabBarContent
+{
+	padding: 10px 5px;
+}
+
+/*
+	Icon Buttons
+*/
+
+a.IconButton
+{
+	padding: 3px;
+}
+
+/*
+	Font styles
+*/
+
+.FormCaption
+{
+	font: 1.9em Times, Helvetica, sans-serif;
+}
+
+
+
+
+#NPageTitlePanel {height: 150px; border-bottom: 1px solid #999999}
+#NFooterPanel{
+	border-top: 1px solid #999999;
+	height: 21px;
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 100%;
+	z-index: 12;
+}
+#NContentWrapper {
+	width: 100%; 
+	background: #D0FFD0;
+	border: 1px solid red;
+	position: absolute;
+	height: 100%;
+	top:0;
+}
+#NContentScrolling {
+	height: 100%;
+	overflow-y: auto;
+}
+
+
+
+
+#TContentWrapper
+{
+	position: absolute;
+
+	top: 67px;
+	bottom: 20px;
+	right: 0;
+	left: 0px;
+
+	padding: 0;
+	margin: 0;
+}
+
+#PoweredImg {border: 0px; padding-right: 20px; float: right; margin-top: 15px}
+#WALogoImg {}
+
+
+#LoginBlock
+{
+	font-size: 0.9em;
+	position: absolute;
+	top: 2px;
+	right: 0;
+	text-align: right;
+	padding: 2px 10px 0 10px;
+	white-space: nowrap;
+	z-index: 12;
+	color: #B7B8B9;
+}
+
+* html #LoginBlock
+{
+	position: relative;
+	float: right;
+	right: 0;
+}
+
+#LoginBlock #LoggedAs {margin-right: 5px; color: black}
+#LoginBlock a {color: blue; text-decoration: underline}
+
+
+
+
+
+
+
+
+
+
+#HeaderContainer
+{
+	background: white;
+}
+
+#SubToolbar {clear:both; height: 32px	}
+#SubToolbar .Title {margin: 0px; margin-left: 0px; font-size: 1.5em; padding-top: 5px; margin-left: 10px; }
+
+
+
+
+
+
+#FooterContainer
+{
+	/* background: #F2F2F2; */
+	background: white;
+	border-top: 1px solid #B2B2B2;
+	/*height: 20px;*/
+}

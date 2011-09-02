@@ -1,0 +1,106 @@
+<h1 class="breadcrumbs">
+	<a href='{"?did="|set_query_html}'>{lbl_shp_shipping_types}</a>
+	&raquo;
+	{'shp_add_shipping_method'|translate|replace:'%STEP_NUMBER%':$step_num}
+</h1>
+
+{if $step eq 'module'}
+
+	<p>
+	{lbl_shp_modules_list_title}
+	</p>
+
+	<form action="{'action=add_method'|set_query_html}" method="post">
+	
+	<table cellspacing="0" cellpadding="5">
+	{foreach from=$modules item=_module key=_key name=_fe}
+	<tr>
+	<td valign="top">
+			{if $_module->default_logo}<label for="mdl-{$_key}"><img src="{$_module->default_logo|escape:'html'}" alt=""></label>{else}&nbsp;{/if}
+		</td>
+		<td valign="top"><input type="radio" name="mid" value="{$_key}" id="mdl-{$_key}" /></td>
+		<td valign="top"><label for="mdl-{$_key}">{$_module->title}</label>
+			<div class="notice">{$_module->description}</div>
+		</td>
+	</tr>
+	{/foreach}
+	</table>
+	<p>
+	<input value="{'btn_next'|transcape}" type="submit" />
+	</form>
+{/if}
+
+{if $step eq 'settings'}
+
+	{$MessageBlock}
+	
+	<form action='{""|set_query_html}' method="post" enctype="multipart/form-data"  name="shipping_method_form">
+	<input name="action" value="save_new_method" type="hidden" />
+	<input name="module_id" value="{$module_id}" type="hidden" />
+	
+	<table cellspacing="0" cellpadding="5">
+	<tr>
+		<td>{'enabled'|translate}</td>
+		<td>
+			<input type="checkbox" name="Enabled" {if $data.Enabled} checked{/if} value="1" />
+		</td>
+	</tr>
+	<tr>
+		<td width="250">{"str_name"|translate}:</td>
+		<td>
+			{html_text name="Name" values=$data style="width:250px;"}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">{"str_description"|translate}:
+			<br />
+			{html_textarea rows="2" cols="30" name="description" values=$data style="width:510px;"}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">{"shp_email_comments_text"|translate}:
+			<br />
+			{html_textarea rows="2" cols="30" name="email_comments_text" values=$data style="width:510px;"}
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" width="250">{"str_logo"|translate}:</td>
+		<td>
+			<input type="text" name="logo" value="{$data.logo|escape:'html'}" style="width:250px;"/>
+			{if $data.logo}<br/><img src="{$data.logo|escape:'html'}" alt="" />{/if}
+		</td>
+	</tr>
+	
+{if $settings}
+	<tr>
+		<td colspan="2">
+		<br />
+		<strong>{'shp_module_settings'|translate|replace:'%MODULE_NAME%':$moduleEntry->title}</strong>
+		{if $moduleEntry->description}<p>{$moduleEntry->description}</p>{/if}
+		</td>
+	</tr>
+	
+	{section name=i loop=$settings}
+	{if $controls[i] ne -1}
+	<tr> 
+		<td width="250">{$settings[i].settings_title}:
+			<div class="notice">{$settings[i].settings_description}</div>
+		</td>
+		<td>
+			{$controls[i]}
+		</td>
+	</tr>
+	{/if}
+	{/section}
+{/if}
+	
+	<tr>
+		<td colspan="2">
+			<input value="{'btn_save'|transcape}" type="submit" />
+		</td>
+	</tr>
+	
+	</table>
+	
+	</form>
+{/if}

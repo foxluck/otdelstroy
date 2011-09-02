@@ -1,0 +1,48 @@
+<div class="partner-service" id="jobs_view">
+
+	<table width="100%" cellpadding="0" cellpadding="0" border="0">
+	{{foreach from=$partner_jobs key=job_id item=job}}
+		<tr>
+			<td class="f-col"><b>{{$job.$job_name_field}}</b></td>
+			<td class="price-col">
+				{{if $job.CPPJ_MIN && $job.CPPJ_MAX}}
+					<span>[`from`] {{$job.CPPJ_MIN}} [`to`] {{$job.CPPJ_MAX}}</span> {{$partner_currency}}
+				{{elseif $job.CPPJ_MIN}}
+					[`from`] <span>{{$job.CPPJ_MIN}}</span> {{$partner_currency}}
+				{{elseif $job.CPPJ_MAX}}
+					[`to`] <span>{{$job.CPPJ_MAX}}</span> {{$partner_currency}}
+				{{/if}}
+			</td>
+			<td class="stars">
+			{{if $job.CPPJ_VOTEAMNT}}
+				<div class="voting"><p class="voite">
+					<span id="vote_img_{{$job_id}}">
+					{{section name=vote_section start=1 loop=6 step=1}}
+						{{if $smarty.section.vote_section.index <= $job.CPPJ_AVGVOTE}}
+							<img src="{{$url.app}}img/stars/star10.png" />
+						{{elseif $smarty.section.vote_section.index >= $job.CPPJ_AVGVOTE + 1}}
+							<img src="{{$url.app}}img/stars/star00.png" />
+						{{else}}
+							<img src="{{$url.app}}img/stars/star{{$job.vote_star}}.png" />
+						{{/if}}
+					{{/section}}
+					</span> 
+					<span id="vote_text_{{$job_id}}" class="colorbg">
+						<b>{{$job.CPPJ_AVGVOTE}}</b> ({{$job.CPPJ_VOTEAMNT}} [`votes`])
+					</span>
+				</p></div>
+			{{else}}
+				<p>
+					<span>[`no votes`]</span>
+				</p>
+			{{/if}}
+			</td>
+		</tr>
+	{{/foreach}}
+	</table>
+
+	<div class="resp-actions">
+		<a href="javascript:void(0)" onclick="switchJobsEditor(true)" class="jobs_edit_link"><span></span>[`Edit`]</a>
+	</div>
+
+</div>

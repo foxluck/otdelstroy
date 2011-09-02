@@ -1,0 +1,122 @@
+{* product tree for froogle-module and yandexmarket-module *}
+{literal}
+<script language="javascript" type="text/javascript">
+<!--
+function checkAllProducts(_ProdNum){
+	var checkbox;
+	var group_checkbox = document.getElementById('id_checkallprod');
+	if(group_checkbox)
+	for(var i=1; i<=_ProdNum; i++){
+		if(checkbox = document.getElementById('prod'+i))
+		checkbox.checked = group_checkbox.checked;
+	}
+}
+//-->
+</script>
+{/literal}
+<input name="expandID" type="hidden" />
+<input name="unexpandID" type="hidden" />
+<input name="showProducts" type="hidden" />
+<input name="updateCategory" value="" type="hidden" />
+<input name="clear_session" value="{"btn_reset"|translate}" type="submit" />
+<table>
+{foreach from=$ProductCategories item=_ProductCategory}
+	<tr>
+		<td style="padding-left:{$_ProductCategory.level*20}">
+			{if $_ProductCategory.ExistSubCategories}
+				{if $_ProductCategory.ExpandedCategory}
+				<a href="javascript:void(0)"
+					onclick="
+							document.form_export.elements['unexpandID'].value = {$_ProductCategory.categoryID};
+							document.form_export.submit();
+							return false;"><img src="images_common/minus.gif"  border="0" /></a>
+				{else}
+				<a href="javascript:void(0)"
+					onclick="document.form_export.elements['expandID'].value = {$_ProductCategory.categoryID};
+							document.form_export.submit();
+							return false;"><img src="images_common/plus.gif"  border="0" /></a>
+				{/if}
+			{else}
+				<img src="images_common/plus.gif"  border="0" style="visibility:hidden;" />
+			{/if}
+			
+			{count array=$session_selectedProducts[$_ProductCategory.categoryID] item=_ProductsNum}
+			
+			<input name="CHECKED_CATEGORIES[{$_ProductCategory.categoryID}]" 
+						type="checkbox" class="checknomarging" value="1"
+						onclick="
+							document.form_export.elements['updateCategory'].value = {$_ProductCategory.categoryID};
+							document.form_export.submit();
+							return false;"
+						id="category{$_ProductCategory.categoryID}"
+						{if $session_checkedCategories[$_ProductCategory.categoryID] or $_ProductsNum or $session_selectedProductsIncSub[$_ProductCategory.categoryID]} checked="checked"{/if} />
+			{if $_ProductCategory.products_count_category}
+			<a class="standard" href="javascript:void(0)" 
+				onclick="
+					document.form_export.elements['showProducts'].value = {$_ProductCategory.categoryID};
+					document.form_export.submit();
+					return false;
+					">{$_ProductCategory.name|escape:'html'}</a> 
+			{else}
+				<label for="{$_ProductCategory.categoryID}">{$_ProductCategory.name|escape:'html'}</label>
+			{/if}
+			{if $_ProductCategory.ExpandedCategory or !$_ProductCategory.ExistSubCategories}
+				(
+				{if $_ProductsNum}
+					{$_ProductsNum} 
+				{elseif $session_checkedCategories[$_ProductCategory.categoryID]}
+					{$_ProductCategory.products_count_category}
+				{else}
+				0
+				{/if}
+				/
+				{$_ProductCategory.products_count_category}
+				)
+			{else}
+				(
+				{if $session_selectedProductsIncSub[$_ProductCategory.categoryID]}
+					{$session_selectedProductsIncSub[$_ProductCategory.categoryID]} 
+				{elseif $session_selectedProductsIncSub[$_ProductCategory.categoryID]}
+					{$_ProductCategory.products_count}
+				{else}0
+				{/if}
+				/
+				{$_ProductCategory.products_count}
+				)
+			{/if}
+			{if $showProducts==$_ProductCategory.categoryID and $ProductsNum}
+			<br /><br />
+			<input name="cIDForProducts" value="{$showProducts}" type="hidden" />
+			<table class="grid" style="margin-left:20px;">
+			<tr class="gridsheader">
+				<td><input type="checkbox" onclick="checkAllProducts({$ProductsNum})" id="id_checkallprod"
+				{if $session_checkedCategories[$_ProductCategory.categoryID]}checked="checked"{/if}
+				 /></td>
+				<td>{"prdset_product_name"|translate}</td>
+				<td>{"str_price"|translate},&nbsp;{"str_universal_currency"|translate}</td>
+			</tr>
+			{counter start=0 skip=1 print=false assign=counter_value}
+			{foreach from=$Products item=_Product}
+			{counter}
+			<tr class="{cycle values='gridline,gridline1'}">
+				<td><input name="PRODUCTS[{$_Product.productID}]" value="1" id="prod{$counter_value}" type="checkbox"
+						{if $session_selectedProducts[$showProducts][$_Product.productID]}checked="checked"{/if} /></td>
+				<td><label for="prod{$counter_value}">{$_Product.name|escape:'html'}</label></td>
+				<td align="right">
+				{if $_Product.Price}
+					{$_Product.Price}
+				{else}
+					{"msg_price_isnot_set"|translate}
+				{/if}
+					</td>
+			</tr>
+			{/foreach}
+			<tr class="gridsfooter">
+				<td colspan="3"><input name="save_products" value="{"btn_select"|translate}" type="submit" /></td>
+			</tr>
+			</table>
+			{/if}
+		</td>
+	</tr>
+{/foreach}
+</table>

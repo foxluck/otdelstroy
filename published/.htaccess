@@ -1,0 +1,69 @@
+#-------------------------------------------------------------------------
+# .htaccess file settings which we recommend to use to configure your 
+# web server environment. 
+#
+# Note that PHP flags can be used in .htaccess file only if you have 
+# your PHP compiled as webserver module rather than CGI.
+#
+# To apply any parameter in this file, just remove # symbol in the first
+# position of the respective parameter.
+#
+#                                              Copyright WebAsyst LLC
+#-------------------------------------------------------------------------
+#
+#-------------------------------------------------------------------------
+# PHP SESSION SETTINGS
+#-------------------------------------------------------------------------
+#
+# Session identifier transmitting in URL (least secure choice):
+#
+#php_flag session.use_trans_sid on
+#php_flag session.use_cookies 0
+#php_flag session.use_only_cookies 0
+#
+# NOTES: 
+# - Transmitting session ID in URL is the least secure choice because 
+#   this identifier can be stolen and used without permission under 
+#   someone else's account. 
+# - Advantage of this choice: it allows to work with several WebAsyst
+#   working databases from the same client browser simultaneously.
+#
+#
+# Session identifier passed by cookies (most secure choice):
+#
+#
+#php_flag session.use_trans_sid off
+#php_flag session.use_cookies 1
+#php_flag session.use_only_cookies 1
+#
+# NOTE: Session identificator stored in cookies at client's computer.
+# Such choice of settings allows to work only with one WebAsyst working 
+# database from the same client browser.
+#
+#-------------------------------------------------------------------------
+# FILE SIZE LIMITS
+#-------------------------------------------------------------------------
+#
+# Following parameters limit file size which WebAsyst can upload
+#
+# Maximum uploaded file size:
+#
+#php_value upload_max_filesize 250M 
+#
+# Maximum allowed size of POST-data (this property affects cummulative 
+# size of all files being uploaded):
+#
+#php_value post_max_size 1000M
+#
+#-------------------------------------------------------------------------
+# MISC WEB SERVER DIRECTIVES
+#-------------------------------------------------------------------------
+#
+# auto_prepend_file directive of your webserver defines file which 
+# will be automatically processed prior to the WebAsyst start script. 
+# It can badly interere with WebAsyst and cause malfunction. 
+# Special value "none" turn this directive off.
+#
+#php_value auto_prepend_file none
+#
+#-------------------------------------------------------------------------

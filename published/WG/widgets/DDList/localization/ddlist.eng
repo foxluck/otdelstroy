@@ -1,0 +1,48 @@
+widget_name_long	Common	Widget full name	Files
+widget_name_short	Common	Widget short name	Files
+
+subtype_inplace_name	Subtypes	Subtype name	File List
+subtype_inplace_desc	Subtypes	Subtype desc	Displays a listing of selected files or entire folder in customizable format with optional Download button. A great way to publish file repository on your website.
+
+created_datetime_label	Widget	Created Datetime Label	at
+wbs_block	Widget 	WBS Link block	Powered by <a href='http://www.webasyst.net/files/'><b>WebAsyst Files</b></a> - a website that allows uploading files to the Internet and accessing them from anywhere.<BR>Everyone can use WebAsyst Files for free. <a href='http://www.webasyst.net/files/'>Create your account now!</a>
+
+wg_added_title	Widget	added label	added
+wg_justadded_title	Widget	just added label	just added
+wg_download_label	Widget	Download label	Download
+
+place_general_title	Widget customize dialog	Place general title	General
+place_color_title	Widget customize dialog	Place color title	Color
+place_size_title	Widget customize dialog	Place size title	Size
+place_files_title	Widget customize dialog	Place files title	Files
+place_view_title	Widget customize dialog	Place view title	View
+
+
+
+field_folder_label	Fields	Folder	Folder
+field_width_label	Fields	Width	Width
+field_height_label	Fields	Height	Height
+field_bodybgcolor_label	Fields	Bgcolor	Body Background
+field_wglang_desc	Fields	Lang	This language will be used for system messages, e.g. errors, warnings etc.
+field_titlebgcolor_label	Fields	Title	Title Background
+field_titlecolor_label	Fields	Title	Title Text
+field_fileicon_label	Fields	File icon	File Icon
+field_fileicon_value_no	Fields	File icon value "no"	No image
+field_fileicon_value_small	Fields	File icon value "small"	Small
+field_fileicon_value_large	Fields	File icon value "large"	Large
+field_fileicon_value_thumbnail	Fields	File icon value "thumbnail"	Thumbnail
+field_viewmode_label	Fields	Viewmode	View Type
+field_viewmode_value_grid	Fields	Viewmode value "grid"	Grid
+field_viewmode_value_list	Fields	Viewmode value "list"	List
+field_showdesc_label	Fields	ShowDesc	File Description
+field_showtitles_label	Fields	ShowTitles	Column Titles
+field_showsize_label	Fields	ShowSize	Size
+field_showdate_label	Fields	ShowDate	Date
+field_showborder_label	Fields	ShowBorder	Border
+field_showdownloadlink_label	Fields	ShowDownloadLink	Download Link
+field_sorting_label	Fields	Sorting	Sorting
+field_sorting_value_filename	Fields	Sorting value "filename"	Filename
+field_sorting_value_dateasc	Fields	Sorting value "dateasc"	Date (old on top)
+field_sorting_value_datedesc	Fields	Sorting value "datedesc"	Date (recent on top)
+field_folder_label	Fields	Folder	Folder
+field_files_label	Fields	Files	Files

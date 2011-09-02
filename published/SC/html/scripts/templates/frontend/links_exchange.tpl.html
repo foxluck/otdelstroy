@@ -1,0 +1,114 @@
+{* show page 'links exchange' *}
+<h1>{lbl_link_exchange}</h1>
+<table width="100%"  class="oncolorbg">
+	<tr>
+		<td>
+		[ <a href="{"?did=`$CurrentDivision.id`"|set_query}">{"le_all_categories"|translate}</a> ]
+		</td>
+		<td align="right">
+		[ <a href="#add_link">{"le_add_link"|translate}</a> ]
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<h2>{"le_categories"|translate}</h2>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" style="line-height:1.5;">
+			 {section name=i max=$le_categories_pr loop=$le_categories}
+				{if $le_categories[i].le_cID!=$le_CategoryID}<a href="{"msg=&page=1&le_categoryID=`$le_categories[i].le_cID`"|set_query}">{$le_categories[i].le_cName}</a>
+				{else}
+					{assign var="le_CategoryName" value=$le_categories[i].le_cName}
+					{$le_categories[i].le_cName}
+				{/if}
+				<br />
+			 {sectionelse}
+			 {lbl_msg_no_data}<br />
+			 
+			 {/section}
+		</td>
+		<td valign="top" style="line-height:1.5;">
+		 {section name=i start=$le_categories_pr loop=$le_categories}
+			{if $le_categories[i].le_cID!=$le_CategoryID}<a href="{"msg=&page=1&le_categoryID=`$le_categories[i].le_cID`"|set_query}">{$le_categories[i].le_cName}</a>
+			{else}
+				{assign var="le_CategoryName" value=$le_categories[i].le_cName}
+				{$le_categories[i].le_cName}
+			{/if}
+			<br />
+		 {/section}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<h2>{"le_links"|translate}</h2>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="line-height:1.5;">
+		{foreach from=$le_links item=_le_link}
+			<a href="{$_le_link.le_lURL}">{$_le_link.le_lText}</a><br />
+		{/foreach}
+		{if $last_page>1}
+		<br />
+			{if $curr_page>1}
+				&nbsp; <a class="no_underline" href ="{"page=`$curr_page-1`&show_all="|set_query}">&lt;&lt; {"str_previous"|translate}</a>
+			{/if}
+			{foreach from=$le_lister_range item=_page}
+				&nbsp; {if $_page!=$curr_page or $showAllLinks}<a class="no_underline" href="{"page=`$_page`&show_all="|set_query}">{$_page}</a> {else}{$_page}{/if}
+			{/foreach}
+			{if $curr_page<$last_page}
+				&nbsp; <a class="no_underline" href ="{"page=`$curr_page+1`&show_all="|set_query}">{"str_next"|translate} &gt;&gt;</a>
+			{/if}
+			&nbsp; |&nbsp; {if $showAllLinks}{"str_showall"|translate}{else}<a class="no_underline" href ="{"show_all=yes"|set_query}">{"str_showall"|translate}</a>{/if}
+		{/if}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<div class="divider_grey"></div>
+		<a name="add_link"></a>
+		<h2>{"le_add_link"|translate}</h2>
+		{if $error}<div class="error_msg_f">{$error|transcape}</div>{/if}
+		{if $error_ok}<div class="ok_msg_f">{$error_ok}</div>{/if}
+		<form action="{$REQUEST_URI}" method="POST"><div class="form_wrapper">
+		<input name="fACTION" value="ADD_LINK" type="hidden" >
+		<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" >
+		<p>{"le_category"|translate}:
+		<br />
+			<select name="LINK[le_lCategoryID]">
+			<option value="0">{"str_not_defined"|translate}</option>
+			{foreach from=$le_categories item=_category}
+				<option value="{$_category.le_cID}" 
+					{if $le_CategoryID==$_category.le_cID} selected="selected"
+					{elseif $pst_LINK.le_lCategoryID==$_category.le_cID} selected="selected"
+					{/if}
+					>{$_category.le_cName}</option>
+			{/foreach}
+			</select>
+		</p>
+		<p>{"le_link_url"|translate}:
+		<br />
+		<input name="LINK[le_lURL]" value="{if $pst_LINK.le_lURL}{$pst_LINK.le_lURL}{else}http://{/if}" size="60" type="text" >
+		</p>
+        <p>
+		{"le_link_text"|translate}:
+		<br />
+		<input name="LINK[le_lText]" value="{$pst_LINK.le_lText}" size="60" type="text" ></p>
+		{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+		<p>{"str_enter_ccode"|translate}:
+		<br /> <input name="fConfirmationCode" type="text" ></p>
+		<img src="{$conf_image}" alt="code" />
+		<br />
+		{/if}
+		<p><input value="{"btn_add"|translate}" type="submit" ></p>
+		</div></form>
+		</td>
+	</tr>
+</table>

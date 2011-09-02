@@ -1,0 +1,13 @@
+<? assign var=customMenuItemsStr value=$field.MENU|base64_decode ?>
+<? assign var=customMenuItems value=$customMenuItemsStr|split:"^&^" ?>
+
+<select class='Select' class=FormControl name="<? $fieldName ?>" id='field_input_<? $fieldName ?>'>
+	<option value="" 
+		<? switchedOutput val="" true_val=$datasource.$db_field str1="selected" ?>
+	>
+		<? $kernelStrings.app_select_item|htmlsafe:true:true ?>
+	</option>
+	<? foreach from=$customMenuItems item=customMenuItem ?>
+		<option value="<? $customMenuItem|htmlsafe:true:true ?>" <? switchedOutput val=$customMenuItem true_val=$params.$fieldName str1="selected" ?>><? $customMenuItem|htmlsafe:true:true ?></option>
+	<? /foreach ?>
+</select>

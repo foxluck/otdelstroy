@@ -1,0 +1,496 @@
+<DataBaseStructure ApplicationVersion='Shop-Script 2.0'>
+
+	<tables>
+		<table name='SS_system' alias='SYSTEM_TABLE' > 
+			<column TYPE='varchar(255)' >varName</column>
+			<column TYPE='varchar(255)' >value</column>
+		</table>
+
+		<table name='SS_orders' alias='ORDERS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >orderID</column>
+			<column TYPE='int' >customerID</column>
+			<column TYPE='datetime' >order_time</column>
+			<column TYPE='varchar(15)' >customer_ip</column>
+			<column TYPE='varchar(30)' >shipping_type</column>
+			<column TYPE='varchar(30)' >payment_type</column>
+			<column TYPE='int' >SID</column>
+			<column TYPE='varchar(255)' >customers_comment</column>
+			<column TYPE='int' >statusID</column>
+			<column TYPE='double' >shipping_cost</column>
+			<column TYPE='double' >order_discount</column>
+			<column TYPE='double' >order_amount</column>
+			<column TYPE='varchar(7)' >currency_code</column>
+			<column TYPE='double' >currency_value</column>
+			<column TYPE='varchar(64)' >customer_firstname</column>
+			<column TYPE='varchar(64)' >customer_lastname</column>
+			<column TYPE='varchar(50)' >customer_email</column>
+			<column TYPE='varchar(64)' >shipping_firstname</column>
+			<column TYPE='varchar(64)' >shipping_lastname</column>
+			<column TYPE='varchar(64)' >shipping_country</column>
+			<column TYPE='varchar(64)' >shipping_state</column>
+			<column TYPE='varchar(64)' >shipping_zip</column>
+			<column TYPE='varchar(64)' >shipping_city</column>
+			<column TYPE='varchar(64)' >shipping_address</column>
+			<column TYPE='varchar(64)' >billing_firstname</column>
+			<column TYPE='varchar(64)' >billing_lastname</column>
+			<column TYPE='varchar(64)' >billing_country</column>
+			<column TYPE='varchar(64)' >billing_state</column>
+			<column TYPE='varchar(64)' >billing_zip</column>
+			<column TYPE='varchar(64)' >billing_city</column>
+			<column TYPE='varchar(64)' >billing_address</column>
+			<column TYPE='varchar(255)' >cc_number</column>
+			<column TYPE='varchar(255)' >cc_holdername</column>
+			<column TYPE='char(255)' >cc_expires</column>
+			<column TYPE='varchar(255)' >cc_cvv</column>
+			<column TYPE='int' DEFAULT='0' >affiliateID</column>
+			<column TYPE='varchar(255)' >shippingServiceInfo</column>
+			<ForeignKey REFERTO='SS_order_status.statusID' >statusID</ForeignKey>
+			<ForeignKey REFERTO='SS_customers.customerID' >customerID</ForeignKey>
+		</table>
+
+		<table name='SS_order_status' alias='ORDER_STATUES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >statusID</column>
+			<column TYPE='varchar(30)' ML='1'>status_name</column>
+			<column TYPE='int' >sort_order</column>
+		</table>
+
+		<table name='SS_ordered_carts' alias='ORDERED_CARTS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >itemID</column>
+			<column TYPE='int' PRIMARYKEY='true' >orderID</column>
+			<column TYPE='varchar(255)' >name</column>
+			<column TYPE='double' >Price</column>
+			<column TYPE='int' >Quantity</column>
+			<column TYPE='double' >tax</column>
+			<column TYPE='int' DEFAULT='0' >load_counter</column>
+			<ForeignKey REFERTO='SS_shopping_cart_items.itemID' >itemID</ForeignKey>
+			<ForeignKey REFERTO='SS_orders.orderID' >orderID</ForeignKey>
+		</table>
+
+		<table name='SS_products' alias='PRODUCTS_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >productID</column>
+			<column TYPE='int' INDEX='IDX_PRODUCTS1' >categoryID</column>
+			<column TYPE='varchar(255)' ML='1'>name</column>
+			<column TYPE='text' ML='1' >description</column>
+			<column TYPE='double' DEFAULT='0' >customers_rating</column>
+			<column TYPE='double' >Price</column>
+			<column TYPE='int' >in_stock</column>
+			<column TYPE='int' DEFAULT='0' >customer_votes</column>
+			<column TYPE='int' NULLABLE='false' >items_sold</column>
+			<column TYPE='int' >enabled</column>
+			<column TYPE='int' >ordering_available</column>
+			<column TYPE='text' ML='1'>brief_description</column>
+			<column TYPE='double' >list_price</column>
+			<column TYPE='varchar(25)' >product_code</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<column TYPE='int' >default_picture</column>
+			<column TYPE='datetime' >date_added</column>
+			<column TYPE='datetime' >date_modified</column>
+			<column TYPE='int' DEFAULT='0' >viewed_times</column>
+			<column TYPE='varchar(255)' >eproduct_filename</column>
+			<column TYPE='int' DEFAULT='5' >eproduct_available_days</column>
+			<column TYPE='int' DEFAULT='5' >eproduct_download_times</column>
+			<column TYPE='double' DEFAULT='0' >weight</column>
+			<column TYPE='varchar(255)' ML='1' >meta_title</column>
+			<column TYPE='varchar(255)' ML='1' >meta_description</column>
+			<column TYPE='varchar(255)' ML='1' >meta_keywords</column>
+			<column TYPE='int' DEFAULT='0' >free_shipping</column>
+			<column TYPE='int' DEFAULT='1' >min_order_amount</column>
+			<column TYPE='double' DEFAULT='0' >shipping_freight</column>
+			<column TYPE='int' >classID</column>
+			<column TYPE='varchar(255)' INDEX='IDX_SLUG'>slug</column>
+			<ForeignKey REFERTO='SS_categories.categoryID' >categoryID</ForeignKey>
+			<ForeignKey REFERTO='SS_tax_classes.classID' >classID</ForeignKey>
+		</table>
+
+		<table name='SS_categories' alias='CATEGORIES_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >categoryID</column>
+			<column TYPE='varchar(255)' ML='1'>name</column>
+			<column TYPE='int' INDEX='IDX_CATEGORIES1' >parent</column>
+			<column TYPE='int' >products_count</column>
+			<column TYPE='text' ML='1'>description</column>
+			<column TYPE='varchar(30)' >picture</column>
+			<column TYPE='int' >products_count_admin</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<column TYPE='int' DEFAULT='0' >viewed_times</column>
+			<column TYPE='int' DEFAULT='0' >allow_products_comparison</column>
+			<column TYPE='int' DEFAULT='1' >allow_products_search</column>
+			<column TYPE='int' DEFAULT='1' >show_subcategories_products</column>
+			<column TYPE='varchar(255)' ML='1' >meta_title</column>
+			<column TYPE='varchar(255)' ML='1' >meta_description</column>
+			<column TYPE='varchar(255)' ML='1' >meta_keywords</column>
+			<column TYPE='varchar(255)' INDEX='IDX_SLUG'>slug</column>
+		</table>
+
+		<table name='SS_category_product' alias='CATEGORIY_PRODUCT_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' >productID</column>
+			<column TYPE='int' PRIMARYKEY='true' >categoryID</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+			<ForeignKey REFERTO='SS_categories.categoryID' >categoryID</ForeignKey>
+		</table>
+
+		<table name='SS_shopping_carts' alias='SHOPPING_CARTS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >customerID</column>
+			<column TYPE='int' PRIMARYKEY='true' >itemID</column>
+			<column TYPE='int' >Quantity</column>
+			<ForeignKey REFERTO='SS_shopping_cart_items.itemID' >itemID</ForeignKey>
+			<ForeignKey REFERTO='SS_customers.customerID' >customerID</ForeignKey>
+		</table>
+
+		<table name='SS_news_table' alias='NEWS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >NID</column>
+			<column TYPE='varchar(30)' >add_date</column>
+			<column TYPE='text'  ML='1' >title</column>
+			<column TYPE='varchar(30)' >picture</column>
+			<column TYPE='text'  ML='1' >textToPublication</column>
+			<column TYPE='text'  ML='1' >textToMail</column>
+			<column TYPE='int' >add_stamp</column>
+			<column TYPE='int' >priority</column>
+			<column TYPE='int' >emailed</column>
+		</table>
+
+		<table name='SS_discussions' alias='DISCUSSIONS_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >DID</column>
+			<column TYPE='int' >productID</column>
+			<column TYPE='varchar(40)' >Author</column>
+			<column TYPE='text' >Body</column>
+			<column TYPE='datetime' >add_time</column>
+			<column TYPE='varchar(255)' >Topic</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+		</table>
+
+		<table name='SS_subscribers' alias='MAILING_LIST_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >MID</column>
+			<column TYPE='varchar(50)' >Email</column>
+			<column TYPE='int' NULLABLE='true' >customerID</column>
+			<ForeignKey REFERTO='SS_customers.customerID' >customerID</ForeignKey>
+		</table>
+
+		<table name='SS_related_items' alias='RELATED_PRODUCTS_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' >productID</column>
+			<column TYPE='int' PRIMARYKEY='true' >Owner</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+			<ForeignKey REFERTO='SS_products.productID' >Owner</ForeignKey>
+		</table>
+
+		<table name='SS_product_options' alias='PRODUCT_OPTIONS_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >optionID</column>
+			<column TYPE='varchar(50)' ML='1'>name</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+		</table>
+
+		<table name='SS_product_options_values' alias='PRODUCT_OPTIONS_VALUES_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' >optionID</column>
+			<column TYPE='int' PRIMARYKEY='true' >productID</column>
+			<column TYPE='varchar(255)' ML='1' >option_value</column>
+			<column TYPE='bit' DEFAULT='0' >option_type</column>
+			<column TYPE='int' DEFAULT='1' >option_show_times</column>
+			<column TYPE='int' >variantID</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+			<ForeignKey REFERTO='SS_products_opt_val_variants.variantID' >variantID</ForeignKey>
+			<ForeignKey REFERTO='SS_product_options.optionID' >optionID</ForeignKey>
+		</table>
+
+		<table name='SS_products_opt_val_variants' alias='PRODUCTS_OPTIONS_VALUES_VARIANTS_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >variantID</column>
+			<column TYPE='int' NULLABLE='false' >optionID</column>
+			<column TYPE='varchar(255)' ML='1'>option_value</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<ForeignKey REFERTO='SS_product_options.optionID' >optionID</ForeignKey>
+		</table>
+
+		<table name='SS_product_options_set' alias='PRODUCTS_OPTIONS_SET_TABLE'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' >productID</column>
+			<column TYPE='int' PRIMARYKEY='true' >optionID</column>
+			<column TYPE='int' PRIMARYKEY='true' >variantID</column>
+			<column TYPE='double' DEFAULT='0' >price_surplus</column>
+			<ForeignKey REFERTO='SS_product_options_values.optionID,productID' >optionID,
+				productID</ForeignKey>
+			<ForeignKey REFERTO='SS_products_opt_val_variants.variantID' >variantID</ForeignKey>
+		</table>
+
+		<table name='SS_customers' alias='CUSTOMERS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >customerID</column>
+			<column TYPE='varchar(32)' >Login</column>
+			<column TYPE='varchar(255)' NULLABLE='false' >cust_password</column>
+			<column TYPE='varchar(64)' >Email</column>
+			<column TYPE='varchar(32)' >first_name</column>
+			<column TYPE='varchar(32)' >last_name</column>
+			<column TYPE='int' >subscribed4news</column>
+			<column TYPE='int' >custgroupID</column>
+			<column TYPE='int' >addressID</column>
+			<column TYPE='datetime' >reg_datetime</column>
+			<column TYPE='varchar(16)' NULLABLE='false' DEFAULT='""' >ActivationCode</column>
+			<column TYPE='int' >CID</column>
+			<column TYPE='int' NULLABLE='false' DEFAULT='0' INDEX='affiliateID' >affiliateID</column>
+			<column TYPE='int' NULLABLE='false' DEFAULT='1' >affiliateEmailOrders</column>
+			<column TYPE='int' NULLABLE='false' DEFAULT='1' >affiliateEmailPayments</column>
+			<ForeignKey REFERTO='SS_custgroups.custgroupID' >custgroupID</ForeignKey>
+			<ForeignKey REFERTO='SS_customer_addresses.addressID' >addressID</ForeignKey>
+			<ForeignKey REFERTO='SS_currency_types.CID' >CID</ForeignKey>
+		</table>
+
+		<table name='SS_custgroups' alias='CUSTGROUPS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >custgroupID</column>
+			<column TYPE='varchar(64)' ML='1'>custgroup_name</column>
+			<column TYPE='double' DEFAULT='0' >custgroup_discount</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+		</table>
+
+		<table name='SS_countries' alias='COUNTRIES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >countryID</column>
+			<column TYPE='varchar(64)' ML='1'>country_name</column>
+			<column TYPE='char(2)' >country_iso_2</column>
+			<column TYPE='char(3)' >country_iso_3</column>
+		</table>
+
+		<table name='SS_zones' alias='ZONES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >zoneID</column>
+			<column TYPE='varchar(64)' ML='1'>zone_name</column>
+			<column TYPE='char(64)' >zone_code</column>
+			<column TYPE='int' >countryID</column>
+			<ForeignKey REFERTO='SS_countries.countryID' >countryID</ForeignKey>
+		</table>
+
+		<table name='SS_customer_addresses' alias='CUSTOMER_ADDRESSES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >addressID</column>
+			<column TYPE='int' NULLABLE='false' >customerID</column>
+			<column TYPE='varchar(64)' >first_name</column>
+			<column TYPE='varchar(64)' >last_name</column>
+			<column TYPE='int' NULLABLE='true' >countryID</column>
+			<column TYPE='int' NULLABLE='true' >zoneID</column>
+			<column TYPE='varchar(64)' >zip</column>
+			<column TYPE='varchar(64)' >state</column>
+			<column TYPE='varchar(64)' >city</column>
+			<column TYPE='varchar(64)' >address</column>
+			<ForeignKey REFERTO='SS_customers.customerID' >customerID</ForeignKey>
+			<ForeignKey REFERTO='SS_zones.zoneID' >zoneID</ForeignKey>
+			<ForeignKey REFERTO='SS_countries.countryID' >countryID</ForeignKey>
+		</table>
+
+		<table name='SS_customer_reg_fields' alias='CUSTOMER_REG_FIELDS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >reg_field_ID</column>
+			<column TYPE='varchar(32)' ML='1'>reg_field_name</column>
+			<column TYPE='bit' >reg_field_required</column>
+			<column TYPE='int' >sort_order</column>
+		</table>
+
+		<table name='SS_customer_reg_fields_values' alias='CUSTOMER_REG_FIELDS_VALUES_TABLE' > 
+			<column TYPE='int' NULLABLE='false' >reg_field_ID</column>
+			<column TYPE='int' NULLABLE='false' >customerID</column>
+			<column TYPE='varchar(255)' >reg_field_value</column>
+			<ForeignKey REFERTO='SS_customer_reg_fields.reg_field_ID' >reg_field_ID</ForeignKey>
+			<ForeignKey REFERTO='SS_customers.customerID' >customerID</ForeignKey>
+		</table>
+
+		<table name='SS_customer_reg_fields_values_quickreg' alias='CUSTOMER_REG_FIELDS_VALUES_TABLE_QUICKREG' > 
+			<column TYPE='int' NULLABLE='false' >reg_field_ID</column>
+			<column TYPE='int' NULLABLE='false' >orderID</column>
+			<column TYPE='varchar(255)' >reg_field_value</column>
+			<ForeignKey REFERTO='SS_customer_reg_fields.reg_field_ID' >reg_field_ID</ForeignKey>
+			<ForeignKey REFERTO='SS_orders.orderID' >customerID</ForeignKey>
+		</table>
+
+		<table name='SS_shipping_methods' alias='SHIPPING_METHODS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >SID</column>
+			<column TYPE='varchar(30)' ML='1'>Name</column>
+			<column TYPE='varchar(255)' ML='1'>description</column>
+			<column TYPE='text' ML='1'>email_comments_text</column>
+			<column TYPE='int' >Enabled</column>
+			<column TYPE='int' >module_id</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<ForeignKey REFERTO='SS_modules.module_id' >module_id</ForeignKey>
+		</table>
+
+		<table name='SS_payment_types' alias='PAYMENT_TYPES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >PID</column>
+			<column TYPE='varchar(30)' ML='1'>Name</column>
+			<column TYPE='varchar(255)' ML='1'>description</column>
+			<column TYPE='int' >Enabled</column>
+			<column TYPE='int' >calculate_tax</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<column TYPE='text' ML='1'>email_comments_text</column>
+			<column TYPE='int' >module_id</column>
+			<ForeignKey REFERTO='SS_modules.module_id' >module_id</ForeignKey>
+		</table>
+
+		<table name='SS_payment_types__shipping_methods' alias='SHIPPING_METHODS_PAYMENT_TYPES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >SID</column>
+			<column TYPE='int' PRIMARYKEY='true' >PID</column>
+			<ForeignKey REFERTO='SS_payment_types.PID' >PID</ForeignKey>
+			<ForeignKey REFERTO='SS_shipping_methods.SID' >SID</ForeignKey>
+		</table>
+
+		<table name='SS_currency_types' alias='CURRENCY_TYPES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >CID</column>
+			<column TYPE='varchar(30)' ML='1'>Name</column>
+			<column TYPE='varchar(20)' ML='1'>display_template</column>
+			<column TYPE='double' >currency_value</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<column TYPE='char(3)' >currency_iso_3</column>
+		</table>
+
+		<table name='SS_shopping_cart_items' alias='SHOPPING_CART_ITEMS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >itemID</column>
+			<column TYPE='int' >productID</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+		</table>
+
+		<table name='SS_shopping_cart_items_content' alias='SHOPPING_CART_ITEMS_CONTENT_TABLE' > 
+			<column TYPE='int' NULLABLE='false' >itemID</column>
+			<column TYPE='int' NULLABLE='false' >variantID</column>
+			<ForeignKey REFERTO='SS_shopping_cart_items.itemID' >itemID</ForeignKey>
+			<ForeignKey REFERTO='SS_products_opt_val_variants.variantID' >variantID</ForeignKey>
+		</table>
+
+		<table name='SS_product_pictures' alias='PRODUCT_PICTURES'  PRODUCTANDCATEGORYSYNC='true' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >photoID</column>
+			<column TYPE='int' NULLABLE='false' >productID</column>
+			<column TYPE='varchar(50)' >filename</column>
+			<column TYPE='varchar(50)' >thumbnail</column>
+			<column TYPE='varchar(50)' >enlarged</column>
+			<ForeignKey REFERTO='SS_products.productID' >productID</ForeignKey>
+		</table>
+
+		<table name='SS_aux_pages' alias='AUX_PAGES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >aux_page_ID</column>
+			<column TYPE='int' >xDivisionID</column>
+			<column TYPE='varchar(64)' ML='1'>aux_page_name</column>
+			<column TYPE='text' ML='1'>aux_page_text</column>
+			<column TYPE='varchar(255)' ML='1'>meta_keywords</column>
+			<column TYPE='text' ML='1'>meta_description</column>
+			<ForeignKey REFERTO='SS_divisions.xID' >xDivisionID</ForeignKey>
+		</table>
+
+		<table name='SS_settings_groups' alias='SETTINGS_GROUPS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >settings_groupID</column>
+			<column TYPE='varchar(64)' >settings_group_name</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+		</table>
+
+		<table name='SS_settings' alias='SETTINGS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >settingsID</column>
+			<column TYPE='int' >settings_groupID</column>
+			<column TYPE='varchar(64)' >settings_constant_name</column>
+			<column TYPE='varchar(255)' >settings_value</column>
+			<column TYPE='varchar(128)' >settings_title</column>
+			<column TYPE='varchar(255)' >settings_description</column>
+			<column TYPE='varchar(255)' >settings_html_function</column>
+			<column TYPE='int' DEFAULT='0' >sort_order</column>
+			<ForeignKey REFERTO='SS_settings_groups.settings_groupID' >settings_groupID</ForeignKey>
+		</table>
+
+		<table name='SS_category__product_options' alias='CATEGORY_PRODUCT_OPTIONS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >optionID</column>
+			<column TYPE='int' PRIMARYKEY='true' >categoryID</column>
+			<column TYPE='int' DEFAULT='1' >set_arbitrarily</column>
+			<ForeignKey REFERTO='SS_product_options.optionID' >optionID</ForeignKey>
+			<ForeignKey REFERTO='SS_categories.categoryID' >categoryID</ForeignKey>
+		</table>
+		
+		<table name='SS_category_product_options__variants' alias='CATEGORY_PRODUCT_OPTION_VARIANTS' > 
+			<column TYPE='int' PRIMARYKEY='true' >optionID</column>
+			<column TYPE='int' PRIMARYKEY='true' >categoryID</column>
+			<column TYPE='int' PRIMARYKEY='true' >variantID</column>
+			<ForeignKey REFERTO='SS_category__product_options.optionID,categoryID' >optionID,categoryID</ForeignKey>
+		</table>
+
+		<table name='SS_tax_classes' alias='TAX_CLASSES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >classID</column>
+			<column TYPE='varchar(64)' >name</column>
+			<column TYPE='int' >address_type</column>
+		</table>
+
+		<table name='SS_tax_rates' alias='TAX_RATES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >classID</column>
+			<column TYPE='int' PRIMARYKEY='true' >countryID</column>
+			<column TYPE='bit' >isGrouped</column>
+			<column TYPE='double' >value</column>
+			<column TYPE='bit' >isByZone</column>
+			<ForeignKey REFERTO='SS_tax_classes.classID' >classID</ForeignKey>
+			<ForeignKey REFERTO='SS_countries.countryID' >countryID</ForeignKey>
+		</table>
+
+		<table name='SS_tax_rates__zones' alias='TAX_RATES_ZONES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' >classID</column>
+			<column TYPE='int' PRIMARYKEY='true' >zoneID</column>
+			<column TYPE='double' >value</column>
+			<column TYPE='bit' >isGrouped</column>
+			<ForeignKey REFERTO='SS_tax_classes.classID' >classID</ForeignKey>
+			<ForeignKey REFERTO='SS_zones.zoneID' >zoneID</ForeignKey>
+		</table>
+
+		<table name='SS_tax_zip' alias='TAX_ZIP_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >tax_zipID</column>
+			<column TYPE='int' >classID</column>
+			<column TYPE='int' >countryID</column>
+			<column TYPE='varchar(255)' >zip_template</column>
+			<column TYPE='double' >value</column>
+			<ForeignKey REFERTO='SS_tax_classes.classID' >classID</ForeignKey>
+			<ForeignKey REFERTO='SS_countries.countryID' >countryID</ForeignKey>
+		</table>
+
+		<table name='SS_modules' alias='MODULES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >module_id</column>
+			<column TYPE='varchar(255)' >module_name</column>
+			<column TYPE='varchar(255)' >ModuleClassName</column>
+		</table>
+
+		<table name='SS_order_price_discount' alias='ORDER_PRICE_DISCOUNT_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >discount_id</column>
+			<column TYPE='double' >price_range</column>
+			<column TYPE='float' >percent_discount</column>
+		</table>
+
+		<table name='SS_order_status_changelog' alias='ORDER_STATUS_CHANGE_LOG_TABLE' > 
+			<column TYPE='int' >orderID</column>
+			<column TYPE='varchar(255)' >status_name</column>
+			<column TYPE='datetime' >status_change_time</column>
+			<column TYPE='varchar(255)' >status_comment</column>
+			<ForeignKey REFERTO='SS_orders.orderID' >orderID</ForeignKey>
+		</table>
+
+		<table name='SS_linkexchange_categories' alias='LINK_EXCHANGE_CATEGORIES_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >le_cID</column>
+			<column TYPE='varchar(100)' >le_cName</column>
+			<column TYPE='int' >le_cSortOrder</column>
+		</table>
+
+		<table name='SS_linkexchange_links' alias='LINK_EXCHANGE_LINKS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >le_lID</column>
+			<column TYPE='varchar(255)' >le_lText</column>
+			<column TYPE='varchar(255)' >le_lURL</column>
+			<column TYPE='int' >le_lCategoryID</column>
+			<column TYPE='datetime' >le_lVerified</column>
+		</table>
+
+		<table name='SS_aff_commissions' alias='AFFILIATE_COMMISSIONS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >cID</column>
+			<column TYPE='double' >Amount</column>
+			<column TYPE='varchar(3)' >CurrencyISO3</column>
+			<column TYPE='datetime' >xDateTime</column>
+			<column TYPE='varchar(255)' >Description</column>
+			<column TYPE='int' >OrderID</column>
+			<column TYPE='int' INDEX='CustomerID' >CustomerID</column>
+		</table>
+
+		<table name='SS_aff_payments' alias='AFFILIATE_PAYMENTS_TABLE' > 
+			<column TYPE='int' PRIMARYKEY='true' IDENTITY='true' >pID</column>
+			<column TYPE='int' INDEX='CustomerID' >CustomerID</column>
+			<column TYPE='double' >Amount</column>
+			<column TYPE='varchar(3)' >CurrencyISO3</column>
+			<column TYPE='date' >xDate</column>
+			<column TYPE='varchar(255)' >Description</column>
+		</table>
+		<table name='SC_division_access' alias='TBL_DIVISION_ACCESS' > 
+			<column TYPE='int' INDEX='xDivisionID'>xDivisionID</column>
+			<column TYPE='varchar(20)' INDEX='xU_ID'>xU_ID</column>
+			<column TYPE='smallint(1)' INDEX='xID_TYPE'>xID_TYPE</column>
+		</table>
+		<table name='SS_htmlcodes' alias='HTMLCODES_TABLE' > 
+			<column TYPE='varchar(20)' PRIMARYKEY='true' IDENTITY='true'>key</column>
+			<column TYPE='varchar(30)'>title</column>
+			<column TYPE='text' >code</column>
+		</table>
+		
+	</tables>
+</DataBaseStructure>

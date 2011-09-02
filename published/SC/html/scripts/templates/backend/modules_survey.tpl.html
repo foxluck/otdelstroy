@@ -1,0 +1,55 @@
+{* customer survey module *}
+
+{if $configuration_saved eq 1}
+<p>{"msg_update_successful"|translate}</p>
+{/if}
+
+{if $start_new_poll eq "yes"}
+
+<h1 class="breadcrumbs">
+	<a href='{"start_new_poll="|set_query_html}'>{lbl_pgn_survey_administration}</a>
+	&raquo;
+	{lbl_survey_btn_new_survey}
+</h1>
+
+<form action='{""|set_query_html}' method="post">
+
+	<p>{"survey_new_survey_warning"|translate}</p>
+	
+	{"survey_question"|translate}:<br />
+	<input name="question" size="60" value="{$survey_question}" type="text" style="width:400px;" />
+	
+	<p>{"survey_answeroptions"|translate}<br />
+	<textarea name="answers" cols="50" rows="10" style="width:400px;">{section name=i loop=$survey_answers}$survey_answers[i]{/section}</textarea>
+	</p>
+	<p>
+		<input value="{'btn_save'|translate}" type="submit" />
+		<input type=hidden name=save_voting value="yes">
+	</p>
+	
+</form>
+{else} {* show existing survey results *}
+
+<h1>{lbl_pgn_survey_administration}</h1>
+
+<p>{lbl_survey_page_description}</p>
+
+<table class="grid">
+<tr class="gridsheader">
+	<td>{$survey_question}</td>
+	<td colspan="2" align="center">{"vote_numerofvotes"|translate}</td>
+</tr>
+{section name=i loop=$survey_answers}
+
+<tr class="{cycle values='gridline,gridline1'}">
+	<td>{$survey_answers[i]}</td>
+	<td align="center">{$survey_results[i]}</td>
+	<td align="center">{if $voters_count ne 0}{math equation="round(100 * $survey_results[i] / $voters_count)"}{else}0{/if}%</td>
+</tr>
+
+{/section}
+</table>
+
+<p><input type="button" class="goto" rel="{'start_new_poll=yes'|set_query_html}" value='{"survey_btn_new_survey"|transcape}' /></p>
+
+{/if}

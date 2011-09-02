@@ -1,0 +1,51 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" class="ajaxform" method="post" id="form-save-order" style="display: inline;" enctype="multipart/form-data">
+<input name="action" value="save_order" type="hidden" />
+	<table cellspacing="0" cellpadding="5" id="langs_tbl" class="grid">
+	<tr class="gridsheader">
+		<td>&nbsp;</td>
+		<td>{'loc_lang_name'|translate}</td>
+		<td>{'loc_lang_id'|translate}</td>
+		<td>{'loc_lang_enabled'|translate}</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>{'loc_lang_delete'|translate}</td>
+	</tr>
+	{foreach from=$languages item=language name=forlang}
+	<tbody class="dragable lang">
+	<tr>
+		<td class="handle" style="vertical-align: middle!important;">
+			{if $language.thumbnail_url}<img src="{$language.thumbnail_url}" alt="{$language.name|escape:'html'}" />{/if}&nbsp;
+		</td>
+		<td class="handle">{$language.name|escape:'html'}{if $smarty.const.CONF_DEFAULT_LANG eq $language.id} (<em>{'loc_default_lang'|translate}</em>){/if}</td>
+		<td class="handle">{$language.iso2}</td>
+		<td align="center">
+			<input type="checkbox" disabled="disabled" {if $language.enabled} checked="checked"{/if} />
+			<input type="hidden" class="field_priority" name="priority_{$language.id}" value="{$language.priority}" />
+		</td>
+		<td><a class="bluehref" href='{"?ukey=addmod_language&lang_id=`$language.id`"|set_query_html}'>{'loc_settings'|translate}</a></td>
+		<td><a class="bluehref" href='{"?ukey=locals&lang_id=`$language.id`"|set_query_html}'>{'loc_edit_locals'|translate}</a></td>
+		<td align="center">
+			{if $smarty.const.CONF_DEFAULT_LANG ne $language.id}
+			<a href='{"lang_id=`$language.id`&act=dellang"|set_query_html}' title="{'loc_q_remove_lang'|translate}" onclick="return window.confirm('{'loc_langdel_confirmation'|translate}');"><img align="middle" alt="{'loc_q_remove_lang'|translate}" src="{$smarty.const.URL_IMAGES}/remove.gif" /></a>
+			{/if}
+		</td>
+	</tr>
+	</tbody>
+	{/foreach}
+	</table>
+</form>
+<br />
+<form action="{'?ukey=add_language'|set_query_html}" method="post" style="display:inline">
+<input class="button" type="submit" value="{'loc_btn_addlang'|translate}" />
+</form>
+{if $languages_num>1}
+<form action="{'?ukey=change_default_language'|set_query_html}" method="post" style="display:inline">
+<input class="button" type="submit" value="{'loc_btn_changedeflang'|translate}" />
+</form>
+{/if}
+
+{include file="backend/sortable_table.html" table_id="langs_tbl"}

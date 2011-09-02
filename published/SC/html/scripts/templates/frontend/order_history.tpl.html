@@ -1,0 +1,27 @@
+{* order history *}
+
+{if $user_orders}
+<p>
+	<center>{$orders_navigator}</center>
+<p>
+
+<table cellspacing="0" cellpadding="6" width="100%">
+	
+	<tr class="background1">
+	{include file="gridsheader.html"}
+	</tr>
+	
+	{section name=i loop=$user_orders}
+	<tr class="{cycle values='row_odd,row_even'}">
+		<td><a href='{"ukey=order_detailed&orderID=`$user_orders[i].orderID`"|set_query}'>{$user_orders[i].orderID_view}</a></td>
+		<td nowrap="nowrap">{$user_orders[i].order_time}</td>
+		<td align="center">{$user_orders[i].OrderStatus}</td>
+		<td align="right">{$user_orders[i].order_amount}</td>
+	</tr>
+	{/section}
+
+</table>
+
+{else}
+	<p>{"str_no_orders"|translate}</p>
+{/if}

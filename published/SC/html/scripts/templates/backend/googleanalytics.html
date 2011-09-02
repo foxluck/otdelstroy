@@ -1,0 +1,24 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{$MessageBlock}
+
+<form action='{"&settings_groupID=`$settings_groupID`"|set_query_html}' method="post">
+<input name="save" value="1" type="hidden" />
+	<table class="grid" width="100%">
+	{section name=i loop=$settings}
+	<tr class="{cycle values='gridline,gridline1'}"> 
+		<td align="right" valign="top">
+			<strong>{$settings[i].settings_title|translate}</strong>:
+			<br>{$settings[i].settings_description|translate}
+		</td>
+		<td align="left" valign="top">{$controls[i]}</td>
+	</tr>
+	{/section}
+		
+	<tr class="gridsfooter">
+		<td></td>
+		<td width="50%"><input type="submit" value='{"btn_save"|translate}' /></td>
+	</tr>
+	</table>
+	
+</form>

@@ -1,0 +1,44 @@
+{* product detailed information view *}
+
+{if $product_info ne NULL || $CPT_CONSTRUCTOR_MODE}
+
+{if !$printable_version || $CPT_CONSTRUCTOR_MODE}
+
+<table cellpadding=3 border=0 width=95%>
+	<tr>
+		<td>{cpt_product_category_info}</td>
+		<td align=right> {* printable version link *}
+		 <table>
+		  <tr><td><a href="javascript:open_printable_version('{"view=printable"|set_query}');"><img src="images/printer-icon.gif" alt='{"btn_printable_version"|translate}' /></a></td>
+		  <td><a href="javascript:open_printable_version('{"view=printable"|set_query}');">{"btn_printable_version"|translate}</a></td>
+		  </tr>
+		 </table>
+		</td>
+	</tr>
+</table>
+
+{/if}
+
+
+<p>
+<table width=95% border=0 cellspacing=1 cellpadding=2>
+	<tr>
+		<td width=1% align=center valign=top border=0><!-- cpt_container_start -->{cpt_product_images}<!-- cpt_container_end --></td>
+
+		<td width=99% valign="top">
+			<table width="100%">
+			<tr>
+				<td valign="top"><!-- cpt_container_start -->{cpt_product_name}{cpt_product_price}{cpt_product_custom_parameters}{cpt_product_description}{cpt_product_discuss_link}<!-- cpt_container_end --></td>
+				<td valign="top"><!-- cpt_container_start -->{cpt_product_add2cart_button}{cpt_product_rate_form}<!-- cpt_container_end --></td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2><!-- cpt_container_start -->{cpt_product_related_products}{cpt_product_details_request}<!-- cpt_container_end --></td>
+	</tr>
+
+</table>
+
+{/if}

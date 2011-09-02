@@ -1,0 +1,63 @@
+.cm_panelTopBorder {
+	border-top: 1px solid #DCDCDC;
+}
+
+.cm_signupcode
+{
+	font-family: Courier;
+	font-size: 8pt!important;
+}
+
+.cm_subscriber, .cm_subscriber td, .cm_subscriber td a
+{
+	color: #009900!important;
+}
+
+.cm_subscriber_pending, .cm_subscriber_pending td, .cm_subscriber_pending td a
+{
+	color: #009900!important;
+	font-style: italic;
+}
+
+#sp_left_col
+{
+	background-image: url(images/sp_left.gif);
+	width: 159px;
+}
+
+#sp_title
+{
+	background-image: url(images/sp_top.gif);
+	width: 100%;
+	height: 60px;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 22pt;
+	color: #FBFBFB;	
+}
+
+#sp_top_border
+{
+	background-image: url(images/sp_top_border.gif);
+	height: 8px;
+}
+
+#sp_powered_by
+{
+	position: absolute;
+	left: 5px;
+	bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+}
+
+#sp_powered_by a
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+}
+
+#sp_form
+{
+	padding: 10px;
+}

@@ -1,0 +1,37 @@
+<table width='100%'>
+<tr>
+<td align='center'>
+<form method='POST' name='PayPalForm' action='{$paypal_url}'>
+<input type="hidden" name="cmd" value="_cart" />
+<input type="hidden" name="upload" value="1" />
+<input type="hidden" name="business" value="{$merchant}" />
+{foreach from=$products item=product key=i}
+<input type="hidden" name="item_name_{$i+1}" value="{$product.name}" />
+<input type="hidden" name="amount_{$i+1}" value="{$product.ItemPrice}" />
+<input type="hidden" name="quantity_{$i+1}" value="{$product.Quantity}" />
+{/foreach}
+<input type="hidden" name="discount_amount_cart" value="{$order.order_discount}" />
+<input type="hidden" name="tax_cart" value="{$order.tax}" />
+<input type="hidden" name="handling_cart" value="{$order.shipping_cost}" />
+<input type="hidden" name="currency_code" value="{$order.currency_code}" />
+<input type="hidden" name="bn" value="webasyst" />
+<input type="hidden" name="return" value="{$return_url}" />
+<input type="hidden" name="cancel_return" value="{$cancel_url}" />
+<input type="hidden" name="invoice" value="{$smarty.const.CONF_ORDERID_PREFIX}{$order.orderID}" />
+<input type="image" name="submit" src="http://images.paypal.com/images/x-click-but01.gif" alt="{$smarty.const.CPAYPAL_TXT_AFTER_PROCESSING_HTML_1}" />
+</form>
+</td>
+</tr>
+</table>
+{if $active}
+<center><h1>{"lbl_redirecting_to_pp"|translate}</h1></center>
+<script type="text/javascript" language="JavaScript">
+{literal}
+var pp_win_ol_back = window.onload;
+window.onload = function() {
+    if(pp_win_ol_back) pp_win_ol_back();
+    setTimeout("document.PayPalForm.submit();",2000);
+};
+{/literal}
+</script>
+{/if}

@@ -1,0 +1,198 @@
+	<h1 class="breadcrumbs">
+		<a href="{'?ukey=languages'|set_query_html}">{lbl_pgn_languages}</a>
+		&raquo;
+		{$CurrentDivision.name|translate}: {$Language->getName()|escape:'html'}
+	</h1>
+	
+	{$MessageBlock}
+	<link rel="stylesheet" href="{$smarty.const.URL_CSS}/tabber.css" type="text/css" media="screen" />
+
+	<form method="post" action="{'ukey=find_local'|set_query_html}">
+		<input type="text" size="20" name="searchstr" rel="{'loc_find_string'|transcape}" class="input_message" value="{$searchstr|escape:'html'|default:'loc_find_string'|transcape}" />
+		<input type="submit" name="find" value="{'loc_find'|translate}" />
+	</form>
+	
+	<div class="tabber" id="tabber01" style="display: none;">
+	{foreach from=$local_groups item='local_group'}
+	<div class="tabbertab{if $locals_type eq $local_group.id} tabbertabdefault{/if}">
+	
+		<h3>{$local_group.name}</h3>
+		{if $locals_type eq $local_group.id}
+		<table cellpadding="4" cellspacing="0" style="width:100%">
+			<tr>
+				<td>
+				<select id="hndl-change-subgroup">
+				{foreach from=$local_groups[$locals_type].sub_groups item=_sub_group name=fename}
+				<option value='{"&sub_group=`$_sub_group.id`"|set_query_html}'{if $sub_group eq $_sub_group.id} selected="selected"{/if}>{$_sub_group.name}</option>
+				{/foreach}				
+				</select>
+				&nbsp;
+				<input type="button" value="{'loc_add_local'|transcape}" onclick="addLocalRow('{$sub_group}');" />
+				&nbsp;
+				<input type="button" onclick="loc_highlightNotTranslatedLocals()" value="{'loc_highlight_nottranslated'|transcape}" /><br />
+				</td>
+				<td align="right">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<form method="post" action="{''|set_query_html}">
+					<input type="hidden" name="local_group" value="{$locals_type|escape:'html'}" />
+					<table cellpadding="4" cellspacing="0" id="locals_tbl" style="width:100%" class="grid">
+					<tr id="{$sub_group}_row" class="gridsheader">
+						<td style="width:1%;">{'loc_local_id'|translate}</td>
+						{if !$is_deflang}<td nowrap="nowrap">
+						{'loc_local_defvalue'|translate} ( {if $DefLanguage->getThumbnailURL()}<img alt="{'loc_flag'|translate}" src="{$DefLanguage->getThumbnailURL()}" />{/if} {$DefLanguage->getName()|escape:'html'} )
+						</td>{/if}
+						<td style="width: 50%">
+						{'loc_local_value'|translate} ( {if $Language->getThumbnailURL()}<img alt="{'loc_flag'|translate}" src="{$Language->getThumbnailURL()}" />{/if} {$Language->getName()|escape:'html'} )
+						</td>
+						<td width="1%">&nbsp;</td>
+					</tr>
+					{foreach from=$newlocal_key[$sub_group] item=_newlocal_key key=i}
+					<tr class="{cycle values='gridline,gridline1' name=$sub_group}"{if $reserved_loc_id eq $_newlocal_key || ($reserved_loc_id eq '_all_empty_loc_id' && !$_newlocal_key)}{assign var=reserved_loc_id value=""} style="background:red!important;"{/if}>
+						<td>
+						<input type="text" name="newlocal_key[{$sub_group}][]" value="{$_newlocal_key|escape:'html'}" size="30" />
+						</td>
+						{if !$is_deflang}<td>
+						<input class="loc_local_defvalue" type="text" name="newlocal_defvalue[{$sub_group}][]" value="{$newlocal_defvalue[$sub_group][$i]|escape:'html'}" size="40" />
+						</td>{/if}
+						<td>
+						<input class="loc_local_value" type="text" name="newlocal_value[{$sub_group}][]" value="{$newlocal_value[$sub_group][$i]|escape:'html'}" size="40" />
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+					{/foreach}
+					{foreach from=$DefLocalStrings[$sub_group] item=local}
+					<tr class="{cycle values='gridline,gridline1' name=$sub_group}"{if $reserved_loc_id eq $local.id} style="background:red!important;"{/if}>
+						<td>
+						{if $reserved_loc_id eq $local.id}<a name="ef_{$local.id}"></a>{/if}
+						{$local.id|escape:'html'}
+						</td>
+						{if !$is_deflang}<td>
+						{$local.value|escape:'html'}
+						</td>{/if}
+						<td>
+						{if $locals}
+						{assign var=_locval value=$locals[$local.id]}
+						{else}
+						{assign var=_locval value=$LocalStrings[$local.id]}
+						{/if}
+						{if ($LocalStrings[$local.id]|count_characters:true)>50}
+						{assign var=rows value=$local.value|count_characters:true}
+						{assign var=rows value=$rows/60}
+						{if $rows>3}
+							{assign var=rows value=$rows|string_format:'%d'}
+						{else}
+							{assign var=rows value=3}
+						{/if}
+						
+						<textarea name="locals[{$local.id}]" class="loc_local_value" rows="{$rows}" cols="40">{$_locval|escape:'html'}</textarea>
+						{else}
+						<input class="loc_local_value" type="text" size="40" name="locals[{$local.id}]" value="{$_locval|escape:'html'}" />
+						{/if}
+						</td>
+						<td>
+							<a href='{"local_id=`$local.id`&act=delloc"|set_query_html}' title="{'loc_q_remove_local'|translate}" onclick="return window.confirm('{'loc_del_confirmation'|translate}');"><img align="left" alt="{'loc_q_remove_local'|translate}" src="{$smarty.const.URL_IMAGES}/remove.gif" /></a>
+						</td>
+					</tr>
+					{/foreach}
+					<tr class="gridsfooter">
+						<td colspan="{if !$is_deflang}4{else}3{/if}">
+							<br />
+							<input type="submit" id="btn-save-locals" value="{'btn_save'|translate}" name="save_locals" />
+						</td>
+					</tr>
+					</table>
+				</form>
+				</td>
+			</tr>
+		</table>
+		{/if}
+	</div>
+	{/foreach}
+	</div>
+
+{literal}<script type="text/javascript">
+	var tabberOptions = {
+	
+	  'onClick': function(argsObj) {
+	
+	  	{/literal}if(this.GroupIDs[argsObj.index]!="{$locals_type}"){ldelim}
+	  		document.location.href = "{'locals_type='|set_query}&locals_type="+this.GroupIDs[argsObj.index];
+		  	return false;
+	  	{rdelim}
+	  	{literal}
+	  },
+	
+	  'onLoad': function(argsObj) {
+	    /* Load the first tab */
+	    this.GroupIDs = [{/literal}{foreach from=$local_groups item='local_group' name='foreachname'}'{$local_group.id}'{if !$smarty.foreach.foreachname.last},{/if}{/foreach}{literal}];
+		},
+		manualStartup:true
+	}
+</script>
+{/literal}
+<script type="text/javascript" src="{$smarty.const.URL_JS}/tabber.js">
+</script>	
+<script type="text/javascript"><!--
+{literal}
+	tabberAutomatic(tabberOptions);
+	getLayer('tabber01').style.display = "block";
+	
+	function loc_highlightNotTranslatedLocals(className){
+		
+		var inputEntries = getElementsByClass(className?className:'loc_local_value', getLayer('locals_tbl'));
+		for(var i=0; i<inputEntries.length; i++){
+			
+			if(!inputEntries[i].value){
+				inputEntries[i].style.backgroundColor = '#FFBFBF';
+			}
+		}
+	}
+	
+	function addLocalRow(subgroup_id){
+		
+		var rowIndex = getLayer(subgroup_id+'_row').rowIndex+1;
+		
+		var TableObj = document.getElementById('locals_tbl');
+		var RowObj = TableObj.insertRow(rowIndex);
+		RowObj.className = 'row local';
+		var CellObj;
+		
+		CellObj = RowObj.insertCell(RowObj.cells.length);
+		CellObj.innerHTML = '<input onchange="beforeUnloadHandler_contentChanged = true;" type="text" name="newlocal_key['+subgroup_id+'][]" value="" size="30" />';
+		{/literal}
+		{if $Language->id ne $DefLanguage->id}
+		CellObj = RowObj.insertCell(RowObj.cells.length);
+		CellObj.innerHTML = '<input onchange="beforeUnloadHandler_contentChanged = true;" type="text" name="newlocal_defvalue['+subgroup_id+'][]" value="" size="40" />';
+		{/if}
+		{literal}
+		CellObj = RowObj.insertCell(RowObj.cells.length);
+		CellObj.innerHTML = '<input onchange="beforeUnloadHandler_contentChanged = true;" class="loc_local_value" type="text" name="newlocal_value['+subgroup_id+'][]" value="" size="40" />';
+		CellObj = RowObj.insertCell(RowObj.cells.length);
+	}
+	Behaviour.register({
+		'.loc_local_value': function(e){
+			e.onchange = function(){
+				beforeUnloadHandler_contentChanged = true;
+			}
+		},
+		'#btn-save-locals': function(e){
+			e.onclick = function(){
+				beforeUnloadHandler_contentChanged = false;
+			}
+		}
+		
+		});
+		
+	getLayer('hndl-change-subgroup').onchange = function(){
+		
+		document.location.href = select_getCurrValue(this);
+	}
+{/literal}
+	{if $highlight_empty_defstrings}
+		loc_highlightNotTranslatedLocals({if !$is_deflang}'loc_local_defvalue'{/if});
+	{/if}
+//--->
+</script>

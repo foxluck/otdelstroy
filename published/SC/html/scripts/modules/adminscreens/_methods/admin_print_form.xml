@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Backend print form</name>
+		<key>admin_print_form</key>
+	</interface>
+</interfaces>

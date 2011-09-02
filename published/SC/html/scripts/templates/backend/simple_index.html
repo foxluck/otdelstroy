@@ -1,0 +1,22 @@
+{* main admin template*}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/admin.css" type="text/css" />
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}" />
+		<title>{$CurrentDivision.name} - {"str_admin_title"|translate}</title>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+	</head>
+	<body>
+		{if $safemode}
+			<p class="faq">{$safemode}</p>
+		{/if}
+		{if $admin_sub_dpt ne ''}
+		{include file="backend/$admin_sub_dpt"}
+		{else}
+		{if $sub_template ne ''}
+		{include file=$sub_template}
+		{/if}
+		{/if}
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{{if $attachments}}
+
+<table style="border-collapse:collapse; border-spacing:0; padding:0; margin:0; border:0">
+	<tr>
+		<td class="files_list_label"><b>[`Attachments`]:</b></td>
+		<td class="files_list_row">
+			<table>
+			{{foreach from=$attachments item=file}}
+				<tr>
+					<td nowrap>{{$file.name}} ({{$file.formatted_size}})</td>
+					<td class="delete_file">
+						<a href="#" onClick="deleteUploadedFile('{{$file.name}}'); return false">
+							[`Delete`]
+						</a>
+					</td>
+				</tr>
+			{{/foreach}}
+			</table>
+		</td>
+	</tr>
+</table>
+
+{{/if}}
+
+<input type="hidden" name="mid" id="mid" value="{{$mid}}"/>
+
+{{if $errorStr}}
+<div class="error_str">{{$errorStr}}</div>
+{{/if}}

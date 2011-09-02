@@ -1,0 +1,49 @@
+div.l-f-item-container ul, div.l-f-item-container li { margin:0; padding:0; z-index: 10000}
+div.l-f-item-container  p { margin:0; padding:0 10px 3px 10px; line-height:110%;}
+div.l-f-item-container div, div.l-f-item-container ul, div.l-f-item-container li, div.l-f-item-container a { zoom:1;}
+div.l-f-item-container a img { vertical-align:middle; text-align:left; text-decoration:none; border:none;}
+
+div.l-folders-container { font-family:'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size:12px; }
+
+div.l-folders-container { margin:20px 50px; padding:20px; background:lightblue; height:50px;}
+div.l-f-item-container { position:relative; float:left; width:auto;margin:0 5px 0 0; padding:0 3px;}
+
+div.l-f-item  { /*width:auto;*/ _float:left; position:relative;background:#fdfdfd url(img/item/itembg.gif) left bottom repeat-x;}
+div.l-f-item a { color:#444; text-decoration:none; padding:0 25px 0 15px; white-space:nowrap; background:url(img/arr-middle.gif) right 5px no-repeat;line-height:23px;height:23px;}
+
+/* item corns*/
+div.l-b-ll, .l-b-rr { font-size:1px; line-height:1px;} 
+div.l-b-ll { width:3px;height:23px;left:-3px; top:0px;position:absolute; background:url(img/item/itembg.gif) left top no-repeat;}
+div.l-b-rr { width:3px;height:23px;right:-3px;top:0px;position:absolute;background:url(img/item/itembg.gif) -3px top no-repeat;}
+
+
+div.mwrapper { position:relative; top:28px; padding-bottom:28px;}
+div.l-dropdown {  position:absolute; top:0px; left:0px; width:180px; z-index:2; overflow:hidden;}
+div.l-dropdown ul, div.l-dropdown ul li { list-style:none;}
+div.l-dropdown ul { padding:0; margin:0 4px 0 0; _margin-right:2px; }
+div.l-dropdown ul li { padding:0 0 0 10px;  margin: 0 0 0 -10px; //padding:0 0 0 5px; position:relative;}
+div.l-dropdown ul li a { padding:0 10px 0 20px; //padding:5px 10px 5px 20px; line-height:28px; display:block; text-decoration:none; color:#000; position:relative; right:0px;  //left:0px; margin:0 0 0 0; //margin:0 0 0 5px; //line-height:20px;}
+div.l-dropdown ul li a:hover { background: #999999; color:#fff;}
+div.l-dropdown ul li span { padding-left:20px; //padding-left:25px; color:#999;}
+div.l-dropdown ul li.l-splitter { font-size:1px; line-height:2px; background:url(img/ddmenu_spl.gif) repeat-x; }
+div.l-menu-top { position:absolute;}
+div.l-ftopbg { background:#fff;line-height:23px; height:28px; overflow:hidden; padding:0 24px 0 12px; margin:0 8px 0 6px; _margin:0 4px 0 3px; float:left;}
+/*shadow menu*/
+
+div.l-shd-lb, div.l-shd-rt, div.l-shd-lt-f, div.l-shd-rt-f  { position:absolute; font-size:1px; line-height:1px; }
+
+div.l-shd-tt, .l-shd-bb { position:relative; }
+
+div.l-shd-bb { background:url(img/shdw/bb_rb.png) right bottom; height:9px; margin-left:6px; filter:expression(fixPNG(this));font-size:1px; line-height:7px;}
+div.l-shd-tt { height:7px;  background:url(img/shdw/tt.png) right bottom no-repeat;filter:expression(fixPNG(this)); font-size:1px; line-height:7px;}
+
+div.l-shd-lb { bottom:28px; left:0px; background:url(img/shdw/lb.png); filter:expression(fixPNG(this)); width:6px; height:9px; }
+
+div.l-shd-rr { background:url(img/shdw/rr.png) right bottom no-repeat; filter:expression(fixPNG(this));}
+
+div.l-shd-lt-f { top:0px; left:0px; background:url(img/shdw/lt_f.png);filter:expression(fixPNG(this));}
+div.l-shd-rt-f { top:0px; right:0px; background:url(img/shdw/rt_f.png);filter:expression(fixPNG(this));}
+div.l-check, div.l-uncheck { width:6px; height:6px; border:solid 1px #aeaeae; float:left; position:absolute; left:7px; top:10px;font-size:1px; line-height:6px;} 
+div.l-uncheck { background:#c3c3c3;}
+div.l-dropdown ul li a:hover div.l-check { border:#fff solid 1px;}
+div.l-dropdown ul li a:hover div.l-uncheck { border:#fff solid 1px; background:#f0f0f0;}

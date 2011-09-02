@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout toolbar=true needExt=true ?>
+		
+		<? if $interface_wrapper ?>
+			<style>
+				#Toolbar {display: none}
+				.SplitterScrollableArea {height: 99% !important}
+				#Content {padding: 0px; overflow: hidden}
+				#ContentScroller {overflow-x: hidden}
+				body {}
+			</style>
+			<? include file="../../../common/html/cssbased/pageelements/ajax/widgets.htm" ?>
+			<link rel='stylesheet' type='text/css' href='../../../common/html/cssbased/2.0.adapter.css'>
+		<? /if ?>
+		
+		<link rel="stylesheet" href="../cpicker/js_color_picker_v2.css" media="screen">
+		<script src='../../../common/html/cssbased/pageelements/ajax/common_dialog.js'></script>
+		<? include file="../../../common/html/cssbased/pageelements/ajax/sharesenddialog_js.htm" ?>
+			<? include file="../../../common/html/cssbased/pageelements/ajax/shareurldialog_js.htm" ?>
+			<? include file="../../../common/html/cssbased/pageelements/ajax/createwidgetdialog_js.htm"  ?>
+			<? include file="../../../common/html/cssbased/pageelements/common_js.htm" ?>
+	</head>
+	<body >
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+			<? if !$fatalError ?>
+				<div class='SplitterRightPanelContainer'>
+				<? include file="viewwidget.rightpanel.htm" interface_wrapper=true ?>
+				</div>
+				
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+			<? /if ?>
+			
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

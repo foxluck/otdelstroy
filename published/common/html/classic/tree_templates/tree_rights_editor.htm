@@ -1,0 +1,22 @@
+<table  border="0" cellspacing="0" cellpadding="0" class="complexList">
+	<tr class="head">
+		<th align="left" rowspan=2><? $folderNameLabel ?></th>
+		<th align="center" colspan=3><? $userRightsLabel ?></th>
+	</tr>
+	<tr class="head">
+		<th align="left"><input onClick="setMultiRights( this, <? $settingsNum ?>, 0 )" name="userRightsCBAll[0]" type="checkbox" value="1"> <? $readLabel|cat:"&nbsp;"?></th>
+		<th align="left"><input onClick="setMultiRights( this, <? $settingsNum ?>, 1 )" name="userRightsCBAll[1]" type="checkbox" value="1"> <? $writeLabel|cat:"&nbsp;"?></th>
+		<th align="left"><input onClick="setMultiRights( this, <? $settingsNum ?>, 2 )" name="userRightsCBAll[2]" type="checkbox" value="1"> <? $folderLabel|cat:"&nbsp;"?></th>
+	</tr>
+	<? foreach from=$folders key=DF_ID item=folderData name=folderLoop ?>
+		<? math equation="offset*10" offset=$folderData->OFFSET assign="padding" ?>
+		<tr <? if ($smarty.foreach.folderLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=#FFFFFF<? /if ?>>
+			<td class="catalogRow"><img style="margin-left: <? $padding|cat:"px" ?>" border="0" src="../../../common/html/classic/images/folder_open.gif" width="14" height="12">&nbsp;<? $folderData->NAME|htmlsafe:true:true|trunc_str:50 ?></td>
+			<td><input onClick="updateFolderCb( this, '<? $DF_ID ?>', 0 )" name="userRightsCB[<? $DF_ID ?>][0]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$DF_ID.0 true_val=1 str1="checked" ?>></td>
+			<td><input onClick="updateFolderCb( this, '<? $DF_ID ?>', 1 )" name="userRightsCB[<? $DF_ID ?>][1]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$DF_ID.1 true_val=1 str1="checked" ?>></td>
+			<td><input onClick="updateFolderCb( this, '<? $DF_ID ?>', 2 )" name="userRightsCB[<? $DF_ID ?>][2]" type="checkbox" value="1" <? switchedOutput val=$userRightsCB.$DF_ID.2 true_val=1 str1="checked" ?>></td>
+		</tr>
+	<? foreachelse ?>
+		<tr><td colspan="4" class="noentries" align="center"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></td></tr>
+	<? /foreach ?>			
+</table>

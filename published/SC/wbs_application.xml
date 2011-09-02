@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<WBSAPPLICATION>
+	<APPLICATION APP_ID="SC" SORTORDER="100" NAME="app_name_long" UI_NAME="app_name_short">
+		<EVENT_HANDLERS>
+			<HANDLER APP_ID="SC" NAME="onSuccessPageUserAuthorization" HANDLER_PROC="sc_onSuccessPageUserAuthorization" HANLDER_SCRIPT="sc.php"/>
+			<HANDLER APP_ID="SC" NAME="onFailurePageUserAuthorization" HANDLER_PROC="sc_onFailurePageUserAuthorization" HANLDER_SCRIPT="sc.php"/>
+		</EVENT_HANDLERS>
+	</APPLICATION>
+</WBSAPPLICATION>

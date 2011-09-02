@@ -1,0 +1,47 @@
+
+<tr>
+	<td colspan=2 class="FormSection"><? $kernelStrings.ci_contperson_title ?></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_CONTACTPERSON" fieldName="COM_CONTACTPERSON" text=$kernelStrings.ci_name_label ?></td>
+	<td><input name="companyData[COM_CONTACTPERSON]" id="COM_CONTACTPERSON" type="text" class="FormControl" value="<? $companyData.COM_CONTACTPERSON ?>" size="30" maxlength="50"/></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_EMAIL" fieldName="COM_EMAIL" text=$kernelStrings.ci_email_label ?></td>
+	<td><input name="companyData[COM_EMAIL]" id="COM_EMAIL" type="text" class="FormControl" value="<? $companyData.COM_EMAIL ?>" size="30" maxlength="50"/></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_PHONE" fieldName="COM_PHONE" text=$kernelStrings.ci_phone_label ?></td>
+	<td><input name="companyData[COM_PHONE]" type="text" id="COM_PHONE" class="FormControl" value="<? $companyData.COM_PHONE ?>" size="30" maxlength="50"/></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_FAX" fieldName="COM_FAX" text=$kernelStrings.ci_fax_label ?></td>
+	<td><input name="companyData[COM_FAX]" id="COM_FAX" type="text" class="FormControl" value="<? $companyData.COM_FAX ?>" size="30" maxlength="50"/></td>
+</tr>
+
+
+<tr>
+	<td colspan=2 style='padding-top: 5px; padding-bottom: 5px'><div style='border-top: 1px solid #DDD; height: 2px; overflow: hidden'>&nbsp;</div></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_ADDRESSSTREET" fieldName="COM_ADDRESSSTREET" text=$kernelStrings.ci_streetaddr_label ?></td>
+	<td><input name="companyData[COM_ADDRESSSTREET]" id="COM_ADDRESSSTREET" type="text" class="FormControl" value="<? $companyData.COM_ADDRESSSTREET?>" size="30" maxlength="50"/></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_ADDRESSCITY" fieldName="COM_ADDRESSCITY" text=$kernelStrings.ci_city_label ?></td>
+	<td><input name="companyData[COM_ADDRESSCITY]" id="COM_ADDRESSCITY" type="text" class="FormControl" value="<? $companyData.COM_ADDRESSCITY ?>" size="30" maxlength="30"/></td>
+</tr>
+<tr>
+	<td><? wbs_label for="COM_ADDRESSSTATE" fieldName="COM_ADDRESSSTATE" text=$kernelStrings.ci_state_label ?></td>
+	<td><input name="companyData[COM_ADDRESSSTATE]" id="COM_ADDRESSSTATE" type="text" class="FormControl" value="<?  $companyData.COM_ADDRESSSTATE  ?>" size="30" maxlength="30"/></td>
+</tr>
+
+<tr>
+	<td><? wbs_label for="COM_ADDRESSZIP" fieldName="COM_ADDRESSZIP" text=$kernelStrings.ci_zip_label ?></td>
+	<td><input name="companyData[COM_ADDRESSZIP] " id="COM_ADDRESSZIP" type="text" class="FormControl" value="<?$companyData.COM_ADDRESSZIP ?>" size="30" maxlength="10"/></td>
+</tr>
+
+<tr class="SeparatedRow">
+	<td><? wbs_label for="COM_ADDRESSCOUNTRY" fieldName="COM_ADDRESSCOUNTRY" text=$kernelStrings.ci_country_label ?></td>
+	<td colspan=3><input name="companyData[COM_ADDRESSCOUNTRY]" id="COM_ADDRESSCOUNTRY" type="text" class="FormControl" value="<? $companyData.COM_ADDRESSCOUNTRY ?>" size="30" maxlength="50"/></td>
+</tr>

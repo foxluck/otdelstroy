@@ -1,0 +1,46 @@
+html, body {
+	margin:0; padding:0;
+	height:100%;
+	background: white;
+	font-size: 11pt;
+	font-family:"Times New Roman", Times, serif;
+}
+h2 { margin:0; padding:1em 0;}
+
+.title { font-size:20pt; font-weight:bold; margin:10pt 0; padding-bottom:2pt;}
+#wrapper {
+	width: auto;
+	padding:0;
+	border: 0;
+	color: black;
+}
+table { border-collapse:collapse;}
+td { padding:2pt 10pt;}
+th { text-align:left; background:#eee; padding:5pt 10pt 5pt 10pt;border-bottom: 1px solid #ddd;}
+
+img {
+	vertical-align: bottom; border:none;
+}
+
+input { display:none;}
+
+.columns td { border-bottom: 1px solid #ddd;}
+.pages-list, .pages-list li { list-style:none; display:inline; font-family:Arial, Helvetica, sans-serif; font-size:10pt;}
+
+.wbs-table-content { padding-bottom:10pt;  }
+.wbs-items-page, .wbs-access-rights, #view-settings-block, .header { display:none;}
+
+.thumbnail{ float:left;}
+.bigicons .item { zoom:1; overflow:hidden;border-bottom: 2px solid #aaa; padding:5pt 0 10pt 0;}
+.bigicons .name { font-weight:bold; padding:10pt; font-size:13.5pt;}
+.bigicons .section_title { font-weight:bold; padding: 0 5pt 0 0}
+.tile .content { clear:left;}
+.tile .item { display:inline-block; //display:inline; vertical-align:top; margin:2pt;width:136px}
+.tile .item .thumbnail { border: 1px solid #ddd; width:116px}
+.tile .name { padding:0 5pt; overflow:hidden;}
+.columns .icon-user, .columns .control-td { display:none;}
+.warning { background:#FFFFD1; font-family:Arial, Helvetica, sans-serif; font-size:10pt; padding:1pt 2pt; position:absolute; top:0; left:0; display:inline; }
+.print_r, .print_l { height:29px; //display:inline; }
+.print_r { position:absolute; right:20px; top:10px;background: url(../../common/templates/img/corn_r.gif) right top no-repeat}
+.print_l  { background: url(../../common/templates/img/corn_l.gif) left top no-repeat; }
+.print_l  a { line-height:27px; color:#444; font-family:Arial, Helvetica, sans-serif; font-size:10pt; background:url(../../common/templates/img/printer.gif) left center no-repeat; padding-left:21px; margin:0 20px 0 20px;}

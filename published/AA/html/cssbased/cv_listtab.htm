@@ -1,0 +1,30 @@
+<? wbs_note displayNoteMarker=false smallFont=false ?><? $kernelStrings.cv_details_text ?><? /wbs_note ?>
+
+<? if $imageFieldNames ?>
+	<table class="FormLayout">
+		<tr class="SeparatedRow">
+			<td><? $kernelStrings.cv_selectimage_label ?></td>
+		</tr>
+		<tr>
+			<td>
+				<table class="FormLayout" style="margin-left: 20px">
+					<tr>
+						<td><input id="noimg" type=radio name="listViewImage" value=NOIMG <? wbs_checkboxStatus val=$listViewImage true_val=NOIMG ?>/></td>
+						<td><? wbs_label for="noimg" text=$kernelStrings.cv_donotdisplayimg_label skipColon=1 ?></td>
+					</tr>
+
+
+					<? foreach from=$imageFieldNames key=imgFieldID item=imgFieldName ?>
+						<tr>
+							<td><input id="<? $imgFieldID ?>" type=radio name="listViewImage" value="<? $imgFieldID ?>" <? wbs_checkboxStatus val=$listViewImage true_val=$imgFieldID ?>/></td>
+							<td><? wbs_label for="$imgFieldID" text=$imgFieldName|htmlsafe:true:true skipColon=1 ?></td>
+						</tr>
+					<? /foreach ?>
+				</table>
+			</td>
+		</tr>
+	</table>
+<? else ?>
+	<? wbs_note displayNoteMarker=false smallFont=false ?><? $kernelStrings.cv_noimages_label ?><? /wbs_note ?>
+	<? wbs_note smallFont=false width="500px" ?><? $kernelStrings.cv_addimages_note ?><? /wbs_note ?>
+<? /if ?>

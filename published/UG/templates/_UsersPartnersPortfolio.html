@@ -1,0 +1,71 @@
+<table width="100%">
+{{foreach from=$portfolio item=port}}
+
+	<tr class="portfolio_row" id="portfolio_row_{{$port.CPP_ID}}">
+		<td width="1%">
+		{{if $port.thumb}}
+			<a onclick="return hs.expand(this)" class="highslide "
+				href="{{$url.common}}html/scripts/getpfimg.php?file={{$port.img}}"><img
+				src="{{$url.common}}html/scripts/getpfimg.php?file={{$port.thumb}}" title="Click to enlarge"></a>
+		{{/if}}
+		</td>
+		<td colspan="2" class="portfolio_item">
+			<div id="portfolio_view_{{$port.CPP_ID}}">
+
+				<h2 style="margin-left:0;">{{$port.CPP_NAME|escape}}</h2>
+				{{if $port.CPP_URL}}
+				<div style="padding-bottom:10px;">
+					<a href="{{$port.CPP_URL}}" target="_blank">{{$port.CPP_URL}}</a>
+				</div>
+				{{/if}}
+				{{if $port.CPP_AMOUNT}}<p style="padding-bottom:10px;"><b>[`The cost of this project`]: {{$port.CPP_AMOUNT}} {{$partner_currency}}</b></p>{{/if}}
+
+				<p style="padding-bottom:10px;"><b>[`Jobs on the project`]: {{$port.job_names}}</b></p>
+
+				<p id="portfolio_descr_{{$port.CPP_ID}}">{{$port.description}}</p>
+				<div class="portfolio_controls">
+					<a href="javascript:void(0)" onclick="switchPortfolioEditor('{{$port.CPP_ID}}', true)" class="portfolio_edit_link"><span></span>[`Edit`]</a>
+					<a href="javascript:void(0)" onclick="deletePortfolio('{{$port.CPP_ID}}')" class="resp-delete">[`Delete`]</a>
+				</div>
+			</div>
+			<div id="portfolio_edit_{{$port.CPP_ID}}" class="portfolio_edit" style="display:none;">
+			
+				<p>
+					[`Project name`]
+					<input type="text" name="project[{{$port.CPP_ID}}][CPP_NAME]" value="{{$port.CPP_NAME}}" style="font-weight:bold; width:30em;" />
+				</p>
+				<p>
+					[`Project URL`]:
+					<input type="text" name="project[{{$port.CPP_ID}}][CPP_URL]" value="{{$port.CPP_URL}}" style="width:30em;" />
+				</p>
+				<p>
+					[`The cost of this project`]:
+					<input type="text" name="project[{{$port.CPP_ID}}][CPP_AMOUNT]" value="{{$port.CPP_AMOUNT}}" /> {{$partner_currency}}
+				</p>
+				<p>
+					[`Jobs on the project`]:<br />
+				{{foreach from=$jobs key=job_id item=job}}
+					{{assign var=job_id value=$job.CPJ_ID}}
+					<input type="checkbox" name="project[{{$port.CPP_ID}}][jobs][{{$job_id}}]" id="project[{{$port.CPP_ID}}][jobs][{{$job_id}}]"
+						value="{{$job_id}}" {{if $port.jobs.$job_id}}checked {{/if}}/>
+					<label for="project[{{$port.CPP_ID}}][jobs][{{$job_id}}]">{{$job.$job_name_field}}</label><br />
+				{{/foreach}}
+				</p>
+				<p>
+				[`Project description`]:
+				<textarea id="portfolio_area_{{$port.CPP_ID}}" name="project[{{$port.CPP_ID}}][CPP_DESCR]" class="portfolio_area">{{$port.CPP_DESCR}}</textarea>
+				</p>
+				<div class="portfolio_controls">
+					<a href="javascript:void(0)" onclick="savePortfolio('{{$port.CPP_ID}}')" class="portfolio_save">[`Save`]</a>
+					<a id="jobs_cancel" href="javascript:void(0)" onclick="switchPortfolioEditor('{{$port.CPP_ID}}', false)" class="portfolio_edit_link">[`Cancel`]</a>
+					<a href="javascript:void(0)" onclick="deletePortfolio('{{$port.CPP_ID}}')" class="port-delete">[`Delete`]</a>
+				</div>
+			</div>
+
+		</td>
+	</tr>
+
+	<tr><td solspan="3">&nbsp;</td></tr>
+
+{{/foreach}}
+</table>

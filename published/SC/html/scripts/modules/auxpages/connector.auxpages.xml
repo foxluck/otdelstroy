@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>AuxPages</Name>
+		<File>class.auxpages.php</File>
+		<Title>Дополнительные страницы</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

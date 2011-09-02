@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Test</Name>
+		<File>class.test.php</File>
+		<Title>Ядро</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

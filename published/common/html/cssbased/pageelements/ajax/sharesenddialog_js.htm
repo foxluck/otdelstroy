@@ -1,0 +1,157 @@
+<script>
+	var ShareSendDialog = function(){
+	
+		var wgId = null;
+		var wgName = "";
+		var dialog = null;
+		var title = "<? $kernelStrings.shsd_dialog_title ?>";
+		var dlgDom;
+		var contactsSelector = null;
+		
+		return {
+			init: function () {
+				ShareSendDialog.defaultMessage = "<<? $kernelStrings.shsd_entermessage_text ?>>";
+				dlgDom = document.createElement("div");
+				//dlgDom.className = "PopupDialog";
+				//dlgDom.id = "share-send-dlg";
+				//document.body.appendChild(dlgDom);
+				
+				contactsSelector = new ContactsSelector(dlgDom);
+				contactsSelector.init (Ext.get("contacts-selector"), dlgDom);
+				
+				contactsSelector.onEmailSelected = function (email) {
+		    	var currentValue = Ext.get("share-send-to").dom.value;
+		    	if (currentValue != "")
+		    		currentValue += "; ";
+		    	currentValue += email;
+		    	Ext.get("share-send-to").dom.value = currentValue;
+		    	Ext.get("share-send-to").dom.scrollTop = 1000;
+		    }
+		    
+				
+				var dialogContent = Ext.get("share-send-dlg-content");
+				//dlgDom.appendChild(dialogContent.dom);
+				//dialogContent.dom.style.display = "block";
+				
+				
+        dialog = new Ext.Window({
+        	contentEl: dialogContent,
+          autoTabs:false, shadow:true,
+          width:550, height:400,
+          closeAction: 'hide',
+          minWidth:550, minHeight:400,
+          title: title, modal: true, collapsible: false, resizeHandles: "se"
+        });
+        //dialog.addKeyListener(27, dialog.hide, dialog);
+        nextBtn = dialog.addButton('<? $kernelStrings.shsd_send_btn ?>', ShareSendDialog.nextClicked, dialog);
+        //nextBtn.disable();
+        dialog.addButton('<? $kernelStrings.shsd_cancel_btn ?>', dialog.hide, dialog);
+			},
+			
+			show: function (fromElem) {
+				if (ShareSendDialog.wgId == null) {
+					alert ("Unsetted widget id"); 
+					return false;
+				}
+				if(!dialog)
+					ShareSendDialog.init ();
+		    
+		    Ext.get("share-send-to").dom.value = "";
+	  		Ext.get("share-send-subject").dom.value = ShareSendDialog.wgName;
+	  		Ext.get("share-send-message").dom.value = ShareSendDialog.defaultMessage;
+		    
+		    contactsSelector.hide ();
+		    dialog.show(fromElem);
+			},
+			
+			
+			showHideContacts : function () {
+				contactsSelector.showHide ();
+			},
+			
+			showContacts: function () {
+				contactsSelector.show ();
+				//Ext.get("contacts-selector").dom.style.position = "absolute";
+				//Ext.get("contacts-selector").dom.style.display = "block";
+				
+				
+				//Ext.get("contacts-selector").anchorTo (dlgDom, "tt");
+			},
+			
+			nextClicked: function () {
+				ShareSendDialog.trySend ();
+			},
+			
+			/****
+			* Try Send widget data
+			****/
+			trySend: function () {
+	  		var sendTo = Ext.get("share-send-to").dom.value;
+	  		var sendSubject = Ext.get("share-send-subject").dom.value;
+	  		var sendMessage = Ext.get("share-send-message").dom.value;
+	  		
+	  		/*if (sendTo.length < 6) {
+	  			alert("<? $kernelStrings.shsd_enteremails_error ?>");
+	  			return;
+	  		}*/
+	  		
+	  		if (sendMessage == ShareSendDialog.defaultMessage)
+	  			sendMessage = "";
+	  		
+	  		if (window.foldersTree)
+	  			var fapp = foldersTree.getWidgetsNode ().loader.baseParams.fapp;
+	  		else
+	  			var fapp = "DD";
+	  		AjaxLoader.doRequest("../../../common/html/ajax/share_send.php", 
+	  			ShareSendDialog.trySendCompleted , 
+	  			{fapp: fapp, "sendData[to]": sendTo, "sendData[subject]": sendSubject, "sendData[message]": sendMessage, wgId: ShareSendDialog.wgId}
+	  		);
+	  	},
+	  	
+	  	/****
+			* Try Send completed
+			****/
+	  	trySendCompleted: function(response, options){
+				var result = Ext.decode(response.responseText);
+				if(result.success) {
+					Ext.Msg.show({
+					   title:'Result',
+					   msg: result.resultStr,
+					   buttons: Ext.Msg.OK,
+					   fn: function() {dialog.hide();}
+					});
+				} else {
+					alert(result.errorStr);
+				}
+			}
+		};	  
+	}();
+	
+	
+	
+	function shareWidgetSendEmail(wgId, wgName, btn) {
+		ShareSendDialog.wgId = wgId;
+		ShareSendDialog.wgName = wgName;
+		ShareSendDialog.show (btn);
+	}
+</script>
+
+<div class="x-hidden" id='share-send-dlg-content'>
+  <div id='send-select-tab' style='padding: 10px'>
+		<table width='100%'>
+			<tr valign='top'><td ><? $kernelStrings.shsd_to_label ?>:<BR><textarea rows=2 id='share-send-to' style='width: 100%; '></textarea></td></tr>
+			<tr><td style='font-size: 0.8em'>
+				<? $kernelStrings.shsd_mails_note ?>
+				 <? $kernelStrings.shsd_mails_select ?>
+				<a onClick='ShareSendDialog.showHideContacts(); return false;' href='javascript:void(0)' id='my-contacts-link' style='text-decoration: underline'><? $kernelStrings.shsd_mycontacts_title?></a>
+			</td></tr>
+			<tr>
+			<td>
+				<? include file="../../../common/html/cssbased/pageelements/ajax/contacts_selector.htm" ?>
+			</td></tr>
+			<tr><td ><? $kernelStrings.shsd_subject_label ?>:<BR><input type='text' id='share-send-subject' style='width: 100%'></td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr valign='top'><td ><? $kernelStrings.shsd_message_label ?>:<BR><textarea onFocus='if (this.value == ShareSendDialog.defaultMessage) this.value=""' onBlur='if(this.value=="") this.value=ShareSendDialog.defaultMessage' id='share-send-message' rows=5 style='width: 100%'></textarea></td></tr>
+		</table>
+	</div>
+</div>	

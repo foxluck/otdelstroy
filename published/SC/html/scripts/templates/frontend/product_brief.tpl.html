@@ -1,0 +1,168 @@
+{* product brief view (from a category or search) *}
+
+{if $product_info ne NULL}
+{if $product_info.slug}
+{assign var=_product_url value="?productID=`$product_info.productID`&product_slug=`$product_info.slug`"|set_query_html}
+{else}
+{assign var=_product_url value="?productID=`$product_info.productID`"|set_query_html}
+{/if}
+
+<table width="95%" cellspacing="1" cellpadding="2">
+<tr>
+	<!-- Thumbnail -->
+	<td width="1%" align="center" valign="top">
+		{if $product_info.thumbnail}
+			<a {$target} href='{$_product_url}'>
+				<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail|escape:'url'}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}" border="0" ><br>
+				{"str_more_info_on_product"|translate}
+			</a>
+		{else} 
+			{if $product_info.picture}
+				<a {$target} href='{"?productID=`$product_info.productID`"|set_query_html}'>
+					<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}" border="0" >
+					{"str_more_info_on_product"|translate}
+				</a>
+			{/if}
+		{/if}
+	</td>
+
+	<td valign="top" width="99%">
+
+		{if $widget}
+		{assign var=_form_action_url value="&view=noframe&external=1"}
+		{/if}
+		<form action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
+		<input name="action" value="add_product" type="hidden" >
+		<input name="productID" value="{$product_info.productID}" type="hidden" >
+		<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden" >
+		{assign var=_cnt value=''}
+		<table width="100%" cellpadding="2">
+		<tr>
+			<td valign="top">
+				<a {$target} class="cat" href='{$_product_url}'>{$product_info.name}</a>
+				<br />
+				{if $product_info.customer_votes > 0} {* rating *}
+				{section name=i loop=5}
+					{if $smarty.section.i.index<$product_info.customers_rating}
+						<img src="{$smarty.const.URL_IMAGES}/redstar.gif" alt="*"/>
+					{else}
+						<img src="{$smarty.const.URL_IMAGES}/blackstar.gif" alt=" "/>
+					{/if}
+				{/section}
+				{/if}
+			</td>
+			<td align="right" valign="top">
+				<input type="image" src="{$smarty.const.URL_IMAGES}/cart_small.gif" alt="{'str_add_to_cart_string'|translate}" title="{"str_add_to_cart_string"|translate}"
+				{if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE && !$widget} class="add2cart_handler" rel="{if $widget}widget{/if}" {/if} >
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				{if $currencies_count ne 0 && $product_info.Price > 0}
+				{* show list price? *}
+				{if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0} 
+					{"str_list_price"|translate}: <span style="color: brown; text-decoration: line-through;">{$product_info.list_priceWithUnit}</span><br>
+				{/if}
+
+				<b>{"str_price"|translate}: 
+				<span class="cat" style="color: red;">
+				   {if $product_info.Price le 0}n/a{else}{$product_info.PriceWithUnit}{/if}
+				</span>
+				</b>
+
+				{* you save *}
+				{if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0} 
+					<br>
+						{"str_you_save"|translate}:
+							<span style="color: brown;">{$product_info.SavePrice} ({$product_info.SavePricePercent}%)</span>
+					<br>
+				{/if}
+				 {/if}
+			</td>
+		</tr>
+
+		{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+		{section name=i loop=$product_info.product_extra}
+		{if $product_info.product_extra[i].option_type eq 0 }
+		<tr>
+			<td>
+				{$product_info.product_extra[i].name}:
+			</td>
+			<td>
+				<b>{$product_info.product_extra[i].option_value}</b>
+			</td>
+		</tr>
+{*
+@features  "Extra options values"
+*}
+		{else}
+		{section name=k loop=$product_info.product_extra[i].option_show_times}
+		<tr>					
+			<td>
+				{$product_info.product_extra[i].name}{if $product_info.product_extra[i].option_show_times > 1} ({$smarty.section.k.index+1}):{else}:{/if}
+			</td>
+			<td>
+				{counter name=select_counter assign=_cnt}
+				<select name='option_{$_cnt}' class="product_option">
+				<option value='' rel="0">{"str_not_defined"|transcape}</option>
+				{section name=j loop=$product_info.product_extra[i].values_to_select}
+				<option value='{$product_info.product_extra[i].values_to_select[j].variantID}' rel='{$product_info.product_extra[i].values_to_select[j].price_surplus}'>
+					{$product_info.product_extra[i].values_to_select[j].option_value}
+				</option>
+				{/section}
+				</select>
+			</td>
+		</tr>
+		{/section}
+{*
+@features
+*}
+		{/if}
+		{/section}
+
+		{if $_cnt}
+		<tr>
+			<td colspan="2">
+				{"prd_final_price"|translate}: <div class="totalPrice">{if $product_info.Price <= 0}n/a{else}{$product_info.PriceWithUnit}{/if}</div>				
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td colspan="2">
+				{$product_info.brief_description}
+			</td>
+		</tr>
+		{if $product_info.shipping_freightUC}
+		<tr>
+			<td>
+				{"prdset_handling_charge"|translate}:
+			</td>
+			<td>
+				<span style="color: brown;">{$product_info.shipping_freightUC}</span>
+			</td>
+		</tr>
+		{/if}
+
+{*
+ * @features "Products comparison"
+ * @state start
+*}
+	{if $product_info.allow_products_comparison && $show_comparison}  {* removed ' && $categoryID == $product_info.categoryID' *}
+		<tr>
+			<td colspan="2">
+				<input id="ctrl-prd-cmp-{$product_info.productID}" class="checknomarging ctrl_products_cmp" type="checkbox" value='{$product_info.productID}' >
+				<label for="ctrl-prd-cmp-{$product_info.productID}">{"prd_select_to_comparison"|translate}</label>
+			</td>
+		</tr>
+	{/if}
+{*
+ * @features "Products comparison"
+ * @state end
+*}
+
+		</table>
+		</form>
+</td>
+</tr>
+</table>
+{/if}

@@ -1,0 +1,37 @@
+<!--!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"-->
+<? if $params.mode=="preview" || $params.iframe ?><? assign var=iframe value=1 ?><? /if ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>../PD/css/reset.css' />
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/_common/public/css/widget.css' />
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>../PD/css/frontend.css' />
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?><? $frontendcss ?>' />		
+		<style>
+			body, table tr td {font-family: "Trebuchet MS"}
+			
+			.BottomBlock {color: #666; margin-top: 20px; font-size: 0.75em}
+			.BottomBlock a {color: #666; }
+		</style>
+	</head>
+
+	<body style='margin: 0px;'>	
+		<? if !$iframe ?>
+			
+				<div class="wgpd-container">
+					<? include file=$widgetFilename ?>
+				</div>
+			
+				<div style='width: 690px;' class='BottomBlock'>
+					 <? $widgetStrings.wbs_block ?>  
+				</div>
+		<? else ?>
+			<? include file=$widgetFilename ?>
+		<? /if ?>
+			
+			
+			
+
+	</body>
+</html>

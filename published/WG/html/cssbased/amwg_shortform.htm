@@ -1,0 +1,47 @@
+<table class="FormLayout" style=''>	
+<tr style='vertical-align:middle' class="SeparatedRow" id='<? $fieldName ?>FieldTr'>
+<? foreach from=$fieldsData item=field key=fieldName ?>
+	<? if $field.place=='shortform' && $field.type != "subtype" ?>
+			<? assign var=labelName value="field_"|cat:$fieldName|cat:"_label"|lower ?>
+			<? assign var=commentName value="field_"|cat:$fieldName|cat:"_comment"|lower ?>
+			<td nowrap>
+				<? wbs_label for=$fieldName fieldName=$fieldName text=$widgetStrings.$labelName ?>
+				<? if $widgetStrings.$commentName ?>
+					[<a href='javascript:showHideComment("<? $fieldName ?>");'>?</a>]
+					<div class='CommentBlock' id='<? $fieldName ?>Comment'>
+						<div class='Caption'><div class='CloseButton' onClick='showHideComment("<? $fieldName ?>");'>x</div><? $widgetStrings.$labelName ?></div>
+						<div class='Text'><? $widgetStrings.$commentName ?></div>
+					</div>
+				<? /if ?>			
+			</td>
+			<td>
+				<? assign var=fieldValue value=$fields.$fieldName|default:$itemData.params.$fieldName ?>
+				<? if ($params.action == ACTION_NEW || !$itemData.params) && !$fieldValue ?>
+					<? assign var=fieldValue value=$field.default ?>
+				<? /if ?>
+				<? include file="fields/"|cat:$field.type|cat:".htm" preview=true ?>		
+				
+				<? if $field.subfields ?>
+					<BR>
+					<a id='<? $fieldName ?>SubfieldsLink' href='javascript:showHideSubfields("<? $fieldName ?>");'><? $wgStrings.amwg_showproperties_label ?></a>
+					<div id='<? $fieldName ?>Subfields' style='display: none'>
+					<? foreach from=$field.subfields item=subfield key=subfieldName ?>
+						<? assign var=sublabelName value="field_"|cat:$fieldName|cat:$subfieldName|cat:"_label"|lower ?>
+						<BR>
+						<? $widgetStrings.$sublabelName ?>
+						<BR>
+						<? assign var=subfieldFieldName value=$fieldName|cat:"_"|cat:$subfieldName ?>
+						<? assign var=fieldValue value=$fields.$subfieldFieldName|default:$itemData.params.$subfieldFieldName ?>
+						<? if $params.action == ACTION_NEW && !$fieldValue ?>
+							<? assign var=fieldValue value=$subfield.default ?>
+						<? /if ?>
+						<? include file="fields/"|cat:$subfield.type|cat:".htm" preview=true fieldName=$subfieldFieldName ?>		
+					<? /foreach ?>			
+					</div>
+				<? /if ?>
+			</td>
+			<td width="10">&nbsp;</td>
+	<? /if ?>
+<? /foreach ?>
+</tr>
+</table>

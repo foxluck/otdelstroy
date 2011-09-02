@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>{"affp_edit_payment"|translate}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}" />
+		<link rel="STYLESHEET" href="{$smarty.const.URL_CSS}/admin.css" type="text/css" />
+		<script language="javascript" type="text/javascript">
+		<!--
+		{literal}
+		function position_this_window()
+		{
+			var x = (screen.availWidth - 350) / 2;
+			window.resizeTo(350, 400 - 50);
+			window.moveTo(Math.floor(x),200);
+		}
+		{/literal}
+		//-->
+		</script>
+	</head>
+	<body bgcolor=#D2D2FF onLoad="position_this_window();">
+		<form method="POST" action="">
+		<input name="fACTION" value="SAVE_PAYMENT" type="hidden" />
+		<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+		<input name="PAYMENT[pID]" value="{$Payment.pID}" type="hidden" />
+		<table align="center">
+			<tr>
+				<td colspan="2" align="center">
+					<div class="edittitle">{"affp_edit_payment"|translate}</div>
+				{if $error_message}<div class="error_block">{$error_message}</div>{/if}
+				{if $safemode}<div class="error_block">{"msg_safemode_warning"|translate}</div>{/if}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{"blog_postdate"|translate}
+				</td>
+				<td>
+					<input name="PAYMENT[xDate]" value="{if $Payment.xDate}{$Payment.xDate|escape:'html'}{else}{$CurrDate}{/if}" type="text" size="20" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{"str_total"|translate}
+				</td>
+				<td>
+					<input name="PAYMENT[Amount]" value="{$Payment.Amount|escape:'html'}" type="text" size="20" />&nbsp;
+					<select name="PAYMENT[CurrencyISO3]">
+					{foreach from=$CurrencyISO3 item=_currency}
+						<option
+						{if $_currency.currency_iso_3==$Payment.CurrencyISO3}
+							selected="selected"
+						{/if}
+						>{$_currency.currency_iso_3}</option>
+					{/foreach}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{"usr_custinfo_login"|translate}
+				</td>
+				<td>
+					<input name="PAYMENT[customerLogin]" value="{$Payment.customerLogin|escape:'html'}" type="text" size="20" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{"str_description"|translate}
+				</td>
+				<td>
+					<input name="PAYMENT[Description]" value="{$Payment.Description|escape:'html'}" type="text" size="20" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input value="{"btn_save"|translate}" type="submit" />
+				</td>
+			</tr>
+		</table>
+		
+		</form>
+	</body>
+</html>

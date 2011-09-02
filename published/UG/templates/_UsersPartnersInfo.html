@@ -1,0 +1,26 @@
+<div class="partner-service info_view" id="info_view">
+
+	<p>
+		<b>[`Short description`]:</b>
+		<br />
+		{{$partner_info.short_description}}
+	</p>
+	<p>
+		<b>[`Description`]:</b>
+		<br />
+		{{$partner_info.description}}
+	</p>
+	<p>
+		<b>[`Email`]:</b>
+		{{$partner_info.CP_ADV_EMAIL}}
+	</p>
+	<p>
+		<b>[`I wish to receive email notifications of published comments about me`]:</b>
+		{{if $partner_info.CP_RECIEVE_NOTICE}}[`yes`]{{else}}[`no`]{{/if}}
+	</p>
+
+	<div class="resp-actions">
+		<a href="javascript:void(0)" onclick="switchInfoEditor(true)" class="jobs_edit_link"><span></span>[`Edit`]</a>
+	</div>
+
+</div>

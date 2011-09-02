@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script src="../../../common/html/classic/styles/calendar.js" type="text/javascript"></script>
+		<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+		<link rel="stylesheet" href="../../../common/html/cssbased/rights.css" type="text/css"/>
+		<script src="../../../common/html/includes/modules/JsHttpRequest/JsHttpRequest.js"></script>
+		<script src="../../../common/html/classic/styles/calendar.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			function setLastTab( tabName )
+			{
+				var obj = findObj( "lastTab" );
+
+				if ( obj )
+					obj.value = tabName;
+			}
+
+			function initFocus()
+			{
+				try
+				{
+					<? if !$invalidField ?>
+						<? if $activeTab == "CONTACT" ?>
+							<? if !$imgFieldEdited ?>
+								focusFirstFormControl();
+							<? else ?>
+								focusFormControl( 'imgfiles[<? $imgFieldEdited ?>]' );
+								var panel = $('ContactsScroller');
+								if (panel)
+									panel.scrollTop = panel.scrollTop + 70;
+							<? /if ?>
+						<? else ?>
+							<? if $activeTab == "USER" ?>
+								<? if $newUser ?>
+									focusFormControl( 'contactData[U_ID]' );
+								<? else ?>
+									focusFormControl( 'contactData[U_PASSWORD1]' );
+								<? /if ?>
+							<? /if ?>
+						<? /if ?>
+					<? else ?>
+						focusFormControl( 'contactData[<? $invalidField ?>]' );
+					<? /if ?>
+				} catch ( e )
+				{
+
+				}
+				this.activeTab = "<? $activeTab ?>";
+			}
+
+			function saveLastTab()
+			{
+				var obj = findObj( "activeTab" );
+
+				if ( obj )
+					obj.value = this.activeTab;
+			}
+
+			function setActiveImgField( fieldName )
+			{
+				var obj = findObj( "imgFieldEdited" );
+
+				if ( obj )
+					obj.value = fieldName;
+			}
+
+			function confirmDelete()
+			{
+				return confirm( "<? $kernelStrings.amc_confirmdel_message ?>" );
+			}
+
+			var groupMembershipChanged = false;
+			var locked = false;
+			var tabsLocked = false;
+
+			function triggerGroupChanges()
+			{
+				this.groupMembershipChanged = true;
+			}
+
+			function onActivateAccess()
+			{
+				if ( this.groupMembershipChanged ) {
+					this.tabsLocked = true;
+					this.locked = true;
+					fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );
+					setLastTab( "ACCESS" );
+
+					if ( document.getElementById ) {
+						var rt = document.getElementById('RELOAD_TABLE');
+						var at = document.getElementById('ACCESS_TABLE');
+
+						if ( rt )
+							rt.style.display = "block";
+
+						if ( at )
+							at.style.display = "none";
+					}
+
+					document.form.submit();
+				}
+			}
+
+			function processOK()
+			{
+				fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );
+
+				return !this.locked;
+			}
+
+			function confirmRevoke()
+			{
+				return confirm( '<? $kernelStrings.amc_revoke_message ?>' );
+			}
+
+			function hideExtendedInfoBlock()
+			{
+				var container = document.getElementById('ExtendedParamsContainer');
+				container.style.display = "none";
+
+				var HideBtn = document.getElementById('HideExtendedContainer');
+				var ShowBtn = document.getElementById('ShowExtendedContainer');
+
+				HideBtn.style.display = "none";
+				ShowBtn.style.display = "block";
+
+				var Field = document.getElementById('ShowExtendedInfoField');
+				Field.value = 0;
+			}
+
+			function showExtendedInfoBlock()
+			{
+				var container = document.getElementById('ExtendedParamsContainer');
+				container.style.display = "block";
+
+				var HideBtn = document.getElementById('HideExtendedContainer');
+				var ShowBtn = document.getElementById('ShowExtendedContainer');
+
+				HideBtn.style.display = "block";
+				ShowBtn.style.display = "none";
+
+				var Field = document.getElementById('ShowExtendedInfoField');
+				Field.value = 1;
+			}
+
+			function checkDST( )
+			{
+			<? if $enableTZ ?>
+				if (  document.getElementById('timezone').item(document.getElementById('timezone').selectedIndex).className == "nodst" )
+				{
+					document.getElementById('tzdst').disabled = true;
+				}
+				else
+				{
+					document.getElementById('tzdst').disabled = false;
+				}
+				showDate();
+			<? /if ?>
+			}
+
+			function showDate()
+			{
+
+				var req = new Subsys_JsHttpRequest_Js();
+
+				req.onreadystatechange = function()
+				{
+					if (req.readyState == 4)
+					{
+						if (req.responseJS)
+						{
+							if ( req.responseJS.state == "OK" )
+							{
+								var timemsg = document.getElementById( 'timeMessage' );
+								timemsg.innerHTML = req.responseJS.timestamp;
+							}
+						}
+					}
+				}
+
+				req.open('POST', 'localtime.php', true);
+
+				var tz = document.getElementById('timezone').item(document.getElementById('timezone').selectedIndex).value;
+				var dst = document.getElementById('tzdst').checked == true ? "1" : "0";
+
+				req.send( { DB_KEY: '<? $DB_KEY ?>', TIMEZONE: tz, DST: dst } );
+
+				return false;
+			}
+
+		</script>
+	</head>
+	<body onLoad="initFocus(); checkDST( );">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formCaption text=$contactName|htmlsafe:true:true ?>
+
+				<? assign var=imgFieldOnClear value="saveLastTab(); processOK()" ?>
+				<? assign var=imgFieldOnClick value="saveLastTab(); processOK()" ?>
+
+				<? assign var=onClickHandler value="return processOK()" ?>
+
+				<? wbs_tabForm basePath="../../../AA/html/cssbased" activeTab=$activeTab tabs=$UserTabs width="710px" height="410px" ?><? /wbs_tabForm ?>
+
+				<table class="FormLayout">
+					<tr class="SeparatedRow">
+						<td align=right><input id="sendNotification" type=checkbox name="sendinstructions" value=1 <? wbs_checkboxStatus val=$sendinstructions true_val=1 ?>/></td>
+						<td><? wbs_label for="sendNotification" text=$kernelStrings.amu_emailinstructions_text skipColon=true ?></td>
+					</tr>
+				</table>
+
+				<? wbs_buttonSet ?>
+					<? if !$readOnly ?>
+						<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" onClick=$onClickHandler ?>
+						<? if $action == "new" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.amc_addanother_btn name="saveaddbtn" onClick=$onClickHandler ?>
+						<? /if ?>
+						<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+					<? else ?>
+						<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+					<? /if ?>
+				<? /wbs_buttonSet ?>
+
+				<? if $action == "edit" ?>
+					<? wbs_note displayNoteMarker=false width="700px" ?>
+							<? $kernelStrings.amc_addedby_label|cat:": "|cat:$createUserName|cat:" "|cat:$createDateTime ?>
+
+							<? if $modifyUserName ?>
+								&nbsp;|&nbsp;
+							<? $kernelStrings.amc_modifiedby_label|cat:": "|cat:$modifyUserName|cat:" "|cat:$modifyDateTime ?>
+							<? /if ?>
+							<? if $subscriber != "" ?>
+									&nbsp;|&nbsp;<? $kernelStrings.amc_status_label|cat:": "|cat:$subscrStatusName ?>
+							<? /if ?>
+					<? /wbs_note ?>
+
+					<input type=hidden name=createUserName value="<? $createUserName|htmlsafe:true:true ?>"/>
+					<input type=hidden name=createDateTime value="<? $createDateTime|htmlsafe:true:true ?>"/>
+					<input type=hidden name=modifyUserName value="<? $modifyUserName|htmlsafe:true:true ?>"/>
+					<input type=hidden name=modifyDateTime value="<? $modifyDateTime|htmlsafe:true:true ?>"/>
+				<? /if ?>
+			<? /if ?>
+
+			<input type="hidden" name="contactIsUser" value='<? $contactIsUser ?>'>
+			<input name="lastTab" type="hidden" value="">
+			<input type="hidden" name="action" value='<? $action ?>'>
+			<input type="hidden" name="userIsDeleted" value='<? $userIsDeleted ?>'>
+			<input name="imgFieldEdited" type="hidden" value="">
+			<input name="activeTab" type="hidden" value="<? $activeTab ?>">
+			<input name="newUser" type="hidden" value="<? $newUser ?>">
+			<input name="C_ID" type="hidden" value="<? $C_ID ?>">
+			<input name="targetUser" type="hidden" value="<? $targetUser ?>">
+			<input name="firstTabId" type="hidden" value="<? $firstTabId|htmlsafe:true:true ?>">
+			<input name="contactName" type="hidden" value="<? $contactName|htmlsafe:true:true ?>">
+			<input type=hidden name=subscriber value="<? $subscriber|htmlsafe:true:true ?>">
+			<input type=hidden id="ShowExtendedInfoField" name=ShowExtendedInfo value="<? $ShowExtendedInfo|htmlsafe:true:true ?>">
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

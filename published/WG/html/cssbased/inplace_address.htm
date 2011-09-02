@@ -1,0 +1,36 @@
+<style>
+	.ext-gecko .NoscrollTextarea {height: 15px; border: 1px solid #999}
+</style>
+
+<? if $embInfo.code ?>
+	<? $wgStrings.amwg_wghtml_label ?> <? $wgStrings.amwg_oruseb_label ?> <a id='EmbedOptionsLink' href='javascript:void(0)' onClick='showEmbedDialog(this, "<? $widgetIdEnc ?>")'><? $wgStrings.amwg_moreemb_label ?></a>
+	<BR> 
+	<textarea class='NoscrollTextarea' id='widgetEmbCode' onClick='this.select()' onFocus='this.select()' class='FormControl' wrap="off" style='overflow:hidden; overflow-y: hidden; width: 100%; color: #909090' rows='1'><? $embInfo.code|htmlsafe:true:true ?></textarea>
+	<BR>
+<? /if ?>
+
+<? if $embInfo.src ?>
+	<div id='EmbedOptions' style='display:none; border-top: 1px solid #999999'>
+		<b><? $wgStrings.amwg_addemb_label ?> [<a id='EmbedOptionsLink' href='javascript:void(0)' onClick='showHideEmbedOptions()'><? $wgStrings.amwg_hideaddemb_label ?></a></b>]
+		<BR><BR>
+	
+		<? assign var="href" value="window.open(\""|cat:$embInfo.src|cat:"\", \"\",\"width="|cat:$embInfo.width|cat:",height="|cat:$embInfo.height|cat:"\"); return false;" ?>
+		<? $wgStrings.amwg_wglink_label ?> (<a href="#" onClick='<? $href ?>'><? $wgStrings.amwg_wglinksample_label ?></a>) <BR>
+		<textarea onFocus='this.select()' class='FormControl' wrap="soft" style='width: 800px; color: #909090' rows=3>&lt;a href='#' onClick='<? $href|htmlsafe:true:true ?>'&gt;Show&lt;/a&gt;</textarea>
+		<BR><BR>
+		
+		<? $wgStrings.amwg_permalink_label ?>:<BR>
+		<a target='_blank' href='<? $embInfo.src ?>'><? $embInfo.src ?></a>
+		
+		<BR><BR>
+	
+	  <input type="hidden" name="service_key" value="52616e646f6d4956f82e12fcb88c01e454448d80f587b6dea7c6bdddf5ff572ca0b749f19f71f6b88d3a46bb7f993382 " />
+	  <input type="hidden" name="service_name" value="Webasyst" />
+	  <input type="hidden" name="service_url" value="http://www.webasyst.net/" />
+	  <input type="hidden" name="long_name" value="Webasyst SignUp Form" />
+	  <input type="hidden" name="short_name" value="wa_subscriber" />
+	  <input type="hidden" name="content" value="<? $embInfo.code ?>" />
+	  <input type="hidden" name="return_url" value="http://www.webasyst.com/" />
+	  <input class='FormControl' type="button" onClick='processTextButton("installtpbtn")' name="installtpbtn" value="<? $wgStrings.amwg_typepadinstall_label ?>" />
+	</div>
+<? /if ?>

@@ -1,0 +1,3 @@
+<input <? if $preview ?>onChange='fieldChanged("<? $fieldName ?>", this.value); fieldColorChanged ("<? $fieldName ?>");'<? /if ?> type="text" id="<? $fieldName ?>" maxlength=10 size=10 class="FormControl" name="fields[<? $fieldName ?>]" value="<? $fieldValue|htmlsafe:true:true ?>"/>
+<span style='width: 10px; border: 1px solid #999999; display:inline; <? if $fieldValue ?>background: <? $fieldValue ?><? /if ?>' id='<? $fieldName ?>Prev'>&nbsp;&nbsp;&nbsp;</span>
+<A HREF="#" onClick='showColorPicker(this,document.getElementById("<? $fieldName ?>")); return false;' NAME="pick2" ID="pick2"><? $wgStrings.amwg_colorpick_label	?></A>

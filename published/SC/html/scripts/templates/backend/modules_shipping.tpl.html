@@ -1,0 +1,112 @@
+{* shipping modules managment*}
+
+
+{if $constant_managment}
+	
+	<h1>{"mdl_shipping_module_setup"|translate} : {$shipping_module->title}</h1>
+
+	<a href="{"setting_up="|set_query}">&lt;&lt;{lbl_pgn_shipping_modules}</a>
+
+<p>
+<form method="post" name="shipping_method_form">
+
+	{if $settings}
+	<table width="100%"  cellspacing=1 cellpadding=5 bgcolor=#bedddb border=0>
+
+		<tr bgcolor=#bedddb>
+			<td align=middle>
+				{"cfg_config_option"|translate}
+			</td>
+			<td align=middle>
+				{"prdcustopt_value_variants"|translate}
+			</td>
+		</tr>
+
+		{section name=i loop=$settings}
+		{if $controls[i] ne -1}
+		<tr bgcolor=white> 
+			<td width="50%" align="right" valign="top">
+				<strong>
+					{$settings[i].settings_title}
+				</strong>:
+				<br>
+				<font size="-2">
+					{$settings[i].settings_description}
+				</font>
+			</td>
+			<td width="50%" align="left" valign="top">
+				{$controls[i]}
+			</td>
+		</tr>
+		{/if}
+		{/section}
+	</table>
+
+	<br>
+	<input type=submit name='save' value='{"btn_save"|translate}'>
+
+	{else}
+		&lt; {"cfg_config_no_options"|translate} &gt;
+	{/if}
+
+</form>
+{else}
+
+	<h1>{$CurrentDivision.name|translate}</h1>
+	{"mdl_payment_modules_description"|translate}
+	<p>
+<table width="100%">
+	<tr>
+		<td width="50%" valign="top">
+			<table cellspacing=1 cellpadding=5 bgcolor=#bedddb border=0>
+				<tr>
+					<td align=middle>{"mdl_name"|translate}</td>
+					<td align=middle>{"str_description"|translate}</td>
+					<td align=middle>{"mdl_actions"|translate}</td>
+				</tr>
+			
+				{section name=i loop=$shipping_modules}
+				<tr bgcolor=white> 
+					<td valign="top">
+						{$shipping_modules[i]->title}
+					</td>
+					<td valign="top">
+						{$shipping_modules[i]->description}
+					</td>
+					<td align=center>
+						{if $shipping_modules[i]->ModuleType || !$shipping_modules[i]->is_installed()}
+						<a href='{"&install=`$smarty.section.i.index`"|set_query}'>
+							{"mdl_install"|translate}
+						</a>
+						{/if}
+					</td>
+			    	</tr>
+				{/section}
+			</table>
+		</td>
+		<td width="50%" valign="top">
+			<table cellspacing=1 cellpadding=5 bgcolor=#bedddb border=0 width="100%">
+				<tr>
+					<td colspan="3">
+						{"msg_installed_modules"|translate}
+					</td>
+				</tr>
+				{foreach from=$shipping_configs item=_shConfig}
+				{assign var="InstalledModuleConfigs" value=1}
+				<tr bgcolor="white">
+					<td width="100%">{$_shConfig.ConfigName}</td>
+					<td><a href="{"&setting_up=`$_shConfig.ConfigID`"|set_query}">{"btn_edit"|translate}</a></td>
+					<td><a href="{"uninstall=`$_shConfig.ConfigID`"|set_query}">{"btn_delete"|translate}</a></td>
+				</tr>
+				{/foreach}
+				{if !$InstalledModuleConfigs}
+				<tr bgcolor="white">
+					<td width="100%" align="center" colspan="3">{"msg_no_installed_modules"|translate}</td>
+				</tr>
+				{/if}
+			</table>
+		</td>
+	</tr>
+</table>
+
+{/if}

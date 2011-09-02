@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script>
+			function showHideUpdatePanel () {
+				panel = document.getElementById("UpdatePanel");
+				panel.style.display = (panel.style.display == "none") ? "block" : "none";
+			}
+		</script>
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+			<? $cinfo_message ?>
+			
+			<BR><BR>
+			<? $kernelStrings.cinfo_incorrectemail_text ?> <a href='javascript:void(0)' onClick='showHideUpdatePanel(); return false;'><? $kernelStrings.cinfo_incorrectemail_link ?><BR> </a>
+			<BR>
+			<div id='UpdatePanel' style='display:none'>
+				<b><label style='display: inline' for=newEmail><? $kernelStrings.cinfo_email_label ?>:</label></b>
+				<BR>
+				<input type='text' name='newEmail' value='' size='30'>
+				<BR><BR>
+				
+				<? wbs_button name='changeemail' caption=$kernelStrings.cinfo_emailupdate_btn ?>
+			</div>
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

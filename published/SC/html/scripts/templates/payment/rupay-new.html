@@ -1,0 +1,21 @@
+<form action="https://rupay.com/acceptpurchase.aspx" name="RuPayNewForm" method="post">
+<input type="hidden" name="eshopId" value="{$eshop_id}" />
+<input type="hidden" name="orderId" value="{$order_id}" />
+<input type="hidden" name="serviceName" value="Order #{$smarty.const.CONF_ORDERID_PREFIX}{$order_id}" />
+<input type="hidden" name="recipientAmount" value="{$order_info.order_amount}" />
+<input type="hidden" name="recipientCurrency" value="{$order_info.currency_code}" />
+<input type="hidden" name="successUrl" value="{$success_url}" />
+<input type="hidden" name="failUrl" value="{$fail_url}" />
+{if !$active}<input type="submit" value="{"btn_pay_now"|translate}" />
+{/if}</form>
+{if $active}
+<center><h1>{"lbl_redirecting_to_rupay"|translate}</h1></center>
+<script type="text/javascript" language="JavaScript">
+{literal}
+var rp_win_ol_back = window.onload;
+window.onload = function() {
+    if(rp_win_ol_back) rp_win_ol_back();
+    setTimeout("document.RuPayNewForm.submit();",2000);
+};
+{/literal}
+</script>{/if}

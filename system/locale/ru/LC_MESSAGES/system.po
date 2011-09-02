@@ -1,0 +1,673 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WebAsyst\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2010-06-08 15:35+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: Russian Federation\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+# PHP System String
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Mobile phone must contain from 7 to 12 numbers"
+msgstr "Мобильный телефон должен содержать от 7 до 12 цифр"
+
+# System templates (index.html etc.)
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Account"
+msgstr "Аккаунт"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "ACCOUNT NOT CONFIRMED"
+msgstr "АККАУНТ НЕ ПОДТВЕРЖДЕН"
+
+msgid "What's this?"
+msgstr "Что это значит?"
+
+msgid "Extend account"
+msgstr "Продлить аккаунт"
+
+msgid "Menu position"
+msgstr "Положение меню"
+
+msgid "Top"
+msgstr "Наверху"
+
+msgid "Left"
+msgstr "Слева"
+
+msgid "Right"
+msgstr "Справа"
+
+msgid "Bottom"
+msgstr "Внизу"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Change password"
+msgstr "Изменить пароль"
+
+msgid "Enter a new password"
+msgstr "Введите новый пароль"
+
+msgid "Confirm new password"
+msgstr "Подтвердите новый пароль"
+
+msgid "Passwords do not match."
+msgstr "Пароли не совпадают."
+
+msgid "Show"
+msgstr "Показывать"
+
+msgid "Icons and Names"
+msgstr "Значки и названия"
+
+msgid "Icons only"
+msgstr "Только значки"
+
+msgid "Names only"
+msgstr "Только названия"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Full screen"
+msgstr "Полный экран"
+
+msgid "Exit full screen"
+msgstr "Вернуться"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+# Applications
+msgid "Files"
+msgstr "Файлы"
+
+msgid "Photos"
+msgstr "Фото"
+
+msgid "Contacts"
+msgstr "Контакты"
+
+msgid "Mail"
+msgstr "Почта"
+
+msgid "Projects"
+msgstr "Проекты"
+
+msgid "Notes"
+msgstr "Блокнот"
+
+msgid "Users"
+msgstr "Команда"
+
+msgid "Help Desk"
+msgstr "Поддержка"
+
+msgid "Helpdesk"
+msgstr "Поддержка"
+
+msgid "General Ledger"
+msgstr "Главная Книга"
+
+msgid "Issue Tracker"
+msgstr "Задания"
+
+msgid "Merchant"
+msgstr "Продажи"
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Shopping Cart"
+msgstr "Магазин"
+
+# Contact Fields
+msgid "Contact ID"
+msgstr "Номер контакта"
+
+msgid "Contact type"
+msgstr "Тип контакта"
+
+msgid "Folder"
+msgstr "Папка"
+
+msgid "Adding date"
+msgstr "Дата добавления"
+
+msgid "Added by"
+msgstr "Кем добавлен"
+
+msgid "Adding application"
+msgstr "Добавлен из приложения"
+
+msgid "Adding method"
+msgstr "Метод добавления"
+
+msgid "Modification date"
+msgstr "Дата изменения"
+
+msgid "Modified by"
+msgstr "Кем изменен"
+
+msgid "Login name"
+msgstr "Логин"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Main section"
+msgstr "Главная секция"
+
+msgid "Subscriber status"
+msgstr "Статус подписчика"
+
+msgid "First name"
+msgstr "Имя"
+
+msgid "Middle name"
+msgstr "Отчество"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "Title"
+msgstr "Обращение"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Photo"
+msgstr "Фото"
+
+msgid "Phone numbers"
+msgstr "Телефонные номера"
+
+msgid "Home phone"
+msgstr "Домашний телефон"
+
+msgid "Work phone"
+msgstr "Рабочий телефон"
+
+msgid "Mobile phone"
+msgstr "Сотовый телефон"
+
+msgid "Home fax"
+msgstr "Домашний факс"
+
+msgid "Work fax"
+msgstr "Рабочий факс"
+
+msgid "Instant messengers"
+msgstr "Мгновенные сообщения"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "Skype"
+msgstr "Skype"
+
+msgid "Home address"
+msgstr "Домашний адрес"
+
+msgid "Street address"
+msgstr "Улица, дом"
+
+msgid "City"
+msgstr "Город"
+
+msgid "State"
+msgstr "Регион"
+
+msgid "Postal code"
+msgstr "Индекс"
+
+msgid "Country"
+msgstr "Страна"
+
+msgid "Personal information"
+msgstr "Персональная информация"
+
+msgid "Date of birth"
+msgstr "День рождения"
+
+msgid "Personal website"
+msgstr "Личная веб-страница"
+
+msgid "Work address"
+msgstr "Рабочий адрес"
+
+msgid "Company website"
+msgstr "Сайт организации"
+
+msgid "Misc"
+msgstr "Дополнительно"
+
+msgid "Other info"
+msgstr "Общее описание"
+
+# Contact types
+msgid "Person"
+msgstr "Персона"
+
+msgid "Add a new person"
+msgstr "Добавить персону"
+
+msgid "Company"
+msgstr "Организация"
+
+msgid "Add a new company"
+msgstr "Добавить организацию"
+
+# System errors
+msgid "Number of characters can not exceed "
+msgstr "Количество символов не должно превышать "
+
+# System
+msgid "no folder"
+msgstr "без папки"
+
+msgid "Available folders"
+msgstr "Доступные папки"
+
+msgid "New folder"
+msgstr "Новая папка"
+
+msgid "Primary name"
+msgstr "Главное имя"
+
+# Rights
+msgid "Available depratments"
+msgstr "Доступные отделы"
+
+msgid "Available books"
+msgstr "Доступные книги"
+
+msgid "Can create books"
+msgstr "Может создавать книги"
+
+msgid "Available actions with books"
+msgstr "Доступные действия с книгами"
+
+msgid "Has access to book list"
+msgstr "Имеет доступ к Списку книг"
+
+msgid "Can use tools"
+msgstr "Имеет доступ к Инструментам"
+
+msgid "Project manager"
+msgstr "Менеджер проектов"
+
+msgid "Available projects"
+msgstr "Доступные проекты"
+
+msgid "Can manage customers"
+msgstr "Имеет доступ к Заказчикам"
+
+msgid "Has access to project list"
+msgstr "Имеет доступ к Менеджеру проектов"
+
+msgid "Can create albums"
+msgstr "Может создавать альбомы"
+
+msgid "Can manage albums (and see the list of all albums)"
+msgstr "Управление альбомами"
+
+msgid "Can modify public gallery design"
+msgstr "Изменение дизайна и настроек"
+
+msgid "Can create and manage collections"
+msgstr "Управление коллекциями"
+
+msgid "Can edit personal user settings"
+msgstr "Может редактировать свои настройки"
+
+msgid "Can edit personal contact information"
+msgstr "Может редактировать информацию о себе"
+
+msgid "Referal partners"
+msgstr "Реферал-партнеры"
+
+msgid "Metrics"
+msgstr "Метрики"
+
+msgid "Gifts"
+msgstr "Подарки"
+
+msgid "Discount"
+msgstr "Дисконт коды"
+
+msgid "Cleanup expired accounts"
+msgstr "Удалить истекшие аккаунты"
+
+msgid "WebAsyst hosted accounts"
+msgstr "WebAsyst hosted Accounts"
+
+msgid "The average rate of USD"
+msgstr "Средний курс USD"
+
+msgid "Refund & Chargeback"
+msgstr "Refund & Chargeback"
+
+msgid "Information blocks"
+msgstr "Информационные блоки"
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Requisites"
+msgstr "Реквизиты"
+
+msgid "Product list"
+msgstr "Список продуктов"
+
+msgid "Search customer"
+msgstr "Поиск заказчика"
+
+msgid "License list"
+msgstr "Список лицензий"
+
+msgid "Can access \"Inbox\""
+msgstr "Имеет доступ к папке \"Входящие\""
+
+msgid "Is notified on issue assignment"
+msgstr "Уведомлять о назначениях на задания"
+
+msgid "Can manage workflow"
+msgstr "Может настраивать процесс"
+
+msgid "Has access to settings"
+msgstr "Настройки"
+
+msgid "Has access to types of operations"
+msgstr "Настройки"
+
+msgid "Has access to accounts"
+msgstr "Счета"
+
+msgid "Can use balance"
+msgstr "Баланс"
+
+msgid "Can use operations"
+msgstr "Операции"
+
+msgid "inherited from projects"
+msgstr "унаследовано от Проектов"
+
+msgid "Can see other users' permissions"
+msgstr "Может видеть список пользователей, имеющих совместный доступ к папкам"
+
+msgid "Is notified on folder update"
+msgstr "Уведомлять пользователя об обновлениях папок"
+
+msgid "Has access to recycle bin and settings"
+msgstr "Имеет доступ к корзине и настройкам"
+
+msgid "Can manage widgets"
+msgstr "Доступ к виджетам"
+
+msgid "Available functions"
+msgstr "Доступные действия"
+
+msgid "Available actions with folders"
+msgstr "Управление папками"
+
+msgid "Can create root folders"
+msgstr "Может создавать папки в корне"
+
+msgid "Can use reports"
+msgstr "Доступ к отчетам"
+
+msgid "Available albums"
+msgstr "Доступные альбомы"
+
+msgid "Available actions with albums"
+msgstr "Допустимые действия с альбомами"
+
+msgid "Notifications"
+msgstr "Уведомления"
+
+msgid "invited user, login not created yet"
+msgstr "приглашенный пользователь, логин еще не создан"
+
+msgid "login disabled"
+msgstr "вход запрещен"
+
+msgid "Personal settings"
+msgstr "Личные настройки"
+
+msgid "Has private folder"
+msgstr "Имеет личную папку"
+
+#Folders
+msgid "All contacts"
+msgstr "Все контакты"
+
+msgid "Private"
+msgstr "Личная"
+
+msgid "Public"
+msgstr "Общая"
+
+#Methods
+msgid "Added by user"
+msgstr "Добавлен пользователем"
+
+msgid "Subscription via Sign-up form"
+msgstr "Регистрация через форму подписки"
+
+msgid "Added by administrator"
+msgstr "Добавлен администратором"
+
+msgid "Subscription via invitation"
+msgstr "Регистрация по приглашению"
+
+msgid "Auto-added when receiving an Email request from a new client"
+msgstr "Автоматически при подтверждении запроса новым клиентом"
+
+# Forms
+msgid "Signup"
+msgstr "Подписка"
+
+msgid "Submit"
+msgstr "Отправить"
+
+msgid "Thank you!"
+msgstr "Спасибо!"
+
+msgid "Please confirm your subscription"
+msgstr "Пожалуйста, подтвердите вашу подписку"
+
+msgid "<p>{COMPANY_NAME} has just received a sign-up request from your address: {EMAILADDRESS}</p><p>Please click this link to confirm your subscription:<br />{CONFIRM_SUBSCRIPTION_URL}</p><p>Thank you.</p>"
+msgstr "<p>{COMPANY_NAME} только что получил запрос на подписку с вашего адреса: {EMAILADDRESS}</p><p>Пожалуйста, перейдите по этой ссылке для подтверждения подписки:<br />{CONFIRM_SUBSCRIPTION_URL}</p><p>Спасибо.</p>"
+
+msgid "Type these numbers"
+msgstr "Введите эти цифры"
+
+msgid "Your account has been expired.'"
+msgstr "Срок действия аккаунта истек."
+
+msgid "Your account will expire in %s day(s)."
+msgstr "Срок действия аккаунта истечет через %s дней."
+
+msgid "Full name"
+msgstr "Полное имя"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Text (single line)"
+msgstr "Строка"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Numeric"
+msgstr "Число"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "Text (multiple lines)"
+msgstr "Текст"
+
+msgid "Checkbox"
+msgstr "Флажок (checkbox)"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "System"
+msgstr "Системные"
+
+msgid "Store customers"
+msgstr "Покупатели магазина"
+
+msgid "ACCOUNT LIMIT"
+msgstr "ОГРАНИЧЕНИЕ АККАУНТА"
+
+msgid "Upgrade account"
+msgstr "Изменить тарифный план"
+
+msgid "Please refer to your account administrator."
+msgstr "Пожалуйста, обратитесь к администратору вашего аккаунта."
+
+msgid "Insert variable"
+msgstr "Вставить переменную"
+
+msgid "Recipient's parameters"
+msgstr "Параметры получателя"
+
+msgid "My personal parameters"
+msgstr "Мои личные параметры"
+
+msgid "Company parameters"
+msgstr "Параметры компании"
+
+msgid "Contact name"
+msgstr "Контактное лицо"
+
+msgid "Company name"
+msgstr "Название компании"
+
+msgid "Contact email"
+msgstr "Контактный email"
+
+msgid "Contact phone"
+msgstr "Контактный телефон"
+
+msgid "Contact fax"
+msgstr "Контактный факс"
+
+msgid "Subscription management"
+msgstr "Управление подпиской"
+
+msgid "Subscriber's personal page"
+msgstr "Личный кабинет подписчика"
+
+msgid "Instant unsubscribing"
+msgstr "Немедленная отписка"
+
+msgid "Zip"
+msgstr "Индекс"
+
+msgid "Comma"
+msgstr "Запятая"
+
+msgid "Semicolon"
+msgstr "Точка с запятой"
+
+msgid "Tab"
+msgstr "Табуляция"
+
+msgid "To add a variable to your message, select it from the list and click it. When the message is sent, variables will be substituted with their real values."
+msgstr "Чтобы вставить переменную в письмо, выберите ее в списке и щелкните по ней. При отправке письма переменные будут заменяться на соответствующие им данные."
+
+msgid "subscribers via sign up form"
+msgstr "подписчики через форму подписки"
+
+msgid "Primary name must be filled."
+msgstr "Главное имя должно быть заполнено."
+
+msgid "At least one of the primary name fields must be filled."
+msgstr "Хотя бы одно из полей главного имени должно быть заполнено."
+
+msgid "This field must be numeric"
+msgstr "Это поле должно быть числовым"
+
+msgid "Incorrect URL"
+msgstr "Неправильный URL"
+
+msgid "Incorrect date"
+msgstr "Неправильная дата"
+
+msgid "Incorrect email"
+msgstr "Неправильный email"
+
+msgid "Administrator"
+msgstr "Администратор"
+
+msgid "Unknown file type"
+msgstr "Неизвестный тип файла"
+
+msgid "This field is required"
+msgstr "Это поле обязательное"
+
+msgid "Available storage space"
+msgstr "Доступное место на диске"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Is notified on request assignment"
+msgstr "Получает уведомление при назначении"
+
+msgid "Access level"
+msgstr "Уровень доступа"
+
+msgid "Your name"
+msgstr "Ваше имя"
+
+msgid "Summary"
+msgstr "Тема"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Support form"
+msgstr "Запрос в службу поддержки"
+
+msgid "Please confirm your request"
+msgstr "Пожалуйста, подтвердите свой запрос"
+

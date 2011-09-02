@@ -1,0 +1,147 @@
+<style type="text/css">
+	div.block-add-note, #notes {margin: 0 20px;}
+	div.block-add-note {margin-right: 20px; text-align: right;}
+	div#block-add-note {text-align: left;}
+	div.note {margin: 5px 0;border-bottom: 1px solid #ccccce;}
+	#block-add-note {border-bottom: none;}
+	div.note div.note-header {padding: 5px;	text-align: right;font-size: 80%;}
+	div.note div.note-header span.added-by {color: #666;}
+	div.note div.note-header span.buttons {padding-left: 20px;}
+	div.no-notes {margin: 10px 20px 20px 20px;}
+	div.pager {	margin: 5px;}
+	#notes textarea { font-family:'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size:10.5pt;}
+	div.note .text { background:url({{$url.img}}i-note32.gif) 0 10px no-repeat;padding-left:40px; width:auto !important; margin: 0 30px 0 0;}
+</style>
+<div class="usertop">
+	<table class="contact">
+    <tr>
+		<td class="contacts">
+		<div class="large inline l"><div class="edit">{{$name}}</div></div>
+	 	</td>
+	</tr>
+	</table>
+</div>
+{{if !$notes}}<div class="no-notes">{{$no_notes}}</div>{{/if}}
+{{if $right_edit}}
+<div class="block-add-note">
+	<input id="add-note" type="button" value="[`Add a note`]" class="add-note" />
+	<div id="block-add-note" class="note" style="display:none">
+		<div class="note-title">[`Add a note`]</div>
+		<div class="text">
+			<textarea id="add-note-text" style="width:98%; height: 100px"></textarea>
+		</div>
+		<div class="buttons">
+			<input id="add-note-save" type="button" value="[`Save`]" />
+			<input id="add-note-cancel" type="button" value="[`Cancel`]" />
+		</div>
+	</div>
+</div>
+<div class="block-edit-note note" style="display:none">
+	<div class="text">
+		<textarea class="edit-note-text" style="width:98%; height: 100px"></textarea>
+	</div>
+	<div class="buttons" style="margin-bottom: 5px">
+		<input class="edit-note-save" type="button" value="[`Save`]" />
+		<input class="edit-note-cancel" type="button" value="[`Cancel`]" onClick="cancelEdit(this)" />
+	</div>
+</div>
+{{/if}}
+<div id="notes">
+{{include file="AjaxUsersNotes.html"}}
+</div>
+<script type="text/javascript">
+{{if $user_id}}
+	var contact_new = {user_id: "{{$user_id}}", user_status: "{{$user_status}}", status: "{{$status}}", contact_id: '{{$contact_id}}', last_time: "{{$last_time}}"};
+	if (contact_new.user_id != contact.user_id) {
+		location.href = location.href;
+	}
+	$("#last_time").html(contact_new.last_time);
+{{/if}}
+
+	var offset = 0;
+	{{if $right_edit}}
+	$("#add-note").click(function () {
+		$(this).hide();
+		$("#block-add-note").show();
+		$("#add-note-text").select();
+	});
+
+	{{if !$notes}}
+	$(document).ready(function () {
+		$("#add-note").click();		
+	});
+	{{/if}}
+	$("#add-note-cancel").click(function () {
+		$("#block-add-note").hide();
+		$("#add-note").show();
+		$("#add-note-text").val("");		
+	});
+	
+	$("#add-note-save").click(function () {
+		var note = $("#add-note-text").val();
+		if (note) { 
+			$.post("?mod=users&act=notes&do=add&ajax=1", {C_ID:"{{$contact_id}}", note: note, offset: 0}, function (response) {
+				$("#notes").html(response);
+				if (response.length) {
+					$(".no-notes").hide();
+				} else {
+					$(".no-notes").show();
+				}					
+				$("#add-note-cancel").click();
+			});
+		}
+	});
+	
+	function deleteNote(id) {
+		$.post("?mod=users&act=notes&do=delete&ajax=1", {C_ID:"{{$contact_id}}", id: id, offset: offset}, function (response) {
+			$("#notes").html(response);
+			if (response.length) {
+				$(".no-notes").hide();
+			} else {
+				$(".no-notes").show();
+			}					
+		});
+	}
+
+	function editNote(id) {
+		$("#note" + id).hide();
+		$("div.block-edit-note:first").clone().insertAfter("#note" + id).show().attr('id', "edit" + id);
+		$("#edit" + id + " textarea.edit-note-text").val($("#note" + id + " div.text").text());
+		$("#edit" + id + " .edit-note-save").click(function () {
+			saveNode(id);
+		});
+	}
+
+	function saveNode(id) {
+		var params = {C_ID:"{{$contact_id}}", id: id, offset: offset, note: $("#edit" + id + " textarea.edit-note-text").val()};
+		$.post("?mod=users&act=notes&do=edit&ajax=1", params, function (response) {
+			$("#notes").html(response);
+			if (response.length) {
+				$(".no-notes").hide();
+			} else {
+				$(".no-notes").show();
+			}					
+			$("#edit" + id + " .edit-note-cancel").click();
+		});
+	}
+
+	function cancelEdit(obj) {
+		var div = $(obj).parent().parent();
+		div.prev().show();
+		div.remove();
+	}
+	{{/if}}
+	function loadPage(n) {
+		offset = {{$limit}} * (n - 1);
+		$.post("?mod=users&act=notes&ajax=1", {C_ID:"{{$contact_id}}", offset: offset}, function (response) {
+			$("#notes").html(response);
+			if (response.length) {
+				$(".no-notes").hide();
+			} else {
+				$(".no-notes").show();
+			}					
+		});
+		return false;
+	}
+		
+</script>

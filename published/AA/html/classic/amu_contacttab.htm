@@ -1,0 +1,29 @@
+<? assign var=controlWidth value=150 ?>
+<table border=0 cellpadding=0 cellspacing=2>
+	<tr>
+		<td><nobr><? conditionalOutput invalidField=$invalidField field="C_FIRSTNAME" text=#invalidFieldHighlight# ?><? $kernelStrings.app_longname_firstname|cat:":&nbsp;" ?></nobr></td>
+		<td valign=top><input class=control type=text name="contactData[C_FIRSTNAME]" value="<? $contactData.C_FIRSTNAME|htmlsafe:true:true ?>" maxlength=50 style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td><nobr><? conditionalOutput invalidField=$invalidField field="C_LASTNAME" text=#invalidFieldHighlight# ?><? $kernelStrings.app_longname_lastname|cat:":&nbsp;" ?></nobr></td>
+		<td valign=top><input class=control type=text name="contactData[C_LASTNAME]" value="<? $contactData.C_LASTNAME|htmlsafe:true:true ?>" maxlength=50 style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td><nobr><? $kernelStrings.app_longname_midname|cat:":&nbsp;" ?></nobr></td>
+		<td valign=top><input class=control type=text name="contactData[C_MIDDLENAME]" value="<? $contactData.C_MIDDLENAME|htmlsafe:true:true ?>" maxlength=50 style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><nobr><? $kernelStrings.app_longname_nickname|cat:":&nbsp;" ?></nobr></td>
+		<td valign=top><input class=control type=text name="contactData[C_NICKNAME]" value="<? $contactData.C_NICKNAME|htmlsafe:true:true ?>" maxlength=255 style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><nobr><? conditionalOutput invalidField=$invalidField field="C_EMAILADDRESS" text=#invalidFieldHighlight# ?><? $kernelStrings.app_longname_email|cat:":&nbsp;" ?></nobr></td>
+		<td valign=top><input class=control type=text name="contactData[C_EMAILADDRESS]" value="<? $contactData.C_EMAILADDRESS|htmlsafe:true:true ?>" maxlength=255 style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+</table>

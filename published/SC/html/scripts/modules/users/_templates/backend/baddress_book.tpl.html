@@ -1,0 +1,15 @@
+<table cellpadding="4">
+{section name=i loop=$addresses}
+	<tr>
+		<td>
+			<b>{"str_address"|translate} {$smarty.section.i.index+1} 
+				{if $addresses[i].addressID == $defaultAddressID}
+					({"str_default"|translate})
+				{/if}
+			</b>
+			<br />
+			{$addresses[i].addressStr}
+		</td>
+	</tr>
+{/section}
+</table>

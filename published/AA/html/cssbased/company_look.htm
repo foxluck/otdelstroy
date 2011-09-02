@@ -1,0 +1,52 @@
+<? if $edited && !$errorStr ?>
+<script>
+	window.top.refreshWrapper(document.location.href);
+</script>
+<? /if ?>
+
+
+<div style='height: 5px; line-height: 5px; display: block'></div>
+<input type='hidden' name='showCompanyNameTop' value='no'>
+<input type='checkbox' value='yes' <? if $showCompanyNameTop ?>checked<? /if ?> name='showCompanyNameTop'> <? $kernelStrings.ci_showcompanynametop_label ?>
+<BR><BR>
+
+<strong><? $kernelStrings.ci_logo_title ?></strong><BR>
+<? if $showLogo ?>
+	<table class="LogoTable">
+		<tr>
+			<td><div class="LogoContainer"><img alt="<? $kernelStrings.ci_selectlogo_label ?>" src="../../../common/html/scripts/getlogo.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" width="96" /></div></td>
+			<td><? wbs_button caption=$kernelStrings.ci_delete_btn name="deletebtn" ?><td>
+		</tr>
+	</table>
+<? /if ?>
+<? wbs_label for="SELECTLOGO" text=$kernelStrings.ci_selectlogo_label ?>
+<div style="display: none;" class="CommentBlock" id="LOGOComment">
+	<div class="Caption"><div class="CloseButton" onclick='showHideComment("LOGO");'>x</div><? $kernelStrings.ci_logo_comment_caption ?></div>
+	<div class="Text"><? $kernelStrings.ci_logo_comment_text ?></div>
+</div>
+<BR>
+<input name="logo" type="file" class="FormControl" id="SELECTLOGO" size="30"/ <? if $current_plan == $smarty.const.HOST_DEFAULT_PLAN ?>disabled="disabled"<? /if ?>>
+<BR>
+<? if $current_plan == $smarty.const.HOST_DEFAULT_PLAN?> 
+	<span style="background-color:#FFFF99;font-weight: bold;"><? $kernelStrings.bill_free_restriction ?> <a href="./change_plan.php"><? $kernelStrings.bill_update_now ?></a>.</span>
+<? else ?>
+	<?* wbs_note ?><? $kernelStrings.ci_logo_note ?><? /wbs_note *?>
+<? /if ?>
+
+
+<div style='height: 5px; line-height: 5px; display: block'></div>
+<input type='hidden' name='showCompanyTop' value='no'>
+<input type='checkbox' value='yes' <? if $showCompanyTop ?>checked<? /if ?> name='showCompanyTop' <? if $current_plan == $smarty.const.HOST_DEFAULT_PLAN ?>disabled="disabled"<? /if ?>> <? $kernelStrings.ci_showlogotop_label ?>
+<BR><BR>
+
+
+<strong><? $kernelStrings.lf_seltheme_label ?></strong>
+<table class="FormLayout" style='margin-top: 10px'>
+	<tr>
+	<? foreach from=$themes item=themeInfo key=themeId name=themeLoop ?>
+			<td class="Indent"><input id="<? $themeId ?>" name="curTheme" value="<? $themeId ?>" <? wbs_checkboxStatus val=$curTheme true_val=$themeId ?> type="radio"/></td>
+			<td><div style='border: 1px solid #999; width: 50px; height: 20px; background: <? $themeInfo.color ?>'></div></td>
+		<? if !(($smarty.foreach.themeLoop.index+1)%4) ?></tr><tr><? /if ?>
+	<? /foreach ?>
+</table>
+<BR><BR>

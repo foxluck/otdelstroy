@@ -1,0 +1,132 @@
+{* registration form *}
+<h1>{"usrreg_registration_form"|translate}</h1>
+
+{if $order ne NULL}
+	<p>{"checkout_continue_tip"|translate}</p>
+{/if}
+
+{*
+@features "Trial product"
+*}
+	{if $overflowCustomers}
+	<div class="error_msg_f">{$smarty.const.TRIAL_STRING_CUSTOMERS_OVERFLOW|replace:'[NUM]':$smarty.const.TRIAL_MAX_CUSTOMERS_NUM}</div>
+	<p>{$smarty.const.TRIAL_STRING_LIMITATIONS}</p>
+	{/if}
+{*
+@features
+*}
+
+<p>{"usrreg_required_regform_fields_descr"|translate}</p>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" name="RegisterForm"><div class="form_wrapper">
+	<input type="hidden" name="action" value="save">
+	<table id="reg_fields_tbl" cellpadding="0" cellspacing="0">
+	<!-- STRING AUTHORIZATION FIELDS (LOGIN, PASSWORD) -->
+	
+	<tbody id="reg_auth_fields">
+	<tr>
+		<td><span class="asterisk">*</span>{"usr_custinfo_login"|translate}</td>
+		<td><input type="text" name="login" value="{$login|escape:'html'}" ></td>
+	</tr>
+	<tr>
+		<td><span class="asterisk">*</span>{"usr_custinfo_password"|translate}</td>
+		<td><input type="password" name="cust_password1" value="{$cust_password1|escape:'html'}" ></td>
+	</tr>
+	<tr>
+		<td><span class="asterisk">*</span>{"usrreg_customer_confirm_password"|translate}</td>
+		<td><input type="password" name="cust_password2" value="{$cust_password2|escape:'html'}" ></td>
+	</tr>
+	</tbody>
+	<tbody>
+	<!-- GENERAL INFORMATION (FIRST NAME, LAST NAME, EMAIL ) -->
+	<tr class="row_{cycle values='odd,even'}">
+		<td>
+{*
+@features "Affiliate program"
+*}
+			{if $SessionRefererLogin || $smarty.const.CONF_AFFILIATE_PROGRAM_ENABLED eq 0}
+			<input name="affiliationLogin" type="hidden" value="{$SessionRefererLogin|escape:'html'}" >
+			{/if}
+{*
+@features
+*}
+			<span class="asterisk">*</span>{"usr_custinfo_first_name"|translate}
+		</td>
+		<td><input type="text" name="first_name" value="{$first_name|escape:'html'}" ></td>
+	</tr>
+	<tr class="row_{cycle values='odd,even'}">
+		<td><span class="asterisk">*</span>{"usr_custinfo_last_name"|translate}</td>
+		<td><input type="text" name="last_name" value="{$last_name|escape:'html'}" ></td>
+	</tr>
+	<tr class="row_{cycle values='odd,even'}">
+		<td><span class="asterisk">*</span>{"usr_custinfo_email"|translate}</td>
+		<td><input type="text" name="email" value="{$email|escape:'html'}"></td>
+	</tr>
+
+	<!-- ADDITIONAL FIELDS (SEE  admin.php?dpt=custord&sub=reg_fields URL) -->
+	{section name=i loop=$additional_fields}
+	{assign var=__key value="additional_field_`$additional_fields[i].reg_field_ID`"}
+	<tr class="row_{cycle values='odd,even'}">
+		<td>
+			{if $additional_fields[i].reg_field_required}<span class="asterisk">*</span>{/if}
+			{$additional_fields[i].reg_field_name|escape:'html'}
+		</td>
+		<td>
+			<input type='text' name='additional_field_{$additional_fields[i].reg_field_ID}' value='{$post_data[$__key]|escape:'html'}' >
+		</td>
+	</tr>
+	{/section}
+	
+	<tr class="row_{cycle values='odd,even'}">
+		<td align="right"><input type="checkbox" id="subscribed4news" value="1" name="subscribed4news"{if $subscribed4news == 1} checked="checked"{/if} ></td>
+		<td><label for="subscribed4news">{"usrreg_subscribe_for_blognews"|translate}</label></td>
+	</tr> 
+
+	<!-- ADDRESS (COUNTRY, AREA(STATE), INDEX, CITY, ADDRESS) -->
+	{include file="address_form.html" name_space="address" address=$address intable=0 asknames=0 form_name="RegisterForm" ukey="register"}
+	{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+		
+	<tr><td colspan="2">&nbsp;</td></tr>
+	</tbody>
+	<tbody id="reg_confcode">
+	<tr>
+		<td colspan="2">{"str_enter_ccode"|translate}</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" border="0">
+		</td>
+		<td align="left">
+			<input name="fConfirmationCode" value="" type="text" >
+		</td>
+	</tr>
+	</tbody>
+	{/if}
+{*
+@features "Affiliate program"
+*}
+    {if !$SessionRefererLogin && $smarty.const.CONF_AFFILIATE_PROGRAM_ENABLED eq 1}
+    <tbody>
+    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr class="row_{cycle values='odd,even'}">
+        <td style="font-size: 90%;">{"usr_custinfo_referrer"|translate}</td>
+        <td><input type="text" name="affiliationLogin" value="{$affiliationLogin|escape:'html'}" style="width: 100px;" ></td>
+    </tr>
+    </tbody>
+    {/if}
+{*
+@features
+*}
+</table>
+
+
+<p><input type="submit" id="reg_submit_btn" value="{"btn_ok"|translate}" name="save" ></p>
+</div>
+</form>
+
+
+{if $reg_updating && $log != $smarty.const.ADMIN_LOGIN}
+<p>[ <a class=bold href="javascript:confirmUnsubscribe();">{"lnk_terminate_account"|translate}</a> ]</p>
+{/if}

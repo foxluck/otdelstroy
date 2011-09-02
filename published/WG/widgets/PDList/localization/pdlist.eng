@@ -1,0 +1,76 @@
+widget_name_long	Common	Widget full name	Photos Sharing
+widget_name_short	Common	Widget short name	Photos Sharing
+
+subtype_gallery_name	Subtypes	Subtype name	Gallery
+subtype_gallery_desc	Subtypes	Subtype desc	Displays photos with optional description in a tabular format. The easiest way to present a gallery of portraits, products, etc.
+subtype_album_name	Subtypes	Subtype name	Slideshow
+subtype_album_desc	Subtypes	Subtype desc	Plays a slideshow with optional navigational and add/delete buttons. Allows you to set a size of slideshow window and many other options.
+
+subtype_album_igoogle_title	igoogle	Subtype Album Title	WebAsyst Online Slideshow
+subtype_album_igoogle_description	igoogle	Subtype Album Description	Upload images to your online slideshow and access them from anywhere. Click filename in the list to view or download file. Add new files or delete files you don't need anymore
+
+created_datetime_label	Widget	Created Datetime Label	at
+
+wbs_block	Widget 	WBS PD Link block	Photos are published using <a href="http://www.webasyst.net/photos/" style="text-decoration: none;">WebAsyst Photos</a>
+
+pd_thumbnails_view	Photo Widget	Thumbnails View	Thumbnails
+pd_smallimages_view	Photo Widget	Small Images View	Small images with descriptions
+pd_largeimages_view	Photo Widget	Large images View	Large images with descriptions
+pd_slideshow_view	Photo Widget	Slideshow View	Slideshow Only
+
+pd_startslideshow_label	Photo Widget	Start Slideshow	Start Slideshow
+pd_linkWebasyst	Photo Widget	Start Slideshow	http://www.webasyst.net/photos/
+pd_email_link_label	Photo Widget	Email link title	Click the image above to view album or use the following address
+
+place_general_title	Widget customize dialog	Place general title	General
+place_color_title	Widget customize dialog	Place color title	Color
+place_size_title	Widget customize dialog	Place size title	Size
+place_photos_title	Widget customize dialog	Place files title	Photos
+place_view_title	Widget customize dialog	Place view title	View
+
+field_folder_label	Fields	Folder	Album
+field_files_label	Fields	Files	Images
+field_width_label	Fields	Width	Width
+field_height_label	Fields	Height	Height
+field_bodybgcolor_label	Fields	Bgcolor	Body Background
+field_slbodybgcolor_label	Fields	Bgcolor	Background
+field_showdesc_label	Fields	ShowDesc	Description
+field_showborder_label	Fields	ShowBorder	Border
+field_wglang_desc	Fields	Lang	This language will be used for system messages, e.g. errors, warnings etc.
+field_columnscount_label	Fields	Columns Count	Columns
+field_imagesize_label	Fields	Image Size	Image Size
+field_slimagesize_label	Fields	Image Size	Image Size
+field_slwidth_label	Fields	Slideshow Width	Width
+field_slheight_label	Fields	Slideshow Height	Height
+field_glimgwidth_label	Fields	Gallery Image Width	Image Width
+field_glimgheight_label	Fields	Gallery Image Height	Image Height
+field_glheight_label	Fields	Gallery Height	Gallery Height
+field_candelete_label	Fields	Files	Can delete files
+field_canmanage_label	Fields	Files	Can add files
+field_slcpanel_label	Fields	Slideshow Control Panel	Control Panel
+field_slcpanel_value_disable	Fields	Slideshow Control Panel value "disable"	&lt;disable&gt;
+field_slcpanel_value_view	Fields	Slideshow Control Panel value "view"	Navigation only
+field_slseconds_label	Fields	Slideshow Interval	Speed (seconds)	
+field_slonclick_label	Fields	Slideshow OnClick	On Click
+field_slonclick_value_disable	Fields	Slideshow OnClick value "disable"	&lt;no action&gt;
+field_slonclick_value_pause	Fields	Slideshow OnClick value "pause"	open in new window in Pause mode
+field_slonclick_value_play	Fields	Slideshow OnClick value "play"	open in new window in Play mode
+field_slautoplay_label	Fields	Slideshow AutoPlay	Auto-Play
+field_slautoplay_desc	Fields	Slideshow AutoPlay desc	If enabled Slideshow starts in Play mode
+field_slcpanel_value_manage	Fields	Slideshow Control Panel value "manage"	Navigation, add and delete buttons
+field_maxfilescount_label	Fields	Save button	Maximum number of files
+field_maxfilesize_label	Fields	Save button	Maximum file size (Mb)
+field_glonclick_label	Fields	Gallery OnClick	On Click
+field_glonclick_value_disable	Fields	Gallery OnClick value "disable"	&lt;no action&gt;
+field_glonclick_value_enlarge	Fields	Gallery OnClick value "enlarge"	Enlarge Image
+
+up_addfile_label	Widget	add file label	add
+up_delfile_label	Widget	add file label	delete
+up_addfile_btn	Widget	add file label	Add
+up_cancelbtn_label	Widget	Cancel button label	 Cancel
+up_nofiles_label	Widget	No files label	no images
+
+up_filedelete_message	Widget	File delete message	Are you sure you want to delete this file?
+up_filedelete_title	Widget	File delete title	delete file
+up_maxfilescount_error	Widget	Error max files count	Maximum number of files: %s
+up_maxfilesize_error	Widget	Error max file size	Maximum file size: %sMB

@@ -1,0 +1,501 @@
+<script src='../../../common/html/res/ext/pr-prototype.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/pr-adapter.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/pr-effects.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/ext-all.js' type="text/javascript"></script>
+<script type="text/javascript" src="../../../common/html/cssbased/domready.js" type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/sc-my-ext-all.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/xtheme-vista.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/menu.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/layout.css'>
+<script type="text/javascript">Ext.BLANK_IMAGE_URL = '../../../common/html/res/ext/resources/images/default/s.gif'</script>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/widget_checkout.js"></script>
+
+<h1><a href="{$olist_url}">{'ordr_order_list'|transcape}</a>&nbsp;&raquo;&nbsp;{"pgn_order_creater"|translate}</h1>
+
+<table border="0" width="630" cellpadding="0" cellspacing="0" style="background-color: #FAFAE7;">
+<colgroup>
+    <col width="2%" />
+    <col width="98%" />
+</colgroup>
+<tr>
+    <td style="padding: 5px;"><input type="radio" name="customer_source" id="customer_src_exist" onClick="onExistSrcClick();"></td>
+    <td style="padding: 5px;">{"lbl_assign_to_existing_customer"|translate}</td>
+</tr>
+<tr id="ex_customer_info" style="display: none;">
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td style="padding: 5px;"><input type="radio" name="customer_source" id="customer_src_reg" onClick="onRegSrcClick();"></td>
+    <td style="padding: 5px;">{"lbl_register_new_customer"|translate}</td>
+</tr>
+<tr id="new_customer_info" style="display: none;">
+    <td></td>
+    <td></td>
+</tr>
+</table>
+<br />
+<div id="proceed_button"></div>
+
+<script language="JavaScript" type="text/javascript">
+var ORIG_URL = '{$smarty.const.CONF_FULL_SHOP_URL}';
+{literal}
+var exist_src_ok = false;
+var reg_src_ok = false;
+
+function onExistSrcClick()
+{
+    if(!exist_src_ok)
+    {
+        document.getElementById('customer_src_exist').checked = false;
+        openFadeIFrame(set_query('&ukey=order_editor&action=show_customer_search&suff=_on'));
+        resizeFadeIFrame(500, 400);
+    };
+    
+    setProceedButton();
+};
+
+function onRegSrcClick()
+{
+    if(!reg_src_ok)
+    {
+        document.getElementById('customer_src_reg').checked = false;
+        showRegisterForm();
+    };
+    
+    setProceedButton();
+};
+
+var no_customer_id = 0; 
+
+function loadCustomerInfo(customer_id)
+{
+    Ext.Msg.show({
+           title: '{/literal}{"lbl_loading_cinfo"|translate}{literal}',
+           progressText: '{/literal}{"lbl_loading"|translate}{literal}...',
+           width:300,
+           wait:true,
+           buttons: false
+   });    
+   
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        var cnt_tr = document.getElementById('ex_customer_info');
+        var cnt_td = cnt_tr.cells[1];
+        
+        var customer_info = req.responseJS.customer_info;
+        var customer_full_name = customer_info.first_name+' '+customer_info.last_name;
+        {/literal}
+        var _html = '<a href="index.php?ukey=user_info&userID='+customer_id+'"><span id="ord_customer_name">'+customer_full_name+'</span></a>';
+        _html += '({"usr_custinfo_login"|translate|lower}:&nbsp;';
+        if(customer_info.login != '')
+            _html += '<strong>'+customer_info.Login+'</strong>)';
+        else
+            _html += '{"lbl_n_a"|translate})';
+        _html += '<br />';
+        {if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}
+            _html += '{"usr_custinfo_email"|translate}:&nbsp;<a href="mailto:'+customer_info.Email+'">'+customer_info.Email+'</a>';
+        {else}
+            _html += '<b>{"msg_safemode_info_blocked"|translate}</b>';
+        {/if}
+        {literal}
+        for(i=0; i<customer_info.reg_fields.length; i++)
+        {
+            _html += ',&nbsp;';
+            _html += customer_info.reg_fields[i].reg_field_name+': '+customer_info.reg_fields[i].reg_field_value;
+        };
+        
+        cnt_td.innerHTML = _html;
+        cnt_tr.style.display = '';
+        
+        exist_src_ok = true;
+        no_customer_id = customer_id;
+        document.getElementById('customer_src_exist').checked = true;
+        Ext.Msg.hide();
+        setProceedButton();
+    };
+
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'ajax_get_customer_info', 'customer_id': customer_id});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+var reg_win;
+var reg_frm;
+var curr_cnt = 0;
+
+function showRegisterForm()
+{
+    if(!reg_win)
+    {
+        {/literal}
+        {if $countries}
+        {literal}
+        var country_cb = new Ext.form.ComboBox({
+                        fieldLabel: '{/literal}{"usr_custinfo_country"|translate}{literal}'
+                       ,name: 'country_id'
+                       ,editable: false
+                       ,transform: 'country_select'
+                       ,lazyRender: true
+                       ,typeAhead: true
+                       ,triggerAction: 'all'
+                       ,forceSelection: true                       
+                    });
+    
+        country_cb.on('select', function(el, rec, index){
+            var new_val = el.getValue();
+            if(new_val != curr_cnt)
+            {
+                curr_cnt = new_val;
+                loadStates(curr_cnt);
+            };
+        });
+        curr_cnt = country_cb.getValue();
+        {/literal}
+        {else}
+        {literal}
+        var country_cb = {
+            fieldLabel: '{/literal}{"usr_custinfo_country"|translate}{literal}'
+           ,name: 'country'
+           ,allowBlank: false
+        };
+        {/literal}
+        {/if}
+        {literal}
+        
+        reg_frm = new Ext.FormPanel({
+                labelWidth: 90,
+                width: 300,
+                defaults: {width: 205},
+                bodyStyle:'padding:5px 5px 0',
+                defaultType: 'textfield',
+                monitorValid: true,
+                items: [{
+                        fieldLabel: '{/literal}{"usr_custinfo_first_name"|translate}{literal}',
+                        name: 'first_name',
+                        allowBlank: false
+                    },{
+                        fieldLabel: '{/literal}{"usr_custinfo_last_name"|translate}{literal}',
+                        name: 'last_name',
+                        allowBlank: false
+                    },{
+                        fieldLabel: '{/literal}{"usr_custinfo_email"|translate}{literal}',
+                        name: 'email',
+                        allowBlank: false,
+                        validator: checkEmail
+                    }
+                    {/literal}
+                    {foreach from=$reg_fields item=reg_field}
+                    ,{ldelim}
+                        fieldLabel: '{$reg_field.reg_field_name}',
+                        name: 'reg_field[{$reg_field.reg_field_ID}]',
+                        allowBlank: {if $reg_field.reg_field_required eq 1}false{else}true{/if}
+                    {rdelim}
+                    {/foreach}
+                    {literal}
+                    , new Ext.form.TextArea({
+                            fieldLabel: '{/literal}{"str_address"|translate}{literal}'
+                           ,name: 'address'
+                           ,allowBlank: true
+                           ,height: 50
+                        })
+                    ,{
+                        fieldLabel: '{/literal}{"usr_custinfo_city"|translate}{literal}'
+                       ,name: 'city'
+                       ,allowBlank: false
+                    },
+                    {/literal}
+                      {if $states}
+                      {literal}
+                      new Ext.form.ComboBox({
+                            fieldLabel: '{/literal}{"usr_custinfo_state"|translate}{literal}'
+                           ,id: 'rf_state'
+                           ,name: 'state_id'
+                           ,editable: false
+                           ,transform: 'state_select'
+                           ,lazyRender: true
+                           ,typeAhead: true
+                           ,triggerAction: 'all'
+                           ,forceSelection: true                       
+                      })
+                      {/literal}
+                      {else}                    
+                      {literal}
+                      {
+                        fieldLabel: '{/literal}{"usr_custinfo_state"|translate}{literal}'
+                       ,id: 'rf_state'
+                       ,name: 'state'
+                       ,allowBlank: true
+                      }
+                      {/literal}
+                      {/if}
+                    {literal}
+                    ,{
+                        fieldLabel: '{/literal}{"usr_custinfo_zip"|translate}{literal}'
+                       ,name: 'zip'
+                       ,allowBlank: true
+                    }, country_cb
+                    ],
+                buttons: [{ 
+                        text: 'Ok'
+                       ,formBind: true
+                       ,handler: function(){ renderNewCustomerInfo(); reg_win.hide(); } 
+                    },{ 
+                        text: 'Cancel'
+                       ,formBind: false
+                       ,handler: function(){ reg_win.hide(); } 
+                  }]
+            });
+            
+        reg_win = new Ext.Window({ 
+            el: 'reg_form_div',
+            title: '{/literal}{"lbl_register_new_customer"|translate}{literal}',
+            width: 330,
+            height: 400,
+            layout: 'fit',
+            plain: true,
+            autoScroll: false,
+            resizable: true,
+            modal: true,
+            buttonAlign: 'center',
+            closeAction: 'hide',
+            items: reg_frm
+        });
+    };
+    
+    reg_win.show();
+};
+
+
+function loadStates(country_id)
+{
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        var states = req.responseJS.states;
+        
+        if(states.length > 0)
+        {
+            var states_el = document.getElementById('state_select');
+            if(states_el)
+            {
+                document.body.removeChild(states_el);
+            };
+            
+            var dd = document.createElement('SELECT');
+            dd.id = 'state_select';
+            dd.style.display = 'none';
+            document.body.appendChild(dd);
+
+            var states_el = document.getElementById('state_select');
+
+            for(i=0; i<states.length; i++)
+            {
+                var opt = new Option();
+                opt.value = states[i].zoneID;
+                opt.text = states[i].zone_name;
+                try
+                {
+                    states_el.add(opt,null); // standards compliant
+                }
+                catch(ex)
+                {
+                    states_el.add(opt); // IE only
+                };        
+            };
+            
+            var fld = new Ext.form.ComboBox({
+                fieldLabel: '{/literal}{"usr_custinfo_state"|translate}{literal}'
+               ,id: 'rf_state'
+               ,name: 'state_id'
+               ,editable: false
+               ,transform: 'state_select'
+               ,lazyRender: true
+               ,typeAhead: true
+               ,triggerAction: 'all'
+               ,forceSelection: true                       
+            });
+        }
+        else
+        {
+            var fld = new Ext.form.TextField({
+                fieldLabel: '{/literal}{"usr_custinfo_state"|translate}{literal}'
+               ,id: 'rf_state'
+               ,name: 'state'
+               ,allowBlank: true
+            });
+        };
+        
+        var old_el_index = reg_frm.items.findIndex('id', 'rf_state');
+        reg_frm.remove('rf_state');
+        reg_frm.insert(old_el_index, fld);
+        reg_frm.doLayout();
+    };
+    
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'ajax_get_states', 'country_id': country_id});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+var new_customer_info;
+
+function renderNewCustomerInfo()
+{
+    var cnt_tr = document.getElementById('new_customer_info');
+    var cnt_td = cnt_tr.cells[1];
+    
+    var customer_info = reg_frm.getForm().getValues();
+    var customer_full_name = customer_info.first_name+' '+customer_info.last_name;
+    {/literal}
+    var _html = '<span id="ord_customer_name">'+customer_full_name+'</span>';
+    _html += '<br />';
+    {if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}
+        _html += '{"usr_custinfo_email"|translate}:&nbsp;<a href="mailto:'+customer_info.email+'">'+customer_info.email+'</a>';
+    {else}
+        _html += '<b>{"msg_safemode_info_blocked"|translate}</b>';
+    {/if}
+    {literal}
+    for(a in customer_info)
+    {
+        if(a.indexOf('reg_field') == 0)
+        {
+            var fld = reg_frm.getForm().findField(a);
+            _html += ',&nbsp;';
+            _html += fld.fieldLabel+': '+customer_info[a];
+        };
+    };
+    
+    cnt_td.innerHTML = _html;
+    cnt_tr.style.display = '';
+    
+    new_customer_info = customer_info;
+    reg_src_ok = true;
+    document.getElementById('customer_src_reg').checked = true;
+    setProceedButton();
+};
+
+var proceed_btn;
+
+function setProceedButton()
+{
+    if((exist_src_ok && document.getElementById('customer_src_exist').checked)
+        || (reg_src_ok && document.getElementById('customer_src_reg').checked))
+    {
+        proceed_btn.enable();
+    }
+    else
+    {
+        proceed_btn.disable();
+    };
+};
+
+function onProceedClick()
+{
+    Ext.Msg.show({
+           title: '{/literal}{"lbl_creating_order"|translate}{literal}',
+           progressText: '{/literal}{"lbl_please_wait"|translate}{literal}...',
+           width:300,
+           wait:true,
+           buttons: false
+   });    
+    
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        window.location = 'index.php?ukey=order_editor&order_id='+req.responseJS.order_id;
+        //Ext.Msg.hide();
+    };
+    
+    try
+    {
+        if(new_customer_info)
+        {
+            if(new_customer_info.country_id)
+                new_customer_info.country_id = reg_frm.getForm().findField('country_id').getValue();
+            if(new_customer_info.state_id)
+                new_customer_info.state_id = reg_frm.getForm().findField('state_id').getValue();
+        };   
+        var _src = (exist_src_ok && document.getElementById('customer_src_exist').checked ? 'ex' : 'new');
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({
+            action: 'ajax_create_order'
+           ,customer_id: no_customer_id
+           ,customer_info: new_customer_info
+           ,customer_src: _src
+        });
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+Ext.onReady(function(){
+    proceed_btn = new Ext.Button({
+        applyTo: 'proceed_button'
+       ,disabled: true
+       ,text: '{/literal}{"btn_proceed"|translate}{literal}&nbsp;&gt;&gt;'
+       ,handler: onProceedClick
+    });
+});
+
+function checkEmail(email)
+{
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return filter.test(email);
+};
+
+{/literal}
+</script>
+
+<div id="reg_form_div" class="x-hidden">
+<div class="x-window-header"></div>
+<div class="x-window-body"></div>
+</div>
+
+<div style="display: none">
+{if $countries}
+<select id="country_select">
+{foreach from=$countries item=country_name key=country_id}
+    <option value="{$country_id}">{$country_name}</option>
+{/foreach}
+</select>
+{/if}
+{if $states}
+<select id="state_select">
+{foreach from=$states item=state}
+    <option value="{$state.zoneID}">{$state.zone_name}</option>
+{/foreach}
+{/if}
+</select>
+</div>

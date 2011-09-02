@@ -1,0 +1,15 @@
+{if $language_selection_view eq 'select'}
+<form action="{''|set_query_html}" name="lang_form" method="post" style="display_inline">
+	<select name="lang" onchange="document.location.href = select_getCurrValue(this);">
+	{foreach from=$lang_list key=lang_id item=lang}
+		<option value='{"lang_iso2=`$lang->iso2`"|set_query_html}'{if $current_language == $lang_id} selected="selected"{/if}>
+			{$lang->description|escape:'html'}
+		</option>
+	{/foreach}
+	</select>
+</form>
+{else}
+	{foreach from=$lang_list key=lang_id item=lang}
+		<a href='{"lang_iso2=`$lang->iso2`"|set_query_html}'>{if $lang->thumbnail_url}<img src="{$lang->thumbnail_url}" alt="{$lang->description|escape:'html'}" border="0" >{else}{$lang->description|escape:'html'}{/if}</a>&nbsp;
+	{/foreach}
+{/if}

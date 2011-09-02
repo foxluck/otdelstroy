@@ -1,0 +1,66 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+
+<table>
+{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+{section name=i loop=$product_extra}
+	{if $product_extra[i].option_type eq 0 }
+	<tr>
+		<td>
+			{$product_extra[i].name}: 
+		</td>
+		<td>
+			<b>{$product_extra[i].option_value}</b>
+		</td>
+	</tr>
+	{else}
+	
+	{section name=k loop=$product_extra[i].option_show_times}
+	<tr>					
+		<td>
+			{$product_extra[i].name}{if $product_extra[i].option_show_times > 1 }({counter name=option_show_times}):{else}:{/if}
+		</td>
+		<td>
+			{counter name=select_counter assign=_cnt}
+			<select name='option_{$_cnt}' class="product_option">
+			<option value='' rel="0">{"str_not_defined"|transcape}</option>
+			{section name=j loop=$product_extra[i].values_to_select}
+			<option value='{$product_extra[i].values_to_select[j].variantID}' rel='{$product_extra[i].values_to_select[j].price_surplus}'
+			{if $product_extra[i].values_to_select[j].variantID == $product_extra[i].variantID}selected="selected"{/if}>
+				{$product_extra[i].values_to_select[j].option_value}
+			</option>
+			{/section}
+			</select>
+		</td>
+	</tr>
+	{/section}
+	
+	{/if}
+{/section}
+</table>
+
+{else}
+	<table>
+	<tr>					
+	<td>Цвет:			</td>
+	<td>
+	
+	<select name='option_select_1_71' onchange='GetCurrentCurrency_71()'>
+	<option value='0.00:8'>
+	белый
+	</option>
+	<option value='0.00:5'>
+	
+	желтый
+	</option>
+	<option value='0.00:6'>
+	зеленый
+	</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	<b>
+	{"prd_final_price"|translate}: 
+	<input type=text value="90$"	class=totalPrice	readonly	id="optionPrice" >
+	</b>
+{/if}

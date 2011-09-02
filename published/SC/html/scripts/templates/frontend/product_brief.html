@@ -1,0 +1,112 @@
+{* product brief view (from a category or search) *}
+{if $product_info ne NULL}
+{if $product_info.slug}
+{assign var=_product_url value="?ukey=product&productID=`$product_info.productID`&product_slug=`$product_info.slug`"|set_query_html}
+{else}
+{assign var=_product_url value="?ukey=product&productID=`$product_info.productID`"|set_query_html}
+{/if}
+{if $widget}{assign var=_form_action_url value="&view=noframe&external=1"}{/if}
+<!-- start product_brief.html -->
+<form class="product_brief_block" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
+	<input name="action" value="add_product" type="hidden">
+	<input name="productID" value="{$product_info.productID}" type="hidden">
+	<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden">
+	{assign var=_cnt value=''}
+	
+	{if $product_info.thumbnail || $product_info.picture}
+	<div class="prdbrief_thumbnail">
+	<table cellpadding="0" cellspacing="0">
+		<tr>
+			<td align="center" valign="middle" style="width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px; height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px;">
+				<!-- Thumbnail -->
+				<a {$target} href='{$_product_url}'>
+{if $product_info.thumbnail}
+					<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail|escape:'url'}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}">
+{elseif $product_info.picture}
+					<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}">
+{/if}
+				</a>
+			</td>
+		</tr>
+	</table>
+	</div>
+	{/if}
+	
+	<div class="prdbrief_name">
+		<a {$target} href='{$_product_url}'>{$product_info.name|escape:'html'}</a>
+		{* product code (SKU) *}
+{if $product_info.product_code && $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+		<br><i>{$product_info.product_code|escape:'html'}</i>
+{/if}
+	</div>
+	
+	{if $product_info.brief_description}
+	<div class="prdbrief_brief_description">{$product_info.brief_description}</div>
+	{/if}
+
+    {if $smarty.const.CONF_VOTING_FOR_PRODUCTS eq 'True'}
+	{if $PAGE_VIEW ne 'mobile' && $product_info.customer_votes > 0} {* rating *}
+		<div class="sm-current-rating1">
+			<div class="sm-current-rating1-back">&nbsp;</div>
+			<div class="sm-current-rating1-front" style="width: {$product_info.customers_rating*13}px;">&nbsp;</div>
+		</div>
+	{/if}
+    {/if}
+	{if $product_info.product_extra}
+	<div class="prdbrief_options">
+		<table>
+		{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+		{section name=i loop=$product_info.product_extra}
+		{if  $product_info.product_extra[i].option_type != 0}
+		{section name=k loop=$product_info.product_extra[i].option_show_times}
+		<tr>					
+			<td>
+				{$product_info.product_extra[i].name|escape:'html'}{if $product_info.product_extra[i].option_show_times > 1} ({$smarty.section.k.index+1}):{else}:{/if}
+			</td>
+			<td>
+				{counter name=select_counter assign=_cnt}
+				<select name='option_{$_cnt}' class="product_option">
+				<option value='' rel="0">{"str_not_defined"|transcape}</option>
+				{section name=j loop=$product_info.product_extra[i].values_to_select}
+				<option value='{$product_info.product_extra[i].values_to_select[j].variantID}' rel='{$product_info.product_extra[i].values_to_select[j].price_surplus}'
+				{if $product_info.product_extra[i].values_to_select[j].variantID == $product_info.product_extra[i].variantID}selected="selected"{/if}>
+					{$product_info.product_extra[i].values_to_select[j].option_value}
+				</option>
+				{/section}
+				</select>
+			</td>
+		</tr>
+		{/section}
+		{/if}
+		{/section}
+		</table>
+	</div>
+	{/if}
+
+	{if $currencies_count ne 0 && $product_info.Price > 0}
+	<div class="prdbrief_price">
+		<span class="totalPrice">{$product_info.PriceWithUnit}</span>
+	</div>
+	{/if}
+
+	
+{if $product_info.ordering_available && $product_info.Price>0 && ( $smarty.const.CONF_SHOW_ADD2CART eq 1 ) && ( $smarty.const.CONF_CHECKSTOCK==0 || $product_info.in_stock > 0 ) }
+	<div class="prdbrief_add2cart">
+		<input  {if ($PAGE_VIEW eq 'facebook')||($PAGE_VIEW eq 'vkontakte')}type="submit" value="{"str_add_to_cart_string"|transcape}" {else}type="image" src="{$button_add2cart_small}" alt="{'str_add_to_cart_string'|translate}"{/if} title="{"str_add_to_cart_string"|translate}"
+		{if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE && !$widget} class="add2cart_handler" rel="{if $widget}widget{/if}" {/if}>
+	</div>
+{elseif $smarty.const.CONF_SHOW_ADD2CART eq 1 && $smarty.const.CONF_CHECKSTOCK && !$product_info.in_stock && $product_info.ordering_available}
+	<div class="prd_out_of_stock">{lbl_prd_out_of_stock}</div>
+{/if}
+	
+	{if $PAGE_VIEW ne 'mobile' && ($PAGE_VIEW ne 'vkontakte') && ($PAGE_VIEW ne 'facebook') && $product_info.allow_products_comparison && $show_comparison}  {* removed ' && $categoryID == $product_info.categoryID' *}
+	<div class="prdbrief_comparison">
+		<input id="ctrl-prd-cmp-{$product_info.productID}" class="checknomarging ctrl_products_cmp" type="checkbox" value='{$product_info.productID}'>
+		<label for="ctrl-prd-cmp-{$product_info.productID}">{"prd_select_to_comparison"|translate}</label>
+	</div>
+	{/if}
+	
+</form>
+<!-- end product_brief.html -->
+
+{/if}

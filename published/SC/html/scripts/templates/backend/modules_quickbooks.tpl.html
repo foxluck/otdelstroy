@@ -1,0 +1,137 @@
+<h1>QuickBooks</h1>
+{if $errormsg ne NULL}
+	<div id="error-block" class="error_block">
+	{$errormsg}
+	</div>
+{/if}
+
+<div>
+	<p>QuickBooks integration allows syncing data between Shop-Script based online store and QuickBooks. Data sync is mainly "from Shop-Script into QuickBooks".<br />
+	Detailed integration manual: <a href="http://www.webasyst.net/support/help/shop-script-quickbooks-integration.html">http://www.webasyst.net/support/help/shop-script-quickbooks-integration.html</a></p>
+	
+</div>
+
+<div class="chckrpl_module_block" style="width: 650px;">
+	<table>
+	<colgroup>
+            <col width="70%" />
+            <col width="10%" />
+            <col width="20%" />
+    </colgroup>
+    <tbody>
+	<tr>
+		<td><h2><img src="./images_common/quickbooks.png" alt="" style="padding-right: 8px; vertical-align: baseline;">QuickBooks integration</h2></td>
+		<td id="chckrpl-settings-{$_module.module_id}-state" style="font-weight: bold; color: {if $smarty.const.CONF_QUICKBOOKS_ON eq 1}green{else}red{/if};">{if $smarty.const.CONF_QUICKBOOKS_ON eq 1}{'enabled'|transcape}{else}{'disabled_short'|transcape}{/if}</td>
+		<td align="right"><input class="chckrpl_module_switch" rel="{$_module.module_id}" type="button" value="{if $smarty.const.CONF_QUICKBOOKS_ON neq 1}{'btn_enable'|transcape}{else}{'btn_disable'|transcape}{/if}" /></td>
+	</tr>
+	<tr class="chckrpl_module_settings" {if $smarty.const.CONF_QUICKBOOKS_ON neq 1}style="display: none;"{/if} id="chckrpl-settings-{$_module.module_id}">
+		<td colspan="3">
+				
+					<p>Supported sync options: 1) <strong>export</strong> orders, customers and products from Shop-Script into QuickBooks, 2) <strong>import</strong> inventory stock information from QuickBooks into Shop-Script.<br />
+					Data sync is initiated by QuickBooks app.</p>
+					
+					<table>
+						<tr>
+							<td width="30%">QWC file</td>
+							<td width="70%">
+								<form action="" method="post" name="form_quickbooks" style="margin: 0; padding: 0;">
+								<input type="hidden" name="action" value="get_qwc"/>
+								<input type="submit" value="Download">
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td><input id="password_quickbooks" type="text" onclick="this.select();" onfocus="this.select();" style="width:50%;" value="{$password}"/></td>
+						</tr>		
+					</table>
+					
+				{if $CONF_QUICKBOOKS_INIT eq false}
+				<h3>Initial integration setup: <span style="background: #ffb;">Run QuickBooks, and initiate first sync session with provided QWC file and password.</span></h3>
+				
+				{/if}
+				{if $CONF_QUICKBOOKS_INIT ge 1}
+					<form action="" method="post" name="form_quickbooks">
+						<div style="margin-top: 10px; padding-top: 15px; border-top: 1px solid #ccc;">
+							<style>
+							{literal}
+								table.qb td { padding: 5px 0; vertical-align: top; }
+							{/literal}
+							</style>
+							<table class="qb">
+								<tr>
+									<td><strong style="background: #e5e5d5;">Shop-Script &rarr; QuickBooks</strong>
+									<div class="notice">Export orders, customers, and products from Shop-Script into QuickBooks</a></td>
+									<td><input type="checkbox" checked="checked" disabled="disabled"/><span style="color: #aaa; font-size: 90%;">(always on)</span></td>
+								</tr>							
+								<tr>
+									<td>Invoice Template
+									<div class="notice">All Shop-Script orders will be exported with this invoice template</div></td>
+									<td>{$select_template}</td>
+								</tr>							
+								<tr>
+									<td width="30%">QuickBooks Account
+									<div class="notice">QuickBooks account for exporting Shop-Script orders</div></td>
+									<td width="70%">{$select_account}</td>
+								</tr>
+								<tr>
+									<td>Income Account</td>
+									<td>{$select_IncomeAccount}</td>
+								</tr>
+								<tr>
+									<td>COGS Account</td>
+									<td>{$select_COGSAccount}</td>
+								</tr>
+								<tr>
+									<td>Asset Account</div>
+									</td>
+									<td>{$select_AssetAccount}</td>
+								</tr>
+								<tr>
+									<td>Discount Account</td>
+									<td>{$select_AccountDiscount}</td>
+								</tr>
+								<tr>
+									<td>Account Receivable</td>
+									<td>{$select_ARAccount}</td>
+								</tr>
+								<tr>
+									<td>Shipping Account</td>
+									<td>{$select_AccountShipping}</td>
+								</tr>
+								<tr>
+									<td>Sale Tax Vendor</td>
+									<td>{$select_Vendor}</td>
+								</tr>
+								<tr>
+									<td>"Phone" field
+									<div class="notice">Select custom phone field in your Shop-Script store (or leave empty if do not have one)</td>
+									<td>{$select_phone_field}</td>
+								</tr>				
+								<tr>
+									<td style="padding-top: 10px;"><strong style="background: #e5e5d5;">QuickBooks &rarr; Shop-Script</strong>
+									<div class="notice">Update Shop-Script's product pricing and in stock info with the data from QuickBooks</div></td>
+									<td style="padding-top: 10px;">{$checkbooks_product_prices}</td>
+								</tr>
+							</table>
+						</div>
+					
+					<input type="hidden" value="1" name="save"/>	
+					<input type="submit" value="Save"/>
+					</form>
+				{/if}
+		</td>
+	</tr>
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/module_quickbooks.js"></script>
+<script type="text/javascript">
+translate.btn_enable = "{'btn_enable'|transcape}";
+translate.btn_disable = "{'btn_disable'|transcape}";
+translate.state_enabled = "{'enabled'|transcape}";
+translate.state_disabled = "{'disabled_short'|transcape}";
+</script>

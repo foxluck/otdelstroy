@@ -1,0 +1,21 @@
+<Connector>
+	<Class>
+		<Name>sc_Abstract</Name>
+		<File>class.abstract.php</File>
+		<Title>Абстрактный модуль</Title>
+		<Description>Предназначен для подключение динамических интерфейсов. У интерфейса должен быть конектор с таким же именем файла, как у метода.
+<![CDATA[
+<pre>
+Формат конектора:		
+&lt;interfaces&gt;
+	&lt;interface&gt;
+		&lt;name&gt;Linkpoint&lt;/name&gt;
+		&lt;key&gt;linkpoint&lt;/key&gt;
+	&lt;/interface&gt;
+&lt;/interfaces&gt;
+</pre>
+]]>
+		</Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

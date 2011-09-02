@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<script language="javascript">
+
+		function treeCheckSelection( text )
+		{
+			thisForm = document.forms[0];
+
+			checkedFound = false;
+
+			for ( i = 0; i < thisForm.elements.length; i++ )
+				if (thisForm.elements[i].type == 'checkbox')
+					if ( thisForm.elements[i].name != "selectAllDocsCB" && thisForm.elements[i].checked )
+					{
+						checkedFound = true;
+						break;
+					}
+
+			if ( !checkedFound )
+			{
+				alert( text );
+				return false;
+			}
+
+			return true;
+		}
+
+		function treeSelectAll( obj )
+		{
+			checked = obj.checked;
+
+			thisForm = document.forms[0];
+
+			for ( i = 0; i < thisForm.elements.length; i++ )
+				if (thisForm.elements[i].type == 'checkbox')
+					thisForm.elements[i].checked = checked;
+
+			 return false;
+		}
+
+		function confirmSubmit()
+		{
+			if ( !treeCheckSelection( '<? $kernelStrings.sms_screen_empty_message ?>' ) )
+				return false;
+
+			return true;
+		}
+
+		</script>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$smsDisabled ?>
+					<? wbs_note smallFont=false indented=true ?><? $noteusers ?><? /wbs_note ?>
+
+					<table class="SimpleList">
+						<thead>
+							<tr>
+								<? if $usersCount ?>
+									<th scope="col" width="10px"><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"></th>
+								<? /if ?>
+								<th scope="col" width="20%"><? $kernelStrings.sms_userid_title ?></th>
+								<th scope="col" width="50%"><? $kernelStrings.sms_username_title ?></th>
+								<th scope="col" width="15%"><? $kernelStrings.sms_sent_title ?></th>
+								<th scope="col" width="15%"><? $kernelStrings.sms_available_title ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<? foreach from=$usersBalance item=balance name=balanceLoop?>
+								<tr>
+								<? if $usersCount ?>
+									<td width="10px"><input type="checkbox" name="balance[<? $balance.U_ID ?>]" value="<? $balance.U_ID ?>"></td>
+								<? /if ?>
+									<td><? $balance.U_ID ?></td>
+									<td><? $balance.C_FIRSTNAME ?> <? $balance.C_LASTNAME ?></td>
+									<td><? if $balance.SMS_SENT != 0 ?><a href=<? $balance.HISTORY_URL ?>><? /if ?><? $balance.SMS_SENT ?><? if $balance.SMS_SENT != 0 ?></a><? /if ?></td>
+									<th scope="col"><a href="<? $balance.BALANCE_URL ?>"><? if $balance.SMS_UNLIM ?><font color=green><? $kernelStrings.sms_unlim_title ?></font><? else ?><? $balance.SMS_BALANCE ?><? /if ?></a></td>
+								</tr>
+							<? /foreach ?>
+						</tbody>
+					</table>
+
+					<? if $usersCount ?>
+						<? wbs_button name="updatebtn" caption=$kernelStrings.sms_update_balance_btn ?>
+					<? /if ?>
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_screen_sms_disabled ?><? /wbs_note ?>
+				<? /if ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

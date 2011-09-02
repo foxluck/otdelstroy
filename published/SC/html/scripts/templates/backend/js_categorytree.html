@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}">
+<!--		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/cpt_constructor.css" type="text/css">-->
+		<style type="text/css"> @import url("{$smarty.const.URL_CSS}/db_tree.css"); </style>
+		<style type="text/css"> @import url("{$smarty.const.URL_CSS}/admin.css"); </style>
+		
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/_prototype.TreeNode.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/_db_tree.js"></script>
+		<script type="text/javascript"><!--
+			window.img_url = "images_common/";
+			var url_getsubcategories = 'index.php?ukey=category_tree&caller=1';
+			var action = '{$js_action}';
+			{literal}
+		function getCategoryTreeManager(){
+			
+			return parent.categoryTreeManager;
+			var p = window.top;
+			var max = 15;
+			while(!p.categoryTreeManager && p.top && max--){
+				
+				p = p.top;
+			}
+
+			if(!p.categoryTreeManager){
+				
+				p = window.parent;
+				max = 15;
+				while(!p.categoryTreeManager && p.parent && max--){
+					
+					p = p.parent;
+				}
+			}
+		}
+		{/literal}
+		//-->
+		</script>
+		<script type="text/javascript">
+		var translate = {ldelim}{rdelim};
+		</script>
+	</head>
+	<body style="padding: 10px;">
+		<ul id="test" class="tul"></ul>
+		<script type="text/javascript"><!--
+			var root_nodes = [];
+			{if $smarty.get.js_action eq 'choose_parentcategory'}
+			var _nd_1 = new dbTree({ldelim}
+			'id':'_nd_1', 
+			'name': 'ROOT',
+			'LIClass': 'tli','ULClass': 'tul',
+			'TitleClass': 'ttitle',
+			'Expanded': false,
+			'categoryID':1,
+			'isParent': false {rdelim}
+			);
+			root_nodes.push(_nd_1);
+			{/if}
+			{foreach from=$categories item=category}
+			var _nd_{$category.categoryID} = new dbTree({ldelim}
+			'id':'_nd_{$category.categoryID}', 
+			'name': '{$category.name|escape:"html"}',
+			'LIClass': 'tli','ULClass': 'tul',
+			'TitleClass': 'ttitle',
+			'Expanded': {if $category.ExpandedCategory}true{else}false{/if},
+			'categoryID':{$category.categoryID},
+			'isParent': '{$category.ExistSubCategories}' {rdelim}{if $category.parent ne 1},
+			_nd_{$category.parent}
+			{/if});
+			
+			{if $category.parent eq 1}root_nodes.push(_nd_{$category.categoryID});{/if}
+			{/foreach}
+			
+			for(var k=0,k_max=root_nodes.length;k<k_max;k++)
+				root_nodes[k].drawTree(getLayer('test'));
+				
+			{* isset($BreadIDs)?'rootNode.expandByChain('.$BreadIDs.');':''*}
+		//-->
+		</script>
+	</body>
+</html>

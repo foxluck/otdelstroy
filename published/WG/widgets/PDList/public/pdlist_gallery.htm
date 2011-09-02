@@ -1,0 +1,43 @@
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/PDList/public/css/widget.css'>
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/_common/public/js/highslide.css'>
+		<script src='<? $WG_SRC ?>widgets/_common/public/js/highslide.js'></script>
+		
+		<script type="text/javascript">    
+	    hs.graphicsDir = '<? $WG_SRC ?>widgets/_common/public/js/graphics/';
+	    hs.outlineType = 'rounded-white';
+	    hs.showCredits = false;
+		</script>
+
+		
+		<style>
+			body, table tr td {font-family: "Trebuchet MS"; background: <? $widgetParams.BODYBGCOLOR ?>}
+			
+			
+			img {border: 0px}
+			
+			.FilesTable tr.Title td {background: #F0F0F0}
+			<? if $widgetParams.SHOWBORDER && false ?>
+			.FilesTable tr td {border-right: 1px solid #BBB; border-bottom: 1px solid #BBB}
+			.FilesTable {border-left: 1px solid #BBB; border-top: 1px solid #BBB; }
+			<? /if ?>
+			.FilesTable tr td {padding: 3px; }
+			.FilesTable tr td a {font-weight: bold}
+			.FilesTable tr.Title td {border-bottom: 1px solid #BBB; font-weight: bold}
+			.FilesTable .SubFile {font-size: 0.8em; padding: 0px; padding-bottom: 4px}
+			.FilesTable td.Icon {padding: 0px; padding-top: 0px; border: 1px solid red;}
+			.FilesTable tr td.Filename {padding-right: 20px}
+			.FilesTable div.FileDesc {font-size: 0.8em; width: 80px; overflow-x: hidden; overflow-y: auto}
+			/*.FilesTable tr.Title {display: none}*/
+			
+			.BottomBlock {color: #666; margin-top: 20px; font-size: 0.75em}
+			.BottomBlock a {color: #666; }
+		</style>
+	
+
+			
+		<? include file="photos_gallery.htm" ?>
+		
+	</body>
+</html>

@@ -1,0 +1,155 @@
+<? assign var=groupContent value=$contactList ?>
+
+<? if $viewMode == "GRID" ?>
+	<!-- Grid mode view -->
+
+	<table border="0" cellspacing="0" cellpadding="0" class="treeDocumentListTable">
+		<tr height=20>
+
+			<? foreach from=$visibleColumns item=columnID ?>
+				<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+
+				<? assign var=columnName value=$colDescription.SHORT_NAME ?>
+				<th align=left><? $columnName ?></th>
+			<? /foreach ?>
+
+		</tr>
+
+		<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+			<tr <? if ($smarty.foreach.itemLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if 	?>>
+
+				<? foreach from=$visibleColumns item=columnID ?>
+					<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+					<? assign var=fieldValue value=$groupItem.$columnID ?>
+
+					<td valign=top <? if $groupItem.U_STATUS == 2 ?>class="dampedText"<? /if ?> align=left>
+						<? if $colDescription.TYPE != "IMAGE" ?>
+							<? $groupItem.$columnID|htmlsafe:true:true|trim|sureecho ?>
+						<? else ?>
+							<? if $fieldValue.FILENAME != "" ?>
+								<? include file="../../common/html/classic/autoforms/imagefield.htm" fieldData=$fieldValue ?>
+							<? else ?>
+								&lt;<? $kernelStrings.app_noimage_label ?>&gt;
+							<? /if ?>
+						<? /if ?>
+					</td>
+				<? /foreach ?>
+
+			</tr>
+		<? foreachelse ?>
+			<? math equation="x + 1" x=$numColumns assign=numColumns?>
+			<tr>
+				<td colspan="<? $numColumns ?>" align="center">
+					<div class="noentries"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></div>
+				</td>
+			</tr>
+		<? /foreach ?>
+	</table>
+
+<? else ?>
+	<!-- List mode view -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewTable">
+			<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+				<tr>
+					<? if $listViewImage != "NOIMG" ?>
+						<? assign var=fieldData value=$groupItem.$listViewImage ?>
+						<td width=96>
+							<? if $fieldData.FILENAME ?>
+								<? include file="../../common/html/classic/thumbnails_templates/thumbnail.htm" srcURL=$fieldData.THUMB_URL size=96?>
+							<? else ?>
+								<div style="width: 96; height: 96; padding=0!important; border: 1px solid #EDEDED; margin: 5px">
+										<table width=96 height=96 border=0 cellpadding=0 cellspacing=0>
+											<tr>
+												<td valign=middle align=center class=smallFont>
+													[<? $kernelStrings.app_noimage_label ?>]
+												</td>
+											</tr>
+										</table>
+								</div>
+							<? /if ?>
+						</td>
+					<? /if ?>
+					<td valign=top <? if $listViewImage != "NOIMG" ?>style="padding-left: 0px!important"<? /if ?>>
+						<table border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewTable noBottomBorder">
+							<tr>
+								<td width="100%" style="padding-left: 5px; padding-top: 3px" class="listviewblack">
+										<? if $groupItem.NAME != "" ?>
+											<? $groupItem.NAME|htmlsafe:true:true ?>
+										<? else ?>
+											&lt;<? $kernelStrings.app_noname_text ?>&gt;
+										<? /if ?>
+								</td>
+							</tr>
+
+							<? if $groupItem.U_ID != "" ?>
+								<tr>
+									<td class="treeDocumentListViewContent  <? if $groupItem.U_STATUS == 2 ?>dampedText<? /if ?>">
+										<? "<b>"|cat:$kernelStrings.cman_user_label|cat:"</b>: "|cat:$groupItem.U_ID|cat:" (" ?><? $statusNames[$groupItem.U_STATUS]|cat:")" ?>
+									</td>
+								</tr>
+							<? /if ?>
+
+							<!-- Other fields -->
+							<? foreach from=$typeDescription item=groupData ?>
+									<? assign var=groupText value="" ?>
+
+									<!-- Fill group text -->
+									<? foreach from=$groupData.FIELDS item=fieldData name=fieldloop ?>
+										<? assign var=fieldID value=$fieldData.ID ?>
+										<? assign var=fieldDesc value=$fieldData.LONG_NAME ?>
+										<? assign var=fieldValue value=$groupItem.$fieldID ?>
+
+										<? assign var=tag value=" ("|cat:$fieldDesc|cat:")" ?>
+										<? if $fieldData.HIDETAG ?>
+											<? assign var=tag value="" ?>
+										<? /if ?>
+
+										<? assign var=linkStart value="" ?>
+										<? assign var=linkEnd value="" ?>
+
+										<? if $fieldData.TYPE != "IMAGE" ?>
+											<? if $fieldValue != "" ?>
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$fieldValue|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$fieldValue|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? else ?>
+											<? if $fieldValue.FILENAME != "" ?>
+												<? assign var=imageText value="&lt;"|cat:$imgLink|cat:$kernelStrings.app_image_text|cat:"</a>&gt;" ?>
+
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$imageText|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$imageText|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? /if ?>
+
+									<? /foreach ?>
+
+									<!-- Output group data if group text is not empty -->
+									<? if $groupText != "" ?>
+										<tr>
+											<td class=treeDocumentListViewContent><? $groupData.LONG_NAME|htmlsafe:true:true|cat:": "|cat:$groupText ?></td>
+										</tr>
+									<? /if ?>
+							<? /foreach ?>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td colspan=3 align="center">
+						<div class="noentries"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></div>
+					</td>
+				</tr>
+			<? /foreach ?>
+		</table>
+
+<? /if ?>

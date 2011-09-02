@@ -1,0 +1,27 @@
+<?
+	*
+		Parameters:
+			$width - control width
+			$height - control height
+			$varList - array
+			$targetControl - control ID to insert variable name on click
+			$onClick - javaScript function to execute on mouse click. Function must have following declaration: function_name(varName, targetElementID)
+			$scrolling - determines whether the list is scrollable
+	*
+?>
+<? assign var=scrolling value=$scrolling|default:true ?>
+
+<div class="control" style="<? if $scrolling ?>overflow: auto; <? /if ?>width: <? $width ?>; height: <? $height ?>; padding: 0!important; margin: 0!important;">
+	<table cellpadding=0 cellspacing=0 border=0 class="treeDocumentListTable noBottomBorder" width="100%" style="padding: 0; margin: 0">
+		<tr>
+			<th align=left><? $kernelStrings.app_vlctrlvar_title ?></th>
+			<th align=left class=noRightBorder><? $kernelStrings.app_vlctrldesc_title ?></th>
+		</tr>
+		<? foreach from=$varList item=varDesc key=varItem name=varLoop ?>
+			<tr>
+				<td valign=top class=smallFont><nobr><a <? if !$onClick ?>href="javascript: vcl_insertVar('<? $varItem|htmlsafe:true:true ?>', '<? $targetControl ?>')"<? else ?>href="javascript: <? $onClick ?>('<? $varItem|htmlsafe:true:true ?>', '<? $targetControl ?>')"<? /if ?> class=activelink onmouseover="window.status='';return true"><? $varItem|htmlsafe:true:true ?></a></nobr></td>
+				<td class="smallFont noRightBorder"><? $varDesc|htmlsafe:true:true ?></td>
+			</tr>
+		<? /foreach ?>
+	</table>
+</div>

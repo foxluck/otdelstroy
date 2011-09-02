@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout splitter=true toolbar=true ?>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class=noOverflow>
+<? strip ?>
+		<?* wbs_pageLayout toolbar="sc_toolbar.htm" *?>
+		<? wbs_pageLayout tabbar="sc_tabbar.htm" ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+			<iframe width="100%" height="100%" name="sc_frame" id="sc_frame" src="index.php?<?if $smarty.get.did ?>did=<? $smarty.get.did ?><?else?>ukey=admin<?/if?>" frameborder="0"></iframe>
+			<? /if ?>
+		<? /wbs_pageLayout ?>
+<? /strip ?>
+</body>
+</html>

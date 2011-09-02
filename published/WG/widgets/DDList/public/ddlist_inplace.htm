@@ -1,0 +1,81 @@
+<style>
+	body, table tr td {font-size: 14px}
+	<? if $widgetParams.SHOWBORDER ?>
+		.FilesTable {border-left: 1px solid #C0C0C0; border-top: 1px solid #C0C0C0;}
+		.FilesTable tr td {border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0;}
+	<? /if ?>
+	.FilesTable tr td {padding: 3px; background: <? $widgetParams.BODYBGCOLOR ?>}
+	.FilesTable tr td a {font-weight: bold; color: #0099FF; text-decoration: none}
+	.FilesTable tr.Title td {font-weight: bold; background: <? $widgetParams.TITLEBGCOLOR ?>; color: <? $widgetParams.TITLECOLOR ?>}
+	.FilesTable .SubFile {padding: 0px; padding-bottom: 4px}
+	.FilesTable td.Icon {padding: 0px; padding-top: 0px; border: 0px solid red;}
+	.FilesTable a.Filename {}
+	.Thumbnail img {border: 0px}
+	.Thumbnail table tr td {border: 0px; margin: 0px; padding: 0px}
+	<? if $widgetParams.SHOWSIZE || $widgetParams.SHOWDATE ?>.FilesTable div.FileDesc {border-bottom: 1px solid #BBB}<? /if ?>
+</style>
+
+<? assign var=view value=$widgetParams.VIEWMODE ?>
+<table class='FilesTable' cellspacing=0 cellpadding=0 style='text-align: left' width="<? $widgetParams.WIDTH ?>">
+	<? if $view == "grid" ?>
+		<? if $widgetParams.SHOWTITLES ?>
+			<tr	class='Title'>
+				<? if $widgetParams.FILEICON !='no' ?>
+					<td>&nbsp;</td>
+				<? /if ?>
+				<td width="*"><? $ddStrings.app_file_field ?></td>
+				<? if $widgetParams.SHOWSIZE ?><td width="70" nowrap align='center'><? $ddStrings.app_size_field ?></td><? /if ?>
+				<? if $widgetParams.SHOWDATE ?><td width="80" nowrap align='center'><? $ddStrings.app_uploaddate_field ?></td><? /if ?>
+				<? if $widgetParams.SHOWDOWNLOADLINK ?><td width="70"  align='center'>&nbsp;</td><? /if ?>
+			</tr>
+		<? /if ?>
+		<? foreach item=file from=$filesList ?>
+			<tr valign='top'>
+				<? if $widgetParams.FILEICON !='no' ?>
+					<td align='center' width="40">
+					<? if $widgetParams.FILEICON=='small' ?>
+						<img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=16 os=win ?>"  border="0" align=center>
+					<? elseif $widgetParams.FILEICON=='large' ?>
+						<img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=32 os=win ?>"  
+					<? elseif $widgetParams.FILEICON=='thumbnail' ?>
+						<? wbs_thumbnail src=$file.THUMB_URL URL=$file.ROW_URL target='_blank' ?>
+					<? /if ?>
+					</td>
+				<? /if ?>
+				<td>
+					<a target='_blank' class='Filename' href='<? $file.ROW_URL ?>&W=FL'><? $file.DL_FILENAME ?></a>
+					<? if $widgetParams.SHOWDESC ?><BR>
+					<? $file.DL_DESC ?><? /if ?>
+				</td>
+				<? if $widgetParams.SHOWSIZE ?><td nowrap align='center'><? $file.DL_FILESIZE ?></td><? /if ?>
+				<? if $widgetParams.SHOWDATE ?><td nowrap align='center'><? $file.DISPLAY_DATE ?></td><? /if ?>
+				<? if $widgetParams.SHOWDOWNLOADLINK ?><td nowrap align='center'><a href='<? $file.DOWNLOAD_URL ?>&W=FL'><? $widgetStrings.wg_download_label ?></a></td><? /if ?>
+			</tr>
+		<? /foreach ?>
+	<? elseif $view == "list" ?>
+		<? foreach item=file from=$filesList ?>
+			<tr height="15" valign='top'>
+				<? if $widgetParams.FILEICON !='no' ?>
+					<td valign='top' align='center' width="40" style='padding-top: 5px;'>
+						<? if $widgetParams.FILEICON=='small' ?>
+							<img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=16 os=win ?>"  border="0" align=center>
+						<? elseif $widgetParams.FILEICON=='large' ?>
+							<img src="<? thumbnail baseSrc=$BASE_SRC fileName=$file.DL_FILENAME size=32 os=win ?>"  
+						<? elseif $widgetParams.FILEICON=='thumbnail' ?>
+							<? wbs_thumbnail src=$file.THUMB_URL URL=$file.ROW_URL target='_blank' ?>
+						<? /if ?>
+					</td>
+				<? /if ?>
+				<td valign='top'>
+					<a class='Filename' target='_blank' href='<? $file.ROW_URL ?>' class='Filename'><? $file.DL_FILENAME ?></a>
+					<div class='SubFile'>
+						<? if $file.DL_DESC && $widgetParams.SHOWDESC ?><div class='FileDesc'><? $file.DL_DESC|htmlsafe:true:true ?></div><? /if ?>
+						<? if $widgetParams.SHOWSIZE ?><span style='padding-right: 10px'><? $ddStrings.app_size_field ?>: <? $file.DL_FILESIZE ?></span><? /if ?>
+						<? if $widgetParams.SHOWDATE ?><? $ddStrings.app_uploaddate_field ?>: <? $file.DISPLAY_DATE ?><? /if ?>
+					</div>
+				</td>
+				<? if $widgetParams.SHOWDOWNLOADLINK ?><td nowrap style='padding-left: 5px; padding-right: 5px'><a href='<? $file.DOWNLOAD_URL ?>'><? $widgetStrings.wg_download_label ?></a></td><? /if ?>				
+			</tr>
+		<? /foreach ?>
+	<? /if ?>
+</table>

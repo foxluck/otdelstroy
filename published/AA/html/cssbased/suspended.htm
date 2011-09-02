@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if $hasAccountInfoAccess ?>
+					<? wbs_messageBox type=2 message=$kernelStrings.app_accountexpired_message note=$resolveLink ?>
+				<? else ?>
+					<? wbs_messageBox type=2 message=$kernelStrings.app_accountexpired_message note=$kernelStrings.app_referadmin_message ?>
+				<? /if ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

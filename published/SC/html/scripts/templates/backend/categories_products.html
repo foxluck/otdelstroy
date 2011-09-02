@@ -1,0 +1,271 @@
+{* products and categories view *}
+<table id="tbl-block" cellspacing="0" cellpadding="0">
+<tr height="1%">
+	<td colspan="2"  height="1%">
+		<h1>{$CurrentDivision.name|translate}</h1>
+	
+		{$MessageBlock}
+	</td>
+</tr>
+{* categories *}
+<tr>
+<td id="left-block">
+	<div id="left-top">
+	<form method="POST" name="search_form" action='{$urlToSubmit|cat:"&search=yes"}'>
+		{*<select name="search_criteria">
+			<option value='name' {if $search_criteria == 'name'} selected="selected"{/if}>
+				{"prdset_product_name"|translate}
+			</option>
+			<option value='product_code' {if $search_criteria == 'product_code'} selected="selected"{/if}>
+				{"prdset_product_code"|translate}
+			</option>
+		</select><br/>*}
+		<input type="text" class="input_message" rel="{'cpt_lbl_product_search'|transcape}" name="search_value" value="{$search_value|escape:'html'|default:'cpt_lbl_product_search'|transcape}" />
+		<input type="submit" value="{"btn_find"|translate}" />
+		{if $searched_done}
+			
+		{/if}
+		</form>
+	</div>
+	{if true||!$searched_done}
+	<div id="left-div">
+	<ul>{*&&!$searched_done*}
+		<li><div {if 1 == $categoryID &&!$searched_done}class="current"{/if}>
+			<img style="visibility:hidden;" src="images_common/minus.gif" alt="{'btn_collapse'|translate}" border="0" />
+			<a href="{"&categoryID=1&search"|set_query}">{"prdcat_category_root"|translate}</a>
+			({$products_in_root_category})
+		</div></li>
+	 {foreach from=$categories item=_category}
+	 	<li><div {if $_category.categoryID == $categoryID &&!$searched_done}class="current"{/if}>
+			{section name=j loop=$_category.level max=$_category.level}&nbsp;&nbsp;&nbsp;{/section}
+			{if !$_category.ExpandedCategory}
+				{if $_category.ExistSubCategories}
+					<a href='{"&expandCat=`$_category.categoryID`"|set_query_html}'><img src="images_common/plus.gif" alt="{'btn_expand'|transcape}" /></a>
+				{else}
+					<img src="images_common/minus.gif" style="visibility:hidden;" />
+				{/if}
+			{else}
+				{if $_category.ExistSubCategories}
+					<a href='{"&shrinkCat=`$_category.categoryID`"|set_query_html}'><img src="images_common/minus.gif" alt="{'btn_collapse'|transcape}" /></a>
+				{else}
+					<img src="images_common/minus.gif" style="visibility:hidden;" />
+				{/if}
+			{/if}
+			
+			<a href='{"&categoryID=`$_category.categoryID`&expandCat=`$_category.categoryID`&search"|set_query_html}'>{$_category.name|escape:'html'|default:"(no name)"}</a>
+			{if !$_category.ExpandedCategory}({$_category.products_count_admin}){else}({$_category.products_count_category}){/if}
+		</div></li>
+	 {/foreach}
+
+	</ul>
+
+	<div id="left-bottom">
+	
+	<p>	
+	<input type="button" value='{"btn_addcategory"|transcape}' class="goto" rel='{"?ukey=category_settings&parent=`$categoryID`"|set_query_html}' />
+	</p>
+	
+	</div>
+	
+	</div>
+	{/if}
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/widget_checkout.js"></script>	
+	<script type="text/javascript">
+	Nifty('#left-div', 'tl bl');
+	Nifty('div.current', 'tl bl');
+	</script>
+</td>
+
+
+{* products *}
+<td id="right-block">
+	{if $searched_done}
+	<h2>{$searched_count}</h2>
+	{else}
+	<h2>
+	{if $categoryID ne 1}
+		{$category_name|escape:'html'}
+	{else}
+		{"prdcat_category_root"|translate}
+	{/if}
+	
+	{if $categoryID ne 1}
+	&nbsp;
+	<a href='{"ukey=category_settings&categoryID=`$categoryID`"|set_query_html}'>{'prdcat_btn_edit_category'|transcape}</a>
+	&nbsp;
+	<a href='{"action=delete_category"|set_query_html}' title="{'cnfrm_delete'|transcape}" class="confirm_action">{'prdcat_btn_delete_category'|transcape}</a>
+	{/if}
+	</h2>
+	
+	<p>
+	<input value="{'btn_addproduct'|transcape}" type="button" class="goto" rel='{"?ukey=product_settings&categoryID=`$categoryID`"|set_query_html}' />
+	</p>
+	
+	{if $categoryID eq 1}
+	<p style="text-align: center">{"prd_msg_root_warning"|translate}</p>
+	{/if}
+	
+	{/if}
+	
+	
+
+	{if $GridRows}
+	<form action='{$urlToSubmit}' method="post" name="MainForm" id="MainForm">
+	<input name="action" value="save_products" type="hidden" />
+		
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+		<thead>
+		<tr class="gridsheader">
+			<td><input type="checkbox" class="groupcheckbox" id="group-box" rel="select_product" /></td>
+			{include file="backend/gridheader.tpl.html"}
+		</tr>
+		</thead>
+		<tfoot>
+		<tr class="gridsfooter"> 
+			<td colspan="4">
+				{$navigatorHtml}
+				{*include file="backend/lister.tpl.html"*}
+			</td>
+			<td  colspan="{if (($smarty.const.CONF_CHECKSTOCK eq 1) && (($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false)||($smarty.const.CONF_FACEBOOK_ENABLED eq 1)))}6{elseif (($smarty.const.CONF_CHECKSTOCK eq 1) || ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false) || ($smarty.const.CONF_FACEBOOK_ENABLED eq 1))}5{else}4{/if}" style="border-left: solid 1px #F5F0BB;border-right: solid 1px #F5F0BB;border-bottom: solid 1px #F5F0BB;">
+			&uarr;
+			<span style="font-size:smaller;">{"prd_multiply_label"|translate}</span>
+				<input style="font-size:smaller;" type="text" id="multiply_price_value" value="1.000" size="5">
+			<span id="multiply-price-handler" style="font-size:smaller;border-bottom:1px dashed;color: #597380 !important;cursor:pointer;">{"prd_price_multiply"|translate}</span>
+			
+			<span style="float: right;">
+				<input name="save_products" type="submit" value='{"prdcat_btn_update_prices_sort"|translate}' />
+			</span>
+			</td>
+		</tr>
+		<tr class="gridsfooter"> 
+			<td colspan="{if (($smarty.const.CONF_CHECKSTOCK eq 1) && (($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false)||($smarty.const.CONF_FACEBOOK_ENABLED eq 1)))}10{elseif (($smarty.const.CONF_CHECKSTOCK eq 1) || ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false) || ($smarty.const.CONF_FACEBOOK_ENABLED eq 1))}9{else}8{/if}">
+					<div style="float: left;">
+						{lbl_prdcat_with_selected}: <input type="submit" name="delete_selected" class="confirm_action" title="{'cnfrm_delete'|transcape}" value='{"btn_delete"|translate}' />
+					</div>
+					<div style="float: left;">
+						&nbsp;
+						<input name="categoryID" id="parent-category-categoryID" value="{$parent_category.categoryID|default:1}" type="hidden" />
+					</div>
+					<div style="float: left;">	
+						&nbsp;					
+						<input name="move_selected" type="submit" value='{"prdcat_category_move_to"|translate}' id="choose-parentcategory-handler"/>
+					</div>
+					<div style="float: left;">	
+						&nbsp;					
+						<input name="duplicate_selected" type="submit" value='{"prdcat_products_duplicate_selected"|translate}' id="duplicate_products-handler"/>
+					</div>
+			</td>
+		</tr>
+		{if ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1) && false}
+		<tr class="gridsfooter"> 
+			<td style="border-width: 0px;" colspan="{if (($smarty.const.CONF_CHECKSTOCK eq 1) && (($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false)||($smarty.const.CONF_FACEBOOK_ENABLED eq 1)))}10{elseif (($smarty.const.CONF_CHECKSTOCK eq 1) || ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false) || ($smarty.const.CONF_FACEBOOK_ENABLED eq 1))}9{else}8{/if}">
+					<div style="float: left;">	
+						{lbl_prdcat_social_networks_export}:&nbsp;					
+						<input name="vkontakte_change" type="submit" value="{"prdcat_vkontakte_change"|translate}" id="vkontakte_change-handler"/>
+					</div>
+					<div style="float: left;">	
+						&nbsp;					
+						<input name="vkontakte_remove" type="submit" value="{"prdcat_vkontakte_remove"|translate}" id="vkontakte_remove-handler"/>
+					</div>
+			</td>
+		</tr>
+		{/if}
+		</tfoot>
+		<tbody>
+		{section name=i loop=$GridRows}
+		{assign var=product_url value="?ukey=product_settings&productID=`$GridRows[i].productID`&categoryID=&expandCat=&offset=&sort=&sort_dir=&search=&search_value="|set_query_html}
+		<tr class="{cycle values='gridline1,gridline'}{if $GridRows[i].in_stock<=0 && $smarty.const.CONF_CHECKSTOCK} gridline_outofstock{/if}">
+		
+			<td><input name="selected_product_{$GridRows[i].productID}" class="checkbox select_product" rel="group-box" type="checkbox" value="1" /></td>
+			<td><a href="{$product_url}">{$GridRows[i].product_code|escape:'html'}&nbsp;</a></td>
+			<td width="50%"><a href="{$product_url}">{$GridRows[i].name|escape:'html'}&nbsp;{if $GridRows[i].enabled ne 1}<span class="notice">{lbl_prep_invisible_in_storefront}</span>{/if}</a></td>
+			<td align="right"><a href="{$product_url}">{$GridRows[i].customers_rating}&nbsp;</a></td>
+			<td align="center" style="border-left: solid 1px #F5F0BB;border-right: solid 1px #F5F0BB;"><input type="text" class="multiply_price" name="price_{$GridRows[i].productID}" size="10" value="{$GridRows[i].Price}" /></td>
+			{if $smarty.const.CONF_CHECKSTOCK eq 1}
+			<td><input type="text" name="left_{$GridRows[i].productID}" size="5" value="{$GridRows[i].in_stock}" /></td>
+			{/if}
+			<td align="right">{$GridRows[i].items_sold}{if !$GridRows[i].ordering_available}<div class="notice">{lbl_prd_ordering_not_available}</div>{/if}</td>
+			{if (($smarty.const.CONF_VKONTAKTE_ENABLED eq 1  && false)||($smarty.const.CONF_FACEBOOK_ENABLED eq 1))}
+			<td align="right">
+				{if ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1) && false}
+				{if $GridRows[i].vkontakte_update_timestamp}
+					<img src="./images_common/vkontakte/vkontakte.ico" alt="{$GridRows[i].vkontakte_update_timestamp}" title="{$GridRows[i].vkontakte_update_timestamp}">
+				{else}
+					&mdash;
+				{/if}
+				{/if}
+			</td>
+			{/if}
+			<td align="center"><input type='text' name='sort_order_{$GridRows[i].productID}' value="{$GridRows[i].sort_order}" size="2" /></td>
+			<td style="border-right: solid 1px #F5F0BB;"><a href='{"action=delete_product&productID=`$GridRows[i].productID`"|set_query_html}' title='{"cnfrm_delete"|transcape}' class="confirm_action"><img src="images_common/remove.gif" border="0" alt='{"btn_delete"|transcape}' /></a></td>
+		</tr>	
+		{/section}
+		</tbody>
+		</table>
+		
+	</form>
+	<script type="text/javascript">
+	var categoryID = '{$categoryID}';
+				{literal}
+getLayer('multiply-price-handler').onclick = function(){
+	var multiply = document.getElementById('multiply_price_value');
+	if(multiply&&multiply.value>0){
+			var inputs = getElementsByClass('multiply_price',null,'input');
+			for(var l=inputs.length-1; l>=0; l--){
+				inputs[l].value = Math.round(10000*inputs[l].value*multiply.value)/10000;
+			}
+		}
+};				
+getLayer('choose-parentcategory-handler').onclick = function(){if(getCountCheckGroupBox('select_product')<1){alert('{/literal}{"prdset_related_products_select"|translate}{literal}');return false;}categoryTreeManager.show_tree('choose_parentcategory');return false;};
+getLayer('duplicate_products-handler').onclick = function(){if(getCountCheckGroupBox('select_product')<1){alert('{/literal}{"prdset_related_products_select"|translate}{literal}');return false;}};
+{/literal}{if ($smarty.const.CONF_VKONTAKTE_ENABLED eq 1 && false)}{literal}
+getLayer('vkontakte_change-handler').onclick = function(){if(getCountCheckGroupBox('select_product')<1){alert('{/literal}{"prdset_related_products_select"|translate}{literal}');return false;}};
+getLayer('vkontakte_remove-handler').onclick = function(){if(getCountCheckGroupBox('select_product')<1){alert('{/literal}{"prdset_related_products_select"|translate}{literal}');return false;}};
+{/literal}{/if}{literal}
+var categoryTreeManager = {
+	'show_tree': function(action){
+		var url = set_query('?ukey=category_tree&js_action='+action+'&productID=');
+		sswgt_CartManager.shop_url = "{/literal}{$smarty.const.CONF_FULL_SHOP_URL|escape:'html'}{literal}";
+		sswgt_CartManager.show(url, 550, 500); 	
+	},
+	'hide_tree': function(){
+		sswgt_CartManager.hide();
+	},
+	'actions': {
+		'choose_parentcategory': {
+			'onclick': function(node){				
+				if(categoryID == node.getSetting('categoryID')){
+					categoryTreeManager.hide_tree();
+				}
+				categoryTreeManager.hide_tree();
+				var breadCrumbs = node.getSetting('name');
+				var p = node.ParentNode;
+				while(p){
+					breadCrumbs = p.getSetting('name')+" » "+breadCrumbs;
+					p = p.ParentNode;
+				}
+				if(window.confirm('{/literal}{"prdset_move_selected_to"|translate}{literal}'+' '+breadCrumbs+'?')){
+					getLayer('parent-category-categoryID').value = node.getSetting('categoryID');
+					getLayer('choose-parentcategory-handler').onclick = function(){return true;};
+					getLayer('choose-parentcategory-handler').click();
+				}				
+			}
+		}
+	},
+	
+	'eval': function(action, handler, node, wnd){
+		
+		this.actions[action][handler](node, wnd);
+	}
+}
+{/literal}</script>
+	
+	{else}
+	<p style="text-align: center">{"str_empty_category"|translate}</p>
+	{/if}
+
+</td>
+</tr>
+</table>

@@ -1,0 +1,29 @@
+	{if $configuration_saved eq 1}
+	<p>{"msg_update_successful"|translate}</p>
+	{/if}
+
+	<h1>{$CurrentDivision.name|translate}</h1>
+
+	<a href="{'?ukey=add_pmethod'|set_query_html}">__Add method__</a>
+	<hr />
+	
+	<table>
+	{section name=i loop=$payment_types}
+	<tr>
+		<td>
+			<input type="checkbox" name="" />
+		</td>
+		<td>
+			<a href='{"?ukey=mod_pmethod&PID=`$payment_types[i].PID`"|set_query_html}' class="pmethod_{if $payment_types[i].Enabled}act{else}notact{/if}">{$payment_types[i].Name|escape:'html'}</a>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<small>
+				{$payment_types[i].description|escape:'html'}
+			</small>
+		</td>
+	</tr>
+	{/section}
+	</table>

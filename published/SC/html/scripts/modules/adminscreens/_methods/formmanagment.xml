@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Print forms managment</name>
+		<key>formmanagment</key>
+	</interface>
+</interfaces>

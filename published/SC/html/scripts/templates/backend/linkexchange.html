@@ -1,0 +1,206 @@
+{* products and categories view *}
+<table id="tbl-block" cellspacing="0" cellpadding="0">
+<tr height="1%">
+	<td colspan="2"  height="1%">
+		<h1>{$CurrentDivision.name|translate}</h1>
+		<p>{lbl_le_page_description}</p>
+		
+		{$MessageBlock}
+	</td>
+</tr>
+{* categories *}
+<tr>
+<td id="left-block">
+	<div id="left-div">
+	<ul>
+		<li><div {if !$le_CategoryID}class="current"{/if}>
+			{assign var='le_CategoryName' value="le_all_categories"|translate}
+			<a href="{$url_allcategories}">{"le_all_categories"|translate}</a>
+			({$le_LinksNumInCategories})
+		</div></li>
+	 {section name=i loop=$le_categories}
+		{if $le_categories[i].le_cID==$le_CategoryID}{assign var='le_CategoryName' value=$le_categories[i].le_cName}{/if}
+	 	<li><div {if $le_categories[i].le_cID==$le_CategoryID}class="current"{/if}>
+	 		<a href='{"msg=&page=1&show_all=&categoryID=`$le_categories[i].le_cID`"|set_query_html}'>{$le_categories[i].le_cName}</a>
+	 		({$le_categories[i].links_num})
+	 	</div></li>
+	 {/section}
+
+	</ul>
+
+	<div id="left-bottom">
+	
+		<p>	
+		<input type="button" value='{"le_btn_add_new_category"|transcape}' id="show-add-category" />
+		</p>
+		<div id="add-category-block" style="display: none; text-align: left;">
+			<h2>{lbl_le_btn_add_new_category}</h2>
+			<form action='{""|set_query_html}' method="POST">
+			
+			<input name="fACTION" value="NEW_LINK_CATEGORY" type="hidden" />
+			<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+			
+			{"le_category"|translate}
+			<br />
+			<input name="LINK_CATEGORY[le_cName]" type="text" class="input_text1" id="id_new_category" size="20" />
+			<p>
+			<input value="{"btn_add"|translate}" type="submit" />
+			<input value="{"btn_cancel"|translate}" type="button" id="cancel-add-category" />
+			</p>
+			
+			</form>
+		</div>
+	
+	</div>
+	
+	</div>
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+	<script type="text/javascript">
+	Nifty('#left-div', 'tl bl');
+	Nifty('div.current', 'tl bl');
+	</script>
+</td>
+
+
+{* products *}
+<td id="right-block">
+
+	<h2>
+		{$le_CategoryName}
+	
+	{if $le_CategoryID}
+	&nbsp;
+	<a href='#edit' id="edit-category">{'btn_edit'|transcape}</a>
+	&nbsp;
+	<a href='{"action=delete_category&le_cID=`$le_CategoryID`"|set_query_html}' title="{'cnfrm_delete'|transcape}" class="confirm_action">{'btn_delete'|transcape}</a>
+	{/if}
+	</h2>
+	
+	<form action="" method="POST" id="rename-category-block" style="display: none">
+		<input name="fACTION" value="SAVE_LINK_CATEGORY" type="hidden" />
+		<input name="fREDIRECT" value="{''|set_query_html}" type="hidden" />
+		<input name="LINK_CATEGORY[le_cID]" type="hidden" value="{$le_CategoryID}" />
+		{lbl_str_name}:
+		<br />
+		<input name="LINK_CATEGORY[le_cName]" value="{$le_CategoryName}" type="text" size="20" />
+		
+		<p>
+			<input value='{"btn_save"|transcape}' type="submit" />
+			<input value='{"btn_cancel"|transcape}' id="cancel-save-category" type="button" />
+		</p>
+	</form>
+	
+	<form action="" id="form_new_le_link" method="POST" style="display:none">
+		<input name="fACTION" value="NEW_LINK" type="hidden" />
+		<input name="fREDIRECT" value="{'msg='|set_query}" type="hidden" />
+
+		<h2>{lbl_le_add_link}</h2>
+	
+		{"le_category"|translate}:
+		<br />
+		<select name="LINK[le_lCategoryID]">
+			<option value="0">{"str_not_defined"|translate}</option>
+			{foreach from=$le_categories item=_category}
+			<option value="{$_category.le_cID}" 
+				{if $le_CategoryID==$_category.le_cID} selected="selected"
+				{elseif $pst_LINK.le_lCategoryID==$_category.le_cID} selected="selected"
+				{/if}
+				>{$_category.le_cName}</option>
+			{/foreach}
+		</select>
+		<p>
+		{"le_link_url"|translate}:
+		<br />
+		<input name="LINK[le_lURL]" value="{if $pst_LINK.le_lURL}{$pst_LINK.le_lURL}{else}http://{/if}" type="text" size="60" />
+		</p>
+		<p>
+		{"le_link_text"|translate}:
+		<br />
+		<input name="LINK[le_lText]" value="{$pst_LINK.le_lText}" type="text" size="60" />
+		</p>
+		
+		<p>
+			<input value="{"btn_add"|translate}" type="submit" />
+			<input value="{'btn_cancel'|transcape}" id="cancel-add-link" type="button" />
+		</p>
+	</form>
+	
+	<div id="links-block">
+	
+	<p>
+	<input value="{'le_add_link'|transcape}" id="add-link" type="button" />
+	</p>
+
+	{if $le_links}
+	<form action="" method="POST" id="form_change_links">
+	<input name="action" value="" type="hidden" />
+		
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+		<tr class="gridsheader">
+			<td><input type="checkbox" class="groupcheckbox" id="group-box" rel="select_links" /></td>
+			{include file="backend/gridheader.tpl.html"}
+		</tr>
+		
+		{foreach from=$le_links item=_le_link}
+		<tr class="{cycle values='gridline1,gridline'}">
+		
+			<td><input name="LINKS_IDS[]" value="{$_le_link.le_lID}" class="checkbox select_links" rel="group-box" type="checkbox" /></td>
+			<td width="50%"><input name="LINK[{$_le_link.le_lID}][le_lURL]" value="{$_le_link.le_lURL}" type="text" style="width:100%;" /></td>
+			<td width="50%"><input name="LINK[{$_le_link.le_lID}][le_lText]" value="{$_le_link.le_lText}" type="text" style="width:100%;" /></td>
+			<td nowrap="nowrap">{if $_le_link.le_lVerified}{if $_le_link.le_lVerified!='0000-00-00 00:00:00'}{$_le_link.le_lVerified}{else}{"le_link_not_verified"|translate}{/if}{else}{"le_link_not_verified"|translate}{/if}</td>
+		</tr>
+		{/foreach}
+	
+		{if $last_page>1}
+		<tr class="gridsfooter"> 
+			<td colspan="4">
+				{if $curr_page>1}
+					&nbsp; <a class="no_underline" href ="{"page=`$curr_page-1`&show_all="|set_query}">&lt;&lt; {"str_previous"|translate}</a>
+				{/if}
+				{foreach from=$le_lister_range item=_page}
+					&nbsp; {if $_page!=$curr_page or $showAllLinks}<a class="no_underline" href="{"page=`$_page`&show_all="|set_query}">{$_page}</a> {else}{$_page}{/if}
+				{/foreach}
+				{if $curr_page<$last_page}
+					&nbsp; <a class="no_underline" href ="{"page=`$curr_page+1`&show_all="|set_query}">{"str_next"|translate} &gt;&gt;</a>
+				{/if}
+				&nbsp; |&nbsp; {if $showAllLinks}{"str_showall"|translate}{else}<a class="no_underline" href ="{"show_all=yes"|set_query}">{"str_showall"|translate}</a>{/if}
+		</tr>
+		{/if}
+		<tr class="gridsfooter"> 
+			<td colspan="4">
+				{"le_with_selected"|translate}
+				<p>
+					<input value='{"btn_save"|translate}' type="button" class="do_action" rel="save_links" />
+					<input value="{"le_btn_approve"|translate}" type="button" class="do_action" rel="approve_links" />
+					<input value="{"le_btn_decline"|translate}" type="button" class="do_action" rel="decline_links" />
+					<input value="{"btn_delete"|translate}" type="button" class="do_action" rel="delete_links" title='{"cnfrm_areyousure"|transcape}' />
+				</p>
+				<p>
+					<input value="{"prdcat_category_move_to"|translate}" type="button" class="do_action" rel="move_links" />
+					&nbsp;
+					<select name="new_le_lCategoryID">
+						<option value="0">{"le_err_choose_category"|translate}</option>
+						{foreach from=$le_categories item=_category}
+						<option value="{$_category.le_cID}" 
+							{if $le_CategoryID==$_category.le_cID} selected="selected"
+							{elseif $pst_LINK.le_lCategoryID==$_category.le_cID} selected="selected"
+							{/if}
+							>{$_category.le_cName}</option>
+						{/foreach}
+					</select>
+				</p>
+			</td>
+		</tr>
+		</table>
+	</form>
+	
+	{/if}
+	</div>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/linkexchange.js"></script>
+<script type="text/javascript">
+translate.le_no_links_selected = "{'le_no_links_selected'|transcape}";
+</script>

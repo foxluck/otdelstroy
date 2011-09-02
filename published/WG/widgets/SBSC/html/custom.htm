@@ -1,0 +1,25 @@
+<tr>
+	<td colspan=2> 
+		<table cellspacing="0" cellpadding="0" id='CMFieldsTable'>
+		<? foreach from=$typeDesc key=sectionID item=section ?>
+			<? if $section.id==$main_section ?><? assign var=isMainSection value=true ?><? else ?><? assign var=isMainSection value=false ?><? /if ?>
+			<? counter name=c1 start=-1 print=false ?>
+			<? foreach from=$section.fields item=item ?>
+				<? if $incCMFields && in_array ($item.dbname, $incCMFields) ?><? counter name=c1 print=false ?><? /if ?>
+			<? /foreach ?>
+			<? counter assign="fieldsCount" name=c1 skip=1 ?>
+						
+			<tr><td colspan=3><div style='font-weight: bold' id='title<? $sectionID ?>'><? $section.name ?></div></td></tr>
+			<? foreach from=$section.fields item=item key=itemID ?>
+				<tr id='sec<? $sectionID ?>'>
+					<td width="120"><span style='padding-left:13px'><? $item.name ?></span></td>
+					<td width="120"><input onChange='fieldChanged("CMFIELDSLABELS");' type='text' name='fields[CMFIELDSLABELS][<? $item.dbname ?>]' class='FormControl' size='30' value='<? $labelsCMFields.$itemID|default:$item.name ?>'></td>
+					<td><input onClick='fieldChanged("CMFIELDS");' <? if $incCMFields && in_array ($item.dbname, $incCMFields) ?>checked<? /if ?> value='1' name='fields[CMFIELDS][<? $item.dbname ?>]' type='checkbox'></td>
+				</tr>
+				<? /foreach ?>
+				<? if $fieldsCount > 0 ?>
+				<? /if ?>
+		<? /foreach ?>
+		</table>
+	</td>
+</tr>

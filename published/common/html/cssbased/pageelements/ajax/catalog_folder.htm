@@ -1,0 +1,54 @@
+<script>
+	var foldersTree;
+	var foldersEditor;
+	
+	var cf = {enableDD: <? if $enableDD ?>true<? else ?>false<? /if ?>};
+	cf.currentNodeId = <? if ($currentFolder == TREE_AVAILABLE_FOLDERS) ?>""<? else ?>"<? $currentFolder ?>"<? /if ?>;
+	cf.enableEdit = <? if $enableEdit ?>true<? else ?>false<? /if ?>;
+	cf.avIconCls = '<? $avIconCls|default:"my-folder" ?>';
+	
+	cf.strings = new Array ();
+	cf.strings.widgetsLabel = '<? $kernelStrings.app_widgetsmenu_label ?>';
+	cf.strings.searchResultsLabel = '<? $kernelStrings.app_searchresult_title ?>';
+	cf.strings.folderActionRightsError = '<? $kernelStrings.app_folderactionrights_error ?>';
+	cf.strings.folderRenameNoRightsError = '<? $kernelStrings.app_folderrenamenorights_error ?>';
+	cf.strings.emptySearchString = "<? $kernelStrings.app_emptysearchstring_error ?>";
+	cf.strings.actions = {copy: "<? $kernelStrings.app_copying_label ?>", move: "<? $kernelStrings.app_moving_label ?>", deleting: "<? $kernelStrings.app_deleting_label ?>"};
+	cf.strings.copy = "<? $kernelStrings.app_copy_btn ?>";
+	cf.strings.move = "<? $kernelStrings.app_move_btn ?>";
+	cf.strings.deleteBtn = "<? $kernelStrings.app_delete_btn ?>";
+	cf.strings.cancel = "<? $kernelStrings.app_cancel_btn ?>";
+	cf.strings.confirm = "<? $kernelStrings.app_confirm_label ?>";
+	
+	cf.nodes = new Array (
+		<? wbs_foldersTreeNodes folders=$folders hierarchy=$hierarchy parentId=0 avIconCls=$avIconCls unavIconCls=$unavIconCls ?>
+	);
+	
+	var foldersTreeConfig = cf;
+</script>
+<style>
+	.x-panel-bwrap {overflow:visible;}
+	#tree-div .x-panel-body {overflow:visible;}
+</style>
+
+
+<script src='../../../common/html/cssbased/pageelements/ajax/tree_classes.js'></script>
+<script src='../../../common/html/cssbased/pageelements/ajax/folders_tree.js'></script>
+
+<div id="tree-div" style=''></div>
+
+<div id="tree-copy-move" class='x-hidden'>
+	<div id='send-select-tab' style='padding: 10px'>
+    <? $kernelStrings.app_copymovefolder_label ?> <span style='font-weight: bold' id='tree-copy-move-toname'></span>?
+		<br>
+		<table id='tree-copy-move-process' style='margin-top: 5px; width: 98%'><tr><td width="50%" style='font-weight: bold' align='right'><span id='tree-copy-move-process-text'></span>...</td><td width="50%" align='left'><img id='' src='../../../common/html/res/images/progress.gif'></td></tr></table>
+  </div>
+</div>
+
+<div id="tree-folder-delete" class='x-hidden'>
+	<div id='tree-folder-delete-tab' style='padding: 10px'>
+		<span id='tree-folder-delete-message'><? $kernelStrings.app_deletefolder_label ?></span>
+		<br>
+		<table id='tree-folder-delete-process' style='width: 98%'><tr><td width="60%" style='font-weight: bold' align='right'><span id='tree-folder-delete-process-text'><? $kernelStrings.app_deleting_label ?></span>...</td><td width="40%" align='left'><img id='' src='../../../common/html/res/images/progress.gif'></td></tr></table>
+  </div>
+</div>

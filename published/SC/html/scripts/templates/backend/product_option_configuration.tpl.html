@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>{"prdset_configurator_title"|translate} {$OptionInfo.name|escape:'html'}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}" />
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/admin.css" type="text/css" />
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/admin.js"></script>
+	</head>
+	<body style="text-align:center;">
+	<script type="text/javascript">
+	{if $smarty.get.saved}
+	{literal}
+	function closeFrame(){
+	
+		var p = window.top;
+		var max = 15;
+		while(!p.optionsSettingsManager && p.top && max--){
+			
+			p = p.top;
+		}
+		if(!p.optionsSettingsManager){
+			
+			p = window.parent;
+			max = 15;
+			while(!p.optionsSettingsManager && p.parent && max--){
+				
+				p = p.parent;
+			}
+		}
+		
+		if(!p.optionsSettingsManager)return;
+		var optionsSettingsManager = p.optionsSettingsManager;
+		
+		optionsSettingsManager.setOptionValuesNum(option_values_num);
+		optionsSettingsManager.setProductID(productID);
+		optionsSettingsManager.hideSettings();
+	}
+	{/literal}
+	var option_values_num = '{$checked_variants_num}';
+	var productID = '{$smarty.get.productID}';
+	closeFrame();
+	{/if}
+	{literal}
+	Behaviour.addLoadEvent(function(){checkGroupBoxState(getLayer('chck_groupbox'));});
+	{/literal}
+	</script>
+		
+	<h1>{"prdset_configurator_title"|translate} "{$OptionInfo.name|escape:'html'}"</h1>
+		
+	{$MessageBlock}
+		
+	{if $OptionVariantsNumber ne 0}
+	<form action="{''|set_query_html}" method="post" name="option_value_configurator_form">
+	<input type="hidden" name="action" value="save_values" />
+	<input type="hidden" name="optionID" value="{$OptionInfo.optionID}" />
+	<input type="hidden" name="productID" value="{$productID}" />
+		
+	<table cellspacing="0" cellpadding="0" align="center" class="grid">
+		<tr class="gridsheader"> 
+			<td><input type="checkbox" class="groupcheckbox" rel="checkbox" id="chck_groupbox" /></td>
+			<td>{"str_default"|translate}</td>
+			<td>{"prdcustopt_value_variants"|translate}</td>
+			<td>{"prdset_optvalue_price_surplus"|translate}</td>
+		</tr>
+	{section name=j loop=$OptionVariants}
+		<tr class="{cycle values='gridline,gridline1'}"> 
+			<td align="center"><input name="switchOn_{$OptionVariants[j].variantID}" class="checkbox" {if $OptionVariants[j].checked}checked{/if} rel="chck_groupbox" type="checkbox" /></td>
+			<td align="center"> 
+				<input name="default_radiobutton" type="radio" value="{$OptionVariants[j].variantID}" {if $variantID_default eq $OptionVariants[j].variantID} checked="checked"{/if} id="default_radiobutton_{$OptionVariants[j].variantID}" />
+			</td>
+			<td align="center"><label for="default_radiobutton_{$OptionVariants[j].variantID}">{$OptionVariants[j].option_value|escape:'html'}</label></td>
+			<td align="center">
+				<input name="price_surplus_{$OptionVariants[j].variantID}" type="text" value="{$OptionVariants[j].price_surplus}" size="10" />
+			</td>
+		</tr>
+	{/section}
+		<tr class="{cycle values='gridline,gridline1'}"> 
+			<td align="center">&nbsp;</td>
+			<td align="center"> 
+				<input name="default_radiobutton" type="radio" value="0" {if $variantID_default eq 0} checked="checked"{/if} id="default_radiobutton_0"/>
+			</td>
+			<td align="center"><label for="default_radiobutton_0">{'str_not_defined'|transcape}</label></td>
+			<td align="center">&nbsp;</td>
+		</tr>
+	</table>
+	<p>{"prdset_prompt_option_value_str"|translate}	<input name="option_show_times" type="text" value="{$option_show_times}" size="6" /> {"prdset_prompt_option_value_times"|translate}</p>
+
+	<p><input name="SAVE" type="submit" value="{"btn_save"|translate}" /></p>
+	
+	</form>
+	{else}
+		{"prdcustopt_option_has_no_values"|translate}...
+	{/if}{* $OptionVariantsNumber ne 0*}
+		
+	</body>
+</html>

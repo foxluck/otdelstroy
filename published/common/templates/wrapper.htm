@@ -1,0 +1,13 @@
+<head>
+	<link rel='stylesheet' type='text/css' href='<? $preproc->getTemplatesUrl("css/wrapper.css") ?>'>
+	<link rel='stylesheet' type='text/css' href='<? $preproc->getTemplatesUrl("css/common.css") ?>'>
+	
+	<script src='<? $preproc->getTemplatesUrl("js/common.js") ?>'></script>
+	<script>
+		WbsCommon.setPublishedUrl("<? $preproc->getPublishedUrl() ?>");
+	</script>
+</head>
+
+<body>
+	<? include file=$templateFilename ?>
+</body>

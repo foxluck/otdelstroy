@@ -1,0 +1,101 @@
+/* Access rights table */
+
+.noPadding
+{
+	padding-top: 0!important;
+	padding-right: 0!important;
+	padding-bottom: 0!important;
+	margin: 0!important;
+}
+
+table.RightsTable
+{
+	border: none;
+	border-collapse: collapse;
+}
+
+table.RightsItemTable thead th
+{
+	white-space: nowrap;
+}
+
+table.RightsTable thead tr th
+{
+	text-align: left;
+}
+
+td.RightsSeparator
+{
+	line-height: 0;
+	height: 10px;
+}
+
+table.RightsTable tr.SeparatedRow td, table.RightsTable tr.SeparatedRow th
+{
+	padding-bottom: 5px!important;
+}
+
+table.RightsTable tr.RightsContainer
+{
+	font-size: 1.3em!important;
+	font-weight: normal!important;
+}
+
+table.RightsTable tr.RightsContainer th
+{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-left: 5px!important;
+	font-weight: bold;
+}
+
+table.RightsTable tr.RightsSubContainer th, table.RightsDiagram tr.RightsSubContainer th, 
+table.RightsTable tr.RightsSubContainer th div, table.RightsDiagram tr.RightsSubContainer th div
+{
+	font-weight: bold;
+	padding-top: 5px;
+	vertical-align: top;
+}
+
+table.RightsTable th
+{
+	text-align: left;
+	font-weight: normal;
+}
+
+table.RightsTable.ReportTable tbody th
+{
+	background: none;
+}
+
+table.RightsTable th.RightsFolder
+{
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 25px!important;
+	background: transparent url(../res/images/folder_open.gif) no-repeat left center!important; 
+	background-position: 15px 5px;
+	margin: 0;
+}
+
+div.RightCbColumn
+{
+	padding: 0!important;
+	margin: 0;
+	text-align: center;
+}
+
+div.RightsCellContent
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.RightCbColumn span
+{
+	font-weight: normal!important;
+}
+
+#hiddenTr {display: none}
+#blockTr {display: table-row}
+.AppTitleTr th.InTitle,td.InTitle {background: #E0E0E0; border-bottom: 2px solid #BFBFBF; font-size: 1.3em; font-weight: bold; padding-left: 2px; padding-top: 2px	}

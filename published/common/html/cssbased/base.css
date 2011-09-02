@@ -1,0 +1,1878 @@
+/*
+	Layout elements
+*/
+
+#Header
+{
+	background: #FF9900;
+}
+
+#CompanyLogo
+{
+	background: transparent;
+}
+
+#Wrap
+{
+	background: #99CC00;
+}
+
+#HeaderContainer
+{
+	background: #808000;
+}
+
+#MainMenu
+{
+	background: #FFCC00;
+}
+
+#LeftColumn
+{
+	background: #63A95C;
+}
+
+#ContentWrapper
+{
+	background: #FFCC99;
+}
+
+#Toolbar
+{
+	background: #99CCFF;
+}
+
+#ContentScroller
+{
+	background: #FF9900;
+}
+
+#Content
+{
+	background: #CDD6B4;
+}
+
+#RightColumn
+{
+	background: #FF6600;
+}
+
+#FooterContainer
+{
+	background: #53C278;
+}
+
+#Footer
+{
+	background: #FFFF99;
+}
+
+#PageTitlePanel
+{
+	background: #CCFFCC;
+}
+
+#PageTitle
+{
+	background: #FFFF99;
+}
+
+#Logout
+{
+	background: #CE98CA;
+}
+
+.FullWidthContent
+{
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+h1
+{
+	font-size: 1.8em;
+}
+
+h2
+{
+	font-size: 1.5em;
+}
+
+h3
+{
+	font-size: 1.3em;
+}
+
+h4
+{
+	font-size: 1em;
+}
+
+h5
+{
+	font-size: 0.8em;
+}
+
+h6
+{
+	font-size: 0.7em;
+}
+
+/*
+	Button Set
+*/
+
+ul.ButtonSet
+{
+	padding: 0 0 15px 0;
+	margin: 0;
+}
+
+table.FormBlock ul.ButtonSet
+{
+	padding-bottom: 0;
+}
+
+ul.ButtonSet li
+{
+	float: left;
+	padding: 0 10px 0 0;
+	list-style: none;
+	margin: 0;
+}
+
+ul.ButtonSet li.Right
+{
+	float: right;
+	padding: 0 0 0 10px;
+}
+
+/* 
+	Icon Buttons
+*/
+
+a.IconButton, a.IconButton span
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	width: 12px;
+	height: 12px;
+	cursor: pointer;
+}
+
+a.IconButton:hover
+{
+	text-decoration: none;
+}
+
+/*
+	Forms
+*/
+
+thead th label
+{
+	float: left;
+	padding-top: 1px;
+	padding-left: 3px;
+}
+
+thead th input
+{
+	float: left;
+}
+
+* html legend
+{
+	position: relative;
+	top: -10px;
+}
+
+fieldset div.FieldsetContainer
+{
+	padding: 0;
+	margin: 0;
+}
+
+label
+{
+	padding-top: 2px;
+	padding-bottom: 15px!important;
+	display: block;
+}
+
+table label
+{
+	line-height: 160%;
+	display: inline;
+	padding-bottom: 0!important;
+}
+
+table td.normallabel label {line-height: 140%}
+
+/*
+	Form Block
+*/
+
+table.FormBlock
+{
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+	border: none;
+}
+
+table.FormBlock tr.FormFooter td
+{
+	height: 15px;
+}
+
+table.FormBlock tr.FormContent td
+{
+	padding: 0;
+	margin: 0;
+}
+
+table.FormBlock tr.FormCaption
+{
+}
+
+table.FormBlock td
+{
+	padding: 0;
+	margin: 0;
+}
+
+table.FormBlock tr.FormButtons td
+{
+	padding-top: 20px;
+}
+
+table.FormBlock tr.FormCaption td span, table.FormBlock tr.FormContent td span
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+
+table.FormBlock tr.SeparatedRow td, table.FormLayout tr.SeparatedRow td
+{
+	padding-bottom: 10px!important;
+}
+
+table.FormBlock tr.SeparatedRow table td
+{
+	padding-bottom: 2px!important;
+}
+
+/*
+	Error block
+*/
+
+span.ErrorBlock
+{
+	display: block;
+}
+
+span.MessageBlock
+{
+	display: block;
+}
+
+/*
+	Form layout table
+*/
+
+table.FormLayout
+{
+	border-collapse: collapse;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+table.FormLayout td
+{
+	vertical-align: top;
+	white-space: nowrap;
+	padding: 2px!important;
+	margin: 0;
+}
+
+table.FormLayout.Wrap td {
+	white-space: normal;
+}
+
+table.FormLayout th
+{
+	vertical-align: top;
+	white-space: nowrap;
+	padding: 2px;
+	margin: 0;
+	font-weight: bold;
+	text-align: left;
+}
+
+td.FormElementCaption
+{
+	font-weight: bold;
+}
+
+table.FormLayout tr td.Indent
+{
+	padding-left: 15px!important;
+}
+
+/*
+	Controls
+*/
+
+textarea
+{
+	overflow: auto;
+}
+
+/*
+	Toolbar
+*/
+
+#Toolbar
+{
+	display: none;
+}
+
+#Toolbar li.Right
+{
+	float: right;
+}
+
+/*
+	Splitter
+*/
+
+table.Splitter
+{
+	border-collapse: collapse;
+
+	margin: 0;
+	padding: 0;
+
+	height: 100%;
+	width: 100%;
+}
+
+/* Left panel container */
+td.SplitterLeftPanelContainer
+{
+	padding: 0;
+	margin: 0;
+
+	width: 305px;
+	vertical-align: top;
+
+	overflow: hidden;
+}
+
+/* Scrollable area */
+div.SplitterScrollableArea
+{
+	overflow: auto;
+	overflow-x: hidden;
+	
+	padding: 0;
+	margin: 0;
+
+	height: 1000px;
+	width: 100%;
+}
+
+.ext-ie7 #SplitterRightPanelContent #SplitterRightScrollableContent { padding-right: 20px}
+
+.SplitterLeftPanelContainer div.SplitterScrollableArea {
+	overflow-x: auto;	
+}
+
+div.SeparatedRow
+{
+	margin-bottom: 10px!important;
+}
+
+/* Splitter handle */
+td.SplitterHandle
+{
+	padding: 0;
+	margin: 0;
+
+	width: 5px;
+
+	cursor: w-resize;
+	background: gray;
+}
+
+td.SplitterHandle div
+{
+	cursor: w-resize;
+	width: 5px;
+	height: 100%;
+}
+
+/* Right panel container */
+td.SplitterRightPanelContainer
+{
+	padding: 0;
+	margin: 0;
+
+	vertical-align: top;
+}
+
+/* Right panel content */
+/*
+div.SplitterRightPanelContent
+{
+	display: block;
+	overflow: auto;
+
+	padding: 0;
+	margin: 0;
+
+	width: 100%;
+}
+*/
+/* Splitter panel header */
+div.SplitterPanelHeader
+{
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 0;
+	margin: 0;
+}
+
+div.SplitterHeaderPanelDiv
+{
+	margin: 0;
+	padding: 0;
+}
+
+div#SplitterLeftScrollableContent
+{
+	padding: 1px;
+	margin: 0;
+}
+
+div#SplitterRightScrollableContent
+{
+	padding: 0;
+	margin: 0;
+}
+
+* html div#SplitterRightScrollableContent
+{
+	padding-right: 15px;
+}
+
+* html td.SplitterRightPanelContainer div.SplitterScrollableArea
+{
+	overflow-y: scroll;
+}
+
+* html div#SplitterRightPanelContent
+{
+	overflow-x: hidden;
+}
+
+table.SplitterHeaderPanelList
+{
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+	width: 100%;
+	height: 18px;
+}
+
+table.SplitterHeaderPanelList td
+{
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+table.SplitterHeaderPanelList td.CaptionControls
+{
+	width: 10px;
+	padding: 0;
+	vertical-align: top; 
+}
+
+table.SplitterHeaderPanelList td.PanelControls
+{
+	text-align: right;
+}
+
+span.SplitterClosePanelBtn, span.SplitterHeaderTreeBtn
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	width: 11px;
+	height: 21px;
+	cursor: pointer;
+}
+
+
+* html span.SplitterHeaderTreeBtn {background-position: 0px 7px}
+
+span.SplitterClosePanelBtn
+{
+	float: right;
+}
+
+span.SplitterClosePanelBtn a, span.SplitterHeaderTreeBtn a
+{
+	display: block;
+	width: 11px;
+	height: 11px;
+}
+
+span.SplitterClosePanelBtn a:hover, span.SplitterHeaderTreeBtn a:hover
+{
+	text-decoration: none;
+}
+
+div#SplitterHeader
+{
+	padding: 5px;
+	margin: 0;
+}
+
+
+
+
+/*
+	Splitter
+*/
+
+table.SplitterHeaderPanelList td
+{
+	height: 22px;
+}
+
+div.SplitterPanelHeader
+{
+	height: 27px;
+	padding: 0;
+	margin: 0 0 1px 0;
+}
+
+div.SplitterHeaderPanelDiv
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	height: 27px;
+}
+
+td.SplitterLeftPanelContainer
+{
+	padding: 0px;
+}
+
+td.SplitterRightPanelContainer
+{
+	padding: 0px;
+}
+
+span.SplitterHeaderTreeBtn
+{
+	width: 18px;
+	height: 16px;
+}
+
+span.SplitterHeaderTreeBtn a
+{
+	width: 15px;
+	height: 16px;
+}
+
+table.SplitterHeaderPanelList td
+{
+	padding-top: 1px;
+}
+
+div.SplitterPanelHeader.Active table.SplitterHeaderPanelList td
+{
+	font-weight: bold;
+}
+
+div.SplitterPanelHeader span.Inactive, div.SplitterPanelHeader span.Inactive a
+{
+	font-weight: normal;
+}
+
+
+
+/*
+	Tabbed forms
+*/
+
+div.TabbedForm
+{
+	margin: 0 0 0 0;
+}
+
+div.TabbedForm dl.TabbedFormList
+{
+	padding: 0;
+	margin: 0;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab
+{
+	padding: 0 0 7px 0;
+	margin: 0 1px 0 0;
+	float: left;
+	white-space: nowrap
+}
+
+* html div.TabbedForm dl.TabbedFormList dd.Tab
+{
+	padding: 0;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab a span
+{
+	display: block;
+	padding: 5px 10px 5px 5px;
+	margin: 0 0 0 5px;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab.Active a span
+{
+	display: block;
+	padding: 5px 10px 5px 5px;
+	margin: 0 0 0 5px;
+}
+
+div.TabbedForm dl.TabbedFormList dd.Tab a, div.TabbedForm dl.TabbedFormList dd.Tab a:visited
+{
+	display: block;
+	height: 20px;
+}
+
+* html div.TabbedForm dl.TabbedFormList dd.Tab a, * html div.TabbedForm dl.TabbedFormList dd.Tab a:visited
+{
+	display: inline-block;
+}
+
+div.TabbedForm dl.TabbedFormList dt.TabPage
+{
+	display: none;
+	clear: both;
+	padding: 10px;
+	margin: 0;
+}
+
+div.TabbedForm dl.TabbedFormList dt.TabPage.Active
+{
+	display: block;
+	clear: both;
+	padding: 10px;
+	margin: 0;
+}
+
+* html div.TabbedForm dl.TabbedFormList dt.TabPage.Active, * html div.TabbedForm dl.TabbedFormList dt.TabPage
+{
+	padding: 5px 10px 10px 10px;
+}
+
+/* Vertical tabs */
+
+table.VerticaslTabForm
+{
+	border-collapse: collapse;
+	border: none;
+}
+
+table.VerticaslTabForm td
+{
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+}
+
+div.TabbedForm table.VerticaslTabForm dl.TabbedFormList dd.Tab
+{
+	float: none;
+	margin: 0 0 1px 0;
+	white-space: nowrap;
+}
+
+/*
+	Tab bar
+*/
+
+div.TabBar
+{
+	padding: 0 0 0 5px;
+	margin: 0;
+}
+
+div.TabBarContent
+{
+	padding: 10px;
+	margin: 0;
+	width: 100%;
+}
+
+*html div.TabBarContent {
+	margin: 0px;
+	width: 97%;
+	padding-right: 0px
+}
+
+#TabBarContentWrapper
+{
+	margin: 0 0 0 0!important;
+	padding-right: 10px;
+}
+
+
+
+div.TabBarHeader
+{
+	padding: 0 0 15px 5px;
+	margin: 0;
+}
+
+div.TabBarFooter
+{
+	padding: 0 5px;
+	margin: 0;
+}
+
+/*
+	Main Menu drop-down setup
+*/
+
+#MainMenu dl dd.PlainList
+{
+	display: none;
+}
+
+#MainMenu dl dd.DropDown table
+{
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	z-index: 20;
+}
+
+#MainMenu dl dd.DropDown ul
+{
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+#MainMenu ul li
+{
+	list-style-type: none;
+	padding:0; 
+	margin:0;
+
+}
+
+#MainMenu dl dd.DropDown ul li
+{
+	white-space: nowrap;
+}
+
+#MainMenu dl dd.DropDown ul li a, #MainMenu dl dd.DropDown ul li a:visited
+{
+	display: block;
+	height: 23px;
+	width: 150px;
+
+	padding: 1px 24px 0 15px;
+}
+
+#MainMenu dl dd.DropDown ul
+{
+	display: none;
+}
+
+#MainMenu dl dd.DropDown a:hover
+{
+	background: transparent;
+}
+
+#MainMenu dl dd.DropDown a:hover ul, #MainMenu dl dd.DropDown:hover ul,
+#MainMenu dl dd.DropDown.ActiveItem a:hover ul, #MainMenu dl dd.ActiveItem.DropDown:hover ul
+{
+	display: block;
+	position: absolute;
+	top: 24px;
+/*	left: 0; */
+}
+
+* html #MainMenu dl dd.DropDown a:hover ul, * html #MainMenu dl dd.DropDown:hover ul,
+* html #MainMenu dl dd.DropDown.ActiveItem a:hover ul, * html #MainMenu dl dd.ActiveItem.DropDown:hover ul
+{
+	top: 18px;
+}
+
+
+#MainMenu dl dd.DropDown:hover ul li
+{
+	white-space: nowrap;
+}
+
+#MainMenu dl dd.DropDown:hover ul li a, #MainMenu dl dd.DropDown a:hover ul li a:visited
+{
+	display: block;
+}
+
+/*
+	Toolbar
+*/
+
+#Toolbar ul
+{
+	z-index: 25;
+	list-style-type: none;
+	padding: 4px 10px 0 10px;
+	margin: 0;
+	font-size: 0.85em;
+}
+
+#Toolbar ul li
+{
+	position: relative;
+
+	padding: 0 10px 0 0;
+	float: left;
+	margin: 0;
+
+	white-space: nowrap;
+}
+
+#Toolbar li.Right
+{
+	padding: 0 0 0 10px;
+}
+
+#Toolbar li.SmallerIndent
+{
+	padding: 0 5px 0 0;
+}
+
+/*
+	Setup the dropdown menus
+*/
+
+/*
+#Toolbar ul li a
+{
+	display: block;
+	height: 20px;
+}*/
+
+* html #Toolbar ul li a
+{
+	display: inline;
+	height: auto;
+}
+
+#Toolbar ul li a:hover
+{
+	background: transparent;
+}
+
+#Toolbar ul li table
+{
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	z-index: 20;
+}
+
+#Toolbar ul li span.ie7
+{
+	display: none;
+}
+
+#Toolbar ul li table ul
+{
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+#Toolbar ul li a:hover table ul, #Toolbar ul li:hover table ul
+{
+	display: block;
+
+	position: absolute;
+	width: 190px;
+	left: 4px;
+}
+
+#Toolbar ul li table ul li
+{
+	list-style-type: none;
+	vertical-align: middle;
+	padding:0;
+	margin:0;
+	display: block;
+	text-align: left;
+}
+
+#Toolbar ul li a:hover table ul li, #Toolbar ul li:hover table ul li
+{
+	float: none;
+	vertical-align: middle;
+	height: 28px;
+}
+
+#Toolbar ul li a:hover table ul li a, #Toolbar ul li:hover table ul li a
+{
+	display: block;
+	vertical-align: middle;
+}
+
+#Toolbar ul li a:hover table ul li a, #Toolbar ul li a:hover table ul li a:visited, 
+#Toolbar ul li:hover table ul li a, #Toolbar ul li:hover table ul li a:visited
+{
+	display: block;
+	width: 145px;
+
+	height: 24px;
+	padding: 0 25px 0 15px;
+}
+
+/* Separator item */
+#Toolbar ul li a:hover table ul li.Separator, #Toolbar ul li:hover table ul li.Separator
+{
+	width: 165px;
+	padding: 0 10px;
+	height: 6px!important;
+	line-height: 0;
+	font-size: 0.1em;
+	border-right: 0px;
+}
+
+#Toolbar ul li a:hover table ul li.Separator div, #Toolbar ul li:hover table ul li.Separator div
+{
+	overflow: hidden;
+	height: 6px!important;
+}
+
+/* Header and footer items */
+#Toolbar ul li a:hover table ul li.ToolbarMenuHeader, #Toolbar ul li:hover table ul li.ToolbarMenuHeader,
+#Toolbar ul li a:hover table ul li.ToolbarMenuFooter, #Toolbar ul li:hover table ul li.ToolbarMenuFooter
+{
+	width: 190px;
+	height: 10px;
+	padding: 0;
+	margin: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+#Toolbar ul li a:hover table ul li.ToolbarMenuHeader div, #Toolbar ul li:hover table ul li.ToolbarMenuHeader div,
+#Toolbar ul li a:hover table ul li.ToolbarMenuFooter div, #Toolbar ul li:hover table ul li.ToolbarMenuFooter div
+{
+	overflow: hidden;
+	height: 10px;
+	padding: 0;
+	margin: 0;
+	line-height: 0;
+}
+
+/*
+	Status Images
+*/
+
+.CheckedImg
+{
+	display: block;
+	padding: 0 10px 0 0;
+	margin: 0;
+	width: 15px!important;
+	height: 15px;
+
+	background: black;
+}
+
+.UnCheckedImg
+{
+	display: block;
+	padding: 0 10px 0 0;
+	margin: 0;
+	width: 15px!important;
+	height: 15px;
+
+	background: none;
+}
+
+span.CheckedImg.AlignCenter, span.UnCheckedImg.AlignCenter
+{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+span.CheckedImg.AlignRight, span.UnCheckedImg.AlignRight
+{
+	margin-right: 0;
+	margin-left: auto;
+}
+
+
+/*
+	Tables
+*/
+
+/* Simple List */
+
+table.SimpleList
+{
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+
+table.FormLayout table.SimpleList
+{
+	margin-bottom: 0;
+}
+
+* html table.SimpleList tbody
+{
+	margin-bottom: 15px;
+}
+
+* html table.FormLayout table.SimpleList tbody
+{
+	margin-bottom: 0;
+}
+
+
+table.SimpleList th, table.SimpleList td
+{
+	padding: 2px 5px!important;
+	text-align: left;
+	vertical-align: top;
+}
+
+table.FormLayout table.SimpleList th, table.FormLayout table.SimpleList td
+{
+	padding: 2px 5px!important;
+}
+
+table.SimpleList tr.Odd
+{
+	background: gray;
+}
+
+/* Note Block */
+
+table.NoteBlock
+{
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+
+* html table.NoteBlock tbody
+{
+	margin-bottom: 15px;
+}
+
+table.NoteBlock th, table.NoteBlock td
+{
+	padding: 2px 5px;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* Horizontal Rule */
+
+div.hr
+{
+	border-top: 1px solid gray;
+}
+
+/* Name-value list */
+
+table.NameValueList
+{
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+
+table.FormBlock table.NameValueList
+{
+	margin-bottom: 0;
+}
+
+table.NameValueList th
+{
+	padding-right: 5px;
+	text-align: left;
+}
+
+table.NameValueList tr.SeparatedRow th, table.NameValueList tr.SeparatedRow td
+{
+	padding-bottom: 15px!important;
+}
+
+/*
+	Report Table
+*/
+
+table.ReportTable td, table.ReportTable th
+{
+	padding: 1px 5px!important;
+}
+
+table.ReportTable tbody td a
+{
+	display: inline!important;
+}
+
+/* Grid */
+
+table.Grid
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.Grid th, table.Grid td
+{
+	padding: 1px 5px!important;
+	text-align: left;
+	vertical-align: top;
+}
+
+table.Grid tr.Odd
+{
+	background: gray;
+}
+
+table.Grid td.InlineLinks a
+{
+	display: inline!important;
+}
+
+/* List Header */
+
+table.ListHeader
+{
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+}
+
+table.ListHeader td
+{
+	padding: 0 5px 0 0;
+	margin: 0;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+/* List */
+
+table.List, table.ListItem
+{
+	border: none;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.List td, table.ListItem td
+{
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	text-align: left;
+}
+
+table.ListItem thead th
+{
+	text-align: left!important;
+}
+
+table.ListItem
+{
+	margin-bottom: 5px;
+}
+
+/* Other table classes */
+
+tr.NoRecords td
+{
+	text-align: center;
+}
+
+.AlignCenter
+{
+	text-align: center!important;
+}
+
+.AlignRight
+{
+	text-align: right!important;
+}
+
+td.Indent, th.Indent
+{
+	padding-left: 15px;
+}
+
+td.NoBreak
+{
+	white-space: nowrap;
+}
+
+td.ValignTop, th.ValignTop
+{
+	vertical-align: top!important;
+}
+
+td.ValignMiddle, th.ValignMiddle
+{
+	vertical-align: middle!important;
+}
+
+td.ValignBottom, th.ValignBottom
+{
+	vertical-align: bottom!important;
+}
+
+td.Important
+{
+	font-weight: bold;
+}
+
+tr.ListSubheader
+{
+	background: gray;
+	font-weight: bold;
+}
+
+table.small td
+{
+	font-size: 0.9em!important;
+}
+
+/*
+	Treeview
+*/
+
+.treeCatalogRow
+{
+	padding: 3px 0;
+	white-space: nowrap;
+}
+
+.treeCatalogRowCurrent
+{
+	padding: 0 4px;
+	white-space: nowrap;
+}
+
+#TreePageListTable
+{
+	width: 100%;
+	border-collapse: collapse;
+	border: 0;
+}
+
+#TreePageListTable thead td
+{
+	padding: 3px 5px 0 5px;
+	vertical-align: top;
+	white-space: nowrap;
+	height: 25px;
+}
+
+#TreePageListTable tbody td
+{
+	padding: 0 5px 5px 5px;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+/*
+	Links
+*/
+
+a.activelink
+{
+	color: blue!important;
+}
+
+a.Inline
+{
+	display: inline!important;
+}
+
+/*
+	Thumbnails
+*/
+
+div.Thumbnail
+{
+	width: 120px;
+	height: 115px;
+	margin: 0;
+	padding: 3px 0 0 3px;
+	vertical-align: middle;
+}
+
+div.Thumbnail div
+{
+	width: 120px;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	text-align: center!important;
+}
+
+div.Thumbnail a
+{
+	display: inline!important;
+}
+
+div.Thumbnail div div
+{
+	width: 110px;
+	height: 110px;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div span
+{
+	display: block;
+	padding-top: 45px;
+}
+
+div.Thumbnail div div img
+{
+	vertical-align: bottom!important;
+	border: none;
+}
+
+div.Thumbnail div div a
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+div.Thumbnail div div table
+{
+	border-collapse: collapse;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div table td
+{
+	width: 110px;
+	height: 110px;
+	text-align: center!important;
+	vertical-align: middle!important;
+}
+
+/*
+	Note class
+*/
+
+dl.Note
+{
+	display: block;
+	padding: 0 0 15px 0;
+	margin: 0;
+	white-space: normal!important;
+	clear: both;
+}
+
+table.FormLayout dl.Note
+{
+	padding-bottom: 0;
+}
+
+dl.Note.Separated
+{
+	padding-bottom: 15px;
+}
+
+dl.Note dt
+{
+	display: inline;
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+
+dl.Note dd
+{
+	display: inline;
+	padding: 0;
+	margin: 0;
+	white-space: normal!important;
+}
+
+dl.Note dd.Indented
+{
+	display: block;
+	padding-left: 10px;
+}
+
+dl.SmallFontNote
+{
+	font: 0.9em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+dl.Note dt.ImportantNote
+{
+	color: red;
+}
+
+/*
+	Font styles
+*/
+
+em
+{
+	font-style: normal;
+	font-weight: normal;
+}
+
+small, .small, table.small tr td
+{
+	font-size: 0.9em!important;
+	line-height: normal!important;
+}
+
+small
+{
+	display: inline;
+}
+
+.FormCaption
+{
+	font-size: 1.2em;
+}
+
+.SmallFont
+{
+	font: 0.9em Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal!important;
+}
+
+.NormalWeight
+{
+	font-weight: normal!important;
+}
+
+/*
+	Scrollable area
+*/
+
+div.ScrollableArea
+{
+	overflow: auto;
+}
+
+* html div.ScrollableArea
+{
+	overflow-x: hidden;
+}
+
+.StandardPadding
+{
+	padding: 5px;
+}
+
+/*
+	Lists
+*/
+
+dl.SimpleList
+{
+	padding: 0 0 15px 0;
+	margin: 0;
+	width: 600px;
+}
+
+dl.SimpleList dt
+{
+	font-weight: bold!important;
+}
+
+dl.SimpleList dd
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 15px;
+}
+
+ul.Columns
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.Columns li
+{
+	float: left;
+	padding: 0 15px 0 0;
+	margin: 0;
+}
+
+ul.Columns li.Last
+{
+	padding-right: 0;
+}
+
+ul.Stack
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+ul.Stack li
+{
+	float: left;
+	padding: 0 5px 0 0;
+	margin: 0;
+}
+
+ul.Stack li.Last
+{
+	padding-right: 0;
+}
+
+ul.List
+{
+	padding: 0 0 15px 0;
+	margin: 0;
+}
+
+ul.List li
+{
+	padding: 0;
+	margin: 0 0 0 35px;
+}
+
+/*
+	Reports
+*/
+
+dl.ReportList
+{
+	padding: 0;
+	margin: 0;
+	width: 600px;
+}
+
+dl.ReportList dt
+{
+	font-weight: bold;
+}
+
+dl.ReportList dd
+{
+	padding-bottom: 15px;
+	font: 0.9em Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+dl.LinkList
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+dl.LinkList dt
+{
+	font-size: 1.35em;
+	font-weight: bold;
+}
+
+dl.LinkList dd
+{
+	padding-bottom: 15px;
+	font-size: 0.9em; 
+	margin-left: 0px;
+}
+
+/*
+	Sections
+*/
+
+div.SectionHeader
+{
+	font-size: 1.3em!important;
+	font-weight: bold;
+	padding-top: 9px;
+	padding-bottom: 2px;
+}
+
+/* Calendar styles */
+
+.calendar
+{
+	position: relative;
+	display: none;
+	border: solid 1px #006E95;
+	font-size: 11px;
+	color: #000;
+	cursor: default;
+	background: #FCF9F3;
+	font-family: tahoma, verdana, sans-serif;
+}
+
+.calendar table
+{
+	font-size: 11px;
+	color: #000;
+	cursor: default;
+	background: #AEDBEE;
+	font-family: tahoma, verdana, sans-serif;
+}
+
+.calendar tbody {
+	background-color: #FCF9F3;
+}
+
+.calendar tbody .day
+{
+	width: 2em;
+	text-align: right;
+	padding: 2px 4px 2px 2px;
+}
+
+.calendar tbody .day.othermonth
+{
+	font-size: 80%;
+	color: #ccc;
+}
+
+.calendar tbody .day.othermonth.oweekend
+{
+	color: #fcc;
+}
+
+.calendar table .wn
+{
+	padding: 2px 4px 2px 2px;
+	background-color: #A59B86;
+	color: white;
+}
+
+.calendar tbody td.hilite
+{
+	padding: 1px 3px 1px 1px;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #867D6A;
+	border-bottom: 1px solid #867D6A;
+	border-left: 1px solid #fff;
+}
+
+.calendar thead .daynames
+{
+}
+
+.calendar thead .name
+{
+	padding: 2px;
+	text-align: center;
+	background-color: #A59B86;
+	color: white;
+}
+
+.weekend
+{
+	color: red;
+}
+
+.calendar tbody td.today
+{
+	color: #1B769A;
+	font-weight: bold;
+	background-color: #AEDBEE;
+}
+
+.calendar tbody td.selected
+{
+	background-color: #AEDBEE!important;
+}
+
+.calendar tbody .rowhilite td
+{
+	background-color: #F1F1F1;
+}
+
+.calendar tbody .rowhilite td.wn
+{
+	background-color: #CCCCCC;
+}
+
+.calendar tbody .rowselected td
+{
+	background-color: #F1F1F1;
+}
+
+.calendar tbody .rowselected td.wn
+{
+	background-color: #CCCCCC;
+
+	padding: 1px 3px 1px 1px;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #fff;
+}
+
+.calendar .button
+{
+	text-align: center;
+	padding: 1px;
+	border-top: 1px solid #D0FEFF;
+	border-right: 1px solid #4F7A8B;
+	border-bottom: 1px solid #4F7A8B;
+	border-left: 1px solid #D0FEFF;
+}
+
+.button_link
+{
+	display: inline-block;
+	padding: 4px 5px;
+}
+
+.calendar .nav
+{
+
+}
+
+.calendar thead .title
+{
+	font-weight: bold;
+	padding: 1px;
+	background: #1283AB;
+	color: #fff;
+	text-align: center;
+}
+
+
+.calendar thead .hilite
+{
+	border-top: 1px solid #69C3EE;
+	border-right: 1px solid #006A91;
+	border-bottom: 1px solid #006A91;
+	border-left: 1px solid #69C3EE;
+	padding: 0px;
+	background-color: #399CC5;
+	color: white;
+}
+
+.calendar tbody td.selected
+{
+	font-weight: bold;
+	border-top: 1px solid #000;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+	padding: 2px 2px 0px 2px;
+	background: #e4e0d8;
+}
+
+/*
+	Trial alert
+*/
+
+.TrialAlertBlock
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0;
+	width: 100%
+}
+
+.TrialAlertBlock div
+{
+	display: block;
+	margin: 0 auto;
+	width: 32em;
+	background: #E8E8E8;
+	color: black;
+	text-align: center;
+	padding: 3px 0;
+}
+
+.TrialAlertBlock div span
+{
+	color: red;
+}
+
+.TrialAlertBlock a
+{
+	color: blue;
+	font-weight: bold;
+}
+
+.CommentBlock {border: 1px solid #999999; background: #FAEF63; width: 300px; overflow-y: auto; display: none; position: absolute; padding: 0px; white-space: normal; margin-left: 10px}
+.CommentBlock .Caption {background: #DACF43; font-weight: bold; border-bottom: 1px solid #999999; padding: 3px}
+.CommentBlock .Text {font-size: 8pt; padding: 3px; padding-left: 15px; }
+.CommentBlock .CloseButton {float: right; border: 1px solid #999999; margin-left: 10px; background: #D0D0D0; padding-left: 4px; padding-right: 4px; cursor: pointer}
+
+#WALogoText {padding-left: 10px}
+
+#AccountUnconfirmedMessage {color: red; font-weight: bold; }
+#AccountUnconfirmedLink {color: blue; font-weight: bold}
+
+/*
+    Select Contacts div
+*/
+
+div.popUpContactsDiv {
+    position: absolute;
+    left: 0px; 
+    top: 0px; 
+    padding: 5px;
+}
+
+
+#Toolbar ul li a:hover
+{
+	background: transparent;
+}
+
+.CheckboxGroup {padding: 4px;}
+.CheckboxGroup .InputStr {margin-bottom: 4px}
+.justadded {background: #FFFF99}
+.Blue {color: #0000FF !important}
+
+.SimpleContentBlock {padding: 10px;}
+
+.PhotosTable div.Thumbnail
+{
+	padding: 3px 0 0 0; 
+}
+.ext-ie .PhotosTable div.Thumbnail div {
+	height: 100px;
+}
+
+.h{font-size:20px} .q{color:#00c} 
+#imageTitle span {background: white}
+ .Separator {width: 1px; height: 35px; border-right: 1px solid #D0D0D0; margin-left: 8px}
+
+.highlight {background: gold}

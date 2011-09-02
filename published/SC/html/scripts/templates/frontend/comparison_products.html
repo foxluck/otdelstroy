@@ -1,0 +1,65 @@
+{* product comparation *}
+<h1>{"prd_product_comparison"|translate}</h1>
+
+{if $product_category_path}
+<p>
+	<a href='{"?ukey=TitlePage"|set_query_html}'>{"lnk_homepage"|translate}</a>{foreach from=$product_category_path item=_cat}
+	{if $_cat.categoryID != 1}{$BREADCRUMB_DELIMITER}
+	<a class="cat" href='{"?categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'>{$_cat.name|escape:'html'}</a>
+	{/if}
+	{/foreach}
+</p>
+{/if}
+
+<table cellspacing="0" width="95%" id="cmp-table">
+
+<tr>
+	<td class="cmp_headers"></td>
+	{section name=i loop=$products}
+	<td class="cmp_column_{cycle values='odd,even' name=1}" align="center">
+		<table cellpadding="0" cellspacing="0" align="center"><tr><td align="center" valign="middle" style="width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px; height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px;">
+		{if $products[i].thumbnail}<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$products[i].thumbnail|escape:'url'}" alt="{$products[i].name|escape:'html'}" title="{$products[i].name|escape:'html'}"/>{/if}
+		</td></tr></table>
+	</td>
+	{/section}
+</tr>
+<tr>
+	<td class="cmp_headers"></td>
+	{section name=i loop=$products}
+	<td class="cmp_column_{cycle values='odd,even' name=2}">
+		<a href='{"?ukey=product&productID=`$products[i].productID`&product_slug=`$products[i].slug`"|set_query_html}' title="{$products[i].name|escape:'html'}">{$products[i].name|escape:'html'}</a>
+	</td>
+	{/section}
+</tr>
+<tr>
+	<td class="cmp_headers"></td>
+	{section name=i loop=$products}
+	<td class="cmp_column_{cycle values='odd,even' name=3}">
+		{$products[i].brief_description}
+	</td>
+	{/section}
+</tr>
+<tr>
+	<td class="cmp_headers"></td>
+	{section name=i loop=$products}
+	<td class="totalPrice cmp_column_{cycle values='odd,even' name=4}">
+		{if $products[i].Price > 0}
+		{$products[i].PriceWithUnit}
+		{/if}
+	</td>
+	{/section}
+</tr>
+
+{section name=i loop=$definedOptions}
+<tr>
+	<td class="cmp_headers">{$definedOptions[i].name}</td>
+	{counter name="_id" assign=_id}
+	{section name=j loop=$products}
+	<td class="cmp_column_{cycle values='odd,even' name=5+$_id}">
+		{$products[j][i]}
+	</td>
+	{/section}
+</tr>
+{/section}
+
+</table>

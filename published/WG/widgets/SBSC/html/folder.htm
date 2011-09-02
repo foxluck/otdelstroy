@@ -1,0 +1,18 @@
+<tr>
+	<td><? $widgetStrings.field_folder_label ?>:</td>
+	<td>
+		<? assign var=fieldName value="FOLDER" ?>
+		<? assign var=fieldValue value=$itemData.params.$fieldName ?>
+		
+		<? if !$fieldValue ?>
+			<? assign var=fieldValue value=$field.default ?>
+		<? /if ?>
+		<? if !$fieldValue ?>
+			<? assign var=fieldValue value=$params.CF_ID ?>
+		<? /if ?>
+		
+		<select id="Folder" class="FormControl" name="fields[FOLDER]" style="width: 300px">
+			<? include file="../../../common/html/classic/tree_templates/tree_folders_selector.htm" selectedID=$fieldValue showPromt=false denyNoAccess=true ?>
+		</select>
+	</td>
+</tr>

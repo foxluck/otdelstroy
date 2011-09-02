@@ -1,0 +1,87 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+	<? if !$fatalError ?>
+
+		<table border=0 cellpadding=2 cellspacing=0>
+			<tr>
+				<td colspan=2><b><? $kernelStrings.tpl_systemtemplates_label ?></b></td>
+			</tr>
+			<? foreach from=$sysFormats key=format_id item=fmt_name ?>
+				<tr>
+					<td><? $fmt_name|htmlsafe:true:true ?></td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td><? $kernelStrings.tpl_notemplates_label|htmlsafe:true:true ?></td>
+				</tr>
+			<? /foreach ?>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+
+		<table border=0 cellpadding=2 cellspacing=0>
+			<tr>
+				<td><b><? $kernelStrings.tpl_customtemplates_label ?></b></td>
+			</tr>
+		</table>
+		<table border=0 cellpadding=2 cellspacing=0>
+			<? foreach from=$customFormats key=format_id item=fmt_name ?>
+				<tr>
+					<td width=10><input type=checkbox name="selectedFormats[]" value="<? $format_id ?>"></td>
+					<td><? $fmt_name|htmlsafe:true:true ?></td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td><? $kernelStrings.tpl_notemplates_label|htmlsafe:true:true ?></td>
+				</tr>
+			<? /foreach ?>
+		</table>
+
+		<? if $customFormats ?>
+			<table border=0 cellpadding=0 cellspacing=0 width=500>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td><? include file="../../../common/html/classic/button.htm" align="left" name="deleteselected" caption=$kernelStrings.tpl_deleteselected_btn formname="form"?></td>
+				</tr>
+			</table>
+		<? /if ?>
+
+		<table border=0 cellpadding=2 cellspacing=0>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td style="width: 500px" class=smallFont><? "<b>"|cat:$kernelStrings.app_tips_label|cat:"</b>: " ?><? $kernelStrings.tpl_imporformats_tipes|htmlsafe:true:true ?></td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+		</table>
+
+		<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_close_btn formname="form"?>
+
+	<? else ?>
+		<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+	<? /if ?>
+
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="opener" value="<? $opener ?>">
+
+	<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<link rel="stylesheet" type="text/css" href="{{$url.common}}html/res/dsrte/dsrte.css" />
+<style>
+	.send_mail_header { padding:15px 20px 15px 0;-moz-border-radius-topleft:5px; -webkit-border-top-left-radius:5px;-moz-border-radius-topright:5px; -webkit-border-top-right-radius:5px; background:#e4eaed; margin:10px 10px 0 10px; border-bottom:solid 1px #c0c7cc;min-width:680px;}
+	.send_mail_table label { width:70px; text-align:right; display:block;}
+	.send_mail_table td { padding-right:5px; padding-top:2px; vertical-align:top;}
+	.send_mail_editor {padding:0 10px 0 10px; min-width:700px;}
+	.send_mail_footer { padding:0 0 0 0; }
+	.send_mail_table input, .send_mail_table textarea {width:100%; font-family:"Trebuchet MS"; font-size:14px;} 
+	.send_mail_form { padding:0 10px;}
+	.uploadFilesList { padding:0 0 10px 10px;}
+	.linkHover {color:#0043A7; text-decoration:underline}
+	.linkHout {color:#0043A7; text-decoration:none;}
+	.error_field {color:red;}
+	.send_mail_table td.send_link { padding-top:5px;}
+	.send_link a { color:#0043A7; font-size:0.9em; line-height:0.85em; position:relative; top:-0.25em; text-decoration:none; padding-right:0.5em}
+	.send_link a:hover {text-decoration:underline;}
+	.send_mail_btns { padding:15px 10px 15px 10px;}
+	.send_mail_table td.error-text { padding-top:0;}
+	.send_mail_table td.error-text label { width:100%; text-align:left; font-size:0.9em; }
+	.send_mail_page_header {font-size:26px;} 
+	#send_mail_page_header { padding-left:20px;  } 
+</style>
+
+
+<script type="text/javascript">
+	var ctrlb='b',ctrli='i',ctrlu='u'; // keyboard shortcut keys
+</script>
+{{$editor_scripts}}
+<script type="text/javascript" src="../common/js/jquery.autocomplete.js"></script>
+
+<div id = "send_mail_page_header" >
+<div class="send_mail_page_header">{{$title}}</div>
+{{$error}}
+</div>
+<div class="send_mail_form">
+<form method="post" name="send_form" action="" enctype="multipart/form-data">
+<input type="hidden" name="status" value="send" />
+{{if $referer}}
+<input type="hidden" name="referer" value="{{$referer}}" />
+{{/if}}
+
+	<div id="send_mail_header" class="send_mail_header"><table class="send_mail_table" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+		<tr>
+			<td width="1%"><label>[`From`]:</label></td>
+			<td>{{$send_from}}</td>
+		</tr>
+		<tr>
+			<td width="1%"><label for="data_to">[`To`]:</label></td>
+			<td><textarea name="data[to]" id="data_to" class="autocomplete_input"
+				rows="2" style="height:36px; overflow-x:hidden; margin:0;">{{$send_to}}</textarea>
+			</td>
+		</tr>
+		<tr id="to_error" class="error_field" style="display:none;">
+			<td></td>
+			<td class="error-text">
+				<label for="data_to">[`This field is required`].</label>
+			</td>
+		</tr>
+		<tr id="send_form_cc" style="display:none;">
+			<td><label for="data_cc">[`Copy`]:</label></td>
+			<td><input class="autocomplete_input" name="data[cc]" id="data_cc" autocomplete="off" /></td>
+		</tr>
+		<tr id="send_form_bcc" style="display:none;">
+			<td><label for="data_bcc">[`Bcc`]:</label></td>
+			<td><input class="autocomplete_input" name="data[bcc]" id="data_bcc" autocomplete="off" /></td>
+		</tr>
+		<tr id="send_form_links">
+			<td></td>
+			<td class="send_link">
+				<a href="#" id="showCCLink"
+					onclick="switchSendFormLink('showCCLink'); return false">[`Copy`]</a>
+				<a href="#" id="showBCCLink"
+					onclick="switchSendFormLink('showBCCLink'); return false">[`Bcc`]</a>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="data_subject">[`Subject`]:</label></td>
+			<td><input name="data[subject]" id="data_subject" value="{{$subject}}" /></td>
+		</tr>
+
+	</table></div>
+
+	<div class="send_mail_editor"><div class="editor_wrapper" style="position:relative;">{{$editor_HTML}}</div></div>
+
+	<div id="send_mail_footer" class="send_mail_footer">
+
+		<div class="uploadFilesList">
+			<div id="files_list">
+			{{include file='_UsersEmailAttachments.html'}}
+			</div>
+			<a href="#" id="attach_link">[`Attach file`]</a>
+		</div>
+
+		<div class="send_mail_btns">
+			<input type="submit" value="[`Send`]" onclick="return sendMail();" />
+			<input type="button" value="[`Cancel`]" onclick="$('#back-url').click()" />
+		</div>
+	</div>
+
+</form></div>
+
+<script type="text/javascript">
+	$(window).resize(function () {
+		sendMailResize();
+		//setTimeout(function () { sendMailResize() }, 10);
+	});
+	$(document).ready(function () {
+		sendMailResize();
+	});
+
+	function sendMailResize(hh) {
+		if (hh == undefined) {
+			hh = 18;
+		}
+		var h = $('#scroll').height() - $("#send_mail_page_header").height() - $("#send_mail_header").height() - $("#send_mail_footer").height();
+		$('#{{$redactor_id}}').height(h - hh - 75);
+	}
+
+	$(window).load(function () {
+		$('.autocomplete_input').autocomplete('?mod=users&act=email&ajax=1', {
+			value: function (elem) {
+				return elem.val().replace(/^(.+?[,;]\s*)?([^,;]+)?$/, "$2");
+			},
+			insert: function (elem, text) {
+				elem.val(elem.val().replace(/^(.+?[,;]\s*)?([^,;]+)?$/, "$1") + text+ ', ');
+			}, 
+			selection: '<span style="background: gold">$1</span>'
+		});
+	});
+
+	var obj = $('#attach_link');
+	var reg=/^<table/i;
+	var mid = '';
+	$(document).ready(function () {
+	new Ajax_upload(obj, {
+		action: '?mod=users&act=email',
+		width: 140,
+		onSubmit : function(file , ext){
+			this.set_data({upload_action: 'upload', mid: $('#mid').val()});
+			$('#loading-block', parent.document).css('visibility', '');
+		},
+		onComplete : function(file, response){
+			if(reg.test(response)) {
+				obj.html('[`Attach one more file`]')
+			} else {
+				obj.html('[`Attach file`]')
+			}
+			$('#files_list').html(response);
+			mid = $('#mid').val();
+
+			
+			$('#scroll').scrollTop($('#scroll')[0].scrollHeight);
+
+			$('#loading-block', parent.document).css('visibility', 'hidden');
+			sendMailResize();
+		}
+	});
+	});
+	function deleteUploadedFile(fileName) {
+		$('#loading-block', parent.document).css('visibility', '');
+		$('#files_list').load(
+			'?mod=users&act=email',
+			{upload_action: 'delete', delete_file: fileName, mid: mid},
+			function() {
+				if(reg.test($('#files_list').html())) {
+					obj.html('[`Attach one more file`]')
+				} else {
+					obj.html('[`Attach file`]')
+				}
+				$('#loading-block', parent.document).css('visibility', 'hidden');
+				sendMailResize();
+			}
+		);
+	}
+
+	function sendMail() {
+		if($('#data_to').val() == 0) {
+			$("#to_error").show();
+			sendMailResize();
+			$("#data_to").focus();
+			return false;
+		}
+		$('#upload_action').val('');
+		$('#loading-block', parent.document).css('visibility', '');
+		$("#{{if $redactor_id}}{{$redactor_id}}{{else}}dsrte{{/if}}-ta").val(dsRTEObj[0].getDoc());
+		document.send_form.submit();
+	}
+	
+	function switchSendFormLink(id) {
+		if(id == 'showCCLink') {
+			$('#' + id).hide();
+			$('#send_form_cc').show();
+		} else if(id == 'showBCCLink') {
+			$('#' + id).hide();
+			$('#send_form_bcc').show();
+		}
+		if($('#showCCLink').css('display') == 'none' && $('#showBCCLink').css('display') == 'none') {
+			$('#send_form_links').hide();
+		}
+		sendMailResize();
+	}
+
+	$('#data_subject').bind('keyup', function() { autoSave(); } );
+	var autoSaveTimeout = false;
+	function autoSave() {
+		if(!autoSaveTimeout) {
+			autoSaveTimeout = setTimeout(function() {
+				autoSaveTimeout = false;
+				$.post(
+					'index.php?mod=users&act=email&autosave=1&ajax=1',
+					{'subject': $('#data_subject').val(), 'text': dsRTEObj[0].getDoc(), 'mid': $('#mid').val()},
+					function(mid){
+						$('#mid').val(mid);
+					}
+				);
+			}, 20000);
+		}
+	}
+
+</script>

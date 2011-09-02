@@ -1,0 +1,88 @@
+body{
+font-family:Arial, Sans-Serif;
+font-size:9pt;
+color:#444444;
+background-color:#ffffff;
+margin:0px;
+padding:0px;
+}
+
+div.dynamicTree_elem{
+padding:0px;
+font-size: 11px;
+font-family: Verdana;
+}
+
+.expnode{
+	cursor: pointer; cursor: hand;
+}
+
+.DTElems{
+	cursor: pointer; cursor: hand;
+}
+
+.inlineimg{
+display:block;float:left;
+/*
+	vertical-align:middle;
+	*/
+}
+
+em{
+	cursor: pointer; cursor: hand; 
+	text-decoration:none;
+	width:9px;
+	height:11px;
+	display:block;
+	float:left;
+	background-repeat: no-repeat;
+}
+
+#top_panel{
+z-index: 99; 
+position: fixed; 
+left: 0px; 
+top: 0px;
+width:100%;
+background-color: #666;
+padding:2px;
+border: 0px solid black;
+border-bottom-width:1px;
+}
+
+div.loading_msg{
+z-index: 100; 
+position: absolute; 
+left: 15px; 
+top: 25px;
+padding:2px;
+border: 0px;
+background-color: #f5f0bb;
+}
+
+.tli{
+color:black;
+margin-left:0px;
+padding-left:0px;
+font-size:100%;
+}
+.tul,.tree_ul{
+list-style-type:none;
+margin-left:7px;
+padding-left:10px;
+}
+.expander{
+cursor: pointer; cursor: hand;
+}
+.ttitle{
+cursor: pointer; cursor: hand;
+}
+a.relProduct	{
+	text-decoration: underline!important;
+	cursor: pointer!important;
+	cursor: hand!important;
+}
+a{
+	cursor: pointer!important;
+	cursor: hand!important;
+}

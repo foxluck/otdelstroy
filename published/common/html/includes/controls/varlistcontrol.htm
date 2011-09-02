@@ -1,0 +1,31 @@
+<?
+	*	
+		Variable list control 
+		Parameters: 
+			$width - control width
+			$height - control height
+			$varList - array of vlc_item objects
+			$targetControl - control ID to insert variable name on click
+			$onClick - javaScript function to execute on mouse click. Function must have following declaration: function_name(varName, targetElementID)
+	*
+?>
+<div class="control" style="overflow: auto; width: <? $width ?>; height: <? $height ?>; padding: 0!important; margin: 0!important;">
+	<table cellpadding=0 cellspacing=0 border=0 class="treeDocumentListTable noBottomBorder" width="100%" style="padding: 0; margin: 0">
+		<tr>
+			<th align=left><?$app_vlctrlvar_title|default:$stStrings.app_vlctrlvar_title?></th>
+			<th align=left class=noRightBorder><?$app_vlctrldesc_title|default:$stStrings.app_vlctrldesc_title?></th>
+		</tr>
+		<? foreach from=$varList item=varItem name=varLoop ?>
+			<tr>
+				<td valign=top class=smallFont><nobr><a <? if !$onClick ?>href="javascript:void(0)" onclick="vcl_insertVar('<? $varItem->varName|htmlsafe:true:true ?>', '<? $targetControl ?>')"<? else ?>href="javascript: <? $onClick ?>('<? $varItem->varName|htmlsafe:true:true ?>', '<? $targetControl ?>')"<? /if ?> class=activelink onmouseover="window.status='';return true"><? $varItem->varName|htmlsafe:true:true ?></a></nobr></td>
+				<td class="smallFont noRightBorder"><? $varItem->varDesc|htmlsafe:true:true ?></td>
+			</tr>
+			<? if !$smarty.foreach.varLoop.last ?>
+				<tr>
+					<td style="font-size:1pt!important" height=3>&nbsp;</td>
+					<td style="font-size:0pt!important" height=3 class=noRightBorder></td>
+				</tr>
+			<? /if ?>
+		<? /foreach ?>
+	</table>
+</div>

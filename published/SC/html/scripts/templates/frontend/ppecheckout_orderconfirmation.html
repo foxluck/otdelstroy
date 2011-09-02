@@ -1,0 +1,222 @@
+<h1>{"ordr_order_confirmation"|translate}</h1>
+{if $ppec_error_message}
+<p style="color:red;font-weight:bold;">{$ppec_error_message}</p>
+{/if}
+<form action="{''|set_query_html}" method="post" name="MainForm">
+	<table width="100%" cellspacing="10" cellpadding="5">
+	{if $shipping_methods_count > 0}
+		<tr>
+			<td colspan="2" class="background1"><strong>{$smarty.const.PPECHECKOUT_TXT_SHIPPINGINFO}</strong></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top">{$smarty.const.PPECHECKOUT_TXT_SHIPPINGADDRESS}</td>
+			<td valign="top">
+			<strong>
+			<span style="font-size:110%">{$shipping_info.first_name}  {$shipping_info.last_name}</span>
+			{if $shipping_info.address}<br />{$shipping_info.address|escape:'html'}{/if}
+			{if $shipping_info.city}<br />{$shipping_info.city|escape:'html'}{/if}
+			{if $shipping_info.state_name}{$shipping_info.state_name|escape:'html'}{/if}
+			{if $shipping_info.zip}{$shipping_info.zip|escape:'html'}{/if}
+			{if $shipping_info.country_name}<br />{$shipping_info.country_name|escape:'html'}{/if}
+			</strong>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" valign="top">{$smarty.const.PPECHECKOUT_TXT_SHIPPINGMETHOD}</td>
+			<td valign="top">
+			{* Shipping info*}
+				{if $shipping_methods}
+				<table cellspacing="0" cellpadding="2">
+				{section name=i loop=$shipping_methods}
+				{if $shipping_costs[i] ne "n/a"}
+				<tr>
+					<td valign="top">
+						<input type="radio" id="select_shipping_method_{$shipping_methods[i].SID}" name="select_shipping_method" onclick="onChangeShippingMethod({$shipping_methods[i].SID}, null);" value="{$shipping_methods[i].SID}" {if $shipping_methods_count eq 1 || $shipping_method_id eq $shipping_methods[i].SID} checked{/if} >
+					</td>
+					<td valign="top">
+						<label for="select_shipping_method_{$shipping_methods[i].SID}"><b>{$shipping_methods[i].Name}</b></label>
+						<br />{$shipping_methods[i].description}
+					</td>
+					<td valign="top">
+						{count item=_CostsNum array=$shipping_costs[i]}
+						{if $_CostsNum>1}
+						<select id="shipping_price_{$shipping_methods[i].SID}" name="shServiceID[{$shipping_methods[i].SID}]" onchange="return onChangeShippingService({$shipping_methods[i].SID})">
+						{foreach from=$shipping_costs[i] item=_Rate}
+							<option {if $shipping_service_id eq $_Rate.id} selected{/if} value="{$_Rate.id}">{$_Rate.name} - {$_Rate.rate}</option>
+						{/foreach}
+						</select>
+						{else}<span id="shipping_price_{$shipping_methods[i].SID}">{$shipping_costs[i][0].rate}</span>{/if}
+					</td>
+				</tr>
+				{/if}
+				{/section}
+				</table>
+				{else}
+					<font color="red"><b>{"checkout_no_shipping_methods"|translate}...</b></font>
+				{/if}
+			</td>
+		</tr>
+	{/if}
+		<tr>
+			<td colspan="2" class="background1"><strong>{$smarty.const.PPECHECKOUT_TXT_BILLINGINFO}</strong></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top">{$smarty.const.PPECHECKOUT_TXT_PAYMENTMETHOD}</td>
+			<td valign="top">
+			{* Billing info *}
+				<strong>{$billing_info.payment_method}</strong>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" valign="top">{$smarty.const.PPECHECKOUT_TXT_PAYERINFO}</td>
+			<td valign="top">
+			{* Billing info *}
+				<strong>
+					<span style="font-size:110%">{$billing_info.first_name} {$billing_info.last_name}</span>
+					<br />
+					{$billing_info.country_name}
+					<br />
+					{$billing_info.email}
+				</strong>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="background1"><strong>{$smarty.const.PPECHECKOUT_TXT_ORDERDETAILS}</strong></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="padding:0px;">
+			{* Order details *}
+				<table id="cart_content_tbl" cellspacing="0" width="100%">
+				<tr id="cart_content_header">
+					<td></td>
+					<td></td>
+					<td align="center">{"cart_product_quantity"|translate}</td>
+					<td align="center">{"ordr_itemprice_excluding_tax"|translate}</td>
+				</tr>
+			
+				{section name=i loop=$cart_content}
+				<tr class='row_{cycle values="odd,even"}'>
+					<td align="center" valign="top" width="1%">{if $cart_content[i].thumbnail_url}<img src="{$cart_content[i].thumbnail_url|escape:'html'}" width="{$cart_content[i].thumbnail_width}" />{/if}</td>
+					<td>{$cart_content[i].name|escape:'html'}</td>
+					<td align="center">{$cart_content[i].quantity}</td>
+					<td align="center" nowrap="nowrap">{$cart_content[i].cost}</td>
+				</tr>
+				{/section}
+				<tr><td colspan="4">&nbsp;</td></tr>
+			
+				{if $discount_percent}
+				<tr>
+					<td colspan="3">{"usr_custinfo_group_discount"|translate|replace:'%':"`$discount_percent`%"}</td>
+					<td align="center">-{$pred_total_disc}</td>
+				</tr>
+				{/if}
+				<tr>
+					<td colspan="3">{lbl_shipping}</td>
+					<td align="center" id="shipping_price">{$shipping_price|default:'&nbsp;'}</td>
+				</tr>
+				<tr>
+					<td colspan="3">{"ordr_tax"|translate}</td>
+					<td align="center">{$total_tax}</td>
+				</tr>
+				<tr>
+					<td id="cart_total_label" colspan="3">{"str_total"|translate}</td>
+					<td id="cart_total" align="center"><span id="total_price">{$order_amount}</span></td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right"><input type="submit" name="submit" value='{"checkout_place_order"|transcape}' class="checkout_buttons" ></td>
+		</tr>
+	</table>
+</form>
+<script type="text/javascript"><!--
+	function select_shipping_methodClickHandler()
+	{literal}{{/literal}
+	
+		{if $shipping_methods_count > 1}
+	
+			document.MainForm.submit.disabled = true;
+			for( i=0; i<{$shipping_methods_count}; i++ )
+				if(document.MainForm.select_shipping_method[i])
+				if ( document.MainForm.select_shipping_method[i].checked )
+				{literal}{
+					document.MainForm.submit.disabled = false;
+					break;
+				}{/literal}
+	
+		{/if}
+	{literal}}{/literal}
+	
+	{literal}
+	function onChangeShippingService(SID){
+		
+		onChangeShippingMethod(SID, true);
+		return true;
+	}
+	
+	function onChangeShippingMethod(SID, state){
+		
+		select_shipping_methodClickHandler();
+		var radioElem = document.getElementById("select_shipping_method_"+SID);
+		if(state != null){
+			
+			radioElem.checked = state;
+		}
+		
+		if(radioElem.checked){
+			
+			var shippingElem = document.getElementById("shipping_price_"+SID);
+			
+			var shippingPriceInner = '';
+			var totalPriceInner = '';
+			if(shippingElem.options){
+				for(var i=0;i<shippingElem.options.length;i++){
+					
+					if(!shippingElem.options[i].selected)continue;
+					shippingPriceInner = shipping_prices[SID][shippingElem.options[i].value];
+					totalPriceInner = total_prices[SID][shippingElem.options[i].value];
+					break;
+				}
+			}else{
+				
+				shippingPriceInner = shipping_prices[SID];
+				totalPriceInner = total_prices[SID];
+			}
+			
+			document.getElementById("shipping_price").innerHTML = shippingPriceInner?shippingPriceInner:{/literal}'{$shipping_price|escape:"html"}'{literal};
+			document.getElementById("total_price").innerHTML = totalPriceInner;
+		}
+		
+		return true;
+	}
+	{/literal}
+	
+	var shipping_prices = {literal}{}{/literal};
+	var total_prices = {literal}{}{/literal};
+	{section name=i loop=$shipping_methods}
+	{if $shipping_costs[i] ne "n/a"}
+		{count item=_CostsNum array=$shipping_costs[i]}
+		{if $_CostsNum>1}
+			shipping_prices["{$shipping_methods[i].SID}"] = {literal}{}{/literal};
+			total_prices["{$shipping_methods[i].SID}"] = {literal}{}{/literal};
+		{foreach from=$shipping_costs[i] item=_Rate}
+			shipping_prices["{$shipping_methods[i].SID}"]["{$_Rate.id}"] = "{$_Rate.rate}";
+			total_prices["{$shipping_methods[i].SID}"]["{$_Rate.id}"] = "{$_Rate._total_price}";
+		{/foreach}
+		{else}
+		shipping_prices["{$shipping_methods[i].SID}"] = "{$shipping_costs[i][0].rate}";
+		total_prices["{$shipping_methods[i].SID}"] = "{if $shipping_costs[i][0]._total_price ne ''}{$shipping_costs[i][0]._total_price}{else}{$order_amount}{/if}";
+		{/if}
+		{if $shipping_methods_count eq 1 || $shipping_method_id eq $shipping_methods[i].SID}
+		onChangeShippingMethod({$shipping_methods[i].SID});
+		{/if}
+	{/if}
+	{/section}
+	
+	{if $shipping_methods_count > 1}
+	select_shipping_methodClickHandler();
+	{/if}
+	
+//-->
+</script>

@@ -1,0 +1,63 @@
+{* address book *}
+
+{$MessageBlock}
+
+<table cellspacing="0" cellpadding="10" width="100%">
+{section name=k loop=$addresses}
+	{if $defaultAddressID == $addresses[k].addressID}
+	<tr>
+		<td colspan="5">
+			<strong>{"usr_custinfo_default_address"|translate}:</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>{$addresses[k].addressStr}</td>
+		<td></td>
+		<td><a href='{"?ukey=address_editor&addressID=`$addresses[k].addressID`"|set_query_html}'>{"btn_edit"|translate}</a></td>
+		<td>
+			<a href="javascript:confirmDelete({$addresses[k].addressID},'{"cnfrm_delete"|translate}','{""|set_query_html}&delete=');">
+			<img src="{$smarty.const.URL_IMAGES}/remove.gif" alt='{"btn_delete"|translate}' /></a>
+		</td>
+	</tr>
+	{assign var=_defaddress_exists value=1}
+	{/if}
+{/section}
+{section name=_address loop=$addresses start=0}
+	{if $defaultAddressID != $addresses[_address].addressID}
+	{if !$_other_title}
+	{assign var=_other_title value=1}
+	<tr>
+		<td colspan="5">
+			<strong>{"usr_custinfo_other_addresses"|translate}:</strong>
+		</td>
+	</tr>
+	{/if}
+	<tr class='{cycle values="row_odd,row_even"}'>
+		<td>&nbsp;</td>
+		<td>{$addresses[_address].addressStr}</td>
+		<td><a href='{"set_default=`$addresses[_address].addressID`"|set_query_html}'>{lbl_usr_set_default_address}</a></td>
+		<td><a href='{"?ukey=address_editor&addressID=`$addresses[_address].addressID`"|set_query_html}'>{"btn_edit"|translate}</a></td>
+		<td>
+			<a href="javascript:confirmDelete({$addresses[_address].addressID},'{"cnfrm_delete"|translate}','{""|set_query_html}&delete=');">
+			<img src="{$smarty.const.URL_IMAGES}/remove.gif" alt='{"btn_delete"|translate}' /></a>
+		</td>
+	</tr>
+	{/if}
+{sectionelse}
+	{if !$_defaddress_exists}
+	<tr>
+		<td>{"str_empty_list"|translate}</td>
+	</tr>
+	{/if}
+{/section}
+
+</table>
+
+<p>
+	{if $PAGE_VIEW ne 'mobile'}
+	<input type="button" value='{lbl_pgn_add_address}' class="goto" rel='{"?ukey=add_address"|set_query_html}' >
+	{else}
+	<a href='{"?ukey=add_address"|set_query_html}'>{lbl_pgn_add_address}</a>
+	{/if}
+</p>

@@ -1,0 +1,23 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+{$MessageBlock}
+<p>{lbl_printforms_full_description}</p>
+
+<table cellspacing="0" cellpadding="12" id="custompages-settings">
+{foreach from=$print_forms item=print_form key=class}
+		<tr class="{cycle values="gridline1,gridline"}">
+			<td style="padding-top: 7px;"><strong>{$print_form.name}</strong>
+			{if $print_form.description}<br/>{$print_form.description}{/if}</td>
+			<td valign="top">
+			{if $print_form._no_settings}&nbsp;{else}
+			{if $print_form.installed}
+			{foreach from=$print_form.installed_id item=installed_id}
+			<a class="bluehref" href="{"action=configure&form_id=`$installed_id`"|set_query_html}">{lbl_printforms_setup}</a>
+			{/foreach}
+			{else}
+			<a class="bluehref" href="{"action=install&form_class=`$print_form.class`"|set_query_html}">{lbl_printforms_setup}</a>
+			{/if}
+			{/if}
+			</td>
+		</tr>
+{/foreach}
+</table>

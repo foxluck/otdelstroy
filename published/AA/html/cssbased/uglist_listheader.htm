@@ -1,0 +1,24 @@
+<? if $numUsers ?>
+	<!-- List header table -->
+	<div>
+		<table class="ListHeader" id="ListHeaderContainer">
+			<tr>
+				<td><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"/></td>
+				<td align=right>
+					<? $kernelStrings.ul_sorting_title|cat:":&nbsp;" ?>
+					<? foreach from=$visibleColumns item=columnID name=columnLoop ?>
+						<? if $columnID != 'U_ID' ?>
+							<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+							<? assign var=columnName value=$colDescription.SHORT_NAME ?>
+						<? else ?>
+							<? assign var=columnName value=$kernelStrings.app_treeid_title ?>
+						<? /if ?>
+
+						<? wbs_sortColumn status=$sorting field=$columnID ?><? $columnName ?><? /wbs_sortColumn ?>
+						<? if !$smarty.foreach.columnLoop.last ?> | <? /if ?>
+					<? /foreach ?>
+				</td>
+			</tr>
+		</table>
+	</div>
+<? /if ?>

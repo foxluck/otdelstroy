@@ -1,0 +1,39 @@
+<style type="text/css">
+	div.popup-title {font-weight: bold; font-size: 20px; margin-bottom: 20px}
+	#construct-edit div.buttons {margin-top: 10px; text-align:center;}
+</style>
+<form id="construct-edit" method="post" action="">
+	<input type="hidden" name="type_id" value="{{$type_id}}" />
+	{{if $act != 'add'}}
+	<input type="hidden" name="section_id" value="{{$section.id}}" />
+	{{/if}}
+	<div style="margin-top:10px">[`Place this section after`]: 
+		<select id="after" name="after">
+			{{foreach from=$sections item=s key=id}}
+				{{if $id != $section.id}}<option value="{{$id}}"{{if $id == $after_id}} selected{{/if}}>{{$s.name}}</option>{{/if}}
+			{{/foreach}}
+		</select><br />
+	</div>
+	<div class="buttons">
+		<input id="save" type="button" value="[`Save`]" />
+		<input type="button" value="[`Cancel`]" onClick="$('#popup').wbsPopupClose();" />
+	</div>
+</form>
+<script type="text/javascript">
+$("#save").click(function () {
+	$.post("?mod=construct&act=moveSection&ajax=1", $("#construct-edit").serialize() + "&save=1", function (response) {
+		var section = response.data;
+		var section_elem = $("#section" + section.id);
+		if (section_elem.prev().attr('id').replace(/section/, '') != section.after_id) {
+			section_elem.insertAfter($("#section" + section.after_id));
+		}
+		$("#popup").wbsPopupClose();
+		if (parent && parent.document.app && response.data.listfields) { 
+			parent.document.listfields = response.data.listfields;
+			parent.document.photoField = response.data.photoField;
+			parent.document.dbfields = response.data.dbfields;
+		}		
+	}, "json");			
+	$("#dlg-move-desc").html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');		
+});
+</script>

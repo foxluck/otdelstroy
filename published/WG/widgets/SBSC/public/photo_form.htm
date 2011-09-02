@@ -1,0 +1,10 @@
+<div class='Label'><? $nameLabel ?></div>
+<input name="C_FULLNAME" type='text' class='Text' value='<? $params.name ?>'>
+
+<div class='Label'><? $widgetStrings.sparam_email_label ?></div> 
+<input id='C_EMAILADDRESS' name="C_EMAILADDRESS" type='text' class='Text' value='<? $params.C_EMAILADDRESS ?>'>
+
+<? if $hasPhotoField ?>
+	<div class='Label'><? $widgetStrings.sparam_photo_label ?></div>
+	<? include fieldName="C_PHOTO" file="fields/fimage.htm" ?>
+<? /if ?>

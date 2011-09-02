@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+				<dl class="ReportList">
+					<dt><a href="rep_acessrights_users.php"><? $kernelStrings.rp_accessrightsusers_title ?></a></dt>
+					<dd><? $kernelStrings.rp_accessrightsusers_note ?></dd>
+					<dt><a href="rep_acessrights_groups.php"><? $kernelStrings.rp_accessrightsgroups_title ?></a></dt>
+					<dd><? $kernelStrings.rp_accessrightsgroups_note ?></dd>
+				</ul>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

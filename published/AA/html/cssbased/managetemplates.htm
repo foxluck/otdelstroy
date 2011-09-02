@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout  toolbar="managetemplates_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<table class="SimpleList" width="500">
+					<thead>
+						<tr>
+							<th scope="col"><? $kernelStrings.tpl_systemtemplates_label ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<? foreach from=$sysFormats key=format_id item=fmt_name name="templateLoop" ?>
+							<tr class="<? wbs_oddItem index=$smarty.foreach.templateLoop.iteration ?>">
+								<td><? $fmt_name|htmlsafe:true:true ?></td>
+							</tr>
+						<? foreachelse ?>
+							<tr class="NoRecords">
+								<td><? $kernelStrings.tpl_notemplates_label|htmlsafe:true:true ?></td>
+							</tr>
+						<? /foreach ?>
+					</tbody>
+				</table>
+
+				<table class="SimpleList" width="500">
+					<thead>
+						<tr>
+							<th colspan="2" scope="col"><? $kernelStrings.tpl_customtemplates_label ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<? foreach from=$customFormats key=format_id item=fmt_name ?>
+							<tr class="<? wbs_oddItem index=$smarty.foreach.templateLoop.iteration ?>">
+								<td width="10"><input type=checkbox name="selectedFormats[]" value="<? $format_id ?>"></td>
+								<td><? $fmt_name|htmlsafe:true:true ?></td>
+							</tr>
+						<? foreachelse ?>
+							<tr class="NoRecords">
+								<td colspan="2"><? $kernelStrings.tpl_notemplates_label|htmlsafe:true:true ?></td>
+							</tr>
+						<? /foreach ?>
+					</tbody>
+				</table>
+
+				<? if $customFormats ?>
+					<? wbs_buttonSet ?>
+						<? wbs_buttonSetButton caption=$kernelStrings.tpl_deleteselected_btn name="deleteselected" ?>
+					<? /wbs_buttonSet ?>
+				<? /if ?>
+
+				<? wbs_note width="500px"?><? $kernelStrings.tpl_imporformats_tipes|htmlsafe:true:true ?><? /wbs_note ?>
+				
+
+			<? /if ?>
+
+			<input type="hidden" name="opener" value="<? $opener ?>">
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

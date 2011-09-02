@@ -1,0 +1,27 @@
+div.Thumbnail
+{
+	width: 120px;
+	height: 115px;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+#Toolbar ul li span.ie7
+{
+	display: inline;
+}
+
+#Toolbar ul li span.ButtonText table
+{
+	display: none;
+}
+
+div.ScrollableArea
+{
+	overflow-x: hidden;
+}
+
+/*div#SplitterRightPanelContent
+{
+	overflow-x: hidden;
+}*/

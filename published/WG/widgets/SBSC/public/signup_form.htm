@@ -1,0 +1,6 @@
+<?	if $subtypeObj->id != "SIMPLE" ?>
+	<div class='Label'><? $nameLabel ?></div>
+	<input name="C_FULLNAME" type='text' class='Text' value='<? $params.name ?>'>
+	<div class='Label'><? $widgetStrings.sparam_email_label ?></div> 
+<? /if ?>
+<input id='EMAIL' name="email" type='text' class='email Text' value='<? $params.email ?>'>

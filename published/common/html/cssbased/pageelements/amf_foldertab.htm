@@ -1,0 +1,26 @@
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? wbs_label for="FoderName" fieldName="DF_NAME" text=$folderNameLabel ?></td>
+		<td>
+			<? if !$protectFolderName ?>
+				<input type="text" class="FormControl" id="FolderName" name="folderData[DF_NAME]" value="<? $folderData.DF_NAME|htmlsafe:true:true ?>" maxlength="255" style="width: 300px"/>
+			<? else ?>
+				<b><? $folderData.DF_NAME|htmlsafe:true:true ?></b>
+				<input type=hidden name="folderData[DF_NAME]" value="<? $folderData.DF_NAME|htmlsafe:true:true ?>"/>
+			<? /if ?>
+		</td>
+	</tr>
+</table>
+
+<? wbs_note displayNoteMarker=false width="500px" smallFont=false ?><? $kernelStrings.app_treeaddfolderperms_text ?><? /wbs_note ?>
+
+<? wbs_note smallFont=false width="500px" indented=true ?>
+	<ol>
+		<li><? $kernelStrings.app_treeaddfolderusers_text ?></li>
+		<li><? $kernelStrings.app_treeaddfolderparent_text ?></li>
+	</ol>
+<? /wbs_note ?>
+
+<? wbs_note smallFont=false width="500px" displayNoteMarker=false ?>
+	<? $kernelStrings.app_tree_folderid_label|cat:": "|cat:$folderID ?>
+<? /wbs_note ?>

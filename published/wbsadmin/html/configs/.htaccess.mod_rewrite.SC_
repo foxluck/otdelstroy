@@ -1,0 +1,19 @@
+AddDefaultCharset UTF-8
+Options -Indexes
+#php_flag display_errors 0
+RewriteEngine on
+#RewriteBase /
+
+# FastCGI http authorization
+RewriteCond %{HTTP:Authorization} !^$
+RewriteCond %{REQUEST_URI} !http_auth
+RewriteRule (.*) $1?http_auth=%{HTTP:Authorization} [L,QSA]
+
+RewriteCond  %{REQUEST_FILENAME} !-f
+RewriteRule ^(products_pictures|images|images_common|themes)/(.*)\.(.*)$ get_image.php?filename=$2&dir=$1&ext=$3 [L,QSA]
+
+RewriteCond  %{REQUEST_FILENAME} auth.php*
+RewriteRule (auth.php(/{0,1})){0,1}(.*) auth$3
+
+RewriteCond  %{REQUEST_FILENAME} !-f
+RewriteRule (.*) index.php?__furl_path=$1&frontend=1 [QSA]

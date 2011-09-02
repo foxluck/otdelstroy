@@ -1,0 +1,125 @@
+<script>
+	var ShareUrlDialog = function(){
+	
+		var wgId = null;
+		var wgName = "";
+		var urlStart = "";
+		var urlHash = "";
+		var dialog = null;
+		var title = "<? $kernelStrings.shurl_dialog_title ?>";
+		var dlgDom;
+		
+		return {
+			init: function () {
+				ShareUrlDialog.defaultMessage = "<<? $kernelStrings.shurl_entermessage_text ?>>";
+				/*dlgDom = document.createElement("div");
+				dlgDom.className = "PopupDialog";
+				dlgDom.id = "share-url-dlg";
+				document.body.appendChild(dlgDom);*/
+				
+				var dialogContent = Ext.get("share-url-dlg-content");
+				//dlgDom.appendChild(dialogContent.dom);
+				dialogContent.dom.style.display = "block";
+				
+				
+        dialog = new Ext.Window({ contentEl: dialogContent,
+          autoTabs:false, shadow:true,
+          width:420, height:225,
+          closeAction: 'hide',
+          minWidth:420, minHeight:225,
+          title: title, modal: true, collapsible: false, resizeHandles: "se"
+        });
+        //dialog.addKeyListener(27, dialog.hide, dialog);
+        nextBtn = dialog.addButton('<? $kernelStrings.shurl_change_btn ?>', ShareUrlDialog.nextClicked, dialog);
+        //nextBtn.disable();
+        dialog.addButton('<? $kernelStrings.shurl_cancel_btn ?>', dialog.hide, dialog);
+			},
+			
+			show: function (fromElem) {
+				if (ShareUrlDialog.wgId == null) {
+					alert ("Unsetted widget id"); 
+					return false;
+				}
+				if(!dialog)
+					ShareUrlDialog.init ();
+		    
+		    //Ext.get("share-url-to").dom.value = "";
+	  		Ext.get("share-url-urlstart").dom.innerHTML = ShareUrlDialog.urlStart;
+	  		Ext.get("share-url-urlhash").dom.value = ShareUrlDialog.urlHash;
+	  		//Ext.get("share-url-message").dom.value = ShareUrlDialog.defaultMessage;
+		    
+		    dialog.show(fromElem);
+			},
+			
+			nextClicked: function () {
+				ShareUrlDialog.tryChange ();
+			},
+			
+			/****
+			* Try Send widget data
+			****/
+			tryChange: function () {
+	  		var fprint = Ext.get("share-url-urlhash").dom.value;
+	  		
+	  		if (fprint.length < 1) {
+	  			alert("<? $kernelStrings.shurl_emptyfprint_error ?>");
+	  			return;
+	  		}
+	  		
+	  		if (window.foldersTree)
+	  			var fapp = foldersTree.getWidgetsNode ().loader.baseParams.fapp;
+	  		else
+	  			var fapp = "DD";
+	  		AjaxLoader.doRequest("../../../common/html/ajax/share_changeurl.php", 
+	  			ShareUrlDialog.tryChangeCompleted , 
+	  			{fapp: fapp, wgId: ShareUrlDialog.wgId, newFprint: fprint}
+	  		);
+	  	},
+	  	
+	  	/****
+			* Try Send completed
+			****/
+	  	tryChangeCompleted: function(response, options){
+				var result = Ext.decode(response.responseText);
+				if(result.success) {
+					/*Ext.Msg.show({
+					   title:'Result',
+					   msg: result.resultStr,
+					   buttons: Ext.Msg.OK,
+					   fn: function() {}
+					});*/
+					dialog.hide(); 
+					if (window.foldersTree)
+						foldersTree.loadSelectedNode ();
+					else
+						location.href = location.href;
+				} else {
+					alert(result.errorStr);
+				}
+			}
+		};	  
+	}();
+	
+	
+	
+	function shareWidgetChangeUrl(wgId, urlStart, urlHash, btn) {
+		ShareUrlDialog.wgId = wgId;
+		ShareUrlDialog.urlStart = urlStart;
+		ShareUrlDialog.urlHash = urlHash;
+		ShareUrlDialog.show (btn);
+	}
+</script>
+
+<div class="x-hidden" id='share-url-dlg-content'>
+  <div id='send-select-tab' style='padding: 10px'>
+		
+		<? $kernelStrings.shurl_description_text ?>
+		<BR><BR>
+		
+		<? $kernelStrings.shurl_to_label ?>
+			<span id='share-url-urlstart'></span><input maxlength=35 id='share-url-urlhash' type='text' style='width: 150px' id='share-url-to'>
+			<BR>
+			<? $kernelStrings.shurl_caution_text ?>
+		
+	</div>
+</div>	

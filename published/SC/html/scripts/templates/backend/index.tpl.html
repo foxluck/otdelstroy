@@ -1,0 +1,33 @@
+{* main admin template*}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/admin.css" type="text/css" />
+		<!--[if IE]><link rel="stylesheet" href="{$smarty.const.URL_CSS}/ie.admin.css" type="text/css" /><![endif]-->
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/admin.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}" />
+		<title>{$CurrentDivision.name|translate} - {"str_admin_title"|translate}</title>
+		<script type="text/javascript">
+		window.url_img = '{$smarty.const.URL_IMAGES}';
+		{if $smarty.const.CONF_WAROOT_URL}var WAROOT_URL = '{$smarty.const.CONF_WAROOT_URL}';{else}/*CONF_WAROOT_URL not setted*/{/if}
+		{if $smarty.const.CONF_ON_WEBASYST}var CONF_ON_WEBASYST = '{$smarty.const.CONF_ON_WEBASYST}';{else}/*CONF_ON_WEBASYST not setted*/{/if}
+		
+		var translate = {ldelim}
+			'msg_unsaved_changes': '{"msg_unsaved_changes"|translate|escape:"html"}',
+			'btn_close': '{"btn_close"|translate|escape:"html"}'
+			{rdelim};
+		var url_current_theme_css = '';//'{$url_current_theme_css}';
+		</script>
+	</head>
+
+	<body>
+	{section name=j loop=$Warnings}
+		{$Warnings[j]}
+	{/section}
+			{if $admin_main_content_template ne ''}
+			{include file="backend/$admin_main_content_template"}
+			{/if}
+	</body>
+</html>

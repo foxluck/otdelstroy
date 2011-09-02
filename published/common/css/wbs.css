@@ -1,0 +1,18 @@
+html, body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+
+.screen-left-block {float: left; width: 200px; border-right: 0px solid #DDD;}
+
+.screen-main-block {margin-left: 200px; height: 100%}
+.screen-content-block {padding: 0px 10px}
+* html .screen-content-block {width: 100%; }
+
+h1 {font-size: 20pt; margin-top: 3px; margin-bottom: 5px}
+
+iframe.tool {margin-left: 10px}
+
+.footer {background:white url(../img/background-gradient-gray.gif) repeat-x scroll center bottom; padding: 3px 5px}
+
+.body-content {padding-left: 10px}

@@ -1,0 +1,35 @@
+{if  $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS}
+	{lbl_ordr_billing_address} (<a href='{$change_address_url}'>{lbl_btn_change_address}</a>):
+	<p>
+	<strong>{$billing_address_str}</strong>
+	</p>
+{/if}
+	
+	<p>{"checkout_select_payment_type"|translate}:</p>
+	
+	<form action="{''|set_query_html}" method="POST" name='MainForm'>
+	<input name="action" value="select_payment" type="hidden" >
+	
+	<table cellspacing="1" cellpadding="4">
+	{foreach from=$payment_methods item=_payment_method name=pm}
+	<tr>
+		<td valign="top"><label for="payment-method-{$_payment_method.PID}">{if $_payment_method.logo}<img src="{$_payment_method.logo|escape:'html'}" alt="{$_payment_method.Name|escape:'html'}" title="{$_payment_method.Name|escape:'html'}" />{else}&nbsp;{/if}</label></td>
+		<td valign="top">
+			<input name="paymentMethodID" id="payment-method-{$_payment_method.PID}" value="{$_payment_method.PID}" {if $smarty.foreach.pm.iteration eq 1 && !$paymentMethodID || $paymentMethodID eq $_payment_method.PID}checked{/if} type="radio" >
+		</td>
+		<td valign="top">
+			<strong><label for="payment-method-{$_payment_method.PID}">{$_payment_method.Name}</label></strong>
+			{if $_payment_method.description}<br />{$_payment_method.description}{/if}
+		</td>
+	</tr>
+	{/foreach}
+	</table>
+	
+	{if !$payment_methods}
+		<span style="color: red; font-weight: bold;">{"checkout_no_payment_methods"|translate}...</span>
+	{else}
+		<br />
+		<input type="submit" name="continue_button"  class="checkout_buttons" value="{'checkout_next_step'|transcape}" >
+	{/if}
+	
+	</form>

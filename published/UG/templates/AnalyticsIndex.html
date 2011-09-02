@@ -1,0 +1,108 @@
+<div class="analitics-wrapper">
+<h1>[`Contact database analytics`]</h1>
+<br />
+<table class="border">
+<caption>[`Contact types`]</caption>
+	<tbody>
+	{{foreach from=$types item=t key=id}}
+	<tr>
+		<td headers="">{{$t}}</td>
+		<td align="right">
+		{{if $types_count[$id]}}
+		<a href="#" onclick="return getContacts(this, 'type', {{$id}})">{{$types_count[$id]}}</a>
+		{{else}}0{{/if}}
+		</td>
+	</tr>
+	{{/foreach}}</tbody>
+</table>
+
+
+<table class="border">
+<caption>[`Fields that have values`]</caption>
+	<thead><tr>
+		<th align="left"><b>[`Field`]</b></th>
+		<th><b>[`Filled`]</b></th>
+		<th>&nbsp;</th>
+	</tr></thead>
+	<tbody>
+	{{foreach from=$fields item=f }}
+	<tr>
+		<td headers="">{{$f.name}}</td>
+		<td align="right">
+		{{if $fields_count[$f.dbname]}}
+		<a  href="#" onclick="return getContacts(this, 'field', '{{$f.dbname}}')">{{$fields_count[$f.dbname]}}</a>
+		{{else}}
+		0
+		{{/if}}
+		</td>
+		<td class="show-unique">{{if $f.type!='IMAGE' && $fields_count[$f.dbname]>1}}<a href="#" onclick="return getAnalytics('unique', '{{$f.dbname}}');">[`show unique`]</a>{{/if}}</td>
+	</tr>
+	{{/foreach}}</tbody>
+</table>
+
+
+<table class="border" width="310px">
+<caption>[`Added by users`]</caption>
+	<tbody>
+	{{foreach from=$users_count item=n key=c }}
+	<tr>
+		<td headers="">{{if $c}}{{$users[$c].C_FULLNAME}}{{else}}&lt;[`unknown`]&gt;{{/if}}</td>
+		<td align="right">
+		{{if $n}}
+		<a href="#" onclick="return getContacts(this, 'contact', '{{$c}}')">{{$n}}</a>
+		{{else}}0{{/if}}
+		</td>
+	</tr>
+	{{/foreach}}</tbody>
+</table>
+
+
+<table class="border">
+<caption>[`Subscribers`]</caption>
+	<tbody>
+	<tr>
+		<td headers="">[`Confirmed subscribers`]</td>
+		<td align="right">{{if $subscribers_count.confirm}}<a href="#" onclick="return getContacts(this, 'subscribe', 1)">{{$subscribers_count.confirm}}</a>{{else}}0{{/if}}</td>
+	</tr>
+	<tr>
+		<td headers="">[`Unconfirmed subscribers`]</td>
+		<td align="right">{{if $subscribers_count.noconfirm}}<a href="#" onclick="return getContacts(this, 'subscribe', 0)">{{$subscribers_count.noconfirm}}</a>{{else}}0{{/if}}</td>
+	</tr>
+	<tr>
+		<td headers="">[`Unsubscribed from mailings`]</td>
+		<td align="right">{{if $subscribers_count.unsubscribed}}<a href="#" onclick="return getContacts(this, 'subscribe', -1)">{{$subscribers_count.unsubscribed}}</a>{{else}}0{{/if}}</td>
+	</tr>	
+	<tr>
+		<td headers="">[`Canceled subscription`]</td>
+		<td align="right">{{if $subscribers_count.canceled}}<a href="#" onclick="return getContacts(this, 'subscribe', -2)">{{$subscribers_count.canceled}}</a>{{else}}0{{/if}}</td>
+	</tr></tbody>
+</table>
+</div>
+<script type="text/javascript">
+function getContacts(obj, name, value) {
+	var title = jQuery(obj).parent().prev().html();
+	switch(name) {
+		case 'type': 
+			document.app.doAnalytics('CT_ID', value, '[`Contact type`] &quot;' + title + '&quot;');
+			break;
+		case 'field':
+			document.app.doAnalytics(value, '', '&quot;' + title + '&quot;[` is filled`]');
+			break; 
+		case 'subscribe':
+			document.app.doAnalytics("C_SUBSCRIBER", value, title); 
+			break;
+		case 'contact': 
+			document.app.doAnalytics("C_CREATECID", value, '[`Added by user`] &quot;' + title + '&quot;');
+	}
+	return false;
+}
+
+function getAnalytics(name, value) {
+	if (name == 'unique') {
+		var url = '?mod=analytics&act=unique&field='+value;
+		document.app.analyticsUrl = url;
+		loadPage(url);
+	}
+	return false;
+}
+</script>

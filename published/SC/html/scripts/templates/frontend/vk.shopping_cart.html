@@ -1,0 +1,155 @@
+{if $jsgoto}
+<script type="text/javascript" language="javascript">
+var target_url = '{$jsgoto}';
+{literal}
+if (!top&&closeFadeIFrame){
+	closeFadeIFrame(true);
+}
+if (top){
+	top.location = target_url;
+}else{
+	document.location.href = target_url;
+}
+{/literal}
+</script>
+{/if}
+
+<div id="blck-content">	
+<p class="closelink"><a id="my_closeLink" href="{"?ukey=home&view=frame"|set_query_html}">{lbl_goto_shopping}</a></p>
+<ul class="inline-blocks vk-header">
+
+		<li id="cart_page_title">
+			{$CurrentDivision.name|translate}
+		</li>
+		{if $cart_content}
+		<li id="cart_clear"><a href='{"clear_cart=yes"|set_query_html}'>{"cart_clear_cart"|translate}</a></li>
+		{/if}
+	</ul>
+
+{$MessageBlock}
+
+{if $cart_content}
+
+	{if $make_more_exact_cart_content}
+		<p>{"cart_items_left_from_prev_session"|translate}</p>
+	{/if}
+
+	{if $cart_amount<$smarty.const.CONF_MINIMAL_ORDER_AMOUNT & $cart_error_show eq 1 & !$MessageBlock}
+		<p id="id_too_small_order_amount" class="error_message">			{"cart_min_order_amount_not_reached"|translate} {$cart_min}</p>
+	{/if}
+	<div class="form-wrapper">
+	<form action="{''|set_query_html}" method="post" target="_wasc">
+	<input type="hidden" name="update" value="1">
+	<input type="hidden" name="shopping_cart" value="1">
+	
+	<table id="cart_content_tbl" cellspacing="0" cellpadding="0" class="full-table">
+	<thead><tr id="cart_content_header">
+		<th></th>
+		<th align="center">{lbl_cart_product_quantity}</th>
+		<th align="center">{lbl_cart_products_total}</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tfoot>
+{if $discount_prompt != 0}
+
+	<tr><td colspan="4">&nbsp;</td></tr>
+	{if $discount_prompt == 1 && $discount_percent != 0}
+	<tr>
+		<td colspan="2" class="cart_discount_label">
+			{"usr_custinfo_group_discount"|translate},&nbsp;{$discount_percent|string_format:'%0.1f%%'}
+		</td>
+		<td align="center" nowrap="nowrap">
+			-{$discount_value}	
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	{/if}
+
+	{if $discount_prompt == 2}
+	<tr>
+		<td colspan="4">
+			{"cart_reg_customers_apply_for_discounts"|translate}
+		</td>
+	</tr>
+	{/if}
+
+	{if $discount_prompt == 3 && $discount_percent != 0}
+	<tr>
+		<td colspan="2" class="cart_discount_label">
+			{"usr_custinfo_group_discount"|translate} {$discount_percent}
+			<div class="cart_apply_for_discounts_extra">
+			{"cart_reg_customers_apply_for_discounts_extra"|translate}
+			</div>
+		</td>
+		<td align="center" nowrap="nowrap">
+			-{$discount_value}%
+		</td>
+		<td></td>
+	</tr>
+	{/if}
+
+{/if}
+
+	<tr>
+		<td id="cart_total_label" colspan="1">
+			{"str_total"|translate}
+		</td>
+		<td align="center">
+			<input type="submit" class="small" name="recalculate" value='{"btn_recalculate"|transcape}'>
+		</td>
+		<td id="cart_total" align="center">{$cart_total}</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="4" align="center" id="cart_checkout_btn"  valign="middle">
+			<input class="btn_checkout" name="checkout" id="btn-checkout" type="submit" value='{"str_checkout"|translate}'>
+			{*<center>{$VKontakteCheckout_button|default:'&nbsp;'}</center>*}
+		</td>
+	</tr>
+</tfoot>
+<tbody>
+	{assign var="ProductsNum" value=0}
+	{section loop=$cart_content name=i}
+
+	<tr class='row_{cycle values="odd,even"}'>
+		<td align="center" class="thumbnail">
+			{if $cart_content[i].thumbnail_url}<img alt="" src="{$cart_content[i].thumbnail_url|escape:'html'}" width="{$cart_content[i].thumbnail_width}"><br>{/if}
+			<a href='{"?ukey=product&productID=`$cart_content[i].productID`&product_slug=`$cart_content[i].slug`"|set_query_html}'>{$cart_content[i].name}</a>
+		</td>
+		<td align="center">
+			{assign var="ProductsNum" value=$ProductsNum+$cart_content[i].quantity}
+
+			{if $session_items}{assign var=_prdid value=$session_items[i]}
+			{else}{assign var=_prdid value=$cart_content[i].id}
+			{/if}
+			
+			<input class="cart_product_quantity" type="text" maxlength="10" name="count_{$_prdid}" value="{$cart_content[i].quantity}" size="3">
+			
+			{if $cart_content[i].min_order_amount}
+			<div class="cart_product_min_order_quantity">
+				{"prdset_minimal_order_quantity"|translate} 
+				{$cart_content[i].min_order_amount} 
+				{"str_items"|translate}
+			</div>
+			{/if}
+		</td>
+		<td align="center" nowrap="nowrap">
+			{$cart_content[i].cost}
+		</td>
+		<td align="center">
+			<a href='{"remove=`$_prdid`"|set_query_html}' title='{"btn_delete"|transcape}'>
+			<img src="{$smarty.const.URL_IMAGES}/remove.gif" alt='{"btn_delete"|transcape}'>
+			</a>
+		</td>
+	</tr>
+	{/section}
+</tbody>
+	</table>
+
+	</form></div>
+{else}
+	<p style="text-align: center;">{"cart_cart_is_empty"|translate}</p>
+{/if}
+</div>

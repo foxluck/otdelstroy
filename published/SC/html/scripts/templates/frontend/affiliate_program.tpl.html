@@ -1,0 +1,121 @@
+{if $SubPage=='balance'}
+
+	<p>
+	{"affp_referred_customers"|translate}: <b>{$affiliate_customers}</b>
+	</p>
+	
+	{if $CommissionsNumber}
+		<table cellspacing="0" cellpadding="6" width="100%">
+		<tr class="background1">
+			<td>&nbsp;</td>
+			<td>
+			{"affp_total_earnings"|translate}
+			</td>
+			<td>
+			{"affp_total_payments"|translate}
+			</td>
+			<td>
+			{"affp_user_balance"|translate}
+			</td>
+		</tr>
+		{foreach from=$CurrencyISO3 item=_CurrencyISO}
+		{if $CommissionsAmount[$_CurrencyISO.currency_iso_3] or $PaymentsAmount[$_CurrencyISO.currency_iso_3]}
+		<tr class="{cycle values='row_odd,row_even'}">
+			<td align="center"><B>{$_CurrencyISO.currency_iso_3}</B>
+			</td>
+			<td>
+			{$CommissionsAmount[$_CurrencyISO.currency_iso_3]|string_format:"%.2f"}
+			</td>
+			<td>
+			{$PaymentsAmount[$_CurrencyISO.currency_iso_3]|string_format:"%.2f"}
+			</td>
+			<td>
+			{"`$CommissionsAmount[$_CurrencyISO.currency_iso_3]-$PaymentsAmount[$_CurrencyISO.currency_iso_3]`"|string_format:"%.2f"}
+			</td>
+		</tr>
+			{/if}
+		{/foreach}
+		</table>
+	{else}
+		{"affp_msg_no_balance"|translate}
+		{/if}
+
+{/if}{* if $SubPage=='balance' *}
+
+{if $SubPage=='payments_history'}
+
+	{if $PaymentsNumber}
+		<table cellspacing="0" cellpadding="6" width="100%">
+		<tr class="background1">
+				<td>{"affp_payment_number"|translate}
+				</td>
+				<td align="center">{"blog_postdate"|translate}
+				</td>
+				<td>{"ordr_comment"|translate}
+				</td>
+				<td align="right">{"str_total"|translate}
+				</td>
+			</tr>
+		{foreach from=$Payments item=_Payment}
+		<tr class="{cycle values='row_odd,row_even'}">
+				<td>
+				P-{$_Payment.pID}
+				</td>
+				<td align="center">
+				{$_Payment.xDate}
+				</td>
+				<td>
+				{$_Payment.Description}
+				</td>
+				<td align="right">
+				{$_Payment.Amount} {$_Payment.CurrencyISO3}
+				</td>
+			</tr>
+		{/foreach}
+		</table>
+	{else}
+		{"affp_msg_no_payments"|translate}
+		{/if}{* if $PaymentsNumber *}
+
+
+{/if}{* if $SubPage=='payments_history' *}
+
+{if $SubPage=='settings'}
+
+	{if $SettingsSaved}
+		<div class="ok_msg_f">{"msg_information_saved"|translate}</div>
+	{/if}
+	
+	{if $CONF_AFFILIATE_EMAIL_NEW_COMMISSION or $CONF_AFFILIATE_EMAIL_NEW_PAYMENT}
+		<form name="form_settings" action="{$REQUEST_URI}" method="POST">
+		<input name="fACTION" value="SAVE_SETTINGS" type="hidden" >
+		<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" >
+		{if $CONF_AFFILIATE_EMAIL_NEW_COMMISSION}
+		<p>
+			<input name="EmailOrders" 
+				{if $Settings.EmailOrders}
+					checked="checked"
+				{/if}
+				class="checknomarging" value="1" type="checkbox" id="id_emailorders" > &nbsp;<label for="id_emailorders">{"affp_emailorders"|translate}</label>
+		</p>
+		{/if}{* if $CONF_AFFILIATE_EMAIL_NEW_COMMISSION *}
+		
+		{if $CONF_AFFILIATE_EMAIL_NEW_PAYMENT}
+		<p>
+			<input name="EmailPayments" 
+				{if $Settings.EmailPayments}
+					checked="checked"
+				{/if}
+				class="checknomarging" value="1" type="checkbox" id="id_emailpayments" > &nbsp;<label for="id_emailpayments">{"affp_emailpayments"|translate}</label>
+			{/if}{* if $CONF_AFFILIATE_EMAIL_NEW_PAYMENT *}
+		</p>
+		
+		<input value="{"btn_save"|translate}" type="submit" >
+		</form>
+		{/if} {* if $CONF_AFFILIATE_EMAIL_NEW_COMMISSION or $CONF_AFFILIATE_EMAIL_NEW_PAYMENT *}
+
+{/if}{* if $SubPage=='settings' *}
+
+{if $SubPage=='attract_guide'}
+	{$_AFFP_STRING_ATTRACT_GUIDE}
+{/if}{* if $SubPage=='attract_guide' *}

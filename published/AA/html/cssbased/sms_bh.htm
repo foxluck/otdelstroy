@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$smsDisabled ?>
+
+					<table class="NameValueList">
+						<tr class="SeparatedRow">
+							<td><? $kernelStrings.sms_avail_balance_title|cat:":" ?></td>
+							<th scope="col">
+								<? if $systemBalance.SMS_BALANCE != NULL ?>
+									<? $systemBalance.SMS_BALANCE|cat:" "|cat:$kernelStrings.app_usd_brief_text ?>
+								<? else ?>
+									<? $kernelStrings.sms_unlim_title ?>
+								<? /if ?>
+							</th>
+						</tr>
+						<tr>
+							<td><? $kernelStrings.sms_billing_total_charge_text|cat:":" ?></td>
+							<th scope="col"><? $totalCharge|cat:" "|cat:$kernelStrings.app_usd_brief_text ?></th>
+						</tr>
+
+						<tr>
+							<td><? $kernelStrings.sms_billing_actual_charge_text|cat:":" ?></td>
+							<th scope="col"><? $actualCharge|cat:" "|cat:$kernelStrings.app_usd_brief_text ?></th>
+						</tr>
+
+						<tr>
+							<td><? $kernelStrings.sms_billing_res_charge_text|cat:":" ?></td>
+							<th scope="col"><? $reservedCharge|cat:" "|cat:$kernelStrings.app_usd_brief_text ?></th>
+						</tr>
+					</table>
+
+					<? wbs_noteBlock width="500px" ?>
+						<? wbs_note displayNoteMarker=false ?><strong><? $kernelStrings.sms_charge_comment_formula_text ?></strong><? /wbs_note ?>
+						<? $chargeComment ?>
+					<? /wbs_noteBlock ?>
+
+					<? wbs_button name="chargebtn" caption=$kernelStrings.sms_charge_btn ?>
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_screen_sms_disabled ?><? /wbs_note ?>
+				<? /if ?>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

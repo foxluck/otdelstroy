@@ -1,0 +1,164 @@
+<!-- updatewa.html -->
+<? if $inProgress ?>
+   	<script type="text/javascript">
+   	<!-- 
+   	progressManager.init('<?$language?>');
+   	//-->
+   	</script>
+<? /if ?>
+<? strip ?>
+
+<h1 class="page-title"><? if $changeLog ?><a href="updatewa.php" style="text-decoration: underline;"><? $waStrings.upd_m_page_title ?></a> &raquo; <? /if ?><? $pageHeader ?></h1>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+<tr><td width="60%" valign="top" style="padding-top: 10px;">
+<!-- Status Header -->
+<? if $status ?>
+<div id="statusTitle" style="font-size:150%;font-weight: bold;background:#F3F3D7;padding:20px; margin-right: 20px;"><? $status ?></div>
+<? /if ?>
+   
+   	<!-- List of updates -->
+<? if $applicationList&&!$changeLog?>
+
+<div style="padding: 20px;">
+
+	<? if !$metadaView ?>
+	<strong><? $waStrings.upd_m_upd_ver ?>&nbsp;<? $newestVersion ?></strong><br>
+	<? $waStrings.upd_m_wa_ver ?>&nbsp;<? $currentVersion ?><br><br>
+	<? $waStrings.upd_m_inf_list ?>&nbsp;<a href="updatewa.php?action=changelog"><? $waStrings.upd_m_inf_upd_link ?></a>&nbsp;<? $waStrings.upd_m_inf_upd_inst ?><br>
+	<? else ?>
+	<? $waStrings.upd_m_inf_upd ?>&nbsp;<? $currentVersion ?>&nbsp;&rarr;&nbsp;<? $downloadVersion ?><br><br>
+	<? $waStrings.upd_m_inf_list ?>&nbsp;<a href="JavaScript:showDetailsWindow('?action=details')"><? $waStrings.upd_m_inf_meta_link?></a>&nbsp;<? $waStrings.upd_m_inf_meta_inst?><br>
+	<? /if ?>
+       </div>    
+    <table style="margin:20px;" border="0">
+    <? foreach name=appList from=$applicationList item=application key=app_id?>
+    	<tr>
+    	<td><? if $app_id!='KERNEL'?><img src="../classic/images/<? $app_id ?>35.gif"><?else?>&nbsp;<?/if?></td>
+    	<td style="padding-left: 10px;"><? $application?></td>
+    	</tr>
+    <? /foreach ?>
+    </table>
+
+
+
+<? /if ?>
+
+	
+<? if $statusDescription ?>
+<div id="statusDescription" style="padding:20px;<? if $inProgress ?>background-image:url('../classic/images/progress35.gif');background-repeat:no-repeat;background-position:left center;padding-left:50px;<?else?>background:#fff;<? /if ?>">
+<? $statusDescription ?>
+</div>
+<?/if?>
+
+   	<? if $inProgress ?>
+	   	<? if ($progressValue ===null) ?>
+   		  	<?assign var="progressVisibility" value=' style="display:none;"'?>
+	   	<?/if?>
+   	
+   	<div class="progressBar"<?$progressVisibility?>>
+		<span><em id="progressBarStripe" style="left:<?math equation="2*a" a=$progressValue ?>px"></em></span>
+	</div>
+		<span class="progressValue"<?$progressVisibility?>><? $progressValue ?>%</span>
+	<? /if ?>
+
+
+
+
+<? if $updateAvailable ?>
+
+<p style="padding: 20px 0 0 0; border-top: 1px solid #ccc; margin-right: 20px; margin-left: 20px;"><? $waStrings.upd_m_notice ?></p>
+
+<? if $updateAllowed?>
+
+<table style="margin: 20px; background-color: #fff;" border="0">
+<tr>
+<td valign="top"><input type="checkbox" value="erase" name="agreement_1" id="agree_1" onClick="allowUpdate();"></td>
+<td><label for="agree_1"><? $waStrings.upd_m_erase_agreement ?></label></td>
+</tr>
+<tr>
+<td valign="top"><input type="checkbox" value="send" name="agreement_2" id="agree_2" onClick="allowUpdate();"></td>
+<td><label for="agree_2"><? $waStrings.upd_m_license_agreement ?></label></td>
+</tr>
+</table>
+
+<?/if?>
+<?/if?>
+
+
+<? if $button ?> 
+<!-- controls -->
+<div id="buttons" style="padding: 20px; background-color: #fff;"><? $button ?></div>
+<div style="padding: 20px; background-color: #fff;"><img src="../classic/images/progress35.gif" alt='' style="display:none;" id="buttons_img"/></div>
+<? /if ?>
+
+
+</td>
+
+
+<? if $updateAvailable ?>
+<td width="40%" valign="top">
+<div style="font-size: 90%; color: #777; border-left: 1px dotted #ccc; padding: 20px; margin-top: 10px;">
+	<h3 style="padding-left: 0px;"><? $waStrings.upd_m_inf_description_howitworks ?></h3>
+	<? $waStrings.upd_m_inf_description ?>
+</div>
+</td>     
+<? /if ?>
+
+</tr>
+
+<tr>
+
+<td colspan="2">
+
+
+
+<!-- changelog -->
+<? if $changeLog ?>
+
+<div style="color: #777; padding-top: 10px; font-weight: bold; font-size: 120%;">
+<? $changeLogDescription?><br>
+</div>
+
+<table width="100%" cellpadding="10" cellspacing="0" border="0">
+<? foreach from=$changeLog item=changes key=param1?>
+	<tr><td colspan="2" class="formSection" style="color: #999; font-size: 110%;"><?if $applicationList.$param1?><? $applicationList.$param1?><?else?><? $param1 ?><?/if?></td></tr>
+ 	<? foreach from=$changes item=change key=param2?>
+ 		<tr>
+ 			<td style="vertical-align:top;"><div style="background-color: #eee; padding: 10px;"><?if $applicationList.$param2?><? $applicationList.$param2?><?else?><? $param2 ?><?/if?></div></td>
+ 			<td align="left"><div style="overflow:auto;"><? $change|linewrap:"<br>":100 ?></div></td>
+		</tr>
+	<? /foreach ?>
+		<tr>
+		<td colspan="2">&nbsp;</td>
+		</tr>
+<? /foreach ?>
+</table>
+<? /if ?>
+
+
+
+<!-- report -->
+<? if $reportHeader ?>
+<h3><?$reportHeader?></h3>
+<div><p><i><?$report?></i></p></div>
+<? /if ?>
+</td></tr>
+
+
+
+
+</table>
+
+<!-- here -->
+<? /strip ?>
+<? if $restartRequired&&false?>
+<script type="text/javascript">
+<!-- 
+document.body.onload = runAction('install&restart=1');
+//->
+</script>
+<?/if?>  
+<!-- /updatewa.html -->

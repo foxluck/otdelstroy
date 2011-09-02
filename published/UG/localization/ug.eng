@@ -1,0 +1,26 @@
+app_name_long	Common	Application full name	Users and Groups
+app_name_short	Common	Application short name	Users and Groups
+
+app_cantools_title	Common	Can use Tools Rights	Can use Tools
+app_canreports_title	Common	Can use Reports Rights	Can use Reports
+
+app_cantools_label	Common	Can use Tools Rights	Can use Tools
+app_canreports_label	Common	Can use Reports Rights	Can use Reports
+
+app_comment_text	Common	Application Comment text	This user can manage other users and user groups.
+
+pv_page_title	Preview Page Title	Preview page title	Preview
+pv_button_title	Preview button title	Button title	Button
+pv_tab_title	Preview tab title	Button title	Tab
+pv_ug_title	Preview app title	Preview app title	Users/Groups
+pv_aa_title	Preview app title	Preview app title	Control Panel
+pv_mw_title	Preview app title	Preview app title	My settings
+pv_dd_title	Preview app title	Preview app title	Files
+pv_pd_title	Preview app title	Preview app title	Fotos
+pv_cm_title	Preview app title	Preview app title	Contacts
+pv_mm_title	Preview app title	Preview app title	Mail
+pv_pm_title	Preview app title	Preview app title	Projects
+pv_it_title	Preview app title	Preview app title	Issue Tracker
+pv_qn_title	Preview app title	Preview app title	Notes
+pv_qp_title	Preview app title	Preview app title	Pages
+pv_tab_content	Preview Tab Content	Preview tab content	Content

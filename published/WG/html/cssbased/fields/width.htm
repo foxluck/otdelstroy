@@ -1,0 +1,1 @@
+<input <? if $preview ?>onChange='fieldChanged("<? $fieldName ?>", this.value);'<? /if ?> type="text" id="<? $fieldName ?>" maxlength=6 size=6 class="FormControl" name="fields[<? $fieldName ?>]" value="<? $fieldValue|htmlsafe:true:true ?>"/>

@@ -1,0 +1,36 @@
+{if !$printable_version}
+
+<h2>{lbl_pgn_product_reviews}{if $rss_link}&nbsp;<a href="{$smarty.const.URL_ROOT}/{$rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0" style="padding-left:10px;"></a>{/if}</h2>
+
+{if $product_reviews_count == 0}
+
+	<p>{lbl_prddiscussion_no_posts_on_item_string}</p>
+	<p>
+		<a href='{"?product_slug=`$product_info.slug`&productID=`$product_info.productID`&ukey=discuss_product"|set_query_html}'>{"prddiscussion_add_message"|translate}</a>
+	</p>
+{else}
+	{foreach from=$product_last_reviews item=_review}
+	<div class="review_block">
+	
+		<h3 class="review_title"><a name="{$_review.DID}"></a>{$_review.Topic|escape:'html'|linewrap:'\n':50}</h3>
+		
+		<div class="review_date">{$_review.Author|escape:'html'|linewrap} ({$_review.add_time_str})</div>
+		
+		<div class="review_content">{$_review.Body|escape:'html'|nl2br|linewrap}</div>
+		
+	</div>
+	{/foreach}
+	
+	<p class="review_showall">
+	<a href='{"?product_slug=`$product_info.slug`&productID=`$product_info.productID`&ukey=discuss_product"|set_query_html}'>
+	{if $product_reviews_count>2}
+	{"lnk_reviewproduct"|translate|replace:'%REVIEWS_NUM%':$product_reviews_count}
+	{else}
+	{"prddiscussion_add_message"|translate}
+	{/if}
+	</a>
+	</p>
+<p>
+{/if}
+
+{/if}

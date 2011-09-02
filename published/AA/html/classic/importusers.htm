@@ -1,0 +1,266 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+
+<script language=JavaScript>
+<!--
+	function initFocus()
+	{
+		<? if !$invalidField ?>
+			focusFormControl( 'FILE' )
+		<? else ?>
+			focusFormControl( '<? $invalidField ?>' );
+		<? /if ?>
+	}
+
+//-->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="initFocus()">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm"?>
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr|htmlsafe:true:true|nl2br ?>
+  <? if !$fatalError ?>
+
+		<? if $csv_step == "LOADFILE" ?>
+
+			<!-- Import file form -->
+
+			<table border="0" cellspacing="2" cellpadding="0">
+				<tr> 
+					<td> 
+						<? conditionalOutput invalidField=$invalidField field=FILE text=#invalidFieldHighlight# ?>
+						<? $kernelStrings.icl_file_label|cat:":" ?>
+					</td>
+					<td colspan=2><input type="file" name="file" class="control" style="width:350px"></td>
+				</tr>
+				<tr>
+					<td> 
+						<? $kernelStrings.app_importtemplate_label|cat:":" ?>
+					</td>
+					<td>
+						<select name=fileFormat>
+							<option value="-1"><? $kernelStrings.app_customtemplate_item|htmlsafe:true:true ?></option>
+							<? html_options values=$formatIDs selected=$fileFormat output=$formatNames ?>
+						</select>
+					</td>
+					<td>
+						<? include file="../../../common/html/classic/button.htm" align="left" name="managetemplatesbtn" caption=$kernelStrings.app_managetemplates_btn formname="form" space_left=5 space_right=10 ?>
+					</td>
+				</tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=2 border=0>
+				<tr><td>&nbsp;</td></tr>
+				<tr><td><hr size=1 noshade style="width: 530px"></td></tr>
+				<tr height=5><td>&nbsp;</td></tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=2 border=0>
+				<tr>
+					<td><? $kernelStrings.icl_userstatus_label|cat:":&nbsp;" ?></td>
+					<td>
+						<select name="selectedStatus" class="control">
+							<? html_options values=$statusIDs selected=$selectedStatus output=$statusNames ?>
+						</select>
+					</td>
+				</tr>
+				<tr height=5><td></td></tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=2 border=0>
+				<tr><td><nobr><? $kernelStrings.iul_usergroups_label|cat:": " ?></nobr></td></tr>
+				<tr height=5><td></td></tr>
+			</table>
+
+			<table border=0 cellpadding=0 cellspacing=2>
+				<tr>
+					<td class=readonly_control><? $kernelStrings.app_included_label ?></td>
+					<td>&nbsp;</td>
+					<td class=readonly_control><? $kernelStrings.app_notincluded_label ?></td>
+				</tr>
+				<tr>
+					<td>
+						<select name="included_groups[]" class="control" multiple="true" size="8" style="width:245px" onDblClick="moveComboItems('included_groups[]', 'notincluded_groups[]' );"">
+							<? html_options values=$included_groups output=$included_groups_names?>
+						</select>
+					</td>
+					<td>
+						<p><a href="javascript: moveComboItems('notincluded_groups[]', 'included_groups[]' );"><img src="<? "images/buttons/moveLeft.gif"|stylesetitem:"classic":$styleSet ?>" width="30" height="22" border="0"></a><br>
+						<a href="javascript: moveComboItems('included_groups[]', 'notincluded_groups[]' );"><img src="<? "images/buttons/moveRight.gif"|stylesetitem:"classic":$styleSet ?>" width="30" height="22" border="0"></a></p>
+					</td>
+					<td>
+						<select name="notincluded_groups[]" class="control" multiple="true" size="8" style="width:245px" onDblClick="moveComboItems('notincluded_groups[]', 'included_groups[]' );"">
+							<? html_options values=$notincluded_groups output=$notincluded_groups_names?>
+						</select>
+					</td>
+				</tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=2 border=0>
+				<tr><td>&nbsp;</td></tr>
+			</table>
+
+			<? if $canManageContacts ?>
+				<table border=0 cellpadding=2 cellspacing=0>
+					<tr>
+						<td>
+							<? conditionalOutput invalidField=$invalidField field="FOLDER" text=#invalidFieldHighlight# ?>
+							<? $kernelStrings.amu_contactfolder_label|cat:": " ?>
+						</td>
+						<td>
+							<select class="control" name="folderID" style="width: 300px">
+								<? include file="../../../common/html/classic/tree_templates/tree_folders_selector.htm" selectedID=$folderID showAnyRights=true denyNoAccess=true showPromt=false ?>
+							</select>
+						</td>
+					</tr>
+					<tr height=5></tr>
+				</table>
+				<table border=0 cellpadding=2 cellspacing=0>
+					<tr>
+						<td class="SmallFont" width=500><? "<b>"|cat:$kernelStrings.app_tips_label|cat:"</b>: "|cat:$kernelStrings.amu_folder_tip ?></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+				</table>
+			<? else ?>
+				<input type=hidden name="unsortedContacts" value="1">
+			<? /if ?>
+
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.icl_import_btn formname="form" space_right=10 onClick="fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );"?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+
+		<? elseif $csv_step == "SETSCHEME" ?>
+
+			<!-- Custom file format form -->
+			<? assign var=dbColumnName value=$kernelStrings.iul_crsccols_label ?>
+			<? assign var=space_left value=5 ?>
+			<? assign var=width value=500 ?>
+			<? assign var=height value=300 ?>
+			<? include file="../../../common/html/classic/csv/importcustfile.htm" extraLine=true ?>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.icl_import_btn formname="form" space_left=5 space_right=10 ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+
+			<input type=hidden name=folderID value="<? $folderID ?>">
+
+			<input type=hidden name=grantuserprivs value="<? $grantuserprivs ?>">
+			<input type=hidden name=selectedStatus value="<? $selectedStatus ?>">
+			<input type=hidden name=groups value="<? $groups ?>">
+			<input type=hidden name="unsortedContacts" value="<? $unsortedContacts ?>">
+
+		<? elseif $csv_step == "FINISHED_SAVESCHEMA" || $csv_step == "FINISHED" ?>
+
+			<input type=hidden name=folderID value="<? $folderID ?>">
+
+			<? if !$saveFormatError ?>
+				<!-- Display import results -->
+					<table border="0" cellspacing="2" cellpadding="0">
+						<tr> 
+							<td><? $importStr|htmlsafe:true:true ?></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<? if $errorNum ?>
+							<tr>
+								<td><? $kernelStrings.iul_notaddedusers_label ?></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+						<? /if ?>
+					</table>
+
+					<? if $errorNum ?>
+						<table border="0" cellspacing="0" cellpadding="0" class=list>
+							<tr> 
+								<th><? $kernelStrings.app_treeuser_label ?></th>
+								<th align=left><? $kernelStrings.icl_error_label ?></th>
+							</tr>
+							<? foreach from=$errorStack item=stackItem ?>
+								<tr>
+									<td><? $stackItem.user ?></td>
+									<td><? $stackItem.msg ?></td>
+								</tr>
+							<? /foreach ?>
+						</table>
+						<table border="0" cellspacing="2" cellpadding="0">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+					<? /if ?>
+				<? /if ?>
+
+				<? if $csv_step == "FINISHED_SAVESCHEMA" ?>
+					<table cellpadding=0 cellspacing=2 border=0>
+						<tr>
+							<td><? $kernelStrings.tpl_format_note|cat:":" ?></td>
+						</tr>
+						<tr>
+							<td height=5></td>
+						</tr>
+					</table>
+					<table cellpadding=0 cellspacing=2 border=0>
+						<tr>
+							<td width=10><input type=checkbox value=1 name="saveFormat" <? switchedOutput val=$saveFormat true_val=1 str1="checked" ?>></td>
+							<td width=150><nobr><? conditionalOutput invalidField=$invalidField field=fileformatname text=#invalidFieldHighlight# ?><? $kernelStrings.tpl_formatname_label|cat:":&nbsp;" ?></nobr></td>
+							<td width=200><input name="fileformatname" type=text style="width: 200px" maxlength=50></td>
+						</tr>
+						<tr><td colspan=2>&nbsp;</td></tr>
+					</table>
+				<? /if ?>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_done_btn formname="form" space_left=0 space_right=10 ?>
+		<? elseif $csv_step == "SELECT_U_ID" ?>
+			<table cellpadding=0 cellspacing=2 border=0>
+				<tr>
+					<td>
+						<? conditionalOutput invalidField=$invalidField field=selectedU_ID text=#invalidFieldHighlight# ?>
+						<? $kernelStrings.icl_specifyuid_label|cat:":&nbsp;" ?>
+					</td>
+					<td>
+						<select name=selectedU_ID>
+							<option value=""><? $kernelStrings.app_select_item|htmlsafe:true:true ?></option>
+							<? html_options values=$fieldIDs selected=$selectedU_ID output=$fieldIDs ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>&nbsp;</td>
+				</tr>
+			</table>
+			<input type="hidden" name="fileFormat" value="<? $fileFormat ?>">
+			<input type="hidden" name="folderID" value="<? $folderID ?>">
+			<input type=hidden name=selectedStatus value="<? $selectedStatus ?>">
+			<input type=hidden name=groups value="<? $groups ?>">
+			<input type=hidden name="unsortedContacts" value="<? $unsortedContacts ?>">
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.icl_import_btn formname="form" space_right=10 ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+		<? /if ?>
+	<? else ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+  <? /if ?>
+  <input type="hidden" name="btndummy">
+  <input type="hidden" name="edited" value="1">
+  <input type="hidden" name="CF_ID" value="<? $CF_ID ?>">
+  <input type="hidden" name="csv_step" value="<? $csv_step ?>">
+  <input type="hidden" name="csv_separator" value="<? $csv_separator ?>">
+  <input type="hidden" name="destPath" value="<? $destPath ?>">
+  <input type="hidden" name="csv_dbscheme_packed" value="<? $csv_dbscheme_packed ?>">
+  <input type="hidden" name="csv_headers_packed" value="<? $csv_headers_packed ?>">
+  <input type="hidden" name="csv_importscheme_packed" value="<? $csv_importscheme_packed ?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

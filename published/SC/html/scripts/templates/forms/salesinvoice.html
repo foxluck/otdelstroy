@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Счет-фактура</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<base href="{$smarty.const.CONF_FULL_SHOP_URL}" />
+<link rel="stylesheet" href="{$smarty.const.URL_CSS}/printforms.css" type="text/css" />
+{if !$strict}
+<script type="text/javascript">
+var lang_strings = {literal}{{/literal}
+	'edit_link':'{'print_form_edit_before_print'|translate}',
+	'field_title':'{'print_form_edit_title'|translate}',
+	'save_link':'{'btn_ok'|translate}'
+{literal}}{/literal}
+var page_url = '{''|set_query_html}';
+</script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/inline_edit_printform.js"></script>
+{/if}
+</head>
+<body{if !$strict} onload="Printform.init('inline_edit');"{/if}>
+{include file="print_button.html"}
+<div align=right>
+<table cellpadding="0" cellspacing="0" border="0" style="width: 100mm">
+	<tr>
+		<td class=reportSmallFont align=left>Приложение № 1<br>
+		к Правилам ведения журналов учета полученных и выставленных
+		счетов-фактур, книг покупок и книг продаж при расчетах по налогу на
+		добавленную стоимость, утвержденным постановлением Правительства РФ от
+		02.12.2000 № 914 (в ред. Постановления Правительства РФ от 15.03.2001
+		г. № 189, от 27.07.2002 № 575, от 16.02.2004 № 84, от 11.05.2006 №
+		283, от 26.05.2009 № 451)</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal" width="100%">
+	<tr>
+		<td><b>СЧЁТ-ФАКТУРА № <span class="inline_edit">{$order.orderID_view}</span> от <span class="inline_edit">{$order.date_print} г.</span></b></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal">
+	<tr>
+		<td class=leftAlign>Продавец:</td>
+		<td class="leftAlign underlined"><b>{$COMPANYNAME|default:"Продавец"|htmlsafe:true:true}</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>Адрес:</td>
+		<td class="leftAlign underlined"><b>{$COMPANYADDRESS|htmlsafe:true:true},&nbsp;(тел.:{$COMPANYPHONE|default:"-"|htmlsafe:true:true})</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>ИНН/КПП продавца:</td>
+		<td class="leftAlign underlined"><b>{$INN|htmlsafe:true:true}/{$KPP|htmlsafe:true:true}</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>Грузоотправитель и его адрес:</td>
+		<td class="leftAlign underlined"><b>{$COMPANYNAME|default:"Продавец"|htmlsafe:true:true},&nbsp;{$COMPANYADDRESS|default:"город, улица, дом"|htmlsafe:true:true},&nbsp;(тел.:{$COMPANYPHONE|default:"-"|htmlsafe:true:true}){", р/счет №`$BANK_ACCOUNT_NUMBER` в `$BANKNAME`, кор/счет №`$BANK_KOR_NUMBER`, БИК `$BIK`"|htmlsafe:true:true}</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>Грузополучатель и его адрес:</td>
+		<td class="leftAlign underlined"><b class="inline_edit">
+{if $customer.company}{$customer.company|htmlsafe:true:true}&nbsp;{else}
+{$order.shipping_name|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_state}{$order.shipping_state|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_city}{$order.shipping_city|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_zip}{$order.shipping_zip|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_address}{$order.shipping_address|htmlsafe:true:true},&nbsp;{/if}
+{if $customer.phone}тел.: {$customer.phone|htmlsafe:true:true}{/if}
+		</b></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class=leftAlign colspan="2">К платежно-расчетному документу: №
+		<table style="display:inline;"><tr>
+		<td class="underlined inline_edit" style="width:60mm;">&nbsp;</td> 
+		<td>от </td>
+		<td class="underlined inline_edit" style="width:50mm;">&nbsp;</td>
+		</tr></table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal">
+	<tr>
+		<td class=leftAlign>Покупатель:</td>
+		<td class="leftAlign underlined"><b class="inline_edit">{$customer.company|default:$order.billing_name|htmlsafe:true:true|default:"&nbsp;"}</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>Адрес:</td>
+		<td class="leftAlign underlined"><b class="inline_edit">
+{if $order.shipping_state}{$order.shipping_state|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_city}{$order.shipping_city|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_zip}{$order.shipping_zip|htmlsafe:true:true},&nbsp;{/if}
+{if $order.shipping_address}{$order.shipping_address|htmlsafe:true:true},&nbsp;{/if}
+{if $customer.phone}тел.: {$customer.phone|htmlsafe:true:true}{/if}&nbsp;</b></td>
+	</tr>
+	<tr>
+		<td class=leftAlign>ИНН/КПП покупателя:</td>
+		<td class="leftAlign underlined">
+		<table style="display:inline;"><tr>
+		<td style="width:50mm;font-weight: bold;" class="inline_edit">{$customer.inn|htmlsafe:true:true|default:"&nbsp;"}</td>
+		<td style="font-weight: bold;">/</td>
+		<td style="width:50mm;font-weight: bold;" class="inline_edit">{$customer.kpp|htmlsafe:true:true|default:"&nbsp;"}</td>
+		</tr></table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellpadding=0 cellspacing=0
+	class="mainTable_normal">
+	<tr>
+		<td class="b_left b_top">
+			Наименование товара (описание выполненных<br> работ, оказанных услуг),<br/>имущественного права 
+		</td>
+		<td class="b_left b_top">
+			Ед.<br>изм. 
+		</td>
+		<td class="b_left b_top">
+			Кол-<br>во 
+		</td>
+		<td class="b_left b_top">Цена (тариф)<br>за ед. изм. 
+		</td>
+		<td class="b_left b_top">
+			Стоимость товаров<br>(работ, услуг),<br>имущественных прав,<br>всего без налога 
+		</td>
+		<td class="b_left b_top">В т.ч.<br>акциз 
+		</td>
+		<td class="b_left b_top">Налоговая<br>ставка 
+		</td>
+		<td class="b_left b_top">Сумма<br>налога 
+		</td>
+		<td class="b_left b_top">
+			Стоимость товаров<br>(работ, услуг),<br>имущественных прав,<br>всего с учетом налога 
+		</td>
+		<td class="b_left b_top">Страна<br>происхождения</td>
+		<td class="b_left b_top b_right">№ таможенной<br>декларации</td>
+	</tr>
+	<tr>
+		<td class="b_left b_top">1</td>
+		<td class="b_left b_top">2</td>
+		<td class="b_left b_top">3</td>
+		<td class="b_left b_top">4</td>
+		<td class="b_left b_top">5</td>
+		<td class="b_left b_top">6</td>
+		<td class="b_left b_top">7</td>
+		<td class="b_left b_top">8</td>
+		<td class="b_left b_top">9</td>
+		<td class="b_left b_top">10</td>
+		<td class="b_left b_top b_right">11</td>
+	</tr>
+	{foreach from=$order_content item=order_item key=id}
+	<tr>
+		<td class="b_left b_top leftAlign inline_edit">{$order_item.name|default:"&nbsp;"|htmlsafe:true:true}</td>
+		<td class="b_left b_top inline_edit">шт.</td>
+		<td class="b_left b_top">{$order_item.Quantity|string_format:"%d"}</td>
+		<td class="b_left b_top rightAlign nobr">{$order_item.Price|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top rightAlign nobr">{$order_item.Nds_ItemPrice|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top rightAlign">0,00</td>
+		<td class="b_left b_top rightAlign">{$NDS}%</td>
+		<td class="b_left b_top rightAlign">{$order_item.Nds_amount|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top rightAlign nobr">{$order_item.ItemPrice|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top inline_edit">&nbsp;</td>
+		<td class="b_top b_left b_right inline_edit">&nbsp;</td>
+	</tr>
+	{/foreach}
+	{if $order.shipping_cost}
+	<tr>
+		<td class="b_left b_top leftAlign">доставка {$order.shipping_type|htmlsafe:true:true}</td>
+		<td class="b_left b_top">шт.</td>
+		<td class="b_left b_top">1</td>
+		<td class="b_left b_top rightAlign nobr">{$order.shipping_cost|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top rightAlign nobr">{$order.shipping_cost|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top rightAlign">0,00</td>
+		<td class="b_left b_top rightAlign">0%</td>
+		<td class="b_left b_top rightAlign">0,00</td>
+		<td class="b_left b_top rightAlign nobr">{$order.shipping_cost|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top">&nbsp;</td>
+		<td class="b_top b_left b_right">&nbsp;</td>
+	</tr>
+	{/if}
+	<tr class=totals>
+		<td colspan=7 class="b_left b_top b_bottom">
+		<table class=mainTable_normal border="0" cellpadding=0 cellspacing=0
+			width="100%">
+			<tr>
+				<td class="leftAlign nobr"><b>Всего к оплате</b></td>
+				<td class="rightAlign nobr"><b>{$order.total_price_string}, {if $order.nds}в т.ч. НДС{else}без налога (НДС){/if}</b></td>
+			</tr>
+		</table>
+		</td>
+		<td class="b_left b_top b_bottom rightAlign">{$order.total_nds|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top b_bottom rightAlign nobr">{$order.total_price|default:0|string_format:"%0.2f"}</td>
+		<td class="b_left b_top">&nbsp;</td>
+		<td class="b_top">&nbsp;</td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal" width="100%">
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal" width="100%">
+	<tr>
+		<td style="width: 45mm" class="nobr"><b>Руководитель
+		организации</b></td>
+		<td class=underlined>&nbsp;</td>
+		<td style="width: 5mm">&nbsp;</td>
+		<td class="underlined nobr" style="width: 45mm"><b>{$CEO_NAME|htmlsafe:true:true|default:"&nbsp;"}</b></td>
+		<td style="width: 15mm">&nbsp;</td>
+		<td style="width: 55mm" class="nobr"><b>Главный бухгалтер</b></td>
+		<td class=underlined>&nbsp;</td>
+		<td style="width: 5mm">&nbsp;</td>
+		<td class="underlined nobr" style="width: 45mm"><b>{$BUH_NAME|htmlsafe:true:true|default:"&nbsp;"}</b></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class=smallFont>подпись</td>
+		<td>&nbsp;</td>
+		<td class=smallFont>расшифровка подписи</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td class=smallFont>подпись</td>
+		<td>&nbsp;</td>
+		<td class=smallFont>расшифровка подписи</td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0"
+	class="mainTable_normal" width="100%">
+	<tr>
+		<td class="nobr" valign="bottom" style="width: 55mm"><b>Индивидуальный предприниматель</b></td>
+		<td class="underlined" style="width: 45mm">&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td class="underlined nobr" valign="bottom"><b>{$IP_NAME|htmlsafe:true:true|default:"&nbsp;"}</b></td>
+		<td style="width: 5mm">&nbsp;</td>
+		<td class="underlined nobr" valign="bottom"><b>{$IP_REGISTRATION|htmlsafe:true:true|default:"&nbsp;"}</b></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class=smallFont>подпись</td>
+		<td>&nbsp;</td>
+		<td class=smallFont>расшифровка подписи</td>
+		<td>&nbsp;</td>
+		<td class=smallFont>(реквизиты свидетельства о государственной регистрации<br/>индивидуального предпринимателя)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+<p>Примечание. Первый экземпляр - покупателю, второй экземпляр - продавцу.</p>
+
+</body>
+</html>

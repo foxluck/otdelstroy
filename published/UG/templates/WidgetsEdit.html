@@ -1,0 +1,500 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{$url.common}}html/res/dsrte/dsrte.css" />
+	<link rel="stylesheet" type="text/css" href="{{$url.css}}users-common.css" />
+	<style type="text/css">
+	.selectable {background-color: #fff}
+	.send_mail_editor {padding:0 10px 0 10px; min-width:600px;}
+	li.preview-item, li.cancel-item {display: none}
+	div.color {width: 54px; height: 18px; border: 1px solid #666; float:left}
+	a.change-color {float:left; padding-left:10px}
+	.with-table hr {color: #fff}
+	div.pl {margin-left: 25px}
+	div.error-url, div.error-emails {display: none; color: red}
+	input.error {border: 1px solid red}
+	input.semail.w {width:400px}
+	#wg-desc-input {font-size: 28px; font-weight: bold; margin: 10px 0; display: none}
+	</style>
+	<link rel="stylesheet" href="{{$url.common}}css/colorpicker.css" type="text/css" />
+	<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+	<script type="text/javascript" src="{{$url.common}}js/jquery.colorpicker.js"></script>
+	<script type="text/javascript">
+		var ctrlb='b',ctrli='i',ctrlu='u'; // keyboard shortcut keys
+	</script>
+	{{$editor_scripts}}
+</head>
+<body style="overflow:auto; height: 95%">
+<div id="create-form-container" class="container">
+<!--{{$widget_id}}-->
+
+<h1 id="wg-desc">{{$widget.WG_DESC}}</h1>
+<input id="wg-desc-input" type="text" value="" />
+<div class="action-menu"><ul class="action-list" id="">
+<li><a href="javascript:void(0)" id="customize-link">[`Customize`]</a></li>
+<li class="preview-item"><input type="button" onClick="$('#widget-customize').submit()" id="preview-link" class="save-link" value="[`Save changes`]" /></li>
+<li class="cancel-item"><input type="button" id="cancel-link" class="cancel-link" value="[`Cancel`]" /></li>
+<li class="delete-item customize-link"><a href="javascript:void(0)" id="widget-delete">[`Delete this form`]</a></li>
+</ul></div>
+
+<div id="widget-custom-div" style="display:none">
+<ul class="big-tabs" id="customize-tabs">
+<li class="tab-current" id="tab-fields"><a href="javascript:void(0)">[`Fields`]</a></li>
+<li id="tab-folder-lists"><a href="javascript:void(0)">[`Folder & Lists`]</a></li>
+<li id="tab-view"><a href="javascript:void(0)">[`View`]</a></li>
+<li id="tab-confirmation"><a href="javascript:void(0)">[`After sign-up`]</a></li>
+</ul>
+<div id="customize-tabs-content" class="tabs-content form-edit">
+<form id="widget-customize">
+<!--/ Fields /-->
+<div id="customize-content-tab-fields" class="content">
+	<div class="form-fields" style="padding: 10px 10px 0 20px">
+	<br />
+	[`Contact type`]: <b>{{$type_name}}</b><br /><br />
+	[`Choose contact fields you want to have in this form`]:
+	</div>
+	<div class="form-fields">
+		{{foreach from=$fields item=section}}
+		<fieldset>
+		<p class="f-legend">{{$section.name}}</p> 
+			{{foreach from=$section.fields item=field}}
+			<p><input class="labels right{{if $params.CMFIELDSLABELS[$field.dbname]}} edited{{/if}}" type="text" value="{{if $params.CMFIELDSLABELS[$field.dbname]}}{{$params.CMFIELDSLABELS[$field.dbname]}}{{else}}{{if $field.dbname=='C_FULLNAME'}}{{$fullname}}{{else}}{{$form_fields[$field.dbname]}}{{/if}}{{/if}}" />
+				<label><input class="fields" {{if $params.CMFIELDS[$field.dbname]}}checked="checked"{{/if}} value="{{$field.dbname}}" type="checkbox" />{{$field.name}}</label>
+				
+			</p>
+			{{/foreach}}		
+		</fieldset>
+		{{/foreach}}
+		<fieldset style="background-color: #fff">
+			<p><input class="labels right" type="text" name="params[CAPTCHA_TITLE]" value="{{$params.CAPTCHA_TITLE}}" />
+				<label><input name="params[CAPTCHA]" {{if $params.CAPTCHA}}checked="checked"{{/if}} value="1" type="checkbox" />[`CAPTCHA`]</label>
+				
+			</p>	
+		</fieldset>
+		
+	</div>
+</div>
+<div id="customize-content-tab-folder-lists" class="content" style="display:none">
+	<div class="form-fields">
+	<div style="padding-left:7px">
+	[`Select folder and lists in which subscribers will be added:`]<br /><br />
+	[`Folder`]: <select name="params[FOLDER]" class="fix-width">
+	<option value="" >&nbsp;&lt;[`none folder`]&gt;</option>
+		{{if $private_folder}}
+		<option selected="selected" value="{{$params.FOLDER}}"> [`Private`] ({{$private_folder}})</option>
+		{{/if}}
+		{{foreach from=$folders item=f key=folder_id}}
+		<option{{if $params.FOLDER && $params.FOLDER==$f.ID}} selected="selected"{{/if}} value="{{$f.ID}}" >{{"&nbsp;"|repeat:$f.OFFSET}}{{$f.NAME}}</option>
+		{{/foreach}}	
+	</select>
+	</div>
+	<br />
+	<table>
+	<tr>
+		<td>[`Selected lists`]</td><td>&nbsp;</td><td>[`Unselected lists`]</td>
+	</tr>
+	<tr>
+	<td>
+	<div class="select-container">
+	<select size="8" multiple="multiple" id="lists_in" style="width:250px">
+	{{foreach from=$lists item=l}}
+		{{if $params.LISTS[$l.CL_ID]}}<option value="{{$l.CL_ID}}">{{$l.CL_NAME}}</option>{{/if}}
+	{{/foreach}}
+	</select>
+	</div>
+	</td>
+	<td width="20" align="center" valign="middle" style="vertical-align: middle">
+	<div class="control-btns">
+		<div class="wbs-move-btn"><a onClick="return moveLists('out', 'in')" href="#">&larr;</a></div>
+		<div class="wbs-move-btn"><a onClick="return moveLists('in', 'out')" href="#">&rarr;</a></div>
+	</div>
+	</td>
+	<td>
+	<select size="8" multiple="multiple" id="lists_out" style="width:250px">
+	{{foreach from=$lists item=l}}
+		{{if !$params.LISTS[$l.CL_ID]}}<option value="{{$l.CL_ID}}">{{$l.CL_NAME}}</option>{{/if}}
+	{{/foreach}}
+	</select>	
+	</td>
+	</tr>
+	</table>
+	</div>
+</div>
+<!--/ View & Text /-->
+<div id="customize-content-tab-view" class="content" style="display:none">
+	<div class="form-fields">
+	<fieldset class="with-table">
+		<table>
+		<tr>
+			<td>[`Caption`]:</td>
+			<td><input name="params[TITLE]" value="{{$params.TITLE}}" type="text" /></td> 
+		</tr>
+		<tr>
+			<td>[`Caption text color`]:</td>
+			<td>
+			<div class="color" style="background:{{$params.TITLE_color}}">
+			<input name="params[TITLE_color]" value="{{$params.TITLE_color}}" type="hidden" />
+			</div>
+			<a href="#" class="change-color">[`change`]</a>
+			</td> 
+		</tr>
+		<tr>
+			<td>[`Caption background color`]:</td>
+			<td>
+			<div class="color" style="background:{{$params.TITLE_bgcolor}}">
+			<input name="params[TITLE_bgcolor]" value="{{$params.TITLE_bgcolor}}" type="hidden" />
+			</div> 
+			<a href="#" class="change-color">[`change`]</a>
+			</td>
+		</tr>
+		<tr><td colspan="2"><hr /></td></tr>
+		<tr>
+			<td>[`Form width`]:</td>
+			<td><input name="params[WIDTH]" size="5" value="{{$params.WIDTH}}" type="text" /></td> 
+		</tr>
+		<tr>
+			<td>[`Form background color`]:</td>
+			<td>
+			<div class="color" style="background:{{$params.BGCOLOR}}"><input name="params[BGCOLOR]" value="{{$params.BGCOLOR}}" type="hidden" /></div>
+			<a href="#" class="change-color">[`change`]</a>
+			</td> 
+		</tr>
+		<tr><td colspan="2"><hr /></td></tr>						
+		<tr>
+			<td>[`Button`]:</td>
+			<td><input name="params[SAVEBTN]" value="{{$params.SAVEBTN}}" type="text" /></td> 
+		</tr>
+		<tr><td colspan="2"><hr /></td></tr>
+		<tr>
+			<td>[`Language`]:</td> 
+			<td><select id="form-lang" name="info[WG_LANG]">
+			{{foreach from=$langs key=lang item=lang_title}}
+				<option value="{{$lang}}"{{if $lang==$widget.WG_LANG}} selected="selected"{{/if}}>{{$lang_title}}</option>
+			{{/foreach}}
+			</select><br />
+			</td>
+		</tr>
+		<tr><td colspan="2"><span style="font-size:80%">[`System messages and default field names will appear in this language.`]</span></td></tr>			
+		</table>
+	</fieldset>
+	</div>
+</div>
+<!--/ Confirmation /-->
+<div id="customize-content-tab-confirmation" class="content" style="display:none">
+	<div class="form-fields">
+	<fieldset class="with-table editor">
+		<div>
+			[`Once subscriber clicks submission button in this form:`]<br />
+			<label><input name="success-action" value="SIGNUPTEXT" type="radio" {{if !$params.REDIRECT}}checked="checked"{{/if}} /> [`Stay on the form page and display this message:`]</label>
+			<div class="pl">
+			<textarea class="SIGNUPTEXT w" {{if $params.REDIRECT}}disabled="disabled"{{/if}} name="params[SIGNUPTEXT]" class="w" rows="3">{{$params.SIGNUPTEXT}}</textarea>
+			</div>
+			<label><input name="success-action" value="REDIRECT" type="radio" {{if $params.REDIRECT}}checked="checked"{{/if}} /> [`Redirect to another page:`]</label>
+			<div class="pl">
+			<input id="redirect-url" {{if !$params.REDIRECT}}disabled="disabled"{{/if}} class="w REDIRECT" type="text" name="params[REDIRECT]" value="{{$params.REDIRECT|escape:"html"}}" />
+			<br />
+			<div class="error-url">[`Incorrect URL`]</div>
+			<label><input {{if !$params.REDIRECT}}disabled="disabled"{{/if}} id="new-window" style="margin-left: 0" type="checkbox" name="params[NEWWINDOW]" value="1" {{if $params.NEWWINDOW}}checked="checked"{{/if}} /> [`Open in new window`]</label>
+			</div>
+			<br />
+			<hr />
+			<div class="error-emails">[`To enable "Send email" function you have to add Email field in this form.`]</div>
+			<label><input class="semail"  name="params[EMAILSEND]" value="1" type="checkbox" {{if $params.EMAILSEND}}checked="checked"{{/if}} />[`Send email to subscriber`]</label>
+			<script type="text/javascript">
+			$("input[name=success-action]").click(function () {
+				$("." + $(this).val()).val('');
+				if (this.value == 'REDIRECT') {
+					$("input.REDIRECT").removeAttr('disabled');
+					$("textarea.SIGNUPTEXT").val('').attr('disabled', 'disabled');
+					$("#new-window").removeAttr('disabled');
+				} else {
+					$("#redirect-url").removeClass('error');
+					$(".error-url").hide();
+					$("textarea.SIGNUPTEXT").removeAttr('disabled');
+					$("input.REDIRECT").val('').attr('disabled', 'disabled');
+					$("#new-window").attr('disabled', 'disabled');
+				}
+			});
+			</script>
+		</div>
+		<table>
+		<tr>
+			<td>[`From (Name)`]:</td>
+			<td><input class="semail w" name="params[EMAILFROMNAME]" value="{{$params.EMAILFROMNAME}}" type="text" /></td> 
+		</tr>
+		<tr>
+			<td>[`From (Email)`]:</td>
+			<td><input class="semail w" name="params[EMAILFROM]" value="{{$params.EMAILFROM}}" type="text" /></td> 
+		</tr>	
+			
+		<tr>
+			<td>[`Subject`]:</td>
+			<td><input class="semail w" name="params[EMAILSUBJECT]" value="{{$params.EMAILSUBJECT}}" type="text" /></td> 
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="send_mail_editor"><div class="editor_wrapper" style="position:relative;">{{$editor_HTML}}</div></div>
+			</td>
+		</tr>	
+		<tr>
+			<td colspan="2"><a href="#" id="insert-url">[`Insert a confirmation link into this message`]</a></td>
+		</tr>
+		</table>
+		
+	</fieldset>
+	</div>
+</div>
+<input type="hidden" name="save" value="1" />
+</form>
+</div>
+<div>
+	<input type="button" onClick="$('#widget-customize').submit()" class="save-link" value="[`Save changes`]" />
+	<input type="button" class="cancel-link" value="[`Cancel`]" />
+</div>
+</div>
+
+<div class="form-preview" style="text-align: left">
+<table width="100%">
+<tr>
+	<td width="50%">
+	<div class="align-center">
+		<iframe style="border: 1px solid #999" width="100%" height="450" id="previewFrame" name="previewFrame" src="{{$embed.previewSrc}}" frameborder="0"></iframe>
+	</div>	
+	</td>
+	<td width="50%" valign="top" style="padding: 10px 0 0 15px; font-size: 80%">
+		[`Link to this form`] (<a href="{{$embed.src}}" target="_blank">[`open in new window`]</a>):<br />
+		<input readonly="readonly" class="selectable" style="width:100%" type="text" value="{{$embed.src}}" /> <br />
+		<br />
+		<h4>[`HTML to embed in website or blog`]</h4>
+		[`Method 1 (&lt;iframe&gt;)`]:<br />
+		<textarea readonly="readonly" class="selectable" style="font-size:110%;width:100%" rows="2">{{$embed.code}}</textarea>
+		<br />
+		[`Method 2 (javascript and &lt;form&gt;)`]:<br />
+		<textarea readonly="readonly" id="html-code" class="selectable" style="font-size:110%;width:100%" rows="5">{{$embed.html_code|escape}}</textarea>
+		<br /><br />
+		<a href="{{$embed.typepadSrc}}" target="_blank"><img src="../WG/html/cssbased/installs/add_typepad.gif" /></a> 
+		<a target="_blank" href="http://fusion.google.com/add?moduleurl={{$embed.igoogleSrc}}"><img src="../WG/html/cssbased/installs/add_igoogle.gif" /></a>
+	</td>
+</tr>
+</table>
+</div>
+</div>
+
+<script type="text/javascript">
+
+$("#redirect-url").blur(function () {
+	if ($("input[name=success-action]:checked").val() == 'REDIRECT') {
+		var value = $(this).val();
+		if (/^((https?):\/\/)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value)) {
+		} else {
+			$(this).addClass('error');
+			$(".error-url").show();
+		}
+	}
+}).focus(function () {
+	$(this).removeClass('error');
+	$(".error-url").hide();
+});
+
+
+var checkedFields = function () {
+	if ($(this).is(":checked")) {
+		$(this).parent().addClass('bold').removeClass('gray');
+		$(this).parent().prev().removeAttr('disabled');
+	} else {
+		$(this).parent().removeClass('bold').addClass('gray');
+		$(this).parent().prev().attr('disabled', 'disabled');
+	}
+};
+
+$("input.fields[type=checkbox]").each(checkedFields).change(checkedFields);
+$("input[type=checkbox][name='params[CAPTCHA]']").each(checkedFields).change(checkedFields);
+
+$("#previewFrame").load(function () {
+	var h = $(this.contentDocument).find('.wbs-sign-up').outerHeight() + 20;
+	if (h < 450) {
+		h = 450;
+	}
+	$(this).attr('height', h);
+});
+
+$("#lists_in").dblclick(function () {moveLists('in', 'out');});
+$("#lists_out").dblclick(function () {moveLists('out', 'in');});
+
+function moveLists(from, to) {
+	$("#lists_" + from + " option:selected").each(function () {
+		$(this).appendTo("#lists_" + to).attr("selected", "");
+	});
+	return false;
+}
+
+$(".selectable").focus(function () {
+    $(this).select();
+}).mouseup(function(e){
+    e.preventDefault();
+});;
+var load = false;
+var i = 0;
+$("#customize-link").click(function () {
+	$(".delete-item").hide();
+	$("#wg-desc").hide();
+	$('#wg-desc-input').val($("#wg-desc").html()).show();
+	$('#widget-custom-div').toggle();
+	$("div.form-preview").toggleClass('customize-view');
+	$("li.cancel-item,li.preview-item").show();
+	$(this).parent().hide();
+});
+
+$(".cancel-link").click(function () {
+	$(".delete-item").show();
+	$("#wg-desc").show();
+	$('#wg-desc-input').hide();	
+	$("li.cancel-item,li.preview-item").hide();
+	$("#customize-link").parent().show();
+	$("#widget-custom-div").hide();
+	$("div.form-preview").removeClass("customize-view");
+});
+
+
+$("#customize-tabs li").click(function () {
+	var id = $(this).attr('id');
+	$("#customize-tabs-content div.content:visible").hide();
+	$("#customize-content-" + id).show();
+	$("#customize-tabs li.tab-current").removeClass('tab-current');
+	$(this).addClass('tab-current');
+	if (id == 'tab-confirmation') {
+		if (!load) {
+			load = true; 
+			iframeObj = $('table.rte iframe:visible');
+			iframeObj.each( function(i) {
+				if ($(this).parents('.content').is(":visible")) {
+					dsRTEObj[i] = new dsRTE( this );
+				}
+			});
+			// Hide all open panels
+			iframeObj.contents().click(function(i) {
+				$('.panel').hide();
+		    	$("div.select-container:visible").hide();
+			});	
+		}
+
+		if (!$('input.fields[type=checkbox][value=C_EMAILADDRESS]').is(':checked')) {
+			$(".error-emails").show();
+			$("#insert-url").hide();
+			dsRTEObj[0].doc.designMode = 'off';
+			$("#dsrte-cmd span").addClass('disable');
+			$("input.semail").attr('disabled', 'disabled');			
+		} else {
+			$(".error-emails").hide();
+			$("#insert-url").show();
+			dsRTEObj[0].doc.designMode = 'on';
+			$("input.semail").removeAttr('disabled');
+			$("#dsrte-cmd span").removeClass('disable');
+		}
+	}		
+});	
+
+$("#widget-delete").click(function () {
+	if (confirm('[`Are you sure you want to delete this form?`]')) {
+		$.post("?mod=widgets&act=delete&ajax=1", {id:{{$widget_id}} }, function (response) {
+			if (response.status == 'OK') {
+				parent.document.app.widgetsList.widgetDeleted();
+			} else {
+				alert(response.error);
+			}
+		}, "json")
+	}
+});
+
+$("a.change-color").click(function () {
+	$(this).prev().click();
+	return false;
+});
+$('.color').hover(function () {$(this).css('cursor', 'pointer')}, function () {$(this).css('cursor', 'default')}).ColorPicker({
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).css('background', '#' + hex)
+		$(el).children('input').val('#' + hex);
+		$(el).ColorPickerHide();
+	},
+	onBeforeShow: function () {
+		$(this).ColorPickerSetColor($(this).children('input').val());
+	}
+})
+.bind('keyup', function(){
+	$(this).ColorPickerSetColor(this.value);
+});
+
+$("input.fields[type=checkbox][value=C_FULLNAME]").change(function () {
+	if ($(this).is(":checked")) {
+		$("input.fields[type=checkbox]").each(function () {
+			if (this.value == 'C_FIRSTNAME' || this.value == 'C_LASTNAME' || this.value == 'C_MIDDLENAME') {
+				if ($(this).is(":checked")) {
+					$(this).click().each(checkedFields);
+				}
+			}
+		});
+	}
+});
+
+$("input.fields[type=checkbox][value=C_FIRSTNAME]")
+.add("input.fields[type=checkbox][value=C_MIDDLENAME]")
+.add("input.fields[type=checkbox][value=C_LASTNAME]").change(function () {
+	if ($(this).is(":checked") && $("input.fields[type=checkbox][value=C_FULLNAME]").is(":checked")) {
+		$("input.fields[type=checkbox][value=C_FULLNAME]").click().each(checkedFields);
+	}	
+});
+
+
+$("#insert-url").click(function () {
+	if (dsRTEObj && dsRTEObj[0]) {
+		dsRTEObj[0].PasteHTML("<p>[`Please click the link below to confirm your subscription:`]<br />{CONFIRM_SUBSCRIPTION_URL}</p>", 2);
+	}
+	return false;
+});
+var lang = $("#form-lang").val();
+$("#widget-customize").submit(function () {
+	if ($("div.error-url").is(":visible")) {
+		$("#tab-confirmation").click();
+		return false;
+	}
+	var labels = new Array();	var fields = new Array();
+	$("#widget-customize input.fields:checked").each(function () {
+		var i = $(this).parent().parent().children('input.labels');
+		if (i.hasClass('edited') || i.get(0).defaultValue != i.val()) {
+			labels.push(this.value + '=' + i.val());
+		}
+		fields.push(this.value);
+	});
+	labels = labels.join(';');	fields = fields.join(",");
+	var lists = new Array();
+	$("#lists_in option").each(function () {
+		lists.push($(this).val());
+	});
+	var params = $("#widget-customize").serialize() + encodeURI('&params[CMFIELDS]=' + fields + '&params[CMFIELDSLABELS]=') + encodeURIComponent(labels);
+	params += '&params[LISTS]=' + lists.join(',');
+	if (dsRTEObj && dsRTEObj[0]) {
+		params += encodeURI('&params[EMAILTEXT]=') + encodeURIComponent(dsRTEObj[0].getDoc());
+	}
+	params += encodeURI('&info[WG_DESC]=') + encodeURIComponent($("#wg-desc-input").val());
+
+	$.post("?mod=widgets&act=edit&id={{$widget_id}}&ajax=1", params, function (response) {
+		if (response.status == 'OK') {
+			if ($("#form-lang").val() != lang) {
+				document.location.href = document.location.href;
+				return false;
+			} 
+			$("li.cancel-item,li.preview-item").hide();
+			$("#customize-link").parent().show();
+			$(".delete-item").show();
+			$("#widget-custom-div").hide();
+			$("div.form-preview").removeClass("customize-view");
+			$("#wg-desc").html($("#wg-desc-input").hide().val()).show();
+			parent.document.app.widgetsList.setTitle($("#wg-desc-input").val());
+			$("#html-code").val(response.data.code);
+			document.getElementById('previewFrame').src = document.getElementById('previewFrame').src; 
+		}
+	}, "json");
+	return false;
+});
+</script>
+</body>
+</html>

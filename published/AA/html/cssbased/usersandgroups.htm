@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout splitter=true toolbar=true ?>
+		<link href="../../../AA/html/cm.css" rel="stylesheet" type="text/css">
+		<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+
+		<? include file="../../../AA/html/cssbased/uglist_js.htm" ?>
+
+		<style type="text/css">
+			.systemGroup a
+			{
+				color: blue;
+			}
+		</style>
+
+	</head>
+	<body>
+		<? wbs_pageLayout toolbar="uglist_toolbar.htm"?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? assign var=closeFoldersLink value=$hideGroupsLink ?>
+
+				<? wbs_splitter ?>
+
+					<? if !$hideLeftPanel ?>
+						<? wbs_splitterLeftPanel width=$treePanelWidth ?>
+
+						<? wbs_splitterPanelHeader
+							caption=$kernelStrings.cman_groups_title
+							id="FoldersHeadersPanel"
+							active=true
+							headerControls="../../../common/html/cssbased/splittercontrols/headerclosebtn.htm"
+						?>
+
+						<? wbs_splitterScrollableArea width=$treePanelWidth ?>
+							<? include file="usergroups.htm" ?>
+						<? /wbs_splitterScrollableArea ?>
+
+						<? /wbs_splitterLeftPanel ?>
+					<? /if ?>
+
+					<? wbs_splitterRightPanel ?>
+
+						<? assign var=groupContent value=$contacts ?>
+						<? assign var=numDocumentsLabel value=$kernelStrings.ul_usercount_title ?>
+
+						<? assign var=rightPanelCaptionControls value=null ?>
+						<? assign var=rightPanelControls value=null ?>
+
+						<? if $hideLeftPanel && $searchString == "" ?>
+							<? assign var=rightPanelControls value="../../../AA/html/cssbased/objectselector.htm" ?>
+							<? assign var=foldersImage value="javascript:processTextButton('showFoldersBtn', 'form')" ?>
+							<? assign var=rightPanelCaptionControls value="../../../common/html/cssbased/splittercontrols/headertreebtn.htm" ?>
+						<? /if ?>
+
+						<? wbs_splitterPanelHeader
+							caption=$rightPanelHeader
+							active=true
+							id="RightPanelHeader"
+							captionControls=$rightPanelCaptionControls
+							headerControls=$rightPanelControls
+						?>
+
+						<? if !$statisticsMode ?>
+							<? if $viewMode != "GRID" ?>
+								<? include file="../../../AA/html/cssbased/uglist_listheader.htm" ?>
+							<? /if ?>
+							<? assign var=gridFile value="../../../AA/html/cssbased/uglist_content.htm" ?>
+						<? else ?>
+							<? assign var=gridFile value="../../../AA/html/cssbased/ul_statistics.htm" ?>
+
+							<? assign var=hideBottomPanel value=1 ?>
+							<? assign var=hidePages value=1 ?>
+							<? assign var=docsColumnName value=$kernelStrings.cm_summarydoc_title ?>
+						<? /if ?>
+
+						<? wbs_splitterScrollableArea ?>
+							<? include file=$gridFile ?>
+						<? /wbs_splitterScrollableArea ?>
+
+						<? include file="../../../AA/html/cssbased/uglist_footer.htm" ?>
+
+					<? /wbs_splitterRightPanel ?>
+
+				<? /wbs_splitter ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

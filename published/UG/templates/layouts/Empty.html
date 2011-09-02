@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{{$title}}</title>
+<link rel="stylesheet" type="text/css" href="{{$url.css}}users-common.css" />
+
+<script src="{{$url.common}}js/jquery.js"></script>
+{{jscombine file="`$url.js`contact-default.js"  }}
+	{{$url.common}}js/wbs-common.js
+	{{$url.common}}js/wbs.js
+	{{$url.common}}js/wbs-elements.js
+	{{$url.common}}js/jquery.upload.js
+{{/jscombine}}
+<script type="text/javascript">
+var r = function () {
+	$("#scroll").height($(window).height() - $("#header").height());
+}
+$(document).ready(r);
+$(window).resize(r);
+</script>
+</head>
+<body>
+<div id="header">
+	<div id="toolbar_new" class="contact-tools">
+		<div class="backlink">
+		{{if $back_url}}
+		<span>&larr;</span><a id="back-url" href="{{$back_url}}" onclick="location.href=this.href">[`Back`]</a>
+		{{else}}
+			<span>&larr;</span><a id="back-url" onclick="if (parent) {parent.document.app.closeSubframe(); return false}" href="index.php">[`Back`] {{if $back_title}} — {{$back_title}}{{/if}}</a>
+		{{/if}}
+		</div>
+   </div>
+</div>
+<div id="scroll">
+{{$content}}
+</div>
+</body>
+</html>

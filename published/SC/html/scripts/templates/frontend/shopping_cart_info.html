@@ -1,0 +1,22 @@
+{if $smarty.const.CONF_SHOW_ADD2CART eq 1}
+{if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE}
+{assign var=checkout_class value="hndl_proceed_checkout"}
+{/if}
+<div class="shcart_link"><a class="{$checkout_class}" rel="nofollow" href="{"?ukey=cart"|set_query}">{"cart_title"|translate}</a></div>
+	
+{if $shopping_cart_items}
+<div id="shpcrtgc">{$shopping_cart_items} {"cart_content_not_empty"|translate}</div>
+<div id="shpcrtca">{$shopping_cart_value_shown|replace:'"':'&quot;'}</div>
+{literal}
+<script type="text/javascript">
+<!--
+var shopping_cart_info = getElementByClass('cpt_shopping_cart_info', document, 'div');
+if(shopping_cart_info){shopping_cart_info.id='cart_not_empty';}
+//-->
+</script>
+{/literal}
+{else}
+<div id="shpcrtgc">{"cart_content_empty"|translate}</div>
+<div id="shpcrtca">&nbsp;</div>
+{/if}
+{/if}

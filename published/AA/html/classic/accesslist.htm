@@ -1,0 +1,440 @@
+<html>
+<head>
+<title><? $pageTitle ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+function updateMenu() 
+{
+	<? if $updateAll ?>
+		if ( parent.frames[0] )
+			parent.frames[0].location.reload();
+
+		location.href = "#action:reloadUI";
+	<? /if ?>
+}
+
+//-->
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" bgcolor="white" onLoad="updateMenu()">
+<?strip?>
+<form name="form1" method="post" action="<? $formLink ?>">
+<input type="hidden" name="edited" value="1">
+<input type="hidden" name="firstIndex" value="<? $firstIndex ?>">
+<? include file="../../../common/html/classic/header.htm"?>
+<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+<? if !$fatalError ?>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<!-- View mode selector -->
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td valign=middle><? $kernelStrings.usa_showmode_label|cat:":&nbsp;" ?></td>
+					<td valign=middle>
+						<select name="viewMode" onChange="this.form.submit()">
+							<? html_options values=$viewModesIDS output=$viewModes selected=$viewMode ?>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- User/Group selector -->
+		<? if $showUserSelector ?>
+			<td align="right" rowspan=3 valign=bottom>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td align="left" >&nbsp;</td>
+						<td align="right">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr> 
+									<td class="formField">
+										<? if $viewMode == GROUPS ?>
+											<? $kernelStrings.usa_findgroup_label|cat:":&nbsp;" ?>
+										<? else ?>
+											<? $kernelStrings.usa_finduser_label|cat:":&nbsp;" ?>
+										<? /if ?>
+									</td>
+									<td class="default">
+										<select name="U_ID" onChange="this.form.submit()">
+											<option ><? "&lt;"|cat:$kernelStrings.usa_select_item|cat:"&gt;" ?></option>
+											<? if $viewMode == "USERS" ?>
+												<? html_options values=$fullUserList output=$userNames ?>
+											<? else ?>
+												<? html_options values=$fullUserList output=$groupNames ?>
+											<? /if ?>
+										</select>
+										<input type=hidden name=prevViewMode value="<? $viewMode ?>">
+									</td>
+								</tr>
+							</table>
+						 </td>
+					</tr>
+				</table>
+			</td>
+		<? /if ?>
+	</tr>
+	<tr> 
+		<td align="right" class="default"><img src="../../../common/html/classic/images/5pixsep.gif" width="5" height="5" border="0"></td>
+	</tr>
+	<tr>
+
+		<? if $viewMode == GROUPS ?>
+			<td valign=botom>
+				<? if !$maxUserCount ?>
+					<span class=alertLabel><? $kernelStrings.usa_nogroups_label ?></span>
+				<? else ?>
+					<span  class=smallFont><? "<b>"|cat:$kernelStrings.app_tips_label|cat:"</b>: "|cat:$kernelStrings.usa_groupstip_text ?></span>
+				<? /if ?>
+			</td>
+		<? else ?>
+			<td valign=botom class=smallFont><? "<b>"|cat:$kernelStrings.app_tips_label|cat:"</b>: "|cat:$kernelStrings.usa_userstip_text ?></td>
+		<? /if ?>
+	</tr>
+	<tr> 
+		<td colspan=2 align="right" class="default"><img src="../../../common/html/classic/images/5pixsep.gif" width="5" height="5" border="0"></td>
+	</tr>
+</table>
+
+	<? assign var=checkedCbImg value="images/menucb_checkedflag.gif"|stylesetitem:"classic":$styleSet ?>
+	<? assign var=unCheckedCbImg value="images/menucb_unchecked.gif"|stylesetitem:"classic":$styleSet ?>
+
+	<!-- Access diagram -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="2" class="complexList">
+		<!-- Diagram header -->
+		<tr class="head">
+			<th align="left"><? $kernelStrings.usa_accessobj_title ?></th>
+			<? if $prev_pageLink ?>
+				<th width="15" align="center" valign="middle" class="default notBold"><? conditionalLink href=$prev_pageLink text=#prev_img#?></th>
+			<? /if ?>
+			<? foreach from=$userList item=userData name=userLoop ?>
+				<th width="70" align="center" <? if $smarty.foreach.userLoop.last && !$next_pageLink ?>class="noRightBorder notBold  smallFont"<?else?>class="notBold  smallFont"<? /if ?>>
+					<a href="<? $userData.EDIT_URL ?>" class="smallFont notBold"><? $userData.FULL_NAME|htmlsafe:true:true ?></a>
+				</th>
+			<? /foreach ?>
+			<? if $next_pageLink ?>
+				<th align="center" class=noRightBorder><? conditionalLink href=$next_pageLink text=#next_img#?></th>
+			<? /if ?>
+		</tr>
+
+		<!-- Personal Settings header row -->
+		<tr class=listSubheader>
+			<td><b><? $kernelStrings.usa_perssettings_title ?></b></td>
+			<? if $prev_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+			<? foreach from=$userList item=userData ?>
+				<? assign var=groupStyle value="" ?>
+				<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+					<? assign var=groupStyle value="darkCells" ?>
+				<? /if ?>
+
+				<td align=center class="smallFont <? $groupStyle ?>">&nbsp;</td>
+			<? /foreach ?>
+			<? if $next_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Password row -->
+		<tr>
+			<td class=smallFont><? $kernelStrings.usa_passwordqualifier_text ?></td>
+			<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+			<? foreach from=$userList item=userData ?>
+				<? assign var=groupStyle value="" ?>
+				<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+					<? assign var=groupStyle value="darkCells" ?>
+				<? /if ?>
+
+				<td align=center class="<? $groupStyle ?>">
+					<img style="margin: 3px" src="<? switchedOutput val=$userData.changePasssRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+				</td>
+			<? /foreach ?>
+
+			<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Look and Feel row -->
+		<tr>
+			<td class=smallFont><? $kernelStrings.usa_lookandfeelqualifier_text ?></td>
+			<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+				<? foreach from=$userList item=userData ?>
+					<? assign var=groupStyle value="" ?>
+					<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+						<? assign var=groupStyle value="darkCells" ?>
+					<? /if ?>
+
+					<td align=center class="<? $groupStyle ?>">
+						<img style="margin: 3px"  src="<? switchedOutput val=$userData.changeTemplateRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+					</td>
+				<? /foreach ?>
+
+			<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Name and Contact information row -->
+		<tr>
+			<td class=smallFont><? $kernelStrings.usa_namequalifier_text ?></td>
+			<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+				<? foreach from=$userList item=userData ?>
+					<? assign var=groupStyle value="" ?>
+					<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+						<? assign var=groupStyle value="darkCells" ?>
+					<? /if ?>
+
+					<td align=center class="<? $groupStyle ?>">
+						<img style="margin: 3px" src="<? switchedOutput val=$userData.changeNameRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+					</td>
+				<? /foreach ?>
+
+			<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Enable/Disable email notifications row -->
+		<tr>
+			<td class=smallFont><? $kernelStrings.usa_emailqualifier_text ?></td>
+			<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+				<? foreach from=$userList item=userData ?>
+					<? assign var=groupStyle value="" ?>
+					<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+						<? assign var=groupStyle value="darkCells" ?>
+					<? /if ?>
+
+					<td align=center class="<? $groupStyle ?>">
+						<img style="margin: 3px"  src="<? switchedOutput val=$userData.switchEmailRight true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+					</td>
+				<? /foreach ?>
+
+			<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Direct Access header row -->
+		<tr class=listSubheader>
+			<td><b><? $kernelStrings.amu_directaccess_title ?></b></td>
+			<? if $prev_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+			<? foreach from=$userList item=userData ?>
+				<? assign var=groupStyle value="" ?>
+				<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+					<? assign var=groupStyle value="darkCells" ?>
+				<? /if ?>
+
+				<td align=center class="smallFont <? $groupStyle ?>">&nbsp;</td>
+			<? /foreach ?>
+			<? if $next_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Direct Access header qualifiers row -->
+
+		<tr>
+			<td class=smallFont><? $kernelStrings.usa_diraccess_text ?></td>
+			<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+				<? foreach from=$userList item=userData ?>
+					<? assign var=groupStyle value="" ?>
+					<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+						<? assign var=groupStyle value="darkCells" ?>
+					<? /if ?>
+
+					<td align=center class="<? $groupStyle ?>">
+						<img style="margin: 3px"  src="<? switchedOutput val=$userData.ALLOW_DRACCESS true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+					</td>
+				<? /foreach ?>
+
+			<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+		</tr>
+
+		<!-- Applications -->
+
+		<? foreach from=$appObjectList key=app_id item=app_data name=apploop ?>
+				<!-- Application name -->
+				<tr class=listSubheader>
+					<td><b><? appName APP_ID=$app_id language=$language ?></b></td>
+					<? if $prev_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+					<? foreach from=$userList item=userData ?>
+						<? assign var=groupStyle value="" ?>
+						<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+							<? assign var=groupStyle value="darkCells" ?>
+						<? /if ?>
+
+						<td align=center class="smallFont <? $groupStyle ?>">&nbsp;</td>
+					<? /foreach ?>
+					<? if $next_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+				</tr>
+
+				<!-- Application screens -->
+				<? foreach from=$app_data.PAGES key=scr_id item=var name=pageloop ?>
+					<tr>
+						<td class=smallFont><? scrName APP_ID=$app_id SCR_ID=$scr_id language=$language ?></td>
+
+						<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+							<? foreach from=$userList item=userData ?>
+								<? assign var=groupStyle value="" ?>
+								<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+									<? assign var=groupStyle value="darkCells" ?>
+								<? /if ?>
+
+								<td align=center class="<? $groupStyle ?>">
+									<? assign var=screenEnabled value=$userData.ACCESS.$app_id.PAGES.$scr_id ?>
+									<img style="margin: 3px"  src="<? switchedOutput val=$screenEnabled true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+								</td>
+							<? /foreach ?>
+
+						<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+					</tr>
+				<? /foreach ?>
+
+				<!-- Application notifications -->
+				<? foreach from=$app_data.MAIL key=mn_id item=var ?>
+					<tr>
+						<td class=smallFont><? mnName APP_ID=$app_id mnID=$mn_id language=$language ?></td>
+
+						<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+							<? foreach from=$userList item=userData ?>
+								<? assign var=groupStyle value="" ?>
+								<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+									<? assign var=groupStyle value="darkCells" ?>
+								<? /if ?>
+
+								<td align=center class="<? $groupStyle ?>">
+									<? assign var=screenEnabled value=$userData.ACCESS.$app_id.MAIL.$mn_id ?>
+									<img style="margin: 3px"  src="<? switchedOutput val=$screenEnabled true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+								</td>
+							<? /foreach ?>
+
+						<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+					</tr>
+				<? /foreach ?>
+
+				<!-- Applications with folders -->
+				<? if $app_data.FOLDERS != "NOFOLDERS" ?>
+
+					<!-- Additional application parameters -->
+
+					<!-- Root rights -->
+					<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS == null || ( $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null && $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ROOT.$lng != "" ) ?>
+
+					<tr>
+						<td class=smallFont>
+									<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+										<?$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ROOT.$lng?>
+									<? else ?>
+										<?$kernelStrings.app_treerootfolders_label?>
+									<? /if ?>
+						</td>
+						<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+							<? foreach from=$userList item=userData ?>
+								<? assign var=groupStyle value="" ?>
+								<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+									<? assign var=groupStyle value="darkCells" ?>
+								<? /if ?>
+
+								<td align=center class="<? $groupStyle ?>">
+									<? assign var=optionEnabled value=$userData.ACCESS.$app_id.ROOTRIGHTS ?>
+									<img style="margin: 3px"  src="<? switchedOutput val=$optionEnabled true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+								</td>
+							<? /foreach ?>
+
+						<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+					</tr>
+					<? /if ?>
+					<!-- See other users -->
+					<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS == null || ( $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null && $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ACCESS.$lng != "" ) ?>
+					<tr>
+						<td class=smallFont>
+							<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+								<?$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ACCESS.$lng?>
+							<? else ?>
+								<?$kernelStrings.app_treeflduserscb_label?>
+							<? /if ?>
+						</td>
+						<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+							<? foreach from=$userList item=userData ?>
+								<? assign var=groupStyle value="" ?>
+								<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+									<? assign var=groupStyle value="darkCells" ?>
+								<? /if ?>
+
+								<td align=center class="<? $groupStyle ?>">
+									<? assign var=optionEnabled value=$userData.ACCESS.$app_id.SHOWSHARED ?>
+									<img style="margin: 3px"  src="<? switchedOutput val=$optionEnabled true_val=1 str1=$checkedCbImg str2=$unCheckedCbImg ?>" border=0>
+								</td>
+							<? /foreach ?>
+
+						<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+					</tr>
+					<? /if ?>
+
+					<!-- Folders header -->
+					<tr class=listSubheader>
+						<td style="padding-left: 10px">
+						<b><? appName APP_ID=$app_id language=$language ?>
+							<? if $global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS != null ?>
+									<? " "|cat:$global_applications.$app_id.USERRIGHTS.TREEDOCUMENT.RIGHTS.ITEM.$lng?>
+							<? else ?>
+									<? " "|cat:$kernelStrings.usa_folders_title ?>
+							<? /if ?>
+						</b>
+						</td>
+						<? if $prev_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+						<? foreach from=$userList item=userData ?>
+							<? assign var=groupStyle value="" ?>
+							<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+								<? assign var=groupStyle value="darkCells" ?>
+							<? /if ?>
+
+							<td align=center class="smallFont <? $groupStyle ?>">&nbsp;</td>
+						<? /foreach ?>
+						<? if $next_pageLink ?><td class=smallFont>&nbsp;</td><? /if ?>
+					</tr>
+
+					<!--- Folder list -->
+					<? assign var=folders value=$app_data.FOLDERS ?>
+
+					<? foreach from=$folders key=DF_ID item=folderData name=folderLoop name=folderLoop ?>
+						<? math equation="offset*10" offset=$folderData->OFFSET assign="padding" ?>
+						<tr <? if ($smarty.foreach.folderLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=#FFFFFF<? /if ?>>
+							<td style="padding-left: 20px" class="catalogRowSmall smallFont"><img style="margin-left: <? $padding|cat:"px" ?>" border="0" src="../../../common/html/classic/images/folder_open.gif" width="14" height="12">&nbsp;<? $folderData->NAME|htmlsafe:true:true|trunc_str:50 ?></td>
+							</td>
+
+							<? if $prev_pageLink ?><td>&nbsp;</td><? /if ?>
+
+							<? foreach from=$userList item=userData key=userKey ?>
+								<? assign var=groupStyle value="" ?>
+								<? if $userData.U_ACCESSTYPE == "GROUP" ?>
+									<? assign var=groupStyle value="darkCells" ?>
+								<? /if ?>
+
+								<? assign var=folderRights value=$userData.ACCESS.$app_id.FOLDERRIGHTS.$userKey.RIGHTS.$DF_ID ?>
+
+								<td class="smallFont <? $groupStyle ?>"" align=center><? assign var=rightShort value=$tree_access_mode_names.$folderRights ?><? $kernelStrings.$rightShort ?></td>
+							<? /foreach ?>
+
+							<? if $next_pageLink ?><td>&nbsp;</td><? /if ?>
+						</tr>
+					<? foreachelse ?>
+						<tr>
+							<td colspan="<? $totalColCount ?>" class="noentries" align="center"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></td>
+						</tr>
+					<? /foreach ?>
+
+				<!-- Folders check -->
+				<? /if ?> 
+
+		<? /foreach ?>
+
+	</table>
+	<? /if ?>
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<?/strip?>
+</body>
+</html>

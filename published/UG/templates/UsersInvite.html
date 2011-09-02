@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>[`User registration`]</title>
+<link rel="stylesheet" type="text/css" href="{{$url.common}}html/cssbased/themes/{{$theme}}/colors.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.css}}reset.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.css}}users-common.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.css}}users-add.css" />
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+<script type="text/javascript" src="{{$url.common}}js/wbs-common.js"></script>
+</head>
+<body>
+
+<div id="header">
+	<div id="top-line">
+		<div id="logo-block">
+			<table>
+				<tr valign="middle">
+				{{if $show_logo}}
+                    <td><img id="logo" src="{{$url.common}}html/scripts/getlogo.php?lt={{$logo_time}}" /></td>
+				{{/if}}
+				{{if $show_company_name}}
+					<td><span class="label">{{$company_name|htmlsafe:true:true}}</span></td>
+				{{/if}}									
+				</tr>
+			</table>					
+		</div>
+	</div>
+</div>
+<div id="scroll">
+	<div id="content"><div class="content">
+		<div class="content-wrapper">
+		<h2 class="invite-header">[`User registration`]</h2>
+		<form id = "form_create_user">
+		<div class="colorblock intbl">
+			{{foreach from=$fields key=dbname item=name}}
+			<div class="field">
+			   	<div class="label middlesize">{{$name}}:</div>
+			    <div class="edit middlesize"><input name="info[{{$dbname}}]" type="text" value="{{$contact[$dbname]}}" /></div>
+			</div>
+			{{/foreach}}
+			<div id="error" style="margin-right: 0; clear: left; display: block">&nbsp;</div>
+		    <div class="login-help"><p>[`Create a login name and password which you will use to enter your account.`]</p></div>
+			<div class="field">
+		      	<div class="label middlesize">[`Login name`]:</div>
+		       	<div class="edit middlesize">
+		        	<input name="login" type="text" autocomplete="off" />
+		       	</div>
+			</div>
+			<div class="field">
+				<div class="label middlesize">[`Password`]:</div>
+		        <div class="edit middlesize"><input name="password" type="password" autocomplete="off" /></div>
+			</div>
+			<div class="field">
+				<div class="label middlesize">[`Confirm password`]:</div>
+		        <div class="edit middlesize"><input name="confirm_password" type="password" autocomplete="off" /></div>
+		    </div>
+			<div id="toolbar_new" class="btns_panel">
+				<ul>
+					<li class="tlb_btn tlb_left">
+						<input type="button" id="create_user" value="[`Enter`]" />
+					</li>
+				</ul>
+			</div></div>
+		</form>
+		</div>
+	</div></div>
+</div>
+<script type="text/javascript">
+var r = function () {
+	$("#scroll").height($(window).height() - $("#header").height());
+}
+$(window).resize(r);
+$(document).ready(function () {
+	r();
+	$("#create_user").click(function() {
+		$.post(location.href + "&ajax=1", $("#form_create_user").serialize(), function (response) {
+				if (response.status == 'OK') {
+					$("div#error").hide();
+					document.location.href = response.data.url;
+				} else if (response.status == 'ERR') {
+					document.hideError = true;
+					if (response.error) {
+						var error_text = "";
+						for (var i = 0; i < response.error.length; i++) {
+							var e = response.error[i];
+							error_text += '<div class="error' + i + '">' + e.text + "</div>";
+							var fields = e.fields;
+							if (typeof(e.fields) == 'string') {
+								fields = new Array();
+								fields.push(e.fields);
+							}
+							for (var j = 0; j < fields.length; j++) {
+								(function() {
+									var t = i;
+									$("input[name='" + fields[j] + "']").one("focus", function () {
+										for (var k = 0; k < fields.length; k++) {
+											$("input[name='" + fields[k] + "']").parent().parent().removeClass('error');
+										}
+										$(this).parent().parent().removeClass('error');
+										$("div#error .error" + t).replaceWith("&nbsp;");		
+									}).parent().parent().addClass('error');
+								})();
+							}	
+						}
+						$("div#error").html(error_text).show();
+					}
+				}
+		},"json");
+		return false;
+	});
+	$("input[name='login']").focus(function () {
+		$("#help_create").show();
+	}).blur(function () {
+		$("#help_create").hide();
+	}).focus();
+});
+</script>
+</body>
+</html>

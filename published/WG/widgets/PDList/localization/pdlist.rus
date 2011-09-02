@@ -1,0 +1,72 @@
+widget_name_long	Common	Widget full name	Photos
+widget_name_short	Common	Widget short name	Photos
+
+subtype_gallery_name	Subtypes	Subtype name	Галерея
+subtype_gallery_desc	Subtypes	Subtype desc	Выводит изображения в табличном виде. Удобный способ для быстрого представления галереи портретов, продуктов и т.д.
+subtype_album_name	Subtypes	Subtype name	Слайдшоу
+subtype_album_desc	Subtypes	Subtype desc	Проигрывает изображения в окошке. Позволяет вывести кнопки навигации, удаления/добавления, установить размеры окна и множество других настроек.
+
+created_datetime_label	Widget	Created Datetime Label	в
+
+wbs_block	Widget 	WBS PD Link block	Фото опубликованы с помощью <a href="http://www.webasyst.ru/photos/" style="text-decoration: none">WebAsyst Фото</a>
+
+pd_thumbnails_view	Photo Widget	Thumbnails View	Эскизы
+pd_smallimages_view	Photo Widget	Small Images View	Маленькие изображения с описанием
+pd_largeimages_view	Photo Widget	Large images View	Большие изображения с описанием
+pd_slideshow_view	Photo Widget	Slideshow View	Только слайдшоу
+
+pd_startslideshow_label	Photo Widget	Start Slideshow	Начать слайдшоу
+pd_linkWebasyst	Photo Widget	Start Slideshow	http://www.webasyst.ru/photos/
+pd_email_link_label	Photo Widget	Email link title	Щелкни по картинке, чтобы перейти к альбому или используй следующую ссылку
+
+place_general_title	Widget customize dialog	Place general title	Общая
+place_color_title	Widget customize dialog	Place color title	Цвет
+place_size_title	Widget customize dialog	Place size title	Размер
+place_photos_title	Widget customize dialog	Place files title	Изображения
+place_view_title	Widget customize dialog	Place view title	Вид
+
+field_folder_label	Fields	Folder	Альбом
+field_width_label	Fields	Width	Ширина
+field_height_label	Fields	Height	Высота
+field_bodybgcolor_label	Fields	Bgcolor	Фон
+field_slbodybgcolor_label	Fields	Bgcolor	Фон
+field_showdesc_label	Fields	ShowDesc	Описание
+field_showborder_label	Fields	ShowBorder	Обрамление
+field_wglang_desc	Fields	Lang	Этот язык будет использоваться для системных сообщений
+field_columnscount_label	Fields	Columns Count	Количество колонок
+field_imagesize_label	Fields	Image Size	Размер изображения
+field_slwidth_label	Fields	Slideshow Width	Ширина
+field_slheight_label	Fields	Slideshow Height	Высота
+field_glimgwidth_label	Fields	Gallery Image Width	Ширина изображения
+field_glimgheight_label	Fields	Gallery Image Height	Высота изображения
+field_glheight_label	Fields	Gallery Height	Высота галереи
+field_candelete_label	Fields	Files	Добавление изображений
+field_canmanage_label	Fields	Files	Удаление изображений
+field_slcpanel_label	Fields	Slideshow Control Panel	Панель управления
+field_slcpanel_value_disable	Fields	Slideshow Control Panel value "disable"	&lt;выключить&gt;
+field_slcpanel_value_view	Fields	Slideshow Control Panel value "view"	Только навигация
+field_slcpanel_value_manage	Fields	Slideshow Control Panel value "manage"	Навигация, кнопки удаления и добавления
+field_slseconds_label	Fields	Slideshow Interval	Скорость (секунд)
+field_slonclick_label	Fields	Slideshow OnClick	По щелчку
+field_slonclick_value_disable	Fields	Slideshow OnClick value "disable"	&lt;ничего&gt;
+field_slonclick_value_pause	Fields	Slideshow OnClick value "pause"	открывать в новом окне в режиме Пауза
+field_slonclick_value_play	Fields	Slideshow OnClick value "play"	открывать в новом окне в режиме Слайдшоу
+field_slautoplay_label	Fields	Slideshow AutoPlay	Авто-запуск
+field_slautoplay_desc	Fields	Slideshow AutoPlay desc	Если включен, то слайдшоу автоматически запускается
+
+field_maxfilescount_label	Fields	Save button	Максимальное количество изображений
+field_maxfilesize_label	Fields	Save button	Максимальный размер изображения (Mb)
+field_glonclick_label	Fields	Gallery OnClick	По щелчку
+field_glonclick_value_disable	Fields	Gallery OnClick value "disable"	&lt;ничего&gt;
+field_glonclick_value_enlarge	Fields	Gallery OnClick value "enlarge"	Увеличить изображение
+
+up_addfile_label	Widget	add file label	добавить
+up_delfile_label	Widget	add file label	удалить
+up_addfile_btn	Widget	add file label	Добавить
+up_cancelbtn_label	Widget	Cancel button label	 Отмена
+up_nofiles_label	Widget	No files label	нет изображений
+
+
+up_filedelete_message	Widget	File delete message	Вы уверены что хотите удалить это изображение?
+up_maxfilescount_error	Widget	Error max files count	Максимальное количество изображений: %s
+up_maxfilesize_error	Widget	Error max file size	Максимальный размер изображения: %sMB

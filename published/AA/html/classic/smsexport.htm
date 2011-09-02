@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" nospace=1 ?>
+
+
+  <? include file="../../../common/html/classic/toppanel_fix.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+	<br>
+	<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_save_btn formname="form"?>
+<? else ?>
+<? /if ?>
+
+<input name="edited" type="hidden" id="edited" value="1">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

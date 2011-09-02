@@ -1,0 +1,312 @@
+{* link categories and links view *}
+
+{lbl_le_page_description}
+
+<script language="javascript" type="text/javascript">
+<!--
+var _curEditCategory = Array();
+_curEditCategory['le_cID'] = 0;
+_curEditCategory['le_cName'] = '';
+_cur_le_cID = '{$le_CategoryID}';
+_url_pref = '{"msg=&page=1&categoryID="|set_query}';
+_request_uri = '{$REQUEST_URI}';
+{literal}
+
+function checkBoxes(_idForm, _syncID, _checkableID){
+	
+	for(_i = 0; _i<document.getElementById(_idForm).elements.length; _i++){
+
+		if(document.getElementById(_idForm).elements[_i].type == 'checkbox' && document.getElementById(_idForm).elements[_i].id == _checkableID){
+			
+			document.getElementById(_idForm).elements[_i].checked = document.getElementById(_syncID).checked;
+		}
+	}
+	return true;
+}
+
+function show_rencat_block(_cID, _cName){
+	
+	_t = '';
+	_cName = _cName.replace('"','&quot;');
+	while(_t != _cName){
+		
+		_t = _cName;
+		_cName = _cName.replace('"','&quot;');
+	}
+	_cName = _cName.replace('>','&gt;');
+	_cName = _cName.replace('<','&lt;');
+	var block = document.getElementById('category_'+_cID);
+	if(_curEditCategory['le_cID']!=_cID){
+		
+		if(_curEditCategory['le_cID']){
+			
+			document.getElementById('category_'+_curEditCategory['le_cID']).innerHTML = '';
+		}
+{/literal}		
+		_curEditCategory['le_cID'] = _cID;
+		_curEditCategory['le_cName'] = _cName;
+		document.getElementById('category_'+_cID).style.display = 'block';
+		document.getElementById('category_'+_cID).innerHTML = '<form style="display:inline;" action="" method="POST" id="form_rename_linkcategory">'+
+			'<input name="fACTION" value="SAVE_LINK_CATEGORY" type="hidden" />'+
+			'<input name="fREDIRECT" value="'+_request_uri+'" type="hidden" />'+
+			'<input name="LINK_CATEGORY[le_cID]" type="hidden" value="'+_cID+'" />'+
+			'<br /><input name="LINK_CATEGORY[le_cName]" value="'+_cName+'" type="text" size="15" /><br /><br />'+
+			'<input value="{"btn_save"|translate}" type="submit" />'+
+			'</form>';
+{literal}
+	}else{
+		
+		document.getElementById('category_'+_cID).style.display = 'none';
+		document.getElementById('category_'+_curEditCategory['le_cID']).innerHTML = '';
+		_curEditCategory['le_cID'] = 0;
+		_curEditCategory['le_cName'] = '';
+	}
+}
+
+function le_show_newlink(){
+	
+	lenl = document.getElementById('le_new_link');
+	if(lenl.style.display!='block'){
+		lenl.style.display = 'block';
+	}else{
+		lenl.style.display = 'none';
+	}
+}
+
+function delete_category(_cID){
+	
+	if(window.confirm('{/literal}{"cnfrm_areyousure"|translate}{literal}')){
+		
+		document.getElementById('form_delete_linkcategory').elements['LINK_CATEGORY[le_cID]'].value = _cID;
+		document.form_delete_linkcategory.submit();
+	}
+	return false;
+}
+{/literal}
+//-->
+</script>
+
+<form style="display:inline;" action="" method="POST" name="form_delete_linkcategory" id="form_delete_linkcategory">
+<input name="fACTION" value="DELETE_LINK_CATEGORY" type="hidden" />
+<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+<input name="LINK_CATEGORY[le_cID]" type="hidden" />
+</form>
+
+<p>
+<table border="0" bgcolor="#888888" cellspacing="1" width="100%">
+
+<tr>
+	<td width=220 bgcolor=#D2D2FF align=center><b>{"le_categories"|translate}</b></td>
+	<td bgcolor=#F5F5B2 align=center width="100%"><b>{"le_links"|translate}</b></td>
+</tr>
+
+{* link categories *}
+{assign var='le_CategoryName' value="le_all_categories"|translate}
+<tr>
+<td valign=top bgcolor=#E2E2FF nowrap="nowrap">
+
+	<table width=100% border=0>
+	<tr>
+		<td>
+			<img src="./images/folder.gif" border=0 hspace="1">
+		</td>
+		<td nowrap="nowrap">
+			<a href="{$url_allcategories}">
+				<b>{"le_all_categories"|translate}</b> ({$le_LinksNumInCategories}) 
+			</a>
+		</td>
+
+		<td align=right>
+			&nbsp;
+		</td>
+	 </tr>
+	 {section name=i loop=$le_categories}
+		{if $le_categories[i].le_cID==$le_CategoryID}
+			{assign var='le_CategoryName' value=$le_categories[i].le_cName}
+		{/if}
+	 <tr>
+		<td>
+			<img src="./images/folder.gif" border=0 hspace="1">
+		</td>
+		<td nowrap="nowrap">
+			<a href="{"msg=&page=1&show_all=&categoryID=`$le_categories[i].le_cID`"|set_query}">{$le_categories[i].le_cName} ({$le_categories[i].links_num})</a>
+		</td>
+		<td nowrap="nowrap" style="color:red; text-align:right;">
+			[<a class="small" href="javascript:void(0);" onclick="show_rencat_block('{$le_categories[i].le_cID}', '{$le_categories[i].le_cName|replace:"\\":"\\\\"|replace:"&#039;":"\'"}');">{"btn_edit"|translate}</a>]
+			[<a class="small" href="javascript:void(0);" onclick="return delete_category({$le_categories[i].le_cID})">{"btn_delete"|translate}</a>]
+		</td>
+	 </tr>
+	 <tr>
+	 	<td colspan="3" style="padding:0px;"><div class="edit_le_category" id="category_{$le_categories[i].le_cID}"></div></td>
+	 {/section}
+
+	<tr>
+		<td nowrap="nowrap" colspan="3" align="center">
+			<br />
+			[ <a href="javascript:void(0);" onclick="{literal}if(getElementById('id_new_linkcategory').style.display!='block'){getElementById('id_new_linkcategory').style.display='block';document.getElementById('id_new_category').focus();} else getElementById('id_new_linkcategory').style.display='none';{/literal}">{"le_btn_add_new_category"|translate}</a> ]
+		</td>
+	 </tr>
+
+	</table>
+
+	<div class="new_link_category" id="id_new_linkcategory">
+	<form action="" method="POST" id="form_new_linkcategory">
+	<input name="fACTION" value="NEW_LINK_CATEGORY" type="hidden" />
+	<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+	{"le_category"|translate}
+	<br />
+	<input name="LINK_CATEGORY[le_cName]" type="text" class="input_text1" id="id_new_category" />
+	<br />
+	<br />
+	<input value="{"btn_add"|translate}" type="submit" />
+	</form>
+	</div>
+	<br />
+
+</td>
+
+
+{* links *}
+<td valign="top" bgcolor="#FFFFE2" align="left" width="100%">
+<br />
+<div style="text-align:center; padding:3px; font-weight:bold;">{$le_CategoryName}</div>
+<br />
+{if $error_message}<div class="error_message">{$error_message}</div>{/if}
+{if $last_page}	
+<!-- Links list block -->
+<div id="le_links">
+	<form action="" method="POST" id="form_change_links">
+	<input name="fACTION" value="" type="hidden" />
+	<input name="fREDIRECT" value="{'msg='|set_query}" type="hidden" />
+	
+	
+		<table border=0 align="center" cellspacing=1 cellpadding=3 bgcolor=#C3BD7C width=98%>
+
+		{if $last_page>1}
+			<tr bgcolor=#FFFFE2>
+				<td colspan=4 style="padding:3px;">
+					{if $curr_page>1}
+						&nbsp; <a class="no_underline" href ="{"page=`$curr_page-1`&show_all="|set_query}">&lt;&lt; {"str_previous"|translate}</a>
+					{/if}
+					{foreach from=$le_lister_range item=_page}
+						&nbsp; {if $_page!=$curr_page or $showAllLinks}<a class="no_underline" href="{"page=`$_page`&show_all="|set_query}">{$_page}</a> {else}{$_page}{/if}
+					{/foreach}
+					{if $curr_page<$last_page}
+						&nbsp; <a class="no_underline" href ="{"page=`$curr_page+1`&show_all="|set_query}">{"str_next"|translate} &gt;&gt;</a>
+					{/if}
+					&nbsp; |&nbsp; {if $showAllLinks}{"str_showall"|translate}{else}<a class="no_underline" href ="{"show_all=yes"|set_query}">{"str_showall"|translate}</a>{/if}
+				</td>
+			</tr>
+		{/if}		
+			
+			<tr bgcolor=#F5F5C5 align=center>
+				<td width=1%>
+					<input id="id_checkall" onclick="checkBoxes('form_change_links', 'id_checkall', 'id_ch');" type="checkbox" />
+				</td>
+				<td>
+					{"le_link_url"|translate}
+				</td>
+				<td>
+					{"le_link_text"|translate}
+				</td>
+				<td>
+					{"le_link_verified"|translate}
+				</td>
+
+			</tr>
+		
+		{foreach from=$le_links item=_le_link}
+		<tr bgcolor=#FFFFE2>
+			<td><input name="LINKS_IDS[]" value="{$_le_link.le_lID}" type="checkbox" id="id_ch" /></td>
+			<td><input name="LINK[{$_le_link.le_lID}][le_lURL]" value="{$_le_link.le_lURL}" type="text" /></td>
+			<td><input name="LINK[{$_le_link.le_lID}][le_lText]" size="60" value="{$_le_link.le_lText}" type="text" /></td>
+			<td align="center">{if $_le_link.le_lVerified}{if $_le_link.le_lVerified!='0000-00-00 00:00:00'}{$_le_link.le_lVerified}{else}{"le_link_not_verified"|translate}{/if}{else}{"le_link_not_verified"|translate}{/if}</td>
+		</tr>
+		{/foreach}
+	</table>
+	<br />
+	<div style="padding:3px;">
+	{"le_with_selected"|translate}
+	<br />
+	<br />
+		<input value="{"prdcat_category_move_to"|translate}" type="button" onclick="getElementById('form_change_links').elements['fACTION'].value = 'MOVE_LINKS';getElementById('form_change_links').submit();" />
+		&nbsp;
+		<select name="new_le_lCategoryID">
+		<option value="0">{"le_err_choose_category"|translate}</option>
+		{foreach from=$le_categories item=_category}
+			<option value="{$_category.le_cID}" 
+				{if $le_CategoryID==$_category.le_cID} selected="selected"
+				{elseif $pst_LINK.le_lCategoryID==$_category.le_cID} selected="selected"
+				{/if}
+				>{$_category.le_cName}</option>
+		{/foreach}
+		</select>
+	<br />
+	<br />
+		<input value="{"btn_save"|translate}" type="button" onclick="getElementById('form_change_links').elements['fACTION'].value = 'SAVE_LINKS';getElementById('form_change_links').submit();" />
+	<br />
+	<br />
+		<input value="{"le_btn_approve"|translate}" type="button" onclick="getElementById('form_change_links').elements['fACTION'].value = 'VERIFY_LINKS';getElementById('form_change_links').submit();" />
+	<br />
+	<br />
+		<input value="{"le_btn_decline"|translate}" type="button" onclick="getElementById('form_change_links').elements['fACTION'].value = 'UNVERIFY_LINKS';getElementById('form_change_links').submit();" />
+	<br />
+	<br />
+		<input value="{"btn_delete"|translate}" type="button" onclick="if(!window.confirm('{"cnfrm_areyousure"|translate}'))return false;getElementById('form_change_links').elements['fACTION'].value = 'DELETE_LINKS';getElementById('form_change_links').submit();" />
+	</div>
+	</form>
+</div>
+<!-- /Links list block -->
+
+{/if}
+
+{if $last_page}
+<div style="text-align:center; padding:3px;">
+[<a href="javascript:void(0)" onclick="le_show_newlink()" id="add_link_list">{"le_add_link"|translate}</a>]
+</div>
+{/if}
+
+<!-- New link form block -->
+<div id="le_new_link"{if !$last_page}style="display:block;"{/if}>
+<form action="" id="form_new_le_link" method="POST">
+<input name="fACTION" value="NEW_LINK" type="hidden" />
+<input name="fREDIRECT" value="{'msg='|set_query}" type="hidden" />
+
+	{"le_category"|translate}<br />
+	<select name="LINK[le_lCategoryID]">
+	<option value="0">{"str_not_defined"|translate}</option>
+	{foreach from=$le_categories item=_category}
+	<option value="{$_category.le_cID}" 
+		{if $le_CategoryID==$_category.le_cID} selected="selected"
+		{elseif $pst_LINK.le_lCategoryID==$_category.le_cID} selected="selected"
+		{/if}
+		>{$_category.le_cName}</option>
+	{/foreach}
+	</select>
+	<br />
+{"le_link_url"|translate}
+<br />
+<input name="LINK[le_lURL]" value="{if $pst_LINK.le_lURL}{$pst_LINK.le_lURL}{else}http://{/if}" type="text" size="60" />
+<br />
+{"le_link_text"|translate}
+<br />
+<input name="LINK[le_lText]" value="{$pst_LINK.le_lText}" type="text" size="60" />
+<br /><br />
+<input value="{"btn_add"|translate}" type="submit" />
+</form>
+</div>
+<!-- /New link form block -->
+<br />
+</td>
+
+
+</tr>
+</table>
+
+<script language="javascript" type="text/javascript">
+<!--
+{if $show_new_link}
+{if $last_page}le_show_newlink();{/if}
+{/if}
+//-->
+</script>

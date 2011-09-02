@@ -1,0 +1,26 @@
+{{if $not_empty}}
+[`This section is not empty.`]
+{{else}}
+<form id="delete-section-form">
+[`Are you sure you want to delete this section?`]
+<br /><br />
+<input type="submit" value="[`Yes`]"/> <input onclick="$('#popup').wbsPopupClose()" type="button" value="[`No`]" />
+<input type="hidden" name="type_id" value="{{$type_id}}" />
+<input type="hidden" name="section_id" value="{{$section_id}}" />
+</form>
+<script type="text/javascript">
+$("#delete-section-form").submit(function () {
+	$.post("?mod=construct&act=deleteSection&ajax=1", $(this).serialize() + "&delete=1", function (response) {
+		$("#section{{$section_id}}").remove();
+		$("#popup").wbsPopupClose(); 
+		if (parent && parent.document.app) { 
+			parent.document.listfields = response.data.listfields;
+			parent.document.photoField = response.data.photoField;
+			parent.document.dbfields = response.data.dbfields;
+		}					
+	}, "json");  
+	$("#dlg-move-desc").html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');
+	return false;
+});
+</script>
+{{/if}}

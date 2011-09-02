@@ -1,0 +1,9 @@
+<h1>{lbl_pgn_my_account}</h1>
+
+<table cellpadding="15" cellspacing="0" width="100%">
+{section name=op loop=$ChildShortHTMLs}
+{if $ChildShortHTMLs[op].tpl ne ''}
+	{include file=$ChildShortHTMLs[op].tpl}
+{/if}
+{/section}
+</table>

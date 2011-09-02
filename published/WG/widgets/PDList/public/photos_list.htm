@@ -1,0 +1,60 @@
+<? assign var=smallSize value=96 ?>
+<? assign var=size144 value=144 ?>
+<? assign var=middleSize value=256 ?>
+<? assign var=subBigSize value=512 ?>
+<? assign var=size144 value=144 ?>
+<? assign var=size970 value=970 ?>
+
+<script>
+	function loadBigImg(img) {
+		hs.expand(img);
+		return false;
+	}
+	
+	function startSlideshow () {
+		document.location.href += "&viewmode=3";
+		return false;
+	}
+</script>
+
+<? if !$params.clear ?>
+	<h1 class="album_desc"><? $widgetData.WG_DESC ?></h1>
+	<div class="when"><? $widgetData.WG_CREATED_BY ?> <? $widgetData.WG_CREATED_DATETIME ?></div>
+	<p class="description"><a style='font-size: 1.2em' href='javascript:void(0)' onClick='return startSlideshow()'><? $widgetStrings.pd_startslideshow_label ?></a></p>
+<? /if ?>
+<? assign var=view value=$widgetData.params.VIEW_MODE ?> 
+
+	<? if ( $view == 1 || $view == 2 ) ?>
+	<ul class="highslide-with-descr <? if $view == 1 ?>smallimages<? elseif $view == 2 ?>middleimages<? /if ?>">
+	<? foreach item=file from=$filesList ?>
+		<? if $view == 1 ?>
+			<li>
+				<? assign var=truncDesc value=$file.PL_DESC|strip_tags:false|htmlsafe:true:true?>
+				<a href='<? $file.url.$size970 ?>' id='image_<? $file.PL_ID ?>' onClick='return hs.expand(this)'><img src='<? $file.url.$middleSize ?>'></a>
+				<div class="highslide-caption desc">
+						<? $truncDesc ?>
+				</div>
+			</li>
+		<? elseif $view == 2 ?>
+			<li>
+				<p class="image-desc"><? if $file.PL_DESC ?><? $file.PL_DESC ?><? /if ?></p>
+				<img src='<? $file.url.$size970 ?>'>
+			</li>
+		<? /if ?>
+	<? /foreach ?>
+	</ul>
+	<? /if ?>
+	
+	<? if $view == 0 ?>
+		<div class="wgpd-highslide">
+		<? foreach item=file from=$filesList ?>
+			<div class="highslide image-list-float" style="width: 144px; height: 144px;">
+				<? assign var=truncDesc value=$file.PL_DESC|strip_tags:false|htmlsafe:true:true?>					
+					<a href='<? $file.url.$size970 ?>' id='image_<? $file.PL_ID ?>' onClick='return hs.expand(this)'><img src='<? $file.url.$size144 ?>'></a>
+					<div class="highslide-caption">
+						<? $truncDesc ?>
+					</div>
+					
+			</div>
+		<? /foreach ?></div>
+	<? /if ?>

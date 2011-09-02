@@ -1,0 +1,26 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/product_detailed.js"></script>
+{if $widget}
+	{assign var=_ext_url value="&view=noframe&external=1"}
+{/if}
+<form rel="{$product_info.productID}" action='{""|set_query_html}' method="post">
+<input name="productID" value="{$product_info.productID}" type="hidden" >
+<input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" >
+<input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" >
+<ul class="bredcrumps">
+	{if  $PAGE_VIEW ne 'mobile' && $selected_category[3]}
+	<li><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category[3]|escape:'url'}" alt="{$selected_category[1]}" title="{$selected_category[1]}"></li>
+	{/if}
+	<li>
+	<a href="{'?'|set_query_html}" class="cat">{"lnk_homepage"|translate}</a>
+	{section name=i loop=$product_category_path}
+		{if $product_category_path[i].categoryID != 1}
+			{$BREADCRUMB_DELIMITER} <a class="cat" href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'}</a>
+		{/if}
+	{/section}
+	</li>
+
+</ul>
+{if $product_info ne NULL || $CPT_CONSTRUCTOR_MODE}
+{include file="fb.product_info.html"}
+{/if}
+</form>

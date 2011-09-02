@@ -1,0 +1,238 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+<script language=JavaScript>
+
+	function setLastTab( tabName )
+	{
+		var obj = findObj( "lastTab" );
+
+		if ( obj )
+			obj.value = tabName;
+	}
+
+	function initFocus()
+	{
+		try
+		{
+			<? if !$invalidField ?>
+				<? if $activeTab == "CONTACT" ?>
+					focusFirstFormControl();
+				<? else ?>
+					<? if $activeTab == "USER" ?>
+						<? if $newUser ?>
+							focusFormControl( 'contactData[U_ID]' );
+						<? else ?>
+							focusFormControl( 'contactData[U_PASSWORD1]' );
+						<? /if ?>
+					<? /if ?>
+				<? /if ?>
+			<? else ?>
+				focusFormControl( 'contactData[<? $invalidField ?>]' );
+			<? /if ?>
+		} catch ( e )
+		{
+			
+		}
+		this.activeTab = "<? $activeTab ?>";
+	}
+
+	function saveLastTab()
+	{
+		var obj = findObj( "activeTab" );
+
+		if ( obj )
+			obj.value = this.activeTab;
+	}
+
+	function setActiveImgField( fieldName )
+	{
+		var obj = findObj( "imgFieldEdited" );
+
+		if ( obj )
+			obj.value = fieldName;
+	}
+
+	function confirmDelete()
+	{
+		return confirm( "<? $kernelStrings.amc_confirmdel_message ?>" );
+	}
+
+	var groupMembershipChanged = false;
+	var locked = false;
+	var tabsLocked = false;
+
+	function triggerGroupChanges()
+	{
+		this.groupMembershipChanged = true;
+	}
+
+	function onActivateAccess()
+	{
+		if ( this.groupMembershipChanged ) {
+			this.tabsLocked = true;
+			this.locked = true;
+			fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );
+			setLastTab( "ACCESS" );
+
+			if ( document.getElementById ) {
+				var rt = document.getElementById('RELOAD_TABLE');
+				var at = document.getElementById('ACCESS_TABLE');
+
+				if ( rt )
+					rt.style.display = "block";
+
+				if ( at )
+					at.style.display = "none";
+			}
+
+			document.form.submit();
+		}
+	}
+
+	function processOK()
+	{
+		fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );
+
+		return !this.locked;
+	}
+
+	function hideExtendedInfoBlock()
+	{
+		var container = document.getElementById('ExtendedParamsContainer');
+		container.style.display = "none";
+
+		var HideBtn = document.getElementById('HideExtendedContainer');
+		var ShowBtn = document.getElementById('ShowExtendedContainer');
+
+		HideBtn.style.display = "none";
+		ShowBtn.style.display = "block";
+
+		var Field = document.getElementById('ShowExtendedInfoField');
+		Field.value = 0;
+	}
+
+	function showExtendedInfoBlock()
+	{
+		var container = document.getElementById('ExtendedParamsContainer');
+		container.style.display = "block";
+
+		var HideBtn = document.getElementById('HideExtendedContainer');
+		var ShowBtn = document.getElementById('ShowExtendedContainer');
+
+		HideBtn.style.display = "block";
+		ShowBtn.style.display = "none";
+		UserInfoArea.className = "framearea";
+
+		var Field = document.getElementById('ShowExtendedInfoField');
+		Field.value = 1;
+	}
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="initFocus()">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+	<? if !$fatalError ?>
+
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr><td class="largeText_normal"><? $contactName|htmlsafe:true:true ?></td></tr>
+			<tr><td>&nbsp;</td></tr>
+		</table>
+
+		<? assign var=tabsHeight value=400 ?>
+		<? if !$userIsDeleted && $foldersFound ?>
+			<? assign var=tabsHeight value=490 ?>
+		<? /if  ?>
+
+		<? include file="../../../common/html/classic/formtabs_templates/formtabs.htm" width=700 height=$tabsHeight basePath="../../../AA/html/classic" tabsID="UserTabs" extraLine=true tabs=$UserTabs ?>
+		<? assign var=imgFieldOnClick value="saveLastTab()" ?>
+
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align=right><input type=checkbox name="sendinstructions" value=1 <? switchedOutput val=$sendinstructions true_val=1 str1="checked" ?>></td>
+				<td><? $kernelStrings.amu_emailinstructions_text ?></td>
+			</tr>
+			<tr>
+				<td colspan=2>&nbsp;</td>
+			</tr>
+		</table>
+
+		<? assign var=imgFieldOnClear value="saveLastTab()" ?>
+		<? assign var=onClickHandler value="return processOK()" ?>
+
+		<input type=hidden name=loginURL value="<? $loginURL|htmlsafe:true:true ?>">
+
+		<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td>
+					<? if !$readOnly ?>
+						<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_save_btn formname="form" space_right=10 onClick=$onClickHandler ?>
+						<? if $action == "new" ?>
+							<? include file="../../../common/html/classic/button.htm" align="left" name="saveaddbtn" caption=$kernelStrings.amc_addanother_btn formname="form" space_right=10 onClick=$onClickHandler?>
+						<? /if ?>
+						<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+					<? else ?>
+						<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_back_btn formname="form" space_right=10 ?>
+					<? /if ?>
+				</td>
+			</tr>
+		</table>
+
+		<? if $action == "edit" ?>
+			<table border=0 cellpadding=2 cellspacing=0>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td><hr size="1" style="width: 700px" noshade></td>
+				</tr>
+				<tr>
+					<td class=smallFont>
+						<? $kernelStrings.amc_addedby_label|cat:": "|cat:$createUserName|cat:" "|cat:$createDateTime ?>&nbsp;|&nbsp;
+						<? $kernelStrings.amc_modifiedby_label|cat:": "|cat:$modifyUserName|cat:" "|cat:$modifyDateTime ?>
+						<? if $subscriber != "" ?>
+								&nbsp;|&nbsp;<? $kernelStrings.amc_status_label|cat:": "|cat:$subscrStatusName ?>
+						<? /if ?>
+					</td>
+				</tr>
+			</table>
+
+			<input type=hidden name=createUserName value="<? $createUserName|htmlsafe:true:true ?>">
+			<input type=hidden name=createDateTime value="<? $createDateTime|htmlsafe:true:true ?>">
+			<input type=hidden name=modifyUserName value="<? $modifyUserName|htmlsafe:true:true ?>">
+			<input type=hidden name=modifyDateTime value="<? $modifyDateTime|htmlsafe:true:true ?>">
+		<? /if ?>
+
+	<? /if ?>
+
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="contactIsUser" value='<? $contactIsUser ?>'>
+	<input name="lastTab" type="hidden" value="">
+	<input type="hidden" name="action" value='<? $action ?>'>
+	<input type="hidden" name="userIsDeleted" value='<? $userIsDeleted ?>'>
+	<input name="imgFieldEdited" type="hidden" value="">
+	<input type="hidden" name="edited" value='1'>
+	<input name="activeTab" type="hidden" value="<? $activeTab ?>">
+	<input name="newUser" type="hidden" value="<? $newUser ?>">
+	<input name="C_ID" type="hidden" value="<? $C_ID ?>">
+	<input name="targetUser" type="hidden" value="<? $targetUser ?>">
+	<input name="firstTabId" type="hidden" value="<? $firstTabId|htmlsafe:true:true ?>">
+	<input name="contactName" type="hidden" value="<? $contactName|htmlsafe:true:true ?>">
+	<input type=hidden name=subscriber value="<? $subscriber|htmlsafe:true:true ?>">
+	<input type=hidden id="ShowExtendedInfoField" name=ShowExtendedInfo value="<? $ShowExtendedInfo|htmlsafe:true:true ?>">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

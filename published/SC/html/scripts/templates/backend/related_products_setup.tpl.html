@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<link rel="stylesheet" href="{$smarty.const.DIR_CSS}/style1.css" type="text/css" />
+		<meta http-equiv="Content-Type" content="text/html; charset={"str_default_charset"|translate}" />
+		<title>{"str_related_items"|translate}</title>
+	</head>
+	<body bgcolor="#DDEEBB">
+	{if $smarty.get.safemode ne ''}
+		<p><b class="cat" style="color:red;">{"msg_safemode_warning"|translate}<b>
+	{/if}
+		<table border="0" width="100%" bgcolor="#77aa88" cellspacing="1">
+			<tr bgcolor="#ddeebb">
+				<td>
+					<table>
+						<tr><td colspan="2"><u>{"prdset_related_products_select"|translate}:</u><br /><br /></td></tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<table>
+								{section name=j loop=$Categories}{if $Categories[j].categoryID ne 0}
+									<tr><td>
+									{''|indent:$Categories[j].level:'&nbsp;&nbsp;'}
+									{if $Categories[j].categoryID eq $categoryID}
+										- {$Categories[j].name}<br />
+										<table bgcolor="#AACC88" cellpadding="2">
+										{section name=o loop=$CategoryProducts}
+											<tr bgcolor="#DDEEBB"><td>&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href='{"select_product=`$CategoryProducts[o].productID`"|set_query}'><u>{$CategoryProducts[o].name}</u></a>
+											&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+										{/section}
+										</table><br />
+									{else}
+										<a href='{"categoryID=`$Categories[j].categoryID`"|set_query}'{if $Categories[j].level>1} class="standard"{/if}>+ {$Categories[j].name}</a>
+									{/if}
+									</td></tr>
+								{/if}{/section}
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td valign="top" width="50%">
+					<table width="100%">
+						<tr><td colspan="2"><u>{"prdset_selected_products"|translate}</u><br /><br /></td></tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<table width="90%" border="0" bgcolor="#77AA99" cellspacing="1" cellpadding="3">
+								{section name=j loop=$RelatedProducts}
+									<tr bgcolor="#DDEEBB">
+										<td width="100%">{$RelatedProducts[j].name}</td>
+										<td width="1%"><a href='{"delete=`$RelatedProducts[j].productID`"|set_query}'><img src="images/remove.jpg" border="0" alt="{"btn_delete"|translate}" /></a></td>
+									</tr>
+								{/section}
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<br />
+		<center>
+		<input type="button" value="{"btn_close"|translate}" onClick="window.close();" />
+		</center>
+	</body>
+</html>

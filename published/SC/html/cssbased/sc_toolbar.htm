@@ -1,0 +1,5 @@
+<? foreach from=$top_menu item=_menu_item ?>
+<? wbs_toolbarItem?>
+	<? wbs_button caption=$_menu_item.title menu=$_menu_item.sub_divisions ?>
+<? /wbs_toolbarItem ?>
+<? /foreach ?>

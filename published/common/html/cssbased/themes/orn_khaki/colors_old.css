@@ -1,0 +1,106 @@
+/* Common params for document */
+body, table tr td, input { font-family: 'Trebuchet MS'; font-size: 14px; }
+
+#HeaderContainer {background: url(top_bg.gif) repeat-x; width: 100%; position: absolute; top: 0px; left: 0px}
+div#HeaderContainer.WithCompanyLogo {background:white; font-size: 1.3em}
+
+/* Toolbar Background Color */
+#Toolbar {	background: #caca93; padding-bottom: 5px;  }
+#Toolbar ul li ul li {font-size: 0.85em}
+
+/* Page Title */
+#SubToolbar {background: #a5a570; color: white; margin-bottom: 3px; padding-top: 3px;}
+#SubToolbar {font-size: 1.1em}
+#SubToolbar div {padding: 3px}
+
+/* Toolbar buttons params */
+div#Toolbar a.Button {font-size: 1.2em}
+div#Toolbar a.Button {background: url(../button-background-toolbar.jpg) repeat-x; background-position: top left; font-weight: normal; padding-left: 5px; padding-right: 5px;}
+div#Toolbar a.Button:hover {background: url(../button-background-hover.jpg) repeat-x; font-size: 1.19em; }
+
+/* Other buttons params */
+a.Button {background: url(../button-background.jpg) repeat-x; background-position: top left; font-size: 1.0em; }
+a.Button:hover {background: url(../button-background-hover.jpg) repeat-x; }
+
+/* Left Menu Background */
+#MainMenu {overflow: hidden}
+#MainMenu #MainMenuContent {background: #a5a570; color: white }
+#MainMenu #MainMenuContent .MenuBlock {}
+#MainMenu .MenuBlock a {font-size: 1.2em; color: #a5a570 }
+#MainMenu .MenuBlock a.ActiveItem {color: #06608F}
+
+
+/* Tabs background */
+div.TabbedForm dl.TabbedFormList dd.Tab{background: #caca93; padding-bottom: 9px; color: black}
+div.TabbedForm dl.TabbedFormList dd.Tab.Active{	background: #a5a570; color: white}
+
+/* Vertical tabs background */
+div.TabbedForm table.VerticaslTabForm  dl.TabbedFormList dd a span {background: #caca93; color: black}
+div.TabbedForm table.VerticaslTabForm dl.TabbedFormList dd.Active a span {background: #a5a570; color: white}
+
+/* Tabs foreground */
+div.TabbedForm dl.TabbedFormList dd.Tab a span {
+	font-weight: normal; color: black
+}
+div.TabbedForm dl.TabbedFormList dd.Tab.Active a span {
+	font-weight: bold; color: white
+}
+
+/* Scrollable into tabbed forms and other places */
+div.TabbedForm div.ScrollableArea
+{
+	background: #ffffea;
+	border: 1px solid #f5f0bb;
+}
+
+/* Form Caption */
+span.FormCaption {}
+
+
+
+/* Lists titles */
+div.SplitterPanelHeader.Active,div.SplitterHeaderPanelDiv { background: url(top_bg.gif) repeat-x; color: black; height: 33px; font-family: "Trebuchet MS"}
+.SplitterLeftPanelContainer div.SplitterPanelHeader {height: 25px}
+.SplitterRightPanelContainer div.SplitterPanelHeader.Active tr td {font-size: 1.4em; }
+.SplitterRightPanelContainer div.SplitterPanelHeader.Active tr td  .HeaderLinks tr td {font-size: 0.7em}
+
+
+
+/* Tables */
+	/* Tables titles */
+	/* table.SimpleList thead tr td {background: white url(../simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;} */
+	table.Grid thead tr {background: white url(../simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	table.List thead tr {}
+	
+	table.ListHeader tr {background: white url(../simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	
+	
+	/* Tables body (even rows) */
+	table.Grid tbody {background: white}
+	table.Grid tbody tr td img {margin-right: 2px}
+	table.SimpleList tbody {background: white}
+	table.List tbody {}
+	
+	
+	
+	/* Tables odd rows */
+	table.Grid tr.Odd {background: #fafae7;}
+	table.SimpleList tr.Odd {background: #fafae7;}
+
+	/* Tables active row */
+	table.List tr:hover {background: #f5f0bb;}
+	table.SimpleList tbody tr:hover {background: #f5f0bb;}
+	table.Grid tbody tr:hover {background: #f5f0bb;}
+	
+	div.TabbedForm dl.TabbedFormList dt.TabPage {background: #FCFCFC}
+	
+	#ListFooterContainer {background: white url(../simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	.TBLabel {font-size: 1.25em; padding-top: 4px; padding-left: 10px}
+	
+/* Tabbar */	
+#TabbarTop{
+ background: #a5a570;
+}
+#TabbarTop td div, #ToolbarIn{
+ background: #caca93;
+}

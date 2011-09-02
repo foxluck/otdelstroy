@@ -1,0 +1,41 @@
+widget_name_long	Common	Widget full name	Files
+widget_name_short	Common	Widget short name	Files
+
+type_widgetsform_title	Widget Screen	type title	Files
+type_widget_name	Widget Screen	type title	Files
+type_widget_createname	Widget Screen	type title	Files
+type_widgetsform_desc	Widget Screen	type desc	
+type_widgetsform_short_desc	Widget Screen	type short desc	Files
+
+subtype_inplace_name	Subtypes	Subtype name	Онлайн Папка
+subtype_inplace_desc	Subtypes	Subtype desc	Показывает список файлов в указанной папке. Позволяет открыть и скачать файл, а также добавить новый файл в папку
+field_folder_label	Fields	Folder	Папка
+field_width_label	Fields	Width	Ширина
+field_height_label	Fields	Height	Высота
+field_candelete_label	Fields	Can delete	Удаление файлов
+field_candelete_desc	Fields	Can delete	Пользователи могут удалять файлы через этот виджет
+field_bgcolor_label	Fields	Bgcolor	Фон списка
+field_title_label	Fields	Title	Заголовок
+field_wglang_desc	Fields	Lang	Этот язык будет использоваться для системных сообщений
+field_bordercolor_label	Fields	Title	Фон заголовка
+field_titlecolor_label	Fields	Title	Цвет заголовка
+field_showborder_label	Fields	Title	Show Border
+field_maxfilescount_label	Fields	Save button	Максимальное количество файлов
+field_maxfilesize_label	Fields	Save button	Максимальный размер файла (Mb)
+
+
+up_addfile_label	Widget	add file label	добавить
+up_addfile_title	Widget	add file button title	 добавить файл
+up_uploadbtn_label	Widget	Upload button label	 Добавить
+up_cancelbtn_label	Widget	Cancel button label	 Отмена
+up_nofiles_label	Widget	No files label	нет файлов
+
+up_filedelete_message	Widget	File delete message	Вы уверены что хотите удалить этот файл?
+up_filedelete_title	Widget	File delete title	удалить файл
+up_maxfilescount_error	Widget	Error max files count	Максимальное количество файлов: %s
+up_maxfilesize_error	Widget	Error max file size	Максимальный размер файла: %sMB
+
+place_general_title	Widget customize dialog	Place general title	Общая
+place_color_title	Widget customize dialog	Place colo title	Цвет
+place_size_title	Widget customize dialog	Place size title	Размер
+place_files_title	Widget customize dialog	Place files title	Файлы

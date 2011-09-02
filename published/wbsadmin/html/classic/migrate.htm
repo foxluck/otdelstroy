@@ -1,0 +1,378 @@
+<!-- migrate.html -->
+<script language="javascript" type="text/javascript">
+<!--
+function showLanguageSelect(objName){
+	hideLanguageSelect();
+	var obj=findObj(objName);
+	if(obj)obj.style.display='block';
+}
+function showSSsettings(type){
+	var obj=findObj('custom');
+	if(obj)obj.style.display='none';
+	obj=findObj('auto');
+	if(obj)obj.style.display='none';
+	obj=findObj('default');
+	if(obj)obj.style.display='none';
+	obj=findObj(type);
+	if(obj)obj.style.display='block';
+}
+function hideLanguageSelect(){
+var obj;
+<? if $commondata.DBKEYS ?>
+<? foreach from=$commondata.DBKEYS key=DB_KEY item=languageList?>
+obj=findObj('db_<? $DB_KEY ?>');if(obj)obj.style.display='none';
+<? /foreach ?>
+<? /if ?>
+}
+function focusControl(objName)
+{
+
+	<? if $invalidField ?>
+		<? "objName = '"|cat:$invalidField|cat:"'" ?>;
+	<? /if ?>
+
+	 var obj = findObj(objName);
+	 if(!obj)
+	 	obj = findObj('commondata['+objName+']');
+	 <? if $commondata.DB_TARGET ?>
+	 if(!obj)
+	 	obj = findObj('commondata[<? $commondata.DB_TARGET|upper ?>]['+objName+']');
+	 <? /if ?>
+	 	
+	 
+	 if (obj)
+		obj.focus( );
+}
+//-->
+</script>
+<? assign var="invalidFieldMarkup" value=' style="color: #FF0000"' ?>
+<!-- here -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<h2 class="page-title"><? $waStrings.migrate_header ?></h2><br>
+		<table border="0" cellpadding="5" cellspacing="0">
+		<? if $report?>
+          <tr>
+	          <td colspan="2"  class="formSection"><? $report ?></td>
+          </tr>
+          <tr>
+    	      <td colspan="2"  class="comment"><? $reportContent ?></td>
+          </tr>
+          <tr>
+          	<td><input type="button" value="<?$waStrings.migrate_login_link?>" onclick="window.location='../../../../login/';return false;">&nbsp;&nbsp;<input type="button" value="<?$waStrings.migrate_frontend_link?>" onclick="window.location='../../../../shop/';return false;"></td>
+          </tr>
+           <? elseif $migrateAllowed ?>
+		
+          <tr>
+            <td colspan="2">
+            <? $waStrings.migarate_note_description ?>
+            </td>
+          </tr>
+           
+          <? if $fatalError ?>
+          <tr>
+          <td colspan="2"><font color="Red"><? $errorStr ?></font></td>
+           </tr>
+           <? /if ?>
+         
+         
+  
+       
+         <!-- Shop Script connection settings -->        
+          <tr>
+            <td colspan="2"><div class="migrate_section_header">1. <? $waStrings.migarate_source_header ?></div></td>
+          </tr>
+
+				
+		<!-- auto -->
+		 <tr class="formSubSection">
+         <td align="right"><input id="migrate_auto" type="radio" name="commondata[DB_TARGET]" value="auto" <? if ($commondata.DB_TARGET=='auto')||(!$commondata.DB_TARGET) ?> checked <? /if ?> onclick="if(this.checked) showSSsettings('auto');return true;"></td>
+         	<td>
+         	<label for="migrate_auto"><? $waStrings.migarate_source_auto ?></label>
+         	</td>
+         </tr>
+         <tr>
+         <td>&nbsp;</td>
+         <td class="comment"><label for="migrate_auto"><? $waStrings.migarate_source_auto_desc ?></label></td>
+         </tr>
+         <tr>
+			<td>&nbsp;</td><td>&nbsp;
+			<table id="auto" <? if ($commondata.DB_TARGET!='auto'&&$commondata.DB_TARGET) ?> style="display:none;"<? /if ?>>
+			<tr>
+				<td><? $waStrings.migarate_source_auto_wapath ?>:&nbsp;</td> 
+				<td><? $commondata.AUTO.WBS_DIR ?></td>
+			</tr>
+			<tr>
+			<td<? conditionalOutput invalidField=$invalidField field=PATH text=$invalidFieldMarkup	?>><? $waStrings.migarate_source_auto_sspath ?>:&nbsp;</td>
+			<td><input type="text" name="commondata[AUTO][PATH]" class="control" value="<? $commondata.AUTO.PATH ?>" style="width:300px;"></td>
+			</tr>
+			<tr>
+         		<td>&nbsp;</td>
+         		<td class="comment"><? $waStrings.migarate_source_auto_path_desc ?></td>
+         	</tr>	
+			 <tr>
+			 <td<? conditionalOutput invalidField=$invalidField field=VERSION text=$invalidFieldMarkup	?>><? $waStrings.migarate_source_ss_version ?>:*&nbsp;</td>
+			 <td>
+			 <select name="commondata[AUTO][VERSION]" class="control" style="width:200px;">
+			 <? foreach from=$SSversion item=version name=versionLoop?>
+			 <option value="<? $version ?>" <? if $version==$commondata.AUTO.VERSION ?> selected<? /if?>><? $version|default:"&nbsp;" ?></option>
+			 <? /foreach ?>
+			 </select>
+			 </td>
+			 </tr>
+			 <tr><td><? $waStrings.migarate_source_auto_files ?>:&nbsp;</td><td><input type="checkbox" name="commondata[AUTO][COPY]" class="control" <? if $commondata.AUTO.COPY ?>checked<? /if ?>></td></tr>
+			 <tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+	         </tr>
+			</table>
+			</td>
+		</tr>
+		
+		<!-- same -->
+         <tr class="formSubSection">
+         <td align="right"><input id="migrate_same" type="radio" name="commondata[DB_TARGET]" value="default" <? if ($commondata.DB_TARGET=='default') ?> checked <? /if ?> onclick="if(this.checked) showSSsettings('default');return true;"></td>
+         	<td><label for="migrate_same"><? $waStrings.migarate_source_same ?></label></td>
+         </tr>
+         <tr>
+         <td>&nbsp;</td>
+         <td class="comment"><label for="migrate_same"><? $waStrings.migarate_source_same_desc ?></label></td>
+         </tr>
+         <tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;
+			<table id='default' <? if ($commondata.DB_TARGET!='default') ?> style="display:none;"<? /if ?>>
+			 <tr>
+			 <td<? conditionalOutput invalidField=$invalidField field=VERSION text=$invalidFieldMarkup	?>><? $waStrings.migarate_source_ss_version ?>
+:*&nbsp; </td>
+			 <td>
+			 <select name="commondata[DEFAULT][VERSION]" class="control" style="width:200px;">
+			 <? foreach from=$SSversion item=version name=versionLoop?>
+			 <option value="<? $version ?>" <? if $version==$commondata.DEFAULT.VERSION ?> selected<? /if?>><? $version|default:"&nbsp;" ?></option>
+			 <? /foreach ?>
+			 </select>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td>&nbsp;</td>
+			<td>&nbsp;</td>
+			 </tr>
+			</table>
+			</td>
+		</tr>
+
+		
+		<!-- custom -->
+		<tr class="formSubSection">
+         <td align="right"><input id="migrate_custom" type="radio" name="commondata[DB_TARGET]" value="custom"<? if $commondata.DB_TARGET=='custom' ?> checked<? /if ?> onclick="if(this.checked) showSSsettings('custom');return true;"></td>
+         	<td><label for="migrate_custom"><? $waStrings.migarate_source_custom ?></label></td>
+         	</tr>
+         	<tr>
+			<td>&nbsp;</td>
+			<td class="comment"><label for="migrate_custom"><? $waStrings.migarate_source_custom_desc ?></label></td>
+         </tr>
+         <tr>
+         	<td>&nbsp;</td>
+         	<td>&nbsp;
+         	<table id='custom' <? if ($commondata.DB_TARGET!='custom') ?> style="display:none;"<? /if ?>>
+         	<tr>
+			 <td<? conditionalOutput invalidField=$invalidField field=VERSION text=$invalidFieldMarkup?>><? $waStrings.migarate_source_ss_version ?>:*&nbsp; </td>
+			 <td>
+			 <select name="commondata[CUSTOM][VERSION]" class="control" style="width:200px;">
+			 <? foreach from=$SSversion item=version name=versionLoop?>
+			 <option value="<? $version ?>" <? if $version==$commondata.CUSTOM.VERSION ?> selected<? /if?>><? $version|default:"&nbsp;" ?></option>
+			 <? /foreach ?>
+			 </select>
+			 </td>
+			 </tr>
+         	<tr>
+			<td style="width:100px"<? conditionalOutput invalidField=$invalidField field=DB_HOST text=$invalidFieldMarkup	?>>
+				<? $waStrings.addserv_gr2_opt1 ?>:*</td>
+			<td><input name="commondata[CUSTOM][DB_HOST]" type="text" class="control" value="<? $commondata.CUSTOM.DB_HOST ?>" style="width: 300px"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td class="comment"><? $waStrings.addserv_gr2_desc1 ?></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td<? conditionalOutput invalidField=$invalidField field=DB_PORT text=$invalidFieldMarkup	?>>
+				<? $waStrings.addserv_gr2_opt3 ?>:</td>
+			<td><input name="commondata[CUSTOM][DB_PORT]" type="text" class="control" value="<? $commondata.CUSTOM.DB_PORT ?>"	style="width: 300px"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td class="comment"><? $waStrings.addserv_gr2_desc3 ?></td>
+		</tr>		
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+         </tr>
+		<tr>
+			<td class="nobr"<? conditionalOutput invalidField=$invalidField field=DB_USER text=$invalidFieldMarkup	?>>
+			<? $waStrings.addserv_gr5_opt2 ?>:*&nbsp;
+			</td>
+			<td>
+				<input name="commondata[CUSTOM][DB_USER]" type="text" class="control" value="<? $commondata.CUSTOM.DB_USER ?>" style="width: 300px">
+			</td>
+		</tr>
+		<tr>
+			<td class="nobr"<? conditionalOutput invalidField=$invalidField field=DB_PASS text=$invalidFieldMarkup	?>>
+				<? $waStrings.addserv_gr5_opt3 ?>:&nbsp;</td>
+			<td>
+				<input name="commondata[CUSTOM][DB_PASS]" type="text" class="control" style="width: 300px" value="<? $commondata.CUSTOM.DB_PASS ?>">
+			</td>
+		</tr>
+		        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+         </tr>		
+		<tr>
+			<td class="nobr"<? conditionalOutput invalidField=$invalidField field=DB_NAME text=$invalidFieldMarkup	?>>
+				<? $waStrings.dbmgm_gr2_dbname ?>:*&nbsp;</td>
+			<td><input name="commondata[CUSTOM][DB_NAME]" type="text" class="control" value="<? $commondata.CUSTOM.DB_NAME ?>"	style="width: 300px"></td>
+		</tr>
+
+		
+		</table>	
+		</td></tr>
+		 <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+         </tr>
+         
+           <!-- charset -->  
+           <tr><td colspan="2"><hr style="color:#ccc;"></td></tr>
+           <tr class="formSubSection"> 
+        <td><input type="checkbox" id="enable-charset" name="commondata[SSenableCharset]" value="1"></td>
+		<td><label for="enable-charset"><?"migrate_charset_custom"|translate?></label></td>
+		</tr>       
+		<tr>
+		<td>&nbsp;</td> 
+		<td class="comment"><?"migrate_charset_custom_description"|translate?></td>
+		</tr>       
+		<tr> 
+		<td>&nbsp;</td>
+		<td>
+		<table>
+		<tr> 
+		<td align="right"><?"migrate_charset_connection_encoding"|translate?>:&nbsp;</td>
+		<td>
+		<input type="text" name="commondata[SScharset]" value="<? $commondata.SScharset?>">
+		</td>
+		<tr><td>&nbsp;</td><td class="comment"><?"migrate_charset_connection_encoding_description"|translate?></td></tr>
+		
+		<tr>
+		<td align="right"><?"migrate_charset_data_encoding"|translate?>:&nbsp;</td>
+		<td>
+		<select name="commondata[SSdataCharset]">
+			<option value=" ">&nbsp;</option>
+			<? foreach from=$commondata.SSdataCharsetList item=mb_encoding ?>
+			<option value="<?$mb_encoding?>"<?if $mb_encoding==$commondata.SSdataCharset?>selected="selected"<?/if?>><?$mb_encoding?></option>
+			<? /foreach ?>
+			</select>
+		</td>
+		</tr>
+		<tr><td>&nbsp;</td><td class="comment"><?"migrate_charset_data_encoding_description"|translate?></td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+         </tr> 
+         
+         
+         
+           <!-- DB_LIST -->
+		 <tr>
+            <td colspan="2"><div class="migrate_section_header">2. <? $waStrings.migarate_target_header ?></div></td>
+          </tr>
+         
+         
+		<? if $commondata.DBKEYS ?>
+
+
+			 <? foreach from=$commondata.DBKEYS key=DB_KEY item=languageList name=dbLoop ?>
+          		<tr>
+				<td align="right">
+					<input type="<?if $smarty.foreach.dbLoop.first&&$smarty.foreach.dbLoop.last ?>hidden<? else ?>radio<? /if ?>" onclick="if(this.checked)showLanguageSelect('db_<? $DB_KEY ?>')"
+							name="commondata[DB_KEY]" value='<? $DB_KEY ?>' class="nodst" id="db<? $smarty.foreach.dbLoop.index ?>"
+							<?if ($smarty.foreach.dbLoop.first&&(!$commondata.DB_KEY))||($commondata.DB_KEY==$DB_KEY) ?>checked<? /if ?>>
+				</td>
+				<td><label for="db<? $smarty.foreach.dbLoop.index ?>"><? $waStrings.migarate_target_dbkey ?>&nbsp;<b><? $DB_KEY ?></b></label></td>
+				</tr>
+				<!-- Langugae block -->
+				<tr>
+				<td>&nbsp;</td>
+				<td><table id="db_<?$DB_KEY?>" <? if (!$smarty.foreach.dbLoop.first||($commondata.DB_KEY))&&($commondata.DB_KEY!=$DB_KEY)?>style="display:none;"<? /if?>>
+					<tr>
+						<td class="nobr"><? $waStrings.migarate_target_language ?>:&nbsp;</td>
+						<td>
+						<? foreach from=$languageList item=language name=langLoop ?>
+							<? if $smarty.foreach.langLoop.first&&$smarty.foreach.langLoop.last ?>
+								<input type="hidden" name='commondata[language][<?$DB_KEY?>]' class="control" style="width: 300px" value="<?$language.iso2?>"><?$language.name?>
+							<? else ?>
+								<? if $smarty.foreach.langLoop.first ?>
+									<select name='commondata[language][<?$DB_KEY?>]' class="control" style="width: 300px">
+								<? /if?>
+								<option value='<?$language.iso2?>' <? if $language.iso2==$commondata.language.$DB_KEY?>selected <? /if ?>><?$language.name?></option>
+								<? if $smarty.foreach.langLoop.last ?>
+									</select>
+								<? /if?>
+							<? /if ?>
+						<? /foreach ?>
+						
+						
+						</td>
+					</tr>
+					<tr><td colspan="2">&nbsp;</td></tr>
+				</table>
+				</td>
+				</tr>
+				<!-- end Langugae block -->
+				
+			<? /foreach ?>
+			<? /if ?>			
+		
+        		
+          <!-- END DB_LIST -->
+         
+       
+         <!-- Agreement -->
+         <tr>
+            <td colspan="2"><div class="migrate_section_header">3. <? $waStrings.migrate_agreement_header ?></div>
+           </td>
+          </tr>
+		<tr>
+            <td colspan="2"><? $waStrings.migrate_agreement_text ?></td>
+         </tr>
+         <tr>
+		<td align="right"><input type="checkbox" id="commondata_AGREE" name="commondata[AGREE]" class="control" <? if $commondata.AGREE ?>checked<? /if ?>></td>
+		<td<? conditionalOutput invalidField=$invalidField field=AGREE text=$invalidFieldMarkup	?>><label for="commondata_AGREE"><? $waStrings.migarate_agreement ?></label></td>
+		</tr>	
+  <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+         </tr> 
+         <tr>
+         <td colspan="2">
+         &nbsp;&nbsp;
+         	<input type="submit" name="savebtn" value="<? $waStrings.migrate_button_migrate ?>">
+		</td>
+
+         </tr>
+
+	<?elseif $fatalError?>
+          <tr>
+          <td colspan="2"><font color="Red"><? $errorStr ?></font></td>
+           </tr>
+	<? /if ?>
+</table>
+</form>
+<? /strip ?>
+<!-- /migrate.html -->

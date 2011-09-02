@@ -1,0 +1,29 @@
+<?
+
+	*
+		Image fields read-only control
+
+		Parameters: 
+			fieldData - array with image field data
+			imgFieldsViewMode - view mode - link/thumbnail
+	*
+
+?>
+
+<? if $imgFieldsViewMode == "links" ?>
+	<? if !$printingMode ?>
+		<a class=activelink href="<? $fieldData.FILE_URL ?>" target="_blank">&lt;<? $kernelStrings.app_image_text ?>&gt;</a>
+	<? else ?>
+		&lt;<? $kernelStrings.app_image_text ?>&gt;
+	<? /if ?>
+<? else ?>
+	<? if !$fieldData.FILENAME ?>
+		[<? $kernelStrings.app_noimage_label ?>]
+	<? else ?>
+		<? if !$printingMode ?>
+			<? include file="../../../common/html/classic/thumbnails_templates/thumbnail.htm" srcURL=$fieldData.THUMB_URL size=96 URL=$fieldData.FILE_URL ?>
+		<? else ?>
+			<? include file="../../common/html/classic/thumbnails_templates/thumbnail.htm" srcURL=$fieldData.THUMB_URL size=96 ?>
+		<? /if ?>
+	<? /if ?>
+<? /if ?>

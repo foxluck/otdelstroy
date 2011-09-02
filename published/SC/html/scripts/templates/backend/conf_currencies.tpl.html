@@ -1,0 +1,92 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/conf_currencies.js"></script>
+<script type="text/javascript">
+var translate = {ldelim}
+	'loc_del_confirmation': '{"loc_del_confirmation"|transcape}'
+	{rdelim};
+</script>
+
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{$MessageBlock}
+
+<div style="float:left;clear:both;"><h2>{lbl_curr_default_currency} (<a href="{'?ukey=change_default_currency'|set_query_html}">{lbl_curr_change_default_currency}</a>)</h2></div>
+{assign var=_currency value=$default_currency}
+<div class="currency_block" cid="{$_currency.CID}">
+
+	<strong><span class="ff_Name">{$_currency.Name}</span> (<span class="ff_currency_iso_3">{$_currency.currency_iso_3}</span>)</strong>
+	<br />
+	{lbl_curr_curr_output_example}: <strong class="ff_output_example">{$_currency.output_example}</strong>
+	{if $_currency.CID ne $default_currency.CID}
+	<br />
+	{lbl_curr_exchange_rate}: <strong>1 {$default_currency.currency_iso_3} = <input class="exchange_rate" value="{$_currency.currency_value|escape:'html'}" size="4" type="text" style="text-align: right;" /> <span class="ff_currency_iso_3">{$_currency.currency_iso_3}</span> <img src="./images_common/processing.gif" class="save_exchange_processing_image" style="display:none;" /><input class="save_exchange_rate_handler" value="{lbl_btn_save}" type="button" /></strong>
+	{/if}
+	<br />
+	
+	<a href="#edit" class="edit_currency_handler">{'btn_edit'|transcape}</a>
+
+	{if $_currency.CID ne $default_currency.CID}
+	&nbsp;
+	
+	<a href="#delete" class="delete_currency_handler">{'btn_delete'|transcape}</a>
+	{/if}
+	
+	{include file="backend/currency_edit_form.html"}
+
+</div>
+
+<div style="float:left;clear:both;"><h2>{lbl_curr_other_currencies}</h2></div>
+
+{foreach from=$currencies item=_currency}
+{if $_currency.CID ne $default_currency.CID}
+
+<div class="currency_block" cid="{$_currency.CID}">
+
+	<strong><span class="ff_Name">{$_currency.Name}</span> (<span class="ff_currency_iso_3">{$_currency.currency_iso_3}</span>)</strong>
+	<br />
+	{lbl_curr_curr_output_example}: <strong class="ff_output_example">{$_currency.output_example}</strong>
+	{if $_currency.CID ne $default_currency.CID}
+	<br />
+	{lbl_curr_exchange_rate}: <strong>1 {$default_currency.currency_iso_3} = <input class="exchange_rate" value="{$_currency.currency_value|escape:'html'}" size="4" type="text" style="text-align: right;" /> <span class="ff_currency_iso_3">{$_currency.currency_iso_3}</span> <img src="./images_common/processing.gif" class="save_exchange_processing_image" style="display:none;" /><input class="save_exchange_rate_handler" value="{lbl_btn_save}" type="button" /></strong>
+	{/if}
+	<br />
+	
+	<a href="#edit" class="edit_currency_handler">{'btn_edit'|transcape}</a>
+
+	{if $_currency.CID ne $default_currency.CID}
+	&nbsp;
+	
+	<a href="#delete" class="delete_currency_handler">{'btn_delete'|transcape}</a>
+	{/if}
+	
+	{include file="backend/currency_edit_form.html"}
+
+</div>
+{/if}
+{/foreach}
+<div id="new-currencies-container"></div>
+
+<div style="display:none;" id="new-currency" class="currency_block" cid="0">
+
+	<strong><span class="ff_Name"></span> (<span class="ff_currency_iso_3"></span>)</strong>
+	<br />
+	{lbl_curr_curr_output_example}: <strong class="ff_output_example"></strong>
+	<br />
+	{lbl_curr_exchange_rate}: <strong>1 {$default_currency.currency_iso_3} = <input class="exchange_rate" value="1" size="4" type="text" style="text-align: right;" /> <span class="ff_currency_iso_3"></span>
+	<img src="./images_common/processing.gif" class="save_exchange_processing_image" style="display:none;" /><input class="save_exchange_rate_handler" value="{lbl_btn_save}" type="button" /></strong>
+	<br />
+	
+	<a href="#edit" class="edit_currency_handler">{'btn_edit'|transcape}</a>
+
+	&nbsp;
+	
+	<a href="#delete" class="delete_currency_handler">{'btn_delete'|transcape}</a>
+	
+	{include file="backend/currency_edit_form.html" _currency=''}
+</div>
+
+<div class="currency_block" cid="0">
+<h2><a href="#add_currency" class="edit_currency_handler">{lbl_curr_add_currency}</a></h2>
+
+{include file="backend/currency_edit_form.html" _currency=$currency_default_values}
+</div>

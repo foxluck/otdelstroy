@@ -1,0 +1,20 @@
+/* Shadow effect styles */
+
+.wrap1, .wrap2, .wrap3 {
+  display:inline-table;
+  /* \*/display:block;/**/
+}
+
+.wrap1 {
+  float:left;
+  background:url(../images/shadow.gif) right bottom no-repeat;
+}
+
+.wrap2 {
+  background:url(../images/corner_bl.gif) left bottom no-repeat;
+}
+
+.wrap3 {
+  padding:0 4px 4px 0;
+  background:url(../images/corner_tr.gif) right top no-repeat;
+}

@@ -1,0 +1,260 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<link href="../../../common/html/classic/tree_templates/tree_styles.css" rel="stylesheet" type="text/css">
+<link href="../../../AA/html/classic/cm.css" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+<script language="JavaScript">
+<!--
+	function updateAll()
+	{
+		<? if $updateAll ?>
+			if ( parent.frames[0] )
+				parent.frames[0].location.reload();
+
+			if ( parent.frames[2] )
+				parent.frames[2].location.reload();
+
+			location.href = "#action:reloadUI";
+		<? /if ?>
+	}
+
+	function checkMinFolderRights( rights )
+	{
+		var rightsObj = tree_MM_findObj( "curFolderRights" );
+
+		if (!rightsObj)
+			return false;
+
+		if ( rightsObj.value < rights )
+			return false;
+
+		return true;
+	}
+
+	function checkMinRights( rights )
+	{
+		thisForm = document.forms[0];
+
+		for ( i = 0; i < thisForm.elements.length; i++ )
+			if (thisForm.elements[i].type == 'checkbox')
+				if ( thisForm.elements[i].name != "selectAllDocsCB" && thisForm.elements[i].checked ) {
+					C_ID = thisForm.elements[i].value;
+
+					var rightsObj = tree_MM_findObj( "contactrights["+C_ID+"]" );
+					if (!rightsObj)
+						return false;
+
+					if ( rightsObj.value < rights )
+						return false;
+				}
+
+		return true;
+	}
+
+	function findCurrentFolder()
+	{
+		obj = document.getElementById("<? $currentFolder ?>");
+		if ( obj ) {
+			obj.scrollIntoView();
+		}
+	}
+
+	function confirmGroupDeletion()
+	{
+		return confirm( '<? $kernelStrings.ul_delgroup_message|cat:"\\n\\n"|cat:$kernelStrings.ul_delgroup_note ?>' );
+	}
+
+	function alertAddRoot()
+	{
+		alert( '<? $kernelStrings.app_treenorootrights_message ?>' );
+		return false;
+	}
+
+	function alertModify()
+	{
+		alert( '<? $kernelStrings.app_treeinvcurfldrights_message ?>' );
+		return false;
+	}
+
+	function confirmFolderDeletion()
+	{
+		return confirmDeletionAjax( '<? $aaStrings.cm_flddelete_message ?>' );
+	}
+
+	function confirmContactDeletion()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptydel_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.ul_confirmdel_message ?>' );
+	}
+
+	function confirmListDeletion()
+	{
+		return confirm( '<? $aaStrings.cm_confirmlistdel_message|cat:"\\n\\n"|cat:$aaStrings.cm_dellist_note ?>' );
+	}
+
+	function confirmUserGroupAdding()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyaddtogroup_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserGroupRemoving()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyremove_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.amu_removefromgroup_message ?>' );
+	}
+
+	function confirmUserActivate()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyactivate_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserInactivate()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyinactivate_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserRestore()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyrestore_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmRevokePrivs()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyrevoke_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.ul_revokeprivs_message ?>' );
+
+		return true;
+	}
+
+	function confirmListAdding()
+	{
+		if ( !treeCheckSelection( '<? $aaStrings.cman_emptyaddtolist_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmChageStatus()
+	{
+		if ( !treeCheckSelection( '<? $aaStrings.cman_emptychangestatus_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function submitFolder( obj )
+	{
+		selected = obj.selectedIndex;
+		if ( obj.options[selected].value == -1 ) {
+			return false;
+		}
+
+		obj.form.submit();
+	}
+
+	<? if $popupStr != "" ?>
+		alert( '<? $popupStr ?>' );
+	<? /if ?>
+
+//-->
+</script>
+<style type="text/css">
+<!--
+	.userContact a {
+		color: #0000FF!important;
+	}
+-->
+</style>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="updateAll(); initTreeDocumentView(); findCurrentFolder()" class=noOverflow>
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="edited" value="1">
+	<input type="hidden" name="curFolderID" value="<? $curFolderID ?>">
+	<input type="hidden" name="currentPage" value="<? $currentPage ?>">
+	<input type="hidden" name="viewMode" value="<? $viewMode ?>">
+	<input type="hidden" name="currentObjectType" value="<? $currentObjectType ?>">
+	<input type="hidden" name="curFolderRights" value="<? $curFolderRights ?>">
+
+	<? assign var=toolbar value="../../../AA/html/classic/userlist_toolbar.htm" ?>
+	<? assign var=headerHeight value=92 ?>
+
+	<? if !$fatalError ?>
+		<? if !$noAccessGranted ?>
+
+			<? assign var=leftPanel value="../../../AA/html/classic/aa_composite_panel.htm"  ?>
+
+			<? assign var=leftPanelLinkTitle value=$kernelStrings.app_treeavailfolders_name ?>
+			<? assign var=hideBottomPanel value=true ?>
+			<? assign var=leftPanelWidth value="30%" ?>
+			<? assign var=rightPanelWidth value="70%" ?>
+			<? assign var=closeFoldersLink value=$hideGroupsLink ?>
+			<? assign var=numDocumentsLabel value=$kernelStrings.ul_usercount_title ?>
+
+			<? if $hideLeftPanel && $searchString == "" ?>
+				<? assign var=topPanelFile value="../../../AA/html/classic/objectselector.htm" ?>
+				<? assign var=foldersImage value="javascript:processTextButton('showFoldersBtn', 'form')" ?>
+			<? /if ?>
+
+			<? assign var=groupContent value=$contacts ?>
+
+			<? if !$statisticsMode ?>
+				<? assign var=rightTopPanel value="../../../AA/html/classic/userlist_content.htm" ?>
+			<? else ?>
+				<? assign var=rightTopPanel value="../../../AA/html/classic/userlist_statistics.htm" ?>
+
+				<? assign var=hideBottomPanel value=1 ?>
+				<? assign var=hidePages value=1 ?>
+				<? assign var=docsColumnName value=$aaStrings.cm_summarydoc_title ?>
+			<? /if ?>
+
+			<? if $searchString != "" ?>
+				<? assign var=rightTopPanel value="../../../AA/html/classic/userlist_content.htm" ?>
+				<? assign var=hideBottomPanel value=1 ?>
+				<? assign var=hidePages value=0 ?>
+				<? assign var=rightPanelHeader value=$aaStrings.cm_searchresult_title ?>
+			<? /if ?>
+
+			<? assign var=leftPanelHeader value=$aaStrings.cman_groups_title ?>
+			<? assign var=showFolderID value=1 ?>
+
+			<? include file="../../../common/html/classic/tree_templates/folder_document_resizable_view.htm"?>
+		<? /if ?>
+	<? else ?>
+		<? include file="../../../common/html/classic/header.htm" ?>
+		<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+		<?include file="../../../common/html/classic/pagefooter.htm" ?>
+	<? /if ?>
+
+</form>
+<? /strip ?>
+</body>
+</html>

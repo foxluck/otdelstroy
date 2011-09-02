@@ -1,0 +1,69 @@
+<? wbs_formCaption text=$folderName ?>
+
+<? if !$noSelfRightsLabel ?>
+	<? wbs_note smallFont=false displayNoteMarker=false ?>
+		<? $kernelStrings.app_treeselfaccessrights_label|cat:": " ?>
+		<? assign var=rightShort value=$tree_access_mode_names.$thisUserRights ?>
+		<? $kernelStrings.$rightShort ?> - 
+		<? assign var=longKeyindex value=$tree_access_mode_long_names.$thisUserRights ?>
+		<? $kernelStrings.$longKeyindex|cat:"." ?>
+	<? /wbs_note ?>
+<? /if ?>
+
+<? if !$folderIsShared ?>
+	<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.app_treefoldernotshared_text|cat:"." ?><? /wbs_note ?>
+<? else ?>
+	<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.app_treefoldershared_text|cat:"." ?><? /wbs_note ?>
+<? /if ?>
+
+<!-- Users table -->
+<? if $folderUsers ?>
+	<? wbs_note smallFont=false displayNoteMarker=false ?><strong><? $kernelStrings.app_treeusers_title ?></strong><? /wbs_note ?>
+
+	<table class="SimpleList" width="500">
+		<thead>
+			<tr>
+				<th><? $kernelStrings.app_treename_title ?></th>
+				<th width=80 align="left"><? $kernelStrings.app_treeuserid_title ?></th>
+				<th width=80 class="AlignCenter"><? $kernelStrings.app_treerights_title ?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<? foreach from=$folderUsers item=userData key=U_ID name=userLoop ?>
+				<? assign var=rights value=$userData.RIGHTS ?>
+				<tr class="<? wbs_oddItem index=$smarty.foreach.userLoop.iteration invert=true ?>">
+					<td><? $userData.USER_NAME|htmlsafe:true:true ?></td>
+					<td><? $U_ID ?></td>
+					<td class="AlignCenter"><? assign var=rightShort value=$tree_access_mode_names.$rights ?><? $kernelStrings.$rightShort ?></td>
+				</tr>
+			<? /foreach ?>
+		</tbody>
+	</table>
+<? /if ?>
+
+<!-- Groups table -->
+<? if $folderGroups ?>
+	<? wbs_note smallFont=false displayNoteMarker=false ?><strong><? $kernelStrings.app_treegroups_title ?></strong><? /wbs_note ?>
+
+	<table class="SimpleList" width="500">
+		<thead>
+			<tr>
+				<th><? $kernelStrings.app_treegroupname_label ?></th>
+				<th width=80 class="AlignCenter"><? $kernelStrings.app_treerights_title ?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<? foreach from=$folderGroups item=groupData key=UG_ID name=groupLoop ?>
+				<? assign var=rights value=$groupData.RIGHTS ?>
+				<tr class="<? wbs_oddItem index=$smarty.foreach.groupLoop.iteration invert=true ?>">
+					<td><? $groupData.GROUP_NAME|htmlsafe:true:true ?></td>
+					<td class="AlignCenter"><? assign var=rightShort value=$tree_access_mode_names.$rights ?><? $kernelStrings.$rightShort ?></td>
+				</tr>
+			<? /foreach ?>
+		</tbody>
+	</table>
+<? /if ?>
+
+<? wbs_note ?><? $kernelStrings.app_treerightslegend_text|nl2br ?><? /wbs_note ?>

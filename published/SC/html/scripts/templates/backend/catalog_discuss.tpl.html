@@ -1,0 +1,72 @@
+{* discussions *}
+
+{if $answer}
+<h1 class="breadcrumbs"><a href='{"answer="|set_query_html}'>{lbl_pgn_product_reviews}</a>
+&raquo;
+{"prdreview_reply"|translate}: {$discussion.product_name|escape:'html'}</h1>
+
+<h2 class="post_title">{$discussion.Topic|escape:"html"|linewrap} / {$discussion.Author|escape:"html"|linewrap}</h2>
+<div class="post_date">{$discussion.add_time|escape:"html"}</div>
+<div class="post_content">{$discussion.Body|escape:"html"|linewrap}</div>
+
+<h2>Reply</h2>
+
+<form action='{""|set_query_html}' method="post" class="marginblock">
+
+<p>
+	{"str_your_name"|translate}:
+	<br />
+	<input type="text" name='newAuthor' style="width: 250px;" />
+</p>
+<p>
+	{"str_subject"|translate}:
+	<br />
+	<input type="text" name='newTopic' value='Re: {$discussion.Topic|escape:"html"}' style="width: 250px;" />
+</p>
+<p>
+	{"prddiscussion_body"|translate}:
+	<br />
+	<textarea name='newBody' rows="7"  style="width: 400px;"></textarea>
+</p>
+
+<p>
+	<input type=submit value='OK' name='add'>
+	<input type=reset value='{"btn_clear"|translate}'>
+</p>
+
+</form>	
+
+{else}
+
+<h1>{lbl_pgn_product_reviews}{if $rss_link}&nbsp;<a href="{$smarty.const.URL_ROOT}/{$rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0" style="padding-left:10px;"></a>{/if}</h1>
+
+{if $GridRows}
+<table class="grid" width="100%">
+<tr class="gridsheader">
+	{include file="backend/gridheader.tpl.html"}
+</tr>
+
+{foreach from=$GridRows item=_row}
+{assign var="_answer_url" value="&answer=`$_row.DID`"|set_query_html}
+<tr class="{cycle values='gridline,gridline1'}">
+	<td nowrap="nowrap"><a href='{$_answer_url}'>{$_row.add_time}</a></td>
+	<td><a href='{$_answer_url}'>{$_row.product_name|escape:'html'|truncate:20}</a></td>
+	<td><a href='{$_answer_url}'>{$_row.Author|escape:'html'|truncate:20}</a></td>
+	<td><a href='{$_answer_url}'>{$_row.Topic|escape:'html'|truncate:30:'...':true}</a></td>
+	<td><a href='{$_answer_url}'>{$_row.Body|escape:'html'|truncate:50:'...':true}</a></td>
+	<td align="center">
+		<a href='{"delete=`$_row.DID`"|set_query_html}' title='{"cnfrm_delete"|translate}' class="confirm_action">
+			<img src="images_common/remove.gif" alt="{"btn_delete"|translate}" />
+		</a>
+	</td>
+</tr>
+{/foreach}
+
+<tr class="gridsfooter"> 
+	<td colspan="{$GridHeadersNum}">{include file="backend/lister.tpl.html"}</td>
+</tr>
+</table>
+{else}
+	{"str_empty_list"|translate}
+{/if}
+{/if}

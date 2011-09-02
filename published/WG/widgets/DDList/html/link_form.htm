@@ -1,0 +1,6 @@
+<select onChange='changeWidgetParams("<? $widgetIdEnc ?>", {"fields[VIEW_MODE]": this.value}, true)'>
+	<option <? if $itemData.params.VIEW_MODE == 0 ?>selected <? /if ?> value='0'><? $ddStrings.dd_screen_grid_menu ?>
+	<option <? if $itemData.params.VIEW_MODE == 1 ?>selected <? /if ?> value='1'><? $ddStrings.dd_screen_list_menu ?>
+	<option <? if $itemData.params.VIEW_MODE == 2 ?>selected <? /if ?> value='2'><? $ddStrings.dd_screen_thumbnaillist_menu ?>
+	<option <? if $itemData.params.VIEW_MODE == 3 ?>selected <? /if ?> value='3'><? $ddStrings.dd_screen_thumbnailtile_menu ?>
+</select>

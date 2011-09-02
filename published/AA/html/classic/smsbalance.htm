@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+
+<script language="javascript">
+function fillAll( )
+{
+
+		fill = document.getElementById( "fillcredit" );
+
+		value = fill.value;
+
+		thisForm = document.forms[0];
+
+		for ( i = 0; i < thisForm.elements.length; i++ )
+			if (thisForm.elements[i].type == 'text')
+				thisForm.elements[i].value = value;
+
+		return false;
+}
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<? include file="../../../common/html/classic/header.htm" ?>
+<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+<? if !$fatalError ?>
+
+<? if !$smsDisabled ?>
+
+	<? if $usersCount == 1?>
+
+		<? foreach from=$usersBalance item=balance name=balanceLoop ?>
+
+		<table border=0 width=98%>
+		<tr>
+			<td colspan=2>
+
+			<h1><? $balance.C_FIRSTNAME ?> <? $balance.C_LASTNAME ?> (<? $balance.U_ID ?>)</h1>
+			<br>
+
+			Amount: <input type=text name="credit[<? $balance.U_ID ?>]" id="credit[<? $balance.U_ID ?>]" value="<? $balance.VALUE ?>" class="control" style="width : 70px;">
+
+		</tr>
+		</table>
+		<br>
+		<b><? $kernelStrings.app_note_text ?>: </b><? $kernelStrings.sms_blnk_note_text ?><br>
+		<? /foreach ?>
+
+	<? else ?>
+		<table border=0 width=98%>
+		<tr>
+			<td colspan=2>
+
+			<? if $userID!='$userID'?>
+				<? $userID ?>
+			<? /if ?>
+
+			<? $kernelStrings.sms_fill_amount_text ?><br>
+			<b><? $kernelStrings.app_note_text ?>: </b><? $kernelStrings.sms_blnk_note_text ?><br><br>
+
+			<table border="0" cellspacing="2" cellpadding="0" width=550>
+			<tr>
+				<td width=40%>&nbsp;</td>
+				<td width=20%>Amount: <input type=text name="fillcredit" id="fillcredit" class="control" value="" style="width : 70px;">
+				</td>
+				<td  width=10%>
+					<? include file="../../../common/html/classic/button.htm" align="left" link="#" caption=$kernelStrings.sms_fill_btn formname="form" onClick="return fillAll( );" ?>
+				</td>
+			</tr>
+			</table>
+			<br>
+			<table border="0" cellspacing="2" cellpadding="0" class="list" width=550>
+			<tr>
+				<th align="left" width=10%><? $kernelStrings.sms_userid_title ?></th>
+				<th align="left" width=30%><? $kernelStrings.sms_username_title ?></th>
+				<th align="left" width=15%><? $kernelStrings.sms_available_title ?></th>
+			</tr>
+			<? foreach from=$usersBalance item=balance name=balanceLoop?>
+				<tr <? if ($smarty.foreach.balanceLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if ?>>
+					<td><? $balance.U_ID ?></td>
+					<td><? $balance.C_FIRSTNAME ?> <? $balance.C_LASTNAME ?></td>
+					<td><input type=text name="credit[<? $balance.U_ID ?>]" id="credit[<? $balance.U_ID ?>]" value="<? $balance.VALUE ?>" class="control" style="width : 70px;"></td>
+				</tr>
+			<? /foreach ?>
+
+			</table>
+
+			</td>
+		</tr>
+		</table>
+		<br>
+	<? /if ?>
+		<br><br>
+		<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_save_btn formname="form"?>
+		<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" space_left=5 ?>
+<? else ?>
+			<? $kernelStrings.sms_screen_sms_disabled ?>
+<? /if ?>
+<? else ?>
+<? /if ?>
+
+
+
+<input name="USERS_ID" type="hidden" id="USERS_ID" value="<? $USERS_ID ?>">
+<input name="edited" type="hidden" id="edited" value="1">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

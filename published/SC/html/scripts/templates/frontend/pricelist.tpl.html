@@ -1,0 +1,80 @@
+{* show pricelist *}
+{literal}
+<style type="text/css">
+	td.sc-price-level0 {padding-left: 0px}
+	td.sc-price-level1 {padding-left: 15px}
+	td.sc-price-level2 {padding-left: 30px}
+	td.sc-price-level3 {padding-left: 45px}
+	td.sc-price-level4 {padding-left: 60px}
+	td.sc-price-level5 {padding-left: 75px}
+	td.sc-price-level6 {padding-left: 90px}
+	td.sc-price-level7 {padding-left: 105px}
+	td.sc-price-level8 {padding-left: 120px}
+	td.sc-price-level9 {padding-left: 135px}
+	td.sc-price-code {padding-left:3px;text-align:left}
+	td.sc-price-count {padding-left:20px;text-align:center}
+	td.sc-price-price {padding-left:20px;text-align:right}
+</style>
+{/literal}
+<center>
+	<h1>{"pgn_pricelist"|translate} {$smarty.const.CONF_SHOP_NAME|escape:'html'}</h1>
+
+	{if !$printable_version && $PAGE_VIEW ne 'mobile'}
+
+		<table border=0>
+			  <tr><td style="width: 1%;"><a rel="nofollow" href="javascript:open_printable_version('{"view=printable"|set_query_html}');"><img src="{$smarty.const.URL_IMAGES}/printer-icon.gif" alt='{"btn_printable_version"|translate}'></a></td>
+			  <td><a rel="nofollow" href="javascript:open_printable_version('{"view=printable"|set_query_html}');">{"btn_printable_version"|translate}</a></td>
+			  </tr>
+		 </table>
+
+		{if $string_product_sort}
+			<p>{$string_product_sort}</p>
+			<br>
+			<br>
+		{/if}
+
+	{/if}
+	<table border=0 cellspacing=0 cellpadding=3 style="width: 100%;">
+
+		{foreach name=i from=$pricelist_elements item=element}
+		{strip}
+		{if $element.data.is_category}
+			<tr class="background1">
+				{if $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+				<td>&nbsp;</td>
+				{/if}
+				<td colspan="3" class="sc-price-level{$element.level}">
+					{if !$printable_version}
+						<a href="{"?categoryID=`$element.data.id`&category_slug=`$element.data.slug`"|set_query_html}">{$element.data.name|escape:'html'}</a>
+					{else}
+						<b>{$element.data.name|escape:'html'}</b>
+					{/if}
+				</td>
+				
+			</tr>
+		{else}
+			<tr>
+				{if $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+				<td class="sc-price-code" style="font-style: italic; white-space: nowrap">{$element.data.product_code}</td>
+				{/if}
+				<td width=100% class="sc-price-level{$element.level}">
+					{if !$printable_version}
+						<a href="{"?ukey=product&productID=`$element.data.id`&product_slug=`$element.data.slug`"|set_query_html}">{$element.data.name|escape:'html'}</a>
+					{else}
+						<b>{$element.data.name|escape:'html'}</b>
+					{/if}						
+				</td>
+				<td class="sc-price-count" style="white-space: nowrap;">
+				{if $smarty.const.CONF_CHECKSTOCK}
+					{if $element.data.in_stock>0}{"str_in_stock"|translate}{else}{"prd_out_of_stock"|translate}{/if}
+				{else}
+					&nbsp;
+				{/if}
+				</td>
+				<td class="sc-price-price" style="font-weight: bold; white-space: nowrap">{$element.data.price}</td>
+			</tr>
+		{/if}
+		{/strip}
+		{/foreach}		
+	</table>
+</center>

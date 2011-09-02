@@ -1,0 +1,171 @@
+<!-- localization.html -->
+<script language="JavaScript" type="text/javascript">
+<!--
+
+	var modified = false;
+	var modifiedBeforeUndo = false;
+
+	function checkUnload()
+	{
+		if ( this.modified )
+			return "You have unsaved changes. Do you really want to leave this page?";
+	}
+
+	function setModify()
+	{
+		this.modified = true;
+	}
+
+	function dropModify()
+	{
+		this.modified = false;
+	}
+
+	function undoChanges()
+	{
+		if ( this.modified && !confirm( "Do you really want to undo changes?" ) )
+			return false;
+
+		this.modified = false;
+
+		return true;
+	}
+
+	window.onbeforeunload = function(e) {
+
+		if (!e)
+			e = event;
+
+		return checkUnload();
+	}
+//-->
+</script>
+<!-- here -->
+
+<? strip ?>
+
+	<? if !$fatalError ?>
+<h2 class="page-title"><a href="<?$smarty.const.PAGE_DB_LANGUAGES?>"><? $waStrings.lll_page_title ?></a> &raquo; <?if $cur_lang.NAME?><?$cur_lang.NAME?><?else?><? $waStrings.lllm_page_title ?><?/if?></h2><br>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="select_form">
+<table border="0" cellpadding="1" cellspacing="0" width=100%>
+<tr>
+						<td width=20%><? $waStrings.lllm_app ?>:&nbsp;</td>
+						<td width=80%>
+							<select name="app_id" class="control" onChange="return this.form.submit()">
+								<? html_options values=$app_ids selected=$app_id output=$app_names ?>
+								<input type=hidden name="prev_app_id" value=<? $app_id ?>>
+								<input type=hidden name="prev_type_id" value=<? $type_id ?>>
+								<input type=hidden name="lang_id" value=<? $lang_id ?>>
+							</select>
+						</td>
+					</tr>
+</table>
+</form>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+				<table border="0" cellpadding="1" cellspacing="0" width=100%>
+				<? if $lang_id != "eng" ?>
+					<tr>
+					<td colspan=2>
+						<br>
+						<input type=submit name="applybtn" value="<? $waStrings.lllm_btn_apply ?>" onClick="dropModify()">						<br><br><br>
+						<input name="app_id" type="hidden" value="<?$app_id?>">
+					</td>
+					</tr><? /if ?>
+				<? if $lang_id == "eng" ?>
+					<tr>
+						<td colspan=2>
+								<br>
+								<b><? $waStrings.lbl_form_note ?>:</b> <? $waStrings.lllm_note1 ?>
+						</td>
+					</tr>
+				<? /if ?>
+				</table>
+
+				<? if $errorStr ?>
+				<br>
+				<table width="100%" border="0" cellpadding="1" cellspacing="1">
+				<tr><td><font color='red'><b><? $waStrings.lllm_error ?>: </b> <? $errorStr ?> </font></td></tr>
+				</table>
+				<? /if ?>
+
+				<? if $curLocalization.$app_id.ERR || $curLocalization.$app_id.LOC_ERR ?>
+					<table border="0" cellspacing="1" cellpadding="1" width=98%>
+					<tr>
+							<td colspan=3><br><font color='red'><b><? $waStrings.lllm_error ?>: <? $waStrings.lllm_missstr ?></b></font></td>
+					</tr>
+					<? if $curLocalization.$app_id.ERR ?>
+						<tr>
+								<td width=2% >&nbsp;&nbsp;</td>
+								<td width=1%>&nbsp;&nbsp;</td>
+								<td width=97%>
+									<? if $curLocalization.$app_id.ERR == "MissingAll" ?><? $waStrings.lllm_missing_all ?>(<? if $cur_lang.NAME ?> <? $cur_lang.NAME ?> <? else ?> "<? $lang_id ?>" <? /if ?> ) <? $waStrings.lllm_not_found ?><? /if ?>
+									<? if $curLocalization.$app_id.ERR == "MissingEng" ?> <? $waStrings.lllm_missing_def ?>
+<? /if ?>
+									<? if $curLocalization.$app_id.ERR == "MissingLoc" ?><? $waStrings.lllm_missing_curr ?>
+(<? if $cur_lang.NAME ?> <? $cur_lang.NAME ?> <? else ?> "<? $lang_id ?>" <? /if ?> )<? $waStrings.lllm_not_found ?>
+<? $waStrings.lllm_note2 ?><? /if ?>
+								</td>
+						</tr>
+					<? /if ?>
+					<? if $curLocalization.$app_id.LOC_ERR ?>
+						<tr>
+								<td width=2%  bgcolor=red>&nbsp;&nbsp;</td>
+								<td width=1%>&nbsp;&nbsp;</td>
+								<td width=97%><? $waStrings.lllm_note3 ?></td>
+						</tr>
+					<? /if ?>
+					</table>
+				<? /if ?>
+				<br>
+				<table border="0" cellspacing="1" cellpadding="0" width=98%>
+				<? foreach from=$curLocalization.$app_id.DATA item=locGroup key=locGroupKey name=stringLoop1?>
+				<tr class="formSection">
+						<td>&nbsp; <b><? $locGroupKey ?></b></td>
+				</tr>
+				<tr>
+				<td align=right>
+				<table class="list" width=100%>
+				<tr class="formSubSection">
+					<td></td>
+					<td><b><? $waStrings.lllm_id ?></b></td>
+					<td><b><? $waStrings.lllm_description ?></b></td>
+					<td><b><? $waStrings.lllm_value ?></b></td>
+				</tr>
+					<? assign var=issueIndex value=0 ?>
+					<? foreach from=$locGroup item=stringData key=stringKey name=stringLoop?>
+							<tr  class="list-item <?cycle values="background1,background2"?>">
+								<td width=2% <? if $stringData.ERR == 'MissingLoc' ?>  bgcolor=red <? /if ?> >&nbsp;&nbsp;</td>
+								<td valign=middle width=15% style="padding-left: 4px;">
+										<small><? $stringData[0]|htmlsafe:true:true ?></small>
+										<input name="userIds[<?$stringData[0]?>]" class=control type=hidden value="<?$stringData[0]?>">
+										<input name="userGroups[<?$stringData[0]?>]" class=control type=hidden value="<?$locGroupKey?>">
+								</td>
+								<td valign=middle style="padding-left: 4px;">
+										<small><? $stringData[2]|htmlsafe:true:true ?></small>
+										<input name="userDescr[<?$stringData[0]?>]" class=control type=hidden value="<?$stringData.encoded?>" >
+								</td>
+								<td  width=400><input onChange="setModify()" name="userStrings[<?$stringData[0]?>]" class=control style="width: 400px;" type=text value="<? $stringData[3]|htmlsafe:true:false ?>" <? if $lang_id == "eng" ?> readonly <? /if ?> ></td>
+							</tr>
+							<? math equation="x+1" x=$issueIndex assign=issueIndex ?>
+					<? /foreach ?>
+					</table>
+				</tr>
+				<tr>
+						<td><br>&nbsp;
+				</tr>
+				<? /foreach ?>
+				</table>
+
+				<br><br>
+
+				<input type=hidden name="edited" value=1>
+				<input type=hidden name="prev_app_id" value=<? $app_id ?>>
+				<input type=hidden name="prev_type_id" value=<? $type_id ?>>
+				<input type=hidden name="lang_id" value=<? $lang_id ?>>
+
+						<? if $lang_id != "eng" ?><input type=submit name="applybtn" value="<? $waStrings.lllm_btn_apply ?>" onClick="dropModify()"> <? /if ?>
+			
+</form>
+<? /if ?>
+<? /strip ?>
+<!-- localization.html -->

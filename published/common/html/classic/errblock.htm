@@ -1,0 +1,21 @@
+<?if $errorStr != "" ?>
+<table width="500" border="0" cellspacing="0" cellpadding="0" <? if $margins ?>style="margin-left: <?$margins|cat:"px"?>; margin-top: <?$margins|cat:"px"?>"<?/if?> id='errorMessage'>
+  <tr>
+    <td class="errorMessage">
+		<p class="errorMessageHeader">
+			<strong>
+				<? if !$isWarning ?>
+					<? $kernelStrings.app_error_text ?>
+				<? else ?>
+					<? $kernelStrings.app_warning_text ?>
+				<? /if ?>
+			</strong>
+		</p>
+		<p><? $errorStr ?></p>
+    </td>
+  </tr>
+  <tr>
+    <td class="default">&nbsp;</td>
+  </tr>
+</table>
+<? /if ?>

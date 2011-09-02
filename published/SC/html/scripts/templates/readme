@@ -1,0 +1,9 @@
+templates/
+
+This folder contains Shop-Script template files.
+
+backend/	- administrative department templates
+emails/		- email messages templates
+
+frontend/	- frontend templates
+This folder contains subfolders tmpl1, tmpl2, tmpl3, etc. - each of these folders is a separate template.

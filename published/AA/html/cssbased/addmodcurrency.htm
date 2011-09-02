@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<script type="text/javascript">
+			function ConfirmDeletion()
+			{
+				return confirm("<? $kernelStrings.amc_delete_message ?>");
+			}
+		</script>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'currencyData' )">
+		<? wbs_pageLayout toolbar="addmodcurrency_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+
+					<? wbs_formContent ?>
+							<tr>
+								<td><? wbs_label for="CUR_ID" fieldName="CUR_ID" text=$kernelStrings.cl_id_title ?></td>
+								<td>
+									<? if $action == "new" ?>
+										<input name="currencyData[CUR_ID]" type="text" id="CUR_ID" class="FormControl" value="<? $currencyData.CUR_ID?>" size="10" maxlength="3"/>
+									<?else?>
+										<? $currencyData.CUR_ID?>
+										<input type="hidden" name="currencyData[CUR_ID]" value="<? $currencyData.CUR_ID?>"/>
+									<?/if?>
+								</td>
+							</tr>
+							<tr>
+								<td><? wbs_label for="CUR_NAME" fieldName="CUR_NAME" text=$kernelStrings.cl_name_title ?></td>
+								<td>
+									<input name="currencyData[CUR_NAME]" id="CUR_NAME" type="text" class="FormControl" value="<? $currencyData.CUR_NAME?>" size="50" maxlength="50"/>
+								</td>
+							</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+							<? if $action != ACTION_NEW ?>
+								<? wbs_buttonSetButton align="right" caption=$kernelStrings.ci_delete_btn name="deletebtn" onClick="return ConfirmDeletion();"?>
+							<? /if ?>
+						<? /wbs_buttonSet ?>
+
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_formLayout ?>
+
+				<input name="action" type="hidden" value="<? $action ?>"/>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

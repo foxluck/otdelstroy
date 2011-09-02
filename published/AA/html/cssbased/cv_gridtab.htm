@@ -1,0 +1,45 @@
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? $kernelStrings.cv_form_label ?></td>
+	</tr>
+</table>
+
+<? wbs_dualComboBox
+	leftCaption=$kernelStrings.cv_visible_list
+	rightCaption=$kernelStrings.cv_hidden_list
+
+	leftVariableName="shownFieldsIDs"
+	rightVariableName="hiddenFieldsIDs"
+
+	leftValues=$shownFieldsIDs
+	rightValues=$hiddenFieldsIDs
+
+	leftNames=$shownFieldsNames
+	rightNames=$hiddenFieldsNames
+
+	showUpDown=true
+	separated=true
+
+	rows=8
+	width=250
+?>
+
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? $kernelStrings.cv_imagefieldsopt_label|cat:":" ?></td>
+	</tr>
+	<tr>
+		<td>
+			<table class="FormLayout" style="margin-left: 20px">
+				<tr>
+					<td><input id="thumbs" type=radio name="imgFieldsViewMode" value=thumbnails <? wbs_checkboxStatus val=$imgFieldsViewMode true_val=thumbnails ?>/></td>
+					<td><? wbs_label for="thumbs" text=$kernelStrings.cv_thumbnails_label skipColon=1 ?></td>
+				</tr>
+				<tr>
+					<td><input id="links" type=radio name="imgFieldsViewMode" value=links <? wbs_checkboxStatus val=$imgFieldsViewMode true_val=links ?>/></td>
+					<td><? wbs_label for="links" text=$kernelStrings.cv_textlinks_label skipColon=1 ?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

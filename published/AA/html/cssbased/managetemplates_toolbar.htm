@@ -1,0 +1,9 @@
+<? wbs_toolbarItem?>
+	<? if $opener == "../../../CM/html/scripts/importcontacts.php" ?>
+		<? wbs_buttonSetButton caption=$kernelStrings.app_back_label|cat:" "|cat:$cmStrings.icl_page_title  name="cancelbtn" ?>
+	<? elseif $opener == PAGE_IMPORTUSERS ?>
+		<? wbs_buttonSetButton caption=$kernelStrings.app_back_label|cat:" "|cat:$kernelStrings.iul_page_title name="cancelbtn" ?>
+	<? else ?>
+		<? wbs_buttonSetButton caption=$kernelStrings.app_back_label|cat:" "|cat:$kernelStrings.app_name_short name="cancelbtn" ?>
+	<? /if ?>
+<? /wbs_toolbarItem ?>

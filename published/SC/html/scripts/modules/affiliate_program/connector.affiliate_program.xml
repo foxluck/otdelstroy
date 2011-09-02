@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>AffiliateProgram</Name>
+		<File>class.affiliate_program.php</File>
+		<Title>Партнерская программа</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

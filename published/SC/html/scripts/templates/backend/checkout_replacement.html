@@ -1,0 +1,57 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+<p>{lbl_chckrpl_page_description}</p>
+
+{$MessageBlock}
+
+{foreach from=$modules item=_module}
+<div class="chckrpl_module_block">
+	<table>
+	<colgroup>
+            <col width="70%" />
+            <col width="10%" />
+            <col width="20%" />
+    </colgroup>
+	<tr>
+		<td><h2>{$_module.moduleEntry->title}</h2></td>
+		<td id="chckrpl-settings-{$_module.module_id}-state" style="color: {if $_module.enabled}green{else}red{/if};">{if $_module.enabled}{'enabled'|transcape}{else}{'disabled_short'|transcape}{/if}</td>
+		<td align="right"><input class="chckrpl_module_switch" rel="{$_module.module_id}" type="button" value="{if !$_module.enabled}{'btn_enable'|transcape}{else}{'btn_disable'|transcape}{/if}" /></td>
+	</tr>
+	<tr class="chckrpl_module_settings" {if !$_module.enabled}style="display: none;"{/if} id="chckrpl-settings-{$_module.module_id}">
+		<td colspan="2">
+		{if $_module.description}<p>{$_module.description}</p>{/if}
+		<form action="{''|set_query_html}" method="post" enctype="multipart/form-data">
+			<input name="action" value="save_module_settings" type="hidden" />
+			<input name="module_id" value="{$_module.module_id}" type="hidden" />
+		
+			<table cellpadding="5" cellspacing="0">
+			<tbody class="chckrpl_module_settings">
+			{section name=i loop=$_module.settings}
+			<tr> 
+				<td width="250">{$_module.settings[i].settings_title}:
+					<div class="notice">{$_module.settings[i].settings_description}</div>
+				</td>
+				<td>
+					{$_module.controls[i]}
+				</td>
+			</tr>
+			{/section}
+			</tbody>
+			</table>
+			<input value="{'btn_save'|transcape}" type="submit" />
+		</form>
+		</td>
+	</tr>
+	</table>
+</div>
+{/foreach}
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/checkout_replacement.js"></script>
+<script type="text/javascript">
+translate.btn_enable = "{'btn_enable'|transcape}";
+translate.btn_disable = "{'btn_disable'|transcape}";
+translate.state_enabled = "{'enabled'|transcape}";
+translate.state_disabled = "{'disabled_short'|transcape}";
+</script>

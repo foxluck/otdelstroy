@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style type="text/css"> @import url("{$smarty.const.URL_CSS}/admin.css"); </style>
+		<script type="text/javascript">
+{if $smarty.const.CONF_WAROOT_URL}var WAROOT_URL = '{$smarty.const.CONF_WAROOT_URL}';{/if}
+{if $smarty.const.CONF_ON_WEBASYST}var CONF_ON_WEBASYST = '{$smarty.const.CONF_ON_WEBASYST}';{/if}
+		</script>
+		
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/cpt_settings.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/color_picker.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/color_functions.js"></script>
+		<link href="{$smarty.const.URL_CSS}/color_picker.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+		#wnd-content{ldelim}
+		padding:15px;
+		{rdelim}
+		</style>
+	</head>
+	<body>
+	<table id="wnd-content" align="center"><tr><td>
+		<form method="post" action="{''|set_query_html}" enctype="multipart/form-data" style="padding:6px;margin:0px;">
+		<input type="hidden" name="action" value="save_settings" />
+		<input type="hidden" name="cpt_tpl_id" value="{$cpt_tpl_id}" />
+		<input type="hidden" name="theme_id" value="{$theme_id}" />
+		
+		<div id="cpt-tpl-settings">
+		{$cpt_tpl_settings}
+		</div>
+		
+		<p style="padding-bottom;margin-bottom:0px;text-align:center;">
+		<input id="hndl-save-settings" value="{'btn_apply'|translate}" type="button" />
+		</p>
+		
+		</form>
+	</td></tr></table>
+	<script type="text/javascript">
+	adjust_window();
+	</script>
+	</body>
+</html>

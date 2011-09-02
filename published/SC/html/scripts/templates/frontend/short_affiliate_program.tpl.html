@@ -1,0 +1,36 @@
+<tr>
+	<td valign="top">
+		<strong>{lbl_pgn_affiliate_program}</strong>
+		<p class="paddingblock">
+		{if $affiliate_customers}
+			{"affp_referred_customers"|translate}: {$affiliate_customers}
+		{else}
+		{"affp_no_customers_referred"|translate}
+		{/if}
+			<br />
+			{"affp_user_balance"|translate}:
+			{foreach from=$CurrencyISO3 item=_CurrencyISO}
+			{if $CommissionsAmount[$_CurrencyISO.currency_iso_3] or $PaymentsAmount[$_CurrencyISO.currency_iso_3]}
+				{$_CurrencyISO.currency_iso_3}{"`$CommissionsAmount[$_CurrencyISO.currency_iso_3]-$PaymentsAmount[$_CurrencyISO.currency_iso_3]`"|string_format:"%.2f"}
+			{/if}
+			{/foreach}
+		</p>
+	</td>
+	
+	<td valign="top" align="right">
+		{section name=affi loop=$SubDivs}
+		
+			{if $SubDivs[affi].unickey eq 'affiliate_settings'}
+				{if $CONF_AFFILIATE_EMAIL_NEW_COMMISSION or $CONF_AFFILIATE_EMAIL_NEW_PAYMENT}
+				<div>
+					<a href="{"?did=`$SubDivs[affi].id`&ukey=`$SubDivs[affi].ukey`"|set_query_html}">{$SubDivs[affi].name|translate}</a>
+				</div>
+				{/if}
+			{else}
+				<div>
+					<a href="{"?did=`$SubDivs[affi].id`&ukey=`$SubDivs[affi].ukey`"|set_query_html}">{$SubDivs[affi].name|translate}</a>
+				</div>
+			{/if}
+		{/section}		
+	</td>
+</tr>

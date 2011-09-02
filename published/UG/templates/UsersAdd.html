@@ -1,0 +1,93 @@
+<style type="text/css">
+table.table-add-user td {padding: 2px 2px}
+table.table-add-user tr.login td {padding-bottom: 15px; padding-top: 10px; border-top: 1px solid #eee;}
+table.table-add-user tr.field {font-size: 18px;}
+table.table-add-user tr.sep td {line-height: 6px; font-size: 6px}
+table.table-add-user tr.field td input {font-size: 18px}
+table.table-add-user tr.error td {color: red}
+table.table-add-user tr.buttons td {padding-top: 15px}
+table.table-add-user td div.error {font-size: 14px; color: red}
+table.table-add-user tr.field td {white-space:nowrap;}
+</style>
+<form id="form-add-user">
+<table id="table-add-user" class="table-add-user" width="100%">
+	<tr class="sep"><td colspan="2">&nbsp;</td></tr>
+	{{foreach from=$fields item=field}}
+	<tr class="field">
+		<td align="right" width="10%">{{$field.name}}:</td>
+		<td><input name="info[{{$field.id}}]" type="text" /></td>
+	</tr>
+	{{/foreach}}
+	<tr id="field-error" class="error" style="display:none">
+		<td></td>
+		<td>[`At least one of the primary name fields must be filled.`]</td>
+	</tr>
+	<tr class="sep"><td colspan="2">&nbsp;</td></tr>
+	<tr class="login field">
+		<td align="right">[`Login name`]: </td>
+		<td><input id="add-user-login" name="info[U_ID]" class="noself" type="text" /></td>
+	</tr>
+	
+	<tr>
+		<td align="right">[`Password`]: </td>
+		<td><input name="password" class="noself" type="password" autocomplete="off" /></td>
+	</tr>	
+	<tr>
+		<td align="right" style="white-space:nowrap;">[`Confirm password`]: </td>
+		<td><input name="confirm_password" class="noself" type="password" autocomplete="off" /></td>
+	</tr>		
+	<tr class="buttons">
+		<td></td>
+		<td><label><input id="self-creating" style="margin-left: 0" type="checkbox" /> [`Let this user create their own login name.`]</label></td>
+	</tr>	
+	<tr class="buttons">
+		<td></td>
+		<td>
+			<input type="submit" value="[`Save`]" />
+			<input type="button" value="[`Cancel`]" onclick="jQuery('#popup').wbsPopupClose()"/>
+		</td>
+	</tr>
+</table>
+</form>
+<script type="text/javascript">
+jQuery("#self-creating").click(function () {
+	if (jQuery(this).is(":checked")) {
+		jQuery("#table-add-user input.noself").attr('disabled', 'disabled').val("");
+	} else {
+		jQuery("#table-add-user tr.error").hide();
+		jQuery("#table-add-user input.noself").removeAttr('disabled');
+	}
+});
+
+jQuery("#form-add-user").submit(function () {
+	jQuery("#table-add-user tr.error").hide();
+	jQuery("#table-add-user div.error").remove();	
+	if (jQuery("#self-creating").is(":checked") && jQuery("table.table-add-user tr.field input[value!='']").length == 0) {
+		jQuery("#field-error").show();
+		return false;
+	}
+
+	if (!jQuery("#self-creating").is(":checked") && !jQuery("#add-user-login").val()) {
+		jQuery('<div class="error">[`Please fill login name.`]</div>').insertAfter(jQuery("#add-user-login"));
+		return false;
+	} 
+
+	if (jQuery("#form-add-user input[name=password]").val() != jQuery("#form-add-user input[name=confirm_password]").val()) {
+		jQuery('<div class="error">[`The password and confirmation password do not match.`]</div>').insertAfter(jQuery("#form-add-user input[name=confirm_password]"));
+		return false;
+	}
+	
+	jQuery.post("index.php?mod=users&act=add&ajax=1", jQuery(this).serialize(), function (response) {
+		if (response.status == 'OK') {
+			var contact_id = response.data;
+			var url = 'index.php?mod=users&C_ID=' + contact_id + "&tab=settings";
+			document.app.openSubframe(url, 1);
+			jQuery("#popup").wbsPopupClose();
+		} else if (response.status == 'ERR') {
+			jQuery('<div class="error">' + response.error + '</div>').insertAfter(jQuery("#add-user-login"));
+		}
+	}, "json");
+	return false;
+});
+</script>
+

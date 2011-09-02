@@ -1,0 +1,177 @@
+html, body {
+/*height: 100%;*/
+padding: 0px;
+margin: 0px;
+}
+table { empty-cells:show; }
+body.body-checkout { background:#fff!important;}
+.regheader{
+	width:80%;
+	color:black;
+	padding:3px;
+	text-align:left;
+	font-size:10px;
+}
+
+/*checkbox without margin*/
+input.checknomarging{
+	margin: 0px;
+}
+
+input.input_message{
+	color: #aaaaaa;
+}
+input.input_message_focus{
+	color: #000000;
+}
+ul.product_list{
+ list-style-type:none;
+ margin: 0px;
+ padding: 0px;
+ overflow: hidden;
+ width: auto;
+ text-align:center;
+}
+
+ul.product_list li{
+text-align:center;
+margin: 0px;
+padding: 0px;
+float: left;
+}
+
+#powered_by{
+	font-size: 70%;
+	text-align: center;
+	color: #777777;
+	padding-top: 10px;
+	padding-bottom:5px;
+}
+#powered_by a{
+	color: #777777;
+	text-decoration: none;
+}
+
+
+/*  styles for the unit rater     */
+.sm-current-rating1 { /*general.css (line 56)*/ 
+	background:transparent url(../images_common/star0sm.gif) repeat-x  scroll left top; 
+	height:13px; 
+	line-height:13px; 
+	margin:4px; 
+	position:relative; 
+	width:65px; 
+	overflow:hidden; 
+}
+.sm-current-rating1 div.sm-current-rating1-back { /*general.css  (line 63)*/ 
+	background:transparent url(../images_common/star0sm.gif) repeat-x  scroll left top; 
+	height:13px; 
+	line-height:13px; 
+	font-size:0px; 
+	position:absolute; 
+	width:65px; 
+	z-index:10; 
+}
+.sm-current-rating1 div.sm-current-rating1-front {  /*general.css (line 69)*/ 
+	background:transparent url(../images_common/star1sm.gif) repeat-x  scroll left top; 
+	height:13px; 
+	line-height:13px; 
+	font-size:0px; 
+	position:absolute; 
+	z-index:20; 
+}
+
+.current-rating1 {/*general.css (line 75)*/ 
+	background:transparent url(../images_common/star0.gif) repeat-x  scroll left top; 
+	height:20px; 
+	line-height:20px; 
+	position:relative; 
+	width:100px; 
+	overflow:hidden; 
+}
+.current-rating1 div.current-rating1-back { /*general.css (line 81)*/ 
+	background:transparent url(../images_common/star0.gif) repeat-x  scroll left top; 
+	height:20px; 
+	line-height:20px; 
+	position:absolute; 
+	width:100px; 
+	z-index:10; 
+	font-size:0px; 
+}
+
+.current-rating1 div.current-rating1-front { 
+	/*general.css (line 87)*/ 
+	background:transparent url(../images_common/star1.gif) repeat-x  scroll left top; 
+	height:20px; 
+	line-height:20px; 
+	position:absolute; 
+	z-index:20; 
+	font-size:0px; 
+}
+.unit-rating { /* the UL */
+	list-style:none;
+	margin: 0px;
+	padding:0px;
+	height: 20px;
+	position: relative;
+	background: url('../images_common/starvote.gif') top left repeat-x;		
+	}
+
+.unit-rating li{
+    text-indent: -90000px;
+	padding:0px;
+	margin:0px;
+	/*\*/
+	float: left;
+	/* */
+	}
+	
+.unit-rating li a {
+	outline: none;
+	display:block;
+	width:20px;
+	height: 20px;
+	text-decoration: none;
+	text-indent: -9000px;
+	z-index: 20;
+	position: absolute;
+	padding: 0px;
+	}
+	
+.unit-rating li a:hover{
+	background: url('../images_common/star1.gif') left center;
+	z-index: 2;
+	left: 0px;
+	}
+
+.unit-rating a.r1-unit{left: 0px;}
+.unit-rating a.r1-unit:hover{width:20px;}
+.unit-rating a.r2-unit{left:20px;}
+.unit-rating a.r2-unit:hover{width: 40px;}
+.unit-rating a.r3-unit{left: 40px;}
+.unit-rating a.r3-unit:hover{width: 60px;}
+.unit-rating a.r4-unit{left: 60px;}	
+.unit-rating a.r4-unit:hover{width: 80px;}
+.unit-rating a.r5-unit{left: 80px;}
+.unit-rating a.r5-unit:hover{width: 100px;}
+
+.unit-rating li.current-rating {
+	background: url('../images_common/starvote.gif') left bottom;
+	position: absolute;
+	height: 20px;
+	display: block;
+	text-indent: -9000px;
+	z-index: 1;
+	}	
+.review_content {
+	/*width: 90%;*/
+	overflow:hidden;
+	oveflow-x:hidden;
+	padding:0 85px 0 0;
+	zoom:1;
+}
+@media print {
+	input,.noprint {
+		display: none;
+	}
+}

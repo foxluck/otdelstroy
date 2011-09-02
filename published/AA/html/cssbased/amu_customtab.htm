@@ -1,0 +1,19 @@
+<? assign var=controlWidth value=250 ?>
+<? assign var=width value=250 ?>
+<? assign var=group value=$typeDesc.$CUSTOM_ID ?>
+<? assign var=fields value=$group.FIELDS ?>
+
+<? foreach from=$fields item=field ?>
+
+<tr>
+
+	<td class="NoBreak" <? if $field.TYPE == "IMAGE" ?>style="padding-top: 5px; padding-bottom: 5px"<? /if ?> valign=top width=10><nobr>
+		<? wbs_label fieldName=$field.DBFIELD for=$field.DBFIELD text=$field.LONG_NAME ?>
+		<? if $field.MANDATORY ?>
+			 *
+		<? /if ?>
+		&nbsp;
+	</nobr></td>
+	<td <? if $field.TYPE == "IMAGE" ?>style="padding-top: 5px; padding-bottom: 5px"<? /if ?> valign=top <? if $readOnly && $field.TYPE != "IMAGE" ?>class=readonly_control<? /if ?>><? include file="../../../common/html/cssbased/pageelements/customcontrol.htm" fieldData=$field width=$controlWidth name="contactData["|cat:$field.DBFIELD|cat:"]" datasource=$contactData datasourcename="contactData" ?></td>
+</tr>
+<? /foreach ?>

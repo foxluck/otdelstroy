@@ -1,0 +1,18 @@
+<!-- cpt_container_start --><!-- cpt_container_end -->
+<table width="100%" border="0" cellpadding="5">
+{foreach from=$root_categories item=_cat name=_fr}
+	{if $smarty.foreach.index is div by 2}<tr>{/if}
+	{assign var=_cat_url value="?categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}
+	<td width="1%" align="center">
+	{if $_cat.picture ne ""}<a href='{$_cat_url}'><img border="0" src="products_pictures/{$_cat.picture}" alt="{$_cat.name|escape:'html'}" /></a>{/if}
+	</td>
+	<td>
+		<a href='{$_cat_url}' class="cat">{$_cat.name}</a> <b>[{$_cat.products_count}]</b>:<br />
+		{* show sub categories *}
+		{foreach from=$root_categories_subs[$_cat.categoryID] item=_subcat}
+		<a href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}' class="standard">{$_subcat.name}</a>
+		{/foreach}
+	</td>
+	{if ($smarty.foreach.index+1) is div by 2}<tr>{/if}
+{/foreach}
+</table>

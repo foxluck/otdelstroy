@@ -1,0 +1,20 @@
+<div class="x-dlg-bd" style='display:none' id='<? $prefix ?>-dlg-content'>
+  <div id='send-select-tab' style='padding: 10px'>
+		<table width='100%'>
+			<tr valign='top'><td ><? $kernelStrings.shsd_to_label ?>:<BR><textarea rows=2 id='<? $prefix ?>to' style='width: 100%; '></textarea></td></tr>
+			<tr><td style='font-size: 0.8em'>
+				<? $kernelStrings.shsd_mails_note ?>
+				 <? $kernelStrings.shsd_mails_select ?>
+				<a onClick='<? $dialogVar ?>.showHideContacts(); return false;' href='javascript:void(0)' id='my-contacts-link' style='text-decoration: underline'><? $kernelStrings.shsd_mycontacts_title?></a>
+			</td></tr>
+			<tr>
+			<td>
+				<? include file="../../../common/html/cssbased/pageelements/ajax/contacts_selector.htm" prefix=$prefix ?>
+			</td></tr>
+			<tr><td ><? $kernelStrings.shsd_subject_label ?>:<BR><input type='text' id='<? $prefix ?>subject' style='width: 100%'></td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr valign='top'><td ><? $kernelStrings.shsd_message_label ?>:<BR><textarea onFocus='if (this.value == <? $dialogVar ?>.defaultMessage) this.value=""' onBlur='if(this.value=="") this.value=<? $dialogVar ?>.defaultMessage' id='<? $prefix ?>message' rows=5 style='width: 100%'></textarea></td></tr>
+		</table>
+		<? if $sendAdd ?><? $sendAdd ?><? /if ?>
+	</div>
+</div>	

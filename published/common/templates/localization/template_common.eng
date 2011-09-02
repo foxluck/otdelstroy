@@ -1,0 +1,50 @@
+action_save	Save
+action_cancel	Cancel
+action_close	Close
+action_create	Create
+action_search	Find
+
+tab_links	My Links
+tab_widgets	Widgets
+
+lbl_sorting	Sorting
+
+menu_folder	Actions with folder
+action_rename	Rename
+action_copy	Copy
+action_move	Move
+action_delete	Delete
+
+title_copy_folder	Copy folder
+title_move_folder	Move folder
+
+lbl_table_sorting	Sorting
+lbl_table_pages	Pages
+lbl_your_access_rights	Your access rights
+
+rights_no	No rights
+rights_read	Read
+rights_write	Write
+rights_full	Full
+
+lbl_folder	Folder
+lbl_to_folder	To
+lbl_or	Or
+lbl_upgrade_account	Upgrade Account
+
+title_create_widget	Create Widget
+
+message_loading_widget_types	Loading widget types
+message_creating_widget	Creating widget
+lbl_create_widget_for	Create widget "%s" for
+
+lbl_what_are_my_links	What are "My Links"?
+lbl_what_are_widgets	What are "Widgets"?
+
+lbl_desc_root_folder	<root folder>
+
+message_not_selected_folder	Please select folder
+lbl_select_folder	<select folder>
+
+message_confirm_folder_delete	Do you really want to delete this folder?
+lbl_open_in_new_window	Open in new window

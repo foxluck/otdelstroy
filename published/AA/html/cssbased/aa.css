@@ -1,0 +1,63 @@
+#ToolbarIn { display:none;}
+#Toolbar { padding-bottom:0;}
+#SubToolbar { padding:1px 0 3px 10px; //padding:0 0 3px 20px; margin-bottom:0;}
+#Content { zoom:1;}
+#ContentScroller { position:relative;   }
+
+.marginblock{
+	margin-left:20px!important;
+}
+
+p.marginblock{
+	margin-left:26px!important;
+}
+
+table.contactinfo{
+ width:90%;
+}
+
+table.contactinfo td{
+	border: 0px solid #CCC;
+	border-top-width: 1px;
+	padding: 6px;
+
+}
+
+table.contactinfo td.firstcell{
+	width: 25%;
+}
+
+table.contactinfo tr.firstrow td{
+	border-top-width: 0px;
+}
+h2.form_group{
+margin-left:0px!important;
+background-color: #EEE;
+padding:6px;
+}
+.notice{
+	font-size: 80%;
+	color: #666;
+}
+.notice_block, tr.notice_block td{
+	background-color:#FFFFCC;	
+}
+.block_alert{
+	color:red;
+	border: 1px solid red;
+	padding:10px;
+}
+.info_nifty{
+
+background-color: #EEE;
+}
+
+.info_nifty table{
+margin: 6px 10px;
+background-color: #EEE;
+}
+
+.info_nifty div.content_nifty{
+margin: 6px 10px;
+
+}

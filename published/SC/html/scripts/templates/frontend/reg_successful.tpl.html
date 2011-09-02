@@ -1,0 +1,34 @@
+{* regitration successful message *}
+
+{if $reg_terminated} {* account termination message*}
+
+	<center><b>{"usr_successful_account_termination"|translate}</b></center>
+
+{else}
+
+	{if $reg_updating}
+		<br><br><br>
+		<center><b>{"usr_account_update_successful"|translate}</b></center>
+	{else}
+
+		{if $smarty.const.CONF_ENABLE_REGCONFIRMATION}
+		<center><h1>{"usrreg_confirm_acc_activation"|translate}</h1></center>
+		{else}
+		<br><br><br>
+		{/if}
+
+		<center><b>{"usr_msg_registration_successful"|translate}</b></center>
+		<center><a href="{'ukey=office'|set_query_html}">{"lnk_myaccount"|translate}</a></center>		
+		
+		{if $smarty.const.CONF_ENABLE_REGCONFIRMATION}
+			<form method="get" action="{'ukey=act_customer'|set_query_html}" style="text-align:center;">
+				<input type="hidden" name="ukey" value="act_customer" >
+				{"usrreg_confirm_type_code"|translate}  <input type="text" name="act_code" value="{$ActCode}" >
+				<br />
+				<br />
+				<input type="submit" value="{"btn_activate"|translate}" >
+			</form>
+		{/if}
+	{/if}
+
+{/if}

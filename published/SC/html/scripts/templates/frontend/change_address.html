@@ -1,0 +1,78 @@
+{include file="checkout.progress.html"}
+{if $PAGE_VIEW eq 'noframe'}
+	
+	<div class="paddingblock">
+	
+	<h2>{lbl_btn_change_address}</h2>
+{else}
+	<h1>{lbl_btn_change_address}</h1>
+{/if}
+
+{$MessageBlock}
+
+<form method="post" action="{''|set_query_html}" name='address_selection_form'>
+	<input id="action" name="action" value="select_address" type="hidden" >
+
+	<table border="0" cellspacing="1" cellpadding="4">
+	{foreach from=$addresses item=_address}
+	<tr>
+		<td>
+			<input name="addressID" class="address_id_radio" id="address-id-{$_address.addressID}" value="{$_address.addressID}" {if $addressID == $_address.addressID}checked{/if} type="radio" >
+		</td>
+		<td><label for="address-id-{$_address.addressID}">{$_address.strAddress}</label></td>
+	</tr>
+	{/foreach}
+	<tr>
+		<td valign="top">
+			<input id="address-id-0" class="address_id_radio" name="addressID" value="0" {if !$addressID}checked{/if} type="radio" >
+		</td>
+		<td>
+			<label for="address-id-0"><strong>{"checkout_another_address"|translate}:</strong></label>
+			<br />
+			<div id="blck-new-address">
+			{include file="address_form.html" name_space="address" address=$address form_name="address_selection_form" ukey="address_editor"}
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" value='{"btn_select"|translate}' ></td>
+	</tr>
+	</table>
+</form>
+{"usrreg_required_regform_fields_descr"|translate}
+
+{if $PAGE_VIEW eq 'noframe'}
+	</div>
+{/if}
+
+{if $PAGE_VIEW ne 'mobile'}
+<script type="text/javascript">
+{literal}
+function blockAddressForm(e){
+	if(!e || e.className != 'address_id_radio')e = this;
+	var elems = getElementsByClass('address_elem', getLayer('blck-new-address'));
+	for(var i=0,i_max=elems.length; i<i_max; i++){
+		elems[i].disabled = e.value != 0; 
+	}
+}
+	/*'.country_box': function(e){
+		e.onchange = function(){
+			
+			var objForm = getFormByElem(this);
+			getLayer('action').value = 'change_country';
+			objForm.submit();
+		}
+	},*/
+var hndls = {
+
+	'.address_id_radio': function(e){
+		e.onclick = blockAddressForm;
+	}
+};
+Behaviour.register(hndls);
+{/literal}
+
+if(getLayer('address-id-{$addressID}'))blockAddressForm(getLayer('address-id-{$addressID}'));;
+</script>
+{/if}

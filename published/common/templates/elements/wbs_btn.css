@@ -1,0 +1,12 @@
+.wbs-btn, .wbs-menu-btn {float: left; height: 23px; margin: 5px; cursor: pointer}
+.wbs-btn-adv {float: left; background-image: URL("img/btn-left.gif"); background-repeat: no-repeat; background-position: left top; width: 4px; height: 23px}
+.wbs-btn-content {float: left; background-image: URL("img/btn-right.gif"); background-repeat: no-repeat; background-position: right top; height: 23px; padding-left: 5px; padding-right: 5px}
+.wbs-btn-content {line-height:23px; white-space:nowrap; font-size:12px; font-family:'Trebuchet MS'; color:#465e75; padding:0 5px;}
+.wbs-menu-btn .wbs-btn-adv {width: 23px}
+.wbs-menu-btn .wbs-btn-adv {background-image: URL("img/menu-arr.gif"); float: left; background-position: center left}
+.wbs-menu-btn .wbs-btn-content {background-image: none; font-size: 10pt; color: blue; padding-top: 0px; }
+.wbs-btn-disabled .wbs-btn-content {color: #999999}
+
+/* grey butten*/
+.wbs-btn-adv-grey {float: left;  background-image: URL("img/btn-left-grey.gif"); background-repeat: no-repeat; background-position: left top; width: 3px; height: 21px}
+.wbs-btn-content-grey {float: left;font-size:12px; font-weight:bold; color:#fff; line-height:19px; background-image: URL("img/btn-right-grey.gif"); background-repeat: no-repeat; background-position: right top; height: 21px; padding-left: 5px; padding-right: 5px}

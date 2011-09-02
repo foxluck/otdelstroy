@@ -1,0 +1,325 @@
+{* taxes managment *}
+
+{if !$define_zone_rates && !$define_rate}
+
+	<h1>{"tax_types"|translate}</h1>
+	
+	<p>{lbl_tax_page_description}</p>
+	
+	{$MessageBlock}
+	
+	<form action='{""|set_query_html}' method="post">
+	<input name="action" value="save_classes" type="hidden" />
+	
+	<table class="grid">
+	<tr class="gridsheader"> 
+		<td>{"tax_name"|translate}</td>
+		<td>{"tax_sales_tax_is_based_on_address"|translate}</td>
+		<td>{"tax_rate"|translate}</td>
+		<td>{'btn_delete'|transcape}</td>
+	</tr>
+
+	{foreach from=$classes item=_row}
+	<tr class="{cycle values='gridline,gridline1'}"> 
+		<td>
+			<input	name='class_name_{$_row.classID}' type="text" value="{$_row.name|escape:'html'}" style="width:250px;" /> 
+		</td>
+		<td align="center">
+			<select name='tax_based_on_address_{$_row.classID}'>
+					<option value='0' {if $_row.address_type == 0}selected{/if}>{"ordr_shipping_address"|translate}</option>
+					<option value='1' {if $_row.address_type == 1}selected{/if}>{"ordr_billing_address"|translate}</option>
+			</select>
+		</td>
+		<td>
+			<a href='{"define_rate=`$_row.classID`"|set_query_html}' class="normal">{"pgn_taxes_define_rates"|translate}</a>
+		</td>
+		<td align="center" valign="middle">
+			<a href='{"action=delete_class&classID=`$_row.classID`"|set_query_html}' class="confirm_action" title='{"cnfrm_delete"|translate}'>
+			<img alt='{lbl_btn_delete}' src="images_common/remove.gif" />
+			</a>
+		</td>
+	</tr>
+	{foreachelse}
+	<tr>
+		<td colspan="4" align="center">&lt; {"str_answer_no"|translate} &gt;</td>
+	</tr>
+	{/foreach}
+
+	<tr class="gridsheader_simple">
+		<td colspan="4">{"btn_add"|translate}</td>
+	</tr>
+	<tr class="gridsheader"> 
+		<td>{"tax_name"|translate}</td>
+		<td>{"tax_sales_tax_is_based_on_address"|translate}</td>
+		<td>{"tax_rate"|translate}</td>
+		<td></td>
+	</tr>
+	<tr> 
+		<td><input name='new_class_name' type='text' value='' style="width:250px;" /></td>
+		<td align="center">
+			<select name="new_tax_based_on_address">
+				<option value='0'>{"ordr_shipping_address"|translate}</option>
+				<option value='1'>{"ordr_billing_address"|translate}</option>
+			</select>
+		</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	</table>
+
+	<p><input type='submit' value='{"btn_save"|translate}' /></p>
+	</form>
+	{/if}
+{**********************************************************************************************}
+
+{if $define_zone_rates}
+
+	<h1 class="breadcrumbs">
+		<a href='{"?did=`$CurrentDivision.id`"|set_query}'>{lbl_tax_types}</a>
+		&raquo;
+		<a href='{"&define_rate=`$define_zone_rates`"|set_query_html}'>{"pgn_taxes_define_rates"|translate}: {$className}</a>
+		&raquo;
+		{$country_name}
+	</h1>
+
+	{$MessageBlock}
+
+	<h2>{"tax_set_rates_for_regions"|translate}</h2>
+
+	<form action="{''|set_query_html}" method="post">
+	<input name="action" value="save_states" type="hidden" />
+	
+		<table class="grid">
+		<tr class="gridsheader">
+			<td>{"rgn_region_name"|translate}</td>
+			<td>{"tax_rate"|translate}</td>
+			<td>{'btn_delete'|transcape}</td>
+		</tr>
+		{section name=i loop=$zone_rates}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>
+				{if $zone_rates[i].zoneID != 0}
+					{$zone_rates[i].zone_name|escape:'html'}				
+				{else}
+					{if $zone_count == 0 && $zone_rate_count - 1 == 0}{"rgn_all_regions"|translate}{/if}
+					{if $zone_count == 0 && $zone_rate_count - 1 != 0}{"rgn_all_other_regions"|translate}{/if}
+					{if $zone_count != 0 && $zone_rate_count - 1 != 0}{"rgn_other_regions"|translate}{/if}
+					{if $zone_count != 0 && $zone_rate_count - 1 == 0}{"rgn_all_other_regions"|translate}{/if}
+				{/if}
+			</td>
+			<td align="center">
+				<input type="text" value='{$zone_rates[i].value}' name='zone_rate_{$zone_rates[i].zoneID}' size="4" />%
+			</td>
+			<td align="center">
+				<a href='{"action=delete_state&zoneID=`$zone_rates[i].zoneID`"|set_query_html}' title='{"cnfrm_delete"|translate}' class="confirm_action">
+					<img src="images_common/remove.gif" alt="{"btn_delete"|translate}" />
+				</a>				
+			</td>
+		</tr>
+		{sectionelse}
+		<tr>
+			<td colspan="3" align="center">&lt; {"str_answer_no"|translate} &gt;</td>
+		</tr>
+		{/section}
+		
+		{if $zone_count != 0}
+		<tr class="gridsheader_simple">
+			<td colspan="3">{"btn_add"|translate}</td>
+		</tr>
+		<tr class="gridsheader">
+			<td>{"rgn_region_name"|translate}</td>
+			<td>{"tax_rate"|translate}</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+				<select name='new_zone'>
+					<option value='-1'>{"str_please_select"|translate}</option>
+					{if $zone_rate_count == 0}
+					<option value='0'>{"rgn_all_regions"|translate}</option>
+					{/if}
+					{if $zone_rate_count != 0 && $group_exists != 1}
+					<option value='0'>{"rgn_all_other_regions"|translate}</option>
+					{/if}
+					{section name=i loop=$zones}
+					<option value='{$zones[i].zoneID}'>{$zones[i].zone_name|escape:'html'}</option>
+					{/section}
+				</select>
+			</td>
+			<td align="center">
+				<input type=text name='new_rate' value='' size="4" />%
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		{/if}
+		</table>
+	
+		<p><input type='submit' value='{"btn_save"|translate}' /></p>
+		
+	</form>
+	
+	
+	<h2>{"tax_set_rates_for_zip"|translate}</h2>
+
+	<p>{"tax_set_rates_for_zip_descr"|translate}</p>
+	<p>{"tax_set_rates_for_zip_descr2"|translate}</p>
+
+	<form action="{''|set_query_html}" method="post">
+	<input name="action" value="save_zips" type="hidden" />
+	
+		<table class="grid">
+		<tr class="gridsheader">
+			<td>{"usr_custinfo_zip"|translate}</td>
+			<td>{"tax_rate"|translate}</td>
+			<td>{'btn_delete'|transcape}</td>
+		</tr>
+	
+		{section name=i loop=$zip_rates}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>
+				<input type=text name='zip_template_{$zip_rates[i].tax_zipID}' value='{$zip_rates[i].zip_template}' />
+			</td>
+			<td align="center">
+				<input type=text name='zip_rate_{$zip_rates[i].tax_zipID}' value='{$zip_rates[i].value}' size="4" />%
+			</td>
+			<td align="center">
+				<a href='{"action=delete_zip&tax_zipID=`$zip_rates[i].tax_zipID`"|set_query_html}' class="confirm_action" title='{"cnfrm_delete"|translate}'>
+					<img src="images_common/remove.gif" alt='{"btn_delete"|translate}' />
+				</a>				
+			</td>
+		</tr>
+		{sectionelse}
+		<tr>
+			<td colspan="3" align="center">&lt; {"str_answer_no"|translate} &gt;</td>
+		</tr>
+		{/section}
+	
+		<tr class="gridsheader_simple">
+			<td colspan="3">{"btn_add"|translate}</td>
+		</tr>
+		<tr class="gridsheader">
+			<td>{"usr_custinfo_zip"|translate}</td>
+			<td>{"tax_rate"|translate}</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+				<input type=text name='new_zip_template' value='' />
+			</td>
+			<td align="center">
+				<input type=text name='new_zip_rate' value='' size="4" />%
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		</table>
+
+		<p><input type='submit' value='{"btn_save"|translate}' /></p>
+	</form>
+{/if}
+{**********************************************************************************************}
+
+{if $define_rate}
+
+	<h1 class="breadcrumbs">
+		<a href='{"?did=`$CurrentDivision.id`"|set_query}'>{lbl_tax_types}</a>
+		&raquo;
+		{"pgn_taxes_define_rates"|translate}: {$class_name}
+	</h1>
+	
+	<p>{"tax_set_rates_for_countries"|translate}</p>
+
+	{$MessageBlock}
+
+	<form method="post" action="{''|set_query_html}">
+	<input name="action" value="save_countries" type="hidden" />
+
+	<table class="grid">
+	<tr class="gridsheader"> 
+		<td>{"usr_custinfo_country"|translate}</td>
+		<td>{"tax_rate"|translate}</td>
+		<td></td>
+	</tr>
+
+	{foreach from=$rates item=_row}
+	<tr class="{cycle values='gridline,gridline1'}">
+		<td>
+			{if $_row.countryID != 0}
+				{$_row.country}
+			{else}
+				{if $country_count == 0 && $rate_count - 1 == 0}{"cntr_all_countries"|translate}{/if}
+				{if $country_count == 0 && $rate_count - 1 != 0}{"cntr_all_other_countries"|translate}{/if}
+				{if $country_count != 0 && $rate_count - 1 != 0}{"cntr_all_other_countries"|translate}{/if}
+				{if $country_count != 0 && $rate_count - 1 == 0}{"cntr_all_other_countries"|translate}{/if}
+			{/if}
+		</td>
+		<td>
+			{if $_row.countryID != 0}
+			<div>
+				{if $count_zones[$_row.countryID] != 0}
+					<input type="radio" name='isByZone_{$_row.countryID}' {if $_row.isByZone == '0'}checked{/if} value='0' />
+				{/if}
+				{"tax_single_overall_rate"|translate}
+				&nbsp;
+				<input type="text" value='{$_row.value}' name='rate_{$_row.countryID}' size="4" />%
+			</div>
+			{if $count_zones[$_row.countryID] != 0}
+			<div>
+				<input type=radio name='isByZone_{$_row.countryID}' {if $_row.isByZone == '1'}checked{/if} value='1' />
+				{$admin_is_depended_on_zone[$_row.countryID]}
+				<div><a class="normal" href='{"define_rate=&define_zone_rates=`$_row.classID`&countryID=`$_row.countryID`"|set_query}'>{"tax_set_rates_for_regions"|translate}...</a></div>
+			</div>
+			{/if}
+			{else}
+				{"tax_single_overall_rate"|translate}
+				<input type=text value='{$_row.value}' name='rate_{$_row.countryID}' size="4" />%
+			{/if}
+		</td>
+		<td align="center">
+			<a href='{"action=delete_country&countryID=`$_row.countryID`"|set_query_html}' class="confirm_action" title='{"cnfrm_delete"|translate}'>
+				<img src="images_common/remove.gif" alt="{"btn_delete"|translate}">
+			</a>
+		</td>
+	</tr>
+	{foreachelse}
+	<tr>
+		<td colspan="3" align="center">&lt; {"str_answer_no"|translate} &gt;</td>
+	</tr>
+	{/foreach}
+	
+	{if $country_count != 0}
+	<tr class="gridsheader_simple"> 
+		<td colspan="3">{"btn_add"|translate}</td>
+	</tr>
+	<tr class="gridsheader"> 
+		<td>{"usr_custinfo_country"|translate}</td>
+		<td>{"tax_rate"|translate}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>
+			<select name='new_country'>
+				<option value='-1'>{"str_please_select"|translate}</option>
+			{if $rate_count == 0}
+				<option value='0'>{"cntr_all_countries"|translate}</option>
+			{/if}
+			{if $rate_count != 0 && $group_exists != 1}
+				<option value='0'>{"cntr_all_other_countries"|translate}</option>
+			{/if}
+			{foreach from=$countries item=country}
+				<option value='{$country.countryID}'>{$country.country_name|escape:'html'}</option>
+			{/foreach}
+			</select>
+		</td>
+		<td>
+			<input type=text name='new_rate' size="4" value='' />%
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	{/if}
+	</table>
+
+	<p><input value="{'btn_save'|transcape}" type="submit" /></p>
+	
+	</form>
+
+{/if}

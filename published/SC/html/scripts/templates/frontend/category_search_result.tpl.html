@@ -1,0 +1,79 @@
+{* category view *}
+
+<table cellpadding=3 border=0>
+<tr>
+
+{if $selected_category.picture}
+<td rowspan=2 valign=top>
+	<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category.picture|escape:'url'}" 
+		alt="{$selected_category.name}">
+</td>
+{/if}
+<td>
+	<span class="cat" style="font-weight: bold;">
+		{section name=i loop=$product_category_path}
+			{if $product_category_path[i].categoryID != 1}
+				<a class="cat" href="index.php?categoryID={$product_category_path[i].categoryID}">{$product_category_path[i].name}</a> :
+			{/if}
+		{/section}
+	</span>
+</td>
+</tr>
+
+<tr>
+<td>
+	{* description *}
+	{$selected_category.description}
+
+	<p>
+	{* show subcategories *}
+	{section name=i loop=$subcategories_to_be_shown}
+	 <a class=standard href="index.php?categoryID={$subcategories_to_be_shown[i][0]}">{$subcategories_to_be_shown[i][1]}</a>
+	 ({$subcategories_to_be_shown[i][2]})<br>
+	{/section}
+
+
+</td>
+</tr>
+
+{if $allow_products_search}
+	<tr>
+		<td>
+			{include file="advanced_search_in_category.tpl.html"}
+		</td>
+	</tr>
+{/if}
+
+</table>
+
+{if $products_to_show}
+
+{include file="comparison_products_button.html"}
+
+<center>{$string_product_sort}</center>
+<br>
+<center>{$catalog_navigator}</center>
+	
+ <table cellpadding=6 border=0 width=95%>
+  {section name=i1 loop=$products_to_show}
+	{if $smarty.section.i1.index is div by $smarty.const.CONF_COLUMNS_PER_PAGE}<tr>{/if}
+	<td valign=top width="{math equation="100 / x" x=$smarty.const.CONF_COLUMNS_PER_PAGE format="%d%%"}">
+		{include file="product_brief.html" product_info=$products_to_show[i1]}
+	</td>
+	{if ($smarty.section.i1.index+1) is div by $smarty.const.CONF_COLUMNS_PER_PAGE}</tr>{/if}
+  {/section}
+ </table>
+ <center>{$catalog_navigator}</center>
+
+{include file="comparison_products_button.html"}
+
+{else}
+<p>
+
+			{if $search_with_change_category_ability}
+
+				&lt; {"srch_no_matches_found"|translate} &gt;
+
+			{/if}
+
+{/if}

@@ -1,0 +1,1 @@
+<input onKeyDown='keydown(event, "<? $fieldName ?>", this.value);' <? if $preview ?>onChange='fieldChanged("<? $fieldName ?>", this.value);'<? /if ?> type="text" id="<? $fieldName ?>" size=5 class="FormControl" name="fields[<? $fieldName ?>]" value="<? $fieldValue|htmlsafe:true:true ?>" style='width: 300px'/>

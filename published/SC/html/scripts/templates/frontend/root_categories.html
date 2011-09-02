@@ -1,0 +1,35 @@
+<table width="100%" border="0" cellpadding="5">
+{foreach from=$root_categories item=_cat name=_fr}
+	{if $smarty.foreach._fr.index%$columnCount ==0}<tr>{/if}
+	{assign var=_cat_url value="?categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}
+	{if $_cat.picture ne "" && $PAGE_VIEW ne 'mobile'}
+	<td width="1%" align="center" class="cat_image">
+	<a href='{$_cat_url}'>
+		<img border="0" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_cat.picture|escape:'url'}" alt="{$_cat.name|escape:'html'}">
+	</a>
+	</td>
+	{else}
+	<td width="1%" align="center" class="cat_image">
+	<a href='{$_cat_url}' class="home_page_category_logo">
+		
+	</a>
+	</td>
+	{/if}
+
+	<td class="cat_name">
+		<a href='{$_cat_url}' class="rcat_root_category">{$_cat.name|escape:'html'|default:'(no name)'}</a> <span class="rcat_products_num">[{$_cat.products_count}]</span>
+		<div class="rcat_child_categories">
+		{* show sub categories *}
+{foreach name=sub_cat_list from=$root_categories_subs[$_cat.categoryID] item=_subcat}
+	{if $subcategories_numberlimit&&(!$smarty.foreach.sub_cat_list.first)&&($smarty.foreach.sub_cat_list.iteration==$subcategories_numberlimit)}
+		&nbsp;...
+	{elseif !$subcategories_numberlimit||$subcategories_numberlimit&&($smarty.foreach.sub_cat_list.iteration<$subcategories_numberlimit)}	
+		{if !$smarty.foreach.sub_cat_list.first}{$subcategories_delimiter|escape:'html'}{/if}
+		<a href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}'>{$_subcat.name|escape:'html'}</a>
+	{/if}
+{/foreach}
+		</div>
+	</td>
+	{if ($smarty.foreach._fr.index+1)%$columnCount ==0}</tr>{/if}
+{/foreach}
+</table>

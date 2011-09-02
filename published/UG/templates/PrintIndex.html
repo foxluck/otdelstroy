@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[`Loading...`]</title>
+<link rel="stylesheet" type="text/css" href="{{$url.css}}print.css" />
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="print">
+		<div class="print_r">
+			<div class="print_l">
+				<a href="#" id="link-print">[`Print`]</a>
+			</div>
+		</div>
+	</div>
+	<div style="padding: 0 2%">
+		<h2 id="title">[`Loading...`]</h2>
+		<div id="content">
+		[`Loading...`] <img src="{{$url.common}}img/loading.gif" />
+		</div>
+		{{if $limit}}
+		<div style="margin-top: 10px">
+			[`Shown contacts`] {{$offset+1}}&#151;{{$offset+$limit}} | <a href="{{$url_all}}">[`Show all`]</a>
+		</div>
+		{{/if}}
+	</div>
+</div>
+<script type="text/javascript">
+var config = {{$config}};
+
+var ColumnsView = function (response) {
+	this.response = response;
+	this.contacts = response.users;
+	
+	this.columns = new Array();
+	for (var i = 0; i < response.fields.length; i++) {
+		this.columns.push({
+				name: response.fields[i][0],
+				label: response.fields[i][1],			
+				type: response.fields[i][3] ? response.fields[i][3] : "string"
+		});
+	}
+
+	this.render = function () {
+		var html = '<table class="columns"><tr>';
+		for (var i = 0; i < this.columns.length; i++) {
+			html += '<th><div><label>' + this.columns[i].label + '</label></div></th>';
+		} 
+		html += '</tr>';
+		for (var i = 0; i < this.contacts.length; i++) {
+			html += this.renderRecord(this.contacts[i]);	
+		}
+		html += '</table>';
+		return html;
+	};
+
+	this.renderRecord = function (record) {
+		var html = '<tr class="item">';
+		for (var i = 0; i < this.columns.length; i++) {
+			html += '<td>' + this.getValue(this.columns[i], record) + '</td>';
+		}
+		html += '</tr>';
+		return html;
+	};
+
+	this.getValue = function (column, record) {
+		if (column.name == "COLUMNS") { 
+			return "";
+		}
+		if (column.name == "IS_USER") {
+			if (record.U_ID) {
+				if (record.U_STATUS == 3) {
+					return '<img src="../UG/img/icon-invite.gif" width="16" />';
+				}
+				else if (record.U_STATUS == 2) {
+					return '<img src="../UG/img/icon-inactive.gif" width="16" />';
+				} else {
+					return '<img src="../UG/img/icon-user.gif" width="16" />';
+				}
+			} else {
+				return '<img src="../common/html/res/images/s.gif" width="15" />';
+			}
+		}
+		if (column.type == "IMAGE") {
+			if (record[column.name] == "") {
+				if (column.name == config.photo[record.CT_ID]) {
+					var img = '../UG/img/empty-contact' + record.CT_ID + '.gif';
+				} else {
+					return '<div class="emptyimg">' + '[`no image`]' + '</div>';
+				}
+			} else if (record[column.name] == null) {
+				return "";
+			} else { 
+				var img = record[column.name] + '&size=96';
+			}
+			return '<img src="' + img + '" />';
+		}
+		
+		if (column.name == "U_ID" && record.U_STATUS == 3) {
+			return '<i style="color:#666; font-size:80%">[`invited`]</i>';
+		}
+				
+		return record[column.name];
+	}; 
+}
+
+
+var ListView = function (response) {
+	this.response = response;
+	this.contacts = response.users;
+
+	this.render = function () {
+		var html = '<div class="list bigicons">';
+		for (var i = 0; i < this.contacts.length; i++) {
+			html += '<div class="item">' + this.renderRecord(this.contacts[i]) + '</div>';
+		}
+		html += '</div>';
+		return html;
+	};
+
+	this.getThumbnailHtml = function (record) {
+		var photo = config.photo[record.CT_ID];
+		if (!photo) {
+			return '';
+		}
+		var src = record[photo] == '' ? "img/empty-contact" + record.CT_ID + ".gif" : record[photo] + "&size=96";
+		return "<div class='thumbnail'><table><tr><td>" + "<img src='" + src + "'>" + "</td></tr></table></div>";
+	};	
+	
+	this.renderRecord = function(record) {	
+		var html = "";
+		var html = this.getThumbnailHtml(record);
+		var attr = '';
+		if (!html) {
+			attr = 'style="padding-left:0"';
+		}
+		html += "<div class='content' " + (!html ? 'style="margin-left:25px"' : '') + ">";
+			html += "<div " + attr + " class='name'>" + record.C_NAME + "</div>";
+			html += "<div class='small-gray'>";
+			for (var i = 0; i < config.fields[record.CT_ID].length; i++) {
+				var section = config.fields[record.CT_ID][i];		
+				var section_content = "";
+				for (var j = 0; j < section.fields.length; j++) {
+					if (record[section.fields[j][0]]) {
+						if (section_content.length > 0) {
+							section_content += ', ';
+						}
+						var v = record[section.fields[j][0]];
+						section_content += '<span class="field_title" title="' + section.fields[j][1] + '">' + v + '</span>';
+					}
+				}
+				if (section_content.length > 0) {
+					html += '<span class="section_title">' + section.name + ':</span>' + section_content + '<br />';
+				}
+			}
+			html += "</div>";
+			
+		html += "</div>";	
+		return html;			
+	};
+}
+
+var TileView = function (response) {
+	this.response = response;
+	this.contacts = response.users;
+
+	this.render = function () {
+		var html = '<div class="tile">';
+		for (var i = 0; i < this.contacts.length; i++) {
+			html += '<div class="item">' + this.renderRecord(this.contacts[i]) + '</div>';
+		}
+		html += '</div>';
+		return html;
+	};
+
+	this.renderRecord = function (record) {
+		var html = "";
+		html += "<br style='display: none'/>"; 
+		html += "<a style='margin-bottom: 0px' class='wrap-image'>" + this.getThumbnailHtml(record) + "</a>";
+		html += "<div class='content' style='margin: 0px; position:relative'>";
+		var title = record.C_NAME;
+		html += "<div class='name'>" + title + "</div>";
+		html += "</div>";
+		return html;		
+	};
+
+	this.getThumbnailHtml = function (record) {
+		var photo = config.photo[record.CT_ID];
+		var src = record[photo] == '' ? "img/empty-contact" + record.CT_ID + ".gif" : record[photo] + "&size=96"; 
+		return "<div class='thumbnail'><table><tr><td>" + (photo ? "<img src='" + src + "' />" : '') + "</td></tr></table></div>";
+	};	
+}
+
+$(document).ready(function () {
+	$.post("?mod=users&act=lists&ajax=1", {{$params}}, function (response) {
+		var title = response.folder.NAME;
+		document.title = title;
+		$("#title").html(title);
+		switch (response.viewMode) {
+			case 'columns': 
+				var view = new ColumnsView(response);
+				break;
+			case 'detail':
+				var view = new ListView(response);
+				break;
+			case 'tile':
+				var view = new TileView(response);
+				break;				
+			default: 
+				var view = new ColumnsView(response);
+		}
+		$("#content").html(view.render());
+	}, "json");
+});
+$("#link-print").click(function () {
+	$("#print").hide();
+	window.focus();
+	window.print();
+	window.close();
+	return false;
+});
+</script>
+</body>
+</html>

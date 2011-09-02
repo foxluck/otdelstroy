@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<WBSAPPLICATION>
+	<APPLICATION APP_ID="AA" SORTORDER="2" NAME="app_name_long" UI_NAME="app_name_short">
+		<EVENTS>
+			<EVENT ID="onDeleteUser"/>
+			<EVENT ID="onRemoveUser"/>
+			<EVENT ID="onDeleteCurrency"/>
+		</EVENTS>
+	</APPLICATION>
+</WBSAPPLICATION>

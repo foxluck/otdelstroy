@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>Product info widget</name>
+		<key>product_widget</key>
+	</interface>
+</interfaces>

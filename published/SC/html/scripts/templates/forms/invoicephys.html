@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+{* шаблон квитанции на оплату для клиентов *}
+<TITLE>Квитанция на оплату</TITLE>
+<base href="{$smarty.const.CONF_FULL_SHOP_URL}" />{*
+<LINK href="{$smarty.const.URL_CSS}/printforms.css" type=text/css
+	rel=stylesheet>*}{literal}
+<META http-equiv=Content-Type content="text/html;  charset=utf-8">
+<style type="text/css">
+body {
+		font-family: times new roman;
+		font-size: 11px;
+	}
+@media screen {
+	
+	input,.noprint {
+		display: inline;
+		height: auto;
+	}
+	.printable{display: none;}
+}
+
+@media print {
+	input,.noprint {
+		display: none;
+	}
+	.printable{
+		display: inline;
+	}
+}
+</style>{/literal}
+{if !$strict}
+<script type="text/javascript">
+var lang_strings = {literal}{{/literal}
+	'edit_link':'{'print_form_edit_before_print'|translate}',
+	'field_title':'{'print_form_edit_title'|translate}',
+	'save_link':'{'btn_ok'|translate}'
+{literal}}{/literal}
+var page_url = '{''|set_query_html}';
+</script>
+<script type="text/javascript" src="{$smarty.const.URL_JS}/inline_edit_printform.js"></script>
+{/if}
+</HEAD>
+<BODY bgColor=#ffffff{if !$strict} onload="Printform.init('inline_edit');"{/if}>
+{include file="print_button.html"}
+<DIV align=center><BR>
+<TABLE cellSpacing=0 cellPadding=4 width=680 border=1>
+	<TBODY>
+		<TR>
+			<TD vAlign=bottom width="30%">
+			<P align=right>Извещение</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>Кассир</P>
+			</TD>
+			<TD width="70%">
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+				<TBODY>
+					<TR>
+						<TD colSpan=3><STRONG>Получатель платежа</STRONG></TD>
+					</TR>
+					<TR>
+						<TD colSpan=3>Наименование:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_COMPANYNAME|escape:"html"}</TD>
+					</TR>
+					<TR>
+						<TD>Счет:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_ACCOUNT_NUMBER|escape:"html"}</TD>
+						<TD>ИНН:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_INN|escape:"html"}</TD>
+						<TD>КПП:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_KPP|escape:"html"}</TD>
+					</TR>
+					<TR>
+						<TD colSpan=3>Наименование
+						банка:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANKNAME|escape:"html"}</TD>
+					</TR>
+					<TR>
+						<TD>Кор.&nbsp;счет:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_KOR_NUMBER|escape:"html"}</TD>
+						<TD colSpan=2>БИК:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BIK|escape:"html"}</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<BR>
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+				<TBODY>
+					<TR>
+						<TD><STRONG>Плательщик</STRONG></TD>
+					</TR>
+					<TR>
+						<TD class="inline_edit">{$billing_firstname}{if
+						$second_name}&nbsp;{$second_name}{/if}&nbsp;{$billing_lastname}</TD>
+					</TR>
+					<TR>
+						<TD class="inline_edit">{$billing_country}, {$billing_state}, {$billing_city}, {$billing_address}</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<BR>
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+				<TBODY>
+				<TR>
+					<TD>
+					<DIV align=center style="width:25%">Назначение платежа</DIV>
+					</TD>
+					<TD>
+					<DIV align=center style="width:25%">Дата</DIV>
+					</TD>
+					<TD>
+					<DIV align=center style="width:25%">Сумма</DIV>
+					</TD>
+				</TR>
+				<TR>
+					<TD>
+					<DIV align=center class="inline_edit">{$invoice_description}</DIV>
+					</TD>
+					<TD>
+					<DIV align=center>&nbsp;</DIV>
+					</TD>
+					<TD>
+					<DIV align=center class="inline_edit">{$invoice_amount}</DIV>
+					</TD>
+				</TR>
+				</TBODY>
+			</TABLE>
+			<P>Подпись плательщика:</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD vAlign=bottom>
+			<P align=right>Квитанция</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>&nbsp;</P>
+			<P align=right>Кассир</P>
+			</TD>
+			<TD>
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+				<TBODY>
+					<TR>
+						<TD colSpan=3><STRONG>Получатель платежа</STRONG></TD>
+					</TR>
+					<TR>
+						<TD colSpan=3>Наименование:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_COMPANYNAME|escape:"html"}
+						</TD>
+					</TR>
+					<TR>
+						<TD>Счет:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_ACCOUNT_NUMBER|escape:"html"}
+						</TD>
+						<TD>ИНН:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_INN|escape:"html"}
+						</TD>
+						<TD>КПП:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_KPP|escape:"html"}
+						</TD>
+					</TR>
+					<TR>
+						<TD colSpan=3>Наименование
+						банка:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANKNAME|escape:"html"}
+						</TD>
+					</TR>
+					<TR>
+						<TD>Кор.&nbsp;счет:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_KOR_NUMBER|escape:"html"}
+						</TD>
+						<TD colSpan=2>БИК:&nbsp;{$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BIK|escape:"html"}
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<BR>
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+				<TBODY>
+					<TR>
+						<TD><STRONG>Плательщик</STRONG></TD>
+					</TR>
+					<TR>
+						<TD class="inline_edit">{$billing_firstname}{if
+						$second_name}&nbsp;{$second_name}{/if}&nbsp;{$billing_lastname}</TD>
+					</TR>
+					<TR>
+						<TD class="inline_edit">{$billing_state}, {$billing_city}, {$billing_address}</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<BR>
+			<TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+				<TBODY>
+					<TR>
+						<TD>
+						<DIV align=center style="width:50%">Назначение платежа</DIV>
+						</TD>
+						<TD>
+						<DIV align=center style="width:25%">Дата</DIV>
+						</TD>
+						<TD>
+						<DIV align=center style="width:25%">Сумма</DIV>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+						<DIV align=center class="inline_edit">{$invoice_description}</DIV>
+						</TD>
+						<TD>&nbsp;</TD>
+						<TD>
+						<DIV align=center class="inline_edit">{$invoice_amount}</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<P>Подпись плательщика:</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

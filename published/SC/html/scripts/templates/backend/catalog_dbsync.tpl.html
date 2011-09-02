@@ -1,0 +1,58 @@
+{* database synchronization tool *}
+
+{* export *}
+<p>
+{"dbsync_sync_desc"|translate}
+
+<p>
+<table bgcolor=#56AFD6 cellpadding=10 cellspacing=1>
+<tr bgcolor=white>
+
+ <form action="" enctype="multipart/form-data" method=post>
+ <td>
+
+ <h5><U>{"prdexport_btn_export_db_to_sql_file"|translate}</U></h5>
+
+	 {if $sync_action ne "export"}
+	 <input type=submit name=export_db value="{"prdexport_btn_export_db_to_sql_file"|translate}">
+	 <input type=hidden name=dpt value="catalog">
+	 <input type=hidden name=sub value="dbsync">
+	 {else}
+		<b><font color=blue>{"prdexport_msg_db_exported_to"|translate}
+			<a href="get_file.php?getFileParam={$getFileParam}">database.sql</a> ({$database_filesize} b)
+		</font></b>
+	 {/if}
+ </td>
+ </form>
+
+</tr>
+<tr bgcolor=white>
+
+{* import*}
+<form action="" enctype="multipart/form-data" method=post>
+
+	<td>
+
+	{"dbsync_sync_header"|translate}
+	{if $sync_action eq "import"}
+	 <p>
+	 {if $sync_successful eq 0}
+		{"err_failed_to_upload_file"|translate}
+	 {else}
+		{"msg_update_successful"|translate}
+	 {/if}
+
+	{/if}
+
+	<p>
+	<input type=file name=db>
+	<input type=hidden name=dpt value="catalog">
+	<input type=hidden name=sub value="dbsync">
+	<input type=submit name="import_db" value="{"btn_ok"|translate}">
+
+	</td>
+
+</form>
+
+</tr>
+</table>

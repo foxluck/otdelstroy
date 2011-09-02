@@ -1,0 +1,72 @@
+widget_name_long	Common	Widget full name	Sign Up Forms
+widget_name_short	Common	Widget short name	Sign Up Forms
+
+subtype_inplace_igoogle_title	igoogle	Subtype Inplace Title	WebAsyst Sign-Up Form
+subtype_inplace_igoogle_description	igoogle	Subtype Inplace Description	Place Sign-Up Form on your website, blog, e-mail, or a newsletter – any web source that can be used to collect people’s e-mail addresses, names, photos, birthdays, site links, and any other information. Entered information is posted directly into your WebAsyst Contacts database.
+
+type_widgetsform_title	Widget Screen	type title	Sign Up Forms
+type_widget_name	Widget Screen	type title	Sign Up Form
+type_widget_createname	Widget Screen	type title	Sign Up Form
+type_widgetsform_desc	Widget Screen	type desc	Sign Up Form is a widget that can be added to your website, blog, newsletter, or email. Information entered by visitors will be automatically added to your Contact database. This is a great way to collect your subscribers into centralized storage.
+type_widgetsform_short_desc	Widget Screen	type short desc	Contact Manager Sign Up Form widget
+
+field_width_label	Fields	Width	Width
+field_height_label	Fields	Height	Height
+field_bgcolor_label	Fields	Bgcolor	Body Background
+field_doptin_label	Fields	Bgcolor	Double Opt-In
+field_doptin_comment	Fields	Doptin comment	Enabling double opt-in will require that subscriber clicks a link in a confirmation email before she actually added via this sign-up form. Subscribers retain "Pending" status until they click on the confirmation link.
+field_title_label	Fields	Title	Caption	
+field_titlebgcolor_label	Fields	Title	Body Background
+field_titlecolor_label	Fields	Title	Font Color
+field_title_bgcolor_label	Fields	Title	Caption Background
+field_title_color_label	Fields	Title	Caption Text
+field_savebtn_label	Fields	Save button	Button
+field_signuptext_label	Fields	Signup text	Message
+field_signuptext_desc	Fields	Signup text desc	This message will appear after successful submit.
+field_folder_label	Fields	Folder	Folder
+field_cmfields_label	Fields	CMFields	Fields
+field_folder_desc	Fields	Folder desc	Subscribers will be added to this folder.
+field_wglang_desc	Fields	Lang	This language will be used for system messages, e.g. errors, warnings etc.
+field_doptin_desc	Fields	Doptin desc	Will send confirmation email to subscriber
+
+subtype_simple_name	Subtypes	Subtype name	Sign Up Form (Email only)
+subtype_simple_desc	Subtypes	Subtype desc	A simple form with just a field for visitors’ Email addresses and a Submit button.
+subtype_main_name	Subtypes	Subtype name	Sign Up Form (Name and Email)
+subtype_main_desc	Subtypes	Subtype desc	A form with fields for visitors’ names and e-mail addresses. Use it to build your permanent subscribers database to send out newsletters and other communications.
+subtype_photo_name	Subtypes	Subtype name	Sign Up Form (Name, Email and Photo)
+subtype_photo_desc	Subtypes	Subtype desc	A form for subscribers to include their names, e-mail addresses and add personal photos. A great option to build your friends, colleagues, and clients profiles database.
+subtype_custom_name	Subtypes	Subtype name	Sign Up Form (Custom)
+subtype_custom_desc	Subtypes	Subtype desc	This form can include any number of fields from your contact database; e.g. name, address, phone numbers, etc.
+
+swg_accountalreadyregistred_message	SWidget	error message	This Email is already registered
+swg_wrongmailformat_message	SWidget	error message	Wrong Email format
+swg_emptymail_message	SWidget	error message	Please fill required fields: Email
+wg_nophotofield_error	Widget	error message	Field Photo not found
+
+sparam_email_label	SWidget	param label	Email
+sparam_name_label	SWidget	param label	Your name
+sparam_photo_label	SWidget	param label	Photo
+
+simple_sparam_title_default	SWidget (Subtype SIMPLE)	param default	Your Email:
+sparam_title_default	SWidget	param default	Signup
+sparam_signuptext_default	SWidget	param default	Thank You!
+sparam_savebtn_default	SWidget	param default	Submit
+
+custom_emaildoptin_error	Widget	Error string	Double Opt-In option cannot be enabled without Email field
+photo_emaildoptin_error	Widget	Error string	Double Opt-In option cannot be enabled without Email field
+wg_emptyfolder_error	Widget	Error string	Please fill required fields: Folder
+wrong_dateformat_error	Widget	Error string	Incorrect value in the field Year
+
+error_title	Widget	Error title	Error
+
+amwg_savetoapply_messagetitle	Add/mod widget	Save to apply title	Apply changes
+amwg_savetoapply_message	Add/mod widget	Save to apply message	You must save widget to apply changes
+amwg_savetoapplybtn_label	Add/mod widget	Save to apply button	Apply Changes
+
+place_general_title	Widget customize dialog	Place general title	General
+place_color_title	Widget customize dialog	Place color title	Color
+place_size_title	Widget customize dialog	Place size title	Size
+place_text_title	Widget customize dialog	Place text title	Text
+place_contacts_title	Widget customize dialog	Place contacts title	Contacts
+place_fields_title	Widget customize dialog	Place fields title	Fields
+place_confirmation_title	Widget customize dialog	Place confirmation title	Confirmation

@@ -1,0 +1,12 @@
+{include file="checkout.progress.html"}
+{if $PAGE_VIEW eq 'noframe'}
+
+<div class="paddingblock">
+	<h2>{$step_title|translate}</h2>
+{else}
+	<h1>{$step_title|translate}</h1>
+{/if}
+	{include file=$checkout_template}
+{if $PAGE_VIEW eq 'noframe'}
+</div>
+{/if}

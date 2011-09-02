@@ -1,0 +1,7 @@
+app_name_long	Common	Full Application Name	Интернет-магазин
+app_name_short	Common	Short Application Name	Интернет-магазин
+app_availablespace_text	Common	Available Storage Space	Доступное дисковое пространство: %s
+
+sc_screen_long_name	Shopping cart	Shopping cart page full name	Интернет-магазин
+sc_screen_short_name	Shopping cart	Shopping cart page short name	Интернет-магазин
+sc_tab_open_storefront	Shopping cart	Open storefront label	Открыть витрину

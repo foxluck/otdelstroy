@@ -1,0 +1,64 @@
+<script>
+
+var foldersTree;
+var foldersEditor;
+
+
+function loadTree(){
+    foldersTree = new Ext.tree.TreePanel('tree-div', {
+        animate:false, enableDD:true,  containerScroll: true, ddAppendOnly: true
+    });
+    
+    // Add events
+    foldersTree.addListener("click", onTreeClick);
+    foldersTree.addListener("textchange", onTextChanged);
+    foldersTree.addListener("beforemove", onTreeBeforeMove);
+    <? if ($onTreeNodeMoved) ?>
+    	foldersTree.addListener('move', <? $onTreeNodeMoved ?>);
+    <? /if ?>
+    
+    var node;
+    var parentNode;
+    var rootNode;
+    var parentNodes = new Array ();
+    var selectedNode = null;
+    
+    <? include file="../../../common/html/cssbased/pageelements/catalog_folder_new.elem.htm" parentId=false ?>
+    rootNode = parentNodes[''];
+    foldersTree.setRootNode(rootNode);
+    
+    foldersTree.render();
+    
+    var currentNode = parentNodes["<? $currentFolder ?>"];
+    currentNode.ensureVisible ();
+    currentNode.select ();
+    
+    foldersEditor = new Ext.tree.TreeEditor(foldersTree, {
+        allowBlank:false,
+        blankText:'A name is required',
+        selectOnFocus:true
+    });
+    foldersEditor.addListener("beforeshow", onTreeEditorBeforeShow);
+};
+
+	function onTreeClick (node, e) {
+		loadPage (node.href);
+	}
+
+	function onTreeBeforeMove(tree, node, oldParent,newParent, index) {
+		if (node.editable == false || newParent.editable == false) {
+			alert("You do not have rights for this action");
+			return false;
+		}
+	}
+
+	function onTreeEditorBeforeShow(comp) {
+		if(foldersTree.getSelectionModel().getSelectedNode().editable == false)	{
+			alert("You do not have rights for rename this folder");
+			return false;
+		}
+	}
+
+</script>
+
+<div id="tree-div" style="overflow:auto;"></div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<link rel="stylesheet" href="<? $WG_SRC ?>html/cpicker/js_color_picker_v2.css" media="screen">
+			<script src='<? $BASE_SRC ?>common/html/res/ext/pr-prototype.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/res/ext/pr-adapter.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/res/ext/pr-effects.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/res/ext/pr-scriptaculous.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/res/ext/ext-all.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/res/wbscommon.js'></script>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/cssbased/base.css'>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/cssbased/themes/common.css'>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/cssbased/themes/office/colors.css'>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/res/ext/resources/css/my-ext-all.css'>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/res/ext/resources/css/menu.css'>
+			<link rel='stylesheet' type='text/css' href='<? $BASE_SRC ?>common/html/res/ext/resources/css/layout.css'>
+			
+			<script>Ext.BLANK_IMAGE_URL = '<? $BASE_SRC ?>common/html/res/ext/resources/images/default/s.gif'</script>
+			
+			<script src='<? $BASE_SRC ?>common/html/cssbased/pageelements/ajax/common_dialog.js'></script>
+			<script src='<? $BASE_SRC ?>common/html/cssbased/pageelements/ajax/widgets.js'></script>
+
+
+			<script src="<? $BASE_SRC ?>common/html/classic/styles/popupmenu.js"></script>
+					
+			<link rel="stylesheet" href="<? $WG_SRC ?>html/cpicker/js_color_picker_v2.css" media="screen">
+			<script src="<? $WG_SRC ?>html/cpicker/color_functions.js"></script>		
+			<script type="text/javascript" src="<? $WG_SRC ?>html/cpicker/js_color_picker_v2.js"></script>
+			<script>
+				var namedColorsLabel = "<? $kernelStrings.amwg_colorpick_named_label ?>";
+				var sliderColorsLabel = "<? $kernelStrings.amwg_colorpick_slider_label ?>";
+				var saveBtnLabel = "<? $kernelStrings.amwg_savebtn_label ?>";
+				var cancelBtnLabel = "<? $kernelStrings.amwg_cancelbtn_label ?>";
+			</script>
+	</head>
+	<body style='background: #FFFFDD'>
+		<div style='padding-left: 5px; padding-top: 5px'><? $wgStrings.wgedit_subtitle_note ?>:<a style='font-weight: bold' target='blank' href='<? $embInfo.editSrc ?>'><BR><? $embInfo.editSrc ?></a></div>
+		<input type='button' style='position: absolute; top: 5px; width: 100px; right: 50px' value='<? $wgStrings.wgedit_customize_button ?>' onClick="showCustomizeDialog(this, '<? $widgetIdEnc ?>', {left: 150, top: 50, saveUrl: '<? $WG_SRC ?>html/ajax/wg_save_public.php'})">
+		<iframe style='border: 1px solid #DDD' width='99%' height='370' allowtransparency=true id='previewFrame' name='previewFrame' src='<? $embInfo.previewEditSrc ?>' frameborder=0></iframe>
+		<BR><BR>
+		<div style='padding-left: 10px'>
+			<? $wgStrings.amwg_wghtml_label ?>:
+			<BR>
+			<textarea id='widgetEmbCode' onClick='this.select()' onFocus='this.select()' class='FormControl' style='width: 600px; border: 1px solid #DDD' rows='3'><? $embInfo.code ?></textarea>
+			
+			<BR />
+			<a target='_blank' href='http://fusion.google.com/add?moduleurl=<? $embInfo.igoogleSrc ?>'><img style='border:0px' src='http://gmodules.com/ig/images/plus_google.gif'></a>
+		</div>
+		
+<div id="customizeWidgetForm" class='x-hidden'>
+  <div class="x-dlg-hd"><? $wgStrings.vwwg_customizedialog_title ?></div>
+  <div class='x-dlg-bd'>
+  	<? foreach from=$subtypeObj->type->fieldsPlaces key=placeKey item=placeData ?>
+  		<? if $placeKey != 'files' && $placeKey != 'photos' && !in_array($placeKey, $subtypeObj->hidePlaces) ?>
+	  		<div class="x-dlg-tab" title="<? $placeData.title ?>">
+		      <div class="inner-tab" style='padding-top: 10px;padding-left: 15px'>
+		      	<? include file="amwg_form.htm" place=$placeKey?>
+		      </div>
+		  	</div>
+	  	<? /if ?>
+  	<? /foreach ?>
+	</div>
+</div>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title><? $pageTitle ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+	</head>
+
+	<frameset cols="230,*" frameborder=NO border=1 framespacing=1>
+		<frame src="helpheader.php?<? if $trans_sid ?><? $session_name|cat:"="|cat:$session_id ?><? /if ?><? if $selectedApp ?>&selectedApp=<? $selectedApp ?><? /if ?><? if $section ?>&section=<? $section ?><? /if ?>" name=toc frameborder=yes>
+		<frame src="../../../MW/help/<? $mwLang ?>/mw.html" name=content scrolling=yes frameborder=yes>
+	</frameset>
+
+	<noframes>
+		<body>
+		</body>
+	</noframes>
+
+</html>

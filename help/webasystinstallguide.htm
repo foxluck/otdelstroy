@@ -1,0 +1,278 @@
+<html><head><title>WebAsyst Installation Guide</title><link href="help.css" rel="stylesheet" type="text/css"></head><body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="white"><table cellpadding=0 cellspacing=0 width="100%" border=0><tr><td><a name=toc></a><h1 class=bookTitle>WebAsyst Installation Guide</h1><h1>Table Of Contents</h1></td></tr><tr><td><blockquote><a class=toclink href=#overview>Overview</a><br>
+<a class=toclink href=#whereinstall>Where to install?</a><br>
+&nbsp; &nbsp;<a class=toclink href=#sysreq>System Requirements</a><br>
+<a class=toclink href=#installation>Installation Procedure</a><br>
+&nbsp; &nbsp;<a class=toclink href=#configphpserver>Configuring your PHP server</a><br>
+&nbsp; &nbsp;<a class=toclink href=#runninginstallphp>Running INSTALL.PHP</a><br>
+&nbsp; &nbsp;<a class=toclink href=#searchingforintalledcomponents>Searching for installed components</a><br>
+&nbsp; &nbsp;<a class=toclink href=#extractingfiles>Extracting files</a><br>
+&nbsp; &nbsp;<a class=toclink href=#setupmysql>Setting up MySQL Server</a><br>
+&nbsp; &nbsp;<a class=toclink href=#creatingworkingdatabase>Creating Working Database</a><br>
+&nbsp; &nbsp;<a class=toclink href=#logintoworkingdatabase1>Login to your Working Database</a><br>
+<a class=toclink href=#administratingyoursystem>Administrating Your System</a><br>
+<a class=toclink href=#securityissues>Security Issues</a><br>
+<a class=toclink href=#upgradeprocedure>Upgrade Procedure</a><br>
+&nbsp; &nbsp;<a class=toclink href=#repairpreviousinstallation>Repair previous installation</a><br>
+&nbsp; &nbsp;<a class=toclink href=#minorupdates>Minor updates</a><br>
+&nbsp; &nbsp;<a class=toclink href=#updateswithdatabasemodifications>Updates with database modifications</a><br>
+&nbsp; &nbsp;<a class=toclink href=#pre-upgrade-files-delete>Delete pre-upgrade obsolete files</a><br>
+<a class=toclink href=#webasystwindowsclient>WebAsyst Windows Client</a><br>
+</blockquote></td></tr><tr><td><a name=overview></a><br>
+<h2>Overview<hr /></h2><blockquote dir="ltr" style="margin-right: 0px;">
+    <p>WebAsyst Collaboration Software Suite includes multiple web-based applications designed to help your team work collaboratively.</p>
+    <p>Depending on your task and the scale of your team, you can install WebAsyst on your personal desktop computer, on the server in your local or corporate network or on a web server connected to the Internet.</p>
+    <p>WebAsyst is a PHP-based open source and can be installed on any standard web server with PHP support, e.g. IIS (Windows) or Apache (Linux, FreeBSD,…).</p>
+    <p>Once your have WebAsyst installed on your web server, users can easily access it using standard web browser (e.g. IE, Mozilla, FireFox…) or our Windows desktop program - <a href=#webasystwindowsclient>WebAsyst Windows Client</a>.<br /></p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=whereinstall></a><br>
+<h2>Where to install?<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>You can install WebAsyst on the Linux and Windows platform and on a virtual or dedicated web server.</p>
+    <h4>Linux/FreeBSD</h4>
+    <p>You can install WebAsyst on a UNIX-based web server, e.g. Apache on Linux or FreeBSD platform.</p>
+    <p>To install WebAsyst, you must create a separate directory on your Apache server and setup HTTP access to this directory. The directory must be writable by the user that starts the server.</p>
+    <h4>Windows</h4>
+    <p>You can install WebAsyst on a Windows NT web server, e.g. IIS or Apache.</p>
+    <p>To install WebAsyst, you must create a separate folder on your server and setup HTTP access to this folder. If your file system is NTFS, then this folder must be writable by the user that starts the server.</p>
+    <h4>Virtual Hosting</h4>
+    <p>Virtual host providers usually allow limited amount of MySQL databases. To install WebAsyst, you must have at least one MySQL database on your server, which must be created before you start WebAsyst Installation procedure. To create MySQL database you should use the tools given by your host provider, e.g. PHP MyAdmin or CPanel.</p>
+    <p>It is recommended to install WebAsyst in a sub-directory on your virtual server, created in a directory which is accessible via HTTP, e.g. public_html/webasyst.</p>
+    <p><strong>NOTE</strong>: The directory where you install WebAsyst must be writable by PHP user. Permission value for UNIX-based server is usually 775. Refer to your web server manual or contact your ISP for further details.</p>
+    <h4>Dedicated Server</h4>
+    <p>If you rent or own a dedicated web server, you probably have administrative permissions on this server. During the WebAsyst setup process you have to create at least one database (MySQL) on your server. Contact your web server admin to make sure you have rights to create database on your server.</p>
+    <p>To install WebAsyst you must create directory on your server which is accessible via HTTP and writable by PHP user.</p>
+    <p><strong>NOTE</strong>: Once installation is complete you may disable access to all WebAsyst sub-directories except “published” directory, to protect your WebAsyst data from unauthorized access.<br /></p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=sysreq></a><br>
+<h2>System Requirements<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>To install WebAsyst you must have a web server (either on your desktop computer, on the local network server or hosted by your ISP) with the following previously installed software:</p>
+    <p><strong>NOTE</strong>: For up-to-date system requirements please refer to <a href=http://www.webasyst.net/requirements.htm>http://www.webasyst.net/requirements.htm</a></p>
+    <p>1. <strong>OS</strong>: Windows 2000/2003/XP/NT or <strong>Linux</strong> or <strong>FreeBSD</strong> 4.x<br />2. <strong>Web-server</strong> with PHP support, e.g. IIS or Apache <br />3. <strong>MySQL</strong> version 4.1.x, 5.0<br />4. <strong>PHP</strong> version 5.x&nbsp;with the following extensions:</p>
+    <ul>
+      <li><strong>DOMXML</strong> (required). Used virtually everywhere in the system to parse and create XML documents. This extension is only available if PHP was configured with --with-dom[=DIR]. Add --with-dom-xslt[=DIR] to include DOM XSLT support. DIR is the libxslt install directory. Add --with-dom-exslt[=DIR] to include DOM EXSLT support, where DIR is the libexslt install directory. </font /></li>
+    </ul><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><strong>Note to Win32 Users</strong>: In order to enable this module on a Windows environment, you must copy one additional file from the DLL folder of the PHP/Win32 binary package to the SYSTEM32 folder of your Windows machine (Ex: C:WINNTSYSTEM32 or C:WINDOWSSYSTEM32). For PHP &lt;= 4.2.0 copy libxml2.dll, for PHP &gt;= 4.3.0 copy iconv.dll from the DLL folder to your SYSTEM32 folder. <br />See also: </font /><a href=http://www.php.net/manual/en/ref.domxml.php><font size="2">http://www.php.net/manual/en/ref.domxml.php</font></a></p></blockquote>
+    <ul>
+      <li><strong>GD</strong> (optional). Provides functions to work with image files. Used to create and maintain thumbnails and all sort of graphics. To enable GD-support configure PHP --with-gd[=DIR], where DIR is the GD base install directory. In Windows, you'll include the GD2 DLL php_gd2.dll as an extension in php.ini. The GD1 DLL php_gd.dll was removed in PHP 4.3.2. <br />See also: </font /><a href=http://www.php.net/manual/en/ref.zlib.php><font size="2">http://www.php.net/manual/en/ref.zlib.php</font></a><br /></li>
+      <li><strong>ZLIB</strong> (optional). Used to compress/uncompress ZIP archives. ZLIB support in PHP is not enabled by default. You will need to configure PHP --with-zlib[=DIR] The windows version of PHP has built in support for this extension. You do not need to load any additional extension in order to use these functions. <br />See also: </font /><a href=http://www.php.net/manual/en/ref.image.php><font size="2">http://www.php.net/manual/en/ref.image.php</font></a> </li>
+    </ul>
+    <p>To run installation script (install.php - included in your package), as well as to work with WebAsyst, you must have a computer connected to your web server with one of the following browsers: </p>
+    <p><strong>Windows 2000/2003/XP/NT:<br /></strong>- Internet Explorer 5.5<br />- Firefox/0.10<br />- Mozilla 1.5<br />- Netscape 6.0</p>
+    <p><strong>Mac OS X (v 10.2):<br /></strong>- FireFox v 1.0<br />- Safari 1.0 (v. 85.5)</p>
+    <p><strong>Red Hat 9:<br /></strong>- Mozilla 1.4</p>
+    <p><strong>NOTE</strong>: Java-script and cookies must be enabled in your browser.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=installation></a><br>
+<h2>Installation Procedure&nbsp;<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>WebAsyst installation package is usually delivered as a TGZ or ZIP archive file which you can download from your account in the <strong>WebAsyst Customer Center</strong>.</p>
+    <p>Once you have installation archive downloaded, uncompress its entire content into the folder on your web server where you wish to install WebAsyst.</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><strong>Sample</strong>:</p>
+      <p>If you have Linux server, simply run the following command:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+        <p><font face="courier new,courier,monospace">tar -zxvf webasyst_setup.tar.gz</font></p></blockquote>
+      <p>With Linux you may also use Midnight Commander. Just open webasyst_setup.tar.gz file and copy all its content into installation directory.</p>
+      <p>If you use Windows-based server, then you may use WinRar (version 3 or higher). Again, just open the archive you have downloaded and copy its content into installation directory.</p></blockquote>
+    <p><strong>NOTE</strong>: Do not extract files from sub-archives included in the installation package. The <em>install.php</em> script will do it for you.</p>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=configphpserver></a><br>
+<h2>Configuring your PHP server<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>To install WebAsyst you must disable SAFE_MODE option in PHP.INI file on your server:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><font face="courier new,courier,monospace">safe_mode = off</font></p></blockquote>
+    <p>To run WebAsyst, you must have set the following parameters in PHP.INI file on your server: </p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><font face="courier new,courier,monospace">session.use_trans_sid = off<br />session.auto_start = off<br />session.use_cookies = 1<br />session.use_only_cookies = 1<br />allow_call_time_pass_reference = 1<br />magic_quotes_gpc = 1<br />magic_quotes_runtime = 0<br />session.name = SID<br />display_errors = 0<br />output_buffering = On<br />auto_prepend_file = </font></p></blockquote>
+    <p>If it is not possible to modify PHP.INI file (e.g. most of virtual hosts do not allow this) then you may override these settings by use of .<em>htaccess</em> file, which must be located in the directory where you have installed WebAsyst.</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><font face="courier new,courier,monospace">php_flag session.use_trans_sid off<br />php_flag session.auto_start off<br />php_flag session.use_cookies 1<br />php_flag session.use_only_cookies 1<br />php_flag allow_call_time_pass_reference 1<br />php_flag magic_quotes_gpc 1<br />php_flag magic_quotes_runtime 0<br />php_value session.name SID<br />php_flag display_errors 0<br />php_flag output_buffering On<br />php_value auto_prepend_file none</font></p></blockquote>
+    <p><strong>NOTE</strong>: For .<em>htaccess</em> file to be applied you must have following <br />directive set in your Apache configuration file - <em>httpd.conf</em></p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><font face="courier new,courier,monospace">AllowOverride All</font></p></blockquote></blockquote>
+  <p>&nbsp;</p><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=runninginstallphp></a><br>
+<h2>Running INSTALL.PHP <hr /></h2><blockquote dir="ltr">
+    <p>To start installation, point your browser to the folder <strong>on your web-server</strong> where you have placed the content of WebAsyst installation archive and run install.php script.</p>
+    <p><strong>NOTE</strong>: WebAsyst installation folder must be located on the web server (e.g. Apache or ISS). Don’t mix it with regular local folder. Refer to your web server documentation. URL to this folder may look like in a sample below (provided “webasyst” folder is located in the root directory on your web server):</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><a href=http://localhost/webasyst/install.php><font face="courier new,courier,monospace">http://localhost/webasyst/install.php</font></a></p></blockquote>
+    <p>Once you start running <em>install.php</em> script, it is checking if your server satisfies to the <a href=#sysreq>system requirements</a>.</p>
+    <p align="left"><strong>NOTE:</strong> Refer to <a href=http://www.webasyst.net/requirements.htm>http://www.webasyst.net/requirements.htm</a> for up-to-date information about system requirements.</p>
+    <p align="left">&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=searchingforintalledcomponents></a><br>
+<h2>Searching for installed components<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p align="justify">Once system requirements verification has been successfully passed, <em>install.php</em> script looks for previously installed WebAsyst components (files and sub-directories) in your installation directory.</p>
+    <p align="justify">If you install WebAsyst into <strong>a new empty directory</strong>, then the installation script will extract all files into this directory and lead you to the following steps to setup MySQL Server and create administrative and working databases.</p>
+    <p align="justify">If you run <em>install.php</em> script in the directory where you have previously installed WebAsyst, then the installation script will offer to <strong>upgrade</strong> your WebAsyst.</p>
+    <p align="justify"><strong>NOTE:</strong> Please refer to the <a href=#upgradeprocedure>Upgrade Procedure </a>section below to learn more about WebAsyst Upgrade.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=extractingfiles></a><br>
+<h2>Extracting files<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p align="justify">WebAsyst Installation package includes <em>wbs.tgz</em> archive file. <em>Install.php</em> script extracts all files and subdirectories from <em>wbs.tgz</em> archive and copies them into the directory where you install WebAsyst.</p>
+    <p align="justify"><strong>NOTE:</strong> The directory where you install WebAsyst must be writable by PHP user. Permission value for UNIX-based server is usually 775. Refer to your web server manual or contact your ISP for further details.</p>
+    <p align="justify">Once you have successfully extracted files into installation directory, you must proceed to the following steps to complete installation:</p>
+    <ol>
+      <li>
+        <div align="justify"><a href=#setupmysql>
+            <div align="justify">Setup MySQL Server</div></a></div>
+      </li>
+      <li>
+        <div align="justify">
+          <div align="justify"><a href=#creatingworkingdatabase>
+              <div align="justify">Create WebAsyst Working database</div></a></div>
+        </div>
+      </li>
+    </ol></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=setupmysql></a><br>
+<h2>Setting up MySQL Server <hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>You can use WebAsyst with multiple MySQL Servers installed on your web server. On each MySQL Server you can install as many WebAsyst working databases as you need.</p>
+    <p><strong>The benefit of using multiple MySQL Servers:</strong> For each server you may customize language settings to provide multi-lingual support for your WebAsyst content.</p>
+    <p>WebAsyst Installation Wizard allows you to create your first MySQL Server. Once you complete installation you can customize parameters which you specify during this installation procedure and add new MySQL Servers as you need.</p>
+    <p>Following is a list of MySQL Server parameters you must specify during the installation process: </p>
+    <p>
+      <table style="BORDER-RIGHT: #999999 1px outset; BORDER-TOP: #999999 1px outset; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: #999999 1px outset; WIDTH: 90%; COLOR: #000000; BORDER-BOTTOM: #999999 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left; cssFloat: none" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+        <tbody>
+          <tr>
+            <td><strong>Parameter</strong></td>
+            <td><strong>Description</strong></td>
+          </tr>
+          <tr>
+            <td>Server Name</td>
+            <td>Create a name for MySQL server for further reference (e.g. MyServer).<br /><strong>NOTE:</strong> Server Name can not be modified later.</td>
+          </tr>
+          <tr>
+            <td>MySQL Host</td>
+            <td>IP-address or name of the computer where MySQL server is installed. If MySQL server resides on the same computer as WebAsyst scripts then leave default value in this field: localhost.</td>
+          </tr>
+          <tr>
+            <td>WebAsyst Host</td>
+            <td>IP-address or name of the computer where WebAsyst scripts are installed as it is visible from MySQL server. If MySQL server resides on the same computer as WebAsyst scripts then leave default value in this field: localhost.</td>
+          </tr>
+          <tr>
+            <td>Port<br /></td>
+            <td>
+              <p>TCP/IP port number for MySQL server. If the port number is not given, the default value 3306 is used.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>My SQL User Name &amp; Password</td>
+            <td>Name and password of MySQL User as given by your MySQL Server administrator. If this user has administrative privileges on the server, you should choose “I am MySQL Administrator” option below. Otherwise you must use “I have NO administrative rights on this MySQL Server” option, which does not allow you to create new databases on the server.</td>
+          </tr>
+        </tbody>
+      </table>
+    </p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=creatingworkingdatabase></a><br>
+<h2>Creating Working Database<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p dir="ltr" align="justify">With WebAsyst you can create as many working databases as you need. For a working database you can either use new or existing MySQL database. If you want to use existing database, we strongly recommend using empty database which does not contain previously created tables or other objects.</p>
+    <p dir="ltr" align="justify">WebAsyst Installation Wizard allows you to create your first working database. Once you complete installation you can customize certain parameters which you specify during this installation procedure:</p><font size="2"></font><font size="3">
+      <p align="justify">
+        <table style="BORDER-RIGHT: rgb(153,153,153) 1px outset; BORDER-TOP: rgb(153,153,153) 1px outset; FLOAT: none; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: rgb(153,153,153) 1px outset; WIDTH: 90%; COLOR: rgb(0,0,0); BORDER-BOTTOM: rgb(153,153,153) 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: rgb(255,255,255); TEXT-ALIGN: left" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+          <tbody>
+            <tr>
+              <td><strong>Parameter</strong></td>
+              <td><strong>Description</strong></td>
+            </tr>
+            <tr>
+              <td>Database Server</td>
+              <td>The name of MySQL Server created on the previous step of the installation process is substituted.</td>
+            </tr>
+            <tr>
+              <td>Create new database</td>
+              <td>Use this option if you have rights to create database on the selected server. If you use this option you must create unique name for your new database and enter this name into the “Database Name” field. This name can not be modified later.</td>
+            </tr>
+            <tr>
+              <td><br />Use existing database</td>
+              <td>
+                <p>Use this option if you want to install WebAsyst into existing empty database.</p>
+                <p><strong>NOTE:</strong> This is usual option for virtual hosting where you can create database only by use of stand-alone tools given by ISP, e.g. PHP MyAdmin or CPanel.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>Database Name</td>
+              <td>If you have chosen &quot;Create new database&quot; option then create a unique name for your new database. Otherwise, enter the name of existing database.</td>
+            </tr>
+            <tr>
+              <td>Database Key</td>
+              <td>
+                <p>Enter optional unique nickname (alias) to identify your database (e.g. MyWebAsyst or MyDatabase). Create Database Key which you can easily remember. This database key will be used in your login URL and on your WebAsyst Login page. </p>
+                <p><strong>NOTE:</strong> If you leave this field blank Database Key will be automatically generated from the Database Name (first 16 characters will be used). Once created Database Key can not be modified later</p>
+              </td>
+            </tr>
+            <tr>
+              <td>Company</td>
+              <td>Used as a title for your database. Could be a name of the company who owns this database or your nickname. </td>
+            </tr>
+            <tr>
+              <td>First Name</td>
+              <td>First name of the first user who will be able to login this database. This user will be added in the User List of this database.</td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>Last name of the first user who will be able to login this database. This user will be added in the User List of this database.</td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>Enter Email address of the first user whose name has been entered above.<br /><strong>NOTE:</strong> Specify valid email in this field to receive login instructions. Used also as an email for administrative login – can be modified later.<br /></td>
+            </tr>
+            <tr>
+              <td>Login Name &amp; Password</td>
+              <td>Create a login name and password for the first user to login this database.</td>
+            </tr>
+          </tbody>
+        </table>
+      </p></font></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=logintoworkingdatabase1></a><br>
+<h2>Login to your Working Database<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>Once you have successfully completed setup process as described above and created your first working database, you can login to WebAsyst.</p>
+    <p>At the final page of the WebAsyst Installation Wizard you can see a login URL to your working database like in a sample below:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p dir="ltr"><a href=http://[domain][/WEBASYST]/published/login.php>http://[DOMAIN][/WEBASYST]/published/login.php</a></p>
+      <p dir="ltr">Here [DOMAIN] is domain name or IP address of the server, and [/WEBASYST] is optional path to the directory where you have installed WebAsyst. </p></blockquote>
+    <p dir="ltr">To login your working database for the first time you must use the Username and Password which you have specified on the Creating Working Database step of this installation procedure.</p>
+    <p><strong>NOTE:</strong> You can also login your working database as <strong>Administrator</strong>. The primary purpose of Administrator is to create accounts for other users and customize their access rights. Please do not confuse <strong>Administrator account</strong> with <strong>WebAsyst Administrator</strong> tools described below.<br /></p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=administratingyoursystem></a><br>
+<h2 align="left">Administrating Your System<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p><strong>WebAsyst Administrator</strong> is a major tool which you can use to:</p>
+    <ol>
+      <li>Customize common WebAsyst settings </li>
+      <li>Add and modify MySQL Servers </li>
+      <li>Add and modify working database(s) </li>
+      <li>Localize (translate) WebAsyst to other languages</li>
+      <li>Tune SMS gateways to allow&nbsp;sending SMS messages from WebAsyst applications&nbsp;</li>
+    </ol>
+    <p>At the final page of the WebAsyst Installation Wizard you can see a login URL to your WebAsyst Administrator like in a sample below:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p dir="ltr"><a href=http://[domain][/WEBASYST]/published/admin.php>http://[DOMAIN][/WEBASYST]/published/admin.php</a></p>
+      <p>Here [DOMAIN] is domain name or IP address of the server, and [/WEBASYST] is optional path to the directory where you have installed WebAsyst.</p></blockquote></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=securityissues></a><br>
+<h2>Security Issues<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p align="justify">In the WebAsyst directory hierarchy you need only the <strong><em>published</em></strong> directory to be opened for HTTP access. Following directories – <strong><em>data</em></strong> and <strong><em>dblist</em></strong> - contain critical user data and should be closed for direct access. </p>
+    <p align="justify">If you have no administrative privileges on your <strong>Apache</strong> web server where you have installed WebAsyst, you can place <em>.htaccess</em> files in the directories mentioned above and add configuration entries in these files which expressly prohibit HTTP access.</p>
+    <p align="justify">If you have IIS web server, your may customize permissions to the <strong><em>data</em></strong> and <strong><em>dblist </em></strong>directories by setting proper values for access options, e.g. Read, Directory Browsing etc.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=upgradeprocedure></a><br>
+<h2>Upgrade Procedure<hr /></h2><blockquote dir="ltr">To upgrade WebAsyst you must run installation script in the same directory where you have installed previous version: 
+    <ol>
+      <li>Download most recent installation archive file (TGZ or ZIP) from your account in the <strong>WebAsyst Customer Center</strong>. </li>
+      <li>Uncompress entire content of the archive file into the folder on your web server where you have previous version of the WebAsyst installed. Replace old files with new ones. </li>
+      <li>Run <em><strong>install.php</strong></em> script. </li>
+    </ol>
+    <p>Installation script compares the new version of WebAsyst being installed (version info stored in <strong><em>update.xml</em></strong> file) with the current version of WebAsyst which has been previously installed (stored in <strong><em>wbs.xml</em></strong> file).</p>
+    <p>If version numbers are the same in both files, then you can still run installation script to repair WebAsyst. If new version number is greater than current one, then installation script will upgrade your WebAsyst to the new version. Installation script may update your WebAsyst database(s) structure, if metadata changes occurred in the new version.</p>
+    <p><strong>NOTE:</strong> If new version number is smaller then current version number then installation script quits.</p>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=repairpreviousinstallation></a><br>
+<h2>Repair previous installation<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>You may run the same version of installation script in the directory where you have previously installed WebAsyst. It might be useful if you want to repair your current WebAsyst installation in case you have missing or corrupted files.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=minorupdates></a><br>
+<h2>Minor updates (no database modifications)<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p align="justify">WebAsyst upgrade may contain only PHP scripts (or other files, e.g. localization strings or configuration XML files) modifications. In this case installation script will just replace current files with new ones. No database structure modifications will be applied because no metadata changes occurred in the new version.<br /></p></blockquote>
+  <h2><br /></h2><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=updateswithdatabasemodifications></a><br>
+<h2>Updates with database modifications<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>WebAsyst upgrade may require database structure (metadata) modifications. Metadata modification script is stored in <strong><em>update.xml</em></strong> file (included in the installation package) and contains modification code for all WebAsyst versions.</p>
+    <p>If you upgrade WebAsyst from version X to version X + N then N pieces of metadata modification code will be applied to all working databases on your WebAsyst Server.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=pre-upgrade-files-delete></a><br>
+It is recommended deleting&nbsp;files&nbsp;that become obsolete in a newly installed version. These files are stored in <em>kernel/includes/smarty/compiled</em>, in the directory where WebAsyst is installed. Presence of files from older version(s) in the above mentioned folder may cause some distortions in displaying WebAsyst pages in a newly installed version.<br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=webasystwindowsclient></a><br>
+<h2>
+    <p>WebAsyst Windows Client<hr /></p>
+  </h2><blockquote dir="ltr" align="justify"><strong>WebAsyst Windows Client</strong> program is an alternative way (in contrast to web-browser client) to access WebAsyst Server from your desktop computer. WebAsyst Windows Client features standard GUI interface, uses SOAP+XML to communicate to WebAsyst Server and provides faster access than HTML (web browser) client. 
+    <p align="justify">You can download WebAsyst Windows Client setup program from the following address:</p>
+    <p dir="ltr"><a href=http://www.webasyst.net/downloads.php><font color="#0000ff">http://www.webasyst.net/downloads.php</font></a></p>
+    <p align="justify"><font face="3">Once you have downloaded WebAsyst Windows Client setup program, just run it and follow standard Windows-style installation wizard.</font></p>
+    <p align="justify">After you have successfully installed WebAsyst Windows Client on your desktop computer you must setup connection to the WebAsyst Server. To do so:</p>
+    <ol>
+      <li>Run WebAsyst Windows Client. </li>
+      <li>Click <strong>Host Setup</strong> button in the <strong>Login</strong> form. </li>
+      <li>Click <strong>New</strong> button in the <strong>WebAsyst Host List</strong> form. </li>
+      <li>In the <strong>Host name</strong> field in <strong>WebAsyst Host Settings</strong> form enter a reference name for the computer in your network or in the Internet where you have WebAsyst Server installed, e.g. My WebAsyst Server. This name will appear in the Host menu in <strong>Login</strong> form. </li>
+      <li>In the <strong>Host address</strong> field of the <strong>WebAsyst Host Settings</strong> form, enter URL of the computer in your network or the Internet address where you have WebAsyst Server installed, e.g. <a href=http://yourdomainname.com/webasyst>http://yourdomainname.com/webasyst</a> </li>
+    </ol>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+</td></tr></table></body></html>

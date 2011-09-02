@@ -1,0 +1,402 @@
+<script src='../../../common/html/res/ext/pr-prototype.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/pr-adapter.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/pr-effects.js' type="text/javascript"></script>
+<script src='../../../common/html/res/ext/ext-all.js' type="text/javascript"></script>
+<script type="text/javascript" src="../../../common/html/cssbased/domready.js"></script>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/sc-my-ext-all.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/xtheme-slate.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/menu.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/layout.css'>
+<script type="text/javascript">Ext.BLANK_IMAGE_URL = '../../../common/html/res/ext/resources/images/default/s.gif'</script>
+
+<script type='text/javascript' src='{$smarty.const.URL_JS}/widget_checkout.js'></script>
+<script type="text/javascript">
+	var conf_full_shop_url = "{$smarty.const.CONF_FULL_SHOP_URL|escape:'html'}";
+</script>
+
+	<h1 class="breadcrumbs"><a href='{$olist_url}'>{lbl_ordr_order_list}</a>
+	&raquo;
+	{"ordr_order"|translate} #{$order.orderID_view} &ndash; <span style="{$order.status_style}">{$order.status_name}</span>
+	&nbsp;
+	<input value="{lbl_btn_open_invoice}" rel='{"?ukey=invoice&orderID=`$order.orderID`&lang_iso2=`$invoice_lang`&furl_enable=1"|set_query}' type="button" class="new_window" wnd_width='700' wnd_height='500' />
+	</h1>
+	
+	<p>
+		{"ordr_order_time"|translate} {$order.order_time} ({"ordr_customer_ip"|translate}: {$order.customer_ip})
+	</p>
+
+{$MessageBlock}
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <colgroup>
+            <col width="10%" />
+            <col width="10%" />
+            <col width="80%" />
+        </colgroup>
+        <tr>
+            <td>
+                    {* ORDER ACTIONS *}
+                	<p id="ord_orderactions">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                	{foreach name=status_list from=$order_actions item=_action}
+                    <td>
+                	<input value="{$_action.name|transcape}" rel_source='{"action=exec_order_action&order_action_id=`$_action.id`"|set_query_html}' rel='{"action=exec_order_action&order_action_id=`$_action.id`"|set_query_html}' type="button" class="goto {if $_action.confirm}{$_action.confirm}{/if}" title="{$_action.confirm|transcape}" style="{$_action._style};font-weight:bold;" onpreclick="obj=document.getElementById('change_status_comment');obj2=document.getElementById('notify_customer');if(obj&&obj2&&obj2.checked)this.setAttribute('rel',this.getAttribute('rel_source')+'&amp;status_comments='+obj.value+'&amp;notify_customer=1');"/>
+                    </td>
+                	{/foreach}
+                	{if $custom_order_statuses}
+                    <td>
+                	<input value="{lbl_ordr_change_status}" rel='ord_change_status_block' type="button" class="fade_div" wnd_width="300" wnd_height="260" />
+                    </td>
+                	{/if}
+                    
+                    </tr>
+                    <tr>
+                    <td colspan="{$smarty.foreach.status_list.total+1}">
+                    	<label><input id="notify_customer" type="checkbox" onchange="JavaScript:obj=document.getElementById('change_status_comment_cnt');if(obj)obj.style.display=this.checked?'block':'none';">{"ordr_send_buyer_message"|translate}</label>
+                    	<div id="change_status_comment_cnt" style="display:none;margin-left:10px;">
+                    	{"ordr_add_comment_to_message"|translate}<br>
+                   		<textarea rows="3" cols="40" id="change_status_comment"></textarea>
+                   		</div>
+                    </td>
+                    </tr>
+                    </table>
+                	</p>
+            </td>
+            <td style="padding-left: 20px;padding-top: 20px;" valign="top">
+              	<input value="{"btn_add_note"|translate}" rel='ord_add_comment_block' type="button" class="fade_div" wnd_width="450" wnd_height="250" style="margin-right: 20px;"/>
+          	</td>
+          	<td style="padding-left: 10px;">
+                {if $order.statusID eq $smarty.const.CONF_ORDSTATUS_CANCELLED
+                    or $order.statusID eq $smarty.const.CONF_ORDSTATUS_DELIVERED
+                    or $order.statusID eq $smarty.const.CONF_ORDSTATUS_REFUNDED}
+                    <div style="color: #777777; font-size: 80%;width:140px;">{"msg_cant_edit_order"|translate|replace:"%0%":$order.status_name}</span>
+                {else}
+                    <a href="{$edit_url}">{"lbl_edit_details"|translate}</a>
+                {/if}
+            </td>
+        </tr>
+    </table>
+
+<div style="padding-top: 14px;"></div>
+<table  cellpadding="0" cellspacing="0">
+<colgroup>
+    <col width="50%" />
+    <col width="50%" />
+</colgroup>
+<tr>
+<td><h3>{lbl_ordr_custinfo}</h3></td>
+<td><h3>{lbl_print_forms}</h3></td>
+</tr>
+<tr>
+<td valign="top">
+{* CUSTOMER INFO *}
+{assign var="customer_full_name" value=$order.customer_firstname|cat:" "|cat:$order.customer_lastname}
+<table>
+<colgroup>
+    <col width="10%" />
+    <col width="90%" />
+</colgroup>
+
+<tr>
+    <td valign="top" style="padding: 2px;">{"ordr_customer"|translate}:</td>
+    <td style="padding: 2px;">
+        <a href="index.php?ukey=user_info&amp;userID={$order.customerID}"><span id="ord_customer_name">{$customer_full_name|escape:'html'}</span></a>
+        <span style="color: #666666;">({"usr_custinfo_login"|translate|lower}:&nbsp;{if $customer_login}<strong>{$customer_login}</strong>{else}{"lbl_n_a"|translate}{/if})</span>
+        <br />
+        {if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}{"usr_custinfo_email"|translate}:&nbsp;<a href="mailto:{$order.customer_email|escape:'html'}">{$order.customer_email|escape:'html'}</a>,&nbsp;{else}<b>{"msg_safemode_info_blocked"|translate}</b>{/if}
+        {section name=i loop=$order.reg_fields_values}
+        <br>{$order.reg_fields_values[i].reg_field_name|escape:'html'}: {$order.reg_fields_values[i].reg_field_value|escape:'html'}{*{if !$smarty.section.i.last}<br>{/if}*}
+        {/section}
+    </td>
+</tr>
+{if $order.customers_comment}
+<tr>
+	<td valign="top" style="padding: 2px;">{"ordr_comment"|translate}:</td>
+	<td style="padding: 2px;font-weight:bold;font-style:italic;">{$order.customers_comment|escape:'html'}</td>
+</tr>
+{/if}
+<tr>
+	<td style="padding: 2px;">{"ordr_source"|translate}:</td>
+	<td style="padding: 2px;">{"ordr_source_`$order.source`"|translate}</td>
+</tr>
+
+</table>
+</td>
+			
+{* PRINT FORMS *}
+	<td style="padding-right: 15px;" valign="top">
+{if $print_forms}
+		
+		<form>
+		<table>
+			{foreach from=$print_forms item=print_form key=print_form_class}
+			<tr>
+				<td>
+					<input onload ="initCheckboxState(this);" onclick="storeCheckboxState(this.name,this.checked);" class="printforms" type="checkbox" checked="checked" id="print_{$print_form_class}" name="printforms[{$print_form_class}]" 
+						value="{"?ukey=admin_print_form&orderID=&form_class=`$print_form_class`"|set_query}">
+				</td>
+				<td>
+					<nobr>
+					<label for="print_{$print_form_class}">{$print_form.name}</label>
+					{*<a target="_blank" href="{"?ukey=formmanagment&action=display&orderID=&form_class=`$print_form_class`"|set_query_html}">{lbl_btn_print}</a>*}
+					</nobr>
+				</td>
+			</tr>
+			{/foreach}
+
+			<tr><td colspan="2" align="left"><input id="printforms" onclick="show_printforms();" type="button" value="{lbl_btn_print}"></td></tr>
+		</table>
+		</form>
+<script type="text/javascript">
+{literal}
+function show_printforms()
+{
+	var boxes = getElementsByClass('printforms', document, 'input');
+	var win = "menubar=no,location=no,resizable=yes,scrollbars=yes";
+	for(var i_max = boxes.length-1; i_max>=0; i_max--){
+		if(boxes[i_max].checked){
+			window.open(boxes[i_max].value, 'printableWin'+i_max, win);
+		}
+	}
+}
+function storeCheckboxState(name,value)
+{
+	setCookie('xPOST['+name+']',value,90/*3 month*/);
+}
+
+function initCheckboxState()
+{
+	var boxes = getElementsByClass('printforms', document, 'input');
+	var value;
+	for(var i_max = boxes.length-1; i_max>=0; i_max--){
+		value = getCookie('xPOST['+boxes[i_max].name+']');
+		boxes[i_max].checked = (value=='false')?false:true;
+	}
+}
+
+initCheckboxState();
+
+{/literal}
+</script>		
+		{else}
+		&lt;{"str_empty_list"|translate}&gt;
+		{/if}
+	</td></tr>
+<tr>
+<td><h3>{lbl_shipping} &mdash; {$order.shipping_type|escape:'html'}{if $order.shippingServiceInfo} ({$order.shippingServiceInfo|escape:'html'}){/if}</h3></td>
+<td><h3>{lbl_payment} &mdash; {$order.payment_type|escape:'html'}</h3></td>
+</tr>
+<tr>
+{* SHIPPING INFO *}
+	<td style="padding-right: 15px;" valign="top">
+		
+		
+		{"ordr_recipient"|translate}: {$order.shipping_firstname|escape:'html'} {$order.shipping_lastname|escape:'html'}
+		<br />
+		{if $order.shipping_address ne ""}{$order.shipping_address|escape:'html'}<br />{/if}
+		{if $order.shipping_city ne ""}{$order.shipping_city|escape:'html'}{/if}
+		{if $order.shipping_state ne ""}{$order.shipping_state|escape:'html'}{/if}
+		{if $order.shipping_zip ne ""}{$order.shipping_zip|escape:'html'}<br />{/if}
+		{if $order.shipping_country ne ""}{$order.shipping_country|escape:'html'}{/if}
+        {if not($order.shipping_address eq '' and $order.shipping_city eq '')}
+        <br />
+            <a href="javascript: void(0);" id="sa_lookup" style="font-size: 90%">{"lbl_lookup"|translate}</a>
+        {/if}
+	</td>
+{* BILLING INFO *}
+	<td style="padding-right: 15px;" valign="top">
+	
+		
+		{"ordr_payee"|translate}: {$order.billing_firstname|escape:'html'} {$order.billing_lastname|escape:'html'}
+		<br />
+		{if $order.billing_address ne ""}{$order.billing_address|escape:'html'}<br />{/if}
+		{if $order.billing_city ne ""}{$order.billing_city|escape:'html'}{/if}
+		{if $order.billing_state ne ""}{$order.billing_state|escape:'html'}{/if}
+		{if $order.billing_zip ne ""}{$order.billing_zip|escape:'html'}<br />{/if}
+		{if $order.billing_country ne ""}{$order.billing_country|escape:'html'}{/if}
+        {if not($order.billing_address eq '' and $order.billing_city eq '')}
+        <br />
+            <a href="javascript: void(0);" id="ba_lookup" style="font-size: 90%">{"lbl_lookup"|translate}</a>
+		{/if}
+		{if $order.cc_number || $order.cc_holdername || $order.cc_expires || $order.cc_expires}
+		<p>
+			<strong>{"ordr_ccinfo"|translate}</strong>
+			<br />
+
+			{if true}{*$https_connection_flag*}
+				<table>
+				<tr>
+					<td>{"ordr_ccnumber"|translate}: <b>{$order.cc_number|replace:"<":"&lt;"}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_ccholdername"|translate}: <b>{$order.cc_holdername|replace:"<":"&lt;"}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_ccexpires"|translate}: <b>{$order.cc_expires|replace:"<":"&lt;"}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_cccvv"|translate}: <b>{$order.cc_cvv|replace:"<":"&lt;"}</b></td>
+				</tr>
+				</table>
+			{else}
+			
+			{"ordr_ccinfo_shown_only_in_https"|translate}
+			{/if}
+		{/if}
+	</td>
+
+</tr>
+</table>
+
+<br />
+
+<table class="grid" id="ord_order_content">
+
+<tr class="gridsheader"> 
+	<td>{"prdset_product_name"|translate}</td>
+	<td nowrap="nowrap" align="center">{"cart_product_quantity"|translate}</td>
+	<td nowrap="nowrap" align="right">{"ordr_itemprice_excluding_tax"|translate}</td>
+</tr>
+{if  $orderContent}
+{section name=i loop=$orderContent}
+
+<tr class="{cycle values='gridline,gridline1' name='ord_content'}"> 
+   	<td >{$orderContent[i].name|escape:'html'}</td>
+	<td align="center">{$orderContent[i].Quantity}</td>
+	<td align="right">{$orderContent[i].PriceToShow}</td>
+</tr>
+{/section}
+{else}
+<tr>
+	<td colspan="3" style="color: #777777">{"lbl_no_products_in_order"|translate}</td>
+{/if}
+<tr class="gridsfooter"><td colspan="3">&nbsp;</td>
+
+{if $order.order_discount or $order.discount_description neq ''}
+<tr>
+	<td colspan="2">{"usr_custinfo_group_discount"|transcape}{$order.order_discount_percent|string_format:', %0.1f%%'}</td>
+	<td align="right">{$order.order_discount_valueToShow}</td>
+</tr>
+<tr>
+    <td colspan="3">{$order.discount_description|escape:'html'|nl2br}</td>
+</tr>
+{/if}
+{if $order.shipping_cost || $order.tax}
+<tr>
+	<td colspan="2">{"ordr_subtotal"|translate}</td>
+	<td align="right">{$order.clear_total_priceToShow}</td>
+</tr>
+{/if}
+{if $order.shipping_cost}
+<tr>
+	<td colspan="2">{"ordr_shipping_handling_cost"|translate}</td>
+	<td align="right">{$order.shipping_costToShow}</td>
+</tr>
+{/if}
+{if $order.tax}
+<tr>
+	<td colspan="2">{"ordr_tax"|translate}</td>
+	<td align="right">{$order.tax_toShow}</td>
+</tr>
+{/if}
+<tr id="ord_total_row">
+	<td colspan="2">{"str_total"|translate}</td>
+	<td align="right">{$order.order_amountToShow}</td>
+</tr>
+</table>
+
+{if $order_status_report}
+
+<h3>{"ordr_order_processing_history"|translate}</h3>
+
+<table class="grid">
+
+{section name=i loop=$order_status_report}
+<tr class="{cycle values='gridline,gridline1'}">
+	<td nowrap="nowrap">
+		{$order_status_report[i].status_change_time}
+	</td>
+	<td>
+		{$order_status_report[i].status_comment|escape:'html'|nl2br}
+	</td>
+</tr>
+{/section}
+
+</table>
+{/if}
+
+{if $custom_order_statuses}
+<div id="ord_change_status_block">
+<form action="{''|set_query_html}" method="post">
+
+	<input name="orderID" value="{$order.orderID}" type="hidden">
+	<input name="action" value="set_custom_status" type="hidden">
+	{'ordr_change_status'|transcape}
+	<p>
+	<select name='statusID' class="div_fade_select">
+		<option value='-1'>{"str_please_select"|translate}</option>
+		{foreach from=$custom_order_statuses item=_status}
+		<option value='{$_status.statusID}'>{$_status.status_name}</option>					
+		{/foreach}
+	</select>
+	</p>
+	<p>
+	<label><input name ="notify_customer" type="checkbox" value="1" onchange="JavaScript:obj=document.getElementById('change_custom_status_comment');if(obj)obj.style.display=this.checked?'block':'none';">{"ordr_send_buyer_message"|translate}</label>
+                    	<div id="change_custom_status_comment" style="display:none;margin-left:10px;">
+                    	{'ordr_add_comment_to_message'|transcape}<br>
+                   		<textarea name="status_comments" rows="2" cols="30"></textarea>
+                   		</div>
+{*    <label><input id="notify_customer_cs" name ="notify_customer" type="checkbox" onchange="JavaScript:obj=document.getElementById('change_custom_status_comment');if(obj)obj.style.display=this.checked?'block':'none';"> {"ordr_add_comment"|translate}</label>
+                    	<br>
+                    	<textarea name="status_comments" rows="2" cols="30" id="change_custom_status_comment" style="display:none"></textarea>
+  *}
+  </p>
+	<input value="{'btn_change'|transcape}" type="submit" >
+
+</form>
+</div>
+{/if}
+
+<div id="ord_add_comment_block">
+	<form action="{''|set_query_html}" method="post">
+	<input name="orderID" value="{$order.orderID}" type="hidden" />
+	<input name="action" value="post_comment" type="hidden" />
+	
+	{"ordr_add_comment"|translate}
+	<p>
+	<textarea name="comment" cols="50" rows="4"  maxlength="255"></textarea>
+	</p>
+	<p><label><input type="checkbox" name="notify_customer" value="1">{"ordr_send_buyer_message"|translate}</label></p>
+	<input value="{'btn_add'|transcape}" type="submit" />
+	</form>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+
+Ext.onReady(function(){ldelim}
+    var s_button = Ext.get('sa_lookup');
+    var b_button = Ext.get('ba_lookup');
+
+    if(s_button)
+    {ldelim}
+        s_button.on('click', function(){ldelim}
+            var addr = '{$order.shipping_country|escape:'html'} {$order.shipping_city|escape:'html'} {$order.shipping_address_js|escape:'html'}';
+            addr = addr.replace("\n", " ");
+            showMapWindow(addr);
+        {rdelim});
+    {rdelim};
+    
+    if(b_button)
+    {ldelim}
+        b_button.on('click', function(){ldelim}
+            var addr = '{$order.billing_country|escape:'html'} {$order.billing_city|escape:'html'} {$order.billing_address_js|escape:'html'}';
+            addr = addr.replace("\n", "");
+            showMapWindow(addr);
+        {rdelim});
+    {rdelim};
+{rdelim});
+
+</script>
+
+{include file="backend/google_api/gmaps_ext_popup.html" map_win_name="sa_addr_win" map_canvas_name="sa_map_canvas"}

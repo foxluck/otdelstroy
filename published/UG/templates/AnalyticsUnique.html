@@ -1,0 +1,25 @@
+<div class="backlink lbg"><span>&larr;</span><a href="#" onclick="document.app.openSubframe('?mod=analytics', false, 'analytics-content')">[`Back`]</a></div>
+<div class="analitics-wrapper">
+<h1>[`Unique values in field "{{$field_name}}"`]</h1>
+<br />
+<table>
+<tbody>
+{{foreach from=$values item=v}}
+{{if $v.f}}
+<tr>
+	<td align="left">{{$v.f}}</td>
+	<td align="right"><a href="#" onclick="return getUContacts(this, '{{$v.f}}')">{{$v.c}}</a></td>
+</tr>
+{{/if}}
+{{/foreach}}
+</tbody>
+</table>
+
+<script type="text/javascript">
+function getUContacts(obj, value) {
+	var title = $(obj).parent().prev().html();
+	document.app.doAnalytics("{{$field}}", value, '{{$field_name}} = &quot;' + title + '&quot;');
+	return false;
+}
+</script>
+</div>

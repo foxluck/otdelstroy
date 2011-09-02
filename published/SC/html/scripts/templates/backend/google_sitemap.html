@@ -1,0 +1,84 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+{$MessageBlock}
+<p>{lbl_sitemap_full_description}</p>
+{if $sitemaps.index.file_size}
+<div style="background-color: #fafae7;padding: 20px;margin: 10px 0;">
+{lbl_sitemap_url}:&nbsp;<strong><a href="{$smarty.const.BASE_WA_URL}sitemap.php" target="_blank">{$smarty.const.BASE_WA_URL}sitemap.php</a></strong>
+{if $sitemaps.index.file_size}
+<br/>
+{lbl_sitemap_update_date}:&nbsp;{$sitemaps.index.file_time}
+{/if}
+</div>
+{/if}
+<form action="{'ukey=sitemap'|set_query_html}" method="POST">
+{if $sitemaps.index.file_size}
+<h3>{'sitemap_update_title'|translate}</h3>
+{/if}
+<input type="hidden" name="action" value="update">
+<p>{"sitemap_base_url"|translate}:&nbsp;<input name="base_url" type="text" value="{$smarty.const.WIDGET_SHOP_URL}" size="40"></p>
+<table class="grid">
+		<tr class="gridsheader">
+			<td><input type="checkbox" checked="checked" id="sitemaps-group-box" rel="sitemaps" class="groupcheckbox" ></td>
+			<td><label for="sitemaps-group-box">{lbl_sitemap_name}</label></td>
+			{*<td>{lbl_sitemap_date}</td>
+			<td>{lbl_sitemap_filesize}</td>*}
+			<td>&nbsp;</td>
+		</tr>
+{foreach from=$sitemaps item=sitemap key=sitemap_id}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td valign="top"><input type="checkbox"  checked="checked" name="sitemap[{$sitemap_id}]" id="sitemap_{$sitemap_id}" value="1"{if $sitemap_id == 'index'} disabled="disabled"{else}  class="checkbox sitemaps" rel="sitemaps-group-box">{/if}</td>
+			<td{if !$sitemap.file_size} style="color:red"{/if}>{if $sitemap_id == 'index'}{$sitemap.name|translate}{else}<label for="sitemap_{$sitemap_id}">{$sitemap.name|translate}</label>{/if}
+			{if $sitemap.file_size}			
+			<em style="color: #777">({$sitemap.file_time};&nbsp;{$sitemap.file_size/1024|string_format:'%0.1f Kb'})</em>
+			{/if}
+			{if $sitemap_id == 'pages'}
+				<table class="grid" id="custompages-settings" style="display:block">
+					<tr class="gridsheader">
+						<td><input type="checkbox" id="custompages-group-box" rel="custompages" class="groupcheckbox" checked="checked"></td>
+						<td><label for="custompages-group-box">{lbl_sitemap_pagename}</label></td>
+					</tr>
+					{foreach from=$pages item=page key=page_id}
+					<tr class="{cycle name='pages' values='gridline,gridline1'}">
+						<td><input type="checkbox"class="checkbox custompages" rel="custompages-group-box" name="page[{$page.ukey}]" id="page_{$page_id}" value="1" checked="checked"></td>
+						<td><label for="page_{$page_id}">{$page.name}</label></td>
+					</tr>
+					{/foreach}
+					<tr class="gridsfooter"><td colspan="2">&nbsp;</td></tr>
+				</table>{/if}
+			</td>
+			{*
+			{if $sitemap.file_size}			
+			<td>{$sitemap.file_time}</td>			
+			<td><a class="bluehref" href="{$smarty.const.BASE_WA_URL}sitemap.php?app=SC&amp;section={$sitemap_id}" target="_blank">{$sitemap.file_size/1024|string_format:'%0.1f Kb'}</a></td>
+			<td>{if $sitemap_id == 'index'}&nbsp;{else}<a href='{"action=delete&sitemap=`$sitemap_id`"|set_query_html}' title='{"cnfrm_delete"|transcape}' class="confirm_action"><img src="images_common/remove.gif" border="0" alt='{"btn_delete"|transcape}' /></a>{/if}</td>
+			{else}
+			<td colspan="3" align="center">{lbl_sitemap_not_exists}</td>
+			{/if}
+			*}
+			{if $sitemap.file_size &&false}			
+			<td valign="top">{if $sitemap_id == 'index'}&nbsp;{else}<a href='{"action=delete&sitemap=`$sitemap_id`"|set_query_html}' title='{"cnfrm_delete"|transcape}' class="confirm_action"><img src="images_common/remove.gif" border="0" alt='{"btn_delete"|transcape}' /></a>{/if}</td>
+			{else}
+			<td align="center">&nbsp;</td>
+			{/if}
+		</tr>
+{/foreach}
+		<tr class="gridsfooter"><td colspan="5">&nbsp;</td></tr>
+</table>
+<input type="submit" value="{if $sitemaps.index.file_size}{'btn_update'|translate}{else}{'btn_create'|translate}{/if}">
+</form>
+{literal}
+<script type="text/javascript">
+<!-- 
+page_settings = function(){
+	var custom = document.getElementById('custompages-settings');
+	if(custom){
+		var img = document.getElementById('custompages-settings-img');
+		if(img){
+			img.src = (custom.style.display=='block')?'images_common/plus.gif':'images_common/minus.gif';
+		}
+		custom.style.display=(custom.style.display=='block')?'none':'block';
+	}
+}
+//-->
+</script>
+{/literal}

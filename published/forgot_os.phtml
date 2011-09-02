@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Forgot password</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="login/res/styles.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/javascript">
+<!--
+ function MM_findObj(n, d) { //v4.0
+   var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+  d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+   if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+   for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+   if(!x && document.getElementById) x=document.getElementById(n); return x;
+ }
+
+ function focusControl(objName) {
+   var obj = MM_findObj('userdata[DB_KEY]');
+   if (obj && obj.value == "")
+		obj.focus( );
+	else {
+		obj = MM_findObj('userdata[U_ID]');
+		if (obj && obj.value == "" )
+			obj.focus( );
+		else
+			obj = MM_findObj('userdata[U_PASSWORD]');
+			if (obj )
+				obj.focus( );
+	}
+ }
+
+	function switchAction()
+	{
+         var access = document.forms[0].access;
+         var actionURL;
+         
+         if (access&& access.checked )
+                 actionURL = "https://"+location.host+"<?php echo $_SERVER['SCRIPT_NAME']; ?>";
+         else
+                 actionURL = "http://"+location.host+"<?php echo $_SERVER['SCRIPT_NAME']; ?>";
+
+         document.forms[0].action = actionURL;
+
+         return true;
+	}
+
+ if ( parent.frames.length > 1 )
+	parent.location = 'login.php';
+
+//-->
+</script>
+</head>
+<body class="default" onLoad="focusControl('userdata[DB_KEY]')">
+
+<?php
+    if(count($warningStr)){
+    foreach ($warningStr as $warning)
+    echo '<div id="message-block" style="border: 0px solid #C75A5A;border-width: 0px 0px 1px 0px;background-color: #F7CFCF;padding:10px;margin: 0px;color: black;font-weight: bold;">
+	'.$warning."\n</div>";
+    }
+?>
+<div style="margin:150px auto; padding: 15px;width:300px;">
+<form name="form" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES);?>">
+<img src="common/html/res/images/logo.gif" alt="" style="margin-left:50px;" >
+<br>
+<input type="hidden" name="edited" value="1">
+<font color="#999999" size="5" face="Geneva, Arial, Helvetica, sans-serif"><?php echo $locStrings['app_forgotpassword']?></font><br>
+<?php if ( isset($errorStr) && strlen($errorStr) ) {
+	echo '<br><span class="invalidField">'.$errorStr.'</span><br><br>';
+}
+if(!empty($messageStr)){
+	echo '<div style="color:green; font-weight: bold;width:80%;">'.$messageStr.'</div>';
+}
+if(empty($sended)){
+if (strlen($dbkey)) {?>
+<input name="userdata[DB_KEY]" type="hidden" value="<?php echo $userdata["DB_KEY"]?>" style="width: 80%;height: 24px;font-size:18px;" maxlength="100">
+<?php } else { ?>
+<nobr>Database Key:</nobr>
+<br>
+<input name="userdata[DB_KEY]" type="text" value="<?php echo $userdata["DB_KEY"]?>" style="width: 80%;height: 24px;font-size:18px;" maxlength="100">
+<br>
+<br>
+<?php } ?>
+<span style="white-space: nowrap;"><?php echo $locStrings['app_loginname'];?>:<input type="hidden" name="edited" value="1"></span>
+<br>
+<input name="userdata[U_ID]" type="text" value="<?php echo $userdata["U_ID"] ?>" style="width: 80%;height: 24px;font-size:18px;" maxlength="20">
+<br>
+<br>
+<?php echo $locStrings['app_shortname_email']; ?>
+<br>
+<input name="userdata[EMAIL]" type="text" value="<?php echo $userdata["EMAIL"];?>"style="width: 80%;height: 24px;font-size:18px;">
+<br>
+<br>
+<input name="enter" type="submit" value="<?php echo $locStrings['app_remind_btn'];?>" style="font-size:150%;padding:0px auto;margin-right:20%;float: right;">
+<?php }else{ ?>
+<br>
+<br>
+<input name="enter" type="submit" value="<?php echo $locStrings['app_login_btn'];?>" onclick="window.location.href='login.php';return false;" style="font-size:150%;padding:0px auto;margin-left:50%;width:30%;">
+<?php } ?>
+
+<br>
+
+<input type="hidden" name="C" value="<?php if(isset($_GET['C'])) echo htmlspecialchars($_GET['C'], ENT_QUOTES); ?>">
+</form>
+</div>
+</body>
+</html>

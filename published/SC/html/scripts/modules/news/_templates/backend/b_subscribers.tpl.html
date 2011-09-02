@@ -1,0 +1,78 @@
+{* newsletter subscribers list *}
+<h1>{$CurrentDivision.name|translate}</h1>
+
+<p>{"sbscrbrs_description"|translate}
+<br />
+{if $Message ne ''}
+	<div class="{if $MessageCode eq '1'}ok_msg_f{else}error_msg_f{/if}">{$Message}</div>
+{/if}
+
+<table cellpadding="15" cellspacing="0" width="100%">
+<tr>
+	<td valign="top">
+		<table class="grid" width=100%>
+		<tr class="gridsheader">
+			<td>{lbl_pgn_newsletter_subscribers}</td>
+			<td></td>
+		</tr>
+		
+		{if $smarty.const.CONF_BACKEND_SAFEMODE eq 1}
+		<tr>
+			<td align="center" colspan="2">{"msg_safemode_info_blocked"|translate}</td>
+		</tr>
+		{else}
+		
+		{if $subscribers_count eq 0}
+		<tr>
+			<td align="center" colspan="2">&lt; {"str_answer_no"|translate} &gt;</td>
+		</tr>
+		{else}
+		
+		{section name=i loop=$subscribers}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>
+				<a class=standard href="mailto:{$subscribers[i].Email|replace:"<":"&lt;"|replace:">":"&gt;"|replace:"'":"&amp;"|replace:'"':'&quot;'|replace:" ":"20%"}">
+					{$subscribers[i].Email|replace:"<":"&lt;"|replace:">":"&gt;"|replace:"'":"&amp;"|replace:'"':'&quot;'}
+				</a>
+			</td>
+			<td width=1%>
+				<a href="{$urlToSubscibe}&unsub={$subscribers[i].Email64}" onclick="if(window.confirm('{"cnfrm_areyousure"|translate}'))return true;else return false;">
+					<img src="images_common/remove.gif" border=0 alt="{"btn_delete"|translate}" border=0>
+				</a>
+			</td>
+		</tr>
+		{/section}
+		
+		{if $navigator}
+		<tr class="gridsfooter">
+			<td colspan=2>
+				{$navigator}
+			</td>
+		</tr>
+		{/if}
+		
+		{/if}
+		{/if}
+		
+		</table>
+		
+	</td>
+	<td style="padding:0px;background-color: #666666;width:1px;"><hr style="height:100%; width:1px;" /></td>
+	<td valign="top">
+		<form method="post" action="" enctype="multipart/form-data" name="formsubscrlist" style="padding: 15px; margin:0px;">
+			<input type="radio" name="fACTION" value="fLoadSubscribersListFile" id="subscr_act_upload" />
+			<label for="subscr_act_upload">{"sbscrbrs_import_from_file"|translate}</label>
+			<br />
+			<input type="file" name="fSubscribersListFile" />
+			<hr />
+			<input type="radio" name="fACTION" value="fExportSubscribersList" id="subscr_act_export" />
+			<label for="subscr_act_export">{"sbscrbrs_export_to_file"|translate}</label>
+			<hr />
+			<input type="radio" name="fACTION" value="fEraseSubscribersList" id="subscr_act_erase" />
+			<label for="subscr_act_erase">{"btn_delete_all"|translate}</label>
+			<hr />
+			<input type="submit" onclick="if(document.formsubscrlist.fACTION[2].checked)return window.confirm('{"cnfrm_areyousure"|translate}');" value="{"btn_ok"|translate}" />
+		</form>
+	</td>
+</tr>
+</table>

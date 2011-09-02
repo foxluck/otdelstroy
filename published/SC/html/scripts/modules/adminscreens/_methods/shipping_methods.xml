@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>Shipping methods</name>
+		<key>shipping_methods</key>
+	</interface>
+</interfaces>

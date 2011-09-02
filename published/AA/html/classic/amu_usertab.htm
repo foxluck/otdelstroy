@@ -1,0 +1,65 @@
+<? assign var=controlWidth value=150 ?>
+<table border=0 cellpadding=0 cellspacing=2>
+	<tr>
+		<td><? conditionalOutput invalidField=$invalidField field="U_ID" text=#invalidFieldHighlight# ?><? $kernelStrings.amu_loginname_label|cat:":&nbsp;" ?></td>
+		<td valign=top>
+			<? if $newUser ?>
+				<input class=control type=text name="contactData[U_ID]" value="<? $contactData.U_ID|htmlsafe:true:true ?>" maxlength=20 style="width: <? $controlWidth|cat:"px" ?>">
+			<? else ?>
+				<? $targetUser|htmlsafe:true:true ?>
+			<? /if ?>
+		</td>
+	</tr>
+	<tr>
+		<td><? conditionalOutput invalidField=$invalidField field="U_PASSWORD1" text=#invalidFieldHighlight# ?><? $kernelStrings.amu_password_label|cat:":&nbsp;" ?></td>
+		<td valign=top><input class=control type=password name="contactData[U_PASSWORD1]" style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td><? conditionalOutput invalidField=$invalidField field="U_PASSWORD2" text=#invalidFieldHighlight# ?><? $kernelStrings.amu_passconf_label|cat:":&nbsp;" ?></td>
+		<td valign=top><input class=control type=password name="contactData[U_PASSWORD2]" style="width: <? $controlWidth|cat:"px" ?>"></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td align=right><input type=checkbox name="contactData[receivesmessages]" value=1 <? switchedOutput val=$contactData.receivesmessages true_val=1 str1="checked" ?>></td>
+		<td><? $kernelStrings.amu_notificationscb_label ?></td>
+	</tr>
+	<tr>
+		<td><? $kernelStrings.amu_notfirmat_label|cat:":&nbsp;" ?></td>
+		<td valign=top><select name="contactData[mailformat]" class="control">
+			<? html_options values=$formatIDs selected=$contactData.mailformat output=$formatNames ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><? $kernelStrings.amu_language_label|cat:":&nbsp;" ?></td>
+		<td><select name="contactData[language]" class="control">
+			<? html_options values=$language_ids selected=$contactData.language output=$language_names ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td><? conditionalOutput invalidField=$invalidField field=START_PAGE text=#invalidFieldHighlight# ?><? $kernelStrings.amu_startpage_label|cat:":" ?></td>
+		<td><select name="contactData[START_PAGE]" class="control">
+			<? html_options values=$page_ids selected=$contactData.START_PAGE output=$page_names ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><? $kernelStrings.amu_status_label|cat:":&nbsp;" ?></td>
+		<td>
+			<? if !$userIsDeleted ?>
+				<select name="contactData[U_STATUS]" class="control">
+				<? html_options values=$statusIDs selected=$contactData.U_STATUS output=$statusNames ?>
+				</select>
+			<? else ?>
+				<? $kernelStrings.app_deletedstatus_name ?>
+				<input type=hidden name="contactData[U_STATUS]" value="1">
+			<? /if ?>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', '' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if $csv_step == "LOADFILE" ?>
+					<!-- Select file form -->
+					<? wbs_formLayout caption=$pageTitle ?>
+
+						<? wbs_formContent ?>
+							<tr>
+								<td><? wbs_label text=$kernelStrings.icl_file_label for="file" fieldName="FILE" ?></td>
+								<td colspan="2"><input id="file" type="file" name="file" class="FormControl" style="width:350px"/></td>
+							</tr>
+							<tr class="SeparatedRow">
+								<td><? wbs_label text=$kernelStrings.app_importtemplate_label for="template" ?></td>
+								<td>
+									<select id="template" name="fileFormat" class="FormControl">
+										<option value="-1"><? $kernelStrings.app_customtemplate_item|htmlsafe:true:true ?></option>
+										<? html_options values=$formatIDs selected=$fileFormat output=$formatNames ?>
+									</select>
+								</td>
+								<td><? wbs_button caption=$kernelStrings.app_managetemplates_btn name="managetemplatesbtn" ?></td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<table class="FormLayout">
+										<tr class="SeparatedRow">
+											<td><? wbs_label text=$kernelStrings.icl_userstatus_label for="status" ?></td>
+											<td>
+												<select name="selectedStatus" class="FormControl" id="status">
+													<? html_options values=$statusIDs selected=$selectedStatus output=$statusNames ?>
+												</select>
+											</td>
+										</tr>
+									</table>
+									<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.iul_usergroups_label|cat:": " ?><? /wbs_note ?>
+
+									<? wbs_dualComboBox
+										leftCaption=$kernelStrings.app_included_label
+										rightCaption=$kernelStrings.app_notincluded_label
+
+										leftVariableName="included_groups"
+										rightVariableName="notincluded_groups"
+
+										leftValues=$included_groups
+										rightValues=$notincluded_groups
+
+										leftNames=$included_groups_names
+										rightNames=$notincluded_groups_names
+
+										separated=true
+
+										rows=8
+										width=250
+									?>
+								</td>
+							</tr>
+							<? if $canManageContacts ?>
+								<tr>
+									<td><? wbs_label text=$kernelStrings.amu_contactfolder_label for="folder" ?></td>
+									<td colspan="2">
+										<select name="folderID" id="folder" class="FormControl">
+											<? include file="../../../common/html/classic/tree_templates/tree_folders_selector.htm" selectedID=$folderID showAnyRights=true denyNoAccess=true showPromt=true ?>
+										</select>
+									<td>
+								</tr>
+								<tr>
+									<td colspan=3>
+										<? wbs_note noteType="tips" width="500px" ?><? $kernelStrings.amu_folder_tip ?><? /wbs_note ?>
+									</td>
+								</tr>
+								<? else ?>
+									<input type=hidden name="unsortedContacts" value="1"/>
+							<? /if ?>
+						<? /wbs_formContent ?>
+
+						<? wbs_formButtonsPanel ?>
+								<? wbs_buttonSet ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.icl_import_btn name="savebtn" onClick="fillSelectedLists( new Array( 'included_groups[]', 'notincluded_groups[]' ) );" ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+								<? /wbs_buttonSet ?>
+						<? /wbs_formButtonsPanel ?>
+
+					<? /wbs_formLayout?>
+				<? elseif $csv_step == "SETSCHEME" ?>
+					<!-- Set scheme form -->
+
+					<? wbs_formLayout caption=$pageTitle ?>
+
+						<? wbs_formContent ?>
+							<tr>
+								<td>
+									<? assign var=dbColumnName value=$kernelStrings.icl_crsccols_label ?>
+									<? assign var=space_left value=5 ?>
+									<? assign var=width value=500 ?>
+									<? assign var=height value=300 ?>
+
+									<? include file="../../../common/html/cssbased/pageelements/importcustfile.htm" extraLine=true ?>
+								</td>
+							</tr>
+						<? /wbs_formContent ?>
+
+						<? wbs_formButtonsPanel ?>
+								<? wbs_buttonSet ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.icl_import_btn name="savebtn" ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+								<? /wbs_buttonSet ?>
+						<? /wbs_formButtonsPanel ?>
+					<? /wbs_formLayout?>
+
+					<input type=hidden name=folderID value="<? $folderID ?>"/>
+					<input type=hidden name=grantuserprivs value="<? $grantuserprivs ?>"/>
+					<input type=hidden name=selectedStatus value="<? $selectedStatus ?>"/>
+					<input type=hidden name=groups value="<? $groups ?>"/>
+
+				<? elseif $csv_step == "FINISHED_SAVESCHEMA" || $csv_step == "FINISHED" ?>
+					<!-- Display operation results -->
+
+					<input type=hidden name=folderID value="<? $folderID ?>">
+
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $importStr|htmlsafe:true:true ?><? /wbs_note ?>
+					<? if $errorNum ?>
+						<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.icl_notaddedusers_label|htmlsafe:true:true ?><? /wbs_note ?>
+					<? /if ?>
+
+					<? if $errorNum ?>
+						<table class="SimpleList">
+							<thead>
+								<tr> 
+									<th scope="col"><? $kernelStrings.icl_contactname_label ?></th>
+									<th scope="col"><? $kernelStrings.icl_error_label ?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<? foreach from=$errorStack item=stackItem ?>
+									<tr>
+										<td><? $stackItem.user ?></td>
+										<td><? $stackItem.msg ?></td>
+									</tr>
+								<? /foreach ?>
+							</tbody>
+						</table>
+					<? /if ?>
+
+					<? if $csv_step == "FINISHED_SAVESCHEMA" ?>
+						<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.tpl_format_note|cat:":" ?><? /wbs_note ?>
+
+						<table class="FormLayout">
+							<tr class="SeparatedRow">
+								<td width=10><input type=checkbox value=1 name="saveFormat" <? switchedOutput val=$saveFormat true_val=1 str1="checked" ?>></td>
+								<td class="NoBreak"><? wbs_label text=$kernelStrings.tpl_formatname_label for="formatName" fieldName="fileformatname" ?></td>
+								<td width=200><input name="fileformatname" id="formatName" class="FormControl" type=text style="width: 200px" maxlength=50></td>
+							</tr>
+						</table>
+					<? /if ?>
+
+				<? wbs_button caption=$kernelStrings.app_done_btn name="savebtn" ?>
+
+				<? elseif $csv_step == "SELECT_U_ID" ?>
+					
+				<? /if ?>
+
+			<? /if ?>
+
+			<input type="hidden" name="CF_ID" value="<? $CF_ID ?>"/>
+			<input type="hidden" name="csv_step" value="<? $csv_step ?>"/>
+			<input type="hidden" name="csv_separator" value="<? $csv_separator ?>"/>
+			<input type="hidden" name="destPath" value="<? $destPath ?>"/>
+			<input type="hidden" name="csv_dbscheme_packed" value="<? $csv_dbscheme_packed ?>"/>
+			<input type="hidden" name="csv_headers_packed" value="<? $csv_headers_packed ?>"/>
+			<input type="hidden" name="csv_importscheme_packed" value="<? $csv_importscheme_packed ?>"/>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

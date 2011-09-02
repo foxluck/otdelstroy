@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>[`Constructor`]</title>
+{{csscombine file="`$url.css`contact-edit.css"}}
+	{{$url.css}}users-common.css
+	{{$url.css}}users-edit.css
+{{/csscombine}}
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+{{jscombine file="`$url.js`common.js"}}
+	{{$url.common}}js/jquery.wbs.popup.js
+	{{$url.common}}js/wbs-common.js
+{{/jscombine}}
+<script type="text/javascript">
+	WbsData.set({'url.common' : "{{$url.common}}", 'url.app' : "{{$url.app}}"});
+</script>
+<style type="text/css">
+	table.contact td.user_rightbar {width: 21%}
+	div.label {width: 21%}
+	div.field div.edit {width: 170px;}
+	div.field div.edit div.field-type {float: left}
+	div.req {float: left; padding: 5px}
+	div.edit {margin-right: 0}
+	div.info {padding: 10px 20px}
+	td.main-fields div.label {width: 20%}
+	div.info p {padding: 10px 0}	
+	#CURRENT_PHOTO div.edit p.disable-photo {bottom:0; width:105px;}
+	table.contact td.photo {padding-left: 20px}
+	div.info p.red {color: red}
+	span.req {color: red}
+	div.subtitle {font-weight: bold; font-size: 15px; padding-bottom: 5px; margin:10px 20px ;border-bottom: 2px solid #D8E0E5}
+	div.subtitle span {color:#666666;font-size:80%;font-weight:normal;}
+	div.info div.buttons {padding: 10px 0}
+	div.info div.buttons input {width: 170px; margin: 5px 0}
+	div.label {padding-top: 7px}		
+	div.edit, div.usertop #CONTACT div.edit {cursor: default;}
+	span.small-gray {font-size:80%; color: #666}	
+	#add_lang {display:block;font-size:80%;margin-top:10px;}
+	#dbname {display:none}
+	.gray {color: #666}
+	div.dbname {cursor: pointer;}	
+</style>
+</head>
+<body>
+<div id="header">
+	<div id="toolbar_new" class="contact-tools" >
+		<div class="backlink">
+			<span>&larr;</span><a href="{{$smarty.server.HTTP_REFERER}}">[`Back`]</a>
+		</div>
+   </div>
+</div>
+<div id="scroll" style="position:relative">
+<table id="sub-main-content" class="contact" cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+  	<td>
+  	<div class="wrap-scroller">
+  	<h2>[`Customize fields for "{{$type_name}}"`]</h2>
+{{foreach name=sections from=$fields item=section}}
+	<div id="section{{$section.id}}" class="group">
+		<div class="title">
+			{{if $smarty.foreach.sections.index}}
+			<div class="link">
+				<a onclick="editSection({{$section.id}})" href="javascript:void(0)">[`Edit`]</a> | 
+				<a onclick="moveSection({{$section.id}})" href="javascript:void(0)">[`Move`]</a>
+				{{if !$section.fields}} | <a onclick="deleteSection({{$section.id}})" href="javascript:void(0)">[`Delete`]</a>{{/if}}
+			</div>
+			{{/if}}
+			<a class="title click" title="">{{$section.name}}</a>		
+		</div>
+		{{if $smarty.foreach.sections.index == 0}}
+			<div class="subtitle">[`Primary identifying fields <span>(these fields can not be edited or deleted; some fields can be disabled)`]</span></div>
+			<table class="contact" width="100%">
+			<tr>
+			<td class="photo">
+			<div id="CURRENT_PHOTO">
+			<div class="field photo-field" id="{{$photo_id}}"><div class="edit"><img src="{{$url.img}}empty-contact{{if !$photo_exists}}-disable{{/if}}{{$type_id}}.gif" /><p align="center" class="disable-photo"><a class="{{if $photo_exists}}disabled{{else}}enabled{{/if}}" id="disable-photo" href="#">{{if $photo_exists}}[`Disable photo`]{{else}}[`Enable photo`]{{/if}}</a></p></div></div>
+			</div>
+			</td>
+			<td class="main-fields">
+			{{if $fullname}}
+			<div class="field">
+				<div class="label">[`Full name`]:</div>
+				<div class="edit" style="width:auto"><div id="format" class="field-type" style="width:auto">{{$fullname}}</div></div>
+				<div class="link">
+					<a href="javascript:void(0)" onclick="changeFormat()" style="margin-left: 10px">[`Change`]</a>
+				</div>
+			</div>
+			{{/if}}
+			{{foreach from=$section.fields item=field}}
+			{{if ($field.disabled && $field.standart == 2 && !$main[$field.id] && $type_id == 2) || $field.id == $photo_id}}
+
+			{{else}}
+			{{if !$field.standart && !$main[$field.id] && !$adv}}
+			</td></tr></table>
+			<div id="aux-fields" class="subtitle">[`Auxiliary fields`]</div>
+			{{assign var="adv" value="1"}}
+			{{/if}}
+			<div id="{{$field.id}}" class="field{{if $field.disabled}} disabled{{/if}}" >
+				<div class="label">{{$field.name}}{{if $field.required}}<span class="req">*</span>{{/if}}:</div>
+				<div class="edit"><div class="field-type">{{$types[$field.type]}} {{if $field.type == 'VARCHAR' && $field.options}}({{$field.options}}){{/if}}</div></div>
+				{{if ($field.standart == 2 || !$field.standart) && (!$main[$field.id] || $field.disabled) }}
+				<div class="link">
+					<span class="disabled">
+					[`disabled for `]"{{$type_name}}" 
+					|
+					<a href="javascript:void(0)" onclick="enableField({{$field.id}})">[`Enable`]</a>
+					{{if !$field.standart}}
+					| 
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 1)">[`Delete`]</a>
+					{{/if}}					
+					</span>
+					<span class="enabled">
+					{{if $field.type != 'IMAGE'}}
+					<label><input onclick="setReq(this, {{$field.id+0}})" style="width:auto" type="checkbox" {{if $field.required}}checked="checked"{{/if}} /> [`Required`]</label> |
+					{{/if}}
+					{{if !$field.standart}}				
+					<a href="javascript:void(0)" onclick="editField({{$field.id}})">[`Edit`]</a> 
+					|
+					<a href="javascript:void(0)" onclick="moveField({{$field.id}})">[`Move`]</a>
+					|
+					{{/if}}
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 0)">[`Disable`]</a>{{if !$field.standart}}
+					| 
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 1)">[`Delete`]</a>
+					{{/if}}
+					</span>
+				</div>
+				{{else}}
+				<div class="link">
+				<span><label><input onclick="setReq(this, {{$field.id+0}})" style="width:auto" type="checkbox" {{if $field.required}}checked="checked"{{/if}} /> [`Required`]</label></span>
+				</div>
+				{{/if}}
+			</div>		
+			{{/if}}		
+			{{/foreach}}
+			{{if !$adv}}
+			</td></tr></table>
+			<div id="aux-fields" style="display:none" class="subtitle">[`Auxiliary fields`]</div>
+			{{/if}}
+		{{else}}
+		{{foreach from=$section.fields item=field}}
+			<div id="{{$field.id}}" class="field{{if $field.disabled}} disabled{{/if}}" >
+				<div class="label">{{$field.name}}{{if $field.required}}<span class="req">*</span>{{/if}}:</div>
+				<div class="edit"><div class="field-type">{{$types[$field.type]}} {{if $field.type != 'IMAGE' && $field.type != 'MENU' && $field.options}}({{$field.options}}){{/if}}</div></div>
+				<div class="link">
+					<span class="disabled">
+					[`disabled for `]"{{$type_name}}" 
+					|
+					<a href="javascript:void(0)" onclick="enableField({{$field.id}})">[`Enable`]</a>
+					{{if !$field.standart}}
+					| 
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 1)">[`Delete`]</a>
+					{{/if}}					
+					</span>
+					<span class="enabled">
+					{{if $field.type != 'IMAGE'}}
+					<label><input onclick="setReq(this, {{$field.id+0}})" style="width:auto" type="checkbox" {{if $field.required}}checked="checked"{{/if}} /> [`Required`]</label> |
+					{{/if}}
+					{{if !$field.standart}}				
+					<a href="javascript:void(0)" onclick="editField({{$field.id}})">[`Edit`]</a> 
+					|
+					<a href="javascript:void(0)" onclick="moveField({{$field.id}})">[`Move`]</a>
+					|
+					{{/if}}
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 0)">[`Disable`]</a>{{if !$field.standart}}
+					| 
+					<a href="javascript:void(0)" onclick="deleteField({{$field.id}}, 1)">[`Delete`]</a>
+					{{else}}; <span class="small-gray">[`can not be edited or deleted`]</span>
+					{{/if}}
+					</span>
+				</div>
+			</div>	
+		{{/foreach}}
+		{{/if}}
+	</div>
+{{/foreach}}
+	<br /><br /><br />
+	</div>
+	</td>
+	<td class="user_rightbar">
+		<div class="info">
+<p>[`This page allows you to customize your contact entry format: add new sections and fields, delete/modify existing fields or change their location and appearance.`]</p>
+<p class="red">
+<b>[`NOTE`]</b>: [`Changes can not be canceled. Be careful and don't lose precious data.`]
+</p>			
+			<div class="buttons">
+				<input id="add-section" type="button" value="[`Add a new section`]" /> <br />
+				<input id="add-field" type="button" value="[`Add a new field`]" />
+			</div>
+			<div class="buttons" style="border-top: 1px solid #C6C9CC; margin-top: 10px; padding-top: 20px">
+				<input type="button" onclick="location.href='{{$smarty.server.HTTP_REFERER}}'" value="[`Done!`]" />
+			</div>
+		</div>
+	</td>
+   </tr>
+</table>
+</div>
+
+<div class="wbs-dlg" id="popup" style="display: none;">
+	<div id="progress" style="display: none;">
+		<img src="{{$url.app}}img/ajax-loader.gif" />
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	var resize = function () {
+		$("#scroll").height($(window).height() - $("#header").height());
+	};
+	$(document).ready(resize);
+	$(window).resize(resize);	
+	
+	function constructPopup(settings) {
+		var settings = $.extend({
+	       width: 500,
+	       height: 'auto',
+	       backgroundColor: '#000000',
+	       opacity: 0.1,
+	       loadComplite: function () {
+				$('#popup').wbsPopupRender();
+				$("#popup .close-btn").click(function () {
+					$("#popup").wbsPopupClose();
+				});
+		   }
+		}, settings);
+		$('#popup').wbsPopup(settings);
+	}
+
+
+	function enableField(field_id) {
+		$.post("?mod=construct&act=enable&type_id={{$type_id}}", {field_id: field_id}, function (response) {
+			if (response.status == 'OK') {
+				$("#" + field_id).removeClass("disabled");
+				if ($("#" + field_id).hasClass('photo-field')) {
+					$("#disable-photo").removeClass('enabled').addClass('disabled').html('[`Disable photo`]');
+					$("#" + field_id + " img").attr('src', $("#" + field_id + " img").attr('src').replace(/-disable/, ''));
+				}
+				if (parent && parent.document.app) { 
+					parent.document.listfields = response.data.listfields;
+					parent.document.photoField = response.data.photoField;
+					parent.document.dbfields = response.data.dbfields;
+				}
+			}
+		}, "json");
+	}
+
+	function changeFormat()	{
+		constructPopup({url: "{{$url.app}}?mod=construct&act=format&type_id={{$type_id}}"});
+	}
+
+	function deleteSection(section_id) {
+		constructPopup({url: "{{$url.app}}?mod=construct&act=deleteSection&type_id={{$type_id}}&section_id=" + section_id});
+	}
+
+	function editSection(section_id) {
+		constructPopup({url: "{{$url.app}}?mod=construct&act=editSection&type_id={{$type_id}}&section_id=" + section_id});
+	}
+
+	function moveSection(section_id) {
+		constructPopup({url: "{{$url.app}}?mod=construct&act=moveSection&type_id={{$type_id}}&section_id=" + section_id});
+	}
+
+	function deleteField(field_id, all) {
+		constructPopup({url: "{{$url.app}}?mod=construct&act=deleteField&type_id={{$type_id}}&field_id=" + field_id + '&all=' + all});
+	}
+
+	function editField(field_id) {
+		constructPopup({width: 600, url: "{{$url.app}}?mod=construct&act=editField&type_id={{$type_id}}&field_id=" + field_id});
+	}
+
+	function moveField(field_id) {
+		constructPopup({width: 600, url: "{{$url.app}}?mod=construct&act=moveField&type_id={{$type_id}}&field_id=" + field_id});
+	}
+	
+
+	$("#add-field").click(function () {
+		constructPopup({width: 600, url: "{{$url.app}}?mod=construct&act=addField&type_id={{$type_id}}"});
+	});	
+
+	$("#add-section").click(function () {
+		constructPopup({url: "{{$url.app}}?mod=construct&act=addSection&type_id={{$type_id}}"});	
+	});	
+
+	function setReq(obj, id) {
+		if ($("#" + id).hasClass('disabled')) {
+			$(obj).removeAttr('checked');
+			return false;
+		};
+		$.post("?mod=construct&act=requiredField&ajax=1", {type_id: {{$type_id}}, field_id: id, req: $(obj).is(":checked") ? 1: 0}, function (response) {
+			if (response.data == 1) {
+				var html = $("#" + id + " .label").html();
+				html = html.replace(/:$/i, '<span class="req">*</span>:');
+				$("#" + id + " .label").html(html);
+			} else {
+				$("#" + id + " .label span.req").remove()
+			}
+		}, "json" );
+	}	
+
+	$("#disable-photo").click(function () {
+		if ($(this).hasClass('disabled')) {
+			deleteField({{$photo_id}}, 0);
+		} else {
+			enableField({{$photo_id}});
+		}
+		return false;
+	});	
+	
+</script>
+
+</body>
+</html>

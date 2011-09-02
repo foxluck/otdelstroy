@@ -1,0 +1,113 @@
+{* shipping types configuration *}
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" name="shipping_method_form">
+
+	<table cellpadding="5" cellspacing="1" bgcolor="#BEDDDB">
+	<tr>
+		<td colspan="7" bgcolor="#56AFD6" align="center">
+			<b>{lbl_shipping}</b>
+		</td>
+	</tr>
+
+	<tr bgcolor="#BEDDDB" align="center">
+		<td>&nbsp;</td>
+		<td>{"str_name"|translate}</td>
+		<td>{"str_description"|translate}</td>
+		<td>{"shp_email_comments_text"|translate}</td>
+		<td>{"mdl_name"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td>&nbsp;</td>
+	</tr>
+
+	{section name=i loop=$shipping_types}
+	<tr bgcolor="white">
+		<td>
+			<input type="checkbox" name="Enabled_{$shipping_types[i].SID}" {if $shipping_types[i].Enabled} checked{/if} />
+		</td>
+		<td>
+			{html_text dbfield="Name" name="Name_%lang%_`$shipping_types[i].SID`" values=$shipping_types[i]}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" dbfield="description" name="description_%lang%_`$shipping_types[i].SID`" values=$shipping_types[i]}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" dbfield="email_comments_text" name="email_comments_text_%lang%_`$shipping_types[i].SID`" values=$shipping_types[i]}
+		</td>
+		<td>
+			<select name='module_{$shipping_types[i].SID}'>
+				<option value='null'>
+					--
+				</option>
+				{section name=j loop=$shipping_modules}
+				<option value='{$shipping_modules[j]->get_id()}'
+				{if $shipping_modules[j]->get_id() == $shipping_types[i].module_id}
+					selected
+				{/if}
+				>
+					{$shipping_modules[j]->title}
+				</option>
+				{/section}
+			</select>
+		</td>
+		<td>
+			<input type="text" name="sort_order_{$shipping_types[i].SID}" size="3" value="{$shipping_types[i].sort_order|replace:'"':'&quot;'}" />
+		</td>
+		<td>
+			<a href="javascript:confirmDelete({$shipping_types[i].SID},'{"cnfrm_delete"|translate}','{"delete="|set_query}&delete=');">
+				<img src="images/remove.jpg" border="0" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	</tr>
+	{/section}
+
+		<tr bgcolor="#56AFD6">
+			<td colspan="7" align="center">
+				{"btn_add"|translate}:
+			</td>
+		</tr>
+
+		<tr bgcolor="white">
+			<td>
+				<input type="checkbox" name="Enabled" checked />
+			</td>
+		<td>
+			{html_text name="Name"}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" name="description"}
+		</td>
+		<td>
+			{html_textarea rows="3" cols="30" name="email_comments_text"}
+		</td>
+		<td>
+			<select name='module'>
+				<option value='null'>
+					--
+				</option>
+				{section name=j loop=$shipping_modules}
+				<option value='{$shipping_modules[j]->get_id()}'>
+					{$shipping_modules[j]->title}
+				</option>
+				{/section}
+			</select>
+		</td>
+		<td>
+			<input type="text" name="sort_order" size="3" />
+		</td>
+		<td>
+			&nbsp;
+		</td>
+		</tr>
+
+
+</table>
+
+<p>
+<input type="hidden" name="dpt" value="conf" />
+<input type="hidden" name="sub" value="shipping" />
+<input type="hidden" name="save_shipping" value="yes" />
+<input type="submit" value="{"btn_save"|translate}" />
+</p>
+</form>

@@ -1,0 +1,60 @@
+/*
+	Splitter
+*/
+
+table.SplitterHeaderPanelList td
+{
+	height: 22px;
+}
+
+div.SplitterPanelHeader
+{
+	height: 27px;
+	padding: 0;
+	margin: 0 0 1px 0;
+}
+
+div.SplitterHeaderPanelDiv
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	height: 27px;
+}
+
+td.SplitterLeftPanelContainer
+{
+	padding: 0px;
+}
+
+td.SplitterRightPanelContainer
+{
+	padding: 0px;
+}
+
+span.SplitterHeaderTreeBtn
+{
+	width: 18px;
+	height: 16px;
+}
+
+span.SplitterHeaderTreeBtn a
+{
+	width: 15px;
+	height: 16px;
+}
+
+table.SplitterHeaderPanelList td
+{
+	padding-top: 1px;
+}
+
+div.SplitterPanelHeader.Active table.SplitterHeaderPanelList td
+{
+	font-weight: bold;
+}
+
+div.SplitterPanelHeader span.Inactive, div.SplitterPanelHeader span.Inactive a
+{
+	font-weight: normal;
+}

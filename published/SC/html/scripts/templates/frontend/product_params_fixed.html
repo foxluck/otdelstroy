@@ -1,0 +1,28 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+
+<table>
+{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+{section name=i loop=$product_extra}
+	{if $product_extra[i].option_type eq 0 }
+	<tr>
+		<td>
+			{$product_extra[i].name|escape:'html'}: 
+		</td>
+		<td>
+			<b>{$product_extra[i].option_value|escape:'html'}</b>
+		</td>
+	</tr>
+	{/if}
+{/section}
+</table>
+
+{else}
+	<table>
+	<tr>					
+	<td>Color:</td>
+	<td>
+		<strong>white</strong>
+	</td>
+	</tr>
+	</table>
+{/if}

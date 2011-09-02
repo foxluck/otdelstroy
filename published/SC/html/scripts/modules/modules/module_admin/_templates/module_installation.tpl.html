@@ -1,0 +1,24 @@
+<h1>{$CurrentDivision.name}</h1>
+
+{if $Message}{$Message.text}{/if}
+
+<h2>{$Connector.title}</h2>
+
+<form method="post" action="">
+<input type="hidden" name="fACTION" value="INSTALL_CONFIG" />
+<input type="hidden" name="DATA[ModuleFile]" value="{$ModuleFile|escape:'html'}" />
+<input type="hidden" name="DATA[ModuleClass]" value="{$ModuleClass|escape:'html'}" />
+<table>
+	<tr>
+		<td>{$smarty.const.CONFIG_TITLE}</td>
+		<td><input type="text" size="40" name="DATA[ConfigTitle]" /></td>
+	</tr>
+	<tr>
+		<td valign="top">{$smarty.const.CONFIG_DESCR}</td>
+		<td><textarea rows="6" cols="30" name="DATA[ConfigDescr]"></textarea></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td><input type="submit" value="{"mdl_install"|translate}" /></td>
+	</tr>
+</table>
+</form>

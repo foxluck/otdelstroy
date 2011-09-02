@@ -1,0 +1,12 @@
+<tr>
+	<td valign="top">
+		<strong>{lbl_pgn_order_history}</strong>
+		<p class="paddingblock">
+		{assign var=_orders_list_url value="?ukey=order_history"|set_query_html}
+		{'usr_orders_num'|translate|replace:'%ORDERS_NUM%':$orders_num|replace:'%ORDERS_LIST_URL%':$_orders_list_url}
+		</p>
+	</td>
+	
+	<td valign="top">
+	</td>
+</tr>

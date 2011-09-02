@@ -1,0 +1,736 @@
+1	WebAsyst Administrator	note	Ошибка загрузки списка приложений
+2	WebAsyst Administrator	note	Список баз данных
+3	WebAsyst Administrator	note	Ошибка загрузки списка баз данных
+4	WebAsyst Administrator	note	Добавить базу данных
+5	WebAsyst Administrator	note	Редактировать
+6	WebAsyst Administrator	note	WebAsyst Installer
+7	WebAsyst Administrator	note	MySQL-серверы
+8	WebAsyst Administrator	note	Добавить MySQL-сервер
+9	WebAsyst Administrator	note	Редактировать данные MySQL-сервера
+10	WebAsyst Administrator	note	Сохранить
+11	WebAsyst Administrator	note	Добавить
+12	WebAsyst Administrator	note	Ошибка чтения файла wbs.xml
+13	WebAsyst Administrator	note	Имя сервера содержит недопустимые символы
+14	WebAsyst Administrator	note	Сервер с таким именем уже существует
+15	WebAsyst Administrator	note	Сервер с указанным именем не найден
+16	WebAsyst Administrator	note	Ошибка добавления записи о новом сервере
+17	WebAsyst Administrator	note	Директория не найдена: %s
+18	WebAsyst Administrator	note	Изменение аккаунта
+19	WebAsyst Administrator	note	Добавить язык
+20	WebAsyst Administrator	note	Редактировать свойства языка
+21	WebAsyst Administrator	note	Язык не найден
+22	WebAsyst Administrator	note	Вы можете вводить только латинские символы и цифры
+23	WebAsyst Administrator	note	Язык с таким идентификатором уже существует
+24	WebAsyst Administrator	note	Ошибка перезаписи файла
+25	WebAsyst Administrator	note	Ядро
+26	WebAsyst Administrator	note	Ошибка сохранения строк локализации
+27	WebAsyst Administrator	note	Выберите файл для импорта
+28	WebAsyst Administrator	note	Ошибка загрузки файла на сервер
+29	WebAsyst Administrator	note	Неверный формат файла
+30	WebAsyst Administrator	note	Файл локализации языка <b>%s</b> уже существует для приложения <b>%s</b>
+31	WebAsyst Administrator	note	Файл локализации языка <b>%s</b> уже существует для приложения <b>%s</b>
+32	WebAsyst Administrator	note	Запись из журнала не найдена
+33	WebAsyst Administrator	note	Настройки подключения к базе данных
+34	WebAsyst Administrator	note	Администратор
+35	WebAsyst Administrator	note	Информация об администраторе базы данных
+36	WebAsyst Administrator	note	Дата истечения
+37	WebAsyst Administrator	note	Только для чтения
+38	WebAsyst Administrator	note	Допустимый IP-адрес
+39	WebAsyst Administrator	note	Ограничение на размер базы данных, MB
+40	WebAsyst Administrator	note	Ограничение на размер файла, MB
+41	WebAsyst Administrator	note	Формат даты
+42	WebAsyst Administrator	note	Ограничение на количество пользователей
+43	WebAsyst Administrator	note	Пароль
+44	WebAsyst Administrator	note	Язык
+45	WebAsyst Administrator	note	Компания
+46	WebAsyst Administrator	note	Фамилия
+47	WebAsyst Administrator	note	Имя
+48	WebAsyst Administrator	note	Email
+49	WebAsyst Administrator	note	Логин
+50	WebAsyst Administrator	note	Пароль
+51	WebAsyst Administrator	note	Импорт строк локализации
+52	WebAsyst Administrator	note	Язык с таким идентификатором не найден
+53	WebAsyst Administrator	note	Файл локализации языка <b>%s</b> для приложения <b>%s</b> успешно импортирован.
+54	WebAsyst Administrator	note	Пустой файл локализации для приложения <b>%s</b> успешно создан.
+55	WebAsyst Administrator	note	Файл локализации для приложения <b>%s</b> успешно импортирован.
+56	WebAsyst Administrator	note	MySQL сервер <b>%s</b>, на котором работает эта база данных, не найден.
+57	WebAsyst Administrator	note	Для восстановления %s перейдите в секцию «MySQL-серверы» и создайте сервер с таким же именем: %s. Этот MySQL-сервер должен физически работать на том же сервере, где установлена используемая база данных (с теми же параметрами хост и порт).
+58	WebAsyst Administrator	note	Ограничение на размер памяти (Memory Limit) должно быть %s МБ или более.
+59	WebAsyst Administrator	note	Установленная версия MySQL &mdash; %s. Для установки WebAsyst необходим MySQL 4.1 или выше.
+60	WebAsyst Administrator	note	Ошибка соединения с MySQL-сервером:\n%s
+61	WebAsyst Administrator	note	Имя пользователя MySQL
+62	WebAsyst Administrator	note	Пароль пользователя MySQL
+63	WebAsyst Administrator	note	Ограничение на количество получателей
+64	WebAsyst Administrator	note	Мой WebAsyst
+65	WebAsyst Administrator	note	Войти
+			
+dbl_table_title	WebAsyst Administrator	label	Список работающих баз данных
+dbl_comment_1	WebAsyst Administrator	label	ЗАМЕЧАНИЕ
+dbl_comment_2	WebAsyst Administrator	label	Для создания базы данных нажмите «Добавить базу данных»
+dbl_comment_3	WebAsyst Administrator	label	Для редактирования свойств базы данных выберите ее в таблице
+dbl_comment_4	WebAsyst Administrator	label	Для удаления базы данных выберите ее в таблице и нажмите «Удалить» в форме редактирования ее настроек. Удаленные базы данных можно восстановить, и они подсвечиваются в списке всех баз данных серым цветом.
+dbl_comment_5	WebAsyst Administrator	label	Вход в WebAsyst для выбранной базы данных:
+dbl_table_header_1	WebAsyst Administrator	label	Ключ базы данных:
+dbl_table_header_2	WebAsyst Administrator	label	Дата добавления
+dbl_table_header_3	WebAsyst Administrator	label	Дата создания
+dbl_table_header_4	WebAsyst Administrator	label	Приложения
+btn_add_db	WebAsyst Administrator	label	Добавить базу данных
+btn_del_db	WebAsyst Administrator	label	Удалить базу данных
+btn_enable_now	WebAsyst Administrator	label	Включить сейчас
+btn_remove	WebAsyst Administrator	label	Удалить
+btn_restore	WebAsyst Administrator	label	Восстановить
+btn_disable	WebAsyst Administrator	label	Отключить
+btn_delete	WebAsyst Administrator	label	Удалить
+btn_add	WebAsyst Administrator	label	Добавить
+btn_ok	WebAsyst Administrator	label	  Ок
+btn_cancel	WebAsyst Administrator	label	Отмена
+btn_save	WebAsyst Administrator	label	Сохранить
+btn_close	WebAsyst Administrator	label	Закрыть
+btn_navigation_back_to_main	WebAsyst Administrator	label	Вернуться в главное меню
+btn_dismiss	WebAsyst Administrator	label	Отклонить
+manual_link	WebAsyst Administrator	label	Руководство по использованию WebAsyst Installer
+manual_install_link	WebAsyst Administrator	label	Инструкции по установке WebAsyst
+btn_add_mysqls	WebAsyst Administrator	label	Добавить MySQL-сервер
+lbl_form_note	WebAsyst Administrator	label	ЗАМЕЧАНИЕ
+			
+main_page_name	WebAsyst Administrator	label	Главное меню
+sqls_page_names	WebAsyst Administrator	label	MySQL
+sqls_page_name	WebAsyst Administrator	label	MySQL-сервер
+sqls_page_desc	WebAsyst Administrator	label	Настройки соединения с MySQL и подключения к базе данных.
+sqls_page_descs	WebAsyst Administrator	label	Настройки серверов MySQL и подключения к базе данных.
+dbl_page_name	WebAsyst Administrator	label	База данных
+dbl_page_desc	WebAsyst Administrator	label	Управление настройками базы данных и аккаунта WebAsyst.
+dbl_page_names	WebAsyst Administrator	label	Базы данных
+dbl_page_descs	WebAsyst Administrator	label	Управление списком баз данных.
+cset_page_name	WebAsyst Administrator	label	Общие настройки
+cset_page_desc	WebAsyst Administrator	label	Общие настройки этой установки и информация о лицензии.
+smscp_page_name	WebAsyst Administrator	label	SMS
+smscp_page_desc	WebAsyst Administrator	label	Модули отправки SMS-сообщений (для настройки SMS-уведомлений о заказах в интернет-магазине войдите в администрирование магазина в раздел Заказы &raquo; SMS).
+lll_page_name	WebAsyst Administrator	label	Локализация
+lll_page_desc	WebAsyst Administrator	label	Перевод интерфейса приложений WebAsyst на любой язык (кроме приложения «Интернет-магазин», локализация которого редактируется в администрировании самого интернет-магазина в разделе «Дизайн — Языки и перевод»).
+fes_page_name	WebAsyst Administrator	label	Пользовательская часть
+fes_page_desc	WebAsyst Administrator	label	Настройте, что будет открываться при открытии в браузере главной директории установки WebAsyst.
+wawc_link	WebAsyst Administrator	label	Install WebAsyst Windows Client
+			
+sqls_page_title	WebAsyst Administrator	label	Управление MySQL-серверами
+sqls_table_title_1	WebAsyst Administrator	label	Название
+sqls_table_title_2	WebAsyst Administrator	label	Хост
+sqls_table_title_3	WebAsyst Administrator	label	Порт
+sqls_table_title_4	WebAsyst Administrator	label	Пользователь
+			
+forms_req_fields	WebAsyst Administrator	label	* обязательные поля
+addserv_header	WebAsyst Administrator	label	Сервер
+addserv_gr_1_name	WebAsyst Administrator	label	Название сервера
+addserv_gr1_opt1	WebAsyst Administrator	label	Название сервера
+addserv_gr1_desc1	WebAsyst Administrator	label	Используется для обращения к серверу внутри WebAsyst Installer
+addserv_gr1_note1	WebAsyst Administrator	label	Название сервера позже нельзя будет изменить.
+addserv_gr2_name	WebAsyst Administrator	label	Настройки подключения
+addserv_gr2_opt1	WebAsyst Administrator	label	Хост MySQL
+addserv_gr2_desc1	WebAsyst Administrator	label	Хост или IP-адрес компьютера, где установлен сервер MySQL. Если MySQL работает на этом же компьютере, укажите localhost.
+addserv_gr2_opt2	WebAsyst Administrator	label	Хост WebAsyst
+addserv_gr2_desc2	WebAsyst Administrator	label	IP-адрес или имя компьютера, где установлены скрипты WebAsyst. По этому хосту сервер MySQL будет отправлять ответ. Если MySQL работает на этом же компьютере, укажите localhost.
+addserv_gr2_opt3	WebAsyst Administrator	label	Порт
+addserv_gr2_desc3	WebAsyst Administrator	label	Порт TCP/IP на MySQL-сервере. Если порт не задан, будет использоваться значение по умолчанию — 3306.
+addserv_gr3_name	WebAsyst Administrator	label	Кодировка баз данных по умолчанию
+addserv_gr3_opt1	WebAsyst Administrator	label	Кодировка баз данных
+addserv_gr4_name	WebAsyst Administrator	label	Языки
+addserv_gr4_desc	WebAsyst Administrator	label	Список языков локализации интерфейса WebAsyst (по умолчанию &mdash; английский).
+addserv_gr4_note1	WebAsyst Administrator	label	Подробнее о локализации читайте в руководстве пользователя по локализации.
+addserv_gr5_name	WebAsyst Administrator	label	MySQL-администратор
+addserv_gr5_opt1	WebAsyst Administrator	label	MySQL-администратор
+addserv_gr5_desc1	WebAsyst Administrator	label	Имя пользователя и пароль пользователя MySQL, у которого есть права на создание новых баз данных и изменение прав других пользователей.
+addserv_gr5_note1	WebAsyst Administrator	label	Для того, чтобы создать новую базу данных, у пользователя, логин и пароль которого вы ввели выше, должны быть соответствующие административные права. Если таких прав нет, установка будет возможна только в уже существующую (ранее созданную) базу данных.
+addserv_gr5_opt2	WebAsyst Administrator	label	Имя пользователя
+addserv_gr5_opt3	WebAsyst Administrator	label	Пароль
+addserv_gr5_opt4	WebAsyst Administrator	label	У меня нет административных привилегий на этом MySQL-сервере
+addserv_gr5_desc2	WebAsyst Administrator	label	
+addserv_btn_add	WebAsyst Administrator	label	Добавить
+addserv_btn_cancel	WebAsyst Administrator	label	Отмена
+addserv_query_delete	WebAsyst Administrator	label	Удалить настройки MySQL-сервера?
+			
+cmn_set_page_name	WebAsyst Administrator	label	Общие настройки
+cmn_set_web_name	WebAsyst Administrator	label	HTTP и email
+cmn_set_web_opt1	WebAsyst Administrator	label	Время жизни сессии
+cmn_set_web_desc1	WebAsyst Administrator	label	Укажите максимально допустимое время жизни сессии в случае бездействия пользователя (в минутах).
+cmn_set_web_opt2	WebAsyst Administrator	label	Отправлять уведомления
+cmn_set_web_desc2	WebAsyst Administrator	label	Если выключить, WebAsyst не будет отправлять email-уведомления пользователям (например, уведомления о новых заданиях)
+cmn_set_web_opt3	WebAsyst Administrator	label	Noreply-адрес
+cmn_set_web_dsc3	WebAsyst Administrator	label	Email-адрес, с которого будут отправляться системные сообщения, не требующие ответа (например, назначения и напоминания).
+cmn_set_web_note3	WebAsyst Administrator	label	Если вы оставите эту настройку пустой, некоторые почтовые сервера не пропустят письма от WebAsyst, потому что могут счесть их за спам.
+cmn_set_web_opt4	WebAsyst Administrator	label	Порт HTTPS
+cmn_set_web_desc4	WebAsyst Administrator	label	По умолчанию 443. Если на сервере SSL настроен на другой порт, вы может настроить это здесь.
+cmn_set_web_note4	WebAsyst Administrator	label	Если вы не используете SSL, пропустите эту настройку.
+cmn_set_time_name	WebAsyst Administrator	label	Настройки времени
+cmn_set_time_opt1	WebAsyst Administrator	label	Включить поддержку временных зон
+cmn_set_time_opt2	WebAsyst Administrator	label	Временная зона сервера
+cmn_set_time_opt3	WebAsyst Administrator	label	Переход на летнее время
+cmn_set_sys_name	WebAsyst Administrator	label	Системные настройки
+cmn_set_sys_opt1	WebAsyst Administrator	label	Директория с пользовательскими данными
+cmn_set_sys_desc1	WebAsyst Administrator	label	В этой папке хранятся все файлы, с которыми вы работаете. Папка [WBS_PATH]/data была создана во время установки.
+cmn_set_sys_desc2	WebAsyst Administrator	label	Вы можете использовать другую папку для хранения данных приложений WebAsyst — для этого укажите путь к ней относительно главной директории, в которой установлен WebAsyst (для обозначения главной директории используйте [WBS_PATH]).
+cmn_set_sys_note1	WebAsyst Administrator	label	У скриптов WebAsyst должен быть доступ по записи в директорию пользовательских данных.
+cmn_set_sys_opt2	WebAsyst Administrator	label	Ограничение на размер<br>оперативной памяти<br>(Memory Limit)
+cmn_set_sys_desc3	WebAsyst Administrator	label	Максимальный размер памяти в МБ, который может быть использован скриптами WebAsyst (обычно это ограничение устанавливается администратором сервера).
+cmn_set_sys_note2	WebAsyst Administrator	label	Если вы оставите это поле пустым
+cmn_set_sys_note3	WebAsyst Administrator	label	MB — значение по умолчанию.
+cmn_set_page_title	WebAsyst Administrator	label	Общие настройки
+cmn_set_gen_name	WebAsyst Administrator	label	Информация об установке
+cmn_set_gen_company	WebAsyst Administrator	label	Название компании
+cmn_set_gen_license	WebAsyst Administrator	label	Номер лицензии
+			
+fes_page_name	WebAsyst Administrator	label	Общедоступная часть
+fes_gen_name	WebAsyst Administrator	label	Пользовательская часть
+fes_gen_opt1	WebAsyst Administrator	label	Пользовательская база данных
+fes_gen_desc1	WebAsyst Administrator	label	Из этой базы данных будут показываться данные.
+fes_gen_opt2	WebAsyst Administrator	label	Главная страница пользовательской части
+fes_gen_desc2	WebAsyst Administrator	label	Перенастроить основной адрес установки
+fes_page_title	WebAsyst Administrator	label	Основные настройки
+			
+sms_mod_id	WebAsyst Administrator	label	Модуль
+sms_description	WebAsyst Administrator	label	Описание
+sms_status	WebAsyst Administrator	label	Статус
+sms_enabled	WebAsyst Administrator	label	Включен
+sms_disabled	WebAsyst Administrator	label	Выключен
+sms_modify	WebAsyst Administrator	label	Настроить
+sms_class	WebAsyst Administrator	label	Класс модуля
+sms_warning	WebAsyst Administrator	label	Включите модуль для того, чтобы настроить его.
+sms_query_disable	WebAsyst Administrator	label	Вы уверены, что хотите отключить этот модуль?
+smsm_page_title	WebAsyst Administrator	label	Настроить модуль
+smsm_page_title2	WebAsyst Administrator	label	Настроить %s модуль
+			
+lll_page_title	WebAsyst Administrator	label	Языки интерфейса
+lll_pgae_name	WebAsyst Administrator	label	Локализация и языки
+lll_id	WebAsyst Administrator	label	ID
+lll_name	WebAsyst Administrator	label	Название
+lll_encoding	WebAsyst Administrator	label	Кодировка
+lll_properties	WebAsyst Administrator	label	Свойства языка
+lll_locstr	WebAsyst Administrator	label	Перевод
+lll_modify	WebAsyst Administrator	label	Настроить
+lll_edit	WebAsyst Administrator	label	Редактировать
+lll_view	WebAsyst Administrator	label	Просмотр
+lll_import	WebAsyst Administrator	label	Импорт перевода
+lll_export	WebAsyst Administrator	label	Экспорт перевода
+lll_no_recods	WebAsyst Administrator	label	нет записей
+lll_note	WebAsyst Administrator	label	Английский &mdash; язык по умолчанию. Его нельзя изменить и редактировать.
+lll_add	WebAsyst Administrator	label	Добавить язык
+			
+lllm_page_title	WebAsyst Administrator	label	Локализация
+lllm_page_name	WebAsyst Administrator	label	Редактировать строки локализации
+lllm_unreg_lang	WebAsyst Administrator	label	незарегистрированный язык
+lllm_app	WebAsyst Administrator	label	Приложение
+lllm_note1	WebAsyst Administrator	label	Английский &mdash; язык по умолчанию. Его нельзя изменить и редактировать.
+lllm_error	WebAsyst Administrator	label	ОШИБКА
+lllm_missstr	WebAsyst Administrator	label	Перевод строк отсутствует
+lllm_missing_all	WebAsyst Administrator	label	Язык по умолчанию ( Английский ) и текущий язык
+lllm_missing_def	WebAsyst Administrator	label	Файл с английским языком (языком по умолчанию) и текущий язык
+lllm_missing_curr	WebAsyst Administrator	label	Текущий язык
+lllm_note2	WebAsyst Administrator	label	Язык по умолчанию ( Английский ) используется как основа для языка, на который вы переводите WebAsyst.
+lllm_note3	WebAsyst Administrator	label	Непереведенные строки подсвечиваются красным цветом &mdash; задайте перевод для таких строк. Значения соответствующих строк на английском языке были пользованы как основа для перевода.
+lllm_id	WebAsyst Administrator	label	ID
+lllm_description	WebAsyst Administrator	label	Описание
+lllm_value	WebAsyst Administrator	label	Значение
+lllm_not_found	WebAsyst Administrator	label	 Не найдены файлы локализации для этого приложения.
+lllm_btn_back	WebAsyst Administrator	label	К списку языков
+lllm_btn_apply	WebAsyst Administrator	label	Сохранить
+lllm_btn_undo	WebAsyst Administrator	label	Отменить изменения
+			
+llli_id	WebAsyst Administrator	label	ID
+llli_desc1	WebAsyst Administrator	label	ISO3-код языка (например, eng, ger, rus &mdash; до 3-х символов)
+llli_name	WebAsyst Administrator	label	Название
+llli_desc2	WebAsyst Administrator	label	Название языка (например e.g. English, German, Русский)
+llli_encoding	WebAsyst Administrator	label	Кодировка
+llli_desc3	WebAsyst Administrator	label	Кодировка для этого языка (например, utf-8)
+llli_desc4	WebAsyst Administrator	label	Строки локализации могут быть импортированы либо из другого существующего языка, либо из внешнего файла.
+llli_desc5	WebAsyst Administrator	label	Не импортировать ( импортировать можно либо позже, либо редактировать перевод вручную )
+llli_from_exist	WebAsyst Administrator	label	Импорт из существующего языка
+llli_from_file	WebAsyst Administrator	label	Импорт из файла
+llli_note	WebAsyst Administrator	label	Формат импортируемого файла &mdash; .TSV (tab-separated values) со следующей структурой:
+llli_app_id	WebAsyst Administrator	label	ID приложения (например, PM, IT, DD)
+llli_string_id	WebAsyst Administrator	label	ID строки (например, app_name_long)
+llli_group	WebAsyst Administrator	label	Группа строк (например, Common, Project Manager)
+llli_str_desc	WebAsyst Administrator	label	Описание (например, "Кнопка сохранения на странице редактирования профиля")
+llli_str_value	WebAsyst Administrator	label	Перевод (например, "Save")
+llli_str_replace	WebAsyst Administrator	label	Заменить уже переведенные строки
+llli_btn_delete	WebAsyst Administrator	label	Удалить язык
+llli_req_delete	WebAsyst Administrator	label	Удалить язык?
+llli_lang	WebAsyst Administrator	label	Язык
+llli_btn_import	WebAsyst Administrator	label	Импорт
+			
+dbmgm_gr1_name	WebAsyst Administrator	label	Сервер базы данных
+dbmgm_gr1_opt1	WebAsyst Administrator	label	Сервер базы данных
+dbmgm_gr2_name	WebAsyst Administrator	label	Настройки базы данных
+dbmgm_gr2_sel1	WebAsyst Administrator	label	Создать новую базу данных
+dbmgm_gr2_war1	WebAsyst Administrator	label	Эта опция выключена для выбранного MySQL сервера (изменить эту настройку можно в WebAsyst Installer в разделе "Серверы MySQL").
+dbmgm_gr2_desc1	WebAsyst Administrator	label	Установить WebAsyst в новую базу данных, создав нового пользователя MySQL и указав название новой базы данных:
+dbmgm_gr2_desc2	WebAsyst Administrator	label	Создание пользователя, который будет иметь доступ к новой базе данных
+dbmgm_gr2_username	WebAsyst Administrator	label	Пользователь MySQL
+dbmgm_gr2_pwd	WebAsyst Administrator	label	Пароль
+dbmgm_gr2_dbname	WebAsyst Administrator	label	Имя базы данных
+dbmgm_gr2_desc3	WebAsyst Administrator	label	Название базы данных не может быть длиннее 64 символов.
+dbmgm_gr2_sel2	WebAsyst Administrator	label	Использовать существующую базу данных
+dbmgm_gr2_desc4	WebAsyst Administrator	label	Таблицы WebAsyst будут созданы в уже существующей базе данных.
+dbmgm_gr2_desc5	WebAsyst Administrator	label	Введите настройки подключения к базе данных MySQL
+dbmgm_gr3_name	WebAsyst Administrator	label	Настройки базы данных
+dbmgm_gr3_dbkey	WebAsyst Administrator	label	Ключ базы данных
+dbmgm_gr3_alias	WebAsyst Administrator	label	Введите название создаваемой базы данных, по которому вы сможете легко идентифицировать ее (например, MyWebAsyst или MyDatabase). Это название будет запрашиваться при входе в WebAsyst.
+dbmgm_gr3_desc1	WebAsyst Administrator	label	Легко запоминаемое название базы данных. Если вы оставите это поле пустым, ключ базы данных будет совпадать с названием базы данных MySQL.
+dbmgm_gr3_expdate	WebAsyst Administrator	label	Истекает
+dbmgm_gr3_desc2	WebAsyst Administrator	label	Укажите, когда истекает срок доступа к этой базе данных (оставьте пустым, если доступ к базе данных не истекает).
+dbmgm_gr3_ro	WebAsyst Administrator	label	Только для чтения
+dbmgm_gr3_dblimit	WebAsyst Administrator	label	Ограничение на размер базы данных, МБ
+dbmgm_gr3_desc3	WebAsyst Administrator	label	Максимально допустимый размер этой базы данных в МБ. Оставьте пустым, чтобы не было ограничений.
+dbmgm_gr3_dformat	WebAsyst Administrator	label	Формат даты
+dbmgm_gr3_userlimit	WebAsyst Administrator	label	Ограничение на количество пользователей
+dbmgm_gr3_usertotallimit	WebAsyst Administrator	label	Укажите, сколько пользователей можно зарегистрировать в этой базе данных.
+dbmgm_gr3_reclimit	WebAsyst Administrator	label	Ограничение на количество получателей
+dbmgm_gr3_reclimbatch	WebAsyst Administrator	label	Укажите максимально допустимое количество получателей массово отправляемых сообщений. Укажите -1, если нет ограничений.
+dbmgm_gr3_defencoding	WebAsyst Administrator	label	Кодировка по умолчанию
+dbmgm_gr3_desc4	WebAsyst Administrator	label	Кодировка, которая прописывается в заголовке отправляемых писем.
+dbmgm_gr4_admin	WebAsyst Administrator	label	Администратор
+dbmgm_gr4_desc5	WebAsyst Administrator	label	Пользователь-администратор может управлять правами доступа других пользователей вашего аккаунта WebAsyst. Логин администратора &mdash; ADMINISTRATOR. Пароль вы можете указать самостоятельно. 
+dbmgm_gr4_lang	WebAsyst Administrator	label	Язык
+dbmgm_gr4_pwd	WebAsyst Administrator	label	Пароль
+dbmgm_gr4_desc6	WebAsyst Administrator	label	Пароль должен состоять как минимум из 4-х символов.
+dbmgm_gr5_name	WebAsyst Administrator	label	Главный пользователь
+dbmgm_gr5_desc1	WebAsyst Administrator	label	Укажите информацию о пользователе-владельце WebAsyst-аккаунта. Этот пользователь будет автоматически создан во время первого входа в ваш аккаунт (если база данных еще не создана &mdash; таблицы в базе данных создаются во время первого входа в систему).
+dbmgm_gr5_company	WebAsyst Administrator	label	Компания
+dbmgm_gr5_firstname	WebAsyst Administrator	label	Имя
+dbmgm_gr5_lastname	WebAsyst Administrator	label	Фамилия
+dbmgm_gr5_email	WebAsyst Administrator	label	Email
+dbmgm_gr5_login	WebAsyst Administrator	label	Логин
+dbmgm_gr5_pwd	WebAsyst Administrator	label	Пароль
+dbmgm_gr5_desc2	WebAsyst Administrator	label	Пароль должен состоять как минимум из 4-х символов.
+dbmgm_gr6_name	WebAsyst Administrator	label	Настройки SMS
+dbmgm_gr6_opt1	WebAsyst Administrator	label	Включить SMS
+dbmgm_gr6_opt2	WebAsyst Administrator	label	Gateway
+dbmgm_gr6_war1	WebAsyst Administrator	label	Все SMS модули выключены.
+dbmgm_gr6_optlim	WebAsyst Administrator	label	Ограничение на количество получателей
+dbmgm_gr6_desc1	WebAsyst Administrator	label	Вы можете ограничить количество получателей, которым отправляются SMS-сообщения при массовых рассылках.
+dbmgm_gr6_opt3	WebAsyst Administrator	label	SMS баланс
+dbmgm_gr6_desc2	WebAsyst Administrator	label	Максимальное изначальное количество SMS сообщений
+dbmgm_gr7_name	WebAsyst Administrator	label	Приложения
+dbmgm_gr7_desc1	WebAsyst Administrator	label	Выберите приложения, которые будут установлены в этой базе данных.
+dbmgm_lbl_succes1	WebAsyst Administrator	label	База данных&nbsp;
+dbmgm_lbl_succes2	WebAsyst Administrator	label	&nbsp;была успешно создана. Необходимые таблицы внутри базы данных будут созданы во время первого входа в систему.
+dbmgm_lbl_link	WebAsyst Administrator	label	Вход в WebAsyst
+dbmgm_lbl_war	WebAsyst Administrator	label	Для создания базы данных необходимо добавить хотя бы один MySQL сервер
+dbmgm_lbl_history	WebAsyst Administrator	label	История работы с аккаунтом
+dbmgm_btn_sms	WebAsyst Administrator	label	Посмотреть и пополнить баланс
+dbmgm_query_delete	WebAsyst Administrator	label	Удалить базу данных?
+dbmgm_nav_ret	WebAsyst Administrator	label	Вернуться к списку баз данных
+dbmgm_query_fdelete	WebAsyst Administrator	label	Удалить базу данных без возможности восстановления?
+dbmgm_gr8_name	WebAsyst Administrator	label	База данных
+dbkey_not_found	WebAsyst Administrator	label	Ключ базы данных не найден
+			
+upd_m_installed_app	WebAsyst Administrator	label	Установленные приложения
+upd_m_upd_av	WebAsyst Administrator	label	Есть обновление!
+upd_m_upd_use_install	WebAsyst Administrator	label	Используйте install.php.
+upd_m_updapp_av	WebAsyst Administrator	label	Есть обновление.
+upd_m_upd_no	WebAsyst Administrator	label	Установлена последняя версия.
+upd_m_upd_gen	WebAsyst Administrator	label	Есть обновление
+upd_m_wa_ver	WebAsyst Administrator	label	Установленная версия:
+upd_m_upd_ver	WebAsyst Administrator	label	Новая версия:
+upd_m_upd_ver_web	WebAsyst Administrator	label	версия
+upd_m_wa_date	WebAsyst Administrator	label	Дата установки:
+upd_m_wa_license	WebAsyst Administrator	label	Лицензия
+upd_m_wa_license_not_reg	WebAsyst Administrator	label	не зарегистрирована
+not_registered	WebAsyst Administrator	label	Незарегистрированная установка.<br> <a href="setup.php?register_now=true">Зарегистрировать</a>.
+not_registered_instruction	WebAsyst Administrator	label	Для регистрации установки необходимо ввести номер лицензии.<br>Номер лицензии можно найти в <a href="https://my.articus.ru" target="_blank">Центре Заказчика Артикус</a> в разделе «Скачать».
+not_registered_description	WebAsyst Administrator	label	Номер лицензии можно найти в <a href="https://my.articus.ru" target="_blank">Центре Заказчика Артикус</a> в разделе «Скачать».
+upd_m_wa_more_app	WebAsyst Administrator	label	Посмотрите <a href='%s'>%s других приложений WebAsyst</a>, которые у вас еще не установлены. Эти приложения можно купить онлайн и установить (установка производится автоматически во время обновления скриптов).
+upd_m_wa_upd_date	WebAsyst Administrator	label	от
+upd_m_sys_req_ok	WebAsyst Administrator	label	Система удовлетворяет требованиям
+upd_m_sys_req_bad	WebAsyst Administrator	label	Система не удовлетворяет требованиям
+upd_m_sys_req_all	WebAsyst Administrator	label	Настройки сервера должны удовлетворять системным требованиям WebAsyst
+upd_m_sys_req_php	WebAsyst Administrator	label	PHP 5.x и выше:
+upd_m_sys_req_ext	WebAsyst Administrator	label	Необходимые расширения PHP:
+upd_m_sys_req_mbstring	WebAsyst Administrator	label	 - mbstring
+upd_m_sys_req_domxml	WebAsyst Administrator	label	 - domxml
+upd_m_sys_req_dom	WebAsyst Administrator	label	 - DOM XML
+upd_m_sys_req_simplexml	WebAsyst Administrator	label	 - simpleXML
+upd_m_sys_req_gd	WebAsyst Administrator	label	 - GD
+upd_m_sys_req_gd_warning	WebAsyst Administrator	label	Функции автоматического уменьшения изображений будут отключены.
+upd_m_sys_req_zlib	WebAsyst Administrator	label	 - Zlib (не обязателен)
+upd_m_sys_req_zlib_warning	WebAsyst Administrator	label	Функции создания и чтения zip-архивов будут отключены.
+upd_m_sys_req_js	WebAsyst Administrator	label	JavaScript должен быть включен в настройках вашего браузера:
+upd_m_sys_req_writable	WebAsyst Administrator	label	Для папки, в которую вы устанавливаете скрипты, должны быть включены права на запись:<br> <small>В UNIX-системах необходимое значение прав на запись обычно 775 (rwxrwxr-x).<br>По этому вопросу вы можете проконсультироваться в службе поддержки вашего хостинг-провайдера или в инструкциях по установке WebAsyst.</small>
+upd_m_sys_req_notsatisfy	WebAsyst Administrator	label	Сервер не удовлетворяет системным требованиям WebAsyst.
+upd_m_sys_req_satisfy	WebAsyst Administrator	label	Сервер удовлетворяет системным требованиям WebAsyst.
+upd_m_sys_req_mysql	WebAsyst Administrator	label	MySQL
+upd_m_upd_err_title	WebAsyst Administrator	label	Ошибка получения информации об обновлениях с сервера WebAsyst.
+upd_m_upd_err	WebAsyst Administrator	label	Возможные причины:<br>1. Отсутствует соединение с интернетом.<br>2. Параметр allow_url_fopen выключен в настройках PHP (php.ini). Включите этот параметр (On).<br>3. Соединение с сервером my.webasyst.net блокируется брандмауэром (firewall).
+upd_m_err_read_version_file	WebAsyst Administrator	label	Ошибка чтения файла с номером версии (kernel/wbs.xml)
+upd_m_err_save_update	WebAsyst Administrator	label	Ошибка сохранения архива с обновлением на сервере — нет прав на создание файла. Для установки обновления вам <b>необходимо включить права на запись для корневой папки</b>, в которую установлен WebAsyst. В UNIX-системах необходимое значение прав на запись, как правило, 775 (rwxrwxr-x).
+upd_m_err_md5_update	WebAsyst Administrator	label	Файл был поврежден при загрузке с сервера обновлений WebAsyst (контрольные суммы файлов не совпадают). Пожалуйста, попробуйте запустить обновление еще раз.
+upd_m_err_server_connect	WebAsyst Administrator	label	Ошибка подключения к серверу обновлений WebAsyst.
+upd_m_err_file_read	WebAsyst Administrator	label	Ошибка чтения файла
+upd_m_err_extract	WebAsyst Administrator	label	Ошибка распаковки архива с файлами скриптов
+upd_m_err_install	WebAsyst Administrator	label	Ошибка при установке
+upd_m_err_update_meta	WebAsyst Administrator	label	Ошибка обновления базы данных
+upd_m_err_socket_update	WebAsyst Administrator	label	Ошибка подключения к серверу обновлений WebAsyst.
+upd_m_err_license_update	WebAsyst Administrator	label	Номер лицензии не подтвержден сервером обновлений WebAsyst
+upd_m_err_invalid_serv_responce_update	WebAsyst Administrator	label	Неверный ответ сервера
+upd_m_err_operation_timeout	WebAsyst Administrator	label	Операция не выполнена за отведенное время (timeout)
+upd_m_meta_details	WebAsyst Administrator	label	Обновить только структуру базы данных
+upd_m_view_changelog	WebAsyst Administrator	label	Журнал изменений
+upd_m_view_full_changelog	WebAsyst Administrator	label	Журнал изменений всех приложений
+upd_m_changelog	WebAsyst Administrator	label	Журнал изменений
+upd_m_sys_conf	WebAsyst Administrator	label	Системные настройки
+upd_m_page_title	WebAsyst Administrator	label	Обновление WebAsyst
+upd_m_repair_av	WebAsyst Administrator	label	У вас последняя версия скриптов.
+upd_m_repair_may_be_required_if	WebAsyst Administrator	label	Для вашего WebAsyst сейчас нет обновлений, однако вы можете запустить обновление в одном из следующих случаев:
+upd_m_repair_cur	WebAsyst Administrator	label	Вы можете переустановить WebAsyst, если какие-то файлы (скрипты) вашей установки были повреждены. Содержимое базы данных и ее структура не изменятся при переустановке.
+upd_m_shure_query	WebAsyst Administrator	label	Вы уверены?
+upd_m_btn_download	WebAsyst Administrator	label	Скачать
+upd_m_btn_update	WebAsyst Administrator	label	Обновить сейчас
+upd_m_status_prepare	WebAsyst Administrator	label	Подготовка к загрузке архива с обновлением
+upd_m_status_prepare_desc	WebAsyst Administrator	label	Сборка архива с обновленными скриптами на сервере WebAsyst
+upd_m_status_download	WebAsyst Administrator	label	Загрузка
+upd_m_status_downoad_desc	WebAsyst Administrator	label	Загрузка архива с обновлением... %s из %s МБ
+upd_m_status_unpack	WebAsyst Administrator	label	Подготовка к установке
+upd_m_status_unpack_desc	WebAsyst Administrator	label	Распаковка архива с последней версией
+upd_m_status_before_install	WebAsyst Administrator	label	Подготовка к установке закончилась
+upd_m_upd_details	WebAsyst Administrator	label	Данные об обновлении
+upd_m_upd_db_count	WebAsyst Administrator	label	Количество баз данных, которые будут обновлены:
+upd_m_btn_install	WebAsyst Administrator	label	Установить
+upd_m_status_install	WebAsyst Administrator	label	Установка скриптов
+upd_m_status_install_desc	WebAsyst Administrator	label	Установка обновления... пожалуйста, не закрывайте браузер.
+upd_m_status_install_compl	WebAsyst Administrator	label	Установка успешно завершена!
+upd_m_status_install_compl_desc	WebAsyst Administrator	label	Информация об обновлении
+upd_m_err_state_download	WebAsyst Administrator	label	Произошла ошибка во время загрузки архива с обновлением
+upd_m_btn_retry_download	WebAsyst Administrator	label	Попробовать еще раз
+upd_m_err_state_unpack	WebAsyst Administrator	label	Произошла ошибка при распаковке архива с обновлением
+upd_m_err_state_install	WebAsyst Administrator	label	Произошла ошибка во время установки
+upd_m_btn_retry_install	WebAsyst Administrator	label	Переустановить
+upd_m_btn_retry_download_install	WebAsyst Administrator	label	Загрузить обновление еще раз и переустановить
+			
+upd_m_inf_upd	WebAsyst Administrator	label	Обновить
+upd_m_inf_description_howitworks	WebAsyst Administrator	label	Как работает обновление скриптов?
+upd_m_inf_description	WebAsyst Administrator	label	<ol><li>WebAsyst Installer отправляет запрос на сервер обновлений <strong>my.webasyst.net</strong>. В запросе указывается номер лицензии, который вы ввели в настройках WebAsyst Installer.</li><li>Если номер лицензии подтвержден, сервер обновлений собирает дистрибутив с приложениями WebAsyst, включенными в вашу лицензию, и затем отдает дистрибутив на скачивание в виде архива.</li><li>WebAsyst Installer автоматически скачивает дистрибутив и устанавливает его — запускает распаковку архива с обновлением, перезаписывая текущие файлы файлами из обновления, а затем выполняет инструкции по обновлению мета-данных (базы данных), если это требуется.</li></ol><p style="font-size: 100%;">Данные, с которыми вы работаете внутри WebAsyst, никак не изменяются (эта информация хранится в базе данных и в отдельных папках data/ и published/publicdata/, а они не затрагиваются обновлением).<br><br>Процесс обновления автоматизирован — скрипт загружает обновление и устанавливает его сам. Вам не нужно скачивать обновление и устанавливать его по FTP. Ручная установка может потребоваться только в случае, если автоматизированное обновление не разрешено настройками сервера. В таких случаях WebAsyst Installer сообщит об ошибке и ее возможных причинах (разрешать такие ситуации необходимо с администратором сервера).<br><br> Если вы редактировали дизайн пользовательской части WebAsyst с помощью встроенного дизайн-редактора (например, дизайн в приложении «Интернет-магазин» — Shop-Script), то при обновлении все ваши изменения никак не будут затронуты (измененные файлы хранятся в папке published/publicdata/, «не участвующей» в обновлении). Однако, если при изменении дизайна вы редактировали файл шаблонов с помощью «сторонних средств» (текстовых или других редакторов), ваши изменения могут быть потеряны в ходе обновления. Сохранность дизайна будет обеспечена только в случае его редактирования встроенными средствами.
+
+upd_m_inf_list	WebAsyst Administrator	label	Посмотрите
+upd_m_inf_upd_link	WebAsyst Administrator	label	полный список изменений
+upd_m_inf_upd_inst	WebAsyst Administrator	label	этого обновления.<br> Будут обновлены следующие приложения WebAsyst:
+upd_m_inf_meta_link	WebAsyst Administrator	label	мета данные
+upd_m_inf_meta_inst	WebAsyst Administrator	label	будут обновлены
+upd_m_inf_upd_desc	WebAsyst Administrator	label	Что нового?
+upd_m_inf_meta_desc	WebAsyst Administrator	label	Посмотреть инструкции по изменению мета данных
+
+upd_m_notice	WebAsyst Administrator	label	<strong style="color: red">ВАЖНО:</strong> <strong>Обновление не рекомендуется, если вы делали изменения в исходных файлах WebAsyst (PHP-скриптах, в структуре базы данных), потому что эти изменения могут быть потеряны после обновления.</strong>
+upd_m_erase_agreement	WebAsyst Administrator	label	Я согласен (согласна), что установка обновления перезапишет файлы установленного WebAsyst файлами из более новой версии, и поэтому мои собственные изменения в исходных кодах могут пропасть.
+upd_m_license_agreement	WebAsyst Administrator	label	Я согласен (согласна), что номер моей лицензии и информация об адресе установки (домене) будут отправлены на сервер обновлений WebAsyst.
+
+upd_m_changelog_oneapp	WebAsyst Administrator	label	Приложение «%s»
+upd_m_changelog_allapps	WebAsyst Administrator	label	Все приложения
+upd_m_changelog_version	WebAsyst Administrator	label	Версии %d&mdash;%d
+
+install_title	WebAsyst Administrator	label	Мастер установки WebAsyst
+install_step1_title	WebAsyst Administrator	label	Добавляем MySQL-сервер
+install_step_info	WebAsyst Administrator	label	Шаг
+install_continue	WebAsyst Administrator	label	Продолжить &gt;&gt;
+install_step2_title	WebAsyst Administrator	label	Настройки MySQL
+install_step2_desc	WebAsyst Administrator	label	4
+install_step2_finish	WebAsyst Administrator	label	Установка успешно завершена.
+install_link_wba	WebAsyst Administrator	label	Доступ к WebAsyst Installer
+install_link_db	WebAsyst Administrator	label	Вход в WebAsyst
+install_work_dbkey	WebAsyst Administrator	label	База данных:
+install_link_login	WebAsyst Administrator	label	Для входа как
+install_link_login_use	WebAsyst Administrator	label	используйте
+install_finish_notice	WebAsyst Administrator	label	Рекомендуем распечатать эту страницу.
+			
+wbs_title	WebAsyst Administrator	label	WebAsyst Installer
+wbs_installer	WebAsyst Administrator	label	Installer
+install_maillog_title	WebAsyst Administrator	label	Установка WebAsyst\n\n
+install_maillog_congr	WebAsyst Administrator	label	Установка успешно завершена!\n\n
+install_maillog_wba	WebAsyst Administrator	label	Доступ к WebAsyst Installer\n
+install_maillog_wbd	WebAsyst Administrator	label	Вход в WebAsyst\n
+install_maillog_dbkey	WebAsyst Administrator	label	База данных: %s\n\n
+install_maillog_login_as	WebAsyst Administrator	label	Для входа как %s %s используйте:\n\n
+install_maillog_login	WebAsyst Administrator	label	Логин: %s\n
+install_maillog_password	WebAsyst Administrator	label	Пароль: %s\n
+install_maillog_login_as_adm	WebAsyst Administrator	label	\n\nДанные для входа пользователя-администратора:\n\nЛогин                  : 
+
+migarate_note_description	WebAsyst Administrator	label	<p>Здесь вы можете перенести все данные из вашего интернет-магазина Shop-Script FREE, PRO или PREMIUM в новый WebAsyst Shop-Script. Продукты, заказы, покупателей, основные настройки, информационные страницы и т.д. &mdash; все за исключением ваших изменений в дизайне магазина и в исходных кодах  Shop-Script.<br><br> К сожалению, мы не можем автоматически перенести ваши изменения в дизайне интернет-магазина и в исходных кодах в связи с различием в структуре шаблонов вашей и новой версий Shop-Script. В новой версии мы изменили структуру шаблонов так, чтобы в будущем быстро доставлять вам обновления продукта, и чтобы это никак не влияло на изменения в дизайне, которые вы делаете.<br><br> Вам нужно будет настроить дизайн новой версии самостоятельно. Мы включили несколько шаблонов в состав WebAsyst &mdash; используйте любой из них.<br><br> <b>ВАЖНО:</b> этот инструмент перенесет данные из Shop-Script FREE, PRO или PREMIUM, структура таблиц которых <i>не была изменена</i>. Если вы значительно изменили структуру таблиц самостоятельно, данные могут быть перенесены некорректно.<br><br> При переносе данные будут <strong>скопированы</strong> в новый WebAsyst Shop-Script, и ваш интернет-магазин на основе Shop-Script будет продолжать работать без изменений.<br><br></p>
+migarate_target_header	WebAsyst Administrator	label	Куда копировать (база данных WebAsyst)
+migarate_target_dbkey	WebAsyst Administrator	label	Данные будут скопированы в базу данных
+migarate_target_language	WebAsyst Administrator	label	Основной язык в магазине Shop-Script, откуда будут копироваться данные
+migarate_source_header	WebAsyst Administrator	label	Откуда копировать (база данных Shop-Script)
+migarate_source_same	WebAsyst Administrator	label	Shop-Script и новый WebAsyst Shop-Script &mdash; в одной базе данных
+migarate_source_same_desc	WebAsyst Administrator	label	Выберите эту опцию, если вы установили WebAsyst в ту же базу данных, где установлен Shop-Script. В этом случае вам не нужно вводить дополнительных настроек, и все данные будут автоматически перенесены (за исключением изображений и файлов продуктов).
+migarate_source_ss_version	WebAsyst Administrator	label	Версия Shop-Script
+migarate_source_auto	WebAsyst Administrator	label	Указать путь к папке, где установлен Shop-Script (рекомендуется)
+migarate_source_auto_desc	WebAsyst Administrator	label	Просто укажите путь к папке, где установлен Shop-Script (если он установлен на этом же сервере), и все данные, включая изображения и файлы продуктов, будут перенесены автоматически в WebAsyst.
+migarate_source_auto_wapath	WebAsyst Administrator	label	Путь к директории, в которой установлен WebAsyst
+migarate_source_auto_sspath	WebAsyst Administrator	label	Путь к директории Shop-Script
+migarate_source_auto_path_desc	WebAsyst Administrator	label	Введите абсолютный путь к папке, в которой установлен Shop-Script
+migarate_source_auto_files	WebAsyst Administrator	label	Перенести все файлы и изображения продуктов
+migarate_source_custom	WebAsyst Administrator	label	Ввести настройки подключения к базе данных Shop-Script
+migarate_source_custom_desc	WebAsyst Administrator	label	Вручную введите данные для подключения к базе данных Shop-Script (даже если эта база данных находится на другом физическом сервере). Будут перенесены только данные из базы данных (файлы и изображения продуктов не будут перенесены).
+migarate_agreement	WebAsyst Administrator	label	Я согласен (согласна) с тем, что при переносе <i>все текущее содержимое базы данных интернет-магазина WebAsyst будет удалено</i>
+migrate_nosc	WebAsyst Administrator	label	Приложение WebAsyst Shop-Script не установлено. Завершите установку приложения WebAsyst Shop-Script и затем переносите данные (если приложение установлено, войдите в режим администрирования магазином для завершения установки).
+migrate_complete	WebAsyst Administrator	label	Все данные успешно перенесены!
+migrate_header	WebAsyst Administrator	label	Shop-Script FREE, PRO, PREMIUM
+migrate_button_migrate	WebAsyst Administrator	label	Перенести данные!
+migrate_agreement_header	WebAsyst Administrator	label	Данные интернет-магазина WebAsyst будут удалены
+migrate_agreement_text	WebAsyst Administrator	label	Для корректного переноса данных из Shop-Script FREE, PRO, PREMIUM в новый WebAsyst Shop-Script сначала все текущее содержимое приложения WebAsyst Shop-Script будет удалено. В источнике данных (т.е. в базе данных Shop-Script FREE, PRO, PREMIUM) никаких изменений не будет.
+migrate_charset_custom	WebAsyst Administrator	label	Перекодировка данных при переносе
+migrate_charset_custom_description	WebAsyst Administrator	label	Укажите кодировку таблиц базы данных Shop-Script (источника), чтобы при импорте данные были правильно преобразованы в юникод (UTF-8). Значение кодировки таблиц MySQL можно узнать с помощью phpMyAdmin (в свойствах таблиц).<br>Если перекодировка не требуется, или если вы не знаете, что ввести, просто оставьте поля пустыми.
+migrate_charset_data_encoding	WebAsyst Administrator	label	Соответствующая ей кодировка страниц
+migrate_charset_data_encoding_description	(например, windows-1251)
+migrate_charset_connection_encoding	WebAsyst Administrator	label	Кодировка таблиц MySQL
+migrate_charset_connection_encoding_description	WebAsyst Administrator	label	(например, latin1)
+migrate_path_not_exist	WebAsyst Administrator	label	Путь не существует
+migrate_path_not_valid	WebAsyst Administrator	label	<b>%s</b> не является папкой Shop-Script 
+migrate_missed_param	WebAsyst Administrator	label	пропущен параметр %s в файле настроек ShopScript
+migrate_copy_error	WebAsyst Administrator	label	Ошибка копирования файла %s из %s в %s
+
+install_link_wba_comment	WebAsyst Administrator	label	 WebAsyst Installer &mdash; это раздел для администраторов, в котором вы можете изменять основные настройки вашей системы и легко устанавливать обновления.
+admin_link_comment	WebAsyst Administrator	label	Администратор &mdash; это пользователь вашего WebAsyst-аккаунта, который может управлять правами доступа всех остальных пользователей системы.
+install_link_db_comment	WebAsyst Administrator	label	Форма входа WebAsyst.
+wbs_frontend_core_url_description	WebAsyst Administrator	label	Выберите, какую часть WebAsyst необходимо подключать (показывать) при обращении к основному адресу установки.
+wbs_frontend_rewrite_section	WebAsyst Administrator	label	Адреса страниц магазина
+wbs_frontend_rewrite_description	WebAsyst Administrator	label	Настройте вид адресов страниц вашего интернет-магазина. Рекомендуется использовать легко читаемые адреса страниц (ЧПУ &mdash; «Человеку Понятные УРЛы»), потому как они более простые для восприятия посетителями вашего магазина.
+wbs_frontend_rewrite_friendly	WebAsyst Administrator	label	<strong>/product/name/</strong><br> ЧПУ («Человеку Понятные УРЛы»)<br> <i>(работает только на серверах Apache с включенным mod_rewrite).</i>
+wbs_frontend_rewrite_old	WebAsyst Administrator	label	<strong>/index.php?productID=id</strong><br> Через скрипт (с прямой передачей параметров в скрипт, как в Shop-Script).
+wbs_ss_migarate	WebAsyst Administrator	label	Перенос данных из Shop-Script FREE, PRO, PREMIUM в WebAsyst Shop-Script
+wbs_settings_update_success	WebAsyst Administrator	label	Информация успешно сохранена
+
+wbs_step1	WebAsyst Administrator	label	Лицензия
+wbs_step2	WebAsyst Administrator	label	Системные настройки
+wbs_step3	WebAsyst Administrator	label	Установка скриптов
+wbs_step4	WebAsyst Administrator	label	MySQL
+wbs_step4_title	WebAsyst Administrator	label	MySQL
+wbs_step5	WebAsyst Administrator	label	Готово!
+wbs_step5_title	WebAsyst Administrator	label	Готово!
+
+fes_page_main_page	WebAsyst Administrator	label	По основному адресу установки WebAsyst
+fes_page_select_desc	WebAsyst Administrator	label	открывается:
+fes_page_alt_link	WebAsyst Administrator	label	Также будет открываться по главному адресу моей установки WebAsyst
+upd_m_kernel_name	WebAsyst Administrator	label	Ядро WebAsyst
+
+migrate_frontend_link	WebAsyst Administrator	label	Открыть витрину
+migrate_login_link	WebAsyst Administrator	label	Вход в WebAsyst
+
+upd_m_newapp_info	WebAsyst Administrator	label	Если вы купили какие-то из <a href="more.php">неустановленных у вас WebAsyst-приложений</a>, и оплата по вашему заказу уже была подтверждена, новые приложения будут установлены после обновления автоматически.
+upd_m_update_link	WebAsyst Administrator	label	Перейти к обновлению
+migrate_desc	WebAsyst Administrator	label	Перенос данных из Shop-Script FREE, PRO, PREMIUM в  WebAsyst Shop-Script.
+auth_remind	WebAsyst Administrator	label	Для того, чтобы создать новые логин и пароль для входа в WebAsyst Installer, вам необходимо иметь административный доступ к файлам (скриптам).<br><br>Удалите файл <b>.wbs_protect</b> в папке <b>[директория установки WebAsyst]/temp/</b><br> Если вы работаете с WebAsyst на удаленном сервере, то удалить этот файл вы можете с помощью ftp-клиента или по SSH.
+auth_fake_data	WebAsyst Administrator	label	Ошибка передачи данных, попробуйте еще раз.
+auth_brute_force	WebAsyst Administrator	label	Включена блокировка на частоту попыток входа. Попробуйте вход через несколько секунд.
+auth_login_timeout	WebAsyst Administrator	label	Форма входа устарела, попробуйте войти еще раз.
+auth_invalid_login	WebAsyst Administrator	label	Неверное сочетание логина и пароля
+wbs_reserved_login	WebAsyst Administrator	label	ADMINISTRATOR &mdash; это зарезервированный логин. Пожалуйста, введите другой логин.
+wbs_user_htaccess	WebAsyst Administrator	label	В директории установки WebAsyst был обнаружен файл .htaccess.<br>Мы обновили ваш файл, добавив инструкции, необходимые для работы WebAsyst. Ваш оригинальный файл был сохранен как /published/wbsadmin/html/configs/.htaccess.user
+wbs_upd_furl_disabled	WebAsyst Administrator	label	Невозможно получить информацию об обновлениях, потому что в настройках PHP параметр allow_url_fopen = Off. Включите эту настройку, чтобы автоматизированное обновление скриптов работало.
+wbs_auth_title	WebAsyst Administrator	label	Доступ к WebAsyst Installer
+wbs_auth_description	WebAsyst Administrator	label	Введите логин и пароль для доступа в WebAsyst Installer. Это необходимо для защиты от неавторизованного доступа.
+wbs_auth_pass_confirm	WebAsyst Administrator	label	Подтвердите пароль
+auth_remind_title	WebAsyst Administrator	label	Забыли пароль?
+auth_page_title	WebAsyst Administrator	label	Авторизация пользователя
+wbs_migrate_sc_not_installed	WebAsyst Administrator	label	Интернет-магазин еще не установлен.<br>Для завершения установки, просто <a href="../../../../login/">войдите в ваш аккаунт WebAsyst</a>.
+wbs_multi_dbkey_patch	WebAsyst Administrator	label	На вашем сервере обнаружено несколько баз данных.<br>Пожалуйста, направьте запрос в службу поддержки WebAsyst (<a href="mailto:support@webasyst.ru?subject=get-multi-database-patch">support@webasyst.ru</a>), чтобы получить патч для управления несколькими базами данных.
+
+wbs_install_path	WebAsyst Administrator	label	Путь к установке WebAsyst
+wbs_install_path_desc	WebAsyst Administrator	label	<strong>Относительный путь к директории установки WebAsyst на вашем сайте.</strong><br> Примеры: если вы установили WebAsyst в папку http://www.yourwebsite.ru/folder/subfolder/webasyst/, введите "folder/subfolder/webasyst" (без кавычек). Если вы установили скрипты в корень сайта, введите слеш — / (также без кавычек). 
+
+wbs_proxy_settings	WebAsyst Administrator	label	CURL работает через прокси
+wbs_proxy_description	WebAsyst Administrator	label	Расширение PHP CURL необходимо для работы некоторых модулей WebAsyst, отправляющих данные на удаленные сервера (например, SMS-уведомления, модули доставки и оплаты в Shop-Script).<br> Если на вашем сервере CURL работает только через прокси (зависит от настроек хостинг-провайдера), введите данные прокси здесь. Если прокси не требуется, то оставьте эти поля пустыми.
+wbs_proxy_host	WebAsyst Administrator	label	Хост
+wbs_proxy_port	WebAsyst Administrator	label	Порт
+wbs_proxy_user	WebAsyst Administrator	label	Логин пользователя прокси
+wbs_proxy_user_desc	WebAsyst Administrator	label	Данные пользователя для соединения с прокси-сервером
+wbs_proxy_pass	WebAsyst Administrator	label	Пароль
+
+section_update	WebAsyst Administrator	label	Обновление
+section_update_description	WebAsyst Administrator	label	Раздел «Обновление» предназначен для автоматизированной загрузки и установки обновлений скриптов WebAsyst.
+section_diagnostic	WebAsyst Administrator	label	Диагностика
+section_diagnostic_description	WebAsyst Administrator	label	Проверка правильности установки и конфигурации сервера, решение  проблем.
+section_setup	WebAsyst Administrator	label	Настройки
+section_setup_description	WebAsyst Administrator	label	Основные системные настройки WebAsyst — информация о лицензии, путь установки, MySQL, локализация.
+
+diagnostic_systeminfo	WebAsyst Administrator	title	Информация о системе
+diagnostic_viewlogs	WebAsyst Administrator	title	Логи
+diagnostic_filemanager	WebAsyst Administrator	title	Файл-менеджер
+diagnostic_cache	WebAsyst Administrator	title	Сброс кеша
+
+diagnostic_file_name	WebAsyst Administrator	label	Имя
+diagnostic_file_description	WebAsyst Administrator	label	Описание
+diagnostic_file_size	WebAsyst Administrator	label	Размер
+diagnostic_file_permision	WebAsyst Administrator	label	Права
+diagnostic_file_bulk_chmod	WebAsyst Administrator	label	Chmod всех файлов
+diagnostic_file_manage	WebAsyst Administrator	label	Имя файла
+diagnostic_file_view	WebAsyst Administrator	label	Смотреть
+diagnostic_file_open	WebAsyst Administrator	label	Открыть
+diagnostic_folder_view	WebAsyst Administrator	label	Перейти в директорию
+diagnostic_file_download	WebAsyst Administrator	label	Скачать
+diagnostic_file_delete	WebAsyst Administrator	label	Удалить
+diagnostic_file_rotate	WebAsyst Administrator	label	Бекап
+diagnostic_file_backuped_success	WebAsyst Administrator	label	Бекап успешно создан
+diagnostic_file_deleted_success	WebAsyst Administrator	label	Файл удален
+diagnostic_file_edit	WebAsyst Administrator	label	Редактировать
+diagnostic_file_too_big	WebAsyst Administrator	label	Файл слишком велик для редактирования
+diagnostic_file_save_success	WebAsyst Administrator	label	Файл успешно сохранен
+diagnostic_file_action	WebAsyst Administrator	label	Действия
+diagnostic_file_owner	WebAsyst Administrator	label	Владелец
+diagnostic_file_ownergroup	WebAsyst Administrator	label	Группа
+diagnostic_file_save_permision	WebAsyst Administrator	label	Выполнить chmod
+diagnostic_file_edit_permision	WebAsyst Administrator	label	Chmod
+diagnostic_file_edit_permision_link	WebAsyst Administrator	label	&nbsp;↓&nbsp;
+diagnostic_file_edit_permision_link_title	WebAsyst Administrator	label	Перейти к сохранению
+diagnostic_file_edit_permision_recursive	WebAsyst Administrator	label	Применить для<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;подпапок и файлов
+diagnostic_file_edit_permision_cancel	WebAsyst Administrator	label	Отмена
+diagnostig_chmod_individual	WebAsyst Administrator	label	Для выбранных файлов и папок
+diagnostig_chmod_group	WebAsyst Administrator	label	Для всей папки и файлов в ней
+diagnostic_file_action	WebAsyst Administrator	label	Действия
+diagnostic_folders_count	WebAsyst Administrator	label	Папок
+diagnostic_files_count	WebAsyst Administrator	label	Файлов
+diagnostic_free_space	WebAsyst Administrator	label	Свободно
+diagnostic_up_one_level	WebAsyst Administrator	label	&uarr; На уровень вверх
+diagnostic_file_row_info	WebAsyst Administrator	label	Строки %d—%d из %d
+diagnostic_file_confirm_delete	WebAsyst Administrator	label	Удалить выбранный файл?
+
+filemanager_path_not_found	WebAsyst Administrator	label	Путь «%s» не найден
+filemanager_cannot_change_perms	WebAsyst Administrator	label	Сервер не позволяет изменить права доступа для «%s»
+filemanager_subfolders_skipped	WebAsyst Administrator	label	Сервер не позволяет изменить права доступа для папки «%s» и ее содержимого
+filemanager_error_create_temp_file	WebAsyst Administrator	label	Нет прав на создание временного файла
+filemanager_error_remove_temp_file	WebAsyst Administrator	label	Нет прав на создание временного файла «%s»
+filemanager_error_create_backup	WebAsyst Administrator	label	Нет прав на создание файла-бекапа «%s»
+filemanager_error_remove_backup	WebAsyst Administrator	label	Нет прав на удаление файла-бекапа «%s»
+filemanager_error_chmod	WebAsyst Administrator	label	Сервер не позволяет изменить права доступа для «%s»
+filemanager_error_write	WebAsyst Administrator	label	Нет прав на (пере)сохранение файла «%s»
+filemanager_error_rollback	WebAsyst Administrator	label	Нет прав на запись изменений в файл «%s»<br>Файл-бекап — «%s»
+filemanager_chmod_stat	WebAsyst Administrator	label	Права доступа (chmod) успешно установлены для %d файлов (папок)
+filemanager_file_not_editable	WebAsyst Administrator	label	Нет прав на редактирование файла «%s» 
+
+
+diagnostic_cache_names	WebAsyst Administrator	label	Очистить кеш (cache)
+diagnostic_reset_cache_system	WebAsyst Administrator	label	Ядро
+diagnostic_reset_cache_system_desc	WebAsyst Administrator	label	Кеш ядра WebAsyst (права пользователей)
+diagnostic_reset_cache_smarty	WebAsyst Administrator	label	Smarty
+diagnostic_reset_cache_smarty_desc	WebAsyst Administrator	label	Скомпилированные шаблоны Smarty
+diagnostic_reset_cache_localization	WebAsyst Administrator	label	Локализация
+diagnostic_reset_cache_localization_desc	WebAsyst Administrator	label	Строки локализации приложений WebAsyst и Shop-Script
+diagnostic_reset_cache_updatestate	WebAsyst Administrator	label	Статус обновления
+diagnostic_reset_cache_updatestate_desc	WebAsyst Administrator	label	Состояние автоматизированного обновления кешируется на вашем веб-сервере и обновляется не чаще, чем один раз в полчаса
+diagnostic_reset_cache	WebAsyst Administrator	label	Очистить кеш
+dignostic_cache_cleaned	WebAsyst Administrator	label	Кеш очищен
+
+
+main_menu_diagnostic	WebAsyst Administrator	label	Диагностика
+main_menu_setup	WebAsyst Administrator	label	Настройки
+main_menu_buy	WebAsyst Administrator	label	Купить
+main_menu_update	WebAsyst Administrator	label	Обновление
+
+test_success	WebAsyst Administrator	label	Успешно
+test_warning	WebAsyst Administrator	label	Замечания
+test_failed	WebAsyst Administrator	label	Ошибки
+test_skipped	WebAsyst Administrator	label	Пропущен
+test_application_not_installed	WebAsyst Administrator	label	(приложение&nbsp;не&nbsp;установлено)
+test_description_server_variables	WebAsyst Administrator	label	Переменные окружения
+test_system_variables	WebAsyst Administrator	label	Переменная окружения
+test_connectivity	WebAsyst Administrator	label	Доступ к обновлениям
+test_network	WebAsyst Administrator	label	Сеть
+test_check_your_dns	WebAsyst Administrator	label	Проверьте настройки DNS или подключение к интернету вашего сервера.
+test_check_your_connection	WebAsyst Administrator	label	Проверка связи с сервером обновлений my.webasyst.net
+test_connectivity_description	WebAsyst Administrator	label	Не удалось подключиться к серверу обновлений my.webasyst.net. Возможные причины: — firewall блокирует соединение, — выключена настройка PHP «allow_url_fopen», — нет соединения с интернетом. Только администратор этого сервера может указать точную причину. 
+test_mysql_version	WebAsyst Administrator	label	Версия MySQL
+test_mysql_version_description	WebAsyst Administrator	label	Необходима версия MySQL 4.1 или выше
+test_mysql_database	WebAsyst Administrator	label	Подключение к базе данных
+test_mysql_database_description	WebAsyst Administrator	label	Проверка подключения к БД
+test_tables_label	WebAsyst Administrator	label	таблиц
+test_mysql_database_tables_description	WebAsyst Administrator	label	Отсутствие таблиц может привести к неверной работе приложения.
+test_mysql_database_tables	WebAsyst Administrator	label	Таблицы приложения
+
+test_value_not_exists	WebAsyst Administrator	label	<em>не определена</em>
+
+test_folder_not_exists	WebAsyst Administrator	label	Не существует
+test_folder_exists	WebAsyst Administrator	label	Существует
+test_folder_protected	WebAsyst Administrator	label	Защищена
+test_folder_not_protected	WebAsyst Administrator	label	Не защищена
+test_folder_not_writable	WebAsyst Administrator	label	Недоступна для записи
+
+test_description_locale	WebAsyst Administrator	label	Поддержка локалей и функций работы со строками
+
+check_php_variables_and_extensions	WebAsyst Administrator	label	Настройки PHP и проверка необходимых расширений
+test_php_extension_mysql	WebAsyst Administrator	label	Не поддерживается работа с базами данных MySQL
+test_php_extension_mbstring	WebAsyst Administrator	label	Расширение mbstring необходимо для обработки мультибайтовых строк. WebAsyst работает в юникоде (двухбайтовая кодировка UTF-8), поэтому не будет работать без поддержки mbstring.
+test_php_extension_simplexml	WebAsyst Administrator	label	Не будут работать функции обработки XML-файлов и данных
+test_php_extension_dom	WebAsyst Administrator	label	Не будут работать функции обработки XML-файлов и данных
+test_php_extension_gd	WebAsyst Administrator	label	Не будут работать функции обработки изображений (например, изменение размера)
+test_php_extension_imagick	WebAsyst Administrator	label	Возможность обработки изображений с помощью расширения Imagick
+test_php_extension_zlib	WebAsyst Administrator	label	Не будут работать функции распаковки и создания архивов (zip, tgz и других)
+test_php_extension_iconv	WebAsyst Administrator	label	Не будет работать преобразование строк из одной кодировки в другую
+test_php_extension_curl	WebAsyst Administrator	label	cURL используется для соединения с удаленными серверами и обмена данными с ними. cURL необходимо для работы модулей отправки SMS-сообщений, модулей оплаты, расчета стоимости доставки и любых других модулей, в которых происходит взаимодействие с удаленными серверами.
+test_php_extension_gettext	WebAsyst Administrator	label	Не будет полноценной поддержки многязычной локализации.
+test_php_extension_eaccelerator	WebAsyst Administrator	label	Версия расширения eAccelerator, если оно установлено.
+test_php_extension_xcache	WebAsyst Administrator	label	Версия расширения XCache, если оно установлено.
+test_php_extension_suhosin	WebAsyst Administrator	label	Версия расширения Suhosin patch, если оно установлено.
+test_php_version	WebAsyst Administrator	label	Версия PHP
+test_php_version_description	WebAsyst Administrator	label	Необходим PHP 5
+test_php_settings	WebAsyst Administrator	label	настройки PHP
+test_php_settings_off	WebAsyst Administrator	label	Off
+test_php_settings_on	WebAsyst Administrator	label	On
+
+test_php_settingsallow_url_fopen	WebAsyst Administrator	label	Выключенный параметр allow_url_fopen  запрещает возможность загрузки файлов с удаленных серверов. Это приводит, например, к тому, что не будет работать функция автомтизированного обновления скриптов — скрипты не смогут загрузить обновление с сервера my.webasyst.net, и обновления необходимо будет устанавливать вручную.
+test_php_settingsmax_execution_time	WebAsyst Administrator	label	Ограничение на допустимое время выполнения PHP-скрипта. Если ограничение менее 30 секунд, возможны проблемы с обработкой больших объемов данных (импорт, экспорт), а также с загрузкой обновлений скриптов — этого времени будет недостаточно для того, чтобы загрузить и установить обновленную версию скриптов.
+test_php_settingsmemory_limit	WebAsyst Administrator	label	Ограничение на размер оперативной памяти, доступной скриптам. Если ограничение ниже, чем 32 МБ, некоторые функции системы не будут работать в связи с нехваткой памяти.
+test_php_settingsupload_max_filesize	WebAsyst Administrator	label	Максимально допустимый размер файла, загружаемого на сервер через форму (например, загрузка изображений и других файлов на сервер).
+test_php_settingssafe_mode	WebAsyst Administrator	label	Безопасный режим. WebAsyst не будет работать в безопасном режиме, потому как этот режим запрещает использование различных системных функций.
+test_php_settingsmemory_get_usage	WebAsyst Administrator	label	Столько памяти (в байтах) использует этот скрипт диагностики сейчас.
+test_php_settingsget_magic_quotes_gpc	WebAsyst Administrator	label	&nbsp;
+test_php_settingsget_magic_quotes_runtime	WebAsyst Administrator	label	&nbsp;
+
+test_folder_structure	WebAsyst Administrator	label	Целостность структуры папок
+test_folder_structure_description	WebAsyst Administrator	label	Отстуствие папки может привести как неработоспособности WebAsyst.<br>Рекомендуем произвести обновление (восстановление) скриптов.
+
+test_folder_protection	WebAsyst Administrator	label	Защищенность папок от общего доступа (проверка на уровне сервера)
+test_folder_protection_description	WebAsyst Administrator	label	Эта проверка действительна только для серверов Apache, на которых разрешено изменение параметров безопасности папок с помощью .htaccess. Скрипт проверяет наличие .htaccess-файлов в этих папках.<br>Для IIS защиту папок от общего доступа вам необходимо производить через панель управления IIS.
+
+test_system_file	WebAsyst Administrator	label	Файлы ядра
+test_system_file_description	WebAsyst Administrator	label	Файл либо отсутствует, либо поврежден (нарушена структура XML-файла).
+test_system_file_kernel/wbs.xml	WebAsyst Administrator	label	Файл настроек WebAsyst kernel/wbs.xml
+test_data_folder	WebAsyst Administrator	label	Папки с пользовательскими данными
+test_data_folder_description	WebAsyst Administrator	label	Отсутствие папки или невозможность записи в нее может привести к тому, что скрипт не сможет создавать и загружать файлы в эту папку. Это значит, что не будут работать функии закачки файлов, изображений, редактирования дизайна общедоступной части WebAsyst и т.п.
+test_database	WebAsyst Administrator	label	Проверка параметров и настроек БД
+test_database_server	WebAsyst Administrator	label	Настройки подключения к серверу MySQL
+test_mysql_connectivity	WebAsyst Administrator	label	Подключение к серверу MySQL
+test_mysql_connectivity_description	WebAsyst Administrator	label	Невозможно выполнить подключение к базе данных MySQL. Проверьте настройки подключения в разделе «Настройки — База данных» (WebAsyst Installer).
+test_database_server_list	WebAsyst Administrator	label	Необходимо задать настройки подключения к серверу MySQL в разделе «Настройки — MySQL-сервер» (WebAsyst Installer).
+test_database_list_empty	WebAsyst Administrator	label	Не определено ни одной базы данных.
+test_database_list_empty_description	WebAsyst Administrator	label	Необходимо задать настройки подключения к базе данных в «Настройки — База данных» (WebAsyst Installer).
+test_database_settings	WebAsyst Administrator	label	Общая структура БД нарушена
+test_tables_missed	WebAsyst Administrator	label	Не найдены таблицы
+test_mysql_database_total	WebAsyst Administrator	label	Результаты проверки
+
+test_section_0	WebAsyst Administrator	label	Сервер
+test_section_1	WebAsyst Administrator	label	PHP
+test_section_2	WebAsyst Administrator	label	Файлы
+test_section_3	WebAsyst Administrator	label	База данных
+test_section_4	WebAsyst Administrator	label	Обновления
+
+support_title	WebAsyst Administrator	label	Помощь
+support_website	WebAsyst Administrator	label	Сайт WebAsyst
+support_website_link	WebAsyst Administrator	label	http://www.webasyst.ru
+support_helpcenter	WebAsyst Administrator	label	Поддержка и документация
+support_helpcenter_link	WebAsyst Administrator	label	http://www.webasyst.ru/support/
+support_forum	WebAsyst Administrator	label	Форум
+support_forum_link	WebAsyst Administrator	label	http://forum.webasyst.ru
+
+setup_sqlserverslist_empty	WebAsyst Administrator	label	Не определено ни одного SQL-сервера
+setup_dblist_empty	WebAsyst Administrator	label	Не создано ни одной базы данных
+
+fes_frontend_login	WebAsyst Administrator	label	Форма входа в WebAsyst
+fes_frontend_blank	WebAsyst Administrator	label	Пустая страница
+
+wbs_frontend_rpowered_by_checkbox	WebAsyst Administrator	label	Не показывать «Работает на основе WebAsyst»
+wbs_frontend_powered_by_section	WebAsyst Administrator	label	Работает на основе WebAsyst
+
+wbs_smtp_settings	WebAsyst Administrator	label	Настройки отправки почты через SMTP
+wbs_smtp_description	WebAsyst Administrator	label	Если ваш сервер отправляет email-сообщения не через функцию PHP mail(), а через SMTP-сервер, введите данные для авторизации отправителя ниже. Проконсультируйтесь с вашим хостинг-провайдером насчет того, что необходимо вводить в этих полях.
+smtp_host	WebAsyst Administrator	label	Хост SMTP
+smtp_host_desc	WebAsyst Administrator	label	Адрес сервера исходящей почты SMTP
+smtp_port	WebAsyst Administrator	label	Порт SMTP
+smtp_user	WebAsyst Administrator	label	Имя пользователя SMTP
+smtp_password	WebAsyst Administrator	label	Пароль
+smtp_helo	WebAsyst Administrator	label	Команда HELO
+smtp_helo_desc	WebAsyst Administrator	label	Команда HELO — это имя отправляющего узла (имя отправляющего сервера). Параметр сообщения HELO/EHLO, обычно дополняющийся «объективной» информацией самим сервером, позволяет идентифицировать отправителя на сетевом уровне, что используется для проверки отправителя и борьбы со спамом. Проконсультируйтесь с вашим хостинг-провайдером насчет того, нужно ли вам заполнять это поле. Оставьте пустым, если сомневаетесь. 

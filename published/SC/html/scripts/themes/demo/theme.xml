@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<theme id="demo" last_modified="2007-08-06 14:24:39">
+	<title><![CDATA[Demo theme]]></title>
+	<components_settings>
+		<component id="htmlcode">
+			<setting name="caption" value="HEllo text - 125"></setting>
+			<setting name="manage_htmlcode" value=""></setting>
+		</component>
+	</components_settings>
+</theme>

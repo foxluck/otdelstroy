@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout toolbar=true ?>
+		<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+		
+		<script type="text/javascript">
+			function ConfirmDeletion()
+			{
+				return confirm("<? $wgStrings.amwg_confirmdelete_message ?>");
+			}
+			
+			function keydown (e, fieldName, value) {
+				if (e.keyCode == 13) {
+					fieldChanged (fieldName, value);
+				}
+			}
+			
+			function showHideEmbedOptions () {
+				if (document.getElementById("EmbedOptions").style.display == "none") {
+					document.getElementById("EmbedOptions").style.display = "block";
+					//document.getElementById("EmbedOptionsLink").innerHTML = "<? $wgStrings.amwg_hidemoreemb_label ?>";
+					document.getElementById("EmbedOptionsLink").style.display = "none";
+				} else {
+					document.getElementById("EmbedOptions").style.display =  "none";
+					//document.getElementById("EmbedOptionsLink").innerHTML = "<? $wgStrings.amwg_moreemb_label ?>";
+					document.getElementById("EmbedOptionsLink").style.display = "block";
+				}
+			}
+			
+			function previewWidget () {
+				window.open("<? $widgetSrc ?>","mywindow");
+				return false;
+			}
+			
+			function fieldChanged (fieldName, value) {
+				window.frames["previewFrame"].fieldChanged(fieldName, value);
+				if (fieldName == "WIDTH") {
+					document.getElementById("previewFrame").width=(value*1)+25;
+				}
+			}
+			
+			function fieldColorChanged (fieldName) {
+				document.getElementById (fieldName + "Prev").style.background = document.getElementById (fieldName).value;
+				fieldChanged (fieldName, document.getElementById (fieldName).value);
+			}
+			
+			function showHideSubfields (fieldName) {
+				obj = document.getElementById(fieldName + "Subfields");
+				linkObj = document.getElementById(fieldName + "SubfieldsLink");
+				var visible = (obj.style.display != "none");
+				trObj = document.getElementById(fieldName + "FieldTr");
+				if (visible) {
+					obj.style.display = "none";
+					linkObj.innerHTML = "<? $wgStrings.amwg_showproperties_label ?>";
+					trObj.style.background = "";
+				} else {
+					obj.style.display = "block";
+					linkObj.innerHTML = "<? $wgStrings.amwg_hideproperties_label ?>";
+					trObj.style.background = "#D9D9D9";
+				}
+				
+			}
+			
+		</script>
+		
+		<link rel="stylesheet" href="../cpicker/js_color_picker_v2.css" media="screen">
+		<script src="../cpicker/color_functions.js"></script>		
+		<script type="text/javascript" src="../cpicker/js_color_picker_v2.js"></script>
+		<script>
+			var namedColorsLabel = "<? $wgStrings.amwg_colorpick_named_label ?>";
+			var sliderColorsLabel = "<? $wgStrings.amwg_colorpick_slider_label ?>";
+		</script>
+	</head>
+	<body onLoad="autoFocusFormControl( '<? if $invalidField ?><? $invalidField ?><? else ?>ACC_ID<? /if ?>', 'accountData' ); ">
+		<? wbs_pageLayout toolbar="amwg_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+			<? if !$fatalError ?>
+				<!--span style='margin-bottom:0px; padding-bottom:0px' class='FormCaption'><? $subtypeDesc|htmlsafe:true:true ?></span>
+				<BR-->
+
+<table cellspacing="0" cellpadding="0">
+		<tr valign='top'>
+			<td>
+				<? wbs_formLayout ?>
+					
+					<? wbs_formContent ?>
+						<TR><TD>
+						<? include file="amwg_form.htm" place="all" ?>
+						</td></tr>
+					<? /wbs_formContent ?>
+						
+					<? wbs_formButtonsPanel ?>
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" ?>
+							<? wbs_buttonSetButton caption=$wgStrings.amwg_saveclose_menu name="saveclosebtn"?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+							<!--<? if $action != ACTION_NEW ?>
+								<? wbs_buttonSetButton align="right" caption=$kernelStrings.ci_delete_btn name="deletebtn" onClick="return ConfirmDeletion();"?>
+							<? /if ?>-->
+						<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+				<? /wbs_formLayout ?>
+				
+			</td>
+				
+				<td style='padding-left: 20px'>
+					<? if $embInfo.previewSrc ?>
+						<b><? $wgStrings.amwg_preview_label ?>:</b><BR>
+						<iframe id='previewFrame' name='previewFrame' style='border: 1px solid #E4D2B0' width='<? $embInfo.width|default:300 ?>' height='<? $embInfo.height|default:400 ?>'  scrolling=NO frameborder=0 src='<? $embInfo.previewSrc ?>'></iframe>
+					<? /if ?>
+					<? if $WG_CREATED_FROM && $params.action != ACTION_NEW ?>
+						<BR><BR>
+						<? if $WG_CREATED_FROM == "TYPEPAD" ?>
+							<? include file="installs/typepad.htm" ?>
+						<? /if ?>
+					<? /if ?>
+				</td>
+		</tr>
+		
+		
+		
+		<? if $params.action != ACTION_NEW ?>		
+			<tr>
+				<td colspan=2>
+					<? if $embInfo.code ?>
+						<? $wgStrings.amwg_wghtml_label ?>	<BR>
+						<textarea onFocus='this.select()' class='FormControl' wrap="soft" style='overflow-x:hidden; width: 800px; color: #909090' rows='3'><? $embInfo.code|htmlsafe:true:true ?></textarea>
+					<? /if ?>
+					<BR><BR>
+					
+					<? if $embInfo.src ?>
+						<a id='EmbedOptionsLink' href='javascript:void(0)' onClick='showHideEmbedOptions()'><? $wgStrings.amwg_moreemb_label ?></a>
+						<div id='EmbedOptions' style='display:none; border-top: 1px solid #999999'>
+							<b><? $wgStrings.amwg_addemb_label ?> [<a id='EmbedOptionsLink' href='javascript:void(0)' onClick='showHideEmbedOptions()'><? $wgStrings.amwg_hideaddemb_label ?></a></b>]
+							<BR><BR>
+						
+							<? assign var="href" value="window.open(\""|cat:$embInfo.src|cat:"\", \"\",\"width="|cat:$embInfo.width|cat:",height="|cat:$embInfo.height|cat:"\"); return false;" ?>
+							<? $wgStrings.amwg_wglink_label ?> (<a href="#" onClick='<? $href ?>'><? $wgStrings.amwg_wglinksample_label ?></a>) <BR>
+							<textarea onFocus='this.select()' class='FormControl' wrap="soft" style='width: 800px; color: #909090' rows=3>&lt;a href='#' onClick='<? $href|htmlsafe:true:true ?>'&gt;Show&lt;/a&gt;</textarea>
+							<BR><BR>
+							
+							<? $wgStrings.amwg_permalink_label ?>:<BR>
+							<a target='_blank' href='<? $embInfo.src ?>'><? $embInfo.src ?></a>
+							
+							<BR><BR>
+						
+						  <input type="hidden" name="service_key" value="52616e646f6d4956f82e12fcb88c01e454448d80f587b6dea7c6bdddf5ff572ca0b749f19f71f6b88d3a46bb7f993382 " />
+						  <input type="hidden" name="service_name" value="Webasyst" />
+						  <input type="hidden" name="service_url" value="http://www.webasyst.net/" />
+						  <input type="hidden" name="long_name" value="Webasyst SignUp Form" />
+						  <input type="hidden" name="short_name" value="wa_subscriber" />
+						  <input type="hidden" name="content" value="<? $embInfo.code ?>" />
+						  <input type="hidden" name="return_url" value="http://www.webasyst.com/" />
+						  <input class='FormControl' type="button" onClick='processTextButton("installtpbtn")' name="installtpbtn" value="<? $wgStrings.amwg_typepadinstall_label ?>" />
+						</div>
+					<? /if ?>
+				</td>
+			</tr>
+		<? /if ?>
+		<tr><td>		
+			<? if $itemData ?>
+				<BR>
+				<? wbs_note displayNoteMarker=false ?>
+					<? $wgStrings.amwg_created_label ?>: <? $itemData.WG_CREATED_BY ?> <? $itemData.createdDatetime ?>
+					<!--
+					<? if $itemData.WG_MODIFIED_BY ?>
+						&nbsp;|&nbsp;
+						<? $wgStrings.amwg_modified_label ?>: <? $itemData.WG_MODIFIED_BY ?> <? $itemData.modifiedDatetime ?>
+					<? /if ?>
+					-->
+				<? /wbs_note ?>
+			<? /if ?>
+			
+			<? if $WG_CREATED_FROM ?>
+				<input name="fields[WG_CREATED_FROM]" type="hidden" value="<? $WG_CREATED_FROM ?>"/>
+			<? /if ?>
+			<input name="fields[WT_ID]" type="hidden" value="<? $WT_ID ?>"/>
+			<input name="fields[WST_ID]" type="hidden" value="<? $WST_ID ?>"/>
+			<input name="fields[WG_ID]" type="hidden" value="<? $itemData.WG_ID ?>"/>
+		</td></tr>
+	</table>
+				
+			<? else ?>
+				<? if !$haventRights ?>
+					<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+				<? /if ?>
+			<? /if ?>
+
+			<input name="action" type="hidden" value="<? $params.action ?>"/>
+			<input name="WT_ID" type="hidden" value="<? $params.WT_ID ?>"/>
+			<input name="WG_ID" type="hidden" value="<? $params.WG_ID ?>"/>
+			<input name="FAPP_ID" type="hidden" value="<? $params.FAPP_ID ?>"/>
+			
+			
+			<? if $params.outParams ?>
+				<? foreach from=$params.outParams item=value key=key ?>
+					<input type='hidden' name='outParams[<? $key ?>]' value='<? $value ?>'>
+				<? /foreach ?>
+			<? /if ?>
+			
+		<? /wbs_pageLayout ?>
+		
+	</body>
+</html>

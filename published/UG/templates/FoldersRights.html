@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[`Customize access rights`]</title>
+{{csscombine file="`$url.css`contact-edit.css"}}
+	{{$url.css}}users-common.css
+	{{$url.css}}users-edit.css
+{{/csscombine}}
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+<style type="text/css">
+table.rights tr.first td.right {font-size: 13px;  color:#444;}
+table.rights td.name {padding: 3px 10px; font-size: 13px}
+table.rights td.right input {margin:4px 15px;}
+.tabs-content { padding: 20px 10px 20px 30px}
+#content {padding: 10px 0 0 10px}
+table.rights td.changeable { color:#222;}
+.changeable i { color:#788596; font-weight:normal;} 
+table.rights td.name.access { font-weight:bold;}
+</style>
+</head>
+<body>
+<div id="header">
+	<div id="toolbar_new" class="contact-tools">
+	  <div class="backlink" style="width:175px; float:left">
+	    <span>&larr;</span><a href="index.php?folder_id={{$folder_id}}" onClick="if (parent) {parent.document.app.selectFolder('{{$folder_id}}'); return false}">[`Back`]</a>
+	  </div>
+	  <div id="info-message" style="margin-left:175px; padding-top: 10px; display:none">
+	    <div class="info-message with-close"><div class="info-message-close"><a onClick="jQuery('#info-message div.info-message').hide();" href="javascript:void(0)">[`Close`]</a></div> [`All changes are automatically applied`]</div>
+	  </div>
+	  <br style="clear: left" />  		  
+	</div>
+</div>
+<div id="content" style="overflow:auto">
+	<h2>[`Customize access rights to folder`] "{{$folder_title|escape:'html'}}"</h2>
+	<br />
+	<ul id="tabs" class="big-tabs">
+		<li id="tab-users" class="tab-current"><a href="javascript:void(0)">[`Users`]</a></li>
+		<li id="tab-groups"><a href="javascript:void(0)">[`Groups`]</a></li>
+	</ul>
+	
+	<div class="tabs-content">	
+	{{if $tab_id == 'groups'}}
+	{{include file="FoldersRightsGroups.html"}}
+	{{else}}
+	{{include file="FoldersRightsUsers.html"}}
+	{{/if}}
+	</div>
+</div>
+
+<script type="text/javascript">
+	var resize = function () {
+		$("#content").height($(window).height() - $("#header").height()-10);
+	};
+	$(document).ready(resize);
+	$(window).resize(resize);
+
+	function saveRight(obj, is_group) {
+		var max = 0;
+		var id = $(obj).parent().find('input[type=hidden]').val();
+		if ($(obj).is(":checked")) {
+			$(obj).prevAll("input[type=checkbox]").attr('checked', 'checked');
+			if ($(obj).parent().hasClass("changeable")) {
+				$(obj).parent().addClass('access');
+				$(obj).parent().prev().addClass('access');
+			}
+			value = $(obj).val();
+			if (id == 'ALL') {
+				var v = value;
+				while (v > 0) {
+					$("table.rights input.v" + v).attr('checked', 'checked');
+					v = v >> 1;
+				}
+				max = 1;
+				$("table.rights td.changeable").addClass('access');
+			}
+		} else {
+			$(obj).nextAll('input[type=checkbox]').removeAttr('checked');
+			value = $(obj).val();
+			if (id == 'ALL') {
+				var v = 7;
+				while (v >= value) {
+					$("table.rights input.v" + v).removeAttr('checked');
+					v = v >> 1;
+				}		
+				if (value == 1) {
+					$("table.rights td.changeable").removeClass('access');
+				}		
+			} else {
+				$("table.rights td.all input[value="+value+"]").removeAttr('checked');
+			}
+			if (value == 1) {
+				if ($(obj).parent().hasClass("changeable")) {
+					$(obj).parent().removeClass('access');
+					$(obj).parent().prev().removeClass('access');
+				}
+			}				
+			value = value >> 1;
+		}
+		var mode = is_group ? 'groups' : 'users';
+		$.post("?mod=folders&act=rights&ajax=1", {max: max, action: 'save', mode: mode, id: id, value: value, object_id: '{{$folder_id}}'}, function (response) {
+			if (response.status == 'OK') {
+				$("#info-message").show();
+			}
+		}, "json")
+	}
+
+	function getRightTitle(code) {
+		switch (code) {
+			case 1: return "[`Read`]";
+			case 3: return "[`Write`]";
+			case 7: return "[`Full`]";
+			case -1: return "[`Administrator`]";
+			default: return "&nbsp;"
+		} 
+	}
+
+	jQuery.fn.renderRights = function (is_group, all) {
+		var rights = is_group ? groups_rights : users_rights;  
+		var str = '<table class="rights">';
+		if (!is_group) {
+			str += '<tr class="first"><td style="border: 0pt none; padding:3px 15% 10px 5px;font-size:13px; color:#444;">[`Effective user access rights are a combination of expressly specified personal access rights and access rights inherited from the groups in which this user is included.`]</td><td class="right" width="150">[`Personal access rights`]</td><td class="right" width="150">[`Inherited from groups`]</td></tr>';
+		}
+		str += '<tr class="first"><td class="wright" style="min-width:200px"> </td>';
+		str += '<td class="wright"><table width="150"><tbody><tr><td width="33%">[`Read`]</td><td width="34%">[`Write`]</td><td width="33%">[`Full`]</td></tr><tr><td class="all" colspan="3">' +
+			   '<input type="hidden" value="ALL" />' + 
+			   '<input '+ (all >=1 ? 'checked="checked"' : '') +' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" value="1"/>' +
+			   '<input '+ (all >=3 ? 'checked="checked"' : '') +' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" value="3"/>' +
+			   '<input '+ (all >=7 ? 'checked="checked"' : '') +' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" value="7"/>' + 
+			   '</td></tr></tbody></table></td>';
+		if (!is_group) {
+			str += '<td class="wright"> </td>';
+		}
+		str += '</tr>';
+		for (var i = 0; i < rights.length; i++) {
+			var r = rights[i]; 
+			str += '<tr><td class="name' + (r[2][0] ? ' access' : '') + (!r[2][2] && r[2][1] != -1 ? ' changeable' : '') + '">' + r[1] + '</td>';
+			str += '<td class="right' + (r[2][0] ? ' access' : '') + (!r[2][2] && r[2][1] != -1 ? ' changeable' : '') + '">';
+			if (r[2][1] == -1) {
+				str += '[`Administrator`]';
+			} else {
+				str += '<input type="hidden" value="'+ r[0] +'" />' +
+				'<input class="v1" value="1" ' + (r[2][1] >= 1 ? 'checked="checked"' : '') + ' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" />' +
+				'<input class="v3" value="3" ' + (r[2][1] >= 3 ? 'checked="checked"' : '') + ' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" />' +
+				'<input class="v7" value="7" ' + (r[2][1] >= 7 ? 'checked="checked"' : '') + ' type="checkbox" onclick="saveRight(this, ' + (is_group ? 1 : 0 ) + ')" />';
+			}
+			str += '</td>';
+			if (!is_group) {
+				str += '<td class="right' + (r[2][2] ? ' access' : '') + '">' + getRightTitle(r[2][2]) + '</td>';
+			}
+			str += '</tr>';
+		}
+		str += '</table>';
+		$(this).html(str);
+	}
+
+	$("#tabs li").click(function () {
+		$("#tabs li.tab-current").removeClass('tab-current');
+		$(this).addClass('tab-current');
+		var id = $(this).attr('id');
+		id = id.replace(/tab-/i, '');
+		$(".tabs-content").html('[`Loading...`] <img src="{{$url.common}}img/loading.gif" />');
+		$(".tabs-content").load("?mod=folders&act=rights&folder_id={{$folder_id}}&tab=" + id);
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script language="JavaScript">
+		<!--
+			function setPeriodType( type )
+			{
+				thisForm = document.forms[0];
+
+				for ( i = 0; i < thisForm.elements.length; i++ ) 
+					if (thisForm.elements[i].type == 'radio')
+						if ( thisForm.elements[i].name == "periodType[type]" && thisForm.elements[i].value == type ) {
+							thisForm.elements[i].checked = true;
+							break;
+						}
+			}
+		//-->
+		</script>
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'periodType' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sei_form_text ?><? /wbs_note ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+					<? wbs_formContent ?>
+						<tr>
+							<td><? wbs_label for="type0" text=$kernelStrings.sei_default_label skipColon=true ?></td>
+							<td colspan="2"><input type="radio" id="type0" name="periodType[type]" value=0 <? wbs_checkboxStatus val=$periodType.type true_val=0 ?>/></td>
+						</tr>
+						<tr>
+							<td><? wbs_label for="type1" text=$kernelStrings.sei_never_label skipColon=true ?></td>
+							<td colspan="2"><input type="radio" id="type1" name="periodType[type]" value=1 <? wbs_checkboxStatus val=$periodType.type true_val=1 ?>/></td>
+						</tr>
+						<tr>
+							<td><? wbs_label for="type2" text=$kernelStrings.sei_custom_label skipColon=true ?></td>
+							<td><input type="radio" id="type2" name="periodType[type]" value=2 <? wbs_checkboxStatus val=$periodType.type true_val=2 ?>/></td>
+							<td>
+								<input onChange="setPeriodType(2)" type=text name="periodType[period]" value="<? $periodType.period|htmlsafe:true:true ?>" size=10 class="FormControl"/>
+							</td>
+						</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_ok_btn name="savebtn" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+						<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+				<? /wbs_formLayout ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

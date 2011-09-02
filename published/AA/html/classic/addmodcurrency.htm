@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+	function focusControl(objName) {
+		 var obj = MM_findObj(objName); 
+		 if (obj)
+			obj.focus( );
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="<? if $action == "new" ?>focusControl('currencyData[CUR_ID]')<?else?>focusControl('currencyData[CUR_NAME]')<?/if?>; markArrayField( '<? $invalidField ?>', 'currencyData' )">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm"?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td>
+		<? include file="../../../common/html/classic/formframe_begin.htm"?>	
+			<table border="0" cellspacing="2" cellpadding="0">
+				  <tr> 
+					<td align="right" class="label"> <label> 
+					  <? conditionalOutput invalidField=$invalidField field=CUR_ID text=#invalidFieldHighlight#  ?>
+					  <? $kernelStrings.cl_id_title|cat:":" ?>
+					  </label> </td>
+					<td  <? if $action != "new" ?>class="readonly_control"<? /if ?>> 
+					  <? if $action == "new" ?>
+					  <input name="currencyData[CUR_ID]" type="text" class="control" value="<? $currencyData.CUR_ID?>" size="10" maxlength="3"> 
+					  <?else?>
+					  <? $currencyData.CUR_ID?>
+					  <input type="hidden" name="currencyData[CUR_ID]" value="<? $currencyData.CUR_ID?>"> 
+					  <?/if?>
+					</td>
+				  </tr>
+				  <tr> 
+					<td align="right" class="label"> 
+					  <? conditionalOutput invalidField=$invalidField field=CUR_NAME text=#invalidFieldHighlight#  ?>
+					  <? $kernelStrings.cl_name_title|cat:":" ?>
+					</td>
+					<td ><input name="currencyData[CUR_NAME]" type="text" class="control" value="<? $currencyData.CUR_NAME?>" size="50" maxlength="50"></td>
+				  </tr>
+			</table>
+			<? include file="../../../common/html/classic/formframe_end.htm"?>
+		  </td>
+    </tr>
+    <tr> 
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td>
+              <? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_ok_btn formname="form" space_left=5 space_right=10 ?>
+              <? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+            </td>
+            <td align="right">
+              <? if $action != "new" ?>
+              <? include file="../../../common/html/classic/button.htm" align="right" name="deletebtn" caption=$kernelStrings.ci_delete_btn formname="form" space_right=5 onClick="return confirm('"|cat:$kernelStrings.amc_delete_message|cat:"')"?>
+              <? /if ?>
+            </td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <? else ?>
+  <? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+  <? /if ?>
+  <input name="edited" type="hidden" id="edited" value="1">
+  <input name="action" type="hidden" value="<? $action ?>">
+  <input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+<? /strip ?>
+</body>
+</html>

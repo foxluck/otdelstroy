@@ -1,0 +1,202 @@
+<style type="text/css">
+#TabbarTop {
+ background: white;
+}
+
+#TabbarTop td{
+ height: 28px;
+ padding: 3px 8px;
+ vertical-align: middle;
+}
+#TabbarTop td div{
+ padding: 3px 8px;
+}
+#TabbarTop td div{
+ height:28px;
+}
+#TabbarTop td{
+ padding-bottom: 0px;
+}
+#TabbarTop td a{
+ font-size: 1em;
+ color: black!important;
+ text-decoration: none!important;
+}
+#TabbarTop td div.sc_rnd_current a{
+ font-weight: bold;
+}
+
+#TabbarTop div.none {
+ background: white;
+ text-decoration: underline;
+}
+#ToolbarIn, #TabbarTop td .sc_rnd_current {
+	background: #DDDDDD;
+}
+#ToolbarIn td{
+ padding: 4px 8px;
+}
+#ToolbarIn td div{
+ padding: 3px 8px;
+}
+#ToolbarIn td.current div{
+ background: white;
+}
+#ToolbarIn td.current a{
+ color: black!important;
+ text-decoration: none!important;
+}
+#ToolbarIn a{
+ font-size: 1em;
+ color: black!important;
+ text-decoration: none!important;
+} 
+a.Button{
+ font-size: 1em!important;
+ color: black!important;
+ text-decoration: none!important;
+ margin: 0px!important;
+}
+#Toolbar{
+ background: none;
+ 
+ 
+ 
+}
+</style>
+<div id="Toolbar">
+	<div id='TabbarTop'><div>
+	<table cellpadding="0" cellspacing="0"><tr>
+	<? foreach from=$top_menu item=_menu ?>
+	<td id="top-tab-<? $_menu.id ?>"><div class="<? if $_menu.id == $top_tab_id||$_menu.active ?>sc_rnd_current<?else?>none<? /if ?>" id="top-tab-div-<? $_menu.id ?>"><a href="<? $_menu.direct_url|escape:'html' ?>" target="_self" onClick="return ShowAdminPage('<? $_menu.url|escape:'html' ?>','<? $_menu.id ?>','')"><? $_menu.title ?></a></div></td>
+	<? /foreach ?>
+	<td>
+		<? wbs_button caption=$scStrings.sc_tab_open_storefront target='_blank' link=$SHOP_URL ?>
+	</td>
+	</tr></table>
+	</div></div>
+	<div id='ToolbarIn'>
+	<? foreach from=$top_menu item=_menu ?>
+	<table cellpadding="0" cellspacing="0" <? if $_menu.id == $top_tab_id ?>class="current"<? else ?> style="display:none;"<? /if ?> id="sub-tabs-<? $_menu.id ?>"><tr>
+		<? foreach from=$_menu.sub_tabs item=_sub_tab  name='subdiv'?>
+		<td <? if $_sub_tab.id == $sub_tab_id ||$_sub_tab.active?>class="current"<? /if ?> id="sub-tab-<? $_sub_tab.id ?>"><div id="sc_rnd_b_<?$_sub_tab.id?>"><a  href="<? $_sub_tab.direct_url|escape:'html' ?>" target="_self" onClick="return ShowAdminSubPage('<? $_sub_tab.url|escape:'html' ?>','<?$_sub_tab.id?>','<?$_menu.id?>')"><?$_sub_tab.title|escape:'html'?></a></div></td>
+		<? /foreach ?>
+	</tr></table>
+	<? /foreach ?>
+	</div>
+</div>
+<script type="text/javascript">
+var BrowserDetect = {
+	init: function () {
+		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+		this.version = this.searchVersion(navigator.userAgent)
+			|| this.searchVersion(navigator.appVersion)
+			|| "an unknown version";
+		this.OS = this.searchString(this.dataOS) || "an unknown OS";
+	},
+	searchString: function (data) {
+		for (var i=0;i<data.length;i++)	{
+			var dataString = data[i].string;
+			var dataProp = data[i].prop;
+			this.versionSearchString = data[i].versionSearch || data[i].identity;
+			if (dataString) {
+				if (dataString.indexOf(data[i].subString) != -1)
+					return data[i].identity;
+			}
+			else if (dataProp)
+				return data[i].identity;
+		}
+	},
+	searchVersion: function (dataString) {
+		var index = dataString.indexOf(this.versionSearchString);
+		if (index == -1) return;
+		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+	},
+	dataBrowser: [
+		{
+			string: navigator.vendor,
+			subString: "Apple",
+			identity: "Safari"
+		}
+	],
+	dataOS : []
+};
+
+	document.getElementById('FullScreenOn').firstChild.style.color = 'black';
+    document.getElementById('FullScreenOff').firstChild.style.color = 'black';
+    document.getElementById('FullScreenOff').childNodes[2].style.color = 'black';
+    
+    var cur_division_id='<?$top_tab_id?>';
+    var cur_subdivision_id = new Array();
+    var cur_subdivision_id_default = new Array();
+    
+    <? foreach from=$top_menu item=_menu ?>
+		<? foreach from=$_menu.sub_tabs item=_sub_tab  name = 'subdiv'?>
+		<?if $smarty.foreach.subdiv.first?> 
+		cur_subdivision_id_default['<?$_menu.id?>']='<?$_sub_tab.id?>';
+		<? /if?>
+		<?if $_sub_tab.active?>
+		cur_subdivision_id['<?$_menu.id?>']='<?$_sub_tab.id?>';
+		cur_subdivision_id_default['<?$_menu.id?>']='<?$_sub_tab.id?>';
+		<?/if?>
+		<? /foreach ?>
+	<? /foreach ?>
+    
+    function ShowAdminPage(url,division_id,sub_division_id)
+    {
+    	var obj = document.getElementById('top-tab-div-'+cur_division_id);
+		if(obj) obj.className = 'none';
+    	
+		obj = document.getElementById('top-tab-div-'+division_id);
+    	if(obj) obj.className = 'sc_rnd_current';
+		
+		obj = document.getElementById('sub-tab-'+cur_subdivision_id[division_id]);
+    	if(obj) obj.className = '';
+		cur_subdivision_id[division_id]=cur_subdivision_id_default[division_id];
+		obj = document.getElementById('sub-tab-'+cur_subdivision_id[division_id]);
+    	if(obj) obj.className = 'current';
+		
+		obj = document.getElementById('sub-tabs-'+cur_division_id);
+    	if(obj) obj.style.display = 'none';
+		
+		obj = document.getElementById('sub-tabs-'+division_id);
+    	if(obj) obj.style.display = 'block';
+		
+		cur_division_id = division_id;
+  	
+    	sc_frame.location=url;
+    	return false;
+    }
+    function ShowAdminSubPage(url,sub_division_id,division_id)
+    {
+    
+    	obj = document.getElementById('sub-tab-'+cur_subdivision_id[division_id]);
+    	if(obj) obj.className = '';
+    	var obj = document.getElementById('sub-tab-'+sub_division_id);
+    	if(obj) obj.className = 'current';
+    	
+    	
+    	cur_subdivision_id[division_id] = sub_division_id;
+    	sc_frame.location=url;
+    	return false;  
+    }
+    //Nifty temporaly commented out
+    /*
+    BrowserDetect.init();
+    <? if $corners eq 'rounded' ?>
+if(BrowserDetect.browser == 'Safari'){
+	var oldonload = window.onload;
+	window.onload = function(){
+		if(oldonload)oldonload();
+		RoundElem($('sc_rnd_b'), '')
+		//Rounded('div.sc_rnd', '');
+		Rounded('div.sc_rnd_current', 'tr tl');
+	}
+}else{
+	RoundElem($('sc_rnd_b'), '')
+	//Rounded('div.sc_rnd', '');
+	Rounded('div.sc_rnd_current', 'tr tl');
+}
+<? /if ?>
+    */
+</script>

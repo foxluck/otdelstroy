@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+	<table border=0>
+	<tr>
+	<td><? $kernelStrings.sms_date_title ?>:</td><td><? $smsInfo.SMSH_DATETIME ?></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_sender_title ?>:</td><td><? $smsInfo.SMSH_USER_ID ?></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_phone_title ?>:</td><td><? $smsInfo.SMSH_PHONE ?></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_width_title ?>:</td><td><? $smsInfo.SMSH_WIDTH ?></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_app_title ?>:</td><td><? $smsInfo.SMSH_APP ?></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_charge_title ?>:</td><td><nobr><? $smsInfo.SMSH_CHARGE ?> <? $kernelStrings.app_usd_brief_text ?> <? if $smsInfo.SMSH_CHARGED == 0 ?>(<? $kernelStrings.sms_reserved_status_text ?>)<? /if ?></nobr></td>
+	</tr>
+	<tr>
+	<td><? $kernelStrings.sms_status_title ?>:</td><td><? $smsInfo.SMSH_STATUS ?></td>
+	</tr>
+	<tr>
+	<td colspan=2>&nbsp;</td>
+	</tr>
+	<tr>
+	<td valign=top><? $kernelStrings.sms_text_title ?>:</td><td><? $smsInfo.SMSH_TEXT|htmlsafe:true:true ?></td>
+	</tr>
+	</table>
+	<br>
+
+<? else ?>
+<? /if ?>
+<input type=hidden name="currentPage" value="<? $currentPage ?>">
+<? include file="../../../common/html/classic/button.htm" align="left" name="backbtn" caption=$kernelStrings.app_back_btn formname="form"?>
+
+<input name="opener" type="hidden" id="opener" value="<? $opener ?>">
+
+<input name="edited" type="hidden" id="edited" value="1">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

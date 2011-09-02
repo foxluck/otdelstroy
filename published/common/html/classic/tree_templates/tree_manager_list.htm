@@ -1,0 +1,83 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="smallFont" valign=top>
+						<strong><? $kernelStrings.app_tips_label|cat:":&nbsp;" ?></strong>
+					</td>
+					<td class="smallFont" valign=top>
+						<? $kernelStrings.app_treeuserstip1_text|nl2br ?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td align="right">
+			<? if $showUserSelector ?>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr> 
+					<td class="formField"><? $kernelStrings.usa_finduser_label|cat:":" ?>&nbsp; </td>
+					<td class="default">
+						<select name="U_ID" onChange="this.form.submit()">
+							<option value="-1">
+							<? "<"|cat:$kernelStrings.usa_select_item|cat:">"|htmlsafe:true:true ?>
+							</option>								
+							<? html_options values=$userIDs output=$userIDs ?>
+						</select>							
+					</td>
+				</tr>
+			</table>
+			<? /if ?>			
+		</td>
+	</tr>
+	<tr colspan=2><td style="height: 5px"></td></tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+		<tr>
+			<th align="left" <? if $showEditIcons ?>width=250<? /if ?>><nobr><? $folderNameLabel ?></nobr></th>
+			<? if $showEditIcons ?>
+				<th width="80%" align="left">&nbsp;</th>
+			<? /if ?>
+			<? if $prev_pageLink ?>
+				<th align="left" valign="middle">
+					<? conditionalLink href=$prev_pageLink text=#prev_img#?>
+				</th>
+			<? /if ?>
+			<? foreach from=$userRights key=U_ID item=userData ?>
+				<th width="70"><a href="<? $userData.ROW_URL ?>" title="<? $userData.USER_NAME ?>"><? $U_ID ?></a></th>
+			<? /foreach ?>
+			<? if $next_pageLink ?>
+				<th align="right">
+					<? conditionalLink href=$next_pageLink text=#next_img#?>
+				</th>
+			<? /if ?>						
+		</tr>
+	<? foreach from=$folders key=DF_ID item=folderData name=folderLoop ?>
+		<? math equation="offset*10" offset=$folderData->OFFSET assign="padding" ?>						
+		<tr <? if ($smarty.foreach.folderLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=#FFFFFF<? /if ?>>
+			<td class="catalogRow"><nobr><img style="margin-left: <? $padding|cat:"px" ?>" border="0" src="../../../common/html/classic/images/folder_open.gif" width="14" height="12">&nbsp;<a href="<? $folderData->ROW_URL ?>" title="<?$folderData->DF_NAME|htmlsafe:true:true?>"><? $folderData->NAME|htmlsafe:true:true|trunc_str:50 ?></a></nobr></td>
+			<? if $showEditIcons ?>
+				<td class="catalogRow"><nobr>
+					<? assign var=newFolderImg value="images/createfolder_icon.gif"|stylesetitem:"classic":$styleSet ?>
+					<? assign var=delFolderImg value="images/deletefolder_icon.gif"|stylesetitem:"classic":$styleSet ?>
+					<? " <a title=\""|cat:$addFolderLabel|cat:"\" href="|cat:$folderData->NEW_URL|cat:"><img border=0 src="|cat:$newFolderImg|cat:" width=16 height=16 align=absmiddle></a>" ?>
+					<? if $folderData->ALLOW_DELETE ?>
+						<? " <a onClick=\"return treeConfirmFolderDeletion( '"|cat:$kernelStrings.app_treeflddelconfirm_text|cat:"' )\" title=\""|cat:$deleteFolderLabel|cat:"\" href="|cat:$folderData->DELETE_URL|cat:"><img border=0 src="|cat:$delFolderImg|cat:" width=16 height=16 align=absmiddle></a>" ?>
+					<? /if ?></nobr>
+				</td>
+			<? /if ?>
+			<? if $prev_pageLink ?>
+				<td align="center" width=15>&nbsp;</td>
+			<? /if ?>
+			<? foreach from=$userRights item=userData ?>
+				<? assign var="curRights" value=$userData.RIGHTS.$DF_ID ?>
+				<td align="center"><? assign var=rightShort value=$tree_access_mode_names.$curRights ?><? $kernelStrings.$rightShort ?></td>
+			<? /foreach ?>		
+			<? if $next_pageLink ?>
+				<td align="center" width=15>&nbsp;</td>
+			<? /if ?>
+		</tr>
+	<? foreachelse ?>
+		<tr><td colspan="<? $colCount ?>" class="noentries" align="center"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></td></tr>
+	<? /foreach ?>
+</table>

@@ -1,0 +1,196 @@
+<html>
+<head>
+<title><? $pageTitle ?></title>
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+function focusControl(objName) {
+	 var obj = MM_findObj(objName); 
+	 if (obj)
+		obj.focus( );
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>"></head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="focusControl('companyData[COM_NAME]'); markArrayField( '<? $invalidField ?>', 'companyData' );">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm"?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+	<? if !$fatalError ?>
+	  <table border="0" cellpadding="0" cellspacing="0">
+		<tr> 
+		  <td> 
+			<? include file="../../../common/html/classic/formframe_begin.htm"?>	
+				<table border="0" cellpadding="0">
+                      <tr> 
+                        <td colspan="3"><table width="100%" border="0" cellspacing="2" cellpadding="0">
+                            <tr> 
+                              <td class="label"><nobr> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_NAME text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_compname_message|cat:":" ?>
+                                </nobr></td>
+                              <td width="100%"><input name="companyData[COM_NAME]" type="text" class="control" value="<? $companyData.COM_NAME?>" size="30" maxlength="30" style="width: 99%"></td>
+                            </tr>
+                            <tr> 
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <tr> 
+                        <td valign="top"><table border="0" cellspacing="2" cellpadding="0">
+                            <tr> 
+                              <td colspan="2" align="right" class="formSection"> 
+                                <? $kernelStrings.ci_adddress_title ?>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"><nobr> 
+                                <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_ADDRESSSTREET text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_streetaddr_label|cat:":" ?>
+                                </label>
+                                </nobr></td>
+                              <td class="default"><input name="companyData[COM_ADDRESSSTREET]" type="text" class="control" value="<? $companyData.COM_ADDRESSSTREET?>" size="20" maxlength="50"></td>
+                            </tr>
+                            <tr> 
+                              <td height="24" align="right" class="formField"> 
+                                <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_ADDRESSCITY text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_city_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_ADDRESSCITY]" type="text" class="control" value="<? $companyData.COM_ADDRESSCITY ?>" size="20" maxlength="30"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_ADDRESSSTATE text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_state_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_ADDRESSSTATE]" type="text" class="control" value="<?  $companyData.COM_ADDRESSSTATE  ?>" size="20" maxlength="30"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_ADDRESSZIP text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_zip_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_ADDRESSZIP] " type="text" class="control" value="<?$companyData.COM_ADDRESSZIP ?>" size="20" maxlength="10"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_ADDRESSCOUNTRY text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_country_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_ADDRESSCOUNTRY]" type="text" class="control" value="<? $companyData.COM_ADDRESSCOUNTRY ?>" size="20" maxlength="50"></td>
+                            </tr>
+                          </table></td>
+                        <td valign="top"><img src="../../../common/html/classic/images/5pixsep.gif" width="5" height="5"></td>
+                        <td valign="top"> <table width="100%" border="0" cellpadding="0" cellspacing="2">
+                            <tr> 
+                              <td colspan="2" align="right" class="formSection"> 
+                                <? $kernelStrings.ci_contperson_title ?>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_CONTACTPERSON text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_name_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_CONTACTPERSON]" type="text" class="control" value="<? $companyData.COM_CONTACTPERSON ?>" size="20" maxlength="50"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_EMAIL text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_email_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_EMAIL]" type="text" class="control" value="<? $companyData.COM_EMAIL ?>" size="20" maxlength="50"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_PHONE text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_phone_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_PHONE]" type="text" class="control" value="<? $companyData.COM_PHONE ?>" size="20" maxlength="50"></td>
+                            </tr>
+                            <tr> 
+                              <td align="right" class="formField"> <label> 
+                                <? conditionalOutput invalidField=$invalidField field=COM_FAX text=#invalidFieldHighlight#  ?>
+                                <? $kernelStrings.ci_fax_label|cat:":" ?>
+                                </label> </td>
+                              <td class="default"><input name="companyData[COM_FAX]" type="text" class="control" value="<? $companyData.COM_FAX ?>" size="20" maxlength="50"></td>
+                            </tr>
+                          </table>
+                          <input name="edited" type="hidden" id="edited" value="1"> 
+							<input name="deleteLogo" type="hidden" value="<? $deleteLogo ?>">
+                          <input name="prevName" type="hidden" value="<? $prevName ?>"></td>                          
+                      </tr>
+                      <tr> 
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td colspan="3" valign="top"> 
+                          <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                            <tr align="left"> 
+                              <td class="formSection"> 
+                                <? $kernelStrings.ci_logo_title ?>
+                              </td>
+                            </tr>
+						  </table>
+                          <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                            <tr> 
+                              <td align="right" class="label">
+                                <nobr><? $kernelStrings.ci_selectlogo_label|cat:":" ?></nobr>
+                              </td>
+                              <td align="right" class="btnText" width="100%"><input name="logo" type="file" class="control" style="width: 100%"></td>
+                            </tr>
+						  </table>
+                          <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                            <tr> 
+                              <td colspan="2"> 
+                                <? if $showLogo ?>
+                                <table cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td><table cellspacing="0" cellpadding="1">
+                                        <tr> 
+                                          <td bgcolor="#CCCCCC"><table cellspacing="0" cellpadding="3">
+                                              <tr> 
+                                                <td bgcolor="#FFFFFF"><img src="../../../common/html/scripts/getlogo.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" align="absmiddle" height="24"></td>
+                                              </tr>
+                                            </table></td>
+                                        </tr>
+                                      </table></td>
+                                    <td><? include file="../../../common/html/classic/button.htm" align="default" name="deletebtn" caption=$kernelStrings.ci_delete_btn formname="form" space_left=5 ?></td>
+                                  </tr>
+                                </table>
+                                <?/if?>
+                              </td>
+                            </tr>
+                          </table> </td>
+                      </tr>
+                    </table>
+					<? include file="../../../common/html/classic/formframe_end.htm" extraLine=true?>
+			</td>
+		</tr>
+	  </table> 
+	  <? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_ok_btn formname="form" space_left=5 space_right=10 ?><? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+  <? else ?>
+	  <? include file="../../../common/html/classic/button.htm" align="default" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+  <? /if ?>
+  <input type="hidden" name="btndummy">  
+  <? /strip ?>
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+</body>
+</html>

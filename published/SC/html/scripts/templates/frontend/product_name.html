@@ -1,0 +1,9 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+
+	<h1>{$product_info.name|escape:'html'}</h1>
+	{if $product_info.eproduct_filename ne ""}
+		{"prdset_product_is_downloadable_msg_2customer"|translate} (<b>{$product_info.eproduct_filesize_str}</b>)
+	{/if}
+{else}
+	<h1>{lbl_demoprd}</h1>
+{/if}

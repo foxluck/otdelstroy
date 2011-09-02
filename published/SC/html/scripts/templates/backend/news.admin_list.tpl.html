@@ -1,0 +1,128 @@
+{* news module *}
+{literal}
+<style type="text/css">
+
+#addnews_block{
+	display: none;
+}
+</style>
+{/literal}
+{if !$NewsEdit}
+
+	<h1>{lbl_blog_post_list}</h1>	
+	
+	{$MessageBlock}
+	
+	<input rel='{"?ukey=add_news"|set_query_html}' value='{"blog_writepost"|transcape}' type="button" class="goto" />
+	{if $LastPage>1}
+		{if $CurrentPage>1}
+			&nbsp; <a class="no_underline" href ="{"news_page=`$CurrentPage-1`"|set_query:$xRequestURI}">&lt;&lt; {"str_previous"|translate}</a>
+		{/if}
+		{foreach from=$ListerRange item=_page}
+			&nbsp; {if $_page!=$CurrentPage}<a class="no_underline" href="{"news_page=`$_page`"|set_query:$xRequestURI}">{$_page}</a> {else}{$_page}{/if}
+		{/foreach}
+		{if $CurrentPage<$LastPage}
+			&nbsp; <a class="no_underline" href ="{"news_page=`$CurrentPage+1`"|set_query:$xRequestURI}">{"str_next"|translate} &gt;&gt;</a>
+		{/if}
+	{/if}{* $LastPage>1 *}
+	
+{foreach from=$news_posts item=_news}
+<div class="post_block">
+
+	<h2 class="post_title">{$_news.title}</h2>
+	
+	<div class="post_date">{$_news.add_date} ({"str_priority"|translate}: {$_news.priority})
+	&nbsp;
+	<a href="{"news_number=`$_news.NID`"|set_query:$xRequestURI}">{"btn_edit"|translate}</a> | <a href="{"&delete=`$_news.NID`"|set_query:$xRequestURI}" onclick="return window.confirm('{"cnfrm_delete"|translate}');">{"btn_delete"|translate}</a>
+	</div>
+
+		
+	<div class="post_content">
+	{if $news_posts[i].picture_exists}
+		<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_news.picture}" hspace="20" vspace="20" align="left" />
+	{/if}
+	{$_news.textToPublication}
+	</div>
+	
+</div>
+{foreachelse}
+
+{"str_empty_list"|translate}
+
+{/foreach}
+
+{if $LastPage>1}
+	<input rel='{"?ukey=add_news"|set_query_html}' value='{"blog_writepost"|transcape}' type="button" class="goto" />
+	{if $CurrentPage>1}
+		&nbsp; <a class="no_underline" href ="{"news_page=`$CurrentPage-1`"|set_query:$xRequestURI}">&lt;&lt; {"str_previous"|translate}</a>
+	{/if}
+	{foreach from=$ListerRange item=_page}
+		&nbsp; {if $_page!=$CurrentPage}<a class="no_underline" href="{"news_page=`$_page`"|set_query:$xRequestURI}">{$_page}</a> {else}{$_page}{/if}
+	{/foreach}
+	{if $CurrentPage<$LastPage}
+		&nbsp; <a class="no_underline" href ="{"news_page=`$CurrentPage+1`"|set_query:$xRequestURI}">{"str_next"|translate} &gt;&gt;</a>
+	{/if}
+{/if}{* $LastPage>1 *}
+
+{else}
+
+{* Editing news *}
+{include file="backend/tiny_mce_config.html"}
+<h1 class="breadcrumbs">
+	<a href='{"news_number="|set_query:$xRequestURI}'>{"blog_post_list"|translate}</a>
+	&raquo;
+	{lbl_blog_edit_post}{if $NewsInfo.title}: {$NewsInfo.title}{/if}
+&nbsp;
+</h1>
+
+<form action="{$xRequestURI}" method="POST" enctype="multipart/form-data" name='MainForm'>
+	<input type=hidden name="fACTION" value="SAVE_NEWS" />
+	<input type=hidden name="DATA[NID]" value="{$NewsInfo.NID}" />
+	<table cellspacing="6">
+	<tr>
+		<td>{"str_priority"|translate}:</td>
+		<td>
+			<input type="text" name='DATA[priority]' value="{$NewsInfo.priority}" size="12" />
+		</td>
+	</tr>
+		<tr>
+			<td>{"blog_postdate"|translate}:</td>
+			<td>
+				<input type=text name='DATA[add_date]' value="{$NewsInfo.add_date}" size="12" />
+			</td>
+		</tr>
+		<tr>
+			<td>{"blog_post_title"|translate} <span class="notice">({"blog_str_not_html"|translate})</span>:</td>
+			<td>
+				{*<input type=text size="50" name='DATA[title]' value='{$NewsInfo.title}'>*}
+				{html_text namespace="DATA" name="title" values=$NewsInfo table=$smarty.const.PRODUCTS_TABLE style="width:100%"}
+			</td>
+		</tr>
+		<tr>
+			<td width="200">{"blog_msg_post_emailed_to_subscribers"|translate}:</td>
+			<td><b>{if $NewsInfo.emailed}{"str_answer_yes"|translate}{else}{"str_answer_no"|translate}{/if}</b></td>
+		</tr>
+		{if $NewsInfo.emailed}
+		<tr>
+			<td colspan="2">{"blog_post_newsletter_body"|translate}:<br />
+				<div style="background-color: white; margin-bottom:7px;padding:10px; border-width:1px;border-style:inset;border-color:black;">
+				{$NewsInfo.textToMail}
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td colspan="2">
+				{"blog_post_body"|translate}:<br />
+				{*<textarea cols=40 rows=6 class="mceEditor" name="DATA[textToPublication]">{$NewsInfo.textToPublication}</textarea>*}
+				{html_textarea namespace="DATA" name="textToPublication" values=$NewsInfo rows=3 cols=40 style="width:100%" class="mceEditor"}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type=submit value="{"btn_save"|translate}" />
+			</td>
+		</tr>
+	</table>
+</form>
+{/if}{* !$NewsEdit *}

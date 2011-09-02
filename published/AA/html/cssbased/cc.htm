@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout splitter=true ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout toolbar="aa_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+			
+			<? if !$fatalError ?>
+				<iframe src='<? $ccUrl ?>' frameborder=0 width=100% style='height: 100%' >
+				
+				</iframe>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

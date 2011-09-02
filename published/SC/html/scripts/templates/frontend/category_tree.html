@@ -1,0 +1,14 @@
+{* category navigation tree *}
+<ul>
+{section name=i loop=$categories_tree}  {if $categories_tree[i].categoryID != 1}
+<li class="{if $categories_tree[i].level>1}child{else}parent{/if}{if $categoryID == $categories_tree[i].categoryID}_current{/if}">
+{section name=j loop=$categories_tree max=$categories_tree[i].level-1}<span class="tab">&nbsp;</span>{/section}
+{if $categories_tree[i].slug}
+{assign var=_category_url value="?categoryID=`$categories_tree[i].categoryID`&category_slug=`$categories_tree[i].slug`"|set_query_html}
+{else}
+{assign var=_category_url value="?categoryID=`$categories_tree[i].categoryID`"|set_query_html}
+{/if}
+<span class="bullet">&nbsp;</span><a href='{$_category_url}'>{$categories_tree[i].name|escape:'html'|default:"(no name)"}</a>
+</li>
+{/if}  {/section}
+</ul>

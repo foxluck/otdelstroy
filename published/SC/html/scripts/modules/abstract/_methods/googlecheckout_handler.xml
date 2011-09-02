@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Google Checkout handler</name>
+		<key>googlecheckout_handler</key>
+	</interface>
+</interfaces>

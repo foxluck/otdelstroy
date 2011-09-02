@@ -1,0 +1,29 @@
+<? foreach from=$hierarchy key=level item=data ?>
+	<? assign var=folderData value=$folders.$level ?>
+	
+	<? if $folderData->RIGHT > 1 ?>
+		<? assign var=iconCls value="my-folder" ?>
+		<? assign var=editable value=true ?>
+	<? else ?>
+		<? assign var=iconCls value="gray-folder" ?>
+		<? assign var=editable value=false ?>
+	<? /if ?>
+	
+	
+	node = new Tree.TreeNode({text: '<? $folderData->NAME|escape ?>', iconCls: "<? $iconCls ?>", <? if $editable ?>allowDrag: true, allowDrop: true, draggable:true<? else ?>allowEdit: false, allowDrag: false, allowDrop: false, draggable:false<? /if ?>, id:'<? $folderData->ID|default:'FOLDERS' ?>'});
+	node.attributes.link = "<? $folderData->ROW_URL ?>";
+	node.encId = "<? $folderData->ENC_ID ?>";
+	<? if $folderData->RIGHT >= 7 ?>
+		node.attributes.editable = true;
+	<? else ?>
+		node.attributes.editable = false;
+	<? /if ?>
+	parentNodes['<? $folderData->ID ?>'] = node;
+	<? if $parentId!==false ?>
+		parentNodes['<? $parentId ?>'].appendChild (node);
+	<? /if ?>
+	
+	
+	<? include file="../../../common/html/cssbased/pageelements/catalog_folder_new.elem.htm" hierarchy=$data parentId=$folderData->ID ?>
+	
+<? /foreach ?>

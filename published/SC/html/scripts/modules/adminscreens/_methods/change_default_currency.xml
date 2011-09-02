@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Change default currency screen</name>
+		<key>change_default_currency</key>
+	</interface>
+</interfaces>

@@ -1,0 +1,178 @@
+{* order history *}
+<table width=10% border=0 cellspacing=1 cellpadding=2 bgcolor=#56AFD6>
+
+	{if $navigator}
+	<tr>
+		<td colspan=7>{$navigator}</td>
+	</tr>
+	{/if}
+
+	<tr bgcolor=#BEDDDB>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{"ordr_id"|translate}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=orderID&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=orderID&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{"ordr_order_time"|translate}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=order_time&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=order_time&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+<!--
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{"ordr_customer"|translate}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=billing_firstname&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=billing_firstname&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+-->
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{lbl_payment}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=payment_type&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=payment_type&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{lbl_shipping}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=shipping_type&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=shipping_type&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td align=center>
+			<table>
+				<tr>
+					<td rowspan=2>
+						<b>{"ordr_order_total"|translate}</b>
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=order_amount&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=order_amount&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<b>{"str_status"|translate}<b>
+		</td>
+	</tr>
+
+	{section name=i loop=$orders}
+	<tr bgcolor=#EEFAFC>
+		<td>
+			<a href='admin.php?dpt=custord&sub=new_orders&orders_detailed=yes&orderID={$orders[i].orderID}&urlToReturn={$urlToReturn}'>
+				{$orders[i].orderID}
+			</a>
+		</td>
+		<td>
+			{$orders[i].order_time}
+		</td>
+<!--
+		<td>
+			{$orders[i].billing_firstname}
+			<br>
+			{$orders[i].billing_lastname}
+			<br>
+			( <a href=''>{"ordr_custinfo"|translate}</a> )
+		</td>
+-->
+		<td>{$orders[i].payment_type}</td>
+		<td>{$orders[i].shipping_type}</td>
+		<td>{$orders[i].order_amount}</td>
+		<td>{$orders[i].OrderStatus}</td>
+	</tr>
+	{/section}
+
+
+</table>

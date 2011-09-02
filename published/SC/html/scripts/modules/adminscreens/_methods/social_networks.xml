@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>Social networks integration</name>
+		<key>social_networks</key>
+	</interface>
+</interfaces>

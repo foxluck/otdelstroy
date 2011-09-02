@@ -1,0 +1,97 @@
+<h1>Экспорт товаров в Яндекс.Маркет</h1>
+{if $yandex_errormsg ne NULL}
+<div id="error-block" class="error_block">
+{$yandex_errormsg}
+</div>
+{/if}
+{if $yandex_export_successful eq 1}
+<div id="message-block" class="success_block">Товары успешно экспортированы в XML-файл для Яндекс.Маркет!</div>
+{/if}
+{if $yandex_file}
+<div style="background-color: #fafae7;padding: 20px;margin: 10px 0;">
+Файл для Яндекс.Маркета ({$yandex_file.size} КБ; обновлен {$yandex_file.mtime}):<br>
+<ol style="list-style-type:none;padding-left: 10px;">
+<li>
+Прямой доступ (URL): <b><a target="_blank" href="{$smarty.const.BASE_WA_URL}{if !$smarty.const.MOD_REWRITE_SUPPORT||true}{if !$smarty.const.CONF_ON_WEBASYST}published/{/if}SC/html/scripts/{/if}get_file.php?getFileParam=R2V0WWFuZGV4">{$smarty.const.BASE_WA_URL}{if !$smarty.const.MOD_REWRITE_SUPPORT||true}{if !$smarty.const.CONF_ON_WEBASYST}published/{/if}SC/html/scripts/{/if}get_file.php?getFileParam=R2V0WWFuZGV4</a></b>
+</li>
+{if false&& $base_url && $base_url!=$smarty.const.BASE_WA_URL}
+<li>
+Прямой доступ (с учетом указанного адреса главной страницы)(URL): <b><a target="_blank" href="{$base_url}{if !$smarty.const.CONF_ON_WEBASYST}published/SC/html/scripts/{/if}get_file.php?getFileParam=R2V0WWFuZGV4">{$base_url}{if !$smarty.const.CONF_ON_WEBASYST}published/SC/html/scripts/{/if}get_file.php?getFileParam=R2V0WWFuZGV4</a></b>
+</li>
+{/if}
+<li>
+<a target="_blank" href='{$smarty.const.BASE_WA_URL}{if !$smarty.const.MOD_REWRITE_SUPPORT||true}{if !$smarty.const.CONF_ON_WEBASYST}published/{/if}SC/html/scripts/{/if}get_file.php?getFileParam=R2V0WWFuZGV4&amp;download=1'>Скачать файл</a> 
+</li>
+</ol>
+{* <p>Адрес файла (URL): <b>{$smarty.const.BASE_URL}{"ukey=export_yandex"|set_query}</b></p> *}
+</div>
+{/if}
+{if $yandex_export_successful neq 1}
+{if $yandex_file}
+<h2>Обновить файл для Яндекс.Маркет</h2>
+{/if}
+<form action="" method=post name="form_export">
+	<input type="hidden" name="yandex_export" value="" />
+	<ol style="1">
+	<li>
+	<p><b class="header2">Адрес главной страницы интернет-магазина:</b>
+	<br/>
+	<input name="base_url" type="text" value="{if $base_url}{$base_url}{else}{$smarty.const.WIDGET_SHOP_URL}{/if}" size="40">
+	</li>
+	<li>
+		<b class="header2">Выберите категории и товары</b>
+		{include file="backend/product_tree.tpl.html"}
+	</li>
+	<li>
+		<b class="header2">Выберите параметры</b>
+
+	<p>Цены на товары в магазине, экспортируемые в XML-файл для Яндекс.Маркет, указываются в рублях (RUR).
+	<br>
+	Пожалуйста, укажите курс рубля в Вашем магазине - введите сколько условных единиц (у.е.) в магазине составляют 1 рубль.
+	<br>
+	Например, если Вы введете 5, то это будет означать, что 1 рубль = 5 у.е. магазина.
+	<br>
+	Рекомендуется вводить тот курс, который Вы указали для валюты "Рубли" (если таковая определена) в разделе "Настройки->Валюты".
+	</p>
+
+	<p>1 рубль = <input type=text name=yandex_rur_rate value=1> у.е.</p>
+
+	<p>
+	Экспорт описаний товаров:<br>
+	<em>Из описания будут вырезаны все HTML-тэги, так как Яндекс не принимает их. Максимальный размер описания — 255 символов; если описание продукта больше, оно будет обрезано.</em><br>
+	</p>
+	<select name=yandex_export_description>
+		<option value=0>Не экспорировать описания</option>
+		<option value=1>Полное описание</option>
+		<option value=2 selected>Краткое описание</option>
+	</select>
+
+	{if $smarty.const.CONF_CHECKSTOCK eq 1}
+	<p>
+	<input type="checkbox" name="yandex_dont_export_negative_stock" value="1" id="id_yenstock" class="checknomarging" checked="checked" /><label for="id_yenstock">  Не экспортировать товары с нулевым остатком на складе</label><br>
+	</p>
+	{/if}
+	<p>Экспорт названий товаров:
+	<br />
+	<select name="yandex_export_product_name">
+		<option value="only_name">только название товара</option>
+		<option value="path_and_name">путь к категории товара + название товара</option>
+	</select>
+	</p>
+	<p>&lt;sales_notes&gt; (если указана, добавится к каждому продукту):
+	<br />
+		<input type="text" name="yandex_export_sales_notes" value="">
+	<p>&lt;local_delivery_cost&gt; (общая стоимость доставки для своего региона):
+	<br /><label><input type="checkbox" name="yandex_export_local_delivery_cost_enabled" value="1"> Единая по умолчанию</label>: <input type="text" name="yandex_export_local_delivery_cost" value="0.0">
+	<br /><label><input type="checkbox" name="yandex_export_local_delivery_cost_override" value="1"> Установить равной стоимости упаковки продукта</label> (если та указана в свойствах продукта)
+	
+	</li>
+	</ol>
+	<p>
+	<input type=button onclick="document.form_export.elements['yandex_export'].value='yandex_export';document.form_export.submit(); return false;" value="Экспортировать товары в XML-файл">
+	<input type=hidden name=dpt value=modules>
+	<input type=hidden name=sub value=yandex>
+	<input type=hidden name=_export value="" />
+	</p>
+</form>
+{/if}

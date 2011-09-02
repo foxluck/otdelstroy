@@ -1,0 +1,32 @@
+<div class="x-hidden" id='createwidget-dlg-content'>
+  <div id='send-select-tab' style='padding: 10px'>
+		
+		<? $kernelStrings.createwidget_description_text ?>
+		<BR><BR>
+		
+		<div style='background: white; padding: 10px; border: 1px solid #666'>
+			<table width='90%' height='220' border=0 cellpadding=0>
+				<? foreach from=$widgetsSubtypes item=cSubtype ?>
+					<tr valign='top'>
+						<td width="10">
+							<input type='radio' name='widgetType' id='<? $cSubtype->type->id ?><? $cSubtype->id ?>' onClick='CreateWidgetDialog.selectCreateWidgetType ("<? $cSubtype->type->id ?>", "<? $cSubtype->id ?>", this)'>
+						</td>
+						<td width="*">
+							<label for='<? $cSubtype->type->id ?><? $cSubtype->id ?>' style='display:inline'><b><? $cSubtype->name ?></b></label>
+							<BR>
+							<font style='font-size: 0.8em'><? $cSubtype->desc ?></font>
+							<BR>
+						</td>
+						<!--td width="130">
+							<img src='../../../WG/widgets/<? $cSubtype->type->id ?>/html/img/<? $cSubtype->id|lower ?>_thumb.gif'>
+						</td-->
+					</tr>
+				<? foreachelse ?>
+					<tr valign='middle'>
+						<td align='center'><? $kernelStrings.app_nowidgetsavailable_message ?></td>
+					</tr>
+				<? /foreach ?>
+			</table>
+		</div>
+	</div>
+</div>

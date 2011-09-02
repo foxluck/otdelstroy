@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>DivisionsAdministration</Name>
+		<File>class.divisionsadministration.php</File>
+		<Title>Администрирование разделов</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

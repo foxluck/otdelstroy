@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<? wbs_initLayout ?>
+		<link rel='stylesheet' type='text/css' href='../../../AA/html/cssbased/aa.css'>
+		<link href="../../../common/html/cssbased/acprofile.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="../../../common/html/cssbased/geometry/rounded/niftycube.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		Nifty("a.aa-change-email", "small");
+	}
+	
+	function checkForm() {
+
+		var TableObj = ge('tbl_extra_emails');
+		var submit_form = true;
+		var empty_emails = true;
+		
+		for(var i=0; i<TableObj.rows.length; i++) {
+			var str = trim(TableObj.rows[i].cells[1].firstChild.value);
+			if(str) {
+				empty_emails = false;
+			}
+			if(str && !str.match(/[\.\-_a-z0-9]+?@[\.\-a-z0-9]+?\.[a-z0-9]{2,4}/i)) {
+				TableObj.rows[i].cells[2].innerHTML = '<? $kernelStrings.shsd_enteremails_error ?>';
+				TableObj.rows[i].cells[0].style.color = 'red';
+				submit_form = false;
+			} else {
+				TableObj.rows[i].cells[2].innerHTML = '';
+				TableObj.rows[i].cells[0].style.color = 'black';
+			}
+		}
+		if(empty_emails) {
+			ge('emails_error').style.display = '';
+			submit_form = false;
+		} else {
+			ge('emails_error').style.display = 'none';
+		}
+		return submit_form;
+	}
+	function trim(str) {return str.replace(/^\s*(.*?)\s*$/,"$1")}
+	function ge(id) {return document.getElementById(id)}
+</script>
+		
+	</head>
+	<body onload="document.form.onsubmit=function(){return checkForm()}"><? strip ?>
+		<? wbs_pageLayout ?>
+		
+			<? if !$email_errors ?>
+			<? wbs_errorBlock ?>
+			<? /if ?>
+
+			<? if !$fatalError ?>
+
+
+
+				<div class="aa-index-content">
+				<? if $IS_HOSTED_ACCOUNT ?>
+				
+					<h1>
+						<? if $account_name ?>
+							<? $account_name ?>.<? $WBSHost ?>
+						<? else ?>
+							<? if $IS_HOSTED_ACCOUNT ?>
+								<? $kernelStrings.ai_no_accountname ?>.<? $WBSHost ?>
+							<? /if ?>
+						<? /if ?>
+					</h1>
+
+<!-- Holder info-->
+
+					<div class="aa-with-span-float">
+						<p>
+							<span>
+								<? $kernelStrings.bill_created_label ?>
+							</span>
+							<span class="aa-rspan">
+								 <? $holderInfo.regDate|htmlsafe:true:true ?>
+							</span>
+						</p>
+						
+						<p>
+							<span>
+								<? $kernelStrings.bill_owner_label ?>
+							</span>
+						
+							<span class="aa-rspan">
+										
+								<? $holderInfo.firstName|htmlsafe:true:true ?>&nbsp;
+								<? $holderInfo.lastName|htmlsafe:true:true ?>
+							
+ 							</span>
+						</p>
+						<p>
+							<span>
+								<? $kernelStrings.bill_email_title ?>
+							</span>
+							
+							<span class="aa-rspan">
+								<? $holderInfo.email|htmlsafe:true:true ?>
+							</span>
+						</p>
+						
+						<p>
+							<span>
+								<? $kernelStrings.bill_other_mail_label ?>
+							</span>
+							
+							<? if count($customer->ExtraEmails) ?>
+							
+								<br/>
+								<span class="aa-rspan">
+									<? foreach from=$customer->ExtraEmails key=mail item=desc name=listMail?>
+										
+										<a href="?Delele_mail=<? $mail|htmlsafe:true:true ?>"><img src="../img/remove.jpg" alt="Delete"/></a>&nbsp;
+										
+										<? $mail|htmlsafe:true:true ?> 
+										
+										<? if $desc->EC_HASH ?>
+											&nbsp;<em>(<? $kernelStrings.bill_unconfirmed_mail_label ?>)</em>
+										<? /if ?>
+
+										<br/>
+									<? /foreach ?>
+								</span>
+							
+							<? /if ?>
+							
+						</p>
+
+						
+					</div>
+					
+					<? if $customer->MTC_ID ?>
+
+						<div style="padding:0px 5px 3px 0px;">
+							<p style="width:auto;">
+							
+								<span id="do_not_create_addon_mails" <? if $email_errors ?>style="display:none;"<? /if ?>>
+									<a href="#" onclick="document.getElementById('create_addon_mails').style.display = 'block'; document.getElementById('do_not_create_addon_mails').style.display = 'none'; return false;"><? $kernelStrings.bill_add_mail_label ?></a>
+								</span>
+								
+								<div style="width:auto;<? if !$fm_extra_emails ?>display:none;<? /if ?>" id="create_addon_mails"> 
+								
+									<div class="block">
+									
+									<!--form method="post" action="?add_another_mails"-->
+									<table style="margin-left:100px;" id="tbl_extra_emails">
+										<tbody>
+										<tr>
+											<? assign var="cur_mail" value=$fm_extra_emails.0 ?>
+											<td<? if $email_errors.$cur_mail ?> style="color:red;"<? /if ?>><? $kernelStrings.bill_add_mail_reduced ?></td>
+											<td><input size="40" name="fm_extra_emails[]" type="text" value="<? $cur_mail ?>" /></td>
+											<td style="color:red;"><? $email_errors.$cur_mail ?></td>
+										</tr>
+										</tbody>
+									</table>
+									
+									<!--<p style="overflow: visible;">
+										<? $kernelStrings.bill_additional_field ?> <a href="javascript:addExtraEmailRaw()"><img src="../img/expand.gif" alt="<? $kernelStrings.bill_additional_field_desc ?>"/></a> 
+										<a href="javascript:addExtraEmailRaw()"><? $kernelStrings.bill_add_mail_label ?></a>
+									</p>-->
+									
+									<div id="emails_error" style="color:red; display:none;"><? $kernelStrings.cinfo_wrongemail_error ?></div>									
+									
+									<p>
+										<input name="submit" value="<? $kernelStrings.app_add_btn ?>" type="submit">&nbsp;&nbsp;
+										<input name="cancel" value="<? $kernelStrings.app_cancel_btn ?>" type="submit" onclick="document.getElementById('do_not_create_addon_mails').style.display = 'block'; document.getElementById('create_addon_mails').style.display = 'none'; return false;">
+									</p>
+									
+									<!--/form-->
+									<br/>
+									</div>
+								</div>
+								
+							</p>
+						</div>
+					<? /if ?>
+						
+					<? /if ?>
+					
+
+
+					<? if isset($current_plan) ?>
+						<? assign var="desc_var" value="tariff_"|cat:$current_plan|cat:"_label" ?>
+						<? assign var="plan_length" value=$kernelStrings.$desc_var|count_characters?>
+						<? assign var="plan_length" value=$plan_length+390?>
+						<? if $language=='rus' ?>	
+							<? assign var="plan_length" value=$plan_length+10?>
+						<? /if ?>
+					<? else ?>
+						<? assign var="plan_length" value="400"?>
+					<? /if ?>
+					
+  <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td width="<?$plan_length?>" valign="top">
+				<? if $IS_HOSTED_ACCOUNT ?>
+<!-- Billing info-->
+						<h2>
+							<a href="change_plan.php"><img src="../../../AA/html/img/prof.gif" width="46" height="35" /></a><a href="change_plan.php"><? $kernelStrings.bill_account_profile_title ?></a>
+						</h2>
+						
+						<div class="aa-with-span-float">
+							<p>
+								<span>
+									<? $kernelStrings.bill_current_plan_label ?>
+								</span>
+								<span class="aa-rspan">
+									<? $kernelStrings.$desc_var ?> &nbsp;
+
+									<? if ($price_for_current != 0) ?> 
+										<? $price_for_current|string_format:$article?> <? $kernelStrings.bill_per_month_label?>
+									<? elseif  $current_plan != $smarty.const.HOST_DEFAULT_PLAN ?>
+										<? $kernelStrings.bill_free_cost_label?>
+									<? /if ?>
+
+								</span>
+							</p>
+							
+							<? if ((!empty($billing_date) && $current_plan != $smarty.const.HOST_DEFAULT_PLAN) && $price_for_current != 0) ?>
+								<p>
+									<span>
+										<? $kernelStrings.bill_paid_to_label ?>
+									</span>
+									
+									<span class="aa-rspan">
+										<? $billing_date ?>
+									</span>
+									&nbsp;<a href="change_plan.php?exceed=period"><?$kernelStrings.bill_extend_period_label?></a>
+								</p>
+							<? /if ?>
+						</div>
+					
+					<? /if ?>
+
+<!-- Setting part-->
+					<h2>
+						<img src="../../../AA/html/img/sett.gif" width="46" height="33" class="aa-sett" />
+						<? $kernelStrings.bill_settings_label ?>
+					</h2>
+
+					<? foreach from=$sRights item=url key=screen ?>
+					
+						<? assign var="labelName" value=$screen|cat:"_screen_long_name"|lower ?>
+						<? assign var="commentName" value="aa_"|cat:$screen|cat:"_comment_text"|lower ?>
+
+						<? if $screen == 'SMS' ?>
+							<h2><img src="../../../AA/html/img/sms35.gif" width="46" height="37" /><a href="<? $url ?>"><? $kernelStrings.bill_sms_history_label ?></a></h2>
+						<? else ?>
+							<p><a <? if $screen=="CI" ?>style='font-size: 1.2em; font-weight: bold'<? /if ?>href="<? $url ?>"><? $kernelStrings.$labelName ?></a></p>
+						<? /if ?>
+
+					<? /foreach ?>
+  </td>
+				<? if $IS_HOSTED_ACCOUNT ?>
+					<td valign="top" align="left">
+
+					<h2><img src="../../../AA/html/img/mydomains.gif"  width="45" height="36" class="aa-sett"/>
+						<a href="domainnames.php"><? $kernelStrings.domains_link_label ?></a></h2>
+					  <p>&nbsp;</p>
+					  <p>&nbsp;</p>
+					  <p>&nbsp;</p>
+					</td><? /if ?>
+						
+  </tr></table>
+						
+<!-- Cancel account-->
+					<? if $IS_HOSTED_ACCOUNT ?>
+						<p class="aa-cancell">
+						<a href="wahost_cancel.php?action=cancelaccount"><? $kernelStrings.ai_cancelaccount_label ?></a>
+						</p>
+					<? /if ?>
+				</div>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	<? /strip ?></body>
+</html>

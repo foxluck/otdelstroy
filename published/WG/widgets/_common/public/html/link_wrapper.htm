@@ -1,0 +1,44 @@
+<!--!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"-->
+<? if $params.mode=="preview" || $params.iframe ?><? assign var=iframe value=1 ?><? /if ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/_common/public/css/widget.css'>
+		
+		<style>
+			body, table tr td {font-family: "Trebuchet MS"}
+			<? if !$iframe ?>
+				body {background: URL(<? $WG_SRC ?>widgets/_common/public/img/bg.gif) repeat-x; }
+			<? /if ?>
+			
+			.BottomBlock {color: #666; margin-top: 20px; font-size: 0.75em}
+			.BottomBlock a {color: #666; }
+		</style>
+	</head>
+
+	<body style='margin: 0px; padding: 10px'>
+
+		<? if !$iframe ?>
+			
+			<table style='' align="CENTER" border=0 cellspacing=0 cellpadding=0 height=100% width=80%><tr valign='middle'><td align=center>
+				<img src='<? $WG_SRC ?>widgets/_common/public/img/wa_logo_<? $language ?>.gif'>
+				<BR><BR>
+				
+				<div style='width: 100%; background: #EDF4FF; padding: 20px 25px; text-align: left'>
+					<? include file=$widgetFilename ?>
+				</div>
+			
+				<div style='width: 690px;' class='BottomBlock'>
+					<? $widgetStrings.wbs_block ?>
+				</div>
+		<? else ?>
+			<? include file=$widgetFilename ?>
+		<? /if ?>
+			
+			
+			
+		</td></tr></table>
+
+	</body>
+</html>

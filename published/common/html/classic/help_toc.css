@@ -1,0 +1,128 @@
+html, body {
+  margin: 1px;
+  padding: 0px
+
+  scrollbar-base-color: #9AE1FF;
+  scrollbar-face-color: #9AE1FF;
+  scrollbar-track-color: #338CB1;
+  scrollbar-3dlight-color: #C0ECFF;
+  scrollbar-highlight-color: #9AE1FF;
+  scrollbar-shadow-color: #66C9F2;
+  scrollbar-darkshadow-color: #338CB1;
+  scrollbar-arrow-color: black;
+}
+
+body {
+  font-family: Verdana, Tahoma, Helvetica, Arial;
+  font-size: 10pt;
+  color: black;
+}
+
+#tocHeader {
+  height: 20px;
+  padding: 3px;
+  padding-left: 7px;
+  background-color: #338CB1;
+  vertical-align: center;
+  color: white!important;
+}
+
+tocTitle {
+  color: white!important;
+  font-weight: bold!important;
+  font-size: 9pt!important;
+  vertical-align: center;
+  padding-left: 10px;
+}
+
+.tocTree {
+}
+
+#pageHeader {
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+  padding-right: 10px;
+
+  border-bottom: solid 1px silver;
+}
+
+#pageHeader h1 {
+  display: inline;
+  height: 20px;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  font-size: 14pt;
+  font-weight: normal;
+  color: silver;
+}
+
+#pageHeader h2 {
+  display: inline;
+  height: 20px;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  font-size: 12pt;
+  font-weight: bold;
+  color: silver;
+}
+
+
+A {
+  font-family: "Trebuchet MS", Arial, Verdana;
+  font-size: 10pt;
+
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-right: 4px;
+  width: 100%;
+}
+
+A:hover {
+ color: white!important;
+}
+
+A img {
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: -1px;
+}
+
+DIV.subtree {
+	padding-left: 15px;
+	display: none;
+	white-space: nowrap;
+	background: #66B5D6;
+}
+
+/* common styles */
+
+h3 {
+  font-size: 11pt;
+  border-bottom: solid 1px black;
+  margin-right: 10px;
+  padding-bottom: 1px;
+  margin-left: 20px;
+}
+
+p, ul, ol {
+  padding-left: 40px;
+  margin-right: 10px;
+}
+
+.selected {
+  color: black!important;
+  background-color: #9AE1FF;
+  background-image: url(i/toc-select.gif);
+}
+
+.selected A {
+  color: black;
+}
+
+.toc_separator {
+  width: 100%;
+  height: 2px;
+  background: #338CB1;
+  border-bottom: solid 2px #338CB1;
+}

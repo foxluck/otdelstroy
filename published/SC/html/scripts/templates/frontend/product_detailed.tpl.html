@@ -1,0 +1,496 @@
+{* product detailed information view *}
+{if $product_info ne NULL}
+
+{if !$printable_version}
+
+<table cellpadding=3 border=0 width=95%>
+	<tr>
+		<td>{cpt_product_category_info}</td>
+		<td align=right> {* printable version link *}
+		 <table>
+		  <tr><td><a href='{"ukey=printable&pdid=`$CurrentDivision.id`"|set_query_html}' onclick="open_printable_version('{"ukey=printable&pdid=`$CurrentDivision.id`"|set_query_html}');return false;"><img src="{$smarty.const.URL_IMAGES}/printer-icon.gif" alt="{"btn_printable_version"|translate}"></a></td>
+		  <td><a href='{"ukey=printable&pdid=`$CurrentDivision.id`"|set_query_html}' onclick="open_printable_version('{"ukey=printable&pdid=`$CurrentDivision.id`"|set_query_html}');return false;">{"btn_printable_version"|translate}</a></td>
+		  </tr>
+		 </table>
+		</td>
+	</tr>
+</table>
+
+{/if}
+
+<p>
+<table width=95% border=0 cellspacing=1 cellpadding=2>
+	<tr>
+		<td width=1% align=center valign=top border=0>
+			{if $product_info.picture}
+				{if $product_info.big_picture}
+					{if !$printable_version}<a href="javascript:open_window('{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.big_picture|escape:'url'}',{$product_info[16]},{$product_info[17]});">{/if}<img border=0 src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" alt="{$product_info.name|escape:'html'}">
+						{if !$printable_version}<br>
+						<span class="average" style="white-space: nowrap;">{"str_enlarge_picture"|transcape}</span>
+					</a>{/if}
+				{else}
+					<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" border=0 alt="{$product_info.name}">
+				{/if}
+			{else}
+				{if $product_info.thumbnail}
+					{if $product_info.big_picture}
+						{if !$printable_version}<a href="javascript:open_window('{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.big_picture|escape:'url'}',{$product_info[16]},{$product_info[17]});">{/if}<img border=0 src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail|escape:'url'}" alt="{$product_info.name}">{if !$printable_version}<br>
+							<span class="average" style="white-space: nowrap;">{"str_enlarge_picture"|translate}</span>
+						</a>{/if}
+					{else}
+  						<img border=0 src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail|escape:'url'}" alt="{$product_info.name}">
+					{/if}
+				{/if}
+			{/if}
+		</td>
+
+		<td valign=top width=99%>
+
+			<table width=100% border=0 cellpadding=4>
+				<tr>
+					<td valign=top>
+						<h1>{$product_info.name}</h1>
+						{if $product_info.eproduct_filename ne ""}
+							{"prdset_product_is_downloadable_msg_2customer"|translate} ({$product_info.eproduct_filesize})
+						{/if}
+						{if $product_info.customer_votes > 0} {* rating *}
+						<p>
+						{section name=i loop=5}
+							{if $smarty.section.i.index<$product_info.customers_rating}
+								<img src="{$smarty.const.URL_IMAGES}/redstar.gif" alt="*">
+							{else}
+								<img src="{$smarty.const.URL_IMAGES}/blackstar.gif" alt=" ">
+							{/if}
+						{/section}
+							({$product_info.customer_votes} {"vote_numerofvotes"|translate})
+						{/if}
+						{if !$printable_version}
+						<p>
+						<a href="{"categoryID=`$categoryID`&productID=`$product_info.productID`&ukey=discuss_product"|set_query}">{"lnk_reviewproduct"|translate}</a> 
+
+						({$product_reviews_count} {"str_posts_for_item_string"|translate})
+						<br>
+						<br>
+						{/if}
+					</td>
+					<td align=right valign=top> {* add to cart *}
+
+					{if !$printable_version}
+
+					  <form action="{"productID=`$product_info.productID`"|set_query}" 
+							method=post name="HiddenFieldsForm">
+							
+					  {if $smarty.const.CONF_OPEN_SHOPPING_CART_IN_NEW_WINDOW eq 0}
+
+							{* shopping cart page is shown in the same window - in this cart 'add to cart' button is a form submit button *}
+						
+							{if $product_info.Price>0 && ( $smarty.const.CONF_SHOW_ADD2CART eq 1 ) && 
+								( $smarty.const.CONF_CHECKSTOCK==0 || $product_info.in_stock > 0 ) }
+								<input name='cart' type=image src="{$smarty.const.URL_IMAGES}/cart_big.gif" 
+									alt="{"str_add_to_cart_string"|translate}" title="{"str_add_to_cart_string"|translate}">
+							{else}
+								&nbsp;
+							{/if}
+
+					  {else}
+
+							{* show shopping cart page in a new window => add hidden values as FORM elements and to the cart.php URL *}
+
+							{if $product_info.Price>0 && ( $smarty.const.CONF_SHOW_ADD2CART eq 1 ) && 
+								( $smarty.const.CONF_CHECKSTOCK==0 || $product_info.in_stock > 0 ) }
+								{*
+								@features  "Extra options values"
+								@condition enabled=true
+								*}
+								<a href="javascript:open_window('{"?ukey=cart_popup&addproduct=`$product_info.productID`"|set_query}{counter name='select_counter_hidden' start=0 skip=1 print=false}{counter name='select_counter_hidden_extra' start=0 skip=1 print=false}{section name=i loop=$product_extra}{if $product_extra[i].option_type eq 1}{section name=s loop=$product_extra[i].option_show_times}&option_select_hidden_{counter name=select_counter_hidden}='+document.HiddenFieldsForm.option_select_hidden_{counter name=select_counter_hidden_extra}.value+'{/section}{/if}{/section}',400,300);"><img border=0 src="{$smarty.const.URL_IMAGES}/cart_big.gif" 
+									alt="{"str_add_to_cart_string"|translate}"></a>
+								{*
+								@features  "Extra options values"
+								@condition end
+								*}
+								{*
+								@features  "Extra options values"
+								@condition enabled=false
+								*}
+								<a href="javascript:open_window('{"?ukey=cart_popup&addproduct=`$product_info.productID`"|set_query}{counter name='select_counter_hidden' start=0 skip=1 print=false}{counter name='select_counter_hidden_extra' start=0 skip=1 print=false}',400,300);"><img border=0 src="{$smarty.const.URL_IMAGES}/cart_big.gif" 
+									alt="{"str_add_to_cart_string"|translate}"></a>
+								{*
+								@features  "Extra options values"
+								@condition end
+								*}
+
+							{else}
+								&nbsp;
+							{/if}
+
+					  {/if}
+
+					  {counter name='select_counter_hidden' start=0 skip=1 print=false}
+						{section name=i loop=$product_extra}
+								{if $product_extra[i].option_type eq 1}
+									{section name=s loop=$product_extra[i].option_show_times}
+										<input type=hidden name='option_select_hidden_{counter name=select_counter_hidden}' value='1' >
+									{/section}
+								{/if}
+						{/section}
+
+					  </form>
+
+					 {/if}
+
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{if $currencies_count ne 0 && $product_info.Price > 0}
+							{* show list price? *}
+							{if $product_info.list_price > 0 && 
+									$product_info.list_price > $product_info.Price && 
+									$product_info.Price > 0} 
+								{"str_list_price"|translate}: 
+								<span style="color: brown;text-decoration: line-through">
+									{$product_info.list_priceWithUnit}
+								</span>
+								<br>
+							{/if}
+
+							<b>{"str_price"|translate}: 
+							<span class=cat style="color: red;" id='currentPrice'>
+								{if $product_info.Price <= 0}
+									n/a
+								{else}
+									{$product_info.PriceWithUnit}
+								{/if}
+							</span>
+							</b>
+
+							{* you save *}
+							{if $product_info.list_price > 0 && 
+								$product_info.list_price > $product_info.Price && 
+								$product_info.Price > 0} 
+								<br>
+								{"str_you_save"|translate}:
+									<span style="color: brown">
+										{$product_info[14]} ({$product_info[15]}%)
+									</span>
+								<br>
+							{/if}
+						{/if}
+					</td>
+
+					<td rowspan=3 align=right>
+					{if !$printable_version}
+						<Table><tr><td align=center>
+							<form name=VotingForm action='' method=GET>
+								<table border=0 cellspacing=1 cellpadding=2 bgcolor=#{$smarty.const.CONF_MIDDLE_COLOR}>
+									<tr>
+										<td align=center>{"vote_for_item_title"|translate}</td>
+									</tr>
+									<tr bgcolor=white>
+										<td>
+											<input type="radio" name="mark" value="5" checked>{"vote_excellent"|translate}<br>
+											<input type="radio" name="mark" value="3.8">{"vote_good"|translate}<br>
+											<input type="radio" name="mark" value="2.5">{"vote_average"|translate}<br>
+											<input type="radio" name="mark" value="1">{"vote_poor"|translate}<br>
+											<input type="radio" name="mark" value="0.1">{"vote_puny"|translate}
+										</td>
+									</tr>
+								</table>
+
+								<br>
+								<input type="hidden" name="ukey" value="product" >
+								<input type="hidden" name="productID" value="{$product_info.productID}">
+								<input type="hidden" name="vote" value="yes">
+								<input type="submit" value="{"btn_vote"|translate}">
+							</form>
+						</Table>
+					{/if}
+					</td>
+				</tr>
+
+
+				<tr>
+					<td>
+						{* in stock info *}
+						{if $smarty.const.CONF_CHECKSTOCK == '1'}
+							{"str_in_stock"|translate}: 
+							<b>
+							{if $product_info.in_stock > 0}
+								{if $smarty.const.CONF_EXACT_PRODUCT_BALANCE}
+									{$product_info.in_stock}
+								{else}
+									{"str_answer_yes"|translate}
+								{/if}
+							{else}
+								<span style="color: red;">{"str_answer_no"|translate}</span>
+							{/if}
+							</b>
+							<br>
+						{/if}
+
+	
+						{if $product_info.shipping_freightUC}
+							{"prdset_handling_charge"|translate}:&nbsp;
+								<span style="color: brown">{$product_info.shipping_freightUC}</span>
+	 							<br>
+						{/if}
+	
+						{if $product_info.min_order_amount > 1}
+							{"prdset_minimal_order_quantity"|translate}: {$product_info.min_order_amount} 
+								{"str_items"|translate}
+							<br>
+						{/if}
+		
+						{if $product_info.weight > 0}
+							{"prdset_weight"|translate}: {$product_info.weight} {$smarty.const.CONF_WEIGHT_UNIT}
+						{/if}
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+ 
+						<form action="{"productID=`$product_info.productID`"|set_query}" method=post 
+							name="MainForm">
+		
+						{* extra parameters *}
+						<p>
+						<table>
+							{counter name='select_counter' start=0 skip=1 print=false assign='select_counter_var'}
+								{section name=i loop=$product_extra}
+									{if $product_extra[i].option_type eq 0 }
+										<tr>
+											<td>
+												{$product_extra[i].name}: 
+											</td>
+											<td>
+												<b>{$product_extra[i].option_value}</b><br>
+											</td>
+											<td>
+												&nbsp;							
+											</td>
+										</tr>
+{*
+@features "Extra options values"
+@state begin
+*}
+									{else}
+										{counter name='option_show_times' start=0 skip=1 print=false}
+										{section name=k loop=$product_extra[i].option_show_times}
+											<tr>
+												<td>
+													{$product_extra[i].name}{if $product_extra[i].option_show_times > 1 }
+														({counter name=option_show_times}):{else}:{/if}
+												</td>
+												<td>
+													{counter name=select_counter}
+													{if $smarty.section.k.index == 0}
+														<select name='option_select_{$select_counter_var}'
+															onchange='JavaScript:GetCurrentCurrency();'>
+															{section name=j loop=$product_extra[i].values_to_select}
+																{if $product_extra[i].values_to_select[j].variantID eq $product_extra[i].variantID}
+																	<option value='{$product_extra[i].values_to_select[j].price_surplus}:{$product_extra[i].values_to_select[j].variantID}' selected>
+																{else}
+																	<option value='{$product_extra[i].values_to_select[j].price_surplus}:{$product_extra[i].values_to_select[j].variantID}'>
+																{/if}
+																		{$product_extra[i].values_to_select[j].option_value}
+																	</option>
+															{/section}
+														</select>
+													{else}
+														<select name='option_select_{$select_counter_var}'
+															onchange='JavaScript:GetCurrentCurrency();'>
+															<option value='0:-1'>{"str_not_defined"|translate}</option>
+																{section name=j loop=$product_extra[i].values_to_select}
+																	<option value='{$product_extra[i].values_to_select[j].price_surplus}:{$product_extra[i].values_to_select[j].variantID}'>
+																		{$product_extra[i].values_to_select[j].option_value}
+																	</option>
+																{/section}
+														</select>
+													{/if}
+												</td>
+											</tr>
+										{/section}
+{*
+@features "Extra options values"
+@state end
+*}
+									{/if}
+								{/section}
+						</table>
+
+						{if $select_counter_var != 0}
+							<b>
+							{"prd_final_price"|translate}: 
+							<input type=hidden value="{php}echo(getPriceUnit());{/php}" 
+								name="priceUnit">
+							{if $product_info.Price <= 0}
+								<input type=hidden value="" id="optionPrice">
+								<input type=text value="n/a" 
+									class=totalPrice
+									readonly >
+							{else}
+								<input type=text value=""
+									class=totalPrice
+									readonly
+									id="optionPrice" >
+							{/if}
+							</b>
+
+							<script langauge='javascript' type="text/javascript"><!--
+							
+								document.MainForm.optionPrice.readOnly = true;
+
+								function GetCurrentCurrency(){ldelim}
+								
+									_selectionCount={$select_counter_var};
+									_sum = {$product_info.PriceWithOutUnit};
+
+									{counter name='select_counter2' start=1 skip=1 print=false assign='select_counter_var2'}
+										{section name=i loop=$product_extra}
+										{section name=k loop=$product_extra[i].option_show_times}
+
+										if(document.MainForm.option_select_{$select_counter_var2}){ldelim}
+										
+											_value = document.MainForm.option_select_{$select_counter_var2}.value;
+											price_surplus = ( _value.split(":") )[0];
+											_sum += new Number( price_surplus );
+											variantID = ( _value.split(":") )[1];
+											document.HiddenFieldsForm.option_select_hidden_{$select_counter_var2}.value = variantID;
+										{rdelim}
+										
+										{counter name=select_counter2}
+										{/section}
+										{/section}
+
+										document.MainForm.optionPrice.value = formatPrice(_sum);
+								{rdelim}
+								
+								GetCurrentCurrency();
+							</script>
+						{/if}
+						</form>
+
+					</td>
+				</tr>
+
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2>
+
+			<table border=0>
+{*
+@features "Multiple image-sets for product"
+@state begin
+*}
+				<tr>
+					<td valign="top"> 
+						{section name=i loop=$all_product_pictures}
+							<a href="{"productID=`$product_info.productID`&picture_id=`$all_product_pictures_id[i]`"|set_query}"> 
+								<img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$all_product_pictures[i]|escape:'url'}" border=0>
+							</a> 
+						{/section}
+					</td>
+				</tr>
+{*
+@features "Multiple image-sets for product"
+@state end
+*}
+				<tr>
+					<td height="100%" valign=top> 
+						<p>
+						{$product_info.description}
+					</td>
+				</tr>
+			</table>
+
+		</td>
+	</tr>
+
+	{* related products *}
+
+	{if !$printable_version}
+
+	  {if $product_related_number > 0}
+	  <tr>
+		<td colspan=2>
+			<p>
+			<u> 
+				{"str_related_items"|translate}:
+			</u> 
+			<p>
+				<table border=0>
+				{section name=i loop=$product_related}
+					<tr>
+						<td align="center">
+						{if $product_related[i].pictures.default.thumbnail}
+							<a href="{"productID=`$product_related[i][0]`"|set_query}">
+							<img border="0" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_related[i].pictures.default.thumbnail|escape:'url'}" />
+							</a>
+						{/if}
+						</td>
+						<td>
+							<a href="{"productID=`$product_related[i][0]`"|set_query}">
+								{$product_related[i][1]}
+							</a>
+						</td>
+						<td>
+							<span style="color: brown; white-space: nowrap;">&nbsp;{$product_related[i][2]}</span>
+						</td>
+					</tr>
+				{/section}
+				</table>
+		</td>
+	  </tr>
+	  {/if}
+
+	  <tr>
+		<td colspan=2>
+			<hr size=1 with=90%>
+			<p>
+				<a name="inquiry"></a>
+				{if $sent eq NULL}
+
+				<h4>{"feedback_title_productpage"|translate|replace:"[product_name]":$product_info.name}</h4>
+
+				<span class=faq>{"feedback_description_general_2"|translate}</span>
+
+				<p>
+				<form name="form1" method="post" action="{"#inquiry"|set_query}">
+				{"str_your_name"|translate}:<br>
+				<input name="customer_name" type="text" size="40" value="{$customer_name|replace:"\"":"&quot;"}"><br>
+
+				{"usr_custinfo_email"|translate}<br>
+				<input name="customer_email" type="text" size="40" value="{$customer_email|replace:"\"":"&quot;"}">
+
+				<p>
+				<input name="message_subject" type="hidden" size="50" value="{$product_info.name|replace:"\"":"&quot;"}">
+
+				<p>{"feedback_description_productpage"|translate} {$product_info.name}:<br>
+				<textarea name="message_text" cols="50" rows="10">{$message_text|replace:"<":"&lt;"}</textarea>
+
+				<p>
+				<input type="submit" value="OK">
+				<input type="hidden" name="request_information" value="yes">
+				<input type="hidden" name="productID" value="{$product_info.productID}">
+				</p>
+
+				</form>
+
+				{else}
+
+				<p>
+				<span class=faq style="color: blue; font-weight: bold;">{"feedback_msg_sent_successfully"|translate}</span>
+
+				{/if}
+		</td>
+	  </tr>
+
+	{/if}
+
+</table>
+
+{/if}

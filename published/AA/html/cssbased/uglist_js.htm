@@ -1,0 +1,207 @@
+<script type="text/javascript">
+	window.CustomSplitterHeightHandler = function (splitterHeight)
+	{
+
+		if ( SplitterInfo.LeftPanelVisible )
+		{
+			var FoldersPanel = $( 'FoldersHeadersPanel' );
+			var Content = $( 'SplitterLeftScrollableContent' );
+			var TotalHeight = splitterHeight - FoldersPanel.offsetHeight;
+
+			SplitterInfo.LeftPanelContent.style.height = TotalHeight + 'px';
+		}
+
+		var RightPanelHeader = $( 'RightPanelHeader' );
+		var ListHeader = $( 'ListHeaderContainer' );
+		var ListFooter = $( 'ListFooterContainer' );
+
+		var ListHeaderHeight = 0;
+		if ( ListHeader )
+			ListHeaderHeight = ListHeader.offsetHeight;
+
+		var ListFooterHeight = 0;
+		if ( ListFooter )
+		{
+			ListFooter.style.visibility = 'visible';
+			ListFooterHeight = ListFooter.offsetHeight;
+		}
+
+		SplitterInfo.RightPanelContent.style.height = splitterHeight - RightPanelHeader.offsetHeight - ListHeaderHeight - ListFooterHeight + 'px';
+	}
+
+	window.CustomSplitterWidthHandler = function (leftPanelWidth, rightPanelWidth)
+	{
+		//var obj = document.getElementById('FoldersHeadersPanel');
+		//obj.style.width = leftPanelWidth + 'px';
+	}
+
+	function updateAll()
+	{
+		<? if $updateAll ?>
+			if ( parent.frames[0] )
+				parent.frames[0].location.reload();
+
+			if ( parent.frames[2] )
+				parent.frames[2].location.reload();
+
+			location.href = "#action:reloadUI";
+		<? /if ?>
+	}
+
+	function checkMinFolderRights( rights )
+	{
+		var rightsObj = tree_MM_findObj( "curFolderRights" );
+
+		if (!rightsObj)
+			return false;
+
+		if ( rightsObj.value < rights )
+			return false;
+
+		return true;
+	}
+
+	function checkMinRights( rights )
+	{
+		thisForm = document.forms[0];
+
+		for ( i = 0; i < thisForm.elements.length; i++ )
+			if (thisForm.elements[i].type == 'checkbox')
+				if ( thisForm.elements[i].name != "selectAllDocsCB" && thisForm.elements[i].checked ) {
+					C_ID = thisForm.elements[i].value;
+
+					var rightsObj = tree_MM_findObj( "contactrights["+C_ID+"]" );
+					if (!rightsObj)
+						return false;
+
+					if ( rightsObj.value < rights )
+						return false;
+				}
+
+		return true;
+	}
+
+	function findCurrentFolder()
+	{
+		obj = document.getElementById("<? $currentFolder ?>");
+		if ( obj ) {
+			obj.scrollIntoView();
+		}
+	}
+
+	function confirmGroupDeletion()
+	{
+		return confirm( '<? $kernelStrings.ul_delgroup_message|cat:"\\n\\n"|cat:$kernelStrings.ul_delgroup_note ?>' );
+	}
+
+	function alertAddRoot()
+	{
+		alert( '<? $kernelStrings.app_treenorootrights_message ?>' );
+		return false;
+	}
+
+	function alertModify()
+	{
+		alert( '<? $kernelStrings.app_treeinvcurfldrights_message ?>' );
+		return false;
+	}
+
+	function confirmFolderDeletion()
+	{
+		return confirm( '<? $kernelStrings.cm_flddelete_message ?>' );
+	}
+
+	function confirmContactDeletion()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptydel_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.ul_confirmdel_message ?>' );
+	}
+
+	function confirmListDeletion()
+	{
+		return confirm( '<? $kernelStrings.cm_confirmlistdel_message|cat:"\\n\\n"|cat:$kernelStrings.cm_dellist_note ?>' );
+	}
+
+	function confirmUserGroupAdding()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyaddtogroup_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserGroupRemoving()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyremove_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.amu_removefromgroup_message ?>' );
+	}
+
+	function confirmUserActivate()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyactivate_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserInactivate()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyinactivate_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmUserRestore()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyrestore_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmRevokePrivs()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.ul_emptyrevoke_message ?>' ) )
+			return false;
+
+		return confirm( '<? $kernelStrings.ul_revokeprivs_message ?>' );
+
+		return true;
+	}
+
+	function confirmListAdding()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.cman_emptyaddtolist_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function confirmChageStatus()
+	{
+		if ( !treeCheckSelection( '<? $kernelStrings.cman_emptychangestatus_message ?>' ) )
+			return false;
+
+		return true;
+	}
+
+	function submitFolder( obj )
+	{
+		selected = obj.selectedIndex;
+		if ( obj.options[selected].value == -1 ) {
+			return false;
+		}
+
+		obj.form.submit();
+	}
+
+	<? if $popupStr != "" ?>
+		alert( '<? $popupStr ?>' );
+	<? /if ?>
+
+</script>

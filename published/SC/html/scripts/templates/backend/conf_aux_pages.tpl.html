@@ -1,0 +1,100 @@
+{* aux page managment *}
+
+{if $edit || $add_new}
+
+<h1 class="breadcrumbs">
+	<a href='{"?did=`$CurrentDivision.id`"|set_query}'>{lbl_pgn_aux_pages}</a>
+	&raquo;
+	{if $edit}
+	{lbl_infpg_editpage}: {$aux_page.aux_page_name|escape:'html'}
+	{else}
+	{lbl_infpg_addnewpage}
+	{/if} 
+</h1>
+
+<form action="{''|set_query_html}" method="post">
+
+	<table border="0" cellspacing="0" cellpadding="5">
+	<tr> 
+		<td>{'auxp_lbl_enabled'|translate}:</td>
+		<td>
+			<input type="checkbox" name="aux_page_enabled" value="1" {if $aux_page.aux_page_enabled || $aux_page.aux_page_enabled eq null}checked{/if} />
+		</td>
+	</tr>
+	<tr> 
+		<td>{"infpg_pagename"|translate}:</td>
+		<td>
+			{html_text name="aux_page_name" values=$aux_page size=60}
+		</td>
+	</tr>
+	<tr> 
+		<td>{"aux_page_slug"|translate}:</td>
+		<td>
+			<input type="text" name="aux_page_slug" value="{$aux_page.aux_page_slug}" size="50">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			{"infpg_page_text"|translate}:<br />
+			{html_textarea name="aux_page_text" style="width:100%" rows=6 cols=70 class="mceEditor" values=$aux_page}
+		</td>
+	</tr>
+	<tr>
+		<td>{"prdset_meta_keywords"|translate}</td>
+		<td>
+			{html_text name="meta_keywords" style="width:100%" values=$aux_page}
+		</td>
+	</tr>
+	<tr>
+		<td>{"prdset_meta_description"|translate}</td>
+		<td>
+			{html_textarea name="meta_description" style="width:100%" rows=2 cols=35 values=$aux_page}
+		</td>
+	</tr>
+	</table>
+	<br />
+	<input type="submit" value='{"btn_save"|translate}' name='save' />
+	
+</form>
+{include file="backend/tiny_mce_config.html"}	
+{else}
+	<h1>{$CurrentDivision.name|translate}</h1>
+
+	<p>{"infpg_pages_description"|translate}</p>
+
+	<form action="{''|set_query_html}" class="ajaxform" method="post" enctype="multipart/form-data">
+	<input name="action" value="save_order" type="hidden" />
+	
+	<table cellpadding="0" cellspacing="0" class="grid" id="tbl-aux">
+	<tr class="gridsheader"> 
+		<td>{"infpg_pagename"|translate}</td>
+		<td>{lbl_auxp_lbl_enabled}</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+
+	{section name=i loop=$aux_pages}
+	<tbody class="dragable">
+	<tr> 
+		<td class="handle">{$aux_pages[i].aux_page_name|escape:'html'}</td>
+		<td align="center">
+			<input {if $aux_pages[i].aux_page_enabled}checked="checked"{/if} type="checkbox" disabled="disabled" />
+			<input type="hidden" class="field_priority" name="priority_{$aux_pages[i].aux_page_ID}" value="{$smarty.section.i.index}" />
+		</td>
+		<td>
+			<a class="bluehref" href='{"&edit=`$aux_pages[i].aux_page_ID`"|set_query_html}'>{lbl_btn_edit}</a>
+		</td>
+		<td>
+			<a 	href="javascript:confirmDelete({$aux_pages[i].aux_page_ID},'{"cnfrm_delete"|translate}','{"delete="|set_query_html}&amp;delete=');">
+			<img alt='{"btn_delete"|translate}' src="images/remove.gif" border="0" /></a>
+		</td>
+	</tr>
+	</tbody>
+	{/section}
+	</table>
+	</form>
+
+	<input value="{'infpg_addnewpage'|transcape}" onclick="document.location.href = '{'&add_new=yes'|set_query_html}'" type="button" />
+	
+	{include file="backend/sortable_table.html" table_id="tbl-aux"}
+{/if}

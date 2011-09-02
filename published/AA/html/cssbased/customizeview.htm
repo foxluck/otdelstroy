@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_tabForm basePath="../../../AA/html/cssbased" tabs=$tabs width="530px" height="280px" ?>
+
+					<? wbs_formButtonsPanel ?>
+
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" onClick="fillSelectedLists( new Array( 'shownFieldsIDs[]' ) );" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+						<? /wbs_buttonSet ?>
+
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_tabForm ?>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+		<input name="UG_ID" type="hidden" value="<? $UG_ID ?>"\>
+		<input name="USERS" type="hidden" value="<? $USERS ?>"\>
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

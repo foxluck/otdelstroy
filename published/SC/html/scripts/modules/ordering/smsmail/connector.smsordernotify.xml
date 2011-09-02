@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>SMSOrderNotify</Name>
+		<File>class.smsordernotify.php</File>
+		<Title>Информирование о новых заказах с помощью sms</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

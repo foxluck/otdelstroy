@@ -1,0 +1,79 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+	<link rel="stylesheet" href="{$smarty.const.URL_ROOT}/3rdparty/highslide/highslide.css" type="text/css" />
+	<script type="text/javascript" src="{$smarty.const.URL_ROOT}/3rdparty/highslide/highslide.js"></script>
+	<script type="text/javascript">    
+	    hs.graphicsDir = '{$smarty.const.URL_ROOT}/3rdparty/highslide/graphics/';
+		hs.registerOverlay(
+	    	{ldelim}
+	    		thumbnailId: null,
+	    		overlayId: 'controlbar',
+	    		position: 'top right',
+	    		hideOnMouseOut: true
+			{rdelim}
+		);
+	    hs.outlineType = 'rounded-white';
+	</script>
+	{if  $PAGE_VIEW ne 'mobile' && $product_info.picture}
+	
+		<div style="text-align:center;width: {$smarty.const.CONF_PRDPICT_STANDARD_SIZE+32}px;">
+		<a name="anch_current_picture"></a>
+		<div style="width: {$smarty.const.CONF_PRDPICT_STANDARD_SIZE}px;">
+		{if !$printable_version&&$product_info.big_picture && ($product_info.big_picture!=$product_info.picture)}
+			<a target="_blank" onclick="return hs.expand(this)" href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture|escape:'url'}{else}{$product_info.picture|escape:'url'}{/if}' img_width="{$product_info.picture_width}" img_height="{$product_info.picture_height}">
+			<img id='img-current_picture' border='0' src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" >
+			</a>
+		{else}
+			<img id='img-current_picture' border='0' src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.picture|escape:'url'}" title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" >		
+		{/if}
+		</div>
+		
+		{if $all_product_pictures}
+		<table cellpadding="3" align="center" id="box_product_thumbnails">
+		
+		{foreach from=$all_product_pictures item=_picture name=frpict}
+		{if $_picture.photoID != $product_info.photoID}
+			{counter name=_pict_num assign=_pict_num}
+			{if ($_pict_num-1)%2 == 0}<tr>{/if}
+			<td align="center" style="width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px; height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}px;">		
+			{if !$printable_version&&($_picture.width>$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE ||$_picture.height>$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE) }
+			<a onclick="return hs.expand(this)" href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $_picture.enlarged}{$_picture.enlarged|escape:'url'}{else}{$_picture.filename|escape:'url'}{/if}' img_width="{$_picture.width}" img_height="{$_picture.height}" img_enlarged="{if $_picture.enlarged}{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.enlarged|escape:'url'}{/if}" img_picture="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.filename|escape:'url'}" target="_blank">
+			<img src='{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.thumbnail|escape:'url'}' border='0' alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}" >
+			</a>
+			{else}
+			<img src='{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.thumbnail|escape:'url'}' border='0' alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}" >
+			{/if}
+			</td>
+			{if ($_pict_num)%2 == 0}</tr>{/if}
+		{/if}
+		{/foreach}
+		{if ($_pict_num+1)%2 == 0}</tr>{/if}
+		</table>
+		{/if}
+	{/if}
+
+	{if $PAGE_VIEW eq 'mobile' &&  $m_all_product_pictures}
+		<table cellpadding="3" id="box_product_thumbnails">
+		{foreach from=$m_all_product_pictures item=_picture name=frpict}
+		<tr>
+		<td align="center"><a href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $_picture.enlarged}{$_picture.enlarged|escape:'url'}{else}{$_picture.filename|escape:'url'}{/if}' img_width="{$_picture.width}" img_height="{$_picture.height}" img_enlarged="{if $_picture.enlarged}{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.enlarged|escape:'url'}{/if}" img_picture="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.filename|escape:'url'}" target="_blank"><img src='{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.thumbnail|escape:'url'}' border='0' /></a></td>
+		</tr>
+		{/foreach}
+		</table>
+
+	{/if}
+	</div>
+	
+	<div id="controlbar" class="highslide-overlay controlbar">
+		<a href="#" class="previous" onclick="return hs.previous(this)"></a>
+		<a href="#" class="next" onclick="return hs.next(this)"></a>
+	    <a href="#" class="close" onclick="return hs.close(this)"></a>
+	</div>
+{else}
+	<div style="text-align:center">
+		<img border=0 src="{$smarty.const.URL_DEMOPRD_IMAGES}/picture1.jpg" alt="{'demoprd_name'|transcape}">
+		<br>
+		<table align="center"><tr><td><img src="{$smarty.const.URL_IMAGES}/enlarge.gif"></td><td>
+			<a class="olive" href="#">{"str_enlarge_picture"|translate}</a>
+		</td></tr></table>
+	</div>
+{/if}

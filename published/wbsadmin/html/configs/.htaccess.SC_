@@ -1,0 +1,10 @@
+#php_flag display_errors 0
+AddDefaultCharset UTF-8
+Options -Indexes
+
+# FastCGI http authorization
+<IfModule mod_rewrite.c>
+RewriteCond %{HTTP:Authorization} !^$
+RewriteCond %{REQUEST_URI} !http_auth
+RewriteRule (.*) $1?http_auth=%{HTTP:Authorization} [L,QSA]
+</IfModule>

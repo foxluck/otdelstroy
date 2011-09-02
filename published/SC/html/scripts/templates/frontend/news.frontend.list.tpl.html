@@ -1,0 +1,36 @@
+<h1>{lbl_news}{if $rss_link}&nbsp;<a href="{$smarty.const.URL_ROOT}/{$rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0"  style="padding-left:10px;"></a>{/if}</h1>
+
+{section name=i loop=$news_posts}
+
+<div class="post_block">
+
+	<h2 class="post_title"><a href="{"?ukey=news&blog_id="|cat:$news_posts[i].NID|set_query_html}">{$news_posts[i].title}</a></h2>
+	
+	<div class="post_date">{$news_posts[i].add_date}</div>
+	
+	<div class="post_content">
+	{if $news_posts[i].picture_exists}
+		<img alt="{$news_posts[i].title|escape:html}" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$news_posts[i].picture|escape:'url'}" hspace="20" vspace="20" align="left" />
+	{/if}
+	{$news_posts[i].textToPublication}
+	</div>
+	
+</div>
+{sectionelse}
+
+{"str_empty_list"|translate}
+
+{/section}
+{if $LastPage>1}
+	<p>
+	{if $CurrentPage>1}
+		&nbsp; <a class="no_underline" href='{"?ukey=news&news_page=`$CurrentPage-1`"|set_query_html}'>&lt;&lt; {"str_previous"|translate}</a>
+	{/if}
+	{foreach from=$ListerRange item=_page}
+		&nbsp; {if $_page!=$CurrentPage}<a class="no_underline" href='{"?ukey=news&news_page=`$_page`"|set_query_html}'>{$_page}</a> {else}{$_page}{/if}
+	{/foreach}
+	{if $CurrentPage<$LastPage}
+		&nbsp; <a class="no_underline" href='{"?ukey=news&news_page=`$CurrentPage+1`"|set_query_html}'>{"str_next"|translate} &gt;&gt;</a>
+	{/if}
+	</p>
+{/if}{* $LastPage>1 *}

@@ -1,0 +1,33 @@
+/*a.Button span {line-height: 195%}*/
+a.Button {padding: 3px; border: 1px solid #999999}
+
+/* Horizontal Rule */
+
+div.hr
+{
+	background: transparent url(menuseparator.gif) repeat-x left center!important;
+}
+
+/* Toolbar Separator */
+
+#Toolbar ul li a:hover table ul li.Separator div, #Toolbar ul li:hover table ul li.Separator div
+{
+	background: transparent url(menuseparator.gif) repeat-x left top;
+}
+
+
+#Toolbar ul li a:hover table ul li.Separator, #Toolbar ul li:hover table ul li.Separator,
+#Toolbar ul li a:hover table ul li.Separator div, #Toolbar ul li:hover table ul li.Separator div
+{
+	height: 3px!important;
+	line-height: 0!important;
+	overflow: hidden;
+}
+
+#Toolbar ul li a:hover table ul, #Toolbar ul li:hover table ul {
+	top: 23px;
+}
+
+* html #Toolbar ul li a:hover table ul, * html #Toolbar ul li:hover table ul {
+	top: 25px;
+}

@@ -1,0 +1,34 @@
+{* products and categories view *}
+<h1>{$CurrentDivision.name|translate}</h1>
+
+<div>{'prep_total_products'|translate|replace:'[products]':$stat.products_num|replace:'[categories]':$stat.categories_num}</div>
+{if $stat.invisible_products_num>0}<div>{'prep_invisible_products'|translate|replace:'[products]':$stat.invisible_products_num}</div>{/if}
+{if $smarty.const.CONF_CHECKSTOCK && $stat.notinstock_products_num>0}<div>{'prep_notinstock_products'|translate|replace:'[products]':$stat.notinstock_products_num}</div>{/if}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+	<tr> 
+		<td colspan="7" style="padding-bottom:8px;">&nbsp;{include file="backend/lister.tpl.html"}</td>
+	</tr>
+	<tr class="gridsheader">
+		{include file="backend/gridheader.tpl.html"}
+	</tr>
+{section name=i loop=$GridRows}
+	{assign var=product_url value="?ukey=product_settings&productID=`$GridRows[i].productID`"|set_query_html}
+	<tr class="{cycle values='gridline1,gridline'}{if $GridRows[i].in_stock<=0 && $smarty.const.CONF_CHECKSTOCK} gridline_outofstock{/if}">
+		<td width="40%"><a href="{$product_url}">{$GridRows[i].name|escape:'html'}&nbsp;{if $GridRows[i].enabled ne 1}<span class="notice">{lbl_prep_invisible_in_storefront}</span>{/if}</a></td>
+		<td width="10%" align="right"><a href="{$product_url}">{$GridRows[i].in_stock}{if $GridRows[i].in_stock<=0 && $smarty.const.CONF_CHECKSTOCK}*{/if}&nbsp;</a></td>
+		<td width="10%" align="right"><a href="{$product_url}">{$GridRows[i].viewed_times}&nbsp;</a></td>
+		<td width="10%" align="right"><a href="{$product_url}">{$GridRows[i].items_sold}&nbsp;{if !$GridRows[i].ordering_available}<div class="notice">{lbl_prd_ordering_not_available}</div>{/if}</a></td>
+		<td width="10%" align="right"><a href="{$product_url}">{$GridRows[i].add2cart_counter}&nbsp;</a></td>
+		<td width="10%" align="right"><a href="{$product_url}">{$GridRows[i].customers_rating}&nbsp;</a></td>
+		<td width="10%" align="right" class="endgrid"><a href="{$product_url}">{$GridRows[i].customer_votes}&nbsp;</a></td>
+	</tr>	
+{/section}
+	<tr class="gridsfooter"> 
+		<td colspan="7">&nbsp;{include file="backend/lister.tpl.html"}</td>
+	</tr>
+</table>
+
+{if $smarty.const.CONF_CHECKSTOCK}
+<p class="field_descr gridline_outofstock">* {lbl_srep_outofstock}</p>
+{/if}

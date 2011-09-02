@@ -1,0 +1,247 @@
+<!-- addmodserver.html -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+	<? assign var="invalidFieldMarkup" value=' style="color: #FF0000" ' ?>
+	<? if !$fatalError ?>
+			<h2 class="page-title"><?if $multiDBKEY?><a href="<?$smarty.const.PAGE_DB_SQLSERVERS?>"><? $waStrings.sqls_page_title?></a> &raquo; <?/if?><? $pageHeader?></h2>
+      		<br>
+		<? if $action == edit && $multiDBKEY ?><h2 class="page-title"><? $waStrings.addserv_header ?> <? $serverData.SERVER_NAME ?></h2><br><?/if?>
+
+				<? if $errorStr ?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr><td<? $invalidFieldMarkup ?>><? $errorStr|nl2br ?></td></tr>
+					<tr><td>&nbsp;</td></tr>
+				</table>
+				<? /if ?>
+				<? if $infoStr ?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr><td bgcolor="#CCFFCC"><? $infoStr ?></td></tr>
+					<tr><td>&nbsp;</td></tr>
+				</table>
+				<? /if ?>
+				 <table border="0" cellpadding="5" cellspacing="0" class="settings-table">
+		<tr><td colspan="2" class="form-required-field"><? $waStrings.forms_req_fields ?></td></tr>
+
+
+					<tr>
+						<td class="nobr"<? conditionalOutput invalidField=$invalidField field=SERVER_NAME text=$invalidFieldMarkup ?>>
+							<? $waStrings.addserv_gr1_opt1 ?>:&nbsp;</td>
+						<td>
+							<? if $action == "new" ?>
+							<input name="serverData[SERVER_NAME]" type="text" class="control" value="<? $serverData.SERVER_NAME ?>" style="width: 100%">
+							<?else?>
+							<strong style="font-size: 120%;"><?$serverData.SERVER_NAME ?></strong>
+							<?/if?>
+						</td>
+					</tr>
+					<? if $action == "new" ?>
+					<tr>
+						<td class="comment">&nbsp;</td>
+						<td class="comment"><p class="comment"><? $waStrings.addserv_gr1_desc1 ?></p>
+
+						<p class="comment"><b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr1_note1 ?></p>
+					</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<? /if ?>
+
+					<tr>
+						<td colspan="2"><div class="formSection"><? $waStrings.addserv_gr2_name ?></div></td>
+					</tr>
+					<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=HOST text=$invalidFieldMarkup	?>>
+							<? $waStrings.addserv_gr2_opt1 ?>:*</td>
+						<td><input name="serverData[HOST]" type="text" class="control" value="<? $serverData.HOST ?>" style="width: 100%"></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc1 ?></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td><? $waStrings.addserv_gr2_opt2 ?>:</td>
+						<td><input name="serverData[WEBASYST_HOST]" type="text" class="control" value="<? $serverData.WEBASYST_HOST ?>" style="width: 100%"></td>
+					</tr>
+					<tr>
+						<td class="comment">&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc2 ?></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=PORT text=$invalidFieldMarkup	?>>
+							<? $waStrings.addserv_gr2_opt3 ?>:</td>
+						<td><input name="serverData[PORT]" type="text" class="control" value="<? $serverData.PORT ?>"	style="width: 100%"></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc3 ?></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+<!-- ========================= -->
+					<tr>
+						<td height="21" colspan="2"><div class="formSection"><? $waStrings.addserv_gr4_name ?></div></td>
+					</tr>
+					<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+					<tr>
+						<td valign="top"></td>
+						<td><table border="0" cellspacing="0" cellpadding="1">
+								<? foreach from=$sys_languages item=lang_data?>
+								<? assign var=lang_id value=$lang_data.ID ?>
+								<? if $serverData.LANGUAGES.$lang_id ?>
+									<? assign var=languageSet value=1 ?>
+								<? else ?>
+									<? assign var=languageSet value=0 ?>
+								<? /if ?>
+								<tr>
+									<td bgcolor="#FFFFFF">
+										<? if $lang_id != "eng" ?>
+											<input type=checkbox name="serverData[LANGUAGES][<? $lang_id ?>]" value=1 <? switchedOutput str1="checked" str2="" val=$languageSet true_val=1 ?>>
+										<? else ?>
+											<input type="checkbox" checked disabled>
+										<? /if ?>
+									</td>
+									<td bgcolor="#FFFFFF">
+										<? $lang_data.NAME ?>
+									</td>
+								</tr>
+								<? /foreach ?>
+							</table></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td class="comment"><p class="comment"><? $waStrings.addserv_gr4_desc ?></p>
+						<p class="comment"><b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr4_note1 ?></p>
+					</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"><div class="formSection"><? $waStrings.addserv_gr5_name ?></div></td>
+					</tr>
+
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td align=right valign=top>
+							<input type=radio value="TRUE" name="serverData[ADMIN_ADMINRIGHTS]" <? switchedOutput str1="checked" str2="" val=$serverData.ADMIN_ADMINRIGHTS true_val="TRUE" ?>>
+						</td>
+						<td<? conditionalOutput invalidField=$invalidField field=ADMIN_ADMINRIGHTS text=$invalidFieldMarkup ?>><? $waStrings.addserv_gr5_opt1 ?></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class=comment><p class=comment><? $waStrings.addserv_gr5_desc1 ?></p>
+						<p class=comment><b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr5_note1 ?></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<table cellpadding=0 cellspacing=2 border=0>
+								<tr>
+									<td class="nobr"<? conditionalOutput invalidField=$invalidField field=ADMIN_USERNAME text=$invalidFieldMarkup	?>>
+										<? $waStrings.addserv_gr5_opt2 ?>:&nbsp;</td>
+									<td><input name="serverData[ADMIN_USERNAME]" type="text" class="control" value="<? $serverData.ADMIN_USERNAME ?>" style="width: 200px"></td>
+								</tr>
+								<tr>
+									<td class="nobr"<? conditionalOutput invalidField=$invalidField field=ADMIN_PASSWORD text=$invalidFieldMarkup	?>>
+										<? $waStrings.addserv_gr5_opt3 ?>:&nbsp;</td>
+									<td><input name="serverData[ADMIN_PASSWORD]" type="text" class="control" style="width: 200px" value="<? $serverData.ADMIN_PASSWORD ?>"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+					<tr>
+						<td align=right valign=top>
+							<input type=radio value="FALSE" name="serverData[ADMIN_ADMINRIGHTS]" <? switchedOutput str1="checked" str2="" val=$serverData.ADMIN_ADMINRIGHTS true_val="FALSE" ?>>
+						</td>
+						<td<? conditionalOutput invalidField=$invalidField field=ADMIN_ADMINRIGHTS text=$invalidFieldMarkup ?>><? $waStrings.addserv_gr5_opt4 ?></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class=comment><? $waStrings.addserv_gr5_desc2 ?></td>
+					</tr>
+					<!-- ========================= -->
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"><div class="formSection"><? $waStrings.addserv_gr3_name ?></div></td>
+					</tr>
+					<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+					<tr>
+						<td><? $waStrings.addserv_gr3_opt1 ?>:</td>
+						<td><input name="serverData[DBCHARSET]" type="text" class="control" value="<? $serverData.DBCHARSET ?>"	style="width: 100%"></td>
+					</tr>
+					
+<!-- ========================= -->
+					<tr>
+						<td>
+							<? if $action == "edit" ?>
+							<input type="hidden" value="<? $serverData.SERVER_NAME ?>" name="serverData[SERVER_NAME]">
+							<?/if?>
+							<input type="hidden" value="<? $action ?>" name="action"> <input type="hidden" value="1" name="edited">
+							<input name="languageToDelete" type="hidden"> </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td><input type="submit" name="savebtn" value="<? $buttonCaption ?>">
+										<? if $action == "edit" ?>
+												<td align=right>&nbsp; <input name="deletebtn" type="submit" value="<? $waStrings.btn_delete ?>" onClick="return confirm('<? $waStrings.addserv_query_delete ?>');">
+										<?/if?>
+										</td>
+									</tr>
+								</table>
+							</td>
+					</tr>
+				</table>
+	 <? /if ?>
+	</form>
+<? /strip ?>
+<script type="text/javascript">
+<!--
+document.body.onload = function(){focusControl(<? if $invalidField ?>'serverData[<?$invalidField?>]'<? elseif $action == "new" ?>'serverData[SERVER_NAME]'<?else?>'serverData[HOST]'<?/if?>);};
+//-->
+</script>
+<!-- /addmodserver.html -->

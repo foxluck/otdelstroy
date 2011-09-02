@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>LocalizationAdmin</Name>
+		<File>class.localizationadmin.php</File>
+		<Title>Управление локализациями</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

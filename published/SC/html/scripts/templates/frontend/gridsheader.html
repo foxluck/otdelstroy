@@ -1,0 +1,11 @@
+{section name=j loop=$GridHeaders}
+<td nowrap {if $GridHeaders[j].align}align="{$GridHeaders[j].align}"{/if}>
+	{if $GridHeaders[j].descsort.enabled eq 1}<img src="images_common/asc_img.gif" alt="asc"  />{/if}
+	{if $GridHeaders[j].ascsort.enabled eq 1}<img src="images_common/desc_img.gif" alt="desc"  />{/if}
+	{if $GridHeaders[j].ascsort.getvars ne '' and $GridHeaders[j].descsort.getvars ne ''}
+		<a class="gridheader" href="{if $GridHeaders[j].ascsort.enabled eq '1'}{"`$GridHeaders[j].descsort.getvars`"|set_query_html}{elseif $GridHeaders[j].descsort.enabled eq '1'}{"`$GridHeaders[j].ascsort.getvars`"|set_query_html}{else}{"`$GridHeaders[j].defsort.getvars`"|set_query_html}{/if}">{$GridHeaders[j].header_name}</a>
+	{else}
+	{$GridHeaders[j].header_name}
+	{/if}
+</td>
+{/section}

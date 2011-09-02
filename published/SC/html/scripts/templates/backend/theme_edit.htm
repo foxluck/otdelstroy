@@ -1,0 +1,86 @@
+<table style="width:100%; height:100%;" cellpadding="0" cellspacing="0">
+<tr>
+	<td>
+	{if !$smarty.get.fullscreen}
+	<h1 class="breadcrumbs">
+		<a href="{'?ukey=themes_list'|set_query_html}">{'pgn_themes_list'|translate}</a>
+		&raquo;
+		{$CurrentDivision.name|translate}: {$theme.title|translate}
+		&nbsp;
+		<input value="{'thm_open_fullscreen'|transcape}" type="button" id="btn-open-fullscreen" class="small" />
+		&nbsp;
+		<a class="h1" href='{"?ukey=theme_preview&theme_id=`$theme_id`"|set_query_html}' target="_blank">{lbl_thm_preview_link}</a>
+		| <a href="{'reset=true'|set_query_html}" title="{'thm_msg_confirm_reset'|transcape}" class="h1 confirm_action">{lbl_thm_reset_link}</a>
+	</h1>
+	{else}
+	<h1 class="breadcrumbs">
+		{$CurrentDivision.name|translate}: {$theme.title|translate}
+		&nbsp;
+		<input value="{'thm_close_fullscreen'|transcape}" type="button" id="btn-close-fullscreen" class="small" />
+	</h1>
+	{/if}
+	
+	<div id="hidden1">
+	{$MessageBlock}
+
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+
+	<ul id="edmod">
+		<li class="tab {if $tpl_id eq $smarty.const.TPLID_GENERAL_LAYOUT}current{/if}"><a href='{"tpl_id=`$smarty.const.TPLID_GENERAL_LAYOUT`"|set_query_html}'>{lbl_thm_generallayout_link}</a></li>
+		<li class="tab {if $tpl_id eq $smarty.const.TPLID_HOMEPAGE}current{/if}"><a href='{"tpl_id=`$smarty.const.TPLID_HOMEPAGE`"|set_query_html}'>{lbl_thm_homepage_link}</a></li>
+		<li class="tab {if $tpl_id eq $smarty.const.TPLID_PRODUCT_INFO}current{/if}"><a href='{"tpl_id=`$smarty.const.TPLID_PRODUCT_INFO`"|set_query_html}'>{lbl_thm_productinfo_link}</a></li>
+		
+		<li class="tab right_tab {if $tpl_id eq $smarty.const.TPLID_HEAD}current{/if}"><a href='{"tpl_id=`$smarty.const.TPLID_HEAD`"|set_query_html}'>{lbl_thm_head_link}</a></li>
+		<li id="tab-css{if $tpl_id eq $smarty.const.TPLID_CSS}-current{/if}" class="tab right_tab"><a href='{"tpl_id=`$smarty.const.TPLID_CSS`"|set_query_html}'>{lbl_thm_css_link}</a></li>
+	</ul>
+	
+	</div>
+	<script type="text/javascript" src="{$smarty.const.URL_JS}/theme_edit.js"></script>
+	{if $smarty.get.fullscreen}{literal}
+	<script type="text/javascript">
+	window.onunload = function(){
+		if(window.opener && !window.opener.closed && window.dontcheck_onclose!==true){
+			window.opener.checkFullScreen(true); 
+		}
+	};
+	</script>
+	{/literal}{/if}
+	</td>
+</tr>
+<tr>
+	<td height="100%">
+		<div id="hidden2">
+		
+		<table style="width:100%; height:100%;" cellpadding="0" cellspacing="0">
+		{if $templates_info[$tpl_id].simple_editor}
+		<tr>
+			<td>
+			<ul id="advanced_navigation">
+				<li {if $edmod eq 'simple'}class="current"{/if}><a href="{'edmod=simple'|set_query_html}">{lbl_thm_simple_tab}</a></li>
+				<li {if $edmod eq 'advanced'}class="current"{/if}><a href="{'edmod=advanced'|set_query_html}">{lbl_thm_advanced_tab}</a></li>
+			</ul>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td>
+			{$comment_str|comment}
+			</td>
+		<tr>
+			<td height="100%" valign="top">
+			{include file=$edmod_file}
+			</td>
+		</tr>
+		</table>
+		
+		</div>
+		
+		<script type="text/javascript">
+		translate.thm_open_fullscreen = "{'thm_open_fullscreen'|transcape}";
+		translate.thm_close_fullscreen = "{'thm_close_fullscreen'|transcape}";
+		translate.thm_allow_popups = "{'thm_allow_popups'|transcape}";
+		Nifty("li.tab","top same-height");
+		</script>
+	</td>
+</tr>
+</table>

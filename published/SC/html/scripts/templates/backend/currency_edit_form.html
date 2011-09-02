@@ -1,0 +1,65 @@
+	<form class="currency_edit_form" style="display:none;" action="{''|set_query_html}" method="post" enctype="multipart/form-data">
+	<input name="action" value="save_currency" type="hidden" />
+	<input name="CID" type="hidden" value="{$_currency.CID}" />
+	
+	<table cellpadding="4" cellspacing="0">
+	<tr>
+			<td>{lbl_curr_currency_name}:</td>
+			<td>
+				{html_text name="Name" values=$_currency}
+			</td>
+	</tr>
+	<tr>
+			<td>{lbl_curr_iso3}:</td>
+			<td>
+				<input name="currency_iso_3" value="{$_currency.currency_iso_3|escape:'html'}" type="text" size="3" maxlength="3" />
+			</td>
+	</tr>
+	<tr>
+			<td>{lbl_curr_output_format}:</td>
+			<td>
+				{html_text name="display_template" values=$_currency}
+			</td>
+	</tr>
+	<tr>
+			<td>{lbl_curr_dec_symbol}</td>
+			<td>
+				<select name="decimal_symbol">
+				{foreach from=$decimal_symbols item=_symbol}
+					<option value="{$_symbol|escape:'html'}" {if $_currency.decimal_symbol eq $_symbol}selected="selected"{/if}>{$_symbol|escape:'html'}</option>
+				{/foreach}
+				</select>
+			</td>
+	</tr>
+	<tr>
+			<td>{lbl_curr_dec_placed}</td>
+			<td>
+				<select name="decimal_places">
+				{foreach from=$decimal_places item=_place}
+					<option value="{$_place|escape:'html'}" {if $_currency.decimal_places eq $_place}selected="selected"{/if}>{$_place|escape:'html'}</option>
+				{/foreach}
+				</select>
+			</td>
+	</tr>
+	<tr>
+			<td>{lbl_curr_thousands_delimiter}</td>
+			<td>
+				<select name="thousands_delimiter">
+				{foreach from=$thousands_delimiters key=_name item=_delimiter}
+					<option value="{$_delimiter|escape:'html'}" {if $_currency.thousands_delimiter eq $_delimiter}selected="selected"{/if}>{$_name|escape:'html'}</option>
+				{/foreach}
+				</select>
+			</td>
+	</tr>
+	<tr>
+			<td colspan="2">
+				<br />
+				<img src="images_common/processing.gif" class="processing_image" style="display:none;" />
+				<input class="save_currency_handler" value="{lbl_btn_save}" type="button" />
+				<input class="close_form_handler" value="{lbl_btn_cancel}" type="button" />
+			</td>
+	</tr>
+	
+	</table>
+	
+	</form>

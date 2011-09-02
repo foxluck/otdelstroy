@@ -1,0 +1,2 @@
+<input type="hidden" id="<? $fieldName ?>" name="fields[<? $fieldName ?>]" value="0"/>
+<input type='checkbox' <? if $preview ?>onChange='fieldChanged("<? $fieldName ?>", this.checked);'<? /if ?> id="<? $fieldName ?>" name="fields[<? $fieldName ?>]" <? if $fieldValue ?>checked<? /if ?> value=1/>

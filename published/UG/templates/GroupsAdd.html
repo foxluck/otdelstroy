@@ -1,0 +1,39 @@
+<style type="text/css">
+	h4 {margin-top: 0} 
+</style>
+<div class="container">
+<h1>[`Create a new user group`]</h1>
+<br />
+<span style="font-size:16px">[`Group name`]:</span> 
+<input class="title" type="text" style="width:400px" id="group-name" value="[`New group`]" />
+<br />
+<div class="error"></div>
+<br />
+
+<div style="font-size:16px; margin-bottom: 7px">[`Choose users you want to include into this group`]:</div>
+{{include file="GroupsUsers.html" create="1"}}
+<br />
+<input id="create-group" type="button" value="[`Create group`]" />
+</div>
+<script type="text/javascript">
+$("#group-name").select();
+$("#create-group").click(function () {
+	var name = $("#group-name").val();
+	if (name.replace(/\s/gi, "").length == 0) {
+		$(".error").html("[`This feld is required`].").css("color", "red").show();
+		$("#group-name").css("border", "1px solid red");
+		return false;
+	}
+	var users = new Array();
+	$("#in option").each(function () {
+		users.push($(this).val());
+	});
+	$.post("index.php?mod=groups&act=add&ajax=1", {name: name, 'users[]': users}, function (response) {
+		if (response.status == 'OK') {
+			var group_id = response.data;
+			document.app.groupsList.addGroup({id: group_id, name: name});
+			document.app.openSubframe("index.php?mod=groups&act=edit&tab=rights&id=" + group_id, true);
+		}		
+	}, "json");
+});
+</script>

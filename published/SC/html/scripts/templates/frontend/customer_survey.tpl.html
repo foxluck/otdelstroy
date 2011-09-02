@@ -1,0 +1,44 @@
+{* customer survey *}
+
+<div class="survey_question">{$survey_question}</div>
+	
+{if $show_survey_results eq 1}
+	<table>
+	{section name=i loop=$survey_answers}
+	{math equation="round(100 * $survey_results[i] / $voters_count)" assign="_percent"}
+	<tr>
+		<td>{$survey_answers[i]}</td>
+		<td width="1%">
+			{if $voters_count ne 0}{$_percent}{else}0{/if}%
+		</td>
+	</tr>
+{*
+	<tr>
+		<td colspan="2">
+		{if $survey_results[i] > 0}
+		<img style="width: {$_percent}%; height:10px;" alt="" src="{$smarty.const.URL_IMAGES}/voter.gif" />
+		{/if}
+		</td>
+	</tr>
+*}
+	{/section}
+	</table>
+
+
+{else}	{* show survey form *}
+	<form action="{''|set_query_html}" method="get">
+	
+	<input type="hidden" name="save_voting_results" value="yes" >
+	<table>
+	{section name=i loop=$survey_answers}
+	<tr>
+		<td><input type="radio" name="answer" id="srv-answer-{$smarty.section.i.index}" value="{$smarty.section.i.index}" ></td>
+		<td><label for="srv-answer-{$smarty.section.i.index}">{$survey_answers[i]}</label></td>
+	</tr>
+	{/section}
+	</table>
+	
+	<div class="survey_submit"><input type="submit" value="{"btn_ok"|translate}" ></div>
+	
+	</form>
+{/if}

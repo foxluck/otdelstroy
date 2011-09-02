@@ -1,0 +1,47 @@
+<? assign var=wgImgSize value=$imgSize ?>
+<? math equation="round(x*$mainRatio)" assign="wgImgHeight" x=$widgetParams.IMAGESIZE ?>
+<? assign var=bigSize value=1024 ?>
+<? assign var=columnsCount value=$widgetParams.COLUMNSCOUNT ?>
+
+<table cellspacing='10' cellpadding='0' border=0 class='FilesTable'>
+<tr valign='middle'>
+<? section loop=$filesList name=files ?>
+	<? assign var=file value=$filesList[$smarty.section.files.index] ?>
+	<td align="CENTER" width='<? $widgetParams.GLIMGWIDTH ?>' height='<? $widgetParams.GLIMGHEIGHT ?>'  style='padding: 0px; text-align: center; border: 1px solid #999;'>
+		<? assign var=truncDesc value=$file.PL_DESC|htmlsafe:true:true|trunc_str:"10" ?>
+			
+			<? if $widgetParams.GLONCLICK!='disable' ?><a href='<? $file.url.$bigSize ?>' id='image_<? $file.PL_ID ?>' onClick='return hs.expand(this)'><? /if ?>
+				<img height='<? $file.h ?>' width='<? $file.w ?>' src='<? $file.url.$wgImgSize ?>'><? if $widgetParams.GLONCLICK!='disable' ?></a><? /if ?></td>
+			
+			
+			<? if false && $file.PL_DESC && $widgetParams.SHOWDESC ?><div style='width: <? $wgImgSize ?>px;' class='FileDesc'><? $file.PL_DESC|htmlsafe:true:true ?></div><? /if ?>
+	
+	<? if !($smarty.section.files.iteration%$columnsCount) ?>
+		</tr>
+		<? if $widgetParams.SHOWDESC ?>
+			<? math assign="firstIndex" equation="x-y" x=$smarty.section.files.iteration y=$columnsCount ?>
+			<tr valign='top'>
+			<? section name=descs start=$firstIndex loop=$smarty.section.files.iteration ?>
+				<? assign var="descFile" value=$filesList[$smarty.section.descs.index] ?>
+				<td width='<? $widgetParams.GLIMGWIDTH ?>' style='width:<? $widgetParams.GLIMGWIDTH ?>px; padding: 1px; font-size: 8pt'><? if $descFile.PL_DESC ?><? $descFile.PL_DESC ?><? /if ?></td>
+			<? /section ?>	
+			</tr>
+		<? /if ?>
+		<tr>
+	<? /if ?>
+<? /section ?>
+
+<? math assign=myIndex equation="x-1" x=$smarty.section.files.iteration ?>
+<? if ($myIndex%$columnsCount) && $widgetParams.SHOWDESC ?>
+	</tr>
+	<? math assign="firstIndex" equation="x-(y%z)" x=$myIndex y=$myIndex z=$columnsCount ?>
+	<tr valign='top'>
+	<? section name=descs start=$firstIndex loop=$smarty.section.files.iteration ?>
+		<? assign var="descFile" value=$filesList[$smarty.section.descs.index] ?>
+		<td width='<? $widgetParams.GLIMGWIDTH ?>' style='width:<? $widgetParams.GLIMGWIDTH ?>px; padding: 1px; font-size: 8pt'><? if $descFile.PL_DESC ?><? $descFile.PL_DESC|htmlsafe:true:true ?><? /if ?></td>
+	<? /section ?>	
+	</tr>
+<? /if ?>
+
+</tr>
+</table>

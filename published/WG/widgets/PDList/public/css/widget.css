@@ -1,0 +1,88 @@
+#Content, .SplitterRightPanelContainer, #SplitterRightScrollableContent { height:100%!important; background:red;}
+
+/*
+	Thumbnails
+*/
+.wgpd-container {_width: 100%;  text-align: left;}
+.wgpd-highslide { padding:20px 15px; overflow:hidden; zoom:1;}
+div.Thumbnail
+{
+	width: 120px;
+	height: 115px;
+	margin: 0;
+	padding: 5px 0 0 0;
+	vertical-align: middle;
+}
+
+div.Thumbnail div
+{
+	width: 120px;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	text-align: center!important;
+}
+
+div.Thumbnail a
+{
+	display: inline!important;
+}
+
+div.Thumbnail div div
+{
+	width: 110px;
+	height: 110px;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div span
+{
+	display: block;
+	padding-top: 45px;
+}
+
+div.Thumbnail div div img
+{
+	border: none;
+}
+
+div.Thumbnail div div table
+{
+	border-collapse: collapse;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+div.Thumbnail div div table td
+{
+	width: 110px;
+	height: 110px;
+	text-align: center!important;
+	vertical-align: middle!important;
+}
+
+div.Thumbnail div div
+{
+	background: transparent url(thumbnail.gif) no-repeat;
+}
+
+div.Thumbnail div div table tr:hover
+{
+	background: transparent;
+}
+ul.highslide-with-descr {
+list-style-type:none;
+margin:0 15px;
+}
+ul.highslide-with-descr li { display:inline-block; //display:inline; vertical-align:top; margin:5px; }
+ul.highslide-with-descr.smallimages li { width:256px; }
+ul.highslide-with-descr.middleimages li { width:970px; clear:left; }
+.BottomBlock { padding:15px; text-align:center; width:auto; margin:0 auto;}
+
+.FilesTable td { border:none!important;}
+
+.desc{
+	display: block;
+}

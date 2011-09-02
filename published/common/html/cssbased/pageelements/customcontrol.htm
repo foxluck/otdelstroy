@@ -1,0 +1,150 @@
+<? assign var=db_field value=$field.DBFIELD ?>
+
+<? if !$readOnly ?>
+	<? if $field.TYPE == "TEXT" || $field.TYPE == "URL" || $field.TYPE == "EMAIL" || $field.TYPE == "NUMERIC" || $field.TYPE == "FLOAT" ?>
+		<input type=text style="width: <? $width|cat:"px" ?>" class=FormControl name="<? $name ?>" value="<? $datasource.$db_field|htmlsafe:true:true ?>" maxlength="<? $field.MAXLEN ?>" >
+	<? elseif $field.TYPE == "MEMO" ?>
+		<textarea rows="3" style="width: 400px" class=FormControl name="<? $name ?>"><? $datasource.$db_field|htmlsafe_textarea:$edited ?></textarea>
+	<? elseif $field.TYPE == "MENU" ?>
+		<? assign var=customMenuItemsStr value=$field.MENU|base64_decode ?>
+		<? assign var=customMenuItems value=$customMenuItemsStr|split:"^&^" ?>
+
+		<select style="width: <? $width|cat:"px" ?>" class=FormControl name="<? $name ?>">
+			<option value="" 
+				<? switchedOutput val="" true_val=$datasource.$db_field str1="selected" ?>
+			>
+				<? $kernelStrings.app_select_item|htmlsafe:true:true ?>
+			</option>
+			<? foreach from=$customMenuItems item=customMenuItem ?>
+				<option value="<? $customMenuItem|htmlsafe:true:true ?>" <? switchedOutput val=$customMenuItem true_val=$datasource.$db_field str1="selected" ?>><? $customMenuItem|htmlsafe:true:true ?></option>
+			<? /foreach ?>
+		</select>
+	<? elseif $field.TYPE == "RADIO" ?>
+		<? assign var=customMenuItemsStr value=$field.MENU|base64_decode ?>
+		<? assign var=customMenuItems value=$customMenuItemsStr|split:"^&^" ?>
+
+		<table style="width: <? $width|cat:"px" ?>" cellspacing=1 cellpadding=1 border=0>
+			<? foreach from=$field.OPTIONS item=optionName key=optionValue ?>
+			<tr>
+				<td valign=top><input type="radio" name="<? $name ?>" value="<? $optionValue|htmlsafe:true:true ?>" <? switchedOutput val=$optionValue true_val=$datasource.$db_field str1="checked" ?>></td><td valign=top><? $optionName|htmlsafe:true:true ?></td>
+			</tr>
+			<? /foreach ?>
+		</table>
+	<? elseif $field.TYPE == "SELECT" ?>
+		<? assign var=customMenuItemsStr value=$field.MENU|base64_decode ?>
+		<? assign var=customMenuItems value=$customMenuItemsStr|split:"^&^" ?>
+
+		<select style="width: <? $width|cat:"px" ?>" class=FormControl name="<? $name ?>">
+			<? foreach from=$field.OPTIONS item=optionName key=optionValue ?>
+				<option value="<? $optionValue|htmlsafe:true:true ?>" <? switchedOutput val=$optionValue true_val=$datasource.$db_field str1="selected" ?>><? $optionName|htmlsafe:true:true ?></option>
+			<? /foreach ?>
+		</select>
+	<? elseif $field.TYPE == "DATE" ?>
+		<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td><input type=text style="width: 100px" class=FormControl name="<? $name ?>" value="<? $datasource.$db_field|htmlsafe:true:true ?>" maxlength="<? $field.MAXLEN ?>" ></td>
+				<td><?include file="../../../common/html/classic/calendar.tpl"  style="margin-left: 2px" name=$name?></td>
+			</tr>
+		</table>
+	<? elseif $field.TYPE == "IMAGE" ?>
+		<? assign var="imageFieldWidth" value=$imageFieldWidth|default:"96px" ?>
+		<? assign var="imageFieldHeight" value=$imageFieldHeight|default:"96px" ?>
+		<? assign var="thumbnailMargin" value=0 ?>
+		<? assign var="thumbnailBorderRequired" value=0 ?>
+		<? assign var="imageData" value=$datasource.$db_field ?>
+
+		<input type=hidden name="<?$name ?>[FILENAME]" value="<? $datasource.$db_field.FILENAME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[DISKFILENAME]" value="<? $datasource.$db_field.DISKFILENAME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[SIZE]" value="<? $datasource.$db_field.SIZE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[TYPE]" value="<? $datasource.$db_field.TYPE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[DATETIME]" value="<? $datasource.$db_field.DATETIME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[MODIFIED]" value="<? $datasource.$db_field.MODIFIED|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[MIMETYPE]" value="<? $datasource.$db_field.MIMETYPE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[PREVFILENAME]" value="<? $datasource.$db_field.PREVFILENAME|htmlsafe:true:true ?>">
+
+		<table border=0 cellpadding=0 cellspacing=0 width="100%">
+			<tr>
+				<td width=<? $imageFieldWidth ?>>
+					<div id="img<? $field.ID ?>" style="width: <? $imageFieldWidth ?>; height: <? $imageFieldHeight ?>; padding=0!important; border: 1px solid #EDEDED">
+							<table width=<? $imageFieldWidth ?> height=<? $imageFieldHeight ?> border=0 cellpadding=0 cellspacing=0>
+								<tr>
+									<td valign=middle align=center>
+									<? if !$imageData.FILENAME ?>
+										[<? $kernelStrings.app_noimage_label ?>]
+									<? else ?>
+										<? include file="../../../common/html/classic/thumbnails_templates/thumbnail.htm" srcURL=$imageData.THUMB_URL size=96 ?>
+									<? /if ?>
+									</td>
+								</tr>
+							</table>
+					</div>
+				</td>
+				<td width=10>&nbsp;</td>
+				<td valign=top>
+					<table border=0 cellpadding=1 cellspacing=0 width="100%">
+						<tr>
+							<td width=20 class="NoBreak"><? $kernelStrings.app_addimage_label|cat:":&nbsp;" ?></td>
+							<td><input type=file name="imgfiles[<? $field.ID ?>]" class=FormControl></td>
+						</tr>
+						<tr>
+							<td height=5 colspan=2></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<? wbs_buttonSet ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_upload_btn name=uploadimgbtn onClick="setActiveImgField('"|cat:$field.ID|cat:"');"|cat:$imgFieldOnClick ?>
+									<? if $imageData.FILENAME ?>
+										<? wbs_buttonSetButton caption=$kernelStrings.app_clear_btn name=clearimgbtn onClick="setActiveImgField('"|cat:$field.ID|cat:"');"|cat:$imgFieldOnClear ?>
+									<? /if ?>
+								<? /wbs_buttonSet ?>
+
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	<? /if ?>
+<? else ?>
+	<? if $field.TYPE != "IMAGE" ?>
+		<div style="width: <? $width|cat:"px" ?>; padding: 0px" ><? $datasource.$db_field|htmlsafe:true:true|sureecho ?></div>
+		<input type=hidden name="<? $name ?>" value="<? $datasource.$db_field|htmlsafe:true:true ?>">
+	<? else ?>
+		<? assign var="imageFieldWidth" value=$imageFieldWidth|default:"96px" ?>
+		<? assign var="imageFieldHeight" value=$imageFieldHeight|default:"96px" ?>
+		<? assign var="thumbnailMargin" value=0 ?>
+		<? assign var="thumbnailBorderRequired" value=0 ?>
+		<? assign var="imageData" value=$datasource.$db_field ?>
+
+		<input type=hidden name="<?$name ?>[FILENAME]" value="<? $datasource.$db_field.FILENAME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[DISKFILENAME]" value="<? $datasource.$db_field.DISKFILENAME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[SIZE]" value="<? $datasource.$db_field.SIZE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[TYPE]" value="<? $datasource.$db_field.TYPE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[DATETIME]" value="<? $datasource.$db_field.DATETIME|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[MODIFIED]" value="<? $datasource.$db_field.MODIFIED|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[MIMETYPE]" value="<? $datasource.$db_field.MIMETYPE|htmlsafe:true:true ?>">
+		<input type=hidden name="<?$name ?>[PREVFILENAME]" value="<? $datasource.$db_field.PREVFILENAME|htmlsafe:true:true ?>">
+
+		<table border=0 cellpadding=0 cellspacing=0 width="100%">
+			<tr>
+				<td width=<? $imageFieldWidth ?>>
+					<div style="width: <? $imageFieldWidth ?>; height: <? $imageFieldHeight ?>; padding=0!important; border: 1px solid #EDEDED">
+							<table width=<? $imageFieldWidth ?> height=<? $imageFieldHeight ?> border=0 cellpadding=0 cellspacing=0>
+								<tr>
+									<td valign=middle align=center>
+									<? if !$imageData.FILENAME ?>
+										[<? $kernelStrings.app_noimage_label ?>]
+									<? else ?>
+										<? wbs_thumbnail src=$imageData.THUMB_URL ?>
+									<? /if ?>
+									</td>
+								</tr>
+							</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	<? /if ?>
+<? /if ?>

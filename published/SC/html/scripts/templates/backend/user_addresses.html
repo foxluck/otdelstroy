@@ -1,0 +1,214 @@
+<script type="text/javascript" src='../../../common/html/res/ext/pr-prototype.js'></script>
+<script type="text/javascript" src='../../../common/html/res/ext/pr-adapter.js'></script>
+<script type="text/javascript" src='../../../common/html/res/ext/pr-effects.js'></script>
+<script type="text/javascript" src='../../../common/html/res/ext/ext-all.js'></script>
+<script type="text/javascript" src="../../../common/html/cssbased/domready.js"></script>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/sc-my-ext-all.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/xtheme-slate.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/menu.css'>
+<link rel='stylesheet' type='text/css' href='../../../common/html/res/ext/resources/css/layout.css'>
+<script type="text/javascript">Ext.BLANK_IMAGE_URL = '../../../common/html/res/ext/resources/images/default/s.gif'</script>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+
+<br />
+
+<table cellpadding="4" border="0" width="100%">
+    <colgroup>
+        <col width="50%" />
+        <col width="50%" />
+    </colgroup>
+{section name=i loop=$addresses}
+{assign var="addr_id" value=$addresses[i].addressID}
+    <tr style="height: 10px;"></tr>
+    {if $smarty.section.i.index eq 0}
+        <tr><td><b>{"usr_custinfo_default_address"|translate}:</b></td></tr>
+    {elseif $smarty.section.i.index eq 1}
+        <tr><td><b>{"usr_custinfo_other_addresses"|translate}:</b></td></tr>
+    {elseif $smarty.section.i.index gt 1}
+    	<tr style="height: 1px; background-color: #F5F0BB;"><td colspan="2"></td></tr>
+    {/if}
+    <tr style="height: 10px;"></tr>
+	<tr>
+		<td>
+			<span id="addr_{$addresses[i].addressID}_str">{$addresses[i].addressStr}</span>
+            {include file="backend/userinfo_editor/address_form.html" addr_info=$addresses[i] els_prefix='addr['|cat:$addr_id|cat:']' addr_id=$addr_id}
+		</td>
+        <td align="left" valign="top">
+            <table border="0" cellpadding="2" cellspacing="1">
+                <tr>
+                    <td width="35"><a id="elink_{$addr_id}" href="javascript: void(0);" onClick="showEditForm({$addresses[i].addressID});" class="dashed_link">{"btn_edit"|translate}</a></td>
+                    {if $addresses_count gt 1}
+                    <td width="50" style="padding-left: 10px;"><a href="javascript: void(0);" onClick="delAddress({$addr_id});">{"btn_delete"|translate}</a></td>
+                    {/if}
+                    {if $addresses[i].addressID neq $defaultAddressID}
+                    <td width="55" style="padding-left: 10px;"><a href="javascript: void(0);" onClick="setDefaultAddr({$addr_id});">{"str_default"|translate}</a></td>  
+                    {/if}
+                    <td width="90" style="padding-left: 10px;"><a href="javascript: void(0);" id="al_{$addr_id}"><span style="white-space: nowrap;">{"lbl_lookup"|translate}</span></a></td>
+                </tr>
+            </table>
+        </td>
+	</tr>
+{/section}
+</table>
+
+<form name="aux_form" method="post">
+<input type="hidden" name="action" value="">
+<input type="hidden" name="addr_id" value="">
+</form>
+
+<br />
+<span id="addr_0_str"></span>
+<a id="elink_0" href="javascript: void(0);" onClick="showEditForm(0);" class="dashed_link">{"pgn_add_address"|translate}</a>
+
+<table cellpadding="4" border="0" width="100%">
+    <colgroup>
+        <col width="40%" />
+        <col width="60%" />
+    </colgroup>
+    <tr><td>
+    {include file="backend/userinfo_editor/address_form.html" els_prefix='addr[0]' addr_id=0}
+    </td><td></td></tr>
+</table>
+
+<script type="text/javascript" language="JavaScript">
+{literal}
+
+function showEditForm(addr_id)
+{
+    document.getElementById('addr_'+addr_id+'_str').style.display = 'none';
+    document.getElementById('addr_'+addr_id+'_frm').style.display = '';
+    document.getElementById('elink_'+addr_id).style.display = 'none';
+    if(document.getElementById('al_'+addr_id))
+        document.getElementById('al_'+addr_id).style.display = 'none';
+};
+
+function hideEditForm(addr_id)
+{
+    document.getElementById('addr_'+addr_id+'_str').style.display = '';
+    document.getElementById('addr_'+addr_id+'_frm').style.display = 'none';
+    document.getElementById('elink_'+addr_id).style.display = '';
+    if(document.getElementById('al_'+addr_id))
+        document.getElementById('al_'+addr_id).style.display = '';
+};
+
+function changeStates(country_el)
+{
+    var country_id  = country_el.value;
+    var addr_id = country_el.name.replace('addr[','').replace('][countryID]','');
+    var states_el = document.forms['AddrForm_'+addr_id].elements['addr['+addr_id+'][zoneID]'];
+    
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        var states = req.responseJS.states;
+
+        if(states.length > 0)
+        {
+            if(!states_el)
+            {
+                states_el = document.forms['AddrForm_'+addr_id].elements['addr['+addr_id+'][state]'];
+                var pn = states_el.parentNode;
+                pn.removeChild(states_el);
+                
+                var dd = document.createElement('SELECT');
+                dd.name ='addr['+addr_id+'][zoneID]';
+                dd.className = 'txt_or_sel';
+                
+                pn.appendChild(dd);
+                states_el = document.forms['AddrForm_'+addr_id].elements['addr['+addr_id+'][zoneID]'];
+            }
+            else
+            {
+                while(states_el.options.length > 0)
+                {
+                    states_el.remove(0);
+                };
+            };
+        }
+        else
+        {
+            if(states_el)
+            {
+                var pn = states_el.parentNode;
+                pn.removeChild(states_el);
+                
+                var inp = document.createElement('INPUT');
+                inp.type = 'text';
+                inp.className = 'txt_or_sel';
+                inp.name = 'addr['+addr_id+'][state]';
+                
+                pn.appendChild(inp);
+                states_el = document.forms['AddrForm_'+addr_id].elements['addr['+addr_id+'][state]'];
+            }
+        };
+
+        
+        for(i=0; i<states.length; i++)
+        {
+            var opt = new Option();
+            opt.value = states[i].zoneID;
+            opt.text = states[i].zone_name;
+            try
+            {
+                states_el.add(opt,null); // standards compliant
+            }
+            catch(ex)
+            {
+                states_el.add(opt); // IE only
+            };        
+        };
+    };
+
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'ajax_get_states', 'country_id': country_id});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+function delAddress(addr_id)
+{
+    if(!confirm('{/literal}{"qst_delete_address"|translate}{literal}'))
+    {
+        return false;
+    };
+    
+    var frm = document.forms['aux_form'];
+    frm.elements['action'].value = 'del_address';
+    frm.elements['addr_id'].value = addr_id;
+    frm.submit();
+};
+
+function setDefaultAddr(addr_id)
+{
+    var frm = document.forms['aux_form'];
+    frm.elements['action'].value = 'set_default_address';
+    frm.elements['addr_id'].value = addr_id;
+    frm.submit();
+};
+
+{/literal}
+
+Ext.onReady(function(){ldelim}
+    {foreach from=$addresses item=addr}
+    var btn = Ext.get('al_'+{$addr.addressID});
+    btn.on('click', function(){ldelim}
+        var addr = '{$addr.country|escape:'html'} {$addr.city|escape:'html'} {$addr.address_js|escape:'html'}';
+        addr = addr.replace("\n", "");
+        showMapWindow(addr);
+    {rdelim});
+    {/foreach}
+{rdelim});
+</script>
+
+{include file="backend/google_api/gmaps_ext_popup.html" map_win_name="addr_win" map_canvas_name="map_canvas"}

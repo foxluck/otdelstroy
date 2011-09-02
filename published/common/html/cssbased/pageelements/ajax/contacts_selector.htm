@@ -1,0 +1,23 @@
+<script src='../../../common/html/cssbased/pageelements/ajax/contacts_selector.js'></script>
+<script>
+	ContactsSelector.searchResultsStr = "<? $kernelStrings.selcontacts_searchresults_label ?>"
+	ContactsSelector.listNote = "<? $kernelStrings.shsd_dblclicklist_note ?>";
+	ContactsSelector.contactNote = "<? $kernelStrings.shsd_dblclick_note ?>";
+</script>
+<link rel='stylesheet' type='text/css' href='../../../common/html/cssbased/pageelements/ajax/contacts_selector.css'>
+
+<div class='contacts-selector' id='<? $prefix ?>contacts-selector' >
+	<div style='top: 0px; height: 24px; border-bottom: 1px solid #999; width: 400px; background: #DDD; font-weight: bold'>
+		<div style='font-size: 1em; padding-left: 10px; padding-right: 5px; padding-top: 3px'><div style='float:right; padding-left: 32px; padding-right: 0px; padding-top: 0px'><a href='javascript:void(0)' onClick='<? $dialogVar|default:"ShareSendDialog" ?>.showHideContacts()'><img src='../../../common/html/res/ext/resources/images/slate/tabs/tab-close.gif'></a></div><div style='float:right'><input onkeydown="return contactsSearchKeyDown('<? $prefix ?>contacts-selector',this.value,event)" type='text' style='border: 1px solid #999; width: 140px; height: 16px; padding: 0px; padding-left: 2px; font-size: 9pt; color: black; margin-top: 0px'></div><div style='float:right; padding-right: 6px; padding-top: 2px'><img src='../../../common/html/res/ext/resources/images/default/tree/search.gif'></div>
+			<? $kernelStrings.shsd_mycontacts_title ?>
+		</div>
+	</div>
+	
+	<div class='contacts-selector-tree-wrapper'><div class='contacts-selector-tree' style='width: 100%; overflow: hidden; overflow-x: hidden' >
+	</div></div>
+	<div style='position: absolute; bottom: 0px; height: 20px; border-top: 1px solid #999; width: 400px; background: #F8F8F8'>
+		<div style='padding-left: 10px; padding-right: 10px; '>
+			<span class='note-text' style='visibility:hidden'><? $kernelStrings.shsd_dblclick_note ?></span>
+		</div>
+	</div>
+</div>

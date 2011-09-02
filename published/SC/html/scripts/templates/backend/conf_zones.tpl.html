@@ -1,0 +1,69 @@
+{* zones configuration *}
+<h1>{lbl_pgn_regions} ({$zones_count})</h1>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" enctype="multipart/form-data" name="MainForm" >
+
+{if $countries}
+	<select name='countryID_Select' onchange="window.location=document.MainForm.countryID_Select.value"> 
+		{foreach from=$countries item=country}
+		<option value='{"countryID=`$country.countryID`"|set_query_html}' {if $countryID == $country.countryID}selected{/if}>
+			{$country.country_name|escape:'html'}
+		</option>
+		{/foreach}
+	</select>
+	<br />
+	<br />
+	<table cellpadding="0" cellspacing="0" width="70%" class="grid">
+	<tr class="gridsheader">
+		<td>{"rgn_region_name"|translate}</td>
+		<td width="1%" nowrap="nowrap">{"rgn_region_code"|translate}</td>
+		<td width="1%">&nbsp;</td>
+	</tr>
+	{foreach from=$zones item=zone}
+	<tr class="{cycle values='gridline,gridline1'}">
+		<td>
+			{html_text style="width:100%;" name="zone_name_%lang%_`$zone.zoneID` dbfield='zone_name' values=$zone}
+		</td>
+		<td>
+			<input type="text" name="zone_code_{$zone.zoneID}" value="{$zone.zone_code|escape:'html'}" size="6" />
+		</td>
+		<td>
+			<a href="javascript:confirmDelete({$zone.zoneID},'{"cnfrm_delete"|translate}','{"delete="|set_query_html}&amp;delete=');">
+				<img src="./images_common/remove.gif" border="0" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	</tr>
+	{/foreach}
+	<tr class="gridsfooter">
+		<td colspan="3">&nbsp;</td>
+	</tr>
+
+	<tr class="gridsheader">
+		<td colspan="3" align="center">{"btn_add"|translate}</td>
+	</tr>
+	
+	<tr class="gridline">
+		<td>{html_text style="width:100%;" name="zone_name"}</td>
+		<td><input name="zone_code" size="6" /></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr class="gridsfooter">
+		<td colspan="3">
+		<br />
+		<input type="hidden" name="dpt" value="conf" />
+		<input type="hidden" name="sub" value="zones" />
+		<input type="hidden" name="save_zones" value="yes" />
+		<input type="submit" value="{"btn_save"|translate}" />
+		</td>
+	</tr>
+	
+</table>
+
+{else}
+	<p>
+	<b>{"msg_select_country_to_see_regions"|translate}</b>
+	</p>
+{/if}
+</form>

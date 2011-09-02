@@ -1,0 +1,35 @@
+{if $Lister.LastPage>1}
+	{if $Lister.CurrentPage>1}
+		&nbsp; <a class="listerhref" href ="{"page=`$Lister.CurrentPage-1`&show_all="|set_query_html}">&lt;&lt; {"str_previous"|translate}</a>
+	{/if}
+	{foreach from=$Lister.Range item=_page}
+		&nbsp; {if $_page!=$Lister.CurrentPage or $smarty.get.show_all}<a class="listerhref" href="{"page=`$_page`&show_all="|set_query_html}">{$_page}</a> {else}<span style="color:navy">{$_page}</span>{/if}
+	{/foreach}
+	{if $Lister.CurrentPage<$Lister.LastPage}
+		&nbsp; <a class="listerhref" href ="{"page=`$Lister.CurrentPage+1`&show_all="|set_query_html}">{"str_next"|translate} &gt;&gt;</a>
+	{/if}
+
+	{if $rows}&nbsp; |&nbsp; <form method="post" action="{''|set_query_html}" style="display: inline;">
+	{lbl_str_show_rows}: 
+	<select name="rows_num">
+	{foreach from=$rows item=_value key=_title}
+			<option value="{$_value|escape:'html'}" {if $rows_num eq $_value} selected{/if}>{$_title|escape:'html'}</option>
+	{/foreach}
+			<option value="show_all" {if $rows_show_all} selected{/if}>{lbl_str_all}</option>
+	</select>
+	<input type="submit" value="{'btn_apply'|transcape}" />
+</form>{/if}
+{else}
+{if $rows}
+<form method="post" action="{''|set_query_html}" style="display: inline;">
+	{lbl_str_show_rows}: 
+	<select name="rows_num">
+	{foreach from=$rows item=_value key=_title}
+			<option value="{$_value|escape:'html'}" {if $rows_num eq $_value} selected{/if}>{$_title|escape:'html'}</option>
+	{/foreach}
+			<option value="show_all" {if $rows_show_all} selected{/if}>{lbl_str_all}</option>
+	</select>
+	<input type="submit" value="{'btn_apply'|transcape}" />
+</form>
+{/if}
+{/if}

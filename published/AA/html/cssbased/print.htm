@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<script language="JavaScript" type="text/JavaScript">
+			function returnToCM()
+			{
+				location.href="usersandgroups.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>";
+			}
+
+			function processForm( formObj )
+			{
+				formObj = document.forms[0];
+
+				formObj.target="_blank";
+				formObj.submit();
+				returnToCM();
+			}
+
+			function cancelForm( formObj )
+			{
+				returnToCM();
+			}
+		</script>
+
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+
+					<? wbs_formContent ?>
+						<tr class="SeparatedRow">
+							<td><? wbs_label text=$kernelStrings.pcl_form_label ?></td>
+						</tr>
+						<tr>
+							<td class="Indent">
+
+								<table class="FormLayout">
+									<tr>
+										<td><input id="Mode1" type=radio <? wbs_checkboxStatus val=$printMode true_val=0 ?> name=printMode value=0/></td>
+										<td colspan="2"><? wbs_label for="Mode1" text=$kernelStrings.pul_selected_label|cat:" ("|cat:$showSelected|cat:")" skipColon=true ?></td>
+									</tr>
+									<tr>
+										<td><input id="Mode2" type=radio <? wbs_checkboxStatus val=$printMode true_val=1 ?> name=printMode value=1/></td>
+										<td>
+											<? if $objectType == 'searchresult' ?>
+												<? wbs_label for="Mode2" text=$kernelStrings.ecl_searchresult_label ?>
+											<? else ?>
+												<? wbs_label for="Mode2" text=$kernelStrings.ecl_group_label ?>
+											<? /if ?>
+										</td>
+										<td>
+											<? if $objectType != 'searchresult' ?>
+												<select class="FormControl" name="currentSrcId">
+													<? html_options values=$srcIds output=$srcNames selected=$currentSrcId ?>
+												</select>
+											<? /if ?>
+										</td>
+									</tr>
+									<tr>
+										<td><input id="Mode3" type=radio <? wbs_checkboxStatus val=$printMode true_val=2 ?>  name=printMode value=2/></td>
+										<td colspan="2"><? wbs_label for="Mode3" text=$kernelStrings.pul_entirelist_label skipColon=true ?></td>
+									</tr>
+								</table>
+
+							</td>
+						</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+							<? wbs_buttonSet ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.pcl_screen_print_btn name="savebtn" link ="javascript:processForm(this.form);" ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" link ="javascript:cancelForm(this.form);" ?>
+							<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_formLayout?>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+			<input type="hidden" name="action" value="<?$action?>"/>
+			<input type="hidden" name="selectedObj" value="<? $selectedObj ?>"/>
+			<input type="hidden" name="objType" value="<? $objType ?>"/>
+			<input type="hidden" name="doclist" value="<?$doclist?>"/>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

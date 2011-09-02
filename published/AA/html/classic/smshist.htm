@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+function focusControl(objName) {
+	var obj = MM_findObj(objName);
+	if (obj)
+		obj.focus( );
+}
+
+function MM_findObj(n, d) { //v4.01
+	var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="focusControl('<? if ( $invalidField=="todate") ?>todate<? else ?>fromdate<? /if ?>');">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<? include file="../../../common/html/classic/header.htm" ?>
+<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+<? if !$fatalError ?>
+
+	<? if !$smsDisabled ?>
+
+	<? if !$fileReady ?>
+
+		<h1><? if $systemUser != 1 ?><? $userName?> (<? $userID?>)<? /if ?></h1>
+
+		<table border=0 width=98%>
+		<tr>
+			<td colspan=2>
+
+	             <table>
+         	     <tr>
+                      <td>
+
+			<p><? $kernelStrings.sms_history_total_sent ?>: <b><? $totalNum ?></b>
+			<p>
+			<table cellspacing=0 cellpadding=0>
+			<tr><td>
+				<? $kernelStrings.sms_show_history_text|cat:":"?>
+				<br>
+				<table border=0>
+				<tr>
+				<td><input type=radio name=histtype value=1 <? switchedOutput str1="checked" str2="" val=$histtype true_val="1" ?>></td>
+				<td>
+					<? $kernelStrings.sms_period_last10day_text ?>
+				</td>
+				</tr>
+				<tr>
+				<td><input type=radio name=histtype value=2 <? switchedOutput str1="checked" str2="" val=$histtype true_val="2" ?>></td>
+				<td>
+				<? $kernelStrings.sms_history_from_date_label ?> : <input type=text style="width: 100px" class=control id="fromdate" name="fromdate" value="<? $fromdate ?>" maxlength="15" > <?include file="../../../common/html/classic/calendar.tpl"  style="margin-left: 2px" name="fromdate"?> <? $kernelStrings.sms_history_to_date_label ?> : <input type=text style="width: 100px" class=control name="todate" id="todate" value="<? $todate ?>" maxlength="15" > <?include file="../../../common/html/classic/calendar.tpl"  style="margin-left: 2px" name="todate"?>
+				</td>
+				</tr>
+				<tr>
+				<td><input type=radio name=histtype value=3 <? switchedOutput str1="checked" str2="" val=$histtype true_val="3" ?>></td>
+				<td>
+					<? $kernelStrings.sms_period_allhistory_text ?>
+				</td>
+				</tr>
+				</table>
+			</td></tr>
+			</table>
+			<br>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="histbtn" caption=$kernelStrings.sms_history_get_btn formname="form"?> <? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" space_left=5 ?>
+                   </td>
+                   </tr>
+                   </table>
+
+		<? if $showHist ?>
+
+			<br>
+			<? $kernelStrings.sms_sorted_by_date_text ?>
+			<table border="0" cellspacing="2" cellpadding="0" class="list" width=100%>
+			<tr>
+				<th align="left" width=12%><? $kernelStrings.sms_date_title ?></th>
+				<th align="left"><? $kernelStrings.sms_phone_title ?></th>
+				<th align="left"><? $kernelStrings.sms_width_title ?></th>
+				<th align="left"><? $kernelStrings.sms_app_title ?></th>
+				<th align="left"><? $kernelStrings.sms_charge_title ?></th>
+				<th align="left"><? $kernelStrings.sms_status_title ?></th>
+			</tr>
+			<? foreach from=$smsHist item=balance name=balanceLoop?>
+				<tr <? if ($smarty.foreach.balanceLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if ?>>
+					<td><a href="<? $balance.TEXT_URL ?>"><nobr><? $balance.SMSH_DATETIME ?></nobr></a></td>
+					<td><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_PHONE ?></a></td>
+					<td><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_WIDTH ?></a></td>
+					<td><a href="<? $balance.TEXT_URL ?>"><nobr><? $balance.SMSH_APP ?></nobr></a></td>
+					<td <? if $balance.SMSH_CHARGED != 1?>bgcolor=lightblue<? /if ?>><a href="<? $balance.TEXT_URL ?>"><? $balance.SMSH_CHARGE ?><? if $balance.SMSH_CHARGED != 1?>&nbsp;(R)<? /if ?></a></td>
+					<td <? if $balance.SMSH_CHARGED != 1?>bgcolor=lightblue<? /if ?>><a href="<? $balance.TEXT_URL ?>"><nobr><? $balance.SMSH_STATUS ?></nobr></a></td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td colspan=6 align=center><? $kernelStrings.sms_history_nosent_text ?></td>
+				</tr>
+
+			<? /foreach ?>
+
+			</table>
+			<? include file="../../../common/html/classic/tree_templates/tree_pages.htm" ?>
+			<br>
+			<b><? $kernelStrings.app_note_text ?> :</b> <? $kernelStrings.sms_open_sms_note ?>
+			</table>
+			<?* <br>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="backbtn" caption=$kernelStrings.app_back_btn formname="form" space_left=5 ?> *?>
+
+		<? else ?>
+		<? /if ?>
+
+			</td>
+		</tr>
+		</table>
+	<? else ?>
+		<p><? $kernelStrings.sms_download_label ?></p>
+		<p><b><a target="_blank" href="<? $link ?>"><? $kernelStrings.sms_download_link ?></a></b></p>
+		<? include file="../../../common/html/classic/button.htm" link="" align="left" name="cancel2btn" caption=$kernelStrings.app_cancel_btn formname="form"?>
+		<input type=hidden name="currentPage" value="<? $currentPage ?>">
+	<? /if ?>
+
+	<? else ?>
+			<? $kernelStrings.sms_screen_sms_disabled ?>
+	<? /if ?>
+<? else ?>
+<? /if ?>
+
+<input name="edited" type="hidden" id="edited" value="1">
+<input name="U_ID" type="hidden" id="U_ID" value="<? $U_ID ?>">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

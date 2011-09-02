@@ -1,0 +1,67 @@
+<? $numDocumentsLabel|cat:": "|cat:$numDocuments|cat:" " ?>
+<?if $showPageSelector ?>
+	<? count var=$pages assign=pageNum ?>
+
+	<? $kernelStrings.app_pages_text|cat:": " ?>
+
+		<? if $pageNum <= 10 ?>
+			<? foreach from=$pages item=page_item ?>
+				<? if $currentPage != $page_item[0] ?>
+					<a class=activelink href="javascript:void(0)" onClick="AjaxLoader.loadPage('<? $page_item[1] ?>')"><? $page_item[0] ?></a> 
+				<? else ?>
+					<? $page_item[0]|cat:" " ?>
+				<? /if ?>
+			<? /foreach ?>
+		<? else ?>
+			<? math equation="cnt-1" cnt=$pageNum assign=lastIndex ?>
+			<? math equation="cur-5" cur=$currentPage assign=startValue ?>
+			<? math equation="cur+4" cur=$currentPage assign=endValue ?>
+
+			<? if $startValue < 0 ?>
+				<? assign var=startValue value=0 ?>
+			<? /if ?>
+
+			<? if $endValue > $lastIndex ?>
+				<? assign var=endValue value=$lastIndex ?>
+			<? /if ?>
+
+			<? math equation="max - min" max=$endValue min=$startValue assign=diff ?>
+			<? if $diff < 10 ?>
+				<? math equation="10-diff" diff=$diff assign=correction ?>
+				<? if $startValue == 0 ?>
+					<? math equation="cur+correction-1" cur=$endValue correction=$correction assign=endValue ?>
+					<? if $endValue > $lastIndex ?>
+						<? assign var=endValue value=$lastIndex ?>
+					<? /if ?>
+				<? /if ?>
+				
+				<? if $endValue == $lastIndex ?>
+					<? math equation="cur-correction+1" cur=$startValue correction=$correction assign=startValue ?>
+					<? if $startValue < 0 ?>
+						<? assign var=startValue value=0 ?>
+					<? /if ?>
+				<? /if ?>
+			<? /if ?>
+
+			<? math equation="max - min + 1" max=$endValue min=$startValue assign=iterations ?>
+
+			<? if $startValue > 0 ?>
+				<a class=activelink onClick="AjaxLoader.loadPage(this.href); return false;" href="<? $pages[0][1] ?>"><nobr><? $pages[0][0]|cat:"..." ?></nobr></a> 
+			<? /if ?>
+
+			<? section name=pageIdx loop=$pages start=$startValue max=$iterations ?>
+				<? assign var=page_item value=$pages[pageIdx] ?>
+
+				<? if $currentPage != $page_item[0] ?>
+					<a class=activelink onClick="AjaxLoader.loadPage(this.href); return false;" href="<? $page_item[1] ?>"><? $page_item[0] ?></a> 
+				<? else ?>
+					<? $page_item[0]|cat:" " ?>
+				<? /if ?>
+			<? /section ?>
+		<? /if ?>
+
+		<? if $endValue < $lastIndex ?>
+				<a class=activelink onClick="AjaxLoader.loadPage(this.href); return false;" href="<? $pages[$lastIndex][1] ?>"><nobr><? "..."|cat:$pages[$lastIndex][0] ?></nobr></a> 
+		<? /if ?>
+
+<?/if?>

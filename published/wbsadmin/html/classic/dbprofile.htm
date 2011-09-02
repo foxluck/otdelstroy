@@ -1,0 +1,753 @@
+<!-- dbprofile.html -->
+<? strip ?>
+<div class="i-col-container">
+<div class="i-col70">
+<div style="padding-right: 20px;">
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="cform">
+	<? assign var="invalidFieldMarkup" value=' style="color: #FF0000;" ' ?>
+	<h2 class="page-title"><?if $multiDBKEY ?><a href="<?$smarty.const.PAGE_DB_DBLIST?>"><? $waStrings.dbl_page_names ?></a> &raquo; <?/if?><? $pageHeader ?></h2>
+
+		
+				<? if $action == "edit" ?>
+				<? if $hostData.DBSETTINGS.STATUS == "DELETED" ?>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="settings-table">
+					<tr>
+						<td>
+							<input type="submit" name="restorebtn" value="<? $waStrings.btn_restore ?>">
+							&nbsp; <input type="submit" name="removebtn" value="<? $waStrings.btn_remove ?>" onClick="return confirm( '<? $waStrings.dbmgm_query_fdelete ?>' )">
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+		<? /if ?>
+				<? /if ?>
+				<? if $errorStr ?>
+				<table cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<td width="1">&nbsp;</td>
+						<td<? $invalidFieldMarkup ?>>
+							<? $errorStr|nl2br ?>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+				</table>
+				<? /if ?>
+				<? if !$fatalError ?>
+				<? if !$profileCreated ?>
+				<? assign var="status" value=$hostData.DBSETTINGS.STATUS ?>
+				<table border="0" cellpadding="5" cellspacing="0" class="settings-table">
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td colspan="3" class="form-required-field"><? $waStrings.forms_req_fields ?></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<? /if ?>
+
+
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td><? $waStrings.dbmgm_gr1_opt1 ?>:</td>
+						<td colspan="2">
+							<? if $action == "new" ?>
+							<select name="hostData[DBSETTINGS][SQLSERVER]" class="control" onChange="this.form.submit()">
+								<? html_options values=$serverNames selected=$hostData.DBSETTINGS.SQLSERVER output=$serverNames ?>
+							</select>
+							<input type="hidden" value="<? $prevServerName ?>" name="prevServerName">
+							<? else ?>
+							<strong><? $hostData.DBSETTINGS.SQLSERVER ?></strong>
+							<input type="hidden" value="<? $hostData.DBSETTINGS.SQLSERVER ?>" name="hostData[DBSETTINGS][SQLSERVER]">
+							<? /if ?>
+							<input type=hidden name=hasAdminRights value=<? $hasAdminRights ?>>
+						</td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td colspan="3">&nbsp;</td>
+					</tr>
+
+					<? if $action == "new" ?>
+					<tr style="background-color: #eee;">
+						<td align="left" valign=top>
+							<? if $hasAdminRights ?>
+								<? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][CREATE_OPTION] text=$invalidFieldMarkup ?>
+							<? /if ?>
+							<? $waStrings.dbmgm_gr2_sel1 ?>:
+						</td>
+						<td colspan="2">
+							<!-- Show this option only if server has administrative rights -->
+							<? if $hasAdminRights ?>
+								<input type="radio" name="hostData[DB_CREATE_OPTIONS][CREATE_OPTION]" value="new"<? switchedOutput str1="checked" str2="" val=$hostData.DB_CREATE_OPTIONS.CREATE_OPTION true_val="new" ?>>
+							<? else ?>
+								<!-- Show notification otherwise -->
+								<? $waStrings.dbmgm_gr2_war1 ?>
+							<? /if ?>
+						</td>
+					</tr style="background-color: #eee;">
+					<? if $hasAdminRights ?>
+						<tr>
+							<td align="left">&nbsp;</td>
+							<td class="comment"><p class=comment><? $waStrings.dbmgm_gr2_desc1 ?></p>
+							<p class=comment><? $waStrings.dbmgm_gr2_desc2 ?>:</p></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="comment">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<!-- Database user name and password for create new option -->
+							<table cellpadding=0 cellspacing=2 border=0>
+								<tr>
+									<td<? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][DATABASE_USER_NEW]" text=$invalidFieldMarkup ?>><? $waStrings.dbmgm_gr2_username ?>:&nbsp;*&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][DATABASE_USER_NEW]" type="text" class="control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_USER_NEW ?>" style="width: 150px"></td>
+								</tr>
+								<tr>
+									<td<? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][PASSWORD_NEW]" text=$invalidFieldMarkup ?>><? $waStrings.dbmgm_gr2_pwd ?>:&nbsp;*&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][PASSWORD_NEW]" type="text" class="control" style="width: 150px" value="<? $hostData.DB_CREATE_OPTIONS.PASSWORD_NEW ?>"></td>
+								</tr>
+								<tr>
+									<td<? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][DATABASE_NEW]" text=$invalidFieldMarkup ?>>
+										<? $waStrings.dbmgm_gr2_dbname ?>:&nbsp;*&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][DATABASE_NEW]" type="text" class="control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_NEW ?>" style="width: 150px"></td>
+								</tr>
+								<tr>
+									<td class=comment>&nbsp;</td>
+									<td class=comment><? $waStrings.dbmgm_gr2_desc3 ?></td>
+
+								</tr>
+							</table>
+							</td>
+						</tr>
+					<? /if ?>
+					<tr style="background-color: #eee;">
+						<td colspan="3" class="comment">&nbsp;</td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[DB_CREATE_OPTIONS][CREATE_OPTION] text=$invalidFieldMarkup ?>>
+							<? $waStrings.dbmgm_gr2_sel2 ?>:</td>
+						<td colspan="2"><input type="radio" name="hostData[DB_CREATE_OPTIONS][CREATE_OPTION]" value="use" <? switchedOutput str1="checked" str2="" val=$hostData.DB_CREATE_OPTIONS.CREATE_OPTION true_val="use" ?>></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment">
+							<p class="comment"><? $waStrings.dbmgm_gr2_desc4 ?></p>
+							<p class="comment"><? $waStrings.dbmgm_gr2_desc5 ?>:</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="comment">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<!-- Database user name and password for use existing option -->
+							<table cellpadding=0 cellspacing=2 border=0>
+								<tr>
+									<td><? $waStrings.dbmgm_gr2_username ?>:&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][DATABASE_USER_EXISTING]" type="text" class="control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_USER_EXISTING ?>" ></td>
+								</tr>
+								<tr>
+									<td><? $waStrings.dbmgm_gr2_pwd ?>:&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][PASSWORD_EXISTING]" type="text" class="control"  value="<? $hostData.DB_CREATE_OPTIONS.PASSWORD_EXISTING ?>"></td>
+								</tr>
+								<tr>
+									<td<? conditionalOutput invalidField=$invalidField field="hostData[DB_CREATE_OPTIONS][DATABASE_EXISTING]" text=$invalidFieldMarkup ?>>
+										<? $waStrings.dbmgm_gr2_dbname ?>:&nbsp;*&nbsp;</td>
+									<td><input name="hostData[DB_CREATE_OPTIONS][DATABASE_EXISTING]" type="text" class="control" value="<? $hostData.DB_CREATE_OPTIONS.DATABASE_EXISTING ?>" ></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					
+					<? else ?>
+					
+					<!-- Modify database profile mode -->
+
+					<tr style="background-color: #eee;">
+						<td><? $waStrings.dbmgm_gr2_username ?>:</td>
+						<td colspan="2"><input name="hostData[DBSETTINGS][DB_USER]" type="text" class="control" value="<? $hostData.DBSETTINGS.DB_USER ?>" style="width: 50%">
+					</tr>
+					<tr style="background-color: #eee;">
+						<td><? $waStrings.dbmgm_gr2_pwd ?>:</td>
+						<td colspan="2"><input name="hostData[DBSETTINGS][DB_PASSWORD]" type="text" class="control" value="<? $hostData.DBSETTINGS.DB_PASSWORD ?>" style="width: 50%">
+					</tr>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td colspan=2 class=comment><? $waStrings.dbmgm_gr2_desc6 ?></td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td><? $waStrings.dbmgm_gr2_dbname ?>:</td>
+						<td colspan="2">
+							<input type="text" value="<? $hostData.DBSETTINGS.DB_NAME ?>" class="control" name="hostData[DBSETTINGS][DB_NAME]">
+						</td>
+					</tr>
+					<!-- NEW OPTION -->
+					<? if false&&!$hostData.DBSETTINGS.FIRSTLOGIN&&!$hostData.DBSETTINGS.CREATE_DATE&&($hostData.DBSETTINGS.DB_CREATE_OPTION eq "new"||$hasAdminRights) ?>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td>
+								<input id="use_new" type="radio" name="hostData[DBSETTINGS][DB_CREATE_OPTION]" value="new"<? switchedOutput str1="checked" str2="" val=$hostData.DBSETTINGS.DB_CREATE_OPTION true_val="new" ?>>
+						</td>
+						<td><label for="use_new"><?'dbmgm_gr2_sel1'|translate?></label></td>
+					</tr>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td>
+							<input id="use_exist" type="radio" name="hostData[DBSETTINGS][DB_CREATE_OPTION]" value="use" <? switchedOutput str1="checked" str2="" val=$hostData.DBSETTINGS.DB_CREATE_OPTION true_val="use" ?>>
+						</td>
+						<td><label for="use_exist"><?'dbmgm_gr2_sel2'|translate?></label></td>
+					</tr>
+					<? /if ?>
+					<tr style="background-color: #eee;">
+						<td>&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<? /if ?>
+					
+					
+					<tr>
+						<td colspan="3"><div class="formSection" ><? $waStrings.dbmgm_gr4_admin ?></div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td colspan="3" class="comment"><? $waStrings.dbmgm_gr4_desc5 ?></td>
+					</tr>
+					<?/if?>
+					<tr>
+						<td><? $waStrings.dbmgm_gr4_lang ?>:</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<select name="hostData[ADMINISTRATOR][LANGUAGE]" class="control">
+								<? html_options values=$language_ids selected=$hostData.ADMINISTRATOR.LANGUAGE output=$language_names ?>
+							</select>
+							<?else?>
+							<? assign var="adminLang" value=$hostData.ADMINISTRATOR.LANGUAGE ?>
+							<? $language_names_indexed.$adminLang ?>
+							<? /if ?>
+						</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[ADMINISTRATOR][PASSWORD1] text=$invalidFieldMarkup	?>>
+							<? $waStrings.49|translate ?>:&nbsp;*</td>
+						<td colspan="2">
+						<div style="padding: 5px 0 5px 0;"><strong>ADMINISTRATOR</strong></div>
+						</td>
+					</tr>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[ADMINISTRATOR][PASSWORD1] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr4_pwd ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+			<input name="hostData[ADMINISTRATOR][PASSWORD1]" type="text" class="control" size="18" maxlength="50" value="<? $hostData.ADMINISTRATOR.PASSWORD1 ?>" style="font-weight: bold;">
+			</td>
+					</tr>
+					<tr>
+			<td>&nbsp;</td>
+						<td colspan="2" class="comment"><? $waStrings.dbmgm_gr4_desc6 ?></td>
+			<? /if ?>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="3"><div class="formSection" ><? $waStrings.dbmgm_gr5_name ?></div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td colspan="3" class="comment"><? $waStrings.dbmgm_gr5_desc1 ?></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2"></td>
+					</tr>
+					<?/if?>
+					
+
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][LOGINNAME] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_login ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[FIRSTLOGIN][LOGINNAME]" type="text" class="control" style="font-weight: bold;" value="<? $hostData.FIRSTLOGIN.LOGINNAME|htmlsafe:true:true ?>" maxlength="20">
+							<?else?>
+							<? $hostData.FIRSTLOGIN.LOGINNAME|cat:"&nbsp;" ?>
+							<?/if?>
+						</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][PASSWORD1] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_pwd ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>><input name="hostData[FIRSTLOGIN][PASSWORD1]" type="text" class="control" style="font-weight: bold;" maxlength="50" value="<? $hostData.FIRSTLOGIN.PASSWORD1 ?>">
+			</td>
+					</tr>
+
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+
+
+					
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][EMAIL] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_email ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[FIRSTLOGIN][EMAIL]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.EMAIL|htmlsafe:true:true ?>" maxlength="50">
+							<?else?>
+							<? $hostData.FIRSTLOGIN.EMAIL|cat:"&nbsp;" ?>
+							<?/if?>
+						</td>
+					</tr>
+					
+
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][FIRSTNAME] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_firstname ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[FIRSTLOGIN][FIRSTNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.FIRSTNAME|htmlsafe:true:true ?>" maxlength="20">
+							<?else?>
+							<? $hostData.FIRSTLOGIN.FIRSTNAME|cat:"&nbsp;" ?>
+							<?/if?>
+						</td>
+					</tr>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][LASTNAME] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_lastname ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[FIRSTLOGIN][LASTNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.LASTNAME|htmlsafe:true:true ?>" maxlength="24">
+							<?else?>
+							<? $hostData.FIRSTLOGIN.LASTNAME|cat:"&nbsp;" ?>
+							<?/if?>
+						</td>
+					</tr>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[FIRSTLOGIN][COMPANYNAME] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr5_company ?>:&nbsp;*</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[FIRSTLOGIN][COMPANYNAME]" type="text" class="control" value="<? $hostData.FIRSTLOGIN.COMPANYNAME|htmlsafe:true:true ?>" maxlength="30">
+							<? else ?>
+							<? $hostData.FIRSTLOGIN.COMPANYNAME|cat:"&nbsp;" ?>
+							<? /if ?>
+						</td>
+					</tr>
+
+					<tr>
+			<td></td>
+						<td colspan="2" class="comment"><? $waStrings.dbmgm_gr5_desc2 ?></td>
+					<?/if?>
+					<tr>
+						<td colspan=3>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan=3><div class="formSection" ><? $waStrings.dbmgm_gr6_name ?></div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan=3 class="comment"></td>
+					</tr>
+					<tr>
+					<td>
+						<? if $status != "DELETED" ?>
+							<input type="checkbox" value="1" name="smsCheckbox" <? switchedOutput str1="checked" str2="" val=$smsEnabled true_val=1 ?> id="smsCheckbox"> <label for="smsCheckbox"><? $waStrings.dbmgm_gr6_opt1 ?></label>
+						<? /if ?>
+					</td>
+					</tr>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=smsModule text=$invalidFieldMarkup	?>>
+						<? $waStrings.dbmgm_gr6_opt2 ?>:
+						</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+<? if $smsCount != 0 ?>
+							<select name="smsModule" class="control">
+								<option label="<select>" value="">&lt;select&gt;</option>
+								<? foreach from=$smsModules item=mDefault key=mId ?>
+								<option label="<? $mId ?>" value="<? $mId ?>" <? if $mDefault == 1 ?>selected="selected"<? /if ?>><? $mId ?></option>
+								<? /foreach ?>
+							</select>
+<? else ?>
+							<b><? $waStrings.dbmgm_gr6_war1 ?></b> <input type="hidden" name="smsModule" value="">
+<? /if ?>
+							<?else?>
+								<? foreach from=$smsModules item=mDefault key=mId ?>
+									<? if $mDefault == 1 ?>
+										<? $mId ?>
+									<? /if ?>
+								<? /foreach ?>
+							<? /if ?>
+						</td>
+					</tr>
+					<tr>
+						<td><? $waStrings.dbmgm_gr6_optlim ?>:</td>
+						<td colspan="2" class="comment" >
+							<? if $status != "DELETED" ?>
+								<input name="hostData[DBSETTINGS][SMS_RECIPIENTS_LIMIT]" type="text" class="control" value="<? $hostData.DBSETTINGS.SMS_RECIPIENTS_LIMIT ?>" size="10">
+							<? else ?>
+							<? $hostData.DBSETTINGS.SMS_RECIPIENTS_LIMIT|cat:"&nbsp;" ?>
+							<? /if ?>
+							<? if $status != "DELETED" ?>
+								<input name="hostData[BALANCE][sms][VALUE]" type="hidden" value="<? $hostData.BALANCE.sms.VALUE ?>" size="10">
+							<? /if ?>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment" ><? $waStrings.dbmgm_gr6_desc1 ?></td>
+					</tr>
+
+<?*
+					<? if $action == "edit" ?>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan=2 class="comment">
+							<? if $status != "DELETED" && $firstLogin == 1  ?>
+							<input type="submit" name="smsquotebtn" value="<? $waStrings.dbmgm_btn_sms ?>">
+							<? /if ?>
+							<input type="hidden" name="hostData[DBSETTINGS][FIRSTLOGIN]" value="<? $firstLogin ?>">
+						</td>
+					</tr>
+					<? else ?>
+					<tr>
+						<td height="24"<? conditionalOutput invalidField=$invalidField field=hostData[BALANCE][sms] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr6_opt3 ?>:</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<input name="hostData[BALANCE][sms]" type="text" class="control" style="width: 50%" value="<? $hostData.BALANCE.sms|htmlsafe:true:true ?>" maxlength="10">
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan=2 class="comment"><? $waStrings.dbmgm_gr6_desc2 ?></td>
+					</tr>
+					<? /if ?>
+*?>
+					<tr>
+						<td colspan=3>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan=3><div class="formSection" ><? $waStrings.dbmgm_gr7_name ?></div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+
+					</tr>
+					<? if $status != "DELETED"&&$action == "new"  ?>
+					<tr>
+						<td colspan=3 class="comment"><? $waStrings.dbmgm_gr7_desc1 ?></td>
+					</tr>
+					<? /if ?>
+					<tr>
+						<td colspan=3> <table border="0" cellspacing="2" cellpadding="0">
+								<? foreach from=$app_data item=var key=app_id?>
+								<? if $status != "DELETED" ?>
+								<tr>
+									<? if $status != "DELETED"&&($action == "new"||!$var.CHECKED||$multiDBKEY ) ?>
+										<td>
+											<input type="checkbox" value="1" id="app_<?$app_id?>" 
+												onClick="appSelected(this, new Array( <? $var.PARENTS_JS ?> ), new Array( <? $var.DEPENDENT_JS ?> ) )"	name="app_list[<? $app_id ?>]" <? switchedOutput str1="checked" str2="" val=$var.CHECKED true_val=1 ?>>
+										</td>
+									<?elseif $status != "DELETED"?>
+									<td>
+											<input type="hidden" value="1" name="app_list[<? $app_id ?>]">
+											<img src="../../../common/html/classic/images/checked.gif">
+										</td>
+									<? /if ?>
+									<td>
+										<label for="app_<?$app_id?>"><? $var.APPLICATION.LOCAL_NAME ?></label>
+									</td>
+								</tr>
+								<? /if ?>
+								<? /foreach ?>
+							</table></td>
+					</tr>
+					<tr>
+						<td colspan=3>&nbsp;</td>
+					</tr>
+					
+					<!--  -->
+					
+					<tr>
+						<td colspan="3"><div class="formSection"><? $waStrings.dbmgm_gr3_name ?></div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<? if $action == "new" ?>
+					<tr>
+						<td width="78"<? conditionalOutput invalidField=$invalidField field=hostData[DBSETTINGS][DB_KEY] text=$invalidFieldMarkup ?>>
+							<? $waStrings.dbmgm_gr3_dbkey ?>:</td>
+						<td width="242" colspan="2"><input name="hostData[DBSETTINGS][DB_KEY]" type="text" class="control" value="<? $hostData.DBSETTINGS.DB_KEY ?>" size="10" maxlength="12"></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment"><p class="comment"><? $waStrings.dbmgm_gr3_alias ?></p>
+
+						<p class="comment"><b>NOTE</b>: <? $waStrings.dbmgm_gr3_desc1 ?></p>
+			 </td>
+					</tr>
+					<? /if ?>
+					<? if $multiDBKEY ?>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[DBSETTINGS][EXPIRE_DATE] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr3_expdate ?>: </td>
+						<td colspan="2" valign="middle" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[DBSETTINGS][EXPIRE_DATE]" type="text" class="control" value="<? $hostData.DBSETTINGS.EXPIRE_DATE ?>" size="10">
+							&nbsp;<span class="comment">(MM/DD/YYYY)</span>
+							<? else ?>
+							<? $hostData.DBSETTINGS.EXPIRE_DATE|cat:"&nbsp;" ?>
+							<?/if?>
+						</td>
+					</tr>
+					
+					
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment"><? $waStrings.dbmgm_gr3_desc2 ?></td>
+					</tr>
+					<? if $action == "edit"&&$multiDBKEY ?>
+					<tr>
+						<td><? $waStrings.dbmgm_gr3_ro ?>:</td>
+						<td colspan="2">
+							<? if $status != "DELETED" ?>
+							<input name="hostData[DBSETTINGS][READONLY]" type="checkbox" value="1" <? switchedOutput val=$hostData.DBSETTINGS.READONLY true_val=1 str1="checked" ?>>
+							<? elseif $hostData.DBSETTINGS.READONLY ?>
+							<img src="../../../common/html/classic/images/checked.gif">
+							<? /if ?>
+						</td>
+					</tr>
+					<? /if ?>
+					
+					<?else?>
+					<input name="hostData[DBSETTINGS][READONLY]" type="hidden" value="<?$hostData.DBSETTINGS.READONLY?>">
+					<input name="hostData[DBSETTINGS][EXPIRE_DATE]" type="hidden" value="<? $hostData.DBSETTINGS.EXPIRE_DATE ?>">
+					<? /if ?>
+					
+					
+					
+					
+					<?if false?>
+					
+					<tr>
+						<td><? $waStrings.dbmgm_gr3_userlimit ?>:</td>
+						<td colspan="2" class="comment" >
+							<? if $status != "DELETED" ?>
+							<input name="hostData[DBSETTINGS][MAX_USER_COUNT]" type="text" class="control" value="<? $hostData.DBSETTINGS.MAX_USER_COUNT ?>" size="10">
+							<? else ?>
+							<? $hostData.DBSETTINGS.MAX_USER_COUNT|cat:"&nbsp;" ?>
+							<? /if ?>
+						</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment" ><? $waStrings.dbmgm_gr3_usertotallimit ?></td>
+					</tr>
+					<? /if?>
+					<tr>
+						<td<? conditionalOutput invalidField=$invalidField field=hostData[DBSETTINGS][DBSIZE_LIMIT] text=$invalidFieldMarkup	?>>
+							<? $waStrings.dbmgm_gr3_dblimit ?>:</td>
+						<td colspan="2" <? if $status == "DELETED" ?>class="readonlyControl"<?/if?>>
+							<? if $status != "DELETED" ?>
+							<input name="hostData[DBSETTINGS][DBSIZE_LIMIT]" type="text" class="control" value="<? $hostData.DBSETTINGS.DBSIZE_LIMIT ?>" size="10">
+							<? else ?>
+							<? $hostData.DBSETTINGS.DBSIZE_LIMIT|cat:"&nbsp;" ?>
+							<? /if ?>
+							</td>
+					</tr>
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment" ><? $waStrings.dbmgm_gr3_desc3 ?></td>
+					</tr>
+					<tr>
+						<td colspan=3>&nbsp;
+						</td>
+					</tr>
+					<?/if?>
+					
+					<?else?>
+					<tr><td colspan=3>&nbsp;
+					<input name="hostData[DBSETTINGS][DBSIZE_LIMIT]" type="hidden" value="<? $hostData.DBSETTINGS.DBSIZE_LIMIT ?>">
+					<input name="hostData[DBSETTINGS][MAX_USER_COUNT]" type="hidden" value="<? $hostData.DBSETTINGS.MAX_USER_COUNT ?>">
+					<?/if?>
+					</td></tr>
+					
+					
+					<? if $status != "DELETED" ?>
+					<tr>
+						<td><? $waStrings.dbmgm_gr3_dformat ?>:</td>
+						<td colspan="2" class="comment" ><select name="hostData[DBSETTINGS][DATE_FORMAT]" class="control">
+								<? html_options values=$dateFormat_ids selected=$hostData.DBSETTINGS.DATE_FORMAT output=$dateFormat_names ?>
+							</select></td>
+					</tr>
+					
+
+					<tr>
+						<td><? $waStrings.dbmgm_gr3_reclimit ?>:</td>
+						<td colspan="2" class="comment" >
+							<? if $status != "DELETED" ?>
+								<input name="hostData[DBSETTINGS][RECIPIENTS_LIMIT]" type="text" class="control" value="<? $hostData.DBSETTINGS.RECIPIENTS_LIMIT ?>" size="10">
+							<? else ?>
+							<? $hostData.DBSETTINGS.RECIPIENTS_LIMIT|cat:"&nbsp;" ?>
+							<? /if ?>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment" ><? $waStrings.dbmgm_gr3_reclimbatch ?></td>
+					</tr>
+
+					<tr>
+						<td><? $waStrings.dbmgm_gr3_defencoding ?>: </td>
+						<td colspan="2" class="comment" >
+							<? if $status != "DELETED" ?>
+								<input name="hostData[DBSETTINGS][DEFAULT_ENCODING]" type="text" class="control" value="<? $hostData.DBSETTINGS.DEFAULT_ENCODING ?>" size="10">
+							<? else ?>
+							<? $hostData.DBSETTINGS.DEFAULT_ENCODING|cat:"&nbsp;" ?>
+							<? /if ?>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2" class="comment" ><? $waStrings.dbmgm_gr3_desc4 ?></td>
+					</tr>
+
+					<?/if?>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+					</tr>
+					<!--   -->
+					<tr>
+						<td colspan=2>
+							<? if $status == "DELETED" ?>
+							<input type="submit" name="cancelbtn" value="<? $waStrings.btn_ok ?>">
+							<? else ?>
+							<input type="submit" name="savebtn" value="<? $buttonCaption ?>">
+							<? /if ?>
+				
+						</td>
+						<td align="right">
+							<? if $hostData.DBSETTINGS.STATUS != "DELETED" and $action != "new" ?>
+							<input type="submit" name="deletebtn" value="<? $waStrings.btn_del_db ?>" onClick="return confirm( '<? $waStrings.dbmgm_query_delete ?>' )">
+							<? /if ?>
+						</td>
+					</tr>
+					
+				</table>
+				<? else ?>
+				<p><? $waStrings.dbmgm_lbl_succes1 ?><b>
+					<? " "|cat:$DB_KEY|cat:" " ?>
+					</b><? $waStrings.dbmgm_lbl_succes2 ?></p>
+				<p><? $waStrings.dbmgm_lbl_link ?>: <a href="#" name=loginURL target="_blank"><script type="text/javascript">makeLinkURL( 4, '<? $loginURL ?>', 'loginURL', true );</script></a></p>
+				<p>
+					<input type="submit" name="cancelbtn" value="<? $waStrings.btn_ok ?>">
+				</p>
+					<? /if ?>
+				<p>
+		<? else ?>
+
+			<? if !$noServerFound ?>
+				<input type="submit" name="cancelbtn" value="<? $waStrings.btn_ok ?>">
+				
+			<? else ?>
+			
+			
+			
+				<? if $action == "edit" ?>
+					<p><? $noServerMessage ?></p>
+					<p style="width: 500px"><? $recoverMessage|htmlsafe:true:true ?></p>
+					<table cellspacing=0 cellpadding=0 border="1" class="settings-table">
+						<tr>
+							<td><input type="submit" name="cancelbtn" value="<? $waStrings.dbmgm_nav_ret ?>"></td>
+							<td align=right>
+								<? if $hostData.DBSETTINGS.STATUS != "DELETED" and $action != "new" ?>
+									<input type="submit" name="removeprofilebtn" value="<? $waStrings.btn_del_db ?>" onClick="return confirm( '<? $waStrings.dbmgm_query_fdelete ?>' )">
+								<? /if ?>
+							</td>
+						</tr>
+					</table>
+				<? else ?>
+					<p><? $waStrings.dbmgm_lbl_war ?></p>
+					<input type="submit" name="cancelbtn" value="<? $waStrings.dbmgm_nav_ret ?>">
+				<? /if ?>
+				<input type=hidden name=noServerFound value=1>
+				<input type=hidden name=noServerMessage value="<? $noServerMessage ?>">
+			<? /if ?>
+		<? /if ?>
+				<input name="sorting" type="hidden" value="<? $sorting ?>"> <input name="edited" type="hidden" value="1">
+				<input name="action" type="hidden" value="<? $action ?>">
+		<? if $action == "edit" ?>
+			<input name="DB_KEY" type="hidden" value="<? $DB_KEY ?>">
+		<? /if ?>
+				<? if $status == "DELETED" ?>
+					<input name="deleted" type="hidden" value="1">
+				<?/if?>
+		</p>
+		
+	<input name="hostData[DBSETTINGS][IP_ADDRESS]" type="hidden" value="">
+	</form>
+	</div>
+	</div>
+	<div class="i-col30">
+	
+	<? if $action == "edit" && $logRecords ?>
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+					<td class="pageHeader" colspan="3"><? $waStrings.dbmgm_lbl_history ?></td>
+					</tr>
+					<? foreach from=$logRecords item=logRecord ?>
+						<tr style="padding-bottom: 5px">
+							<td class="accountHistoryCell"><? if $logRecord.ROW_URL ?><a href="<? $logRecord.ROW_URL ?>"><? $logRecord.DATETIME ?></a><?else?><? $logRecord.DATETIME ?><? /if ?></td>
+							<td class="accountHistoryCell"><? if $logRecord.ROW_URL ?><a href="<? $logRecord.ROW_URL ?>"><? $logRecord.TYPE ?></a><?else?><? $logRecord.TYPE ?><? /if ?></td>
+							<td class="accountHistoryCell"><? if $logRecord.ROW_URL ?><a href="<? $logRecord.ROW_URL ?>"><? $logRecord.IP ?></a><?else?><? $logRecord.IP ?><? /if ?></td>
+						</tr>
+					<? /foreach ?>
+				</table>
+		<? /if ?>
+	</div>
+	
+	</div>
+<? /strip ?>
+<script language="JavaScript" type="text/javascript">
+function onLoad(){
+if(focusControl('<?$invalidField?>')) return;
+<?if $action == "new" ?>
+if(focusControl('hostData[DBSETTINGS][SQLSERVER]'))return;
+<?/if?>
+focusControl('hostData[DBSETTINGS][DB_USER]');
+};
+
+onLoad();
+</script>
+<!-- /dbprofile.html -->

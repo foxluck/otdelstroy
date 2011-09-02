@@ -1,0 +1,45 @@
+<h1>{lbl_pmnt_to_list}</h1>
+
+<p>{lbl_pmnt_page_description}</p>
+
+{$MessageBlock}
+
+{if $payment_methods}
+<form action="{''|set_query_html}" class="ajaxform" method="post" enctype="multipart/form-data">
+<input name="action" value="save_order" type="hidden" />
+
+<table cellpadding="0" cellspacing="0" id="tbl-payment-methods" class="grid">
+<tr class="gridsheader">
+	<td>{'enabled'|translate}</td>
+	<td>{'str_name'|translate}</td>
+	<td>&nbsp;</td>
+	<td>{'btn_delete'|translate}</td>
+</tr>
+{foreach from=$payment_methods item=_method name=_fe}
+<tbody class="dragable">
+<tr>
+	<td class="handle" align="center">
+		<input {if $_method.Enabled}checked="checked"{/if} type="checkbox" disabled="disabled" />
+	</td>
+	<td class="handle">
+	{$_method.Name}
+	<input type="hidden" class="field_priority" name="priority_{$_method.PID}" value="{$smarty.foreach._fe.index}" />
+	</td>
+	<td>
+		<a href='{"action=edit_method&pid=`$_method.PID`"|set_query_html}'>{'btn_edit'|translate}</a>
+	</td>
+	<td align="center">
+		<a href='{"action=delete_method&pid=`$_method.PID`"|set_query_html}' class="confirm_action" title="{'cnfrm_areyousure'|transcape}"><img align="middle" alt="{'btn_delete'|transcape}" src="images_common/remove.gif" border="0" /></a>
+	</td>
+</tr>
+</tbody>
+{/foreach}
+</table>
+
+</form>
+
+{include file="backend/sortable_table.html" table_id="tbl-payment-methods"}
+
+{/if}
+
+<input value="{'pmnt_add_method'|transcape}" onclick="document.location.href='{"action=add_method"|set_query_html}'" type="button" />

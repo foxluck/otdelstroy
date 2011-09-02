@@ -1,0 +1,37 @@
+<!-- <div style="overflow: auto; width: 100%; height: 100%" id="scroller_left"> -->
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+		<tr valign=top>
+			<td>
+
+				<? compare_str assign=is_current arg1=$selectedGroup arg2="AVAILABLEFOLDERS" ?>
+				<div>
+						<table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td valign="top" class="treeCatalogRow"><nobr><img class="treeImage" border="0" src="../../../common/html/classic/images/user-group.gif" width="16" height="16">&nbsp;</td>
+								<td class="<?if $is_current != 0 ?>treeCatalogRow<?else?>treeCatalogRowCurrent<?/if?>"><? conditionalLink href=$groupsSummaryUrl text=$kernelStrings.ul_availablegroups_title ?></nobr></td>
+							</tr>
+						</table>
+				</div>
+
+				<? foreach from=$groups key=UG_ID item=groupData ?>
+						<? compare_str assign=is_current arg1=$selectedGroup arg2=$UG_ID ?>
+
+						<? assign var=spanClass value="" ?>
+						<? if ($UG_ID == -3 || $UG_ID == -2 || $UG_ID == -1) && $is_current != 0 ?>
+							<? assign var=spanClass value="systemGroup" ?>
+						<? /if ?>
+
+						<div style="padding-left: 10px;">
+								<table cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td valign="top" class="treeCatalogRow"><img class="treeImage" border="0" src="../../../common/html/classic/images/user-group.gif" width="16" height="16">&nbsp;</td>
+										<td class="<?if $is_current != 0 ?>treeCatalogRow<?else?>treeCatalogRowCurrent<?/if?>"><span class="<? $spanClass ?>"><? conditionalLink href=$groupData.groupURL text=$groupData.UG_NAME|htmlsafe:true:true ?></span></td>
+									</tr>
+								</table>
+						</div>
+				<? /foreach ?>
+
+			<td>
+		</tr>
+	</table>
+<!-- </div> -->

@@ -1,0 +1,163 @@
+.cpt_container div.cpt_wrapper{
+	border: 2px red dashed;
+	margin:-2px;
+	overflow:hidden;
+	zoom:1;
+}
+.ssTmpContainer div.cpt_wrapper, #ssDragHelper div.cpt_wrapper{
+	border: 0px;
+	margin:0px;
+}
+div.cpt_wrapper div.cpt_wrapper{
+	margin: 0px!important;
+	border: none!important;
+}
+td.cpt_container{
+	border: 1px #999999 dotted;
+	padding: 3px;
+	margin:-1px;
+	height: 50px;
+	empty-cells:show;
+	vertical-align:top;
+}
+td.cpt_container td.cpt_container, #ssDragHelper td.cpt_container{
+	border: none!important;
+	padding: 0px!important;
+	margin:0px!important;
+}
+
+#ssDragHelper, .ssTmpContainer .cpt_wrapper{
+	background-color: white;
+	max-width: 200px;
+	width:expression((document.documentElement.clientWidth || document.body.clientWidth) > 200? "200px":"auto" );
+	max-height: 200px;
+	height:expression(this.scrollHeight > 200? "200px":"auto" );
+	overflow: hidden;
+}
+.ssTmpContainer .cpt_wrapper{
+	border: 2px #ffa500 solid!important;
+}
+
+.ssAddComponentHndl{
+	display: block;
+}
+
+#cpt-constructor-right-panel *{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 9pt!important;
+}
+#cpt-constructor-right-panel{
+	vertical-align: top;
+	width: 170px;
+	padding: 10px;
+	background-color: #FFFFFF;
+	border: 0px solid #000000;
+	border-left-width: 1px;
+	color: #444;
+	z-index: 9999;
+}
+
+#cpt-constructor-right-panel a{
+ color: #597380;
+ font-weight: normal;
+}
+
+#components-list{
+ padding: 0px;
+ margin: 0px;
+ margin-left: 10px;
+ list-style-type:none;
+}
+
+#component-list li{
+ padding: 0px;
+ margin: 0px;
+ margin-top: 5px;
+ margin-bottom: 5px;
+}
+
+#lsettings-mod-block{
+	display:none;
+}
+
+#ssDragHelper{
+	border: 2px #ffa500 solid;
+	-moz-opacity:.75 !important;opacity:.75 !important; filter:alpha(opacity=75);
+}
+/*
+#ssDragHelper .cpt_shield{
+	background-color: yellow;
+	-moz-opacity:.60 !important;opacity:.60 !important; filter:alpha(opacity=60);
+}
+*/
+.cpt_shield{
+	background-color: white;
+	-moz-opacity:.01 !important;opacity:.01 !important; filter:alpha(opacity=01);
+}
+#dnd-dblckick-tooltip{
+	background-color: #fafae7;
+	color: #000000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 9pt!important;
+	-moz-opacity:.80 !important;opacity:.80 !important; filter:alpha(opacity=80);
+	padding: 5px 10px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+
+#ssTrashBin{
+	height: 100px;
+	color: #999;
+	vertical-align:middle;
+	text-align: center;
+	overwlow: hidden;
+}
+
+.drophackobject{
+	height: 50px;
+	background: #fafae7;
+	border-color: #ffa500!important;
+}
+
+.wnd_init{
+	visibility: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 100;
+	border: #000000 solid 0px;
+	background-color: white;
+	padding: 0px;
+}
+
+.success_block{
+	font-weight: bold;
+	border: 0px solid #26B273;
+	border-width: 1px 0px 1px 0px;
+	color: black;
+	background-color: #D1F7CF;
+	padding:10px;
+	margin: 10px;
+	background-color: #D1F7CF;
+}
+
+.error_block{
+	font-weight: bold;
+	border: 0px solid #C75A5A;
+	border-width: 1px 0px 1px 0px;
+	background-color: #F7CFCF;
+	padding:10px;
+	margin: 10px;
+	color: black;
+}
+#wnd-msg-block{
+	border-width: 1px;
+	margin: 0px;
+	padding:20px;
+}
+.cpt_product_images{
+display: block!important;
+float: none!important;
+}

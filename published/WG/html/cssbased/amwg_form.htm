@@ -1,0 +1,80 @@
+<table class="FormLayout Wrap">	
+
+<? foreach from=$fieldsData item=field key=fieldName ?>
+	<? assign var=fieldValue value=$fields.$fieldName|default:$itemData.params.$fieldName ?>
+	<? if (!in_array($fieldName, array_keys($itemData.params))) && !$fieldValue ?>
+		<? assign var=fieldValue value=$field.default ?>
+	<? /if ?>
+	
+	<? if strtolower($field.type) != "subtype" && $field.place == $place ?>
+		<tr class="SeparatedRow" id='<? $fieldName ?>FieldTr'>
+			<? assign var=labelName value="field_"|cat:$fieldName|cat:"_label"|lower ?>
+			<? assign var=commentName value="field_"|cat:$fieldName|cat:"_comment"|lower ?>
+			<td nowrap style='padding-right: 10px'>
+				<? wbs_label for=$fieldName fieldName=$fieldName text=$widgetStrings.$labelName ?>
+				<? if false && $widgetStrings.$commentName ?>
+					[<a href='javascript:showHideComment("<? $fieldName ?>");'>?</a>]
+					<div class='CommentBlock' id='<? $fieldName ?>Comment'>
+						<div class='Caption'><div class='CloseButton' onClick='showHideComment("<? $fieldName ?>");'>x</div><? $widgetStrings.$labelName ?></div>
+						<div class='Text'><? $widgetStrings.$commentName ?></div>
+					</div>
+				<? /if ?>			
+			</td>
+			<td>
+				<? include file="fields/"|cat:$field.type|cat:".htm" preview=true ?>
+				
+				<? assign var=descName value="field_"|cat:$fieldName|cat:"_desc"|lower ?>
+				<? if $widgetStrings.$descName ?>
+					<div style='font-size: 0.8em'><? $widgetStrings.$descName ?></div>
+				<? /if ?>
+				
+				<? if $field.subfields ?>
+					<!--a id='<? $fieldName ?>SubfieldsLink' href='javascript:showHideSubfields("<? $fieldName ?>");'><? $wgStrings.amwg_showproperties_label ?></a-->
+					<div id='<? $fieldName ?>Subfields'>
+					<? foreach from=$field.subfields item=subfield key=subfieldName ?>
+						<? assign var=sublabelName value="field_"|cat:$fieldName|cat:$subfieldName|cat:"_label"|lower ?>
+						<BR>
+						<? $widgetStrings.$sublabelName ?>
+						<BR>
+						<? assign var=subfieldFieldName value=$fieldName|cat:"_"|cat:$subfieldName ?>
+						<? assign var=fieldValue value=$fields.$subfieldFieldName|default:$itemData.params.$subfieldFieldName ?>
+						<? if $params.action == ACTION_NEW && !$fieldValue ?>
+							<? assign var=fieldValue value=$subfield.default ?>
+						<? /if ?>
+						<? include file="fields/"|cat:$subfield.type|cat:".htm" preview=true fieldName=$subfieldFieldName ?>		
+					<? /foreach ?>
+					</div>
+				<? /if ?>
+			</td>
+		</tr>
+	<? elseif strtolower($field.type) == "subtype" && $field.file && $field.place == $place ?>
+		<? include file=$widgetHTMLPath|cat:$field.file ?>
+	<? /if ?>
+<? /foreach ?>
+
+
+<? if $place=="general" ?>
+	<tr class="SeparatedRow">
+		<td nowrap width="90"><? wbs_label for=$fieldName fieldName=$fieldName text=$wgStrings.amwg_wgdesc_label ?></td>
+		<td>
+			<input type='text' id="WG_DESC" class="FormControl" name="fields[WG_DESC]" style='width: 300px' value="<? $fields.WG_DESC|default:$itemData.WG_DESC|escape ?>">
+		</td>
+	</tr>
+	<!-- Language -->
+	<tr class="SeparatedRow">
+		<td><? $wgStrings.amwg_wglang_label ?>:</td>
+		<td>
+			<select onChange='fieldChanged("WG_LANG", this.value);' name="fields[WG_LANG]" class="FormControl" id="language">
+				<? foreach from=$WBS_LANGUAGES item=lang ?>
+					<option <? if $lang.ID==$selectedLang ?>selected<? /if ?> value='<? $lang.ID ?>'><? $lang.NAME ?>
+				<? /foreach ?>
+			</select>
+			
+			<? assign var=descName value="field_wglang_desc"|lower ?>
+			<? if $widgetStrings ?>
+				<div style='font-size: 0.8em'><? $widgetStrings.$descName ?></div>
+			<? /if ?>
+		</td>
+	</tr>
+<? /if ?>
+</table>

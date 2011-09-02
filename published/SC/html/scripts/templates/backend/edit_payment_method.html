@@ -1,0 +1,95 @@
+<h1 class="breadcrumbs">
+	<a href="{'?did='|set_query_html}">{lbl_pmnt_to_list}</a>
+	&raquo;
+	{'pmnt_edit_method'|translate}{if $payment_method.Name}: {$payment_method.Name|escape:'html'}{/if}
+</h1>
+
+{$MessageBlock}
+
+<form action='{""|set_query_html}' method="post" enctype="multipart/form-data">
+<input name="action" value="save_method" type="hidden" />
+<input name="pid" value="{$PID}" type="hidden" />
+
+<table cellspacing="0" cellpadding="5" style="table-layout:fixed;">
+<tr>
+	<td width="250">{'enabled'|translate}:</td>
+	<td>
+		<input type="checkbox" name="Enabled" {if $payment_method.Enabled} checked{/if} value="1" />
+	</td>
+</tr>
+<tr>
+	<td width="250">{"str_name"|translate}:</td>
+	<td>
+		{html_text name="Name" values=$payment_method style="width:250px;"}
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2">{"str_description"|translate}:
+		<br />
+		{html_textarea rows="2" cols="30" name="description" values=$payment_method style="width:510px"}
+	</td>
+</tr>
+<tr>
+	<td width="250" valign="top">{"mdl_shipping_methods_are_allowed"|translate}:</td>
+	<td>
+		{foreach from=$payment_method.ShippingMethodsToAllow item=_method}
+		<div>
+			<input type="checkbox" name='ShippingMethodsToAllow_{$_method.SID}'
+				{if $_method.allow == 1} checked{/if} id="shm-{$_method.SID}" value="1" />
+				<label for="shm-{$_method.SID}">{$_method.name}</label>
+		</div>
+		{/foreach}
+	</td>
+</tr>
+<tr>
+	<td width="250">{"pmnt_calctax_for_this_payment_type"|translate}:</td>
+	<td>
+		<input type="checkbox" name="calculate_tax" value="1" {if $payment_method.calculate_tax} checked{/if} />
+	</td>
+</tr>
+<tr>
+	<td colspan="2">{"pmnt_email_comments_text"|translate}:
+		<br />
+		{html_textarea rows="2" cols="30" name="email_comments_text" values=$payment_method style="width:510px;"}
+	</td>
+</tr>
+<tr>
+	<td valign="top" width="250">{"str_logo"|translate}:</td>
+	<td>
+		<input type="text" name="logo" value="{$payment_method.logo|escape:'html'}" style="width:250px;"/>
+		{if $payment_method.logo}<br/><img src="{$payment_method.logo|escape:'html'}" alt="" />{/if}
+	</td>
+</tr>
+
+{if $settings}
+<tr>
+	<td colspan="2">
+	<br />
+	<strong>{'pmnt_module_settings'|translate|replace:'%MODULE_NAME%':$moduleEntry->title}</strong>
+	{if $moduleEntry->description}<p>{$moduleEntry->description}</p>{/if}
+	</td>
+</tr>
+
+{section name=i loop=$settings}
+<tr> 
+	<td width="250" valign="top">{$settings[i].settings_title}:
+		<div class="notice">{$settings[i].settings_description}</div>
+	</td>
+	<td valign="top">
+		{$controls[i]}
+	</td>
+</tr>
+{/section}
+{/if}
+
+<tr>
+	<td colspan="2">
+		<input value="{'btn_save'|transcape}" type="submit" />
+		<input value="{'btn_cancel'|transcape}" type="button" onclick="document.location.href = '{'?did='|set_query_html}';" />
+	</td>
+</tr>
+
+</table>
+
+</form>

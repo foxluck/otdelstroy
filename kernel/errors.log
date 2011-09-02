@@ -1,0 +1,572 @@
+
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/firststep.php
+exception 'Exception' with message 'Имя и фамилия должны начинаться с латинской буквы' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('?????? ?? ?????...', 2010, 16, 'handlePEARError', 'LASTNAME')
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5371): PEAR::raiseError('?????? ?? ?????...', 2010, 16, 'handlePEARError', 'LASTNAME')
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5460): checkFormProfileData('new', Array, Array, Array, Array, Array, 1, true, NULL)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/firststep.php(364): addModDBProfile('new', NULL, Array, Array, Array, Array, Array, 1, Array, NULL, NULL, true)
+#6 {main}
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/firststep.php
+exception 'Exception' with message 'Имя и фамилия должны начинаться с латинской буквы' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('?????? ?? ?????...', 2010, 16, 'handlePEARError', 'LASTNAME')
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5371): PEAR::raiseError('?????? ?? ?????...', 2010, 16, 'handlePEARError', 'LASTNAME')
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5460): checkFormProfileData('new', Array, Array, Array, Array, Array, 1, true, NULL)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/firststep.php(364): addModDBProfile('new', NULL, Array, Array, Array, Array, Array, 1, Array, NULL, NULL, true)
+#6 {main}
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/firststep.php
+exception 'Exception' with message 'Invalid symbols' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('Invalid symbols', 1001, 16, 'handlePEARError', 'COMPANYNAME')
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(1936): PEAR::raiseError('Invalid symbols', 1001, 16, 'handlePEARError', 'COMPANYNAME')
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5382): checkFieldInvalidSymbols(Array, Array, '0123456789_-.ab...')
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php(5460): checkFormProfileData('new', Array, Array, Array, Array, Array, 0, true, NULL)
+#6 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/firststep.php(364): addModDBProfile('new', NULL, Array, Array, Array, Array, Array, 0, Array, NULL, NULL, true)
+#7 {main}
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/setup.php?section=dbprofile
+exception 'Exception' with message 'SMS module is not installed or disabled.' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('SMS module is n...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/modules.php(299): PEAR->raiseError('SMS module is n...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/dbprofile.php(153): wbsModulesClass->getDefaultModule()
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/setup.php(39): include('/home/kedr/doma...')
+#6 {main}
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/setup.php?section=migrate
+exception 'Exception' with message '<BR>Table 'kedr_otdelstroy.SC_language' doesn't exist<br>SELECT `id`, `name`, `iso2` FROM SC_language WHERE `enabled`=1 ORDER BY `priority`' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('<BR>Table 'kedr...', NULL, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/wbs_functions.php(2136): PEAR::raiseError('<BR>Table 'kedr...')
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/migrate.php(35): wbs_getLanuageList('KEDROTDELSTROY')
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/setup.php(66): include('/home/kedr/doma...')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php?
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php?
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/wbsadmin/html/scripts/setup.php?section=dbprofile
+exception 'Exception' with message 'SMS module is not installed or disabled.' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('SMS module is n...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/modules.php(299): PEAR->raiseError('SMS module is n...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/dbprofile.php(153): wbsModulesClass->getDefaultModule()
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/setup.php(39): include('/home/kedr/doma...')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '217.150.58.61', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '95.71.70.104', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '109.62.253.254', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '217.150.58.61', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '217.150.58.61', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.190.79.25', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '178.216.78.3', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: otdelstroy31.ru/published/login.php
+exception 'Exception' with message 'Неверное имя пользователя или пароль' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('???????????????...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/dbfunctions_cmn.php(2831): PEAR::raiseError('???????????????...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/common/html/includes/httpcommon.php(1166): host_login(Array, Array, '91.194.206.52', 'web', false, false)
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/login.php(195): process_htmllogin(Array, Array, false, NULL, '')
+#6 {main}
+URL: www.otdelstroy31.ru/published/wbsadmin/html/scripts/setup.php?section=dbprofile
+exception 'Exception' with message 'SMS module is not installed or disabled.' in /home/kedr/domains/otdelstroy31.ru/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('SMS module is n...', 1000, 16, 'handlePEARError', NULL)
+#3 /home/kedr/domains/otdelstroy31.ru/public_html/kernel/modules.php(299): PEAR->raiseError('SMS module is n...', 1000)
+#4 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/dbprofile.php(153): wbsModulesClass->getDefaultModule()
+#5 /home/kedr/domains/otdelstroy31.ru/public_html/published/wbsadmin/html/scripts/setup.php(39): include('/home/kedr/doma...')
+#6 {main}2011-09-02 10:16. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:16. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 10:16. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:16. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 10:16. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:16. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 10:19. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:19. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 10:20. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:20. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 10:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 10:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:17. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:17. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:17. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:17. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:18. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:18. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:20. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:20. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:20. Function ereg() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/upgrade.php Line: 1789 Error #: 8192
+2011-09-02 13:20. Function ereg() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/upgrade.php Line: 1802 Error #: 8192
+2011-09-02 13:21. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:21. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:21. Function session_register() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 121 Error #: 8192
+2011-09-02 13:21. Function ereg() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/upgrade.php Line: 1789 Error #: 8192
+2011-09-02 13:21. Function ereg() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/upgrade.php Line: 1802 Error #: 8192
+2011-09-02 13:21. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:21. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+
+URL: otdelstroy.tld/published/wbsadmin/html/scripts/setup.php?section=dbprofile
+exception 'Exception' with message 'SMS module is not installed or disabled.' in /var/www/otdstroi/public_html/kernel/functions.php:7731
+Stack trace:
+#0 [internal function]: handlePEARError(Object(PEAR_Error))
+#1 /var/www/otdstroi/public_html/kernel/includes/pear/PEAR.php(914): call_user_func('handlePEARError', Object(PEAR_Error))
+#2 /var/www/otdstroi/public_html/kernel/includes/pear/PEAR.php(577): PEAR_Error->PEAR_Error('SMS module is n...', 1000, 16, 'handlePEARError', NULL)
+#3 /var/www/otdstroi/public_html/kernel/modules.php(299): PEAR->raiseError('SMS module is n...', 1000)
+#4 /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/dbprofile.php(153): wbsModulesClass->getDefaultModule()
+#5 /var/www/otdstroi/public_html/published/wbsadmin/html/scripts/setup.php(39): include('/var/www/otdstr...')
+#6 {main}2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192
+2011-09-02 13:22. Function set_magic_quotes_runtime() is deprecated File: /var/www/otdstroi/public_html/kernel/kernel.php Line: 80 Error #: 8192
+2011-09-02 13:22. Function session_is_registered() is deprecated File: /var/www/otdstroi/public_html/published/wbsadmin/wbs_auth.php Line: 54 Error #: 8192

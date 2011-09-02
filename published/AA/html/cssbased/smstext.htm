@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+	</head>
+	<body>
+		<? wbs_pageLayout toolbar="smstext_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+					<? wbs_formContent ?>
+						<tr>
+							<td>
+
+								<table class="NameValueList">
+									<tr>
+										<td><? $kernelStrings.sms_date_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_DATETIME ?></th>
+									</tr>
+
+									<tr>
+										<td><? $kernelStrings.sms_sender_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_USER_ID ?></th>
+									</tr>
+
+									<tr>
+										<td><? $kernelStrings.sms_phone_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_PHONE ?></th>
+									</tr>
+
+									<tr>
+										<td><? $kernelStrings.sms_width_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_WIDTH ?></th>
+									</tr>
+
+									<tr>
+										<td><? $kernelStrings.sms_app_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_APP ?></th>
+									</tr>
+
+									<tr>
+										<td><? $kernelStrings.sms_charge_title|cat:":" ?></td>
+										<th scope="col">
+											<? $smsInfo.SMSH_CHARGE|cat:" "|cat:$kernelStrings.app_usd_brief_text ?>
+											<? if $smsInfo.SMSH_CHARGED == 0 ?>
+												<? "("|cat:$kernelStrings.sms_reserved_status_text|cat:")" ?>
+											<? /if ?>
+										</th>
+									</tr>
+
+									<tr class="SeparatedRow">
+										<td><? $kernelStrings.sms_status_title|cat:":" ?></td>
+										<th scope="col"><? $smsInfo.SMSH_STATUS ?></th>
+									</tr>
+
+									<tr class="SeparatedRow">
+										<td><? $kernelStrings.sms_text_title|cat:":" ?></td>
+										<td width="500"><? $smsInfo.SMSH_TEXT|htmlsafe:true:true ?></td>
+									</tr>
+
+								</table>
+
+							</td>
+						</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+							<? wbs_buttonSet ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_back_btn name="backbtn" ?>
+							<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+				<? /wbs_formLayout?>
+
+			<? /if ?>
+
+			<input name="opener" type="hidden" id="opener" value="<? $opener ?>"/>
+			<input type=hidden name="currentPage" value="<? $currentPage ?>"/>
+			<input name="opener" type="hidden" id="opener" value="<? $opener ?>">
+			<input name="U_ID" type="hidden" value="<? $U_ID ?>">
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>tmod_single</Name>
+		<File>class.tmod_single.php</File>
+		<Title>Пробный модуль 2</Title>
+		<Description>Позволяет делать одну установку</Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

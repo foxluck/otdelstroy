@@ -1,0 +1,9 @@
+<? if $folderIsShared ?>
+	<? if $showSharedPanel ?>
+		[<a href="<? $accessRightsURL ?>"><? $kernelStrings.app_treeshared_label ?></a>]
+	<? else ?>
+		[<? $kernelStrings.app_treeshared_label ?>]
+	<? /if ?>
+<? else ?>
+		[<? $kernelStrings.app_treenotshared_label ?>]
+<? /if ?>

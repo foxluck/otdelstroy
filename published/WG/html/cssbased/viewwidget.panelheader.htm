@@ -1,0 +1,109 @@
+<script>
+function showEditMode()
+{
+	document.getElementById("caption_label").style.display="none";
+	document.getElementById("caption_edit").style.display="";
+}
+function closeEditMode()
+{
+	document.getElementById("caption_label").style.display="";
+	document.getElementById("caption_edit").style.display="none";
+}
+function saveCaption()
+{
+	var title = document.getElementById("caption_edit_input").value;
+	Ext.Ajax.request ({
+		url: "../ajax/wg_save.php",
+		params: {"fields[WG_DESC]": title, "wgId": "<? $widgetIdEnc ?>"},
+		success: function (response) {
+			var result = Ext.decode(response.responseText);
+			if (result.success) {
+				document.getElementById("caption_label").innerHTML = title;
+				if (document.getElementById("WG_DESC")) {
+					document.getElementById("WG_DESC").value = title;
+				}
+				if (parent.document.getElementById("wg-"+ <?$itemData.WG_ID?>)) {
+					parent.document.getElementById("wg-"+ <?$itemData.WG_ID?>).innerHTML = title;
+				}
+				closeEditMode();
+				var oldURL = document.getElementById("previewFrame").src;
+				document.getElementById("previewFrame").src = oldURL;  
+			} else {
+				alert(result.errorStr);
+			}		
+		}
+
+	});	
+}
+</script>
+<div>
+	<!--div style='font-size: 0.7em; font-weight: normal; float: right; padding-right: 3px'><? $wgStrings.wg_wgtype_title ?>: <? $pageTitle ?></div-->
+  <b id='RightPanelHeaderCaption'>
+  	<? if $caption ?>
+  		<span id="caption_label" onClick="showEditMode()" style="cursor:pointer;">
+  		<? $caption ?>
+  		</span>
+ 		<span id="caption_edit" style="display:none">
+  		<input id="caption_edit_input" style="width: 40%; font-weight:bold; font-size:1em" type="text" value="<? $caption ?>" /> 
+  		<input type="button" value="<? $kernelStrings.app_save_btn ?>" onClick="saveCaption()" />
+  		<input type="button" value="<? $kernelStrings.app_cancel_btn ?>" onClick="closeEditMode()" />
+  		</span>
+  	<? else ?>
+  		<? $pageTitle ?>
+  	<? /if ?>
+  </b>
+</div>
+
+<? assign var=itemName value=$itemData.WG_DESC|escape:'quotes' ?>
+<? assign var=itemName value=$itemName|escape:'html' ?>
+	
+<table border="0" cellpadding="0" cellspacing="5" class='HeaderLinks'>
+	<tr>
+    <? if $subtypeObj->embType != "inplace" ?>
+	    <td valign="top">
+	    	<a href="javascript:void(0)" onClick="shareWidgetSendEmail('<? $widgetIdEnc ?>', '<? $itemName ?>', this)"><img src="../../../common/html/res/images/linkemail.gif" border="0"></a>
+	    </td>
+	    <td valign="top">
+	        <a href="javascript:void(0)" onClick="shareWidgetSendEmail('<? $widgetIdEnc ?>', '<? $itemName ?>', this)"><? $wgStrings.wg_sendbyemail_label ?></a>&nbsp;
+	    </td>
+	    <? if $canChangeUrl ?>
+		    <td valign="top">
+		    	<a href="javascript:void(0)" onClick="shareWidgetChangeUrl ('<? $widgetIdEnc ?>', '<? $widgetUrlStart ?>', '<? $widgetUrlHash ?>', this)"><img src="../../../common/html/res/images/linkchange.gif" border="0"></a>
+		    </>
+		    <td valign="top">
+		        <a href="javascript:void(0)" onClick="shareWidgetChangeUrl ('<? $widgetIdEnc ?>', '<? $widgetUrlStart ?>', '<? $widgetUrlHash ?>', this)"><? $wgStrings.wg_changeaddress_label ?></a>&nbsp;
+		    </td>
+	    <? /if ?>
+	    <td valign="top">
+		    	<a href='javascript:void(0)' onClick="if (confirm('<? $wgStrings.wg_deletelink_message ?>')) return deleteWidget('<? $widgetIdEnc ?>', 'links'); return false;"><img src="../../../common/html/res/images/linkdelete.gif" border="0"></a>
+		   </td>
+	    <td valign="top">
+	        <a href='javascript:void(0)' onClick="if (confirm('<? $wgStrings.wg_deletelink_message ?>')) return deleteWidget('<? $widgetIdEnc ?>', 'links'); return false;"><b><? $wgStrings.wg_delete_label ?></b></a>&nbsp;
+	    </td>
+	  <? else ?>
+		  <td valign="top">
+		    	<a href='javascript:void(0)' onClick="showCustomizeDialog(this, '<? $widgetIdEnc ?>'); return false;"><img src="../../../common/html/res/images/wgcustom.gif" border="0"></a>
+		   </td>
+	    <td valign="top">
+	        <a href='javascript:void(0)' onClick="showCustomizeDialog(this, '<? $widgetIdEnc ?>'); return false;"><b><? $wgStrings.wg_customize_label ?></b></a>&nbsp;
+	    </td>
+	    
+	    <td valign="top">
+		    	<a href='javascript:void(0)' onClick="showEmbedDialog(this, '<? $widgetIdEnc ?>'); return false;"><img src="../../../common/html/res/images/wgembed.gif" border="0"></a>
+		   </td>
+	    <td valign="top">
+	        <a href='javascript:void(0)' onClick="showEmbedDialog(this, '<? $widgetIdEnc ?>'); return false;"><b><? $wgStrings.wg_embed_label ?></b></a>&nbsp;
+	    </td>
+		  
+		   <td valign="top">
+		    	<a href='javascript:void(0)' onClick="if (confirm('<? $wgStrings.wg_delete_message ?>')) deleteWidget('<? $widgetIdEnc ?>', 'widgets'); return false;"><img src="../../../common/html/res/images/wgdelete.gif" border="0"></a>
+		   </td>
+	    <td valign="top">
+	        <a href='javascript:void(0)' onClick="if (confirm('<? $wgStrings.wg_delete_message ?>')) deleteWidget('<? $widgetIdEnc ?>', 'widgets'); return false;"><b><? $wgStrings.wg_delete_label ?></b></a>&nbsp;
+	    </td>
+    <? /if ?>
+    
+    
+    
+	</tr>
+</table>

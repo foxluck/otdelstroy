@@ -1,0 +1,435 @@
+#!@PHP-BIN@
+<?php
+/**
+ * Selfupdate script for the PayPal SDK. Rebuilds types, API methods,
+ * and endpoint mapping; fetches new WSDL if available, etc. Allows
+ * rollback to the previous SDK version after an update, and
+ * automatically rolls back if an update fails.
+ *
+ * $Id: paypal-sdk-update,v 1.1 2005/08/15 16:04:15 colson Exp $
+ *
+ * @package Services_PayPal
+ */
+
+/**
+ * Included libraries.
+ */
+require_once 'Services/PayPal.php';
+require_once 'Services/PayPal/SDK.php';
+
+// Main execution is simple - check for command line arguments,
+// execute proper command. Default is to just output usage
+// information.
+
+// Defaults:
+$command = null;
+$environment = 'Live';
+
+// Adjust for Windows where we get the name of the script file twice
+// in $argv.
+if ($_SERVER['argc'] > 1) {
+    $a0 = str_replace('.bat', '', basename($_SERVER['argv'][0]));
+    $a1 = str_replace('.bat', '', basename($_SERVER['argv'][1]));
+    if ($a0 == $a1 && $a1 == 'paypal-sdk-update') {
+        array_shift($_SERVER['argv']);
+    }
+}
+
+// Process command line arguments.
+switch (count($_SERVER['argv'])) {
+case 2:
+    if (isValidCommand($_SERVER['argv'][1])) {
+        $command = $_SERVER['argv'][1];
+    } else {
+        usage();
+    }
+    break;
+
+case 4:
+    switch ($_SERVER['argv'][1]) {
+    case '-e':
+    case '--environment':
+        if (isValidEnvironment($_SERVER['argv'][2]) &&
+            isValidCommand($_SERVER['argv'][3])) {
+            $environment = $_SERVER['argv'][2];
+            $command = $_SERVER['argv'][3];
+        } else {
+            usage();
+        }
+        break;
+
+    default:
+        usage();
+    }
+    break;
+
+default:
+    usage();
+}
+
+// Run command.
+$command();
+
+// Done with main flow. All other code in this file is implementation
+// of commands and helper functions.
+exit;
+
+
+/**
+ * Update the dynamic elements of the SDK.
+ */
+function update()
+{
+    // Make sure we can write to the live files before attempting
+    // anything further.
+    canWritePackage();
+
+    // Clear out the build dir.
+    $packageDir = Services_PayPal::getPackageRoot();
+    $buildDir = $packageDir . '/build/ppsdk-new/';
+    recursiveDelete($buildDir);
+    if (!mkdir($buildDir)) {
+        echo "Can't write to the build directory ($buildDir) - check your permissions.\nAborting.\n";
+        return false;
+    }
+
+    // Download new files and eventually check if they've changed.
+    $urlBase = xmlFileBaseUrl();
+    if (!$urlBase) {
+        echo "Can't find an environment mapping for $environment.\nAborting.\n";
+        return false;
+    }
+    foreach (xmlFiles() as $file) {
+        // XXX remove this code block when paypal-endpoints.xml is in
+        // the right place on PayPsl's webservers.
+        if ($file == 'paypal-endpoints.xml') {
+            if (!copy($packageDir . '/wsdl/paypal-endpoints.xml', $buildDir . $file)) {
+                echo "Failed to download the latest version of $file.\nAborting.\n";
+            }
+            continue;
+        }
+        if (!copy($urlBase . $file, $buildDir . $file)) {
+            echo "Failed to download the latest version of $file.\nAborting.\n";
+            return false;
+        }
+    }
+
+    // Get the SDK object.
+    $sdk =& new PayPal_SDK($buildDir . 'PayPalSvc.wsdl');
+
+    // Write the new CallerServices.php.
+    dieOnError($sdk->writeCallerServices($buildDir . 'CallerServices.php'));
+
+    // Write the new types.
+    mkdir($buildDir . '/Type');
+    dieOnError($sdk->writeTypes($buildDir . '/Type'));
+
+    // Write the endpoint file.
+    dieOnError($sdk->writeEndpointMap($buildDir . 'paypal-endpoints.php',
+                                      $buildDir . 'paypal-endpoints.xml'));
+
+    // Once the new SDK is successfully generated, back up the current
+    // SDK.
+    if (!backup(true)) {
+        echo "Backup of the current SDK failed. Not overwriting files without a current backup. Exiting.\n";
+        return false;
+    }
+
+    // Finally overwrite the existing production files.
+    // CallerServices.php.
+    rollbackOnError(copy($buildDir . 'CallerServices.php', $packageDir . '/CallerServices.php'));
+
+    // wsdl/* files.
+    rollbackOnError(copy($buildDir . 'paypal-endpoints.php', $packageDir . '/wsdl/paypal-endpoints.php'));
+    foreach (xmlFiles() as $file) {
+        rollbackOnError(copy($buildDir . $file, $packageDir . '/wsdl/' . $file));
+    }
+
+    // Types.
+    $types = glob($buildDir . 'Type/*.php');
+    foreach ($types as $typeFile) {
+        rollbackOnError(copy($typeFile, $packageDir . '/Type/' . basename($typeFile)));
+    }
+
+    // Clean up the build.
+    recursiveDelete($buildDir);
+
+    echo "The PayPal SDK has successfully been updated.\nThe new version is:\n";
+    version();
+    return true;
+}
+
+/**
+ * Roll back to the last version of the SDK.
+ */
+function rollback()
+{
+    echo "Attempting to roll back the PayPal SDK to the last saved version.\n";
+
+    // Check for an existing SDK backup.
+    $packageDir = Services_PayPal::getPackageRoot();
+    $rollbackDir = $packageDir . '/build/ppsdk-backup/';
+    if (!is_dir($rollbackDir)) {
+        echo "No SDK backup was found - perhaps you've never run the update?\nUnable to revert, exiting.\n";
+        return false;
+    }
+
+    // Make sure the backup contains all files.
+    $expectedFiles = array_merge(xmlFiles(), array('CallerServices.php', 'Type'));
+    foreach ($expectedFiles as $file) {
+        if (!file_exists($rollbackDir . $file)) {
+            echo "Expected to have $file backed up and it is not present. Not rolling back.\n";
+            return false;
+        }
+    }
+
+    // Make sure we can write to the live files before attempting
+    // anything further.
+    canWritePackage();
+
+    // CallerServices.php.
+    copy($rollbackDir . 'CallerServices.php', $packageDir . '/CallerServices.php');
+
+    // wsdl/* files.
+    copy($rollbackDir . 'paypal-endpoints.php', $packageDir . '/wsdl/paypal-endpoints.php');
+    foreach (xmlFiles() as $file) {
+        copy($rollbackDir . $file, $packageDir . '/wsdl/' . $file);
+    }
+
+    // Types.
+    $types = glob($rollbackDir . 'Type/*.php');
+    foreach ($types as $typeFile) {
+        copy($typeFile, $packageDir . '/Type/' . basename($typeFile));
+    }
+
+    echo "The PayPal SDK has successfully been reverted.\nThe new version is:\n";
+    version();
+    return true;
+}
+
+/**
+ * Print version information.
+ */
+function version()
+{
+    $sdk = &new PayPal_SDK_Generator();
+    $wsdl_version = $sdk->definition['version'];
+
+    $sdk_version = Services_PayPal::getPackageVersion();
+
+    echo <<<VERSION
+PayPal PHP SDK $sdk_version (WSDL $wsdl_version).
+
+VERSION;
+}
+
+/**
+ * Print usage information.
+ */
+function usage()
+{
+    echo <<<USAGE
+The PayPal SDK update script checks for new versions of the WSDL and
+XML configuration files on the PayPal website and regenerates the
+dynamic parts of the SDK. It can also roll back to the previous
+version of the SDK automatically if an update fails, or on command
+if you wish to revert the last successful upgrade.
+
+Usage: paypal-sdk-update [-e ENVIRONMENT] COMMAND
+
+Examples:
+  paypal-sdk-update version    # Display the version of the SDK and the
+                               # version of the WSDL currently in use.
+  paypal-sdk-update update     # Update the dynamic SDK elements.
+  paypal-sdk-update rollback   # Revert the last successful update.
+
+Operation modifiers:
+  -e, --environment ENV        Generate the SDK against the specified
+                               environment. Only valid with the `update'
+                               command. The default environment is `Live'.
+                               Valid values are `Live' and `Sandbox'.
+
+USAGE;
+
+    exit;
+}
+
+/**
+ * Returns true if $command is valid, false otherwise.
+ */
+function isValidCommand($command)
+{
+    switch ($command) {
+    case 'version':
+    case 'update':
+    case 'rollback':
+    case 'backup':
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Return true if $environment is a valid environment, false
+ * otherwise.
+ */
+function isValidEnvironment($environment)
+{
+    switch ($environment) {
+    case 'Live':
+    case 'Sandbox':
+    // case 'Beta':
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Recursively deletes $directory.
+ */
+function recursiveDelete($directory)
+{
+    if (!is_dir($directory)) {
+        return false;
+    }
+
+     if (!($dh = opendir($directory))) {
+         return false;
+     }
+
+     while (($file = readdir($dh)) !== false) {
+         if ($file == '.' || $file == '..') {
+             continue;
+         }
+
+         if (is_link($directory . $file) || !is_dir($directory . $file)) {
+             unlink($directory . $file);
+         } else {
+             if (!recursiveDelete($directory . $file . '/')) {
+                 return false;
+             }
+         }
+     }
+
+     closedir($dh);
+
+     return rmdir($directory);
+}
+
+/**
+ * Back up all of the dynamic elements of the current SDK.
+ */
+function backup($overwrite = false)
+{
+    // Create the backup directory, emptying it first if necessary. If
+    // the backup dir already exists and $overwrite is false, we exit
+    // without doing anything.
+    $packageDir = Services_PayPal::getPackageRoot();
+    $backupDir = $packageDir . '/build/ppsdk-backup/';
+    if (is_dir($backupDir)) {
+        if ($overwrite) {
+            recursiveDelete($backupDir);
+        } else {
+            echo "SDK backup already exists and overwrite not specified. Doing nothing.\n";
+            return false;
+        }
+    }
+    mkdir($backupDir);
+
+    // Backup CallerServices.php.
+    copy($packageDir . '/CallerServices.php', $backupDir . 'CallerServices.php');
+
+    // Backup the contents of the wsdl/ directory.
+    copy($packageDir . '/wsdl/paypal-endpoints.php', $backupDir . 'paypal-endpoints.php');
+    foreach (xmlFiles() as $file) {
+        copy($packageDir . '/wsdl/' . $file, $backupDir . $file);
+    }
+
+    // Backup the Type/ directory.
+    mkdir($backupDir . 'Type');
+    $types = glob($packageDir . '/Type/*.php');
+    foreach ($types as $typeFile) {
+        if (basename($typeFile) == 'XSDType.php') {
+            continue;
+        }
+        copy($typeFile, $backupDir . 'Type/' . basename($typeFile));
+    }
+
+    // Done.
+    echo "The existing SDK has been backed up.\n";
+    return true;
+}
+
+
+/**
+ * List the XML/XSD/WSDL files that we generate the SDK from.
+ */
+function xmlFiles()
+{
+    return array('CoreComponentTypes.xsd',
+                 'PayPalSvc.wsdl',
+                 'eBLBaseComponents.xsd',
+                 'paypal-endpoints.xml');
+}
+
+/**
+ * Check the result of an operation and abort if it failed.
+ *
+ * @param mixed $result  The result of an operation that might fail.
+ */
+function dieOnError($result)
+{
+    if (Services_PayPal::isError($result)) {
+        die("Encountered a fatal error:\n" . $result->getMessage() . "\n\nAborting.\n");
+    } elseif (!$result) {
+        die(wordwrap("Fatal error - unable to continue. The SDK may be in an inconsistent state if we were in the middle of rolling back. Check file permissions, backups, and code integrity.\n"));
+    }
+}
+
+/**
+ * Check the result of a file operation, and initiate an automatic
+ * rollback if it failed.
+ *
+ * @param boolean $result  The result of an operation that might fail.
+ */
+function rollbackOnError($result)
+{
+    if (!$result) {
+        echo "Failed a file operation while installing new SDK - rolling back.\n";
+        rollback();
+        exit;
+    }
+}
+
+/**
+ * Die if we can't write to the live package files.
+ */
+function canWritePackage()
+{
+    $packageDir = Services_PayPal::getPackageRoot();
+    if (!is_writable($packageDir . '/CallerServices.php')) {
+        die("Unable to write to the live SDK files - insufficient permissions?\nAborting - fix permissions before continuing.\n");
+    }
+}
+
+/**
+ * Get the URL base for WSDL files for the current environment.
+ */
+function xmlFileBaseUrl()
+{
+    switch ($GLOBALS['environment']) {
+    case 'Live':
+        return 'http://www.paypal.com/wsdl/';
+
+    case 'Sandbox':
+        return 'http://www.sandbox.paypal.com/wsdl/';
+
+    case 'Beta':
+        return 'http://www.beta.paypal.com/wsdl/';
+
+    default:
+        return false;
+    }
+}

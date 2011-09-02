@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>Order statuses</name>
+		<key>order_statuses</key>
+	</interface>
+</interfaces>

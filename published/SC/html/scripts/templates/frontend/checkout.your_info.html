@@ -1,0 +1,215 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/checkout.your_info.js"></script>
+<style type="text/css">
+<!--
+{if $action eq 'auth'}{literal}
+	#block-customerinfo{display: none;}
+{/literal}{else}{literal}
+	#block-auth{display: none;}
+{/literal}{/if}
+{if $billing_as_shipping}{literal}
+	#block-billing-address{display: none;}
+{/literal}{/if}
+{if !$permanent_registering}{literal}
+	#block-loginpass-fields{display: none;}
+{/literal}{/if}
+-->
+</style>
+
+<form id="block-customerinfo" method="post" action="{''|set_query_html}" {if $email_exists || $login_form}style="display:none;"{/if}>
+<input name="action" value="process_customer_info" type="hidden" >
+
+	{$MessageBlock}
+
+	<table cellpadding="0" cellspacing="0" class="cellpadding" id="checkout_logininfo">
+	<tr><td colspan="2">
+		<p id="checkout_have_account">
+		{'checkout_already_have_account'|translate|replace:'%SHOPNAME%':$smarty.const.CONF_SHOP_NAME|escape:'html'} <a href="{'?ukey=auth'|set_query_html}" class="hndl_show_login">{lbl_btn_login}</a>
+		</p>
+	</td>
+	</tr>
+	<tr class="row_{cycle name="__checkout" values='odd,even'}">
+		<td><span class="asterisk">*</span>{lbl_usr_custinfo_first_name}</td>
+		<td>
+			<input id="chk_first_name" name="customer_info[first_name]" value="{$customer_info.first_name|escape:'html'}" class="inputtext" type="text" >
+		</td>
+	</tr>
+	<tr class="row_{cycle name="__checkout" values='odd,even'}">
+		<td><span class="asterisk">*</span>{lbl_usr_custinfo_last_name}</td>
+		<td>
+			<input id="chk_last_name" name="customer_info[last_name]" value="{$customer_info.last_name|escape:'html'}" class="inputtext" type="text" >
+		</td>
+	</tr>
+	<tr class="row_{cycle name="__checkout" values='odd,even'}">
+		<td><span class="asterisk">*</span>{lbl_usr_custinfo_email}</td>
+		<td>
+			<input name="customer_info[Email]" value="{$customer_info.Email|escape:'html'}" class="inputtext" type="text" >
+		</td>
+	</tr>
+	<!-- ADDITIONAL FIELDS -->
+	{foreach from=$additional_fields item=_field}
+	{assign var=_field_name value="additional_field_`$_field.reg_field_ID`"}
+	<tr class="row_{cycle name="__checkout" values='odd,even'}">
+		<td>{if $_field.reg_field_required}<span class="asterisk">*</span>{/if}{$_field.reg_field_name}</td>
+		<td>
+			<input type='text' name='customer_info[_custom_fields][{$_field.reg_field_ID}]' value='{$customer_info._custom_fields[$_field.reg_field_ID]|escape:"html"}' class="inputtext" >
+		</td>
+	</tr>
+	{/foreach}
+	</table>
+	
+	<p>
+	<input name="customer_info[subscribed4news]" value="1"{if $customer_info.subscribed4news || ($subscribed4news)} checked{/if} id="custinfo-subscribed4news" type="checkbox" >
+	<label for="custinfo-subscribed4news">{lbl_usrreg_subscribe_for_blognews}</label>
+	</p>
+{if $PAGE_VIEW ne 'mobile'}	
+	<table cellpadding="0" cellspacing="0" id="checkout_addresses">
+	<tr>
+		<td>
+			<strong>{lbl_ordr_shipping_address}</strong>
+		</td>
+	{if $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS eq '1'}
+		<td></td>
+		<td>
+			<strong>{lbl_ordr_billing_address}</strong>
+			(<span class="field_description"><input name="billing_as_shipping" id="hndl-show-billing-address" type="checkbox"{if $billing_as_shipping} checked{/if} ><label for="hndl-show-billing-address">{lbl_str_same_as_shipping_address}</label></span>)
+		</td>
+	{/if}
+	</tr>
+	<tr>
+		<td valign="top" id="checkout_addresses_shipping">
+			{include file="`$smarty.const.DIR_FTPLS`/address_form.html" name_space="shipping_address" address=$shipping_address}
+		</td>
+	{if $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS eq '1'}
+		<td style="padding:5px;"></td>
+		<td valign="top" id="checkout_addresses_billing">
+			<div id="block-billing-address">
+			{include file="`$smarty.const.DIR_FTPLS`/address_form.html" name_space="billing_address" address=$billing_address}
+			</div>
+		</td>
+	{/if}
+	</tr>
+	</table>
+{else}
+	<table cellpadding="0" cellspacing="0" id="checkout_addresses">
+	<tr>
+		<td>
+			<strong>{lbl_ordr_shipping_address}</strong>
+		</td>
+	</tr>
+	<tr>
+		<td id="checkout_addresses_shipping">
+			{include file="`$smarty.const.DIR_FTPLS`/address_form.html" name_space="shipping_address" address=$shipping_address}
+		</td>
+	</tr>
+	{if $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS eq '1'}
+	<tr>
+		<td>
+			<strong>{lbl_ordr_billing_address}</strong>
+		</td>
+	</tr>
+	<tr>
+		<td id="checkout_addresses_billing">
+			{include file="`$smarty.const.DIR_FTPLS`/address_form.html" name_space="billing_address" address=$billing_address}
+		</td>
+	</tr>
+	{/if}
+	</table>
+{/if}
+	<p>
+	<input name="permanent_registering" id="hndl-show-loginpass-fields"{if $permanent_registering} checked{/if} type="checkbox" >
+	<label for="hndl-show-loginpass-fields">{'checkout_permanent_registering'|translate|replace:'%SHOPNAME%':$smarty.const.CONF_SHOP_NAME|escape:'html'}</label>
+	</p>
+{if $PAGE_VIEW ne 'mobile'}		
+	<div id="block-loginpass-fields">
+{/if}
+	<table cellpadding="0" cellspacing="0" class="cellpadding">
+	<tr>
+		<td>{lbl_usr_custinfo_login}</td>
+		<td>
+			<input name="customer_info[Login]" value="{$customer_info.Login|escape:'html'}" type="text" >
+		</td>
+	</tr>
+	<tr>
+		<td>{lbl_usr_custinfo_password}</td>
+		<td>
+			<input name="customer_info[cust_password]" value="{$customer_info.cust_password|escape:'html'}" type="password" >
+		</td>
+	</tr>
+	<tr>
+		<td>{lbl_usrreg_customer_confirm_password}</td>
+		<td>
+			<input name="customer_info[cust_password1]" value="{$customer_info.cust_password1|escape:'html'}" type="password" >
+		</td>
+	</tr>
+	</table>
+{if $PAGE_VIEW ne 'mobile'}	
+	<br />
+	</div>
+{/if}
+	
+	{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+
+	<br />
+	<table cellpadding="6" cellspacing="0">
+	<tr class="background1">
+		<td colspan="2">{"str_enter_ccode"|translate}</td>
+	</tr>
+	<tr class="background1">
+		<td align="right"><img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code" align="right" /></td>
+		<td>
+			<input name="confirmation_code" value="" type="text" style="width:200px;" >
+		</td>
+	</tr>
+	</table>
+	{/if}
+
+{*
+@features "Affiliate program"
+*}
+    {if !$SessionRefererLogin && $smarty.const.CONF_AFFILIATE_PROGRAM_ENABLED eq 1}
+    <table cellpadding="6" cellspacing="0">
+    <tr class="row_{cycle name="__checkout" values='odd,even'}">
+        <td style="font-size: 90%;">{lbl_usr_custinfo_referrer}</td>
+        <td>
+            <input name="customer_info[affiliationLogin]" value="{$customer_info.affiliationLogin|escape:'html'}" class="inputtext"  type="text" style="width: 110px;" >
+        </td>
+    </tr>
+    </table>
+    {/if}
+{*
+@features
+*}
+	
+	<p>
+	<input class="checkout_buttons" value="{'checkout_next_step'|transcape}" type="submit" >
+	</p>
+</form>
+
+{if $email_exists}
+<p>{'checkout_email_exists'|translate|replace:'[email]':$email_exists}</p>
+{/if}
+<form action="{''|set_query_html}" id="block-auth" method="post" {if $email_exists || $login_form}style="display:block;"{/if}>
+	{$MessageBlock__auth}
+	<input name="action" value="auth" type="hidden" >
+	
+	{"usr_custinfo_login"|translate}:
+	<br />
+	<input type="text" name="auth[Login]" value="{$auth.Login|escape:'html'}" size="40" >
+	
+	<p>
+		{"usr_custinfo_password"|translate}:
+		<br />
+		<input name="auth[cust_password]" type="password" size="40" >
+	</p>
+	
+	<p>
+		<input value="{lbl_btn_login}" type="submit" >
+	</p>
+	
+	<p>
+		<a href="{'?ukey=remind_password'|set_query_html}">{lbl_lnk_forgot_password}</a>
+		&nbsp;
+		<a href="{'?ukey=checkout'|set_query_html}" class="hndl_show_login">{lbl_checkout_as_newcustomer}</a>
+	</p>
+	
+</form>

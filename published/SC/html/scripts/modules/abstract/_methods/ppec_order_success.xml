@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>PP Express Checkout - Order information</name>
+		<key>ppec_order_success</key>
+	</interface>
+</interfaces>

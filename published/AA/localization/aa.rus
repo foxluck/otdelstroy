@@ -1,0 +1,1929 @@
+app_name_long	Common	Application full name	Аккаунт
+app_name_short	Common	Application short name	Аккаунт
+app_comment_text	Common	Application Comment text	Этот пользователь имеет доступ к управлению аккаунтом и может изменять тарифный план, системные настройки, и даже закрыть аккаунт.
+app_readonly_message	Common	Warning message appears when user attempts to edit read-only database	Система работает в режиме только чтения. Изменения данных запрещены.
+app_queryerr_message	Common	Error executing query message	Ошибка выполнения запроса
+app_errxml_message	Common	Error processing XML data message	Ошибка обработки данных XML
+app_requiredfields_message	Common	Warning if some required fields are not filled	Пожалуйста, заполните правильно обязательные поля
+app_allfields_message	Common	Warning if some fields are not filled	Пожалуйста, заполните все поля
+app_saveusersets_message	Common	If error occurs while saving user settings	Ошибка сохранения настроек пользователя
+app_invdateformat_message	Common	Invalid date format message	Неверная дата или неверный формат даты. Правильный формат: %s
+app_invtimeformat_message	Common	Invalid time format message	Неверный формат даты.
+app_invcolorformat_message	Common	Invalid color format	Неверная строка значения цвета.
+app_textlen_message	Common	Maximum text length exceeded	Недопустимое количество символов в поле
+app_generalaccess_message	Common	Warning if user has no rights to work with a screen	У вас нет прав работать с этим разделом
+app_attachfile_message	Common	Error attaching file message	Не удалось прикрепить файл
+app_createdir_message	Common	Error creating directory message	Не удалось создать директорию
+app_delfromlist_message	Common	Error deleting a file from the attached files list message	Не удалось удалить файл из списка
+app_deletefile_message	Common	Error deleting file message	Не удалось удалить файл %s
+app_copyfile_message	Common	Error copying files message	Не удалось скопировать файл %s
+app_unknownaddr_message	Common	Incorrect recipient e-mail address message	Неизвестен адрес получателя уведомления
+app_handlernotfound_message	Common	Error message if application does not answer to request	Связанный сервис (%s) не отвечает на запрос. В целях безопасности операция отменена.
+app_notapproved_message	Common	Error message if operation is not allowed by dependent application	Связанный сервис (%s) не разрешило выполнение операции по неизвестным причинам.
+app_notapprovederr_message	Common	Message if error occurs while system query processing	ОШИБКА: %s. ВОЗВРАЩЕНА: %s.
+app_deperror_message	Common	Message if error occurs in dependent application	Ошибка при выполнении операции в связанном сервисе (%s). Ошибка: "%s"
+app_invnumformat_message	Common	Invalid numeric format message	Неверный формат числа: "%s"
+app_spacelimit_message	Common	Database size limitation message	<b>ОГРАНИЧЕНИЕ</b>: Размер базы данных не может превышать %s MB.
+app_aopsignedup_name	Common	Signed Up account action	Подписка
+app_aopdbcreate_name	Common	DB Created account action	Создана БД
+app_aopmodify_name	Common	Modified account action	Изменена
+app_aopdelete_name	Common	Deleted account action	Удалена
+app_aopremove_name	Common	Removed account action	Стерта
+app_aoprestore_name	Common	Restored account action	Восстановлена
+app_readaccess_name	Common	Read access	чтение
+app_readwraccess_name	Common	Read/Write access	запись/чтение
+app_readwrfldaccess_name	Common	Read/Write/Folder access	чтение/запись/папка
+app_writeaccess_name	Common	Read/Write access	запись
+app_folderaccess_name	Common	Read/Write/Folder access	папка
+app_readaccessshort_name	Common	Read access	Ч
+app_writeaccessshort_name	Common	Read/Write access	ЧЗ
+app_folderaccessshort_name	Common	Read/Write/Folder access	ЧЗП
+app_user_invited	Common	User Invited	приглашенный пользователь, логин еще не создан
+app_user_disabled	Common	User Disabled	вход запрещен
+app_disabled_label	Common	Label "Disabled"	Выключено
+app_enabled_label	Common	Label "Enabled"	Включено
+app_ok_btn	Common	OK button	OK
+app_back_btn	Common	Back button	Назад
+app_cancel_btn	Common	Cancel button	Отмена
+app_done_btn	Common	OK button	Завершить
+app_copy_btn	Common	Copy button	Копировать
+app_move_btn	Common	Move button	Переместить
+app_delete_btn	Common	Delete button	Удалить
+app_copying_label	Common	Copying label	Копируется
+app_moving_label	Common	Moving label	Перемещается
+app_deleting_label	Common	Deleting label	Удаляется
+app_confirm_label	Common	Confirm label	Подтверждение
+app_activestatus_name	Common	Active status	Активный
+app_deletedstatus_name	Common	Deleted status	Удален
+app_lockedstatus_name	Common	Locked status	Неактивный
+app_note_text	Common	NOTE text	Внимание
+app_details_text	Common	Details text	подробнее
+app_save_btn	Common	Save button	Сохранить
+app_apply_btn	Common	Apply button	Применить
+app_print_btn	Common	Print button	Печать
+app_pagewelcome_title	Common	Welcome page header	Добро пожаловать
+app_welcomenote_text	Common	Tips appears on the Welcome page	Пожалуйста, используйте главное меню для работы с доступными сервисами.
+app_close_btn	Common	Close button	Закрыть
+app_pagemessage_title	Common	Message page header	Сообщение
+app_report_text	Common	Text on the message page	Для продолжения используйте главное меню
+app_adminstart_text	Common	Administrator Welcome page: first line	%sAdministrator%s - особая учетная запись.
+app_admingreeting_text	Common	Administrator Welcome page: greeting	Администратор ВебАсиста
+app_adminexpl_text	Common	Administrator Welcome page: description	Основное назначение данной учетной записи - добавление пользователей и настройка прав доступа к сервисам и папкам, а также управление аккаунтом ВебАсист.
+app_adminnote_text	Common	Administrator Welcome page: notes	Заметьте, что Administrator не является обычным пользователем, поэтому имеет доступ только к сервисам Пользователи и Панель управления.
+app_dbsizelimit_message	Common	Database storage space limit exceeded warning	Размер вашей базы данных превысил установленный предел. Пожалуйста, подпишитесь на дополнительное пространство, или удалите некоторые файлы и/или записи базы данных
+app_usersizelimit_message	Common	User disk space quota limit exceeded warning	Вы превысили квоту на личное дисковое пространство. Пожалуйста, обратитесь к вашему системному администратору.
+app_monjanfull_name	Common	January full month name	Январь
+app_monfebfull_name	Common	February full month name	Февраль
+app_monmarfull_name	Common	March full month name	Март
+app_monaprfull_name	Common	April full month name	Апрель
+app_monmayfull_name	Common	May full month name	Май
+app_monjunfull_name	Common	June full month name	Июнь
+app_monjulfull_name	Common	July full month name	Июль
+app_monaugfull_name	Common	August full month name	Август
+app_monsepfull_name	Common	September full month name	Сентябрь
+app_monoctfull_name	Common	October full month name	Октябрь
+app_monnovfull_name	Common	November full month name	Ноябрь
+app_mondecfull_name	Common	December full month name	Декабрь
+app_monjanshort_name	Common	January short month name	Янв
+app_monfebshort_name	Common	February short month name	Февр
+app_monmarshort_name	Common	March short month name	Мар
+app_monaprshort_name	Common	April short month name	Апр
+app_monmayshort_name	Common	May short month name	Май
+app_monjunshort_name	Common	June short month name	Июн
+app_monjulshort_name	Common	July short month name	Июл
+app_monaugshort_name	Common	August short month name	Авг
+app_monsepshort_name	Common	September short month name	Сен
+app_monoctshort_name	Common	October short month name	Окт
+app_monnovshort_name	Common	November short month name	Ноя
+app_mondecshort_name	Common	December short month name	Дек
+app_invrobotlogin_message	Common	Robot authorization error message	Неверное имя или пароль робота
+app_unlimitedspace_label	Common	Label "Unlimited"	Не ограничено
+app_availablespace_text	Common	Tips to available space limitation	Доступное пространство: %s
+app_totalsizelimit_text	Common	Tips to uploaded files overall size limitation	Общий объем файлов не должен превышать %s
+app_filesizelimit_text	Common	Tips to uploaded file size limitation	Размер каждого файла не должен превышать %s
+app_dbkeynotfound_message	Common	No Database matches the entered Key message	База данных с таким именем не найдена
+app_servernotfound_message	Common	Specified SQL server name not found	mySQL-сервер "%s" не найден
+app_makedbnoopt_message	Common	Attempt to create database without setting database option message	Пожалуйста выберите опцию создания базы данных
+app_invfieldchars_message	Common	Invalid characters entered in a field message	Поле содержит запрещенные символы
+app_dbkeyexists_message	Common	Duplicate database key entered message	База данных с таким именем уже существует
+app_invdbkeyformat_message	Common	Invalid database key format entered message	Неверный формат имени базы данных. Оно должно начинаться с латинской буквы
+app_invdbnameformat_message	Common	Invalid database name format entered message	Неверный формат имени базы данных MySQL. Оно должно начинаться с латинской буквы
+app_dbnameexists_message	Common	Duplicate database name entered message	База данных MySQL с таким именем уже существует
+app_invnameformat_message	Common	First of Last name entered in an invalid format message	Имя и фамилия должны начинаться с латинской буквы
+app_passmismatch_message	Common	First and repeated password do not match message	Пароль и его подтверждение не совпадают
+app_invpwdlen_message	Common	Password too short message	Пароль должен содержать не менее %s символов
+app_makedbprof_message	Common	Error creating database profile message	Не удалось создать файл профиля базы данных
+app_editdeldb_message	Common	Modifying a deleted database message	Вы пытаетесь модифицировать удаленную базу данных
+app_erraccountlog_message	Common	Error adding account log error message	Ошибка добавления записи в журнал операций с аккаунтами
+app_emptycsv_message	Common	Empty CSV-file message	Загруженный файл пуст
+app_errreadingfile_mesage	Common	Error reading file message	Ошибка чтения файла
+app_errparsingfile_message	Common	Error parsing file message	Ошибка обработки файла
+app_noverfile_message	Common	Version information file not found message	Файл с информацией о версии сервиса не найден
+app_errxmlparsing_message	Common	Error parsing XML file message	Ошибка обработки файла XML
+app_openverfile_message	Common	Error opening version info file message	Ошибка открытия файла информации о версии
+app_invverfilestuct_message	Common	Invalid version file message	Неверная структура файла информации о версии
+app_invsqlconnect_message	Common	Error connecting to the SQL server message	Не удается подключиться к SQL-серверу
+app_invdbconnect_message	Common	Database connection error message	Не удается подключиться к базе данных "%s"
+app_filenotfound_message	Common	File doesn't exist message	Файл не найден: %s
+app_filequeryerr_message	Common	Error executing SQL script file message	Ошибка исполнения SQL запроса из файла: %s
+app_errdropdb_message	Common	Error deleting database message	Не удалось удалить базу данных
+app_errdropuser_message	Common	Error deleting mySQL user message	Невозможно удалить пользователя базы данных
+app_errdelprofile_message	Common	Error deleting profile message	Невозможно удалить файл описания базы данных
+app_nosubscrdata_message	Common	No information on subscription in database profile file message	Информация о подписке не найдена
+app_invlogindata_message	Common	Invalid login name or password entered message	Неверное имя пользователя или пароль
+app_errcreatingdb_message	Common	Error creating database message	Не удалось создать базу данных
+app_errmysqluser_message	Common	Error creating mySQL user message	Не удалось создать пользователя mySQL
+app_errregapp_message	Common	Error registering applications message	Ошибка регистрации сервисов
+app_sqluserrightsupd_message	Common	mySQL user access grants update failed message	Не удалось обновить права доступа для пользователя базы данных
+app_trialexpired_message	Common	Account expired message	Срок вашей подписки истек
+app_cancelledaccount_message	Common	Cancelled account message	Ваша подписка была удалена
+app_notactivelogin_message	Common	Accessing deleted or an expired account message	Доступ выключен администратором
+app_invdirectaccess_message	Common	Logging in without direct access rights message	У вас нет прав для прямого доступа
+app_performedby_text	Common	E-mail notification Performed By text	Выполнено
+app_notifytitle_text	Common	E-mail notification header	Автоуведомление %s. Не отвечайте на это сообщение!
+app_treerecycled_name	Common	Recycled folder name	Корзина
+app_treeavailfolders_name	Common	Available Folders folder name	Доступные папки
+app_treefoldernotfound_message	Common	Folder not found message	Папка не найдена
+app_treeinvfoldername_message	Common	Invalid characters in the folder name entered message	Имя папки не должно содержать следующие символы: / \ ? : * < >
+app_treeinvfolderlenname_message	Common	Invalid characters or name exceeds length in folder name entered message	Имя папки ограничено 255-ю символами и не может содержать следующие символы: / \ ? : * < >
+app_treenofldrights_message	Common	Lack of administrative rights to work with a folder message	У вас нет прав создавать подпапки в этой папке
+app_treenorootrights_message	Common	Lack of administrative rights to create a folder message	У вас нет прав создавать папки в корне
+app_treenofldmodrights_message	Common	Lack of administrative rights to modify a folder message	У вас нет прав изменять эту папку
+app_treenoflddelrights_message	Common	Lack of administrative rights to delete a folder message	У вас нет прав удалять эту папку или вложенные в нее
+app_treenocopymoverights_message	Common	Lack of administrative rights to copy files in this folder message	У вас нет прав копировать или перемещать данные в эту папку
+app_treenocopyfromrights_message	Common	Lack of administrative rights to copy files from this folder message	У вас нет прав копировать данные из этой папки
+app_treenomovefromrights_message	Common	Lack of administrative rights to move files from this folder message	У вас нет прав перемещать данные из этой папки
+app_treenocopytorights_message	Common	Lack of administrative rights to copy files in this folder message	У вас нет прав копировать папки в эту папку
+app_treenocopyfldrights_message	Common	Lack of administrative rights to copy a folder message	У вас нет прав копировать эту папку
+app_treenomovetofldrights_message	Common	Lack of administrative rights to move a folder in the specified folder message	У вас нет прав перемешать папки в эту папку
+app_treenomovetosubfldrights_message	Common	Lack of administrative rights to move a folder, or subfolders in the other folder message	У вас нет прав перемещать эту папку или вложенные папки
+app_treenocreatefldrights_message	Common	Lack of administrative rights to create folders message	У вас нет прав создавать папки
+app_treenofldviewrights_message	Common	Lack of any rights to work with a folder message	У вас нет прав доступа к этой папке
+app_treeroot_name	Common	Root folder name	<корень>
+app_treeaddfolder_title	Common	Modifying folder page in Create Folder mode name	Добавить
+app_treerenamefolder_title	Common	Rename folder page	Переименовать
+app_treemodfolder_title	Common	Modifying folder page in Modify Folder mode name	Настроить права доступа
+app_treeadduser_title	Common	Modifying user page in Creating User mode name	Добавить пользователя
+app_treemoduser_title	Common	Modifying user page in Modify User Rights mode name	Права пользователя
+app_treecopyfld_text	Common	Copy Folder text	Копировать
+app_treemovefld_text	Common	Move Folder text	Переместить
+app_treedelfolder_text	Common	Delete Folder text	Удалить
+app_treesavecopymove_message	Common	Copying or moving files in the same folder message	Невозможно скопировать или переместить файлы в ту же папку
+app_treeselectfolder_message	Common	Copying/moving without specifying the folder message	Пожалуйста выберите папку
+app_treefrom_text	Common	Text From in the Copy/Move dialog	из
+app_treeto_text	Common	Text To in the Copy/Move dialog	в
+app_treenofolders_message	Common	Folders don't exist message in copy/move dialog	Папок для выполнения операции не найдено
+app_treefurnote_text	Common	Folders & Users Rights page hint	Для изменения прав пользователя щелкните по его идентификатору в заголовке колонки
+app_treefurfldname_title	Common	Folder Name column header on the Folders & Users Rights page	Папка
+app_treeinvcurfldrights_message	Common	Lack of administrative right to modify current folder message	У вас нет прав изменять эту папку
+app_treefolder_text	Common	Folder text	Папка
+app_treefolders_text	Common	Folders text	Папки
+app_treeparentfolder_text	Common	Parent Folder text	Родительская папка
+app_treenousers_message	Common	Unable to add user in the user rights settings message	Все пользователи системы имеют доступ к папкам
+app_treerootfolders_label	Common	Can create root folders in the user rights settings label	Может создавать папки в корне
+app_treeflduserscb_label	Common	Label for "can show other users" checkbox	Может видеть список других пользователей, имеющих доступ к его/ее папкам
+app_treeuser_label	Common	User label in the user rights form	Пользователь
+app_treeread_label	Common	Read label in the user rights form	чтение
+app_treewrite_label	Common	Write label in the user rights form	запись
+app_treefolder_label	Common	Folder label in the user rights form	папка
+app_add_btn	Common	Add button	Добавить
+app_treeuserperms_text	Common	User permissions in this folder text in the folders user list	Права пользователей в этой папке
+app_treeuserindperms_text	Common	Personal user permissions text	Индивидуальные права
+app_treeuserpermscomment_text	Common	Comment for the personal permissons settings	Применяются к пользователям, не включенным ни в одну группу
+app_treegrouppermscomment_text	Common	Comment for the group permissons settings	Применяются ко всем пользователям, включенным в следующие группы
+app_treegroupname_label	Common	Group Name label	Группа
+app_treeusers_title	Common	Users column title	Пользователи
+app_treegroups_title	Common	Groups column title	Группы
+app_treeingeritrights_btn	Common	Label for the button "Inherit from parent folder"	Унаследовать настройки родительской папки
+app_treenoperms_text	Common	No permissions text	<нет>
+app_userlisttotal_text	Common	User list total text	...всего %s пользователь(ей)
+app_grouplisttotal_text	Common	Group list total text	...всего %s групп(а)
+app_listshowall_text	Common	User and Group list show all text	<Показать все>
+app_treeusergroupperms_text	Common	Group permissions text	Групповые права пользователей
+app_treemyperms_label	Common	List of systems users label (my permissions)	Мои права в этой папке
+app_treeyes_label	Common	Yes label in the systems users list	Да
+app_treeno_label	Common	No label in the systems users list	Нет
+app_filesizelimit_message	Common	Upload file size limitation message	Ограничение на размер загружаемого файла %s
+app_noentrieis_text	Common	<no entries> text	<нет записей>
+app_upbtn_hint	Common	Column Move Up button hint	Переместить вверх
+app_downbtn_hint	Common	Column Move Down button hint	Переместить вниз
+app_leftbtn_hint	Common	Column Move Left button hint	Переместить влево
+app_rightbtn_hint	Common	Column Move Right button hint	Переместить вправо
+app_errloadapplist_message	Common	Error loading application list message	Не удалось загрузить список сервисов
+app_deletefiles_btn	Common	Delete files) button	Удалить файл(ы)
+app_attachfiles_btn	Common	Attach button	Прикрепить
+app_pages_text	Common	Pages text	Страницы
+app_tips_label	Common	Tips label	Подсказка
+app_delete_btn	Common	Delete button	Удалить
+app_today_text	Common	Today text	Сегодня
+app_yesterday_text	Common	Yesterday text	Вчера
+app_minutesago_text	Common	Minutes ago text	%d мин назад
+app_hoursago_text	Common	Hours Minutes ago text	%d ч назад
+app_hoursminutesago_text	Common	Hours Minutes ago text	%d ч %d мин назад
+app_daysago_text	Common	Days ago text	%d дн назад
+app_dayshoursago_text	Common	Days hours ago text	%d дн %d ч назад
+app_monthsdaysago_text	Common	Months days ago text	%d мес %d дн назад
+app_yearsdaysago_text	Common	Years days days ago text	%d г %d дн назад
+app_justnow_text	Common	Just now text	только что
+app_treesetrights_label	Common	Setup rights for label	Настройка прав для
+app_helplink_text	Common	Help link text	Справка
+app_logoutlink_text	Common	Logout link text	Выход
+app_error_text	Common	Error text in the error message	Ошибка
+app_warning_text	Common	Warning text in the warning message	Предупреждение
+app_treeuserstip1_text	Common	First hint text above user list	1. Для изменения прав пользователя, щелкните по идентификатору пользователя в заголовке колонки\n2. Для редактирования папки или прав доступа, щелкните имя папки
+app_treeflddelconfirm_text	Common	Folder deletion confirmation	Удалить папку?
+app_treerights_title	Common	Rights column header	Права
+app_treeshared_title	Common	Shared column header	Общая
+app_treerightslegend_text	Common	User rights legend	Обозначения прав пользователя:\n\nЧ (чтение) - может только открывать файлы в этой папке;\nЗ (запись) - может добавлять/перемещать/изменять/удалять файлы в этой папке;\nП (папка) - может добавлять/перемещать/удалять папку целиком
+app_treeselfld_item	Common	<select folder> item	<выберите папку>
+app_treename_title	Common	Name column header in the folder user list	Имя
+app_treeid_title	Common	ID column header in the folder user list	Код
+app_treeshowfld_hint	Common	Popup hint above the Show Folders button	Показать папки
+app_treehidefld_hint	Common	Popup hint above the Hide Folders button	Скрыть папки
+app_treeaddfolderperms_text	Common	Text on the Folder tab of the Add/Modify Folder form	Для настройки прав пользователей в этой папке, используйте закладку "Пользователи" для личных прав и "Группы" для прав пользовательских групп.
+app_treeaddfolderusers_text	Common	Add/Modify Folder note text	Будет применена комбинация личных и групповых прав.
+app_treeaddfolderparent_text	Common	Add/Modify Folder note text	Если вы добавляете новую папку, по умолчанию будут использованы настройки родительской папки.
+app_treeaddfolderuseraccess_text	Common	Add/Modify Folder users tab text	Настройте персональные права доступа к этой папке
+app_treeaddfoldergroupaccess_text	Common	Add/Modify Folder groups tab text	Настройте групповые права доступа к этой папке
+app_treegrouprights_title	Common	Group rights title in the Add/Modify folder page	Права группы
+app_treeaccessrights_title	Common	Title "Access Rights Information"	Информация о правах доступа
+app_treeselfaccessrights_label	Common	Label for a section describing user personal rights	Ваши права доступа в этой папке
+app_treefoldernotshared_text	Common	Text "This folder is NOT shared with other users and groups"	К этой папке нет доступа у других пользователей или групп
+app_treefoldershared_text	Common	Text "This folder is shared with following users and groups"	Эта папка используется совместно со следующими пользователями и группами
+app_propagategrouprights_title	Common	Text "Propagate access rights to all subfolders"	Распространить права доступа на все вложенные папки
+app_propagategrouprights_note	Common	Propageate groups rights note	Распространить эти права доступа на все вложенные папки, в которых у вас установлен уровень доступа П (Папка)
+app_treefldaccessrights_label	Common	Label for a section describing user rights in current folder	Ваши права доступа
+app_treeuserid_title	Common	User ID column title	Код
+app_treeshared_label	Common	Label "Shared"	Совместно
+app_treenotshared_label	Common	Label "Not Shared"	Не совместно
+app_treemodrightstip_text	Common	Tip - how to modify user rights	Чтобы изменить права доступа, используйте меню Папка/Изменить.
+app_treekeepaccess_text	Common	Folder copy/move keep access rights option	Сохранить права доступа
+app_treeinheritaccess_text	Common	Folder copy/move inherit access rights option	Унаследовать права доступа из конечной родительской папки
+app_treecopymovedest_message	Common	Copy/move error message	Пожалуйста выберите конечную папку
+app_tree_folderid_label	Common	Folder ID label	Код папки
+app_weekmonshort_name	Common	Monday short name	Пн
+app_weektueshort_name	Common	Tuesday short name	Вт
+app_weekwedshort_name	Common	Wednesday short name	Ср
+app_weekthushort_name	Common	Thursday short name	Чт
+app_weekfrishort_name	Common	Friday short name	Пт
+app_weeksatshort_name	Common	Saturday short name	Сб
+app_weeksunshort_name	Common	Sunday short name	Вс
+app_cldtoday_text	Common	Today calendar text	Сегодня
+app_yearshort_text	Common	Year short text	г.
+app_cldwk_text	Common	Wk. calendar text	Нед.
+app_cldweelnum_text	Common	Week Number calendar text	Номер недели
+app_cldclose_text	Common	Close calendar text	Закрыть
+app_cldprevyear_text	Common	Previous Year calendar text	Предыдущий год
+app_cldnextyear_text	Common	Next Year calendar text	Следующий год
+app_cldprevmon_text	Common	Previous Month calendar text	Предыдущий месяц
+app_cldtnextmon_text	Common	Next Month calendar text	Следующий месяц
+app_accessdenied_message	Common	Access denied message	Доступ запрещен
+app_importingcols_label	Common	Import Column list header	Импортируемая колонка
+app_importchecks_label	Common	Checkbox Column header	Импортировать
+app_selectcolumn_item	Common	First item in column selection	<выберите колонку>
+app_importfirst_label	Common	Import first line checkbox label	Импортировать первую строку
+app_importfielderr_message	Common	Importing required field match not specified	Вы должны указать соответствие для колонки "%s"
+app_importfieldgrouperr_message	Common	Importing required field group match not specified	Одно из следующих полей должно иметь значение:\n %s
+app_importinvformat_message	Common	Invalid file import format message	Неправильный формат файла - соответствия для колонки "%s" не найдено
+app_importmanageformats_label	Common	Label Import File Formats	Управление форматами файлов
+app_importmanageformats_title	Common	Import File Formats page title	Управление форматами файлов
+app_imporformats_tipes	Common	Tips in the Import File Formats screen	Для создания нового формата импорта, выполните операцию Импорт, выбрав Формат Файла = <новый формат>. После настройки соответствий полей, вам будет предложено сохранить новый формат для будущего использования.
+app_importoformats_delete	Common	Import File Formats screen Delete button	Удалить выделенные
+app_importformatsnofmt_label	Common	Import File Formats screen no file formats label	Форматы импорта файлов не найдены.
+app_usingnotemptydb_message	Common	Database is not empty message	База данных уже содержит таблицы
+app_gdunavailable_message	Common	Graphic Library unavailable message	Ошибка создания эскиза: графическая библиотека GD недоступна
+app_gdoutimgsupport_message	Common	Unsupported output image formats message	Ошибка создания эскиза: графическая библиотека GD не поддерживает форматы GIF и JPEG
+app_gdunsupportedfmt_message	Common	Message about unsupported input format	Ошибка создания эскиза: графическая библиотека GD не поддерживает формат %s
+app_gdresexceeds_message	Common	Message about exceeding image resolution	Ошибка создания эскиза:  недостаточно памяти для обработки изображения такого размера. Обратитесь к системному администратору для увеличения параметра Memory Limit на вашем сервере.
+app_gdcommonerr_message	Common	Common graphics library error message	Ошибка создания эскиза: Неизвестная ошибка
+app_thumbcreated_message	Common	Common graphics library success message	Эскиз создан
+app_mysqluserexists_message	Common	MySQL user exists message	Пользователь mySQL с таким именем уже существует
+app_return_btn	Common	Return button	Вернуться
+app_back_btn	Common	Back button	Назад
+app_imagedesc_label	Common	Image description label	Описание
+app_addimage_label	Common	Add image label	Добавить
+app_noimage_label	Common	No Image label	нет
+app_select_item	Common	Select item	<выберите>
+app_upload_btn	Common	Upload buttom	Добавить
+app_clear_btn	Common	Clear buttom	Очистить
+app_image_text	Common	Image text	изображение
+app_invalidimageformat_message	Common	Invalid image file format message	Неподдерживаемый формат изображения для поля Image. Поддерживыемые форматы:
+app_noname_text	Common	No name text	нет имени
+app_uniquefieldviolation_message	Common	Unique field violation message	Запись с таким значением поля %s уже существует. Для поля дубликаты не разрешены.
+app_entrynumexceeded_message	Common	Maximum allowed entry number exceeded message	Новая запись не может быть добавлена. Максимальное разрешенное количество записей: %s
+app_usd_brief_text	Common	Brief name for US Dollar	USD
+app_uid_text	Common	User identifier text	Код пользователя
+app_user_text	Common	User text	Пользователь
+app_cantremoveself_message	Common	Cannot revoke user privileges for yourself messasge	Вы не можете удалить пользовательские привилегии для самого себя
+app_generalgroup_title	Common	General contact fields group	Общие
+app_longname_firstname	Common	First Name field full name	Имя
+app_longname_lastname	Common	Last Name field full name	Фамилия
+app_longname_midname	Common	Middle Name field full name	Отчество
+app_longname_nickname	Common	Nickname field full name	Псевдоним
+app_longname_email	Common	E-Mail field full name	Email
+app_phonesgroup_title	Common	Phones contact field group	Телефоны
+app_longname_homeph	Common	Home field full name	Домашний
+app_longname_workph	Common	Work field full name	Рабочий
+app_longname_mobileph	Common	Mobile field full name	Сотовый
+app_longname_fax	Common	Fax field full name	Факс
+app_longname_pager	Common	Pager field full name	Пейджер
+app_longname_workfax	Common	Business Fax field full name	Рабочий Факс
+app_group_home	Common	Home contact field group	Домашний
+app_group_business	Common	Business contact field group	Бизнес
+app_group_photo	Common	Photo contact field group	Фото
+app_group_work	Common	Work contact field group	Рабочий
+app_longname_homestreet	Common	Street Address field full name	Улица
+app_longname_homecity	Common	City field full name	Город
+app_longname_homestate	Common	State field full name	Регион
+app_longname_homepostcode	Common	Postal Code field full name	Индекс
+app_longname_homecountry	Common	Country field full name	Страна
+app_longname_perspage	Common	Personal Web Page field full name	Личная страница
+app_longname_workstreet	Common	Street Address field full name	Улица
+app_longname_workcity	Common	City field full name	Город
+app_longname_workstate	Common	State field full name	Регион
+app_longname_workpostcode	Common	Postal Code field full name	Индекс
+app_longname_workcountry	Common	Country field full name	Страна
+app_longname_officelocation	Common	Office Location field full name	Офис
+app_longname_company	Common	Company field full name	Компания
+app_longname_department	Common	Department field full name	Отдел
+app_longname_jobtitle	Common	Job Title field full name	Должность
+app_longname_buspage	Common	Business Web Page field full name	Рабочая страница
+app_longname_photo	Common	Photo field full name	Фото
+app_group_notes	Common	Notes field group	Заметки
+app_cmpname_name	Common	Company Name variable name	Название компании
+app_cmpstreetaddr_name	Common	Company Street Address variable name	Адрес компании
+app_cmpcity_name	Common	Company City variable name	Город
+app_cmpstatev_name	Common	Company State variable name	Область
+app_cmpzip_name	Common	Company Zip variable name	Индекс
+app_cmpcountry_name	Common	Company Country variable name	Страна
+app_cmpcontactname_name	Common	Company Contact Name variable name	Имя
+app_cmpcontactemail_name	Common	Company Contact Email variable name	Email
+app_cmpcontactphone_name	Common	Company Contact Phone variable name	Телефон
+app_cmpcontactfax	Common	Company Contact Fax variable name	Факс
+app_group_label	Common	Group label	Группа
+app_user_label	Common	User label	Пользователь
+app_activeusergr_title	Common	Active Users group name	Активные пользователи
+app_inactiveusergr_title	Common	Inactive Users group name	Неактивные пользователи
+app_deletedusergr_title	Common	Deleted Users group name	Удаленные пользователи
+app_included_label	Common	Label "Included"	Включен
+app_notincluded_label	Common	Label "Not Included"	Не включен
+app_conttypenotfound_message	Common	Contact type not found error message	Запрошенный тип контакта не найден
+app_invconttype_message	Common	Invalid contact type description message	Ошибка в описании типа контакта
+app_longname_birthdayday	Common	Birthday day field full name	День
+app_longname_birthdaymon	Common	Birthday month field full name	Месяц
+app_longname_birthdayyear	Common	Birthday year field full name	Год
+app_longname_birthday	Common	Birthday field full name	День рождения
+app_longname_notes	Common	Notes field full name	Заметки
+app_group_dates	Common	Dates contact field group	Даты
+app_selectmonth_item	Common	Select Month item	<выберите месяц>
+app_shortname_homeph	Common	H/Phone field short name	Д/Телефон
+app_shortname_workph	Common	Work phone field short name	Р/Телефон
+app_shortname_workfax	Common	B/Fax field short name	Р/Факс
+app_shortname_mobileph	Common	Mobile field short name	Сотовый
+app_shortname_fax	Common	H/Fax field short name	Д/Факс
+app_shortname_pager	Common	Pager field short name	Пейджер
+app_shortname_homestreet	Common	H/Street field short name	Д/Улица
+app_shortname_homecity	Common	H/City field short name	Д/Город
+app_shortname_homestate	Common	H/State field short name	Д/Штат
+app_shortname_homepostcode	Common	H/ZIP field short name	Д/Индекс
+app_shortname_homecountry	Common	H/Country field short name	Д/Страна
+app_shortname_perspage	Common	Personal WWW field short name	Личная WWW
+app_shortname_birthday	Common	Birthday field short name	Дата рождения
+app_shortname_company	Common	Company field short name	Компания
+app_shortname_department	Common	Department field short name	Отдел
+app_shortname_jobtitle	Common	Job Title field short name	Должность
+app_shortname_buspage	Common	Business WWW field short name	Рабочая WWW
+app_shortname_photo	Common	Photo field short name	Фото
+app_shortname_workstreet	Common	B/Street field short name	Р/Улица
+app_shortname_workcity	Common	B/City field short name	Р/Город
+app_shortname_workstate	Common	B/State field short name	Р/Штат
+app_shortname_workpostcode	Common	B/ZIP field short name	Р/Индекс
+app_shortname_workcountry	Common	B/Country field short name	Р/Страна
+app_shortname_officelocation	Common	B/Office field short name	Р/Кабинет
+app_shortname_notes	Common	Notes field full name	Заметки
+app_contactgroup_title	Common	Contact fields group	Контакт
+app_shortname_firstname	Common	First Name field short name	Имя
+app_shortname_lastname	Common	Last Name field short name	Фамилия
+app_shortname_midname	Common	Middle Name field short name	Отчество
+app_shortname_nickname	Common	Nickname field short name	Псевдоним
+app_shortname_email	Common	E-Mail field short name	Email
+app_sms_recipient_error	Common	SMS recipient address error	Телефонный номер должен состоять из 11-ти цифр.
+app_sms_delivered_status	Common	SMS Status: Delivered	Доставлено
+app_sms_pending_status	Common	SMS Status: Pending	Отправлено
+app_sms_canceled_status	Common	SMS Status: Canceled	ОШИБКА
+app_sms_phone_format_note	Common	Note with international phone number format	Код страны + код региона + телефонный номер. Не используйте в начале 0, например "00". Не числовые символы игнорируются. Множественные телефонные номера должны быть разделены символом точка с запятой  ";" Пример: +1 (215) 999-9999; 15551000000; 44 123 5550000
+app_mdl_class_notfound_error	Common	Module class not found error message	Класс модулей не найден
+app_mdl_default_notset_error	Common	Default module not set error message	Модуль %s не установлен или запрещен.
+app_mdl_notfound_error	Common	Module not found error message	Модуль не найден
+app_mdl_alr_installed_error	Common	Module already installed error message	Модуль уже установлен
+app_sms_out_system_balance	Common	SMS Error	Превышен допустимый системный лимит SMS.
+app_sms_out_user_balance	Common	SMS Error	Превышен допустимый лимит SMS
+app_imagefieldindicator_label	Common	Image field indicator	Изображение
+app_impnote_label	Common	Label Important Note	ВАЖНОЕ ЗАМЕЧАНИЕ
+app_vlctrlvar_title	Common	Variable list control variable name title	Переменная
+app_vlctrldesc_title	Common	Variable list control variable description title	Описание
+app_trialdemo_note	Common	The trial demo account notification	Это демо аккаунт.
+app_trialdemo_link	Common	The trial demo account link	Зарегистрируйтесь! (Бесплатно)
+app_accountunconfirmed_note	Common	The Unconfirmed account note	АККАУНТ НЕ ПОДТВЕРЖДЕН
+app_accountunconfirmed_link	Common	The Unconfirmed account link	Что это значит?
+app_contactslimit_message	Common	Contact number limitation message	<b>ОГРАНИЧЕНИЕ</b>: Количество контактов не может превышать %s.
+app_userslimit_message	Common	User number limitation message	<b>ОГРАНИЧЕНИЕ</b>: Количество пользователей не может превышать %s.
+app_spacelimit_message	Common	Database size limitation message	<b>ОГРАНИЧЕНИЕ</b>: Размер базы данных не может превышать %s MB.
+app_upgradeacc_label	Common	Upgrade your account label	Изменить параметры аккаунта
+app_registeracc_label	Common	Register your account label	Зарегистрировать Аккаунт.
+app_billingalert1_label	Common	Billing alert line 1 label	We had a billing problem with your account.
+app_billingalert2_label	Common	Billing alert line 2 label	Аккаунт может быть закрыт через %s дней.
+app_billingalert3_label	Common	Billing alert line 3 label	Click to resolve.
+app_suspended_title	Common	Account suspended page title	Аккаунт закрыт
+app_suspended_message	Common	Account suspended message	Ваш аккаунт был закрыт, так как следующий период хостинга не был оплачен.
+app_referadmin_message	Common	Refer your system administrator message	Пожалуйста, обратитесь к вашему администратору.
+app_accountexpired_message	Common	Account expired message	Срок действия аккаунта истек.
+app_accountexpire_message	Common	Account expire message	Срок действия аккаунта истечет через %s дней.
+app_account_givename	Common	Give name message	Дайте имя вашему аккаунту
+app_account_givename_sample	Common	Give name message sample	Например: mycompany.webasyst.net
+app_add_remove_services	Common	Add or Remove services link	Добавить сервисы
+app_loggedas_label	Common	Logged As	Вы вошли как
+app_changes_applied_message	Common	Changes applied message	Ваши изменения успешно сохранены.
+app_changes_canceled_message	Common	Changes applied message	Ваши изменения были отменены.
+app_importtemplate_label	Common	Import template label	Шаблон
+app_managetemplates_btn	Common	Manage Templates button	Управление шаблонами
+app_customtemplate_item	Common	Custom template list item	<новый>
+app_pendingsubscr_label	Common	Pending subscriber label	Ожидает подтверждения
+app_normalsubscr_label	Common	Pending subscriber label	Нормальное
+app_unable_loadapps	Common	Unable load host application list message	Не получилось загрузить список сервисов
+app_error_regapps	Common	Error registering applications message	Во время регистрации сервисов произошла ошибка
+app_wrong_accname	Common	Wrong account name message	Аккаунт с таким адресом не существует
+app_login2account	Common	Login to your WebAsyst account label	Вход в аккаунт ВебАсист
+app_your_accountname	Common	Your account name label	Адрес вашего аккаунта (ключ базы данных)
+app_loginname	Common	Login name label	Логин
+app_use_ssl	Common	Use SSL label	Использовать безопасное соединение (SSL)
+app_already_ssl	Common	Use SSL label	Включено безопасное соединение (SSL).
+app_nouse_ssl	Common	Use SSL label	Переключиться в обычный режим (без SSL).
+app_login_btn	Common	Login button	Войти
+app_login_link	Common	Login button	Вход в аккаунт
+app_donthaveaccount	Common	Don't have account label	Нет аккаунта?
+app_signup	Common	Sign Up label	Зарегистрируйтесь
+app_itsfree	Common	it's free label	бесплатно
+app_copyright	Common	Copyright label	Copyright © <a href="http://www.articus.ru/">ООО "Артикус"</a>, 2007. Все права защищены.
+app_session_expired	Common	Session expired message	Время сеанса истекло
+app_system_enter	Common	System enter message	<a href="../../../login.php">Вход в аккаунт ВебАсист</a>
+app_forgotpassword_link	Common	Forgot password link	Забыли пароль?
+app_forgotpassword	Common	Forgot password account label	Восстановление пароля
+app_remind_btn	Common	Forgot password remind button	Отправить
+app_remember	Common	Remeber me	Запомнить меня на этом компьютере
+app_mail_forgotpassword_subject	Common	Mail forgot password subject	Пароль аккаунта ВебАсист был изменен
+app_forgotpassword_sended	Common	Mail forgot password sended	Новый пароль отправлен на ваш адрес <b>%s</b>
+app_forgotpassword_error	Common	Mail forgot password sended	Аккаунт с указанными логином и Email не существует
+app_widgetsmenu_label	Common	Widgets Menu	Виджеты
+tpl_page_title	Manage Templates	Page Title	Управление шаблонами
+tpl_systemtemplates_label	Manage Templates	System Templates label	Системные шаблоны
+tpl_customtemplates_label	Manage Templates	Custom Templates label	Пользовательские шаблоны
+tpl_notemplates_label	Manage Templates	No Templates label	<нет шаблонов>
+tpl_deleteselected_btn	Manage Templates	Delete Selected button	Удалить выбранные
+tpl_imporformats_tipes	Manage Templates	Tips in the Manage Templates screen	Для создания нового шаблона, выполните операцию Импорт, выбрав Шаблон = <новый>. После настройки соответствий полей, вам будет предложено сохранить новый шаблон для будущего использования.
+tpl_format_note	Manage Templates	File Format Note	Чтобы сохранить этот шаблон для будущего использования, включите флажок и введите имя шаблона ниже
+tpl_formatname_label	Manage Templates	Label "Template Name"	Сохранить шаблон как
+du_page_title	Delete Users	Page Title	Удалить пользователей
+du_success_message	Delete Users	User processing success result message	Пользователь был успешно удален
+ci_screen_long_name	Company Information	Company Information page full name	Название аккаунта, лого и цвета
+ci_screen_short_name	Company Information	Company Information page short name	Название аккаунта, лого и цвета
+lf_screen_long_name	Company Information	Company Information page full name	Оформление
+lf_screen_short_name	Company Information	Company Information page short name	Оформление
+ci_nochanges_message	Company Information	Changes canceled message	Информация о компании не была изменена
+ci_savechanges_message	Company Information	Changes saved message	Информация о компании была изменена
+ci_compname_message	Company Information	Company Name label	Название аккаунта
+ci_adddress_title	Company Information	Address section header	Адрес
+ci_streetaddr_label	Company Information	Street Address label	Адрес
+ci_city_label	Company Information	City label	Город
+ci_state_label	Company Information	State label	Регион
+ci_zip_label	Company Information	Zip label	Индекс
+ci_country_label	Company Information	Country label	Страна
+ci_contperson_title	Company Information	Contact Person section header	Контактная информация
+ci_name_label	Company Information	Name label	Имя
+ci_email_label	Company Information	E-Mail label	Email
+ci_phone_label	Company Information	Phone label	Телефон
+ci_fax_label	Company Information	Fax label	Факс
+ci_logo_title	Company Information	Company Logo section header	Логотип
+ci_selectlogo_label	Company Information	Select Logo label	Выбрать изображение
+ci_delete_btn	Company Information	Delete button	Удалить
+ci_invlogoformat_message	Company Information	Image with other than GIF extension message	Только изображения типа GIF разрешены в качестве логотипа компании
+ci_logo_comment_caption	Company Information	Logo Comment Caption	Логотип
+ci_logo_comment_text	Company Information	Logo Comment Text	Если выбран, ваш логотип будет отображаться на верхней панели рядом с названием компании. Для лучшего результата, используйте файл с размером не более 250 х 100 пикселов (только GIF файлы).
+ci_nameandlogo_title	Company Information	Name and logo section title	Информация о компании
+ci_logo_note	Company Information	Logo Note	Для лучшего результата, используйте файл с размером не более 250 х 100 пикселов (только GIF файлы).
+ci_showlogotop_label	Company Information	Show logo top 	Выводить логотип в верхней панели
+ci_showcompanynametop_label	Company Information	Show company name top 	Показывать название аккаунта в верхней панели
+cl_screen_long_name	Currency List	Currency List page full name	Справочник валют
+cl_screen_short_name	Currency List	Short name	Валюты
+cl_addcur_btn	Currency List	Add Currency button	Добавить валюту
+cl_id_title	Currency List	ID column header	Код
+cl_name_title	Currency List	Column name	Название
+amc_pageadd_title	Add/Modify Currency	Page header in Add Currency mode	Добавить
+amc_pagemodify_title	Add/Modify Currency	Page header in Modify Currency mode	Изменить
+amc_delete_message	Add/Modify Currency	Currency deletion confirmation	Удалить?
+amc_curexists_message	Add/Modify Currency	Entered currency already exists message	Валюта уже существует
+ul_page_label	User List	Page label	Страница
+ul_usernamefull_title	User List	Primary Name column title	Основное имя
+ul_sorting_title	User List	Sorting bar header	Сортировка
+ul_emptyaddtogroup_message	User List	Adding users to group without selecting the users message	Пожалуйста, выберите пользователя(ей) для добавления в группу
+ul_emptyremove_message	User List	Removing users from group without selecting the users message	Пожалуйста, выберите пользователя(ей) для удаления из группы
+ul_user_menu	User List	User menu	Пользователь
+ul_deleteusers_menu	User List	Delete Users menu item	Удалить
+ul_emptydel_message	User List	User deletion without selecting the files message	Пожалуйста, выберите пользователя для удаления.
+ul_confirmdel_message	User List	User deletion confirmation	Вы действительно хотите удалить выбранных пользователей?
+ul_emptycongroup_message	User List	Empty contact required group message	Одно из следующих полей должно иметь значение:\n %s
+ul_adduser_menu	User List	Add User menu	Добавить
+amu_blank_item	Add/Modify User	blank text in pages list	пустая
+amu_lastopened_item	Add/Modify User	last opened text in pages list	последняя открытая
+amu_htmlmail_name	Add/Modify User	HTML message format	HTML
+amu_textmail_name	Add/Modify User	Text message format	Текстовый
+amu_lastname_label	Add/Modify User	Last Name label	Фамилия
+amu_firstname_label	Add/Modify User	First Name label	Имя
+amu_middlename_label	Add/Modify User	Middle Name label	Отчество
+amu_password_label	Add/Modify User	Password label	Пароль
+amu_passconf_label	Add/Modify User	Confirm password label	Подтверждение
+amu_language_label	Add/Modify User	Language label	Язык
+amu_encoding_label	Add/Modify User	Encoding label	Кодировка
+amu_status_label	Add/Modify User	Status label	Статус
+amu_notfirmat_label	Add/Modify User	Notification Format label	Формат cообщений
+amu_startpage_label	Add/Modify User	Start Page label	Первая страница
+amu_diraccess_text	Add/Modify User	Direct Access checkbox text	Разрешить прямой доступ
+amu_diraccessnote_text	Add/Modify User	Direct login comment text	Вы должны выбрать первую страницу чтобы разрешить прямой доступ.
+amu_emailinstructions_text	Add/Modify User	E-mail login restrictions checkbox text	Отправить инструкции пользователю по Email
+amu_reservedname_message	Add/Modify User	Message in case of using the ADMINISTRATOR name as ID for new user	Имя пользователя ADMINISTRATOR зарезервировано и не может быть использовано
+amu_usrexists_message	Add/Modify User	User already exists message	Пользователь "%s" уже зарегистрирован
+amu_maxusers_message	Add/Modify User	Number of maximum users exceeded	Количество пользователей системы не должно превышать %s. Пожалуйста, обратитесь к системному администратору.
+amu_invidsymbols_message	Add/Modify User	Invalid characters in Login Name field entered message	Недопустимые символы в поле "Код"
+amu_invpassword_message	Add/Modify User	Invalid password message	Неверный пароль
+amu_notchanged_text	Add/Modify User	***not changed*** text in the E-mail	***не изменился***
+amu_usermailheader_text	Add/Modify User	Header in a user connection instructions	Ваша учетная запись в ВебАсисте была создана либо изменена
+amu_loginurlcomment_text	Add/Modify User	Login address comments	Для входа через браузер, используйте следующий адрес:
+amu_loginparams_text	Add/Modify User	Text above the login parameters list	Информация о вашей учетной записи:
+amu_maildbkey_label	Add/Modify User	Database Key label	Код базы данных
+amu_mailloginname_label	Add/Modify User	Login Name label	Имя пользователя
+amu_mailpassword_label	Add/Modify User	Password label	Пароль
+amu_maildacomment_text	Add/Modify User	Direct system login comments	Вы имеете право подключаться напрямую к следующим страницам ВебАсиста:
+amy_mailgreeting_text	Add/Modify User	Greetings in a user connection instructions	Уважаемый %s,
+amu_perssettings_title	Add/Modify User	Text for the personal settings section on the Access tab	Разрешить изменять персональные настройки
+amu_perspassword_label	Add/Modify User	Label "Password" for the Access tab	Пароль
+amu_perslookandfeel_label	Add/Modify User	Label "Look and Feel" for the Access tab	Оформление
+amu_persnameandcont_label	Add/Modify User	Label "Name and Contact" for the Access tab	Имя и контактная информация
+amu_persswitchemail_label	Add/Modify User	Label "Enable/Disable email notifications" for the Access tab	Включать/выключать почтовые уведомления
+amu_removefromgroup_message	Add/Modify User	Remove user from group confirmation	Вы действительно хотите удалить выбранных пользователей из группы?
+amu_directaccess_title	Add/Modify User	Direct access section title	Прямой доступ
+amu_directaccess_text	Add/Modify User	Description for the direct access feature	Прямой доступ позволяет пользователям открывать любой доступный экран ВебАсиста, минуя форму входа, вводом специального адреса в адресное поле обозревателя.
+amu_directaccessemail_note	Add/Modify User	Login instructions direct access note	Список адресов для прямого доступа будет включен в письмо с инструкциями
+amu_addpage_title	Add/Modify User	Add User page title	Добавить пользователя
+amu_modpage_title	Add/Modify User	Modify User page title	Изменить пользователя
+amu_showextended_btn	Add/Modify User	Show Extended Information button	Показать все поля
+amu_hideextended_btn	Add/Modify User	Hide Extended Information button	Скрыть
+amu_newuser_label	Add/Modify User	New User label	<новый пользователь>
+amu_timezone_label	Add/Modify User	Label for timezone combobox	Часовой пояс
+amu_timezone_dst_label	Add/Modify User	DST combobox	Летнее время
+amu_localtime_label	Add/Modify User	Your Local Time label	Локальное время
+amu_userlocaltime_label	Add/Modify User	Local Time label	Время у пользователя
+amg_name_label	Add/Modify Group	Name label	Имя
+usa_screen_long_name	Access Rights Diagram	User Screen Access page full name	Диаграмма прав доступа
+usa_screen_short_name	Access Rights Diagram	User Screen Access page short name	Доступ
+usa_select_item	Access Rights Diagram	select item for user list	выбрать
+usa_list_text	Access Rights Diagram	Text above the list	Для изменения прав пользователя щелкните по идентификатору в заголовке колонки
+usa_finduser_label	Access Rights Diagram	Find user label	Найти пользователя
+usa_findgroup_label	Access Rights Diagram	Find group label	Найти группу
+usa_accessobj_title	Access Rights Diagram	Access Object column header	Объект доступа
+usa_notifylist_title	Access Rights Diagram	E-mail Notification list header	Почтовые уведомления
+usa_perssettings_title	Access Rights Diagram	Personal Settings column header	Личные настройки
+usa_indqualifier_label	Access Rights Diagram	Individual access type label	Личный
+usa_groupqualifier_label	Access Rights Diagram	Group access type label	Групповой
+usa_sumqualifier_label	Access Rights Diagram	Summary access type label	Составной
+usa_diraccess_text	Access Rights Diagram	Direct Access checkbox text	Разрешить прямой вход
+usa_passwordqualifier_text	Access Rights Diagram	Can change password qualifier text	Может изменять пароль
+usa_lookandfeelqualifier_text	Access Rights Diagram	Can change look and feel qualifier text	Может изменять оформление
+usa_namequalifier_text	Access Rights Diagram	Can change Name and Contact qualifier text	Может изменять имя и контактную информацию
+usa_emailqualifier_text	Access Rights Diagram	Can Enable/Disable email qualifier text	Может включать/отключать почтовые уведомления
+usa_folders_title	Access Rights Diagram	Folders title	Папки
+usa_permlevel_title	Access Rights Diagram	Permission Level title	Уровень доступа
+usa_showmode_label	Access Rights Diagram	Label "Show"	Показать
+usa_usersmode_item	Access Rights Diagram	Users view mode name	Пользователи
+usa_groupsmode_item	Access Rights Diagram	Groups view mode name	Группы
+usa_nogroups_label	Access Rights Diagram	No user groups label	Группы пользователей не определены
+usa_userstip_text	Access Rights Diagram	Tip text for for user view mode	Для настройки прав доступа пользователя, щелкните имя пользователя в заголовке колонки
+usa_groupstip_text	Access Rights Diagram	Tip text for for group view mode	Для настройки прав доступа группы, щелкните название группы в заголовке колонки
+mur_loadntfc_message	Modify User Rights	Error loading notification list message	Не удалось получить список уведомлений
+aa_screen_long_name	Account Administrator	Account Administrator page full name	Аккаунт
+aa_screen_short_name	Account Administrator	Account Administrator short name	Аккаунт
+aa_page_title	Account Administrator	Page Title	Администратор системы
+aa_sys_comment_text	Account Administrator	System Comment Text	Настройте формат вывода дат (напр. ДД.ММ.ГГГГ или ММ/ДД/ГГГГ) и установите интервал истечения сессии.
+aa_ci_comment_text	Account Administrator	System Comment Text	Измените название вашей компании и контактную информацию. Разместите ваш логотип на верхней панели в своем ВебАсист аккаунте.
+aa_cl_comment_text	Account Administrator	System Comment Text	Управляйте списком валют, которые используются сервисами ВебАсист, напр. Рубль, Доллар США, Евро.
+aa_sms_comment_text	Account Administrator	System Comment Text	Проверьте текущий баланс SMS и историю всех SMS сообщений, отправленных из вашего аккаунта ВебАсист.
+aa_ai_comment_text	Account Administrator	System Comment Text	Информация об аккаунте
+sys_screen_long_name	System	System page full name	Системные настройки
+sys_screen_short_name	System	System page short name	Системные настройки
+sys_errgettingdbsize_message	System	Database size query message	Невозможно получить размер базы данных
+sys_neverexp_text	System	Never expires text	Никогда не истекает
+sys_totalfiles_text	System	Number of files text	(всего файлов: %s)
+sys_availspace_text	System	Available free space text	(%s%% доступного пространства)
+sys_space_title	System	On-disk space allocation section header	Занятое дисковое пространство
+sys_database_label	System	Database label	База данных
+sys_files_label	System	File attachments label	Прикрепленные файлы
+sys_total_label	System	Total label	Всего
+sys_totallimit_label	System	Total space limit label	Общее ограничение пространства
+sys_attachmentlimit_label	System	One attachment limit label	Максимальный размер прикрепленных файлов
+sys_dataformat_label	System	Date output format label	Формат дат
+sys_expinterval_text	System	Session Expiration Interval (min) text	Период истечения сеанса
+sys_change_btn	System	Change button	Изменить
+sys_apply_btn	System	Apply button	Сохранить изменения
+sys_nochanges_message	System	Changes canceled message	Изменение системных настроек были отменено
+sys_savechanges_message	System	Changes saved message	Системные настройки были успешно изменены
+sei_page_title	Session Expiration Interval	Page header	Период истечения сеанса
+sei_default_label	Session Expiration Interval	Default label	По умолчанию
+sei_never_label	Session Expiration Interval	Never expires label	Никогда не истекает
+sei_browserclose_label	Expiration Interval	Browser close label	по закрытию браузера
+sei_custom_label	Session Expiration Interval	Custom (min) label	Период (мин)
+sei_min_label	Session Expiration Interval	min label	минут
+sei_form_text	Session Expiration Interval	Text above form	Пожалуйста, укажите период истечения сеанса HTML клиента
+ul_addgroup_menu	User List	Menu item Group/Add Group	Добавить
+ul_modifygroup_menu	User List	Menu item Group/Modify Group	Изменить
+ul_deletegroup_menu	User List	Menu item Group/Delete Group	Удалить
+ul_delgroup_message	User List	Group deletion confirmation	Вы действительно хотите удалить эту группу?
+ul_delgroup_note	User List	Group deletion note	ЗАМЕЧАНИЕ: Пользователи НЕ будут удалены
+ul_addtogroup_menu	User List	Menu item Add To Group	Добавить в группу
+ul_removefromgroup_menu	User List	Menu item Remove To Group	Удалить из группы
+ul_view_menu	User List	Menu View	Вид
+ul_groups_title	User List	Groups list title	Группы
+ul_hidegroups_hint	User List	Hint for hide groups icon	Скрыть группы
+ul_availablegroups_title	User List	Column in the Available Groups table	Доступные группы
+ul_username_title	User List	Name column title	Имя
+ul_groupname_title	User List	Group Name column title	Группа
+ul_usercount_title	User List	User Count column title	Пользователей
+ul_summary_note	User List	Label below the Available Groups table	%s пользователь(ей) в %s группах
+ul_emptyrevoke_message	User Listr	Revoking privileges without selecting the contacts message	Пожалуйста, выберите пользователей.
+ul_revokeprivs_message	User Listr	Revoke user privileges confirmation message	Вы действительно хотите удалить пользовательские привилегии для выбранных пользователей?
+ul_deleteusers_menu	User Listr	Delete users menu	Удалить
+ul_userid_title	User List	User ID column header	Код
+ul_email_title	User List	E-mail column header	Email
+amgr_pageadd_title	Add/Modify Group	Add/Modify Group page header in add group mode	Добавить группу
+amgr_pagemod_title	Add/Modify Group	Add/Modify Group page header in modify group mode	Изменить группу
+amgr_newgroup_label	Add/Modify Group	The group name for add group mode	<новая группа>
+amgr_group_title	Add/Modify Group	Title for the Group tab	Группа
+amgr_users_title	Add/Modify Group	Title for the Users tab	Пользователи
+amgr_membershp_label	Add/Modify Group	Label "User Group Membership"	Выберите пользователей, которых вы хотите включить в группу
+amgr_included_label	Add/Modify Group	Label "Included"	Включенные
+amgr_notincluded_label	Add/Modify Group	Label "Not Included"	Не включенные
+amgr_access_title	Add/Modify Group	Title for the Access tab	Доступ
+amgr_access_label	Add/Modify Group	Label for the Access tab	Все пользователи этой группы имеют следующие права
+amgr_groupid_label	Add/Modify Group	Group ID label	Код группы
+amg_name_label	Add/Modify Group	Name label	Название
+amu_user_title	Add/Modify User	Title for the User tab	Пользователь
+amu_groups_title	Add/Modify User	Title for the Groups tab	Группы
+amu_access_title	Add/Modify User	Title for the Access tab	Доступ
+amu_quota_title	Add/Modify User	Title for the Quota tab	Квоты
+amu_lookandfeel_title	Add/Modify User	Title for the Look And Feel tab	Оформление
+amu_sms_title	Add/Modify User	Title for the SMS tab	SMS Биллинг
+amu_storagespacequota_label	Add/Modify User	Storage space quota label	Место на диске (KB)
+amu_quotas_note	Add/Modify User	Quotas note	Некоторые сервисы позволяют определить квоты на использование ресурсов. Установите значения квоты для данного пользователя.
+amu_noquotas_text	Add/Modify User	No quotas text	Нет сервисов, использующих квоты.
+amu_leaveblankquotas_text	Add/Modify User	Leave blank quota text	Оставьте поле пустым для отмены квоты.
+amu_noaccess_label	Add/Modify User	Warning: no access rights granted	Права доступа отсутствуют.\n\nПользователь не входит ни в одну группу пользователей.
+amu_groupperms_text	Add/Modify User	Note about combination rights on the Groups tab	При добавлении пользователя в одну или несколько групп, к нему будет применена комбинация персональных и групповых прав.
+amu_combinationrights_text	Add/Modify User	Note about user rights in case if user belongs to one or more groups	Этот пользователь входит в %s групп(ы). К нему будет применена комбинация персональных и групповых прав доступа.
+amu_personalrights_text	Add/Modify User	Note about user rights in case if user does not belongs to any groups	Этот пользователь не входит ни в одну группу. К нему будут применены персональные права доступа.
+amu_loginname_label	Add/Modify User	Label "Login Name"	Имя пользователя (код)
+amu_notificationscb_label	Add/Modify User	Label for email notifications checkbox	Пользователь может получать почтовые уведомления
+amu_contact_title	Add/Modify User	Contact tab title	Контакт
+amu_contactsection_label	Add/Modify User	Contact section label	Контакт
+amu_contactfolder_label	Add/Modify User	Contact folder label	Папка контакта
+amu_folder_tip	Add/Modify User	Folder tip	Все пользователи помещаются в базу сервиса Контакты. Когда вы добавляете пользователя, вы можете указать любую доступную папку. Вы можете изменить папку позже, с помощью сервиса Контакты.
+amu_groups_label	Add/Modify User	Group tab label	Выберите группы, в которые вы хотите включить пользователя
+adg_page_title	Add To Group	Page header	Добавить в группу
+adg_selectgroup_item	Add To Group	Item <select group>	<выберите группу>
+adg_group_label	Add To Group	Groups selector label	Укажите группу
+cv_page_title	Customize View	Page header	Настроить вид
+cv_form_label	Customize View	Label above the form	Выберите колонки, которые вы хотите видеть в списке контактов
+cv_visible_list	Customize View	Visible Columns list header	Видимые колонки
+cv_hidden_list	Customize View	Hidden Columns list header	Скрытые колонки
+cv_entriesnum_label	Customize View	Number of entries on one page selection label	Количество записей на одной странице:
+cv_details_text	Customize View	Details tab text	В представлении Подробно отображается вся доступная информация о пользователе/контакте. Вы можете указать, какие поля типа Изображения (если таковые имеются) будут показаны в списке как эскизы.
+cv_addimages_note	Customize View	Add images note	Для добавления полей-изображений воспользуйтесь Конструктором записи (в главном меню)
+we_tooltips_bold	WYSIWYG Editor	Bold button tooltip	Полужирный
+we_tooltips_italic	WYSIWYG Editor	UItalic button tooltip	Курсив
+we_tooltips_underline	WYSIWYG Editor	Undeline button tooltip	Подчеркнутый
+we_tooltips_strikethrough	WYSIWYG Editor	Strikethrough button tooltip	Зачеркнутый
+we_tooltips_sub	WYSIWYG Editor	Subscript button tooltip	Нижний индекс
+we_tooltips_super	WYSIWYG Editor	Superscript button tooltip	Верхний индекс
+we_tooltips_justifyleft	WYSIWYG Editor	Justifyleft button tooltip	Слева
+we_tooltips_justifycenter	WYSIWYG Editor	Justify Center button tooltip	По центру
+we_tooltips_justifyright	WYSIWYG Editor	Justify Right button tooltip	Справа
+we_tooltips_justifyfull	WYSIWYG Editor	Justify Full button tooltip	По ширине
+we_tooltips_orderedlist	WYSIWYG Editor	Ordered List button tooltip	Нумерованный список
+we_tooltips_unorderedlist	WYSIWYG Editor	Bulleted List button tooltip	Маркированный список
+we_tooltips_outdent	WYSIWYG Editor	Decrease Indent button tooltip	Уменьшить отступ
+we_tooltips_indent	WYSIWYG Editor	Increase Indent button tooltip	Увеличить отступ
+we_tooltips_forecolor	WYSIWYG Editor	Font Color button tooltip	Цвет шрифта
+we_tooltips_hilitecolor	WYSIWYG Editor	Background Color button tooltip	Цвет фона
+we_tooltips_horizontalrule	WYSIWYG Editor	Horizontal Rule button tooltip	Горизонтальная линия
+we_tooltips_createlink	WYSIWYG Editor	Insert Web Link button tooltip	Вставить ссылку WWW
+we_tooltips_insertimage	WYSIWYG Editor	Insert/Modify Image button tooltip	Вставить/Изменить изображение
+we_tooltips_inserttable	WYSIWYG Editor	Insert Table button tooltip	Вставить таблицу
+we_tooltips_htmlmode	WYSIWYG Editor	Toggle HTML Source button tooltip	Просмотр кода HTML
+we_tooltips_popupEditor	WYSIWYG Editor	Enlarge Editor" button tooltip	Увеличить редактор
+we_tooltips_about	WYSIWYG Editor	About this editor button tooltip	О редакторе HTML
+we_tooltips_showhelp	WYSIWYG Editor	Help using editor button tooltip	Справка по использованию редактора
+we_tooltips_textindicator	WYSIWYG Editor	Current style button tooltip	Текущий стиль
+we_tooltips_undo	WYSIWYG Editor	Undoes your last action button tooltip	Отменяет последнее действие
+we_tooltips_redo	WYSIWYG Editor	Redoes your last action button tooltip	Возвращает последнее действие
+we_tooltips_cut	WYSIWYG Editor	Cut selection button tooltip	Вырезать выделение
+we_tooltips_copy	WYSIWYG Editor	Copy selection button tooltip	Скопировать выделение
+we_tooltips_paste	WYSIWYG Editor	Paste from clipboard button tooltip	Вставить из буфера обмена
+we_tooltips_lefttoright	WYSIWYG Editor	Direction left to right button tooltip	Направление слева направо
+we_tooltips_righttoleft	WYSIWYG Editor	Direction right to left button tooltip	Направление справа налево
+we_button_ok	WYSIWYG Editor	OK Button	OK
+we_button_cancel	WYSIWYG Editor	Cancel Button	Отмена
+we_msg_path	WYSIWYG Editor	Path message	Путь
+we_msg_textmode	WYSIWYG Editor	Textmode message	Вы в ТЕКСТОВОМ РЕЖИМЕ. Используйте кнопку [<>] для возвращения в режим WYSIWYG.
+we_dlg_cancel	WYSIWYG Editor	Cancel	Отмена
+we_dlg_link	WYSIWYG Editor	Insert/Modify Link	Вставить/изменить ссылку
+we_dlg_nwindow	WYSIWYG Editor	New window (_blank)	Новое окно (_blank)
+we_dlg_none	WYSIWYG Editor	None (use implicit)	Нет (use implicit)
+we_dlg_ok	WYSIWYG Editor	OK	OK
+we_dlg_other	WYSIWYG Editor	Other	Другой
+we_dlg_sameframe	WYSIWYG Editor	Same frame (_self)	Этот же фрейм (_self)
+we_dlg_target	WYSIWYG Editor	Target:	Target:
+we_dlg_title	WYSIWYG Editor	Title (tooltip):	Заголовок (tooltip):
+we_dlg_topframe	WYSIWYG Editor	Top frame (_top)	Верхний фрейм (_top)
+we_dlg_url	WYSIWYG Editor	URL:	URL:
+we_dlg_editor	WYSIWYG Editor	You must enter the URL where this link points to	Вы должны ввести адрес, на который будет указывать эта ссылка
+tt_page_title	Tips & Tricks	Page title	Подсказки и приемы
+tt_pagetitle_item	Tips & Tricks	Page title combobox item	подсказки и приемы
+tt_loadingbook_message	Tips & Tricks	Error loading book message	Ошибка загрузки страницы
+tt_openttonstartup_label	Tips & Tricks	Show Tips & Tricks on startup label	Показывать подсказки при входе в систему
+hlp_basics_title	Help	WebAsyst Basics title	Основы ВебАсист
+sms_ua_screen_long_name	SMS User Accounts	SMS User Accounts screen long name	SMS счета пользователей
+sms_ua_screen_short_name	SMS User Accounts	SMS User Accounts short name	SMS счета пользователей
+sms_bh_screen_long_name	SMS User Accounts	SMS User Accounts screen long name	SMS платежи
+sms_bh_screen_short_name	SMS User Accounts	SMS User Accounts short name	SMS платежи
+sms_sd_screen_name	SMS Details	SMS Details screen name	SMS детальная информация
+sms_page_title	SMS	Page Title	SMS
+sms_screen_long_name	SMS	Screen Name	SMS биллинг
+sms_history_label	SMS	History Label	История SMS
+sms_actual_balance_title	SMS Balance & History	Actual system balance	Текущий баланс
+sms_amount_label	SMS Balance & History	Amount label	Сумма
+sms_avail_balance_title	SMS Balance & History	Available system balance	Доступный баланс
+sms_history_btn	SMS Balance & History	History button	История
+sms_update_balance_btn	SMS Balance & History	Update Balance button	Обновить баланс
+sms_update_balance_screen	SMS Balance & History	Update Balance screen name	Обновить ,баланс
+sms_screen_empty_message	SMS Balance & History	Error message if no users were selected	Вы должны выбрать как минимум одного пользователя для изменения баланса
+sms_userid_title	SMS Balance & History	User ID	ID
+sms_username_title	SMS Balance & History	User Name	Имя
+sms_sent_title	SMS Balance & History	Sent	Отправлено
+sms_balance_title	SMS Balance & History	Balance	Баланс
+sms_available_title	SMS Balance & History	Available	Доступно
+sms_credit_title	SMS Balance & History	Credit	Кредит
+sms_date_title	SMS Balance & History	Date	Дата
+sms_action_title	SMS Balance & History	Action	Действие
+sms_source_title	SMS Balance & History	Source	Источник
+sms_phone_title	SMS Balance & History	Phone	Телефон
+sms_width_title	SMS Balance & History	Length	Длина
+sms_app_title	SMS Balance & History	Application	Сервис
+sms_cost_title	SMS Balance & History	Cost	Стоимость
+sms_charge_title	SMS Balance & History	Charge	Снято
+sms_sender_title	SMS Balance & History	Sender	Отправитель
+sms_status_title	SMS Balance & History	Status	Статус
+sms_text_title	SMS Balance & History	Text	Текст
+sms_unlim_title	SMS Balance & History	Unlimited	Не ограничено
+sms_modifiedby_title	SMS Balance & History	Modified by	Кем изменено
+sms_fill_btn	SMS Balance & History	Fill	Заполнить
+sms_fill_amount_text	SMS Balance & History	Note in the Modify Actual amount of sms form	Введите Количество и нажмите кнопку Заполнить для подстановки всем пользователям.
+sms_blnk_note_text	SMS Balance & History	Note under available amount field box	Пустое значение поля дает неограниченное количество SMS пользователям
+sms_comment_note_text	SMS Balance & History	Note text	Используйте эту форму, чтобы установить максимально допустимое количество SMS сообщений, которые данный пользователь может отправить.
+sms_credit_history_title	SMS Balance & History	Credit History	История оплат
+sms_sms_history_title	SMS Balance & History	SMS History	История SMS
+sms_err_balance_not_valid	SMS Balance & History	Balance value less or equal 0 error mesage	Значение баланса SMS должно быть числом более или равным 0
+sms_err_balance_update	SMS Balance & History	Balance update failed error message	Обновление баланса не произошло из-за ошибки базы данных.
+sms_ua_form_comment_text	SMS Balance & History	Comment before table with user list in Users Accounts	Настройка доступного количества SMS сообщений для каждого пользователя.
+sms_bh_form_comment_text	SMS Balance & History	Comment before table with user list in Billing History	Просмотр статистики платежей.
+sms_history_form_comment_text	SMS Balance & History	Comment for History link	Просмотр журнала отправленных сообщений.
+sms_sms_select_users_title	SMS Balance & History	Select users	1. Для обновления количества доступных SMS для нескольких пользователей на одном экране, выберите пользователей в списке и нажмите кнопку "Обновить баланс"\n2. Для изменения значения доступных SMS для одного пользователя, нажмите на значение в колонке Доступно\n3. Нажмите на значение в колонке Отправлено для получения истории SMS отправленных пользователем
+sms_screen_sms_disabled	SMS Balance & History	SMS disabled message	SMS запрещены. Обратитесь к вашему администратору ВебАсист
+sms_add_action_title	SMS Balance & History	SMS ADD Action Title	Добавлено к балансу
+sms_set_action_title	SMS Balance & History	SMS SET Action Title	Новый баланс
+sms_history_total_sent	SMS Balance & History	Total SMS sent	Всего SMS отправлено
+sms_history_sent	SMS Balance & History	Total SMS sent	Отправлено SMS
+sms_history_nosent_text	SMS Balance & History	No messages sent	Ни одного SMS не отправлено.
+sms_billing_total_charge_text	SMS Balance & History	Total charge	Всего удержано
+sms_billing_actual_charge_text	SMS Balance & History	Actual charge	Фактически удержано
+sms_billing_res_charge_text	SMS Balance & History	Reserve charge	Зарезервировано
+sms_show_history_text	SMS Balance & History	Show History	Показать историю
+sms_period_last10day_text	SMS Balance & History	Selected period	За последние 10 дней
+sms_period_allhistory_text	SMS Balance & History	Selected period	Вся доступная история
+sms_charge_btn	SMS Balance & History	Update Actual Charge button label	Обновить
+sms_charge_updated_text	SMS Balance & History	Charge updated text	Фактическая оплата была обновлена для %d SMS.
+sms_open_sms_note	SMS Balance & History	Open SMS text in the history list note	Нажмите на строку таблицы для просмотра отправленной SMS
+sms_actual_status_text	SMS Balance & History	Charged SMS status	Актуально
+sms_reserved_status_text	SMS Balance & History	Charged SMS status	Зарезервировано
+sms_history_download_title	SMS Balance & History	Download CSV file	Вы можете скачать файл .CSV с историей отправленных SMS
+sms_history_from_date_label	SMS Balance & History	From date field label	c
+sms_history_to_date_label	SMS Balance & History	To date field label	по
+sms_history_get_btn	SMS Balance & History	Get SMS History button	Показать
+sms_history_date_error	SMS Balance & History	Invalid date error	Неправильный формат даты
+sms_history_id_error	SMS Balance & History	Invalid SMS ID	Нет такой SMS в базе данных.
+sms_history_fromdate_error	SMS Balance & History	Error message if From date is later than To date	Дата "с" должна быть раньше даты "по"
+sms_charge_comment_formula_text	SMS Balance & History	Charge comment	Всего Удержано = Фактически + Зарезервировано
+sms_charge_comment_text	SMS Balance & History	Charge comment	Сумма Фактически удержано обновляется каждый раз после получения квитанции от SMS провайдера. Однако, квитанция не всегда доступна сразу же после отправки. В этом случае для каждого сообщения рассчитывается приблизительная стоимость отправки, которая отражается в строке Зарезервировано и на которую уменьшается сумма доступного баланса. Щелкните кнопку ниже, чтобы получить обновленную информацию о фактически удержанных суммах.
+sms_sorted_by_date_text	SMS Balance & History	Sorted by date text	Отсортировано по дате
+ung_page_title	Users & Groups	Page Title	Пользователи и группы
+eul_page_title	Export Users	Page Title	Экспорт пользователей
+eul_selectedusers_label	Export Users	Selected users label	Выбранные пользователи
+eul_entire_label	Export Users	Entire User List radiobutton text	Список пользователей полностью
+eul_return_btn	Export Users	Return to the User List button	Вернуться в пользователи и группы
+eul_download_label	Export Users	User List link text	Щелкните по ссылке чтобы загрузить экспортированных пользователей
+iul_usergroups_label	Import User List	User groups label	Включить импортированных пользователей в группы
+iul_page_title	Import User List	Page Title	Импорт пользователей
+iul_crsccols_label	Import User List	Column match list header	Колонка в списке пользователей
+iul_finished_message	Import User List	Import finished message	Импорт завершен. Добавлено пользователей: %s.
+iul_notaddedusers_label	Import User List	Not imported users list label	Следующие пользователи не были импортированы:
+iul_finished_message	Import User List	Import finished message	Импорт завершен. Добавлено пользователей: %s.
+iul_importinvfield_message	Import User List	Invalid import file field message	Невозможно импортировать пользователя - поле "%s" пусто
+pul_selected_label	Print User List	Selected users label	Выбранные пользователи
+pul_entirelist_label	Print User List	Entire User List radiobutton text	Список пользователей полностью
+rp_accessrighsdiags_title	Reports	Access Rights Diagrams page title	Диаграммы прав доступа
+rp_accessrightsusers_title	Reports	Access Rights Diagram for Users report title	Диаграмма прав доступа для пользователей
+rp_accessrightsgroups_title	Reports	Access Rights Diagram for Groups report title	Диаграмма прав доступа для групп
+app_administrator_rights_text	Common	 Full Access rights object descriptor text	Администратор (Полный доступ)
+app_available_pages_name	Common	 Available Pages rights name	Страницы сервиса
+app_available_subpages_name	Common	 Available SubPages rights name	Страницы сервиса
+app_available_functions_name	Common	 Available Functions	Доступные действия
+pcl_print_title	Print Contact List	Page header	Печать
+pcl_form_label	Print Contact List	Text above form	Печать
+pcl_screen_selected_label	Print Contact List	Selected Notes radiobutton text	Выбранные контакты
+pcl_screen_folder_label	Print Contact List	Folder radiobutton text	Папка
+pcl_screen_entire_label	Print Contact List	Entire Address Book radiobutton text	Весь список контактов
+pcl_screen_print_btn	Print Contact List	Print button	Просмотр
+pcl_printas_label	Print Contact List	Print as label	Печатать как
+pcl_printasgrid_label	Print Contact List	Print as grid label	Таблица
+pcl_printaslist_label	Print Contact List	Print as list label	Подробно
+ecl_page_title	Export Contact List	Page header	Экспорт контактов
+ecl_filetype_label	Export Contact List	Select File Format label	Формат файла
+ecl_nofileformat_item	Export Contact List	No file formats item	<нет>
+ecl_tmpfilerr_message	Export Contact List	Error creating temporary file message	Ошибка создания временного файла
+ecl_form_label	Export Contact List	Text above the form	Экспорт
+ecl_selectedcontacts_label	Export Contact List	Selected contacts label	Выбранные контакты
+ecl_folder_label	Export Contact List	Folder label	Папка
+ecl_group_label	Export Contact List	User group label	Группа пользователей
+ecl_list_label	Export Contact List	Contact list label	Список
+ecl_searchresult_label	Export Contact List	Search result label	Результаты поиска полностью
+ecl_entirelist_label	Export Contact List	Entire Contact Manager label	Контакты полностью (только доступные контакты)
+ecl_export_btn	Export Contact List	Export button	Экспорт
+ecl_download_label	Export Contact List	Contact List link text	Щелкните по ссылке чтобы загрузить экспортированные контакты
+ecl_download_link	Export Contact List	Download link	Загрузить
+ecl_return_btn	Export Contact List	Return to the Contact List button	Вернуться в список контактов
+ecl_separator_label	Export Contact List	Separator label	Разделитель
+ecl_comma_item	Export Contact List	Comma item	Запятая
+ecl_tab_item	Export Contact List	Tab item	Табуляция
+ecl_semicolon_item	Export Contact List	Semicolon item	Точка с запятой
+ecl_period_item	Export Contact List	Period item	Точка
+ecl_included_label	Export Contact List	Included label	Включенные
+ecl_notincluded_label	Export Contact List	Not Included label	Не включенные
+ecl_exportfields_label	Export Contact List	Export fields label	Экспортировать поля
+ecl_userid_item	Import Contact List	User identifier list item	Код пользователя
+ecl_noexprights_message	Import Contact List	No export rights message	У вас нет прав экспортировать контакты из этой папки
+cm_screen_long_name	Contact Manager	Contact Manager page full name	Контакты
+cm_screen_short_name	Contact Manager	Contact Manager page short name	Контакты
+cm_numcontacts_label	Contact Manager	Text under the list of contacts	Контактов
+cm_summarydoc_title	Contact Manager	Column in the Available Folders table	Контактов
+cm_summary_note	Contact Manager	Label below the Available Folders table	%s контакт(ов) в %s доступных папках
+cm_searchresult_title	Contact Manager	Search results header	Результаты поиска
+cm_flddelete_message	Contact Manager	Folder deletion confirmation	Все контакты содержащиеся во вложенных папках будут удалены. Вы уверены?
+cm_emptycopy_message	Contact Manager	Contact copying without selecting the contacts message	Пожалуйста, выберите контакт(ы) для копирования.
+cm_emptysend_message	Contact Manager	Sending email without selecting the contacts message	Пожалуйста, выберите контакт(ы) для отправки писем.
+cm_invrights_message	Contact Manager	Lack of administrative rights to move/delete contacts message	У вас нет прав перемещать/удалять некоторые из выделенных контактов
+cm_emptydel_message	Contact Manager	Contact deletion without selecting the files message	Пожалуйста, выберите контакт(ы) для удаления.
+cm_confirmdel_message	Contact Manager	Contact deletion confirmation	Вы действительно хотите удалить выбранные контакты?
+cm_addcontacts_menu	Contact Manager	Menu item Contact/Add Contact	Добавить
+cm_copycontacts_menu	Contact Manager	Menu item Contact/Copy Contact(s)	Скопировать
+cm_movecontacts_menu	Contact Manager	Menu item Contact/Move Contact(s)	Переместить
+cm_deletecontacts_menu	Contact Manager	Menu item Contact/Delete Contact(s)	Удалить
+cm_print_menu	Contact Manager	Menu item Contact/Printŉ	Печать
+cm_import_menu	Contact Manager	Menu item Contact/Importŉ	Импорт
+cm_export_menu	Contact Manager	Menu item Contact/Exportŉ	Экспорт
+cm_contact_menu	Contact Manager	Contact... menu 	Контакт
+cm_deleteuser_message	Contact Manager	 Deleting user contact message	Контакт %s зарегистрирован как пользователь ВебАсиста. Чтобы удалить этот контакт, воспользуйтесь меню Администратор/Пользователи и группы
+cm_nomodrights_message	Contact Manager	Lack of administrative rights to delete or modify a contact message	У вас нет прав удалять или изменять этот контакт
+cm_deletefolderuser_message	Contact Manager	Deleting folder containinf user contacts message	Нельзя удалить папку, содержащую контакты, зарегистрированных как пользователи системы, либо подпапки, содержащие такие контакты
+cm_gridview_menu	Contact Manager	Menu View/Grid View	Таблица
+cm_listview_menu	Contact Manager	Menu View/List View	Подробно
+cm_custview_menu	Contact Manager	Menu View/Customize View	Настроить вид
+cm_rp_accessrightsusers_menu	Contact Manager	Menu Reports/Access Rights Users	Права пользователей
+cm_rp_accessrightsgroups_menu	Contact Manager	Menu Reports/Access Rights Groups	Права групп пользователей
+cm_search_label	Contact Manager	Search bar label	Найти
+cm_search_btn	Contact Manager	Search button	Искать
+cm_searchresult_title	Contact Manager	Search results header	Результаты поиска
+cm_usersmovedel_message	Contact Manager	Error message	Вы не можете переносить или удалять папку WebAsyst Users
+cm_addwebasystcont_message	Contact Manager	Error Message	Контакт не может быть добавлен в папку WebAsyst Users. Пожалуйста, используйте страницу Администратор/Пользователи и группы для добавления нового пользователя.
+cm_sendemail_menu	Contact Manager	Menu item Contact/Send Emailŉ	Отправить в письме
+cm_sendsms_menu	Contact Manager	Menu item Contact/Send SMSŉ	Отправить SMS
+cm_folderid_label	Contact Manager	Folder ID label	Код папки
+cm_canmanageusrs_title	Contact Manager	Can manage Users & Groups title	Может управлять пользователями и группами
+cm_canmanagelists_title	Contact Manager	Can manage Contact Lists title	Может управлять списками контактов
+cm_confirmlistdel_message	Contact Manager	List deletion confirmation	Вы действительно хотите удалить этот список?
+cm_dellist_note	Contact Manager	List deletion note	ЗАМЕЧАНИЕ: Контакты НЕ будут удалены
+cm_nouserrights_message	Contact Manager	No manage users rights message	Этот контакт является пользователем. Вы не можете удалить этот контакт, так как вы не имеете прав управлять аккаунтами пользователей.
+cm_userprivs_label	Contact Manager	User privileges label	Этот контакт имеет пользовательские привилегии
+cm_show_label	Contact Manager	Show label	<показать>
+cm_copy_title	Copy/Move	Copying Contacts page header	Копировать контакты
+cm_move_title	Copy/Move	Moving Contacts page header	Переместить контакты
+cm_copyfolder_title	Copy/Move	Copying Folder page header	Копировать папку
+cm_movefolder_title	Copy/Move	Moving Folder page header	Переместить папку
+cm_copy_btn	Copy/Move	Copying process button	Копировать
+cm_move_btn	Copy/Move	Moving process button	Переместить
+cm_contactnum_text	Copy/Move	Number of Contacts selscted text	контакт(ов) выбрано
+cman_page_title	Contact Manager	Page Title	Контакты
+cman_groups_title	Contact Manager	User groups title	Группы пользователей
+cman_lists_title	Contact Manager	Lists title	Списки
+cman_list_menu	Contact Manager	List menu	Список
+cman_addlist_menu	Contact Manager	Add list menu item	Добавить
+cman_modifylist_menu	Contact Manager	Modify list menu item	Изменить
+cman_deletelist_menu	Contact Manager	Delete list menu item	Удалить
+cman_availablelist_title	Contact Manager	Available Lists title	Доступные списки
+cman_listssummary_note	Contact Manager	Label below the Available Lists table	%s контакт(ов) в %s группах
+cman_listname_title	Contact Manager	List name title	Список
+cman_contacts_title	Contact Manager	Contacts title	Контактов
+cman_user_label	Contact Manager	User label	Код пользователя
+cman_status_label	Contact Manager	Status label	Статус
+cman_userid_label	Contact Manager	User ID label	Код пользователя
+cman_folders_item	Contact Manager	Folders item	--- ПАПКИ ---
+cman_groups_item	Contact Manager	Groups item	--- ГРУППЫ ПОЛЬЗОВАТЕЛЕЙ ---
+cman_lists_item	Contact Manager	Lists item	--- СПИСКИ ---
+cman_revokeprivs_menu	Contact Manager	Revoke user priviletes menu item	Удалить права доступа
+cman_emptyrevoke_message	Contact Manager	Revoking privileges without selecting the contacts message	Пожалуйста, выберите пользователей.
+cman_emptychangestatus_message	Contact Manager	Changing user status without selecting the contacts message	Пожалуйста, выберите пользователей.
+cman_revokeprivs_message	Contact Manager	Revoke user privileges confirmation message	Вы действительно хотите удалить пользовательские привилегии для выбранных контактов?
+cman_changeuserstatus_menu	Contact Manager	Change user status menu item	Изменить статус
+cman_addtolist_menu	Contact Manager	Add to list menu item	Добавить в список
+cman_emptyaddtolist_message	Contact Manager	Adding contacts to list without selecting the contacts message	Пожалуйста, выберите контакты.
+rp_page_title	Reports	Page Title	Отчеты
+rp_accessrightsusers_title	Reports	Access Rights Diagram for Users report title	Права доступа для пользователей
+rp_accessrightsusers_note	Reports	Access Rights Diagram for Users report note	Этот отчет показывает права доступа для выбранных пользователей на одной странице. Каждая колонка отображает права доступа для индивидуального пользователя. Сводная диаграмма позволяет сравнить и проанализировать права для нескольких пользователей одновременно.
+rp_accessrightsgroups_title	Reports	Access Rights Diagram for Groups report title	Права доступа для групп
+rp_accessrightsgroups_note	Reports	Access Rights Diagram for Groups report note	Этот отчет показывает права доступа для выбранных групп пользователей на одной странице. Каждая колонка отображает права доступа для отдельной группы. Сводная диаграмма позволяет сравнить и проанализировать права для нескольких групп пользователей одновременно.
+rp_runreport_btn	Reports	Run Report button	Показать отчет
+rp_unsubsribers_title	Reports	Unsubsribers report title	Отписавшиеся адресаты
+rp_unsubsribers_note	Reports	Unsubsribers report note	Отчет показывает список email адресов, владельцы которых отписались от получения почты. Ни одно сообщение не может быть отправлено на эти адреса из ВебАсиста. Чтобы удалить запись из этого списка, вы должны создать форму подписки с включенной фукцией подтверждения и прeдложить отписавшемуся подписчику повторно заполнить форму и, после получения уведомления, подтвердить подписку.
+rp_norecords_label	Reports	No records label	<нет записей>
+rp_signupstats_title	Reports	Sign-Up Statistics report title	Статистика подписок
+rp_signupstats_label	Reports	Sign-Up Statistics report label	Этот отчет показывает количество контактов, подписавшихся с помощью Формы подписки, с группировкой по датам.
+rp_total_title	Reports	Total title	Всего
+amc_screen_add_title	Add/Modify Contact	Add Contact mode header	Добавить контакт
+amc_screen_edit_title	Add/Modify Contact	Modify Contact mode header	Изменить контакт
+amc_newcontact_label	Add/Modify Contact	The contact name for add contact mode	<новый контакт>
+amc_noaddrights_message	Add/Modify Contact	Lack of administrative rights to add a contact message	У вас нет прав для добавления контактов в эту папку
+amc_nomodrights_message	Add/Modify Contact	Lack of administrative rights to delete or modify a contact message	У вас нет права  удалить или изменить этот контакт
+amc_addanother_btn	Add/Modify Contact	Save and Add Another button	Сохранить и добавить нового
+amc_deletecontact_btn	Add/Modify Contact	Delete Contact button	Удалить
+amc_confirmdel_message	Add/Modify Contact	Contact deletion confirmation	Вы действительно хотите удалить этот контакт?
+amc_display_label	Add/Modify Contact	Display label	Показывать
+amc_separatetabs_item	Add/Modify Contact	Display list item	каждая секция на отдельной закладке
+amc_allinone_item	Add/Modify Contact	Display list item	все секции на одной странице
+amc_erroruploadingfile_message	Add/Modify Contact	Error uploading file message	Ошибка загрузки файла
+amc_contact_tab	Add/Modify Contact	Contact tab	Контакт
+amc_user_tab	Add/Modify Contact	User tab	Пользователь
+amc_selectfolder_message	Add/Modify Contact	Select folder message	Пожалуйста выберите папку
+amc_grantpriv_btn	Add/Modify Contact	Grant User Privileges button	Предоставить права доступа
+amc_privs_text	Add/Modify Contact	Grant User Privileges text	Чтобы дать пользовательские привилегии данному контакту, нажмите кнопку ниже и укажите код пользователя, пароль и назначьте права доступа. После этого пользователь сможет подключаться к системе и работать с доступными сервисами ВебАсиста.
+amc_privs_note	Add/Modify Contact	Grant User Privileges note	Этот контакт не является пользователем.
+amc_revokepriv_btn	Add/Modify Contact	Revoke User Privileges button	Удалить пользовательские привилегии
+amc_revoke_message	Add/Modify Contact	Revoke User Privileges message	Вы действительно хотите удалить пользовательские привилегии для этого контакта?
+amc_accessupdate_message	Add/Modify Contact	Updating access tab message	Вы только что изменили настройку Групп для этого пользователя.\nПожалуйста, дождитесь обновления информации о доступе.
+amc_modifiedby_label	Add/Modify Contact	Modified by label	Изменен
+amc_addedby_label	Add/Modify Contact	Added by label	Добавлен
+amc_status_label	Add/Modify Contact	Status label	Статус
+cus_page_title	Change User Status	Page Title	Изменить статус пользователя(ей)
+cus_usernum_label	Change User Status	User number label	Пользователей выбрано: %s.
+cus_changestatus_label	Change User Status	Change status label	Изменить статус на
+cv_form_label	Customize View	Label above the form	Выберите колонки, которые вы хотите видеть в списке контактов
+cv_visible_list	Customize View	Visible Columns list header	Видимые
+cv_hidden_list	Customize View	Hidden Columns list header	Скрытые
+cv_nofields_message	Customize View	Error Message	По крайней мере одна колонка должна быть видимой
+cv_screen_contactsnum_label	Customize View	Number of contacts on one page selection label	Количество записей на одной странице:
+cv_selectimage_label	Customize View	Select image label	Выберите изображение для режима Подробно
+cv_donotdisplayimg_label	Customize View	Do not display image label	Не показывать изображение
+cv_imagefieldsopt_label	Customize View	Image fields options label	Для полей-изображений показывать
+cv_thumbnails_label	Customize View	Thumbnails label	Эскизы
+cv_textlinks_label	Customize View	Text links label	Текстовые ссылки
+cv_screen_viewopt_label	Customize View	Label "Once you change View option:"	Когда вы переключаете вид между Таблица/Подробно:
+cv_screen_applutoall_label	Customize View	Label "Apply selected view to all folders"	Применить выбранный вид ко всем группам
+cv_screen_applutocurrent_label	Customize View	Label "Apply selected view to current folder only"	Применить выбранный вид к текущей группе
+cv_general_tab	Customize View	General tab	Общие
+cv_grid_tab	Customize View	Grid tab	Таблица
+cv_list_tab	Customize View	List tab	Подробно
+cv_noimages_label	Customize View	There are no image fields defined label	Поля-изображения не определены
+cv_addimages_note	Customize View	Add images note	Для добавления полей с изображениями воспользуйтесь Конструктором (в главном меню)
+icl_page_title	Import Contact List	Page header	Импорт контактов
+icl_file_label	Import Contact List	Select File label	Файл
+icl_filetype_label	Import Contact List	Select File Type label	Формат файла
+icl_import_btn	Import Contact List	Import label	Импортировать
+icl_custformat_item	Import Contact List	Custom format item text	<новый формат>
+icl_selectfile_message	Import Contact List	File Import without selecting the file message	Пожалуйста, выберите файл для импорта
+icl_erruploading_message	Import Contact List	Error uploading file message	Ошибка загрузки файла
+icl_crsccols_label	Import Contact List	Column match list header	Колонка в списке контактов
+icl_importinvfield_message	Import Contact List	Invalid import file field message	Невозможно импортировать контакт - поле "%s" пусто
+icl_finished_message	Import Contact List	Import finished message	Импорт завершен. Добавлено %s контакт(ов).
+icl_error_label	Import Contact List	Label "Error message"	Ошибка
+icl_savefileformat_label	Import Contact List	Label "Save file format"	Сохранить формат файла
+icl_formatname_label	Import Contact List	Label "Format Name"	Сохранить формат импорта как
+icl_format_note	Import Contact List	File Format Note	Чтобы сохранить этот формат импорта файла для будущего использования, включите флажок и введите имя формата ниже
+icl_group_label	Import Contact List	Add To Group label	Добавить в группу
+icl_selectfolder_item	Import Contact List	Select folder item	<выберите папку>
+icl_notaddedusers_label	Import Contact List	Not imported contacts list label	Следующие контакты не были добавлены:
+icl_contactname_label	Import Contact List	Label "Contact Name"	Контакт
+icl_error_label	Import Contact List	Label "Error message"	Ошибка
+icl_custformat_item	Import Contact List	Custom format item text	<новый формат>
+icl_addtofolder_label	Import Contact List	Label "Add to Folder"	Добавить в папку
+icl_grantuserprivs_label	Import Contact List	Grant user privileges label	Предоставить пользовательские привилегии импортируемым контактам
+icl_userstatus_label	Import Contact List	User status label	Укажите статус для новых пользователей
+icl_usergroups_label	Import Contact List	User groups label	Включить импортированные контакты в группы пользователей
+icl_userid_item	Import Contact List	User identifier list item	Код пользователя
+icl_userprivs_label	Import Contact List	User Privileges label	Пользовательские привилегии
+icl_specifyuid_label	Import Contact List	Specify U_ID label	Пожалуйста выберите колонку, которая будет использована в качестве кода пользователя
+rprdu_selectusers_note	Reports	Select users note	Выберите пользователей, которых вы хотите включить в отчет
+rprdu_usernum_note	Reports	User number note	Для каждого пользователя отводится отдельная колонка. Чтобы сделать отчет проще, мы рекомендуем выбирать не более 10-12 пользователей.
+rprdu_selectgroups_note	Reports	Select users note	Выберите группы, которые вы хотите включить в отчет
+rprdu_groupnum_note	Reports	Group number note	Для каждой группы отводится отдельная колонка. Чтобы сделать отчет проще, мы рекомендуем выбирать не более 10-12 групп.
+rprdu_groupnum_note	Reports	Access rights note	Для каждого пользователя показана сумма персональных и групповых прав.
+cml_addpage_title	Create/Modify List	Create page title	Создать список контактов
+cml_modpage_title	Create/Modify List	Modify page title	Изменить список контактов
+cml_list_tab	Create/Modify List	List tab	Список
+cml_folders_tab	Create/Modify List	Folders tab	Папки
+cml_contacts_tab	Create/Modify List	Contacts tab	Контакты
+cml_groups_tab	Create/Modify List	Groups tab	Группы
+cml_listname_label	Create/Modify List	List name label	Название списка
+cml_folders_note	Create/Modify List	Folders note	Выберите папки для включения в список контактов.
+cml_contacts_note	Create/Modify List	Contacts note	Выберите контакты для включения в список контактов.
+cml_contactsbottom_note	Create/Modify List	Contacts bottom note	В секции "Не включенные" находятся только контакты из доступных папок.
+cml_included_label	Create/Modify List	Label "Included"	Включенные
+cml_notincluded_label	AddCreate/Modify List	Label "Not Included"	Не включенные
+cml_groups_note	Create/Modify List	Groups note	Выберите группы пользователей для включения в список контактов.
+cml_shared_label	Create/Modify List	Shared label	Общий
+cml_shared_note	Create/Modify List	Shared not	Включите флажок "Общий", чтобы сделать этот список доступным для других пользователей.
+cml_novolders_label	Create/Modify List	No available folders label	<нет доступных папок>
+rup_page_title	Revoke User Privileges	Page Title	Удаление пользовательских привилегий
+rup_success_message	Revoke User Privileges	Contact processing success result message	Пользовательские привилегии были успешно удалены
+rt_page_title	Register Trial	Page Title	Зарегистрировать аккаунт
+rt_nottemporary_message	Register Trial	Account is not temporary message	Этот аккаунт уже зарегистрирован
+rt_form_title	Register Trial	Form title	Форма регистрации аккаунта
+rb_submit_btn	Register Trial	Submit button	Отправить
+rb_company_label	Register Trial	Company label	Компания
+rb_firstname_label	Register Trial	First Name label	Имя
+rb_lastname_label	Register Trial	Last Name label	Фамилия
+rb_email_label	Register Trial	Email label	Email
+rb_invalidemail_message	Register Trial	Invalid Email email	Ошибка в поле Email
+rb_email_note	Register Trial	Email note	Email будет использован для отправки запроса на подтверждение, а также для дальнейших уведомлений об обновлениях системы и об изменениях в условиях предоставления сервиса.
+rb_greeting	Register Trial	Greeting message	Уважаемый
+rb_done1_label	Register Trial	Trial created message line 1	Регистрация еще не завершена.
+rb_done2_label	Register Trial	Trial created message line 2	Вам отправлено запрос на подтверждение по адресу
+rb_done3_label	Register Trial	Trial created message line 3	Если вы не получили наше сообщение в данный момент, возможно произошла проблема при доставке. Чаще всего проблему можно решить одним из способов:
+rb_done4_label	Register Trial	Trial created message line 4	Временно отключите СПАМ фильтр и повторите процедуру регистрации.
+rb_done5_label	Register Trial	Trial created message line 5	Проверьте правильность написания электронного адреса и если ошиблись исправьте и повторите регистрацию.
+rb_done6_label	Register Trial	Trial created message line 6	Свяжитесь со службой поддержки <a href="mailto:support@webasyst.ru">support@webasyst.ru</a> в случае необходимости.
+rb_done7_label	Register Trial	Trial created message line 7	Пожалуйста, проверьте почту.
+rb_submit_note	Register Trial	Submit button note	Вы можете закрыть свой аккаунт в любое время.
+ai_screen_long_name	Account Information	AI page full name	Информация об аккаунте
+ai_page_title	Account Information	Page Title	Информация об аккаунте
+ai_registar_label	Account Information	Registar label	Регистратор
+ai_demo_label	Account Information	Demo account label	Это демо аккаунт. Он истечет, когда вы закроете браузер.
+ai_company_label	Account Information	Company label	Компания
+ai_licence_label	Account Information	Licence label	Владелец
+ai_firstname_label	Account Information	First name label	Имя
+ai_lastname_label	Account Information	Last name label	Фамилия
+ai_email_label	Account Information	Email label	Email
+ai_accountname_label	Account Information	Account name label	Имя аккаунта
+ai_dbkey_label	Account Information	Database key label	Код базы данных
+ai_regdate_label	Account Information	Registration date label	Дата создания
+ai_limitseach_title	Account Information	Limitations for each applications title	Ограничения по каждому сервису
+ai_application_title	Account Information	Application title	Сервисы и ограничения
+ai_limit_title	Account Information	Limit title	Ограничение
+ai_used_title	Account Information	Used title	Использовано
+ai_resources_title	Account Information	Resources title	Общие ресурсы
+ai_limitalll_title	Account Information	Limitations for all applications title	Ограничения для всех сервисов
+al_unlimited_label	Account Information	Unlimited label	Не ограничено
+ai_nextbillingdate_label	Account Information	Next billing date label	Следующая дата оплаты
+ai_limit_cm_label	Account Information	Contact Manager limitation description	Количество контактов
+ai_limit_dd_label	Account Information	Document Depot limitation description	Количество файлов
+ai_limit_pm_label	Account Information	Project Manager limitation description	Количество проектов
+ai_limit_it_label	Account Information	Issue Tracker limitation description	Количество заданий
+ai_limit_qn_label	Account Information	Quick Notes limitation description	Количество записей
+ai_limit_qp_label	Account Information	Quick Pages limitation description	Количество страниц
+ai_limit_pd_label	Account Information	Photo Depot limitation description	Количество изображений
+ai_limit_mm_label	Account Information	Mail Master limitation description	Количества сообщений (в день)
+ai_limit_space_label	Account Information	Storage Space limitation description	Размер базы данных
+ai_limit_users_label	Account Information	Number of users limitation description	Количество пользователей
+ai_limit_sms_label	Account Information	SMS balance limitation description	Баланс SMS
+ai_upgrade_comment	Account Information	Upgrade comment	<a target="_blank" class="activelink" href="%s">Изменить параметры аккаунта</a>: добавить/удалить сервисы, добавить пользователей, место на диске или SMS кредит.
+ai_upgrade_btn	Account Information	Upgrade button	Изменить параметры аккаунта
+ai_extend_comment	Account Information	Extend comment	Следующая дата оплаты вашего аккаунта
+ai_extend_btn	Account Information	Extend button	Продлить аккаунт
+ai_cancel_comment	Account Information	Cancel comment	<a target="_blank" class="activelink" href="%s">Закрыть аккаунт</a>
+ai_cancelaccount_btn	Account Information	Cancel account button	Закрыть аккаунт
+ai_days_left	Account Information	Days left label	Дней осталось: %s
+ai_days_after_suspend	Account Information	Days after suspend label	истек %s дней назад
+ai_no_accountname	Account Information	No account name label	нет имени
+ai_upgradedowngrade_label	Account Information	Upgrade Downgrade Service link	Изменить параметры аккаунта
+ai_upgradedowngrade_comment	Account Information	Upgrade Downgrade Service comment	Отмените ограничения на количество файлов, фотографий, записей и т.д. Добавьте места на диске или пользователей, либо откажитесь от лишних ресурсов и перейдите на бесплатную версию.
+ai_addremove_label	Account Information	Add/Remove Services link	Добавить или удалить сервисы
+ai_addremove_comment	Account Information	Add/Remove Services comment	Убедитесь, что вы используете все необходимые веб-сервисы: Файлы, Фотоальбом, Контакты, Почту, Проекты, Задания, Блокнот, Страницы. Удалите ненужный сервис.
+ai_cancelaccount_label	Account Information	Cancel Account link	Закрыть аккаунт
+ai_cancelaccount_comment	Account Information	Cancel Account comment	Используйте эту опцию, если вам более не нужен ваш ВебАсист аккаунт. Все данные будут уничтожены и деньги за оплату продления аккаунта более не будут с вас списываться.
+app_upgradeacc_label	Account Information	Upgrade label	Upgrade
+app_back_label	Common	Back label	Назад в
+app_tools_menu	Common	Tools menu	Инструменты
+app_reports_menu	Common	Reports menu	Отчеты
+app_cantools_label	Common	Can Use Tools Rights	Доступ к инструментам
+app_canreports_label	Common	Can Use Reports Rights	Доступ к отчетам
+lf_changeaccepted_message	Look and Feel	Look and Feel settings have been successfully changed message	Оформление было изменено
+lf_changecanceled_message	Look and Feel	Look and Feel settings chages have been canceled message	Оформление не было изменено
+lf_layouttopmenu_title	Look and Feel	Top menu layout title	Снизу
+lf_layoutleftsidemenu_title	Look and Feel	Leftside menu layout title	Слева
+lf_themebeach_title	Look and Feel	Beach color theme title	Голубой
+lf_themegarden_title	Look and Feel	Forest color theme title	Зеленый
+lf_themeoffice_title	Look and Feel	Office color theme title	Серый
+lf_themeultramarine_title	Look and Feel	Ultramarine color theme title	Ультрамарин
+lf_themegray_title	Look and Feel	Gray	Серый
+lf_themered_title	Look and Feel	Red color theme title	Розовый
+lf_themedarkorange_title	Look and Feel	Dark Orange color theme title	Темно-оранжевый
+lf_themeyellow_title	Look and Feel	Yellow color theme title	Желтый
+lf_themekhaki_title	Look and Feel	Khaki color theme title	Хаки
+lf_themepurple_title	Look and Feel	Purple color theme title	Пурпурный
+lf_seltheme_label	Look and Feel	Select Theme label	Цветовое оформление
+lf_sellayout_label	Look and Feel	Select Layout label	Расположение главного меню
+lf_sellogo_label	Look and Feel	Select Layout label	Логотип
+lf_logoapp_title	Look and Feel	Application logo title	Логотип и название сервиса
+lf_logocustom_title	Look and Feel	Application logo title	Собственный логотип
+lf_selcorners_label	Look and Feel	Select Corners label	Углы (кнопки и панели):
+lf_cornersrounded_title	Look and Feel	Select Corners Round Title	Закругленные
+lf_cornersstraight_title	Look and Feel	Select Corners Straight Title	Прямые
+amu_mw_page_title	My Webasyst	Page title	Мои настройки
+amu_mw_user_note	My Webasyst	User Note	Некоторые настройки могут быть скрыты или запрещены для модификации вашим администратором.
+cc_update_page_title	Customer Center	Upgrade page title	Изменение параметров аккаунта
+cc_addapps_page_title	Customer Center	Add/remove page title	Добавить или удалить сервисы
+wa_cancelaccount_page_title	Control Panel	Add/remove page title	Удаление аккаунта
+wa_cancelaccount_text	Control Panel	Add/remove page title	Пожалуйста, ознакомьтесь с условиями удаления аккаунта:\n<ul type="disc"><li>Все записи в базе данных и приложения будут удалены.</li>\n<li>Все пользователи вашего аккаунта будут удалены.</li>\n<li>Удаление аккаунта произойдет немедленно. МЫ НЕ СМОЖЕМ ВОССТАНОВИТЬ ВАШУ ИНФОРМАЦИЮ.</li>\n<li>Стоимость оплаченного неиспользованного времени хостирования не возвращается.</li>\n</ul>
+wa_cancelaccount_confirm	Control Panel	Add/remove page title	Я понимаю и согласен с условиями удаления аккаунта
+wa_cancelaccount_btn	Control Panel	Cancel account label	Удалить Аккаунт
+wa_cancelaccount_confirmerror	Control Panel	Cancel account conferror	Вы должны подтвердить свое согласие с условиями удаления аккаунта.
+
+cnf_account_confirmed_text	Confirmed	Confirmed Text	Аккаунт %s подтвержден.\n\nСпасибо.
+cnf_page_title	Confirmed	page title	Подтверждение аккаунта
+cinfo_page_title	Account Confirmation	Account Confirmation page title	Аккаунт не подтвержден
+cinfo_text	Account Confirmation	Account confirmation text	Мы отправили запрос подтверждения на <b>%s</b>.<BR><BR>Пожалуйста, проверьте свой почтовый ящик для подтверждения WebAsyst аккаунта.
+cinfo_incorrectemail_text	Account Confirmation	Incorrect email text	Неверный Email?
+cinfo_incorrectemail_link	Account Confirmation	Incorrect email link	Изменить
+cinfo_changeit_btn	Account Confirmation	Change it button	Изменить
+cinfo_email_label	Account Confirmation	E-Mail label	Email адрес
+cinfo_emailupdate_btn	Account Confirmation	E-Mail update button	Изменить
+cinfo_wrongemail_error	Account Confirmation	Wrong email	Пожалуйста, введите правильный Email адрес
+sm_recipientlimit_message	Send Email	Error message	Вы выбрали %s получателей. Максимальное количество получателей не должно превышать %s.
+sm_recipientnull_message	Send Email	Error message	Невозможно отправить сообщение. Список получателей пуст.
+app_fullscreen_label	Common	Full Screen	На весь экран
+app_fullscreenoff_link	Common	Full Screen off	Свернуть
+shsd_dialog_title	Share Send Dialog	Title	Отправить сообщение
+shsd_entermessage_text	Share Send Dialog	Enter message text	введите текст сообщения
+shsd_send_btn	Share Send Dialog	Send button	Отправить
+shsd_enteremails_error	Share Send Dialog	Enter emails error	Неправильный Email адрес
+shsd_to_label	Share Send Dialog	To	Кому
+shsd_subject_label	Share Send Dialog	Subject	Тема
+shsd_message_label	Share Send Dialog	Message	Сообщение
+shsd_dblclick_note	Share Send Dialog	Double click note	Щелкните дважды, чтобы добавить адрес
+shsd_dblclicklist_note	Share Send Dialog	Double click note	Щелкните дважды, чтобы добавить этот Список контактов
+shsd_mycontacts_title	Share Send Dialog	My contacts title	Мои контакты
+shsd_mycontacts_close	Share Send Dialog	My contacts close	Закрыть
+shsd_mails_note	Share Send Dialog	Mails note	Один Email адрес на строку или разделенные ";"
+shsd_mails_select	Share Send Dialog	Mails select	или выберите из
+shsd_message_sended	Share Send Dialog	Message sended message	Сообщение успешно отправлено %s получателю(ям)
+shsd_cancel_btn	Share Cancel Dialog	Cancel button	Отмена
+shurl_dialog_title	Share change address dialog	Title	Изменить адрес ссылки
+shurl_change_btn	Share change address dialog	Change button	Сохранить
+shurl_cancel_btn	Share change address dialog	Cancel button	Отменить
+shurl_description_text	Share change address dialog	Change url description text	Измените последнюю часть в адресе вашей ссылки, чтобы адрес было проще запомнить:
+shurl_emptyfprint_error	Share change address dialog	Change url empty fprint error	Пожалуйста введите новый адрес ссылки
+shurl_wrongsymbols_error	Share change address dialog	Change url wrong symbols error	Вы можете использовать только цифры и латинские буквы.
+shurl_existedname_error	Share change address dialog	Change url existed name error	Это имя уже занято. Пожалуйста, попробуйте другое.
+shurl_message_changed	Share change address dialog	Change url empty changed message	Link address is changed
+shurl_message_notchanged	Share change address dialog	Change url empty not changed message	Link address is not changed
+shurl_caution_text	Share change address dialog	Caution text	<b>ВНИМАНИЕ:</b> Старый адрес будет недоступен.
+
+app_createwidget_link	Common	Create widget link	Создать виджет
+app_createlink_link	Create link link	Title	Создать ссылку
+app_nowidgetsavailable_message	Common	No widgets available message	no available widgets 
+createwidget_dialog_title	Create Widget Dialog	Title	Создать виджет
+createwidget_next_btn	Create widget dialog	Next button	Продолжить
+createwidget_create_btn	Create widget dialog	Create button	Создать
+createwidget_cancel_btn	Create widget dialog	Cancel button	Отмена
+createwidget_description_text	Create widget dialog	Description text	Выберите виджет, который вы хотите создать:
+createwidget_noselect_error	Create widget dialog	Not selected error	Пожалуйста выберите виджет
+
+
+wg_createwidget_title	Create widget dialog	Title	Создать виджет
+wg_createlink_title	Create link dialog	Title	Создать ссылку
+wg_next_btn	Widget Dialog	Next Button	Продолжить
+wg_create_btn	Widget Dialog	Create Button	Создать
+wg_cancel_btn	Widget Dialog	Create Button	Отмена
+wg_linkcreatename_label	Create widget 	Create name for link	Придумайте название для вашей ссылки
+wg_widgetcreatename_label	Create widget 	Create name for widget	Придумайте название для вашего виджета
+wg_linkemptyname_error	Widget Dialog	Empty name error	Пожалуйста укажите имя для вашей ссылки
+wg_widgetemptyname_error	Widget Dialog	Empty name error	Пожалуйста укажите имя для вашего виджета
+wg_linkdelete_confirm	Widget Dialog	delete confirm	Вы действительно хотите удалить эту ссылку?
+wg_widgetdelete_confirm	Widget Dialog	delete confirm	Вы действительно хотите удалить этот виджет?
+wg_and_label	Widget Dialog	and	и
+wg_customizedialog_title	Widget View	Customize Dialog title	Настроить виджет
+wg_embeddialog_title	Widget View	Embed Dialog title	Встроить виджет
+
+amwg_colorpick_named_label	Color picker	Named colors label	Именованные
+amwg_colorpick_slider_label	Color picker	Slider colors label	Выбор цвета
+amwg_savebtn_label	Widget customize	Save button label	Сохранить
+amwg_cancelbtn_label	Widget customize	Cancel button label	Отмена
+
+
+selcontacts_foldermanycontacts_text	Select Contacts Form	Folder - Too many contacts in this folder	слишком много контактов в этой папке.
+selcontacts_foldermanycontacts_text2	Select Contacts Form	Folder - 	пожалуйста используйте Поиск.
+selcontacts_searchmanycontacts_text	Select Contacts Form	Search - Too many contacts found.	найдено слишком много контактов.
+selcontacts_searchmanycontacts_text2	Select Contacts Form	Search - Please make your search more specific 	пожалуйста уточните критерии поиска.
+selcontacts_searchnofound_text	Select Contacts Form	Search not found	не найдено
+selcontacts_folderempty_text	Select Contacts Form	Folder empty	в этой папке нет контактов с Email адресами
+selcontacts_searchsmalllength_text	Select Contacts Form	Search small length	пожалуйста укажите 3 или более символа
+selcontacts_searchresults_label	Select Contacts Form	Search results label	Результаты поиска
+
+app_searchresult_title	Common	Search Result in tree	Результаты поиска
+app_emptysearchstring_error	Common	Empty search string	Пожалуйста укажите поисковое слово
+
+app_copymovefolder_label	Common	Copy move folder label	Вы действительно хотите скопировать или переместить эту папку в
+app_deletefolder_label	Common	Delete folder label	Вы действительно хотите удалить эту папку?
+
+app_inheritedprojects_label	Common rights	Inherited from projects label	-- унаследовано от Проектов --
+
+
+service_DD_title	Billing	Title of DD	Файлы
+service_CM_title	Billing	Title of CM	Контакты
+service_MM_title	Billing	Title of MM	Почта
+service_PM_title	Billing	Title of PM	Проекты
+service_IT_title	Billing	Title of IT	Задания
+service_QN_title	Billing	Title of QN	Блокнот
+service_QP_title	Billing	Title of QP	Страницы
+service_SC_title	Billing	Title of SC	Интернет-магазин
+service_PD_title	Billing	Title of PD	Фотоальбом
+service_ST_title	Billing	Title of ST	Поддержка
+
+service_PD_desc_label	Billing	Description for Photos	Загрузите фото в интернет, разложите по альбомам, дайте посмотреть друзьям.
+service_DD_desc_label	Billing	Description for Files	Загрузите файлы в интернет, разложите по папкам, дайте доступ коллегам.
+service_CM_desc_label	Billing	Description for Contacts	Храните адреса и контакты друзей, клиентов, поставщиков в своей всегда-доступной адресной книге.
+service_MM_desc_label	Billing	Description for Mail	E-mail клиент и рассылка, бесплатно до 50 оправлений в день.
+service_PM_desc_label	Billing	Description for Projects	Управляйте проектами. Создавайте план работ, назначайте исполнителей, следите за процессом.
+service_IT_desc_label	Billing	Description for Issue Tracker	Добавляйте задания, назначайте исполнителей. Ничего не забудете сделать!
+service_QN_desc_label	Billing	Description for Notes	Собирайте важные мысли и заметки. Разложите их по папкам и используйте совместно с коллегами.
+service_QP_desc_label	Billing	Description for Pages	Создайте и быстро опубликуйте веб-страницу или целую веб-книгу.
+service_SC_desc_label	Billing	Description for Shopping Cart	Создайте свой интернет-магазин за несколько минут. Продавайте через интернет, принимайте оплату через электронные платежные системы и по кредитным картам. Встройте возможность онлайн-заказа на любой веб-сайт.
+
+DBSIZE_LIMIT_label	Billing	Storage space	Место на диске
+DBSIZE_LIMIT_desc	Billing	Storage space	дисковое пространство
+SSL_label	Billing	SSL	SSL
+MAX_USER_COUNT_label	Billing	Maximum of users	Количество пользователей
+MAX_USER_COUNT_desc	Billing	Maximum of users for description of plan	пользователей
+MAX_MAILBOX_COUNT_desc	Billing	Maximum of mailboxes for description of plan	почтовых ящиков
+MAX_USER_COUNT_desc2	Billing	Maximum of users for description of plan	пользователя
+MAX_MAILBOX_COUNT_desc2	Billing	Maximum of mailboxes for description of plan	почтовых ящика
+
+tariff_FREE_label	Billing	Plan title	БЕСПЛАТНЫЙ
+tariff_CUSTOM_label	Billing	Plan title	ИНДИВИДУАЛЬНЫЙ
+			
+tariff_File#1_label	Billing	Plan title	Мои файлы
+tariff_File#2_label	Billing	Plan title	Мой Сейф
+tariff_File#3_label	Billing	Plan title	Файл менеджер
+tariff_File#4_label	Billing	Plan title	Хранилище файлов
+			
+tariff_Photo#1_label	Billing	Plan title	Мои фото
+tariff_Photo#2_label	Billing	Plan title	Фото галерея
+tariff_Photo#3_label	Billing	Plan title	Фотограф
+tariff_Photo#4_label	Billing	Plan title	Фотостудия
+			
+tariff_Contact#1_label	Billing	Plan title	Адресная книга
+tariff_Contact#2_label	Billing	Plan title	Менеджер контактов
+tariff_Contact#3_label	Billing	Plan title	Email маркетинг
+tariff_Contact#4_label	Billing	Plan title	Мастер рассылок
+			
+tariff_Kiosk#1_label	Billing	Plan title	Киоск
+tariff_Kiosk#2_label	Billing	Plan title	Магазин
+tariff_Kiosk#3_label	Billing	Plan title	Супермаркет
+tariff_Kiosk#4_label	Billing	Plan title	Торговый центр
+			
+tariff_Project#1_label	Billing	Plan title	Мои проекты
+tariff_Project#2_label	Billing	Plan title	Супервизор
+tariff_Project#3_label	Billing	Plan title	Менеджер проектов
+tariff_Project#4_label	Billing	Plan title	Директор
+			
+tariff_Writer#1_label	Billing	Plan title	Писатель
+tariff_Writer#2_label	Billing	Plan title	Книжная полка
+tariff_Writer#3_label	Billing	Plan title	Библиотека
+
+tariff_Helpdesk#1_label	Billing	Plan title	Служба поддержки
+			
+tariff_ALL#1_label	Billing	Plan title	Команда
+tariff_ALL#2_label	Billing	Plan title	Бизнес
+tariff_ALL#3_label	Billing	Plan title	Корпорация
+
+tariff_group_File_label	Billing	Title of "File" group	Файлы
+tariff_group_Photo_label	Billing	Title of "Photo" group	Фотоальбом
+tariff_group_Contact_label	Billing	Title of "Contact" group	Контакты" и "Почта
+tariff_group_Kiosk_label	Billing	Title of "Shopping Cart" group	Интернет-магазин
+tariff_group_Project_label	Billing	Title of "Project" group	Проекты" и "Задания
+tariff_group_Writer_label	Billing	Title of "Writer" group	Страницы
+tariff_group_Helpdesk_label	Billing	Title of "Helpdesk" group	Поддержка
+tariff_group_ALL_label	Billing	Title of "ALL" group	Все сервисы
+
+bill_error_plan_not_found	Billing	Plan not found	Выбранный план не найден.
+bill_error_over_limit	Billing	Over limit error	ВНИМАНИЕ: Текущие параметры аккаунта не удовлетворяют ограничениям нового плана.
+bill_error_mail_format	Billing	Wrong Email format	Неверный формат адреса Email.
+bill_error_type_payment	Billing	Not selected payment type	Выберите способ оплаты.
+bill_error_depend_on	Billing	Selected service depends on other service	Сервис %s не может быть установлен без %s.
+bill_error_depend_off	Billing	Selected service depends off other service	Сервис %s не может быть удалён, т.к. от него зависят %s.
+bill_error_service_not_found	Billing	Service not found	Вы выбрали несуществующий сервис (%s).
+bill_error_rest_not_found	Billing	Restriction not found	Вы выбрали несуществующее ограничение для сервиса %s (%s)
+bill_error_have_limit	Billing	Have limit on service	Невозможно перейти на новый план из-за ограничений для сервиса %s. Нужное значение для перехода %s, а у вас %s.
+bill_error_new_service	Billing	Dependent on new service	Невозможно перейти на новый тариф. Сервис %s не может работать без сервиса %s.
+bill_error_empty_service	Billing	All services have been deleted	Вы должны выбрать хотя бы один сервис.
+bill_error_unreal_param	Billing	Parameter does not exist	Вы выбрали несуществующее ограничение для параметра %s (%s).
+bill_error_limit_param	Billing	Have limit on parameter	Невозможно перейти на новый план из-за ограничений для параметра %s. Нужное значение для перехода %s, а у вас %s.
+bill_error_unknow_parameter	Billing	Unknown parameter	Неизвестный параметр.
+bill_error_wrong_period	Billing	Wrong period	Выбран недопустимый период продления.
+bill_error_soap	Billing	SOAP error	Произошла ошибка при отправке запроса.
+bill_error_soap_connection	Billing	SOAP connection	Ошибка при подключении к серверу.
+bill_error_soap_internal	Billing	Internal SOAP error	Ошибка при выполнения запроса: #%s.
+
+bill_mail_instruction	Billing	Message on confirmation email sent	Вам отправлено электронное письмо с запросом на подтверждение.
+bill_change_plan_title	Billing	Change plan page title	Смена тарифного плана
+bill_account_profile_title	Billing	Account Profile page title	Тарифный План
+bill_style_currency_label	Billing	Style currency	%d руб.
+
+bill_current_plan_label	Billing	Current plan	ВАШ ПЛАН:
+bill_paid_to_label	Billing	Paid to	Оплачено до:
+bill_free_services_label	Billing	Free add-ons	Дополнительные бесплатные сервисы
+bill_per_month_label	Billing	per month	/мес
+bill_free_cost_label	Billing	Free paid	бесплатно
+bill_exceed_day_label	Billing	Exceed days	(осталось %s дней) 
+bill_select_other_plan	Billing	Select other plan	изменить/настроить тарифный план
+bill_extend_period_label	Billing	Extend period	ПРОДЛИТЬ
+bill_delete_service_label	Billing	Delete service	удалить
+bill_paid_services_label	Billing	Paid services	Сервисы, включенные в ваш план
+bill_enlarge_service_label	Billing	add/increase	УВЕЛИЧИТЬ
+bill_max_service_parameter_label	Billing	Max	Макс:
+bill_used_service_parameter_label	Billing	Used	Исп:
+bill_unlimited_label	Billing	Unlimited resources	неограниченно
+
+bill_resources_MM_label	Billing	Limit resources for MM	Макс: %s сообщений/день
+bill_all_free_label	Billing	All free services	Все сервисы используются в рамках бесплатных лимитов
+bill_non_install_service_label	Billing	Service does not install	Сервис не установлен
+bill_install_label	Billing	Install	установить
+bill_common_params_label	Billing	Common parameters	Общие параметры
+bill_upgrade_flash_label	Billing	Need to upgrade your Flash Player	Вам нужно обновить Flash Player
+bill_unlim_user_count_label	Billing	Unlimited users	Неограниченно (сейчас %s)
+bill_sms_balance_label	Billing	SMS balance	SMS баланс
+bill_enlarge_sms_balance_label	Billing	Add SMS credit	Купить SMS
+bill_from_seed_label	Billing	For X from Y	из
+bill_used_amchart_label	Billing	Used label for Amchart	исп.
+bill_free_amchart_label	Billing	Free label for Amchart	свободно
+param_prod_title	Billing	prod parameter label of SC servcie	избавиться от этого параметра
+param_mo_title	Billing	mo parameter label of SC servcie	избавиться от этого параметра
+
+bill_delete_attention_label	Billing	Attention when delete services	Внимание!
+bill_confirm_delete_label	Billing	Confirm delete services	Отмеченные сервисы будут удалены вместе с данными без возможности восстановления. Вы уверены?
+bill_select_standart_plan_label	Billing	Select standard plan	Выбери стандартный тарифный план
+bill_select_custom_plan_label	Billing	Select custom plan	Собери свой тарифный план
+bill_disk_change_label	Billing	Storage space	Диск
+bill_users_change_label	Billing	Users	Пользователи
+bill_select_new_plan_label	Billing	Select new standard plan	Выберите новый тарифный план
+bill_based_on_label	Billing	Plan based on 	Планы на основе сервиса "%s"
+bill_based_ons_label	Billing	Plan based on s 	Планы на основе сервисов "%s"
+
+bill_proceed_button	Billing	Proceed button 	Продолжить
+bill_apply_button	Billing	Apply button 	Применить
+bill_js_formula	Billing	js formula 	(%s + %s/мес * %s месяц(ев))
+
+bill_curren_used_label	Billing	Now used	Используется сейчас
+bill_set_new_label	Billing	Specify new value	Установить новое количество
+bill_not_install_label	Billing	Service not installed	Сервис не установлен
+bill_delete_service_label	Billing	Delete service	Удалить
+bill_delete_service_select	Billing	Delete service link	удалить сервис
+bill_choose_service_select	Billing	Select link	выбрать
+bill_tatol_price_label	Billing	Total price	Цена этого плана:
+
+
+
+bill_js_confirm_delete_label	Billing	Confirm delete in JavaScript	Этот сервис будет удалён вместе с данными без возможности восстановления. Вы уверены?
+bill_proceed_account_title_label	Billing	Proceed account title	Продление аккаунта
+bill_account_paid_to_label	Billing	Account paid to	Ваш аккаунт уже оплачен до:
+bill_empty_billing_date_label	Billing	Empty billing date	не установлена
+bill_additional_proceed_label	Billing	For additional proceed	Продлить аккаунт еще на: 
+bill_enlarge_SMS_label	Billing	Enlarge SMS balance	Пополнение SMS-баланса
+bill_current_SMS_label	Billing	Current SMS balance	Ваш доступный SMS баланс:
+bill_increase_SMS_label	Billing	Additional enlarge SMS balance	Пополнить SMS баланс:
+bill_not_need_SMS_label	Billing	Not need enlarge SMS balance	не требуется
+bill_about_SMS_label	Billing	Approximately count of text message	(примерно %s сообщений)
+bill_proceed_period_label	Billing	Period of proceed	%s мес.
+
+bill_verify_mail_label	Billing	Verify your Email	Пожалуйста, подтвердите свой Email адрес:
+bill_unconfirmed_mail_label	Billing	You have unconfirmed Email	Ваш адрес электронной почты не подтверждён
+bill_proceed_select_label	Billing	Choose proceed period	Период продления:
+bill_proceed_select_label_v2	Billing	Choose proceed period	Период подписки:
+bill_you_can_proceed_label	Billing	Right now proceed account	Вы также можете уже сейчас продлить действие вашего аккаунта.
+bill_for_new_rate_label	Billing	For apply new rate	Новая ставка тарифного плана будет применяться, начиная с указанной даты
+bill_need_pay_label	Billing	For apply new rate need to pay	Таким образом, для перехода на новый план, вам достаточно доплатить
+bill_just_paid_label	Billing	Just paid to	Ваш аккаунт уже оплачен по старому тарифному плану до:
+bill_new_selected_plan_label	Billing	Selected new plan	Вы выбрали следующий тарифный план:
+bill_immediately_apply_label	Billing	Immediately apply new settings	Новый тарифный план начнет действовать немедленно.
+bill_apply_settings_title	Billing	Apply settings title	Подтверждение изменений
+bill_selected_free_plan_label	Billing	Selected free plan	Вы выбрали <b>бесплатный</b> тарифный план.
+
+
+bill_change_applied	Billing	Change applied	Изменения были успешно применены
+bill_per_month_MM_label	Billing	Change applied	сообщ./день
+
+bill_service_param_prod_label	Billing	Change applied	прод
+bill_service_param_mo_label	Billing	Change applied	зак/мес
+bill_special_for_QN_label	Billing	Change applied	неограниченно
+bill_empty_exceed_label	Billing	Change applied	Вы должны указать период продления и/или сумму пополнения SMS баланса.
+bill_empty_cost_label	Billing	Change applied	Сумма новых настроек не может быть равна нулю.
+
+service_PD_param_label	Billing	Description for services PD parameter	%s изображений
+service_DD_param_label	Billing	Description for services DD parameter	%s файлов
+service_CM_param_label	Billing	Description for services CM parameter	%s контактов
+service_MM_param_label	Billing	Description for services MM parameter	%s сообщений/день
+service_PM_param_label	Billing	Description for services PM parameter	%s проектов
+service_IT_param_label	Billing	Description for services IT parameter	%s заданий
+service_QN_param_label	Billing	Description for services QN parameter	%s записей
+service_QP_param_label	Billing	Description for services QP parameter	%s страниц
+service_ST_param_label	Billing	Description for services ST parameter	%s запросов
+
+service_SC_prod_param_label	Billing	Description for services SC of products parameter	%s продуктов
+service_SC_mo_param_label	Billing	Description for services SC of cat parameter	%s заказов/мес 
+
+service_all_services_label	Billing	Description for services SC of cat parameter	Планы, включающие все сервисы
+service_best_value_label	Billing	Description for services SC of cat parameter	(лучшие цены)
+
+bill_months_label	Billing	Months	%s месяцев
+bill_signle_month_label	Billing	Single month	%s месяц
+
+service_DD_table	Billing	Title of DD	Файлы
+service_CM_table	Billing	Title of CM	Контакты
+service_MM_table	Billing	Title of MM	Почта
+service_PM_table	Billing	Title of PM	Проекты
+service_IT_table	Billing	Title of IT	Задания
+service_QN_table	Billing	Title of QN	Блокнот
+service_QP_table	Billing	Title of QP	Страницы
+service_SC_table	Billing	Title of SC	Магазин
+service_PD_table	Billing	Title of PD	Фотоальбом
+service_ST_table	Billing	Title of ST	Поддержка
+
+
+
+bill_go_to_back_label	Billing	Back to account 	Назад в Профиль аккаунта
+bill_tatol_amount_label	Billing	Total price	Общая стоимость:
+bill_more_label	Billing	More label	ещё
+bill_submit_button	Billing	Submit button	Принять
+bill_and_label	Billing	"AND" label	и
+bill_view_label	Billing	"View" label	Вид
+bill_list_label	Billing	"List" label	Список
+bill_table_label	Billing	"Table" label	Таблица
+
+
+bill_can_free_service_label	Billing	Can use free service	With this plan you can optionally use any other services whithin limitations of FREE plan.
+bill_applicable_label	Billing	New rate applicable	Ваш аккаунт уже оплачен по старому тарифному плану до:
+bill_exceed_day_ago_label	Billing	Expired day	(истек %s дней назад)
+bill_next_bill_d_label	Billing	Next Billing Date	Действителен до
+bill_extend_account_title	Billing	Extend Account page title	Продление аккаунта
+
+
+aa_gb_style	Billing	GB style	%s ГБ
+aa_mb_style	Billing	MB style	%s MБ
+aa_kb_style	Billing	KB style	%s КБ
+
+
+bill_desc_page	Billing	Description of "Account profile" page	Изменение вашего аккаунта
+bill_con_not_proceed_label	Billing	Can not proceed user`s account	Невозможно продлить ваш аккаунт, так как уже установлен максимальный период (1 год).&nbsp;
+bill_user_current_plan_label	Billing	Current plan label on select plan page	(ваш текущий план)
+
+
+bill_country_3_label	Billing	'Afghanistan' label	Afghanistan
+bill_country_4_label	Billing	'Albania' label	Albania
+bill_country_5_label	Billing	'Algeria' label	Algeria
+bill_country_6_label	Billing	'American Samoa' label	American Samoa
+bill_country_7_label	Billing	'Andorra' label	Andorra
+bill_country_8_label	Billing	'Angola' label	Angola
+bill_country_9_label	Billing	'Anguilla' label	Anguilla
+bill_country_10_label	Billing	'Antarctica' label	Antarctica
+bill_country_11_label	Billing	'Antigua and Barbuda' label	Antigua and Barbuda
+bill_country_12_label	Billing	'Argentina' label	Argentina
+bill_country_13_label	Billing	'Armenia' label	Armenia
+bill_country_14_label	Billing	'Aruba' label	Aruba
+bill_country_15_label	Billing	'Australia' label	Australia
+bill_country_16_label	Billing	'Austria' label	Austria
+bill_country_17_label	Billing	'Azerbaijan' label	Azerbaijan
+bill_country_18_label	Billing	'Bahamas' label	Bahamas
+bill_country_19_label	Billing	'Bahrain' label	Bahrain
+bill_country_20_label	Billing	'Bangladesh' label	Bangladesh
+bill_country_21_label	Billing	'Barbados' label	Barbados
+bill_country_22_label	Billing	'Belarus' label	Belarus
+bill_country_23_label	Billing	'Belgium' label	Belgium
+bill_country_24_label	Billing	'Belize' label	Belize
+bill_country_25_label	Billing	'Benin' label	Benin
+bill_country_26_label	Billing	'Bermuda' label	Bermuda
+bill_country_27_label	Billing	'Bhutan' label	Bhutan
+bill_country_28_label	Billing	'Bolivia' label	Bolivia
+bill_country_29_label	Billing	'Bosnia and Herzegowina' label	Bosnia and Herzegowina
+bill_country_30_label	Billing	'Botswana' label	Botswana
+bill_country_31_label	Billing	'Bouvet Island' label	Bouvet Island
+bill_country_32_label	Billing	'Brazil' label	Brazil
+bill_country_33_label	Billing	'Brunei Darussalam' label	Brunei Darussalam
+bill_country_34_label	Billing	'Bulgaria' label	Bulgaria
+bill_country_35_label	Billing	'Burkina Faso' label	Burkina Faso
+bill_country_36_label	Billing	'Burundi' label	Burundi
+bill_country_37_label	Billing	'Cambodia' label	Cambodia
+bill_country_38_label	Billing	'Cameroon' label	Cameroon
+bill_country_2_label	Billing	'Canada' label	Canada
+bill_country_39_label	Billing	'Cape Verde' label	Cape Verde
+bill_country_40_label	Billing	'Cayman Islands' label	Cayman Islands
+bill_country_41_label	Billing	'Central African Republic' label	Central African Republic
+bill_country_42_label	Billing	'Chad' label	Chad
+bill_country_43_label	Billing	'Chile' label	Chile
+bill_country_44_label	Billing	'China' label	China
+bill_country_45_label	Billing	'Christmas Island' label	Christmas Island
+bill_country_46_label	Billing	'Cocos (Keeling) Islands' label	Cocos (Keeling) Islands
+bill_country_47_label	Billing	'Colombia' label	Colombia
+bill_country_48_label	Billing	'Comoros' label	Comoros
+bill_country_49_label	Billing	'Congo' label	Congo
+bill_country_50_label	Billing	'Cook Islands' label	Cook Islands
+bill_country_51_label	Billing	'Costa Rica' label	Costa Rica
+bill_country_52_label	Billing	'Cote D'Ivoire' label	Cote D'Ivoire
+bill_country_53_label	Billing	'Croatia' label	Croatia
+bill_country_54_label	Billing	'Cuba' label	Cuba
+bill_country_55_label	Billing	'Cyprus' label	Cyprus
+bill_country_56_label	Billing	'Czech Republic' label	Czech Republic
+bill_country_110_label	Billing	'D.P.R. Korea' label	D.P.R. Korea
+bill_country_57_label	Billing	'Denmark' label	Denmark
+bill_country_58_label	Billing	'Djibouti' label	Djibouti
+bill_country_59_label	Billing	'Dominica' label	Dominica
+bill_country_60_label	Billing	'Dominican Republic' label	Dominican Republic
+bill_country_61_label	Billing	'East Timor' label	East Timor
+bill_country_62_label	Billing	'Ecuador' label	Ecuador
+bill_country_63_label	Billing	'Egypt' label	Egypt
+bill_country_64_label	Billing	'El Salvador' label	El Salvador
+bill_country_65_label	Billing	'Equatorial Guinea' label	Equatorial Guinea
+bill_country_66_label	Billing	'Eritrea' label	Eritrea
+bill_country_67_label	Billing	'Estonia' label	Estonia
+bill_country_68_label	Billing	'Ethiopia' label	Ethiopia
+bill_country_69_label	Billing	'Falkland Islands' label	Falkland Islands
+bill_country_70_label	Billing	'Faroe Islands' label	Faroe Islands
+bill_country_71_label	Billing	'Fiji' label	Fiji
+bill_country_72_label	Billing	'Finland' label	Finland
+bill_country_73_label	Billing	'France' label	France
+bill_country_74_label	Billing	'France, Metropolitan' label	France, Metropolitan
+bill_country_75_label	Billing	'French Guiana' label	French Guiana
+bill_country_76_label	Billing	'French Polynesia' label	French Polynesia
+bill_country_77_label	Billing	'Gabon' label	Gabon
+bill_country_78_label	Billing	'Gambia' label	Gambia
+bill_country_79_label	Billing	'Georgia' label	Georgia
+bill_country_80_label	Billing	'Germany' label	Germany
+bill_country_81_label	Billing	'Ghana' label	Ghana
+bill_country_82_label	Billing	'Gibraltar' label	Gibraltar
+bill_country_83_label	Billing	'Greece' label	Greece
+bill_country_84_label	Billing	'Greenland' label	Greenland
+bill_country_85_label	Billing	'Grenada' label	Grenada
+bill_country_86_label	Billing	'Guadeloupe' label	Guadeloupe
+bill_country_87_label	Billing	'Guam' label	Guam
+bill_country_88_label	Billing	'Guatemala' label	Guatemala
+bill_country_89_label	Billing	'Guinea' label	Guinea
+bill_country_90_label	Billing	'Guinea-Bissau' label	Guinea-Bissau
+bill_country_91_label	Billing	'Guyana' label	Guyana
+bill_country_92_label	Billing	'Haiti' label	Haiti
+bill_country_93_label	Billing	'Honduras' label	Honduras
+bill_country_94_label	Billing	'Hong Kong' label	Hong Kong
+bill_country_95_label	Billing	'Hungary' label	Hungary
+bill_country_96_label	Billing	'Iceland' label	Iceland
+bill_country_97_label	Billing	'India' label	India
+bill_country_98_label	Billing	'Indonesia' label	Indonesia
+bill_country_99_label	Billing	'Iran' label	Iran
+bill_country_100_label	Billing	'Iraq' label	Iraq
+bill_country_101_label	Billing	'Ireland' label	Ireland
+bill_country_102_label	Billing	'Israel' label	Israel
+bill_country_103_label	Billing	'Italy' label	Italy
+bill_country_104_label	Billing	'Jamaica' label	Jamaica
+bill_country_105_label	Billing	'Japan' label	Japan
+bill_country_106_label	Billing	'Jordan' label	Jordan
+bill_country_107_label	Billing	'Kazakhstan' label	Kazakhstan
+bill_country_108_label	Billing	'Kenya' label	Kenya
+bill_country_109_label	Billing	'Kiribati' label	Kiribati
+bill_country_111_label	Billing	'Korea' label	Korea
+bill_country_112_label	Billing	'Kuwait' label	Kuwait
+bill_country_113_label	Billing	'Kyrgyzstan' label	Kyrgyzstan
+bill_country_114_label	Billing	'Lao People's Republic' label	Lao People's Republic
+bill_country_115_label	Billing	'Latvia' label	Latvia
+bill_country_116_label	Billing	'Lebanon' label	Lebanon
+bill_country_117_label	Billing	'Lesotho' label	Lesotho
+bill_country_118_label	Billing	'Liberia' label	Liberia
+bill_country_119_label	Billing	'Libyan Arab Jamahiriya' label	Libyan Arab Jamahiriya
+bill_country_120_label	Billing	'Liechtenstein' label	Liechtenstein
+bill_country_121_label	Billing	'Lithuania' label	Lithuania
+bill_country_122_label	Billing	'Luxembourg' label	Luxembourg
+bill_country_123_label	Billing	'Macau' label	Macau
+bill_country_124_label	Billing	'Macedonia' label	Macedonia
+bill_country_125_label	Billing	'Madagascar' label	Madagascar
+bill_country_126_label	Billing	'Malawi' label	Malawi
+bill_country_127_label	Billing	'Malaysia' label	Malaysia
+bill_country_128_label	Billing	'Maldives' label	Maldives
+bill_country_129_label	Billing	'Mali' label	Mali
+bill_country_130_label	Billing	'Malta' label	Malta
+bill_country_131_label	Billing	'Marshall Islands' label	Marshall Islands
+bill_country_132_label	Billing	'Martinique' label	Martinique
+bill_country_133_label	Billing	'Mauritania' label	Mauritania
+bill_country_134_label	Billing	'Mauritius' label	Mauritius
+bill_country_135_label	Billing	'Mayotte' label	Mayotte
+bill_country_136_label	Billing	'Mexico' label	Mexico
+bill_country_137_label	Billing	'Micronesia' label	Micronesia
+bill_country_138_label	Billing	'Moldova' label	Moldova
+bill_country_139_label	Billing	'Monaco' label	Monaco
+bill_country_140_label	Billing	'Mongolia' label	Mongolia
+bill_country_141_label	Billing	'Montserrat' label	Montserrat
+bill_country_142_label	Billing	'Morocco' label	Morocco
+bill_country_143_label	Billing	'Mozambique' label	Mozambique
+bill_country_144_label	Billing	'Myanmar' label	Myanmar
+bill_country_145_label	Billing	'Namibia' label	Namibia
+bill_country_146_label	Billing	'Nauru' label	Nauru
+bill_country_147_label	Billing	'Nepal' label	Nepal
+bill_country_148_label	Billing	'Netherlands' label	Netherlands
+bill_country_149_label	Billing	'Netherlands Antilles' label	Netherlands Antilles
+bill_country_150_label	Billing	'New Caledonia' label	New Caledonia
+bill_country_151_label	Billing	'New Zealand' label	New Zealand
+bill_country_152_label	Billing	'Nicaragua' label	Nicaragua
+bill_country_153_label	Billing	'Niger' label	Niger
+bill_country_154_label	Billing	'Nigeria' label	Nigeria
+bill_country_155_label	Billing	'Niue' label	Niue
+bill_country_156_label	Billing	'Norfolk Island' label	Norfolk Island
+bill_country_157_label	Billing	'Northern Mariana Islands' label	Northern Mariana Islands
+bill_country_158_label	Billing	'Norway' label	Norway
+bill_country_159_label	Billing	'Oman' label	Oman
+bill_country_232_label	Billing	'Other-Not Shown' label	Other-Not Shown
+bill_country_160_label	Billing	'Pakistan' label	Pakistan
+bill_country_161_label	Billing	'Palau' label	Palau
+bill_country_162_label	Billing	'Panama' label	Panama
+bill_country_163_label	Billing	'Papua New Guinea' label	Papua New Guinea
+bill_country_164_label	Billing	'Paraguay' label	Paraguay
+bill_country_165_label	Billing	'Peru' label	Peru
+bill_country_166_label	Billing	'Philippines' label	Philippines
+bill_country_167_label	Billing	'Pitcairn' label	Pitcairn
+bill_country_168_label	Billing	'Poland' label	Poland
+bill_country_169_label	Billing	'Portugal' label	Portugal
+bill_country_170_label	Billing	'Puerto Rico' label	Puerto Rico
+bill_country_171_label	Billing	'Qatar' label	Qatar
+bill_country_172_label	Billing	'Reunion' label	Reunion
+bill_country_173_label	Billing	'Romania' label	Romania
+bill_country_174_label	Billing	'Russian Federation' label	Russian Federation
+bill_country_175_label	Billing	'Rwanda' label	Rwanda
+bill_country_176_label	Billing	'Saint Kitts and Nevis' label	Saint Kitts and Nevis
+bill_country_177_label	Billing	'Saint Lucia' label	Saint Lucia
+bill_country_178_label	Billing	'Samoa' label	Samoa
+bill_country_179_label	Billing	'San Marino' label	San Marino
+bill_country_180_label	Billing	'Sao Tome and Principe' label	Sao Tome and Principe
+bill_country_181_label	Billing	'Saudi Arabia' label	Saudi Arabia
+bill_country_182_label	Billing	'Senegal' label	Senegal
+bill_country_183_label	Billing	'Seychelles' label	Seychelles
+bill_country_184_label	Billing	'Sierra Leone' label	Sierra Leone
+bill_country_185_label	Billing	'Singapore' label	Singapore
+bill_country_186_label	Billing	'Slovakia' label	Slovakia
+bill_country_187_label	Billing	'Slovenia' label	Slovenia
+bill_country_188_label	Billing	'Solomon Islands' label	Solomon Islands
+bill_country_189_label	Billing	'Somalia' label	Somalia
+bill_country_190_label	Billing	'South Africa' label	South Africa
+bill_country_191_label	Billing	'Spain' label	Spain
+bill_country_192_label	Billing	'Sri Lanka' label	Sri Lanka
+bill_country_193_label	Billing	'St Helena' label	St Helena
+bill_country_194_label	Billing	'St Pierre and Miquelon' label	St Pierre and Miquelon
+bill_country_195_label	Billing	'Sudan' label	Sudan
+bill_country_196_label	Billing	'Suriname' label	Suriname
+bill_country_197_label	Billing	'Swaziland' label	Swaziland
+bill_country_198_label	Billing	'Sweden' label	Sweden
+bill_country_199_label	Billing	'Switzerland' label	Switzerland
+bill_country_200_label	Billing	'Syrian Arab Republic' label	Syrian Arab Republic
+bill_country_201_label	Billing	'Taiwan Region' label	Taiwan Region
+bill_country_202_label	Billing	'Tajikistan' label	Tajikistan
+bill_country_203_label	Billing	'Tanzania' label	Tanzania
+bill_country_204_label	Billing	'Thailand' label	Thailand
+bill_country_205_label	Billing	'Togo' label	Togo
+bill_country_206_label	Billing	'Tokelau' label	Tokelau
+bill_country_207_label	Billing	'Tonga' label	Tonga
+bill_country_208_label	Billing	'Trinidad and Tobago' label	Trinidad and Tobago
+bill_country_209_label	Billing	'Tunisia' label	Tunisia
+bill_country_210_label	Billing	'Turkey' label	Turkey
+bill_country_211_label	Billing	'Turkmenistan' label	Turkmenistan
+bill_country_212_label	Billing	'Turks and Caicos Islands' label	Turks and Caicos Islands
+bill_country_213_label	Billing	'Tuvalu' label	Tuvalu
+bill_country_214_label	Billing	'Uganda' label	Uganda
+bill_country_215_label	Billing	'Ukraine' label	Ukraine
+bill_country_216_label	Billing	'United Arab Emirates' label	United Arab Emirates
+bill_country_217_label	Billing	'United Kingdom' label	United Kingdom
+bill_country_1_label	Billing	'United States of America' label	United States of America
+bill_country_218_label	Billing	'Uruguay' label	Uruguay
+bill_country_219_label	Billing	'Uzbekistan' label	Uzbekistan
+bill_country_220_label	Billing	'Vanuatu' label	Vanuatu
+bill_country_221_label	Billing	'Vatican City State' label	Vatican City State
+bill_country_222_label	Billing	'Venezuela' label	Venezuela
+bill_country_223_label	Billing	'Viet Nam' label	Viet Nam
+bill_country_224_label	Billing	'Virgin Islands (British)' label	Virgin Islands (British)
+bill_country_225_label	Billing	'Virgin Islands (US)' label	Virgin Islands (US)
+bill_country_226_label	Billing	'Wallis and Futuna Islands' label	Wallis and Futuna Islands
+bill_country_228_label	Billing	'Yemen' label	Yemen
+bill_country_227_label	Billing	'Yugoslavia' label	Yugoslavia
+bill_country_229_label	Billing	'Zaire' label	Zaire
+bill_country_230_label	Billing	'Zambia' label	Zambia
+bill_country_231_label	Billing	'Zimbabwe' label	Zimbabwe
+
+
+
+purchase_ordernotfound_message	Billing	Order not found	Заказ не найден
+purchase_payment_form	Billing	Online credit	Оплата по кредитной карте через защищенное соединение
+purchase_SSL_secured	Billing	Your input	Ввод информации о заказе происходит в <b>защищенном режиме</b> (SSL)
+purchase_verify_our_certificate	Billing	Click this	Нажмите на эту иконку для проверки нашего SSL сертификата
+purchase_we_accept	Billing	We accept	Мы принимаем к оплате: VISA, MasterCard, American Express, Discover
+purchase_card_information	Billing	Credit card information	Информация о пластиковой карте
+purchase_provide_following_information	Billing	Please provide	Пожалуйста, введите следующую информацию так, как она представлена на Вашей пластиковой карте.
+purchase_please_field	Billing	Please_field	Внимание!!! Заполните следующий поля
+purchase_card_type	Billing	Card type	Тип счета, связанного с пластиковой картой:
+purchase_Business	Billing	Business	Счет юридического лица (компании)
+purchase_Individual	Billing	Individual	Счет частного лица
+purchase_first_name	Billing	First name	Имя держателя карты:
+purchase_last_name	Billing	Last name	Фамилия держателя карты:
+purchase_company	Billing	Company	Компания:
+purchase_card_number	Billing	Card number	Номер карты:
+purchase_expiration_date	Billing	Expiration date	Истекает:
+purchase_month_	Billing	Month select	-месяц-
+purchase_year_	Billing	Year select	-год-
+purchase_CVV	Billing	CVV	3-х значный код (для карт American Express - 4-х значный) на обороте Вашей пластиковой карты.
+purchase_billing_address	Billing	Billing address	Адрес плательщика
+purchase_address	Billing	Address	Адрес:
+purchase_city	Billing	City	Город:
+purchase_province	Billing	State	Область/штат/провинция:
+purchase_zip	Billing	Zip	Почтовый индекс:
+purchase_country	Billing	Country	Страна:
+purchase_email_address	Billing	Email address	Email:
+purchase_phone	Billing	Phone	Телефон:
+purchase_valid_phone	Billing	Make sure to provide a valid phone	Убедитесь, что Вы указали правильный номер телефона, по которому мы позвоним Вам для проверки платежа
+purchase_Submit	Billing	Submit button	 Оплатить!
+purchase_Continue	Billing	Continue button	Далее
+purchase_account_payment_notice	Billing	Payment notice	После нажатия на кнопку Далее вы будете направлены на защищенную страницу Authorize.Net для осуществления платежа.<br />Как только платеж будет оформлен, все изменения будут применены к вашему аккаунту и с вашей карты будет снята сумма %AMOUNT%%RATE_DESC%.
+purchase_account_payment_card_notice	Billing	Payment card notice	<strong>Продлевать мой аккаунт автоматически </strong>(начиная с даты следующего платежа %BILLING_DATE% WebAsyst будет списывать с вашей карты сумму, эквивалентную %COST% ежемесячно до тех пор, пока вы не закроете свой аккаунт).
+purchase_account_card_charge	Billing	Payment card charge	<strong>Внимание:</strong> В вашей банковской выписке получателем платежа будет компания WebAsyst LLC. 
+purchase_account_card_charge_remark	Billing	Payment card remark	<strong>ВНИМАНИЕ:</strong> Мы рекомендуем включить опцию автопродления. Это гарантирует постоянную доступность вашего аккаунта (если вы забудете продлить аккаунт, он будет недоступен для ваших пользователей до поступления оплаты за продление). Включив автопродление вы все равно сохраняете полный контроль над своими платежами, потому что можете в любой момент закрыть аккаунт или поменять тарифный план на бесплатный &#151; в этом случае все последующие платежи отменяются.
+purchase_account_cc_notice	Billing	Payment notice	После нажатия на кнопку Далее вы будете направлены на защищенную страницу Authorize.Net для осуществления платежа.
+
+purchase_for_proceed	Billing	Submit button	Инструкции об оплате:
+purchase_about_order	Billing	Submit button	Информация о заказе:
+purchase_great	Billing	Submit button	Ваш платеж принят!
+purchase_order_emailed	Billing	Order emailed	Данная информация только что была отправлена Вам по адресу %email%.
+purchase_order_email	Billing	Order email	Данная информация будет отправлена Вам по адресу %email%.
+purchase_card_charged	Billing	Card charged	Карта была успешно авторизована и указанная ниже сумма списана с вашего счета.
+purchase_card_charge_targed	Billing	Card charge target	<strong>Примечание:</strong> Сумма была списана в пользу WebAsyst LLC.
+purchase_thanks	Billing	Purchase thanks	Спасибо за Ваш заказ!
+purchase_support	Billing	Purchase support	В случае возникновения вопросов, пожалуйста обращайтесь в службу поддержки.
+purchase_error	Billing	Submit button	Вам нечего делать на этой странице.
+
+bill_custom_note	Billing	Note for custom plan	ПРИМЕЧАНИЕ: Индивидуальный тарифный план более гибкий чем стандартный, но всегда дороже.
+bill_free_settings	Billing	New settings is free	Требуемые изменения бесплатны, и будут применены немедленно.
+bill_amount_due_label	Billing	Amount due	Сумма к оплате:
+
+bill_js_formula_label_v5	Billing	JS formula	 <span style="color:#666666;"><small>(%s)</small></span>
+bill_js_formula_label_v2	Billing	JS formula	 <span style="color:#666666;"><small>(%s + %s)</small></span>
+bill_js_formula_label_v3	Billing	JS formula	%s
+bill_js_formula_label_v4	Billing	JS formula	%s * %s
+
+bill_settings_label	Billing	Settings label	Настройки
+bill_sms_history_label	Billing	SMS History label	SMS платежи
+bill_owner_label	Billing	Account Owner label	Владелец:
+bill_created_label	Billing	Created label	Дата создания:
+bill_email_title	Billing	E-mail label	E-mail:
+bill_checkout_title	Billing	Checkout page title	Оформление заказа
+
+bill_limit_exceed_error	Billing	Limit error	Выбрано %s, сейчас используется %s.
+bill_space_exceed_error	Billing	Limit error for space	Дисковое пространство не может превышать %s.
+
+bill_advertisement_desc_stand	Billing	Advertisement for standard plans	Стандартные планы значительно дешевле (до 50%), чем планы собранные самостоятельно. Однако, отдельные параметры стандартных планов нельзя менять.
+bill_advertisement_desc_custa	Billing	Advertisement for custom plans	Такой метод сборки индивидуального плана очень гибкий и удобен для тех, у кого специфические требования, и кому не подходит ни один стандартный план.
+bill_free_restriction	Billing	Free restriction	Выключено в бесплатном аккаунте.
+bill_update_now	Billing	Upgrade now	Перейти на платный
+
+bill_mail_invalid	Billing	Invalid e-mail	Указанный вами адрес электронной почты (%s) неверного формата.<br/>
+bill_mail_exists	Billing	Exists e-mail	Указанный вами адрес электронной почты (%s) уже зарегестрирован.<br/>
+bill_mail_owner_error	Billing	Owner error	Адрес электронной почты (%s) не принадлежит вам.<br/>
+bill_other_mail_label	Billing	Other email	Дополнительные адреса электронной почты для обращения в службу поддержки:
+bill_unconfirmed_mail_label	Billing	Unconfirmed email	не подтверждён
+bill_add_mail_label	Billing	Add email address	Добавить
+bill_add_mail_reduced	Billing	Add email reduced	Добавить адрес:
+bill_additional_field	Billing	Create additional field for extra mails	Хотите добавить сразу несколько, нажмите здесь:
+bill_additional_field_desc	Billing	Description for "addon field" pic	Добавить поле
+bill_empty_mails	Billing	Has field an empty mail	Укажите хотя бы один адрес электронной почты
+bill_extra_mails_limit	Billing	Have limit on extra mails	Вы не можите добавить больше %s доп. электронных адресов.
+bill_recommended_tariff	Billing	Recommended tariff	Рекомендуем!
+
+domains_link_label	Domains	Domains control label	Мои домены
+domains_names_link_label	Domains	Domains control label	Доменые имена
+dl_screen_long_name	Domains List	Domains List page full name	Мои домены
+dl_screen_short_name	Domains List	Short name	Мои домены
+dl_adddom_btn	Domains List	Add Domain button	Добавить домен
+dl_name_title	Domains List	Column name	Домен
+de_pageadd_title	Add/Modify Domain	Page header in Add Domain mode	Добавить домен
+de_pagemodify_title	Add/Modify Domain	Page header in Modify Domain mode	Изменить домен
+de_domainexists_message	Add/Modify Domain	Entered domain already exists message	Домен уже существует
+de_incorrectdomain_message	Add/Modify Domain	Incorrect domain	Домен указан неверно
+de_add_domain_comment	Add/Modify Domain	Comment for add domain	Вы можете добавить дополнительный домен к своему аккаунту.<br>В настройках DNS этого домена должно быть указано корректное значение IP-адреса.<br>Если у Вас еще нет своего домена, Вы можете его <a %s>купить</a>.
+de_edit_domain_comment	Add/Modify Domain	Comment for edit domain	ВНИМАНИЕ:<br>в настройках DNS домена должно быть указано корректное значение IP-адреса.<br>
+de_delete_message	Add/Modify Domain	Domain deletion confirmation	Удалить домен?
+
+app_install_protect	Warning	Label	В корневой директории WebAsyst существует файл INSTALL.PHP &mdash; это небезопасно. Удалите этот файл вручную (по FTP).
+app_install_wbstgz	Warning	Label	В корневой директории WebAsyst существует файл WBS.TGZ. Удалите этот файл вручную (по FTP).
+app_installer_protect	Warning	Label	<strong>WebAsyst Installer не защищен</strong>. Придумайте логин и пароль для доступа к Installer и <a href="%s">сохраните его в настройках</a>
+
+help_page_name	Help System	Page Title	Помощь
+help_forum_lbl	Help	Forum label	Форум
+help_forum_desc	Help	Forum desc	Сообщество пользователей WebAsyst.
+help_manual_lbl	Help	Manual label	Руководство
+help_manual_desc	Help	Manual desc	Краткая документация по приложениям WebAsyst.
+help_support_lbl	Help	Support label	Поддержка
+help_support_desc	Help	Support desc	Вопросы и ответы, служба поддержки WebAsyst.
+help_blog_lbl	Help	Blog label	Блог
+help_blog_desc	Help	Blog desc	Информация об обновлениях WebAsyst.
+dom_mydomains_label	Domains	My Domains	Мои домены
+dom_back_btn	Domains	Back btn	Назад в Мои домены
+dom_registered_domains	Domains	Registered domains	Зарегистрированные доменные имена
+dom_domain_name	Domains	Domain name	Доменное имя
+dom_expire_label	Domains	Domain expire	истекает
+dom_enter_domain	Domains	Enter domain name	Введите доменное имя
+dom_domain_link_label	Domains	Domain link	Связь
+dom_domain_nolink_label	Domains	Domain nolink	не связано
+dom_domain_link_setup	Domains	Domain link setup	настроить
+dom_nodom_message	Domains	No registered domains	У вас нет зарегистрированных доменных имен.
+dom_domains_waid_paid	Domains	Wait paid	Заказанные доменные имена, ожидающие оплату
+dom_order_date	Domains	Order date	Дата заказа
+dom_order_number	Domains	Order number	Номер заказа
+dom_cancel_order	Domains	Cancel order	Отменить этот заказ
+dom_dom_not_available	Domains	Domain not available for register	Это доменное имя недоступно для регистрации
+dom_change_domain	Domains	Change domain name	Изменить доменное имя
+dom_mes_free_dom	Domains	Free domain policy	Ваш тарифный план позволяет бесплатно зарегистрировать одно доменное имя.
+dom_register_domain	Domains	Register domain	Зарегистрировать доменное имя
+dom_renew_domain	Domains	Register domain	Продлить регистрацию доменного имени
+dom_get_free_domain	Domains	Get free domain	Зарегистрировать бесплатно доменное имя
+dom_buy_domain	Domains	Buy domain	Купить доменное имя
+dom_buy_another_domain	Domains	Buy another domain	Купить еще домен
+dom_mes_plan_extend	Domains	Extend plan	Ваш тарифный план включает одно бесплатное доменное имя, если вы платите за свой аккаунт в течение года и более. На данный момент ваш аккаунт уже оплачивается в течение %s месяца(-ев). Вам достаточно продлить аккаунт еще на %s месяц(-ев), чтобы получить бесплатно доменное имя.
+dom_extend_link_label	Domains	Extend account link	Продлить аккаунт и получить бесплатно доменное имя
+dom_buy_order_noextend	Domains	Buy domain without extending	Купить доменное имя без продления аккаунта
+dom_mes_nodomreg_forfree	Domains	No domain registering	Извините, мы не предоставляем регистрацию доменных имен для бесплатных аккаунтов.
+dom_upgrade_account	Domains	Upgrade Account	Перейти на платный
+dom_enter_domain	Domains	Enter domain	Введите доменное имя
+dom_domain_available	Domains	Domain available	Доменное имя %s доступно для регистрации.
+dom_fill_form	Domains	Fill form	Пожалуйста, заполните форму
+dom_latin_characters	Domains	Domain 	Все данные вводятся латинскими буквами
+dom_price	Domains	Price	Стоимость
+dom_company_name	Domains	Company name	Название компании
+dom_company_blank_message	Domains	Company blank	Оставьте поле пустым, если нет названия компании.
+dom_contact_person	Domains	Contact person	Имя контактного лица
+dom_address	Domains	Address	Адрес
+dom_city	Domains	City	Город
+dom_zip	Domains	Zip	Индекс
+dom_country	Domains	Country	Страна
+dom_loading	Domains	Loading	Загружается
+dom_state	Domains	State	Штат/Область/Район
+dom_phone	Domains	Phone	Телефон
+dom_phone_cc	Domains	Phone country code	Код страны
+dom_phone_number	Domains	Phone number	Код города + номер
+dom_agreement	Domains	Agreement	Я согласен с условиями предоставления услуг.
+dom_agreement_error	Domains	Agreement error	Вы должны быть согласны с условиями предоставления услуг
+dom_domain_to_reg	Domains	Domain to register	Доменное имя для регистрации
+dom_confirm_data	Domains	Confirm data	Пожалуйста, проверьте введенные данные
+dom_register_success	Domains	Registration success	Регистрация доменного имени %s выполнена успешно
+dom_period	Domains	Period	Период: 1 год
+dom_confirm_cancelation	Domains	Confirm order cancellation	Подтвердите удаление заказа
+dom_domain_registeration	Domains	Domain registration	регистрация доменного имени
+dom_domain_prolongation	Domains	Domain prolongation	Продление регистрации доменного имени
+dom_order_not_found	Domains	Order not found	Заказ не найден или выполнен
+dom_back_to_edit	Domains	Back to edit	или %s вернуться назад для изменения данных %s
+dom_paymenttype_error	Domains	Wrong payment type	Неверный тип оплаты
+dom_linked_SC	Domains	Linked to SC	Этот домен связан с витриной вашего интернет-магазина.
+dom_linked_login	Domains	Linked to login	Этот домен связан с формой логина в ваш аккаунт.
+dom_link_defto_login	Domains	Link to login	<b>Внимание:</b>Этот домен будет связан с формой логина в ваш аккаунт.
+dom_link_defto_SC	Domains	Link to login	<b>Внимание:</b>Этот домен будет связан с витриной вашего интернет-магазина.
+dom_dns_awaiting	Domains	Awaiting dns changes	Этот домен ждет регистрации DNS. Это может занять 2-3 часа.
+dom_order_not_paid	Domains	Order not paid	Этот домен заказан, но еще не оплачен.
+dom_price_year	Domains	Year	год
+dom_dns_info_message	Domains	Dns info message	Заказанный домен станет доступен после окончательного обновления DNS (в течение суток). 
+dom_continue_btn	Domains	continue_btn	Продолжить
+dom_ssl_info_message	Domains	ssl_info	Если вы хотите использовать защищенное соединение по протоколу SSL, вам необходимо приобрести SSL-сертификат для вашего домена. Стоимость SSL-сертификата составляет 3490 руб. в год. В стоимость входит приобретение сертификата, выделенный IP-адрес и работа по установке.<p>Для заказа, пожалуйста, обращайтесь в службу поддержки <a href=mailto:support@webasyst.ru>support@webasyst.ru</a>.</p>
+dom_renew	Domains	Renew	Продлить
+
+contact_email_exist_error	Contact	Contact	Указанный адрес email уже используется
+
+app_required_fields	Common	Warning if some required fields are not filled	Это поле обязательно

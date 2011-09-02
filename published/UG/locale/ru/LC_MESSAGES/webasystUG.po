@@ -1,0 +1,2672 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: webasyst\n"
+"POT-Creation-Date: 2009-11-09 13:31+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:500
+msgid "Create new list"
+msgstr "Создать новый список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:16
+msgid "There are two kinds of lists"
+msgstr "Существует два вида списков"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:21
+msgid "Static list"
+msgstr "Статический список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:25
+msgid "Consists of expressly selected contacts. Simply add individual contacts to this list. You can add or delete from this list at any time."
+msgstr "Вы создаете такой список просто выбирая и добавляя в него контакты. В любой момент контакты можно добавить или удалить из списка."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:35
+msgid "Search-based list"
+msgstr "Список основанный на результатах поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:39
+msgid "Consists of contacts which satisfy certain search criteria. The list will be dynamically updated, when any contact is added, modified, or deleted from your account."
+msgstr "Состоит из контактов, которые удовлетворяют определенным условиям поиска. Такой список по своей природе является динамическим. Все новые контакты, удовлетворяющие условиям, будут сразу появляться в этом списке."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:42
+msgid "Choose a search method to create new list"
+msgstr "Выберите метод поиска для создания списка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:44
+msgid "Simple search by a person or company name"
+msgstr "Поиск по имени персоны или названию организации"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:46
+msgid "Advanced search by any field"
+msgstr "Расширенный поиск по любому полю"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:48
+msgid "Smart search based on a sophisticated search criteria"
+msgstr "Умный поиск, основанный на комбинации различных условий"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:50
+msgid "Create search-based list"
+msgstr "Создать список на основе поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:58
+msgid "Using this technique you can create lists of contacts living in a specified city or country, working in certain company or department."
+msgstr "Используя этот метод вы сможете создавать списки проживающих в определенной стране, работающих в указанной организации или отделе."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsCreate.html:60
+msgid "Dynamic lists allow you to segment your customers and subscribers database while you provide a targeted marketing campaign, they also have a lot of other useful applications."
+msgstr "Динамические списки позволяют вам сегментировать базу данных клиентов и подписчиков для проведения целевых маркетинговых программ. Также они имеют множество других полезных применений."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1099
+msgid "Import contacts"
+msgstr "Импорт контактов"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:36
+msgid "Import from text"
+msgstr "Из текста"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:67
+msgid "Import from file"
+msgstr "Из файла"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:72
+msgid "Encoding"
+msgstr "Кодировка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:78
+msgid "Add to folder"
+msgstr "Добавить в папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:137
+msgid "Import"
+msgstr "Импорт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:651
+msgid "Cancel"
+msgstr "Отмена"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:99
+msgid "We have found {{$fields|@count}} columns in imported data."
+msgstr "Мы обнаружили {{$fields|@count}} колонок в импортируемых данных."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsCsvImport.html:105
+msgid "You must select at least one of the following fields: First name, Last name, Company name, Email."
+msgstr "Вы должны выбрать хотя бы одно из этих полей: Имя, Фамилия, Организация, Email."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:101
+msgid "Please specify fields matching these columns."
+msgstr "Пожалуйста, укажите каким полям соответствуют колонки."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:111
+msgid "Select a field"
+msgstr "Выберите поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:126
+msgid "...there are more lines"
+msgstr "...есть еще строки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:128
+msgid "Total"
+msgstr "Всего"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:128
+msgid " lines to import"
+msgstr "строка для импорта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:130
+msgid "Import first line"
+msgstr "Импортировать первую строку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsCsvImport.html:182
+msgid "Added {{$users|@count + 0}} contacts."
+msgstr "Добавлено {{$users|@count + 0}} контактов."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsCsvImport.html:183
+msgid "Following lines could not be imported"
+msgstr "Следующие строки не удалось импортировать"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsCsvImport.html:191
+msgid "Go to folder"
+msgstr "Перейти в папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersRights.html:36
+msgid "Effective user access rights are a combination of expressly specified personal access rights and access rights inherited from the groups in which this user is included."
+msgstr "Права пользователя складываются из установленных персональных прав и унаследованных прав групп, в которые включен пользователь."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:2044
+msgid "Loading"
+msgstr "Загрузка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:42
+msgid "To"
+msgstr "Кому"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:50
+msgid "This feld is required"
+msgstr "Это поле обязательное"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:65
+msgid "Copy"
+msgstr "Копия"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:58
+msgid "Bcc"
+msgstr "Скрытая"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:195
+msgid "Subject"
+msgstr "Тема"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:157
+msgid "Attach file"
+msgstr "Прикрепить файл"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:89
+msgid "Send"
+msgstr "Отправить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersEmailSend.html:155
+msgid "Attach one more file"
+msgstr "Добавить еще один файл"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsRights.html:20
+msgid "Customize access rights for this group in the form below. All users included into this group will automatically inherit specified access rights."
+msgstr "Настройте права доступа для этой группы в форме ниже. Все пользователи, включенные в эту группу, автоматически унаследуют указанные права."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:115
+msgid "search"
+msgstr "поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Main.html:237
+msgid "Folders"
+msgstr "Папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexContacts.html:161
+msgid "Forms"
+msgstr "Формы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Main.html:217
+msgid "search by First, Middle, Last or Company name"
+msgstr "поиск по имени, отчеству, фамилии или названию организации"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:19
+msgid "Advanced search"
+msgstr "Расширенный поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:21
+msgid "Smart search"
+msgstr "Умный поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexContacts.html:194
+msgid "All contacts"
+msgstr "Все контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexContacts.html:195
+msgid "Analytics"
+msgstr "Аналитика"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Main.html:267
+msgid "Lists"
+msgstr "Списки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexContacts.html:223
+msgid "no forms yet"
+msgstr "пока ни одной формы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:163
+msgid "Actions"
+msgstr "Действия"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:35
+msgid "View"
+msgstr "Вид"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:166
+msgid "Print preview"
+msgstr "Предпросмотр"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:55
+msgid "Additional information"
+msgstr "Дополнительная информация"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:57
+msgid "Contact ID"
+msgstr "Номер контакта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:213
+msgid "Adding date"
+msgstr "Дата добавления"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:64
+msgid "unknown"
+msgstr "неизвестен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:59
+msgid "Added by"
+msgstr "Добавлен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:60
+msgid "Adding application"
+msgstr "Добавлено из приложения"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:61
+msgid "Adding method"
+msgstr "Метод добавления"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersIndex.html:64
+msgid "Last changes made by"
+msgstr "Последние изменения сделал"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Limit.html:25
+msgid "ACCOUNT LIMIT"
+msgstr "ОГРАНИЧЕНИЕ АККАУНТА"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsAdd.html:30
+msgid "Back"
+msgstr "Назад"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:82
+msgid "Contact information"
+msgstr "Контактная информация"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:539
+msgid "Edit"
+msgstr "Редактировать"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:88
+msgid "or click a field in the form to change it"
+msgstr "или щелкните по полю в форме для его изменения"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:94
+msgid "Delete this person"
+msgstr "Удалить эту персону"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:94
+msgid "Delete this company"
+msgstr "Удалить эту организацию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsAdd.html:73
+msgid "Customize fields"
+msgstr "Настроить поля"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:113
+msgid "Notes"
+msgstr "Заметки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:128
+msgid "User account"
+msgstr "Аккаунт пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:134
+msgid "Registration is not complete."
+msgstr "Регистрация не завершена."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersInvite.action.php:10
+msgid "Login"
+msgstr "Логин"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:269
+msgid "online"
+msgstr "онлайн"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:264
+msgid "disabled"
+msgstr "вход запрещен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:271
+msgid "offline"
+msgstr "офлайн"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:149
+msgid "Last activity"
+msgstr "Последняя активность"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:149
+msgid "never"
+msgstr "никогда"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:223
+msgid "Groups"
+msgstr "Группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:390
+msgid "none"
+msgstr "нет"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:160
+msgid "Access:"
+msgstr "Доступ:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:172
+msgid "Create user account for this contact"
+msgstr "Сделать этот контакт пользователем"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:66
+msgid "Add a new contact"
+msgstr "Добавить новый контакт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/User.html:306
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Main.html:278
+msgid "Widgets"
+msgstr "Виджеты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users.js:114
+msgid "Users"
+msgstr "Пользователи"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:115
+msgid "Search"
+msgstr "Поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:160
+msgid "Add user"
+msgstr "Добавить пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/layouts/Main.html:307
+msgid "Select group"
+msgstr "Выберите группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:20
+msgid "Simple search"
+msgstr "Простой поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchSmart.html:10
+msgid "Add search condition"
+msgstr "Добавить условие поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:648
+msgid "Save"
+msgstr "Сохранить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchSmart.html:35
+msgid "and"
+msgstr "и"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:120
+msgid "or"
+msgstr "или"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearch.html:13
+msgid "Create a name for this list"
+msgstr "Придумайте имя для списка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearch.html:14
+msgid "New list"
+msgstr "Новый список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:102
+msgid "Selected contacts"
+msgstr "Выбранные контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:120
+msgid "All available contacts"
+msgstr "Все доступные контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:122
+msgid "Browse"
+msgstr "Обзор"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:129
+msgid "All folders"
+msgstr "Все папки"
+
+msgid "All"
+msgstr "Все"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:148
+msgid "Use <b>Ctrl+click</b> and <b>Shift+click</b> to select multiple contacts"
+msgstr "Используйте <b>Ctrl+click</b> и <b>Shift+click</b> для выбора нескольких контактов"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1261
+msgid "no contacts in this folder"
+msgstr "нет контактов в этой папке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ListsEdit.html:228
+msgid "not found"
+msgstr "не найдено"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:30
+msgid "Included"
+msgstr "Включены"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsUsers.html:67
+msgid "Not Included"
+msgstr "Не включены"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchSimple.html:31
+msgid "Advanced seach"
+msgstr "Расширенный поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersViewsettings.action.php:36
+msgid "Name"
+msgstr "Имя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:10
+msgid "Selected"
+msgstr "Выбранные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:20
+msgid "contacts"
+msgstr "контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:16
+msgid "Entire folder"
+msgstr "Вся папка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:17
+msgid "Entire list"
+msgstr "Весь список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersIndex.action.php:23
+msgid "Search results"
+msgstr "Результаты поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:26
+msgid "Choose columns you want to include into export file"
+msgstr "Выберите колонки, которые вы хотите включить в экспорт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:39
+msgid "Not included"
+msgstr "Не включены"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvExport.html:43
+msgid "Delimiter between columns"
+msgstr "Разделитель между столбцами"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/_UsersEmailAttachments.html:5
+msgid "Attachments"
+msgstr "Вложения"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1346
+msgid "Delete"
+msgstr "Удалить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/FoldersIndex.html:5
+msgid "Available folders"
+msgstr "Доступные папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/FoldersIndex.html:12
+msgid "Folder name"
+msgstr "Имя папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/FoldersIndex.html:13
+msgid "Rights"
+msgstr "Права"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:363
+msgid "Contacts"
+msgstr "Контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/FoldersIndex.html:27
+msgid "contacts in"
+msgstr "контактов в"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/FoldersIndex.html:27
+msgid "available folders"
+msgstr "доступные папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:11
+msgid "Field"
+msgstr "Поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:11
+msgid "is a standart field and can not be modified."
+msgstr "стандартное поле и не может быть изменено."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:16
+msgid "Field name"
+msgstr "Название поля"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditSection.html:23
+msgid "Add name in other language"
+msgstr "Добавить название на другом языке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:32
+msgid "Database name"
+msgstr "Имя базы данных"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:65
+msgid "Field type"
+msgstr "Тип поля"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:72
+msgid "Width"
+msgstr "Ширина"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:76
+msgid "Decimal places"
+msgstr "Точность"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:86
+msgid "Items"
+msgstr "Пункты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructMoveField.html:11
+msgid "Place this field after"
+msgstr "Поместить после"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:149
+msgid "NOTE"
+msgstr "ВНИМАНИЕ"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditField.html:128
+msgid "Changing field type may cause a partial or complete loss of data in this field."
+msgstr "Изменение типа поля может вызвать частичную или полную потерю данных в этом поле."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:67
+msgid "disabled for "
+msgstr "выключено для "
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:69
+msgid "Enable"
+msgstr "Включить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:82
+msgid "Disable"
+msgstr "Выключить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditSection.html:69
+msgid "Please wait"
+msgstr "Пожалуйста, подождите"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsAdd.html:58
+msgid "Display all fields"
+msgstr "Показать все поля"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsAdd.html:67
+msgid "Save and add another"
+msgstr "Сохранить и добавить еще"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:127
+msgid "All users"
+msgstr "Все пользователи"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:128
+msgid "Now online"
+msgstr "Сейчас онлайн"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/entity/Groups.class.php:35
+msgid "Invited"
+msgstr "Приглашённые"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:130
+msgid "Temporarily disabled"
+msgstr "Временно отключен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:135
+msgid "User groups"
+msgstr "Группы пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/IndexUsers.html:144
+msgid "Create a new group"
+msgstr "Создать новую группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:24
+msgid "Customize"
+msgstr "Настройка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:25
+msgid "Save changes and preview form"
+msgstr "Сохранить изменения и показать форму"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:32
+msgid "Fields"
+msgstr "Поля"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:33
+msgid "Folder & Lists"
+msgstr "Папка и списки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:34
+msgid "Text"
+msgstr "Текст"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:36
+msgid "After sign-up"
+msgstr "После отправки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:44
+msgid "Contact type"
+msgstr "Тип контакта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:46
+msgid "Choose contact fields you want to have in this form"
+msgstr "Выберите поля, которые необходимо добавить в форму"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:62
+msgid "CAPTCHA"
+msgstr "CAPTCHA"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersIndex.action.php:94
+msgid "Folder"
+msgstr "Папка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:73
+msgid "Private"
+msgstr "Личные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:81
+msgid "Select lists in which subscriber will be automatically added:"
+msgstr "Выберите списки, в которые подписчик должен автоматически добавляться:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:84
+msgid "Not selected"
+msgstr "Не выбранные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:119
+msgid "Caption"
+msgstr "Заголовок"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:123
+msgid "Button"
+msgstr "Кнопка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:74
+msgid "Language"
+msgstr "Язык"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:144
+msgid "Size"
+msgstr "Размер"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:148
+msgid "Caption background"
+msgstr "Фон заголовка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:152
+msgid "Caption text"
+msgstr "Текст заголовка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:156
+msgid "Body background"
+msgstr "Цвет"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:168
+msgid "If success then"
+msgstr "В случае успеха"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:169
+msgid "Message"
+msgstr "Сообщение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:172
+msgid "Redirect"
+msgstr "Перенаправление"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:175
+msgid "Open in new window"
+msgstr "Открыть в новом окне"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:177
+msgid "Send email to subscriber"
+msgstr "Отправить письмо подписчику"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:186
+msgid "From (Name)"
+msgstr "От кого (Имя)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:190
+msgid "From (Email)"
+msgstr "От кого (Email)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:204
+msgid "Insert a confirmation link into this message"
+msgstr "Добавить ссылку для подтверждения в письмо"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:225
+msgid "Link to this form"
+msgstr "Ссылка на эту форму"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:225
+msgid "open in new window"
+msgstr "открыть в новом окне"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:228
+msgid "HTML to embed in website or blog"
+msgstr "HTML-код для сайта или блога"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:229
+msgid "Method 1 (&lt;iframe&gt;)"
+msgstr "Метод 1 (&lt;iframe&gt;)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:232
+msgid "Method 2 (javascript and &lt;form&gt;)"
+msgstr "Метод 2 (javascript и &lt;form&gt;)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsEdit.html:328
+msgid "Please click the link below to confirm your subscription:"
+msgstr "Пожалуйста, перейдите по ссылке ниже для подтверждения подписки:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:40
+msgid "unlimited"
+msgstr "неограниченно"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:265
+msgid "Login temporarily disabled"
+msgstr "Вход временно запрещен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:273
+msgid "Temporarily disable login"
+msgstr "Временно запретить вход"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:68
+msgid "Delete user account"
+msgstr "Удалить аккаунт пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:76
+msgid "User account for this contact will be removed. Are you sure?"
+msgstr "Аккаунт пользователя для данного контакта будет удален. Вы уверены?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:84
+msgid "You can not delete yourself!"
+msgstr "Вы не можете удалить себя!"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:93
+msgid "Login name:"
+msgstr "Логин:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:96
+msgid "no name"
+msgstr "нет имени"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:176
+msgid "Password:"
+msgstr "Пароль:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:181
+msgid "Confirm password:"
+msgstr "Подтверждение:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/ajax/UGAjaxUsersInvite.action.php:39
+msgid "Please fill login name."
+msgstr "Пожалуйста введите логин."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:145
+msgid "Invitation card"
+msgstr "Пригласительный билет"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:145
+msgid "give this link to your user to complete registration"
+msgstr "дайте эту ссылку вашему пользователю для завершения регистрации"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:148
+msgid "Invitation was sent on <b id=\"invite-datetime\">{{$invite_datetime}}</b> but no attempts were made to login so far."
+msgstr "Приглашение было отправлено <b id=\"invite-datetime\">{{$invite_datetime}}</b> но попыток логина пока не было."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:160
+msgid "Send invitation now"
+msgstr "Отправить пригласительный билет сейчас"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:161
+msgid "Send another invitation"
+msgstr "Отправить еще приглашение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:163
+msgid "create login for this user yourself"
+msgstr "самостоятельно создать логин для этого пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:167
+msgid "This user has no permissions in your WebAsyst account."
+msgstr "У этого пользователя нет никаких прав в вашем аккаунте WebAsyst."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:168
+msgid "Customize access rights for this user before sending invitation, otherwise this user will see an empty page after logging to the account."
+msgstr "Настройте права доступа для этого пользователя перед отправкой приглашения. Иначе, пользователь увидит пустую страницу после входа в аккаунт."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:222
+msgid "Settings"
+msgstr "Настройки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsEdit.html:37
+msgid "Access rights"
+msgstr "Права доступа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:229
+msgid "Edit user settings"
+msgstr "Изменить настройки пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:232
+msgid "Changes have been successfully saved."
+msgstr "Изменения успешно сохранены."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersSettings.html:237
+msgid "Quotas"
+msgstr "Квоты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:115
+msgid "Storage space (KB)"
+msgstr "Доступное место (КБ)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:127
+msgid "SMS messages"
+msgstr "SMS сообщения"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:132
+msgid "Leave blank for unlimited quota"
+msgstr "Оставьте пустым для неограниченной квоты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsIndex.html:5
+msgid "Available Groups"
+msgstr "Доступные группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsIndex.html:10
+msgid "Group Name"
+msgstr "Название группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersAdd.html:27
+msgid "Login name"
+msgstr "Логин"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersAdd.html:32
+msgid "Password"
+msgstr "Пароль"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersAdd.html:36
+msgid "Confirm password"
+msgstr "Подтверждение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsLogin.html:23
+msgid "Let this user create their own login name"
+msgstr "Пусть этот пользователь придумает свой логин сам"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsLogin.html:25
+msgid "After you submit this form, we will create a special link which you will send to your user to complete registration."
+msgstr "После сохранения этой формы, мы создадим специальную ссылку, которую вы отправите вашему пользователю для завершения регистрации."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsLogin.html:59
+msgid "Passwords don't match."
+msgstr "Пароли не совпадают."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditSection.html:26
+msgid "Place this section after"
+msgstr "Поместить секцию после"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteField.html:4
+msgid "{{$n}} contacts have values in this field. All data will be permanently removed."
+msgstr "{{$n}} контактов имеют данные в этом поле. Все данные будут удалены."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteField.html:5
+msgid "Delete anyway?"
+msgstr "Удалить всё равно?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteField.html:7
+msgid "Are you sure you want to delete this field?"
+msgstr "Вы уверены что хотите удалить это поле?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteField.html:11
+msgid "{{$n}} contacts of the type \"{{$type}}\" have values in this field. All data will be permanently removed. Disable this field anyway?"
+msgstr "{{$n}} контактов типа \"{{$type}}\" имею данные в этом поле. Все данные будут удалены без возможности восстановления. Выключить это поле все равно?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteField.html:13
+msgid "Are you sure you want to disable this field?"
+msgstr "Вы уверены что хотите выключить это поле?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructDeleteField.action.php:15
+msgid "Delete field"
+msgstr "Удалить поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructDeleteField.action.php:15
+msgid "Disable field"
+msgstr "Выключить поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersInvite.html:37
+msgid "User registration"
+msgstr "Регистрация пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersInvite.html:47
+msgid "Create a login name and password which you will use to enter your account."
+msgstr "Придумайте логин и пароль, которые вы будете использовать для входа в свой аккаунт."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersInvite.html:65
+msgid "Enter"
+msgstr "Войти"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersNotes.html:51
+msgid "Add a note"
+msgstr "Добавить заметку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsEdit.html:26
+msgid "Edit user group"
+msgstr "Редактировать группу пользователей"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsAdd.html:7
+msgid "Group name"
+msgstr "Название группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/mail/Invite.html:1
+msgid "To create your account, please follow this link"
+msgstr "Для создания аккаунта, пожалуйста, перейдите по ссылке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:4
+msgid "Constructor"
+msgstr "Конструктор"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:113
+msgid "Back to edit contact"
+msgstr "Назад к редактированию контакта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:45
+msgid "Customize fields for \"{{$type_name}}\""
+msgstr "Настроить поля для типа \"{{$type_name}}\""
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1345
+msgid "Move"
+msgstr "Переместить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:91
+msgid "can not be edited or deleted"
+msgstr "не может быть изменено или удалено"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:91
+msgid "mandatory for"
+msgstr "обязательно для"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:104
+msgid "This page allows you to customize your contact entry format: add new sections and fields, delete/modify existing fields or change their location and appearance."
+msgstr "Эта страница позволяет вам настроить формат записи о контакте: добавить новые поля и секции, удалить/изменить существующие поля или их расположение."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:106
+msgid "Changes can not be canceled. Be careful and don't lose precious data."
+msgstr "Изменения нельзя отменить. Будьте внимательны и не потеряйте ценные данные."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:109
+msgid "Add a new section"
+msgstr "Добавить новую секцию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructIndex.html:110
+msgid "Add a new field"
+msgstr "Добавить новое поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersViewsettings.html:38
+msgid "Visible columns"
+msgstr "Видимые колонки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersViewsettings.html:49
+msgid "Hidden columns"
+msgstr "Скрытые колонки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersViewsettings.html:53
+msgid "Apply to current folder only"
+msgstr "Применить только для текущей папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersViewsettings.html:54
+msgid "Apply to all folders"
+msgstr "Применить ко всем папкам"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearch.html:19
+msgid "Edit search criteria for this list"
+msgstr "Изменить условия поиска для этого списка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearch.html:21
+msgid "Specify search criteria for this list"
+msgstr "Укажите условия поиска для этого списка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:68
+msgid "Additinal conditions"
+msgstr "Дополнительные условия"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:203
+msgid "Contacts added by"
+msgstr "Контакты, добавленные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:220
+msgid "Search in folder"
+msgstr "Искать в папке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:79
+msgid "anyone"
+msgstr "любой"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:87
+msgid "all folders"
+msgstr "все папки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:95
+msgid "subscribers themselves (via sign-up widget)"
+msgstr "подписчики через форму подписки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:96
+msgid "including subfolders"
+msgstr "включая подпапки"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:104
+msgid "anytime"
+msgstr "когда угодно"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:105
+msgid "in last"
+msgstr "за последние"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:105
+msgid "days"
+msgstr "дней"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:106
+msgid "from"
+msgstr "от"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:106
+msgid "to"
+msgstr "до"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:235
+msgid "Start new search"
+msgstr "Начать новый поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSearchAdvanced.html:236
+msgid "Edit this search"
+msgstr "Редактировать поиск"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/AjaxUsersNotes.html:6
+msgid "added by"
+msgstr "добавлен"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:553
+msgid "Add photo"
+msgstr "Добавить фото"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:32
+msgid "Choose a file from your local disk (JPG, GIF or PNG):"
+msgstr "Выберите файл на локальном диске (JPG, GIF или PNG):"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:255
+msgid "Drag or resize the frame to select an area of the image."
+msgstr "Перетащите рамку или измените ее размер для выбора кадра."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:256
+msgid "Entire photo"
+msgstr "Фото целиком"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:257
+msgid "Preview:"
+msgstr "Предпросмотр:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:266
+msgid "Choose another file (JPG, GIF or PNG):"
+msgstr "Выбрать другой файл (JPG, GIF или PNG):"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:526
+msgid "Change photo"
+msgstr "Изменить фото"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:313
+msgid "Remove photo"
+msgstr "Удалить фото"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersImage.html:317
+msgid "To change photo, choose new file (JPG, GIF or PNG):"
+msgstr "Для замены фото, выберите другой файл (JPG, GIF или PNG):"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:513
+msgid "Create a new form"
+msgstr "Создать новую форму"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:8
+msgid "Signup form will appear as a simple form into which people will enter their name, email address, and whatever other fields you specify. Using two lines of code you will be able to add this form to your website or blog. Information entered by visitors will be posted to your WebAsyst Contacts account."
+msgstr "Форма подписки позволяет вашим подписчикам самим добавить себя в вашу базу данных. Форма подписки может содержать имя, электронный адрес, телефон, а также любые другие поля, которые вы укажете. С помощью пары строк кода вы сможете разместить эту форму на вашем сайте или в блоге."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:12
+msgid "Form name (will appear as a reference name in the list of forms)"
+msgstr "Название формы (используется как ссылочное имя в списке форм)"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:13
+msgid "New form"
+msgstr "Новая форма"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:16
+msgid "Folder to which new subscribers will be added"
+msgstr "Папка, в которую будут добавляться подписчики"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:28
+msgid "Select contact type"
+msgstr "Выберите тип контакта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/WidgetsCreate.html:35
+msgid "Create form"
+msgstr "Создать форму"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteSection.html:2
+msgid "This section is not empty."
+msgstr "Эта секция не пустая."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructDeleteSection.html:5
+msgid "Are you sure you want to delete this section?"
+msgstr "Вы уверены, что хотите удалить эту секцию?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:661
+msgid "Yes"
+msgstr "Да"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:661
+msgid "No"
+msgstr "Нет"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ConstructEditSection.html:10
+msgid "Section name"
+msgstr "Название секции"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersCsvImport.html:78
+msgid "My contacts"
+msgstr "Мои контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:823
+msgid "Close"
+msgstr "Закрыть"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:336
+msgid "All changes are automatically applied"
+msgstr "Все изменения применяются автоматически"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersAdd.html:23
+msgid "At least one of the primary name fields must be filled."
+msgstr "Хотя бы одно из полей главного имени должно быть заполнено."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/UsersAdd.html:41
+msgid "Let this user create their own login name."
+msgstr "Пусть пользователь сам придумает себе логин."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/ajax/UGAjaxUsersInvite.action.php:44
+msgid "The password and confirmation password do not match."
+msgstr "Пароль и подтверждение пароля не сопадают."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsAdd.html:5
+msgid "Create a new user group"
+msgstr "Создать новую группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsAdd.html:8
+msgid "New group"
+msgstr "Новая группа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsAdd.html:10
+msgid "Choose users you want to include into this group"
+msgstr "Выберите пользователей, которых вы хотите включить в группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/GroupsAdd.html:13
+msgid "Create group"
+msgstr "Создать группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:59
+msgid "Manage Your Subscription"
+msgstr "Управление вашей подпиской"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:18
+msgid "Do you really want to unsubscribe from all lists and never receive messages from this sender?"
+msgstr "Вы действительно хотите отписаться от будущих рассылок?"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:74
+msgid "Your subscription has been canceled"
+msgstr "Ваша подписка отменена"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:77
+msgid "Confirm your subscription"
+msgstr "Пожалуйста, подтвердите подписку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:115
+msgid "First Name"
+msgstr "Имя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:119
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:149
+msgid "Remove"
+msgstr "Удалить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:158
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/templates/ContactsSubscription.html:158
+msgid "If you don't want to receive any messages from this sender any more, click the button below."
+msgstr "Если вы не хотите более получать рассылки от этого отправителя, щелкните по кнопке ниже."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/contacts/UGContactsLogin.action.php:17
+msgid "This contact already has a user account."
+msgstr "Этот контакт уже является пользователем."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvExport.action.php:84
+msgid "Full name"
+msgstr "Полное имя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:154
+msgid "User"
+msgstr "Пользователь"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/contacts/UGContactsLogin.controller.php:7
+msgid "Create user account"
+msgstr "Создать аккаунт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/contacts/UGContactsAdd.action.php:37
+msgid "Edit contact"
+msgstr "Редактировать контакт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:54
+msgid "Error"
+msgstr "Ошибка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:113
+msgid "Login "
+msgstr "Логин"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:113
+msgid "Latin letters and numbers only, no spaces"
+msgstr "Только латинские буквы и/или числа, без пробелов."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:121
+msgid "This login name is already in use. Please try another name."
+msgstr "Этот логин уже занят. Пожалуйста, попробуйте другой."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/contacts/UGContactsCsvImport.action.php:40
+msgid "Incorrect import data format"
+msgstr "Некорректный формат данных для импорта"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/folders/ajax/UGAjaxFoldersDelete.action.php:33
+msgid "Folder could not be deleted as some contacts have user accounts."
+msgstr "Папку нельзя удалить, потому что некоторые контакты являются пользователями."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/folders/ajax/UGAjaxFoldersDelete.action.php:20
+msgid "You have no rights to delete current folder or subfolders included in current folder."
+msgstr "У вас недостаточно прав для удаления текущей папки или вложенных папок."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/folders/ajax/UGAjaxFoldersDelete.action.php:26
+msgid "Your own account entry is in this folder. You can not delete yourself!"
+msgstr "Ваша собственная учетная запись находится в этой папке. Вы не можете удалить самого себя!"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/folders/ajax/UGAjaxFoldersAdd.action.php:9
+msgid "New Folder"
+msgstr "Новая папка"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/folders/ajax/UGAjaxFoldersMove.action.php:20
+msgid "You have not enough rights to move this folder."
+msgstr "У вас недостаточно прав для перемещения этой папки."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructEditField.action.php:10
+msgid "Edit field"
+msgstr "Редактировать поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructEdit.action.php:46
+msgid "Place on top"
+msgstr "Поместить наверх"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructAddSection.action.php:7
+msgid "Add section"
+msgstr "Добавить секцию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructAddField.action.php:8
+msgid "Add field"
+msgstr "Добавить поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructMoveSection.action.php:10
+msgid "Move section"
+msgstr "Переместить секцию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructDeleteSection.action.php:13
+msgid "Delete section"
+msgstr "Удалить секцию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructMoveField.action.php:10
+msgid "Move field"
+msgstr "Переместить поле"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/construct/UGConstructEditSection.action.php:10
+msgid "Edit section"
+msgstr "Редактировать секцию"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/groups/ajax/UGAjaxGroupsAdd.action.php:16
+msgid "Please fill group name"
+msgstr "Пожалуйста, введите название группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsers.action.php:21
+msgid "Contact not found!"
+msgstr "Контакт не найден!"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/ajax/UGAjaxUsersAdd.action.php:52
+msgid "Please fill login name"
+msgstr "Пожалуйста, введите логин"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersAdd.controller.php:7
+msgid "Add a new user"
+msgstr "Добавить нового пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:57
+msgid "blank"
+msgstr "пустая"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:58
+msgid "last opened"
+msgstr "последняя открытая"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:151
+msgid "not created yet"
+msgstr "еще не создан"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:82
+msgid "Time zone"
+msgstr "Часовой пояс"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:90
+msgid "Daylight saving time"
+msgstr "Летнее время"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:97
+msgid "User local time"
+msgstr "Время пользователя"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersSettings.action.php:104
+msgid "Start Page"
+msgstr "Первая страница"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersEmailSend.action.php:11
+msgid "Compose message"
+msgstr "Написать письмо"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersEmailSend.action.php:104
+msgid "Message was successfully sent to %d recipient(s)"
+msgstr "Сообщение было успешно отправлено %d получателям"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersEmailSend.action.php:107
+msgid "%d address(es) bounced"
+msgstr "%d адресов отвержено"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersMail.action.php:20
+msgid "Invitation to login"
+msgstr "Приглашение подключиться к"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersMail.action.php:11
+msgid "Send invitation"
+msgstr "Отправить приглашение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/actions/users/UGUsersCsvImport.action.php:62
+msgid "Many users"
+msgstr "Много пользователей"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/entity/Groups.class.php:25
+msgid "All Users"
+msgstr "Все пользователи"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/lib/entity/Groups.class.php:30
+msgid "Now Online"
+msgstr "Сейчас онлайн"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:235
+msgid "select"
+msgstr "выбрать"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:253
+msgid "Add another"
+msgstr "Добавить еще"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:268
+msgid "Number of characters can not exceed "
+msgstr "Количество символов не может превышать "
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:623
+msgid "Replace"
+msgstr "Заменить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-edit.js:653
+msgid "Upload image"
+msgstr "Загрузить изображение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users.js:455
+msgid "no users in this group"
+msgstr "нет пользователей в этой группе"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users.js:508
+msgid "Add to Group"
+msgstr "Добавить в группу"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users.js:473
+msgid "Delete from Group"
+msgstr "Удалить из группы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users.js:485
+msgid "Action with group:"
+msgstr "Действия с группой:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1344
+msgid "Rename"
+msgstr "Переименовать"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1337
+msgid "Read"
+msgstr "Чтение"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1339
+msgid "Write"
+msgstr "Запись"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1341
+msgid "Full"
+msgstr "Полные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:259
+msgid "Personal"
+msgstr "Персональные"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:259
+msgid "Group"
+msgstr "Группа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:274
+msgid "administrator"
+msgstr "администратор"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:274
+msgid "no access"
+msgstr "нет доступа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/users-rights.js:274
+msgid "custom"
+msgstr "настроить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:526
+msgid "Create a new folder"
+msgstr "Создать новую папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:539
+msgid "Edit search criteria"
+msgstr "Редактировать критерии поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:540
+msgid "Rename list"
+msgstr "Переименовать список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:541
+msgid "Delete this list"
+msgstr "Удалить этот список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:848
+msgid "Root folder"
+msgstr "Корневую папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:849
+msgid "Subfolder"
+msgstr "Подпапку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:890
+msgid "Add"
+msgstr "Добавить"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1334
+msgid "Export"
+msgstr "Экспорт"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1054
+msgid "&lt;root&gt;"
+msgstr "&lt;корень&gt;"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1136
+msgid "Your access rights"
+msgstr "Ваши права доступа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1140
+msgid "This list is based on the following search criteria"
+msgstr "Этот список основан на следующем критерии поиска"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1256
+msgid "no contacts in this list"
+msgstr "нет контактов в этом списке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1259
+msgid "You have no access rights to this folder"
+msgstr "У вас нет прав в этой папке"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1263
+msgid "No contacts found"
+msgstr "Контакты не найдены"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1265
+msgid "no contacts"
+msgstr "нет контактов"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1316
+msgid "Save as a list"
+msgstr "Сохранить как список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1322
+msgid "Actions with selected contacts"
+msgstr "Действия с выбранными контактами"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1324
+msgid "Move to folder"
+msgstr "Переместить в папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1324
+msgid "Move to another folder"
+msgstr "Переместить в другую папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1328
+msgid "Add to list"
+msgstr "Добавить в список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1336
+msgid "Send email"
+msgstr "Отправить email"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1341
+msgid "Actions with folder:"
+msgstr "Действия с папкой:"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/contacts.js:1343
+msgid "Customize access rights"
+msgstr "Настроить права доступа"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:192
+msgid "Customize columns..."
+msgstr "Настроить колонки..."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:232
+msgid "no image"
+msgstr "нет изображения"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:488
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:635
+msgid "Move folder"
+msgstr "Переместить папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:636
+msgid "Select new parent folder"
+msgstr "Выберите новую родительскую папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:691
+msgid "contacts were successfully deleted"
+msgstr "контактов были успешно удалены"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:694
+msgid "contacts were not deleted because they have user accounts"
+msgstr "контакты не были удалены, потому что у них есть аккаунты пользователей"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:697
+msgid "contacts were not deleted: insufficient access rights"
+msgstr "контакты не были удалены: недостаточно прав"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:700
+msgid "could not be deleted. You can not delete yourself!"
+msgstr "не может быть удален. Вы не можете удалить себя!"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:720
+msgid "Export contacts"
+msgstr "Экспорт контактов"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:755
+msgid "Move contacts"
+msgstr "Переместить контакты"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:756
+msgid "Select folder"
+msgstr "Выберите папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:767
+msgid "Add contacts to list"
+msgstr "Добавить контакты в список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:768
+msgid "Select list"
+msgstr "Выберите список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:817
+msgid "contacts were moved to folder"
+msgstr "контакты были перемещены в папку"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:820
+msgid "contacts were not moved: insufficient access rights"
+msgstr "контакты не были перемещены: недостаточно прав"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/ug.js:856
+msgid "contacts were added to list"
+msgstr "контакты были добавлены в список"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1085
+msgid "Records"
+msgstr "Записей"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1087
+msgid "Pages"
+msgstr "Страницы"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1335
+msgid "No rights"
+msgstr "Нет прав"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1343
+msgid "Unknown rights"
+msgstr "Неизвестные права"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1663
+msgid "Z-A"
+msgstr "Я-А"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:1663
+msgid "A-Z"
+msgstr "А-Я"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:2000
+msgid "Print"
+msgstr "Печать"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:2002
+msgid "Only first"
+msgstr "Только первый"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:2002
+msgid "contacts displayed"
+msgstr "контактов показано"
+
+#: /var/www/wbs_dev_test/wbs.dev/webasyst/wbs/published/UG/js/source/complex.js:2224
+msgid "Sorting by"
+msgstr "Сортировка по"
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\contacts\UGContactsSendsms.controller.php:8
+msgid "Send SMS"
+msgstr "Отправить SMS"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:858
+msgid "Please enter phone number"
+msgstr "Введите номер телефона"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:860
+msgid "Please enter message text"
+msgstr "Пожалуйста, введите текст сообщения"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:875
+msgid "SMS was sent to"
+msgstr "SMS было отправлено"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:876
+msgid "recipient(s)"
+msgstr "получателей"
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\contacts\UGContactsSendsms.action.php:46
+msgid "Too many recipients; %s allowed"
+msgstr "Допустимо только %s получателей"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:14
+msgid "contact(s) selected"
+msgstr "контактов выбрано"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:16
+msgid "phone number(s)"
+msgstr "телефонные номер"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:22
+msgid "Use country code + area code + phone number."
+msgstr "Используйте код страны + код региона + номер."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:23
+msgid "Don't use leading zeros; i.e., \"00\"."
+msgstr "Не добавляйте в начале нули."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:24
+msgid "Non-numeric characters are ignored."
+msgstr "Нецифровые символы игнорируются."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:25
+msgid "Multiple phone numbers must be delimited with semicolon \";\"."
+msgstr "Несколько номеров нужно разделить точкой с запятой \";\"."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:27
+msgid "Sample: +1 (215) 999-9999; 15551000000; 44 123 5550000"
+msgstr "Пример: +7 (916) 555-0000; 4 123 7770000"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSendsms.html:42
+msgid "Characters left"
+msgstr "Осталось символов"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:218
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:73
+msgid "Select folder and lists in which subscribers will be added:"
+msgstr "Выберите папку и списки, в которые будут добавляться подписчики:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:86
+msgid "Selected lists"
+msgstr "Выбранные списки"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:86
+msgid "Unselected lists"
+msgstr "Не выбранные списки"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:125
+msgid "Caption text color"
+msgstr "Цвет текста заголовка"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:133
+msgid "Caption background color"
+msgstr "Цвет фона заголовка"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:142
+msgid "Form width"
+msgstr "Ширина формы"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:146
+msgid "Form background color"
+msgstr "Цвет фона формы"
+
+msgid "Please confirm your subscription"
+msgstr "Пожалуйста, подтвердите вашу подписку"
+
+msgid "<p>{ACCOUNT_NAME} has just received a sign-up request from your address: {EMAIL}</p><p>Please click this link to confirm your subscription:<br />{MANAGE_SUBSCRIPTION_URL}</p><p>Thank you.</p>"
+msgstr "<p>{ACCOUNT_NAME} только что получил запрос на подписку с вашего адреса: {EMAIL}</p><p>Пожалуйста, перейдите по этой ссылке для подтверждения подписки:<br />{MANAGE_SUBSCRIPTION_URL}</p><p>Спасибо.</p>"
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\users\UGUsersIndex.action.php:112
+msgid "&lt;unknown&gt;"
+msgstr "&lt;неизвестно&gt;"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:73
+msgid "Enable photo"
+msgstr "Включить фото"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:68
+msgid "Primary identifying fields <span>(these fields can not be edited or deleted; some fields can be disabled)"
+msgstr "Главные идентифицирующие поля <span>(эти поля нельзя изменить или удалить; некоторые поля можно выключить)"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:218
+msgid "Disable photo"
+msgstr "Выключить фото"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:82
+msgid "Auxiliary fields"
+msgstr "Дополнительные поля"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:140
+msgid "Required"
+msgstr "Обязательное"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructMoveField.html:14
+msgid "Primary identifying fields"
+msgstr "Главные идентифицирующие поля"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:111
+msgid "Administrator"
+msgstr "Администратор"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:93
+msgid "Group rights"
+msgstr "Групповые"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsCreate.html:28
+msgid "This form will add contacts of this type"
+msgstr "Эта форма будет добавлять контакты типа"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:36
+msgid "Delete this form"
+msgstr "Удалить эту форму"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:157
+msgid "change"
+msgstr "изменить"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:182
+msgid "Once subscriber clicks submission button in this form:"
+msgstr "Когда подписчик щелкнет по кнопке отправки в этой форме:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:183
+msgid "Stay on the form page and display this message:"
+msgstr "Отстаться на странице формы и показать сообщение:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:187
+msgid "Redirect to another page:"
+msgstr "Перейти на другую страницу:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:191
+msgid "Incorrect URL"
+msgstr "Неверный URL"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:196
+msgid "To enable \"Send email\" function you have to add Email field in this form."
+msgstr "Чтобы включить функцию отправки сообщения, вам необходимо добавить поле Email в форму."
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\users\UGUsers.action.php:21
+msgid "Contact not found"
+msgstr "Контакт не найден"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:19
+msgid "Back to folder"
+msgstr "Вернуться в папку"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:20
+msgid "Customize access rights to folder"
+msgstr "Настроить права доступа к папке"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:106
+msgid "Personal access rights"
+msgstr "Персональные права доступа"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRights.html:106
+msgid "Inherited from groups"
+msgstr "Унаследованные от групп"
+
+msgid "Add a new person"
+msgstr "Добавить новую персону"
+
+msgid "Add a new company"
+msgstr "Добавить новую организацию"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1227
+msgid "Create folder"
+msgstr "Добавить папку"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1246
+msgid "Folder name:"
+msgstr "Имя папки:"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1246
+msgid "New folder"
+msgstr "Новая папка"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1248
+msgid "Root"
+msgstr "Корневая"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1250
+msgid "Nested"
+msgstr "Вложенная"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1250
+msgid "subfolder to"
+msgstr "подпапка для "
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1253
+msgid "other users have no access to this folder"
+msgstr "у других пользователей нет доступа к этой папке"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1254
+msgid "Shared"
+msgstr "Совместные"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1254
+msgid "you will customize access for other users"
+msgstr "настроить доступ другим пользователям"
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\users\UGUsersLists.action.php:148
+msgid "Search results for "
+msgstr "Результаты поиска для "
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:2
+msgid "Contact database analytics"
+msgstr "Анализ базы данных контактов"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:5
+msgid "Contact types"
+msgstr "Типы контактов"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:17
+msgid "Fields that have values"
+msgstr "Заполненность полей"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:20
+msgid "Filled"
+msgstr "Заполненные"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:28
+msgid "Unique values"
+msgstr "Уникальные"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:35
+msgid "Added by users"
+msgstr "Добавленные пользователями"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:47
+msgid "Subscribers"
+msgstr "Подписчики"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:50
+msgid "Confirmed subscribers"
+msgstr "Подтвержденные подписчики"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:54
+msgid "Unconfirmed subscribers"
+msgstr "Неподтвержденные подписчики"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:58
+msgid "Unsubscribed from mailings"
+msgstr "Отписавшиеся от рассылки"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:62
+msgid "Canceled subscription"
+msgstr "Отменившие подписку"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:81
+msgid "Added by user"
+msgstr "Добавлено пользователем"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsUnique.html:3
+msgid "Unique values in field \"{{$field_name}}\""
+msgstr "Уникальные значения в поле \"{{$field_name}}\""
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ListsCreate.html:12
+msgid "Create a new list"
+msgstr "Создать новый список"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\WidgetsEdit.html:393
+msgid "Are you sure you want to delete this form?"
+msgstr "Вы уверены что хотите удалить эту форму?"
+
+msgid "contains"
+msgstr "содержит"
+
+msgid "exactly matches"
+msgstr "точно совпадает"
+
+msgid "starting with"
+msgstr " начинается с"
+
+msgid "does not contain"
+msgstr "не содержит"
+
+msgid "earlier than"
+msgstr "ранее"
+
+msgid "later than"
+msgstr "позднее"
+
+msgid "in the range"
+msgstr "в интервале"
+
+msgid "greater than"
+msgstr "больше чем"
+
+msgid "equal to"
+msgstr "равно"
+
+msgid "less than"
+msgstr "меньше чем"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:643
+msgid "Are you sure you want to delete "
+msgstr "Вы уверены, что хотите удалить "
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:645
+msgid "NOTE: Contacts will not be deleted."
+msgstr "ПРИМ.: Контакты не будут удалены."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchSmart.html:75
+msgid "delete"
+msgstr "удалить"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:710
+msgid "Are you sure you want to delete %s users?"
+msgstr "Вы уверены что хотите удалить %s пользователей?"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:712
+msgid "Are you sure you want to delete %s contacts?"
+msgstr "Вы уверены что хотите удалить %s контактов?"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\users.js:475
+msgid "Delete users"
+msgstr "Удалить пользователей"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:710
+msgid "%s users will be deleted. Are you sure?"
+msgstr "%s пользователей будут удалены. Вы уверены?"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:722
+msgid "users were successfully deleted"
+msgstr "пользователей были успешно удалены"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1231
+msgid "Create a new root folder"
+msgstr "Создать новую корневую папку"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1264
+msgid "Only mine"
+msgstr "Только у меня"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1264
+msgid "will be able to customize access for other users later"
+msgstr "можно настроить доступ другим позднее"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1265
+msgid "customize access for other users now"
+msgstr "настроить доступ другим сейчас"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1528
+msgid "Actions with list:"
+msgstr "Действия со списком:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\AnalyticsIndex.html:34
+msgid "show unique"
+msgstr "показать уникальные"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:54
+msgid "You account has been cancelled."
+msgstr "Ваш аккаунт был удален."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:88
+msgid "You are currently subscribed to receive mailings from us."
+msgstr "Вы подписаны на получение почтовых рассылок."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:89
+msgid "If you don't want to receive any messages from us, click the link below."
+msgstr "Если вы не хотите получать сообщения от нас, щелкните по ссылке ниже."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:91
+msgid "NOTE: If you change your mind, you will be able to re-subscribe at any time later."
+msgstr "Если вы передумаете, то сможете повторно подписаться позднее."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:94
+msgid "Unsubscribe from all future mailings"
+msgstr "Отписаться от всех будущих рассылок"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:103
+msgid "If you want to permanently cancel your account with us, click the link below."
+msgstr "Если вы хотите полностью удалить свой аккаунт, щелкните по ссылке ниже."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:116
+msgid "Cancel account"
+msgstr "Удалить аккаунт"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:100
+msgid "You are unsubscribed and will not receive any mailings from us."
+msgstr "Вы отписались от получения почтовых рассылок."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSubscription.html:103
+msgid "Subscribe again now"
+msgstr "Подписаться вновь"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRightsGroups.html:10
+msgid "There are no user groups in your account."
+msgstr "В вашем аккуанте нет ни одной группы пользователей."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\FoldersRightsGroups.html:11
+msgid "To add a group navigate to \"Users\" service in the main menu."
+msgstr "Для создания группы перейдите в сервис \"Команда\" в главном меню."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:46
+msgid "Thank you for your subscription!"
+msgstr "Спасибо за подписку!"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:48
+msgid "{{$contact_name}}, this is your personal page at {{$company}}. Please bookmark this page address."
+msgstr "{{$contact_name}}, это Ваш личный кабинет в сервисе {{$company}}. Пожалуйста, сохраните ссылку на эту страницу."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:93
+msgid "<b>NOTE:</b> If you change your mind, you will be able to re-subscribe again."
+msgstr "<b>ПРИМ.:</b> Если Вы передумаете, то сможете повторно подписаться в любой момент."
+
+msgid "My personal page at "
+msgstr "Мой личный кабинет на сайте "
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1530
+msgid "Exclude from this list"
+msgstr "Исключить из этого списка"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:720
+msgid "Login has been disabled for %s user(s)"
+msgstr "Доступ был закрыт для %s пользователей"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:722
+msgid "Login has been enabled for %s user(s)"
+msgstr "Доступ был открыт для %s пользователей"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\users.js:477
+msgid "Actions with selected users"
+msgstr "Действия с выбранными пользователями"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\users.js:479
+msgid "Disable login"
+msgstr "Закрыть доступ"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\users.js:480
+msgid "Enable login"
+msgstr "Открыть доступ"
+
+msgid "There are no notes about this person"
+msgstr "Нет заметок про эту персону"
+
+msgid "There are no notes about this type company"
+msgstr "Нет заметок про эту организацию"
+
+msgid "Please correct errors."
+msgstr "Пожалуйста, исправьте ошибки."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:231
+msgid "Edit search conditions"
+msgstr "Изменить условия поиска"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1291
+msgid "Public"
+msgstr "Общая"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1291
+msgid "available for all users"
+msgstr "доступна всем пользователям"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:638
+msgid "NOTE: \"Public\" is a special folder available for all users. If you delete \"Public\" now, you will be able to add it again later."
+msgstr "ПРИМ.: \"Общая\" — это специальная папка, доступная всем пользователям. Если вы сейчас удалите \"Общую\", то сможете потом создать ее вновь."
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1583
+msgid "Delete \"Public\" folder"
+msgstr "Удалить папку \"Общая\""
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:644
+msgid "NOTE: Users will not be deleted."
+msgstr "ПРИМ.: Пользователи не будут удалены."
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\users.js:489
+msgid "Edit membership and access rights"
+msgstr "Изменить состав и права доступа"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\complex.js:1848
+msgid "no folders"
+msgstr "нет папок"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\complex.js:1850
+msgid "no lists"
+msgstr "нет списков"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\complex.js:1852
+msgid "no forms"
+msgstr "нет форм"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\complex.js:1854
+msgid "no groups"
+msgstr "нет групп"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1274
+msgid "Choose a location in your folder tree"
+msgstr "Выберите место в дереве папок"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:941
+msgid " contacts were excluded from this list"
+msgstr " контактов были исключены из этого списка"
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\contacts\UGContactsAdd.action.php:48
+msgid "Not sufficient access rights."
+msgstr "Недостаточно прав."
+
+#: H:\wamp2\www\webasyst\published\UG\lib\actions\users\UGUsersRights.action.php:17
+msgid "User not found"
+msgstr "Пользователь не найден"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:18
+msgid "Do you really want to unsubscribe from future mailings?"
+msgstr "Вы действительно хотите отписаться от будущих рассылок?"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:61
+msgid "My profile"
+msgstr "О себе"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsPersonal.html:62
+msgid "Subscription"
+msgstr "Подписка"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:200
+msgid "subscribers via signup form"
+msgstr "подписчики через форму подписки"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:206
+msgid "in last "
+msgstr "за последние "
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:206
+msgid " days"
+msgstr " дней"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:210
+msgid "from "
+msgstr "от "
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsSearchAdvanced.html:210
+msgid " to "
+msgstr " до "
+
+msgid "Are you sure you want to cancel your account?"
+msgstr "Вы действительно хотите удалить свой аккаунт?"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1532
+msgid "Update"
+msgstr "Обновить"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ConstructIndex.html:178
+msgid "Done!"
+msgstr "Готово!"
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\contacts.js:1491
+msgid " contacts found"
+msgstr " контактов найдено"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:51
+msgid "Copy and paste or simply type in names and other contact data for import."
+msgstr "Скопируйте и вставьте через буфер обмена или просто напечатайте имена и данные контактов для импорта. "
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:52
+msgid "Fields must be delimited by comma (,), semicolon (;) or tab."
+msgstr "Поля должны быть разделены запятой (,), точкой с запятой (;) или знаком табуляции."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:52
+msgid "Different contacts on separate lines."
+msgstr "Разные контакты на разных строках."
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:54
+msgid "SAMPLE:"
+msgstr "ПРИМЕР:"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:55
+msgid "John, Smith, john@domain.com"
+msgstr "Вася, Пупкин, vasya@domain.ru"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ContactsCsvImport.html:56
+msgid "Sue, Miller, sue@domain.com"
+msgstr "Маша, Тяпкина, masha@domain.ru"
+
+#: H:\wamp2\www\webasyst\published\UG\templates\ListsCreate.html:25
+msgid "Create static list"
+msgstr "Создать статический список"
+
+msgid "Number of contacts can not exceed "
+msgstr "Количество контактов не может превышать "
+
+msgid "Daily quota for outgoing messages has been exceeded "
+msgstr "Превышена дневная квота на количество исходящих сообщений "
+
+msgid "Number of users can not exceed "
+msgstr "Количество пользователей не может быть более чем "
+
+#: H:\wamp2\www\webasyst\published\UG\js\source\ug.js:960
+msgid "Ok"
+msgstr ""
+
+msgid "An error occurred when we tried to import customers from the \"Store\" application"
+msgstr "Произошла ошибка при импорте покупателей из приложения «Магазин»"
+
+msgid "Your current pricing plan allows you to have not more than %s contacts, and we tried to import %s customer records."
+msgstr "Тарифный план вашего аккаунта позволяет иметь не более %s конактов, при этом в магазине зарегистрированы %s клиентов."
+
+msgid "To import the entire customer database, please upgrade your account to the pricing plan which allows you to have more than %s contacts."
+msgstr "Чтобы импорт клиентов заработал, перейдите на тарифный план, позволяющий работать с количество контактов, превышающим %s."
+
+#: /var/www/webasyst/published/UG/templates/ContactsCsvImport.html:132
+msgid "Total lines to import"
+msgstr "Всего строк для импорта"
+
+#: /var/www/webasyst/published/UG/lib/actions/users/UGUsersLists.action.php:412
+msgid "Database error"
+msgstr "Ошибка базы данных"
+
+#: /var/www/webasyst/published/UG/js/source/contacts.js:1567
+msgid "Delete folder"
+msgstr "Удалить папку"
+
+#: /var/www/webasyst/published/CM/lib/actions/contacts/CMContactsCsvImport.action.php:229
+msgid "Your import may be partial."
+msgstr "Ваш импорт может быть неполным."
+
+#: /var/www/webasyst/published/CM/lib/actions/contacts/CMContactsCsvImport.action.php:185
+msgid "Row "
+msgstr "Строка "
+
+#: /var/www/webasyst/published/UG/templates/AnalyticsIndex.html:89
+msgid " is filled"
+msgstr " заполнено"
+
+#: /var/www/webasyst/published/UG/templates/ContactsSendsms.html:10
+msgid "Selected contacts have {{$phones_count}} mobile phone numbers."
+msgstr "Выбранные контакты имеют {{$phones_count}} мобильных телефонных номеров."
+
+msgid " contacts"
+msgstr " контактов"
+
+#: /var/www/webasyst/published/UG/templates/ContactsSearchSmart.html:63
+msgid "Select"
+msgstr "Выберите"
+
+#: /var/www/webasyst/published/UG/js/source/users-edit.js:785
+msgid "SMS has been sent successfully"
+msgstr "SMS было успешно отправлено"
+
+#: /var/www/webasyst/published/UG/templates/ContactsSearchAdvanced.html:108
+msgid "any type"
+msgstr "любой тип"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:111
+msgid "Bulk editing"
+msgstr "Мульти-редактирование"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:5
+msgid "Edit selected contacts"
+msgstr "Редактирование выбранных контактов"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:113
+msgid "Customize visible fields"
+msgstr "Настроить видимые колонки"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:43
+msgid "Apply"
+msgstr "Применить"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:47
+msgid "Invalid email"
+msgstr "Неверный email"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:48
+msgid "Invalid URL"
+msgstr "Неверный URL"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:49
+msgid "Required field"
+msgstr "Обязательное поле"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:50
+msgid "Customize visible columns"
+msgstr "Настроить видимые колонки"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:53
+msgid "Saving was successful. Redirecting to contacts list, please wait..."
+msgstr "Сохранение прошло успешно. Идет переход к списку контактов, ждите..."
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:54
+msgid "An error occured during save"
+msgstr "Во время сохранения изменений возникла ошибка"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsBatchedit.html:55
+msgid "To replace data in all lines, enter a new value for selected column and click Apply button"
+msgstr "Для замены данных во всех строках, введите новое значение для выбранной колонки и нажмите кнопку Применить"
+
+#: /var/www/webasyst/published/UG/templates/ConstructEditField.html:83
+msgid "Number of decimal places"
+msgstr "Количество знаков после запятой"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsMultiedit.html:53
+msgid "Incorrect email"
+msgstr "Неверный email"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsMultiedit.html:55
+msgid "Incorrect date"
+msgstr "Неверная дата"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsMultiedit.html:61
+msgid "Unknown error occurred while we were trying to save changes. Sorry."
+msgstr "Извините, произошла неизвестная ошибка во время сохранения."
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsMultiedit.html:52
+msgid "Bulk replacement in columns"
+msgstr "Быстрая замена в колонках"
+
+#: C:\wamp\www\webasyst\published\UG\templates\ContactsMultiedit.html:62
+msgid "For bulk replacement in a whole column, enter a new value and click \"Apply\"."
+msgstr "Для быстрой замены всей колонки, введите новое значение и нажмите кнопку \"Применить\"."
+
+#: /var/www/webasyst/published/UG/js/source/complex.js:1411
+msgid "Show <span class=\"records-page-count\">30</span> records on a page"
+msgstr "Показать <span class=\"records-page-count\">30</span> записей на странице"
+
+#: /var/www/webasyst/published/UG/templates/WidgetsCreate.html:12
+msgid "Form name"
+msgstr "Название формы"
+
+#: /var/www/webasyst/published/UG/templates/WidgetsCreate.html:15
+msgid "subscribers will not see this name, it appears only in the list of forms on the left panel"
+msgstr "это название не видно подписчикам, оно отображается только в списке форм в панели слева"
+
+msgid "From"
+msgstr "От кого"
+
+msgid "Add to another list"
+msgstr "Добавить в другой список"
+
+msgid "Invited user"
+msgstr "Приглашённый пользователь"
+
+msgid "System messages and default field names will appear in this language."
+msgstr "Системные сообщения и названия полей по умолчанию будут выводиться на этом языке."
+
+msgid "Subfolder of"
+msgstr "Вложенная в"
+
+msgid "Change full name format"
+msgstr "Изменить формат полного имени"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "invited"
+msgstr "приглашён"
+
+msgid "This field is not used by other types of contacts. It will be permanently deleted."
+msgstr "Это поле не используется другими типами контактов. Оно будет полностью удалено."
+
+msgid "Personal page"
+msgstr "Личный кабинет"
+
+msgid "My requests"
+msgstr "Мои запросы"
+
+msgid "Owners of a <b>WebAsyst Shop-Script license</b> are qualified to purchase the new <a href=\"http://www.webasyst.net/helpdesk/\">WebAsyst Help Desk </a> application at a special discounted price <b>of $179</b> (regular price is $229)."
+msgstr "Для владельцев <b>лицензий WebAsyst Shop-Script</b> новое приложение <a href=\"http://www.webasyst.ru/helpdesk/\">WebAsyst Поддержка </a> доступно по специальной сниженной цене <b>4650 руб.</b> (стандартная цена 5950 руб.)."
+
+msgid "Note"
+msgstr "Внимание"
+
+msgid "The special offer is valid through <b>July 15, 2010</b> (only {{$wbs_d}} days left)."
+msgstr "специальное предложение действует до <b>15 июля 2010г</b> (осталось {{$wbs_d}} дней)."
+
+msgid "<a href=\"http://www.webasyst.net/buy/?app=helpdesk\">Buy WebAsyst Help Desk now!</a>"
+msgstr "<a href=\"http://www.webasyst.ru/buy/?app=helpdesk\">Купить скрипты WebAsyst Поддержка</a>"
+
+msgid "Share this list with other users (read only)"
+msgstr "Дать доступ к этому списку другим пользователям (только по чтению)"
+
+msgid "This list is created and shared by administrator. Contacts from this list can be unavailable for editing, search, or in \"All contacts\" section if they are located in unavailable folders."
+msgstr "Данный список предоставлен вам в пользование администратором. Контакты из этого списка могут быть недоступны для редактирования, поиска, а также в секции \"Все контакты\", если они хранятся в недоступных для вас папках."
+
+msgid "none folder"
+msgstr "никакая"
+
+msgid "Shown contacts"
+msgstr "Показаны контакты"
+
+msgid "Show all"
+msgstr "Показать все"
+
+
+#: /home/www/sites/wa/published/UG/js/source/users-rights.js:293
+msgid "KB"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/js/source/users-rights.js:281
+msgid "OK"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/lib/actions/users/UGUsersImage.action.php:133
+msgid "Upload error!"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/lib/actions/users/UGUsersPartners.action.php:356
+msgid "RUR"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/lib/actions/users/UGUsersPartners.action.php:360
+msgid "USD"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersEmailSend.html:57
+msgid "This field is required"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:26
+msgid "Remove response together with the votes?"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersJobs.html:31
+msgid "votes"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:43
+msgid "Response deleted"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:19
+msgid "yes"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:19
+msgid "no"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:100
+msgid "Realy delete this project?"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:194
+msgid "Moderated"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:206
+msgid "Registred in catalog"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:210
+msgid "Info"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:211
+msgid "Jobs"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:212
+msgid "Portfolio"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:213
+msgid "Responses"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:4
+msgid "Short description"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:9
+msgid "Description"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:14
+msgid "Email"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersInfo.html:18
+msgid "I wish to receive email notifications of published comments about me"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/UsersPartners.html:336
+msgid "Partner comment"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:4
+msgid "MT customer data"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:8
+msgid "Company"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:9
+msgid "Phone"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:10
+msgid "Address"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:11
+msgid "Juridical address"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:12
+msgid "Details"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:13
+msgid "INN"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:14
+msgid "KPP"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:15
+msgid "Bank account"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:16
+msgid "Bank name"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:17
+msgid "BIK"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:18
+msgid "Bank coraccount"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:24
+msgid "MT customer: none"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:28
+msgid "Assets"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:64
+msgid "expired"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:64
+msgid "not registered"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:72
+msgid "Orders"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersActivity.html:79
+msgid "Orders: none"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersJobs.html:36
+msgid "no votes"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersPortfolio.html:42
+msgid "The cost of this project"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersPortfolio.html:46
+msgid "Jobs on the project"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersPortfolio.html:34
+msgid "Project name"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersPortfolio.html:38
+msgid "Project URL"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/_UsersPartnersPortfolio.html:55
+msgid "Project description"
+msgstr ""
+
+#: /home/www/sites/wa/published/UG/templates/layouts/User.html:95
+msgid "Partners"
+msgstr ""
+
+#: /home/www/sites/wa/published/CM/lib/actions/folders/ajax/CMAjaxFoldersAdd.action.php:16
+msgid "Not sufficient rights"
+msgstr ""

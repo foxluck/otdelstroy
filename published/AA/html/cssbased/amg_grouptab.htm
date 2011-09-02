@@ -1,0 +1,12 @@
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? wbs_label for="GroupName" fieldName="UG_NAME" text=$kernelStrings.amg_name_label ?></td>
+		<td>
+			<input type="text" id="GroupName" maxlength=50 class="FormControl" name="groupData[UG_NAME]" value="<? $groupData.UG_NAME|htmlsafe:true:true ?>" style="width: 300px"/>
+		</td>
+	</tr>
+</table>
+
+<? wbs_note smallFont=false width="500px" displayNoteMarker=false ?>
+	<? $kernelStrings.amgr_groupid_label|cat:": "|cat:$targetGroup ?>
+<? /wbs_note ?>

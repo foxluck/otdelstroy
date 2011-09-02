@@ -1,0 +1,347 @@
+<html><head><title>WebAsyst Administrator Guide</title><link href=" ../../../common/html/classic/help.css" rel="stylesheet" type="text/css"></head><body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="white"><table cellpadding=0 cellspacing=0 width="100%" border=0><tr><td><a name=toc></a><h1 class=bookTitle>WebAsyst Administrator Guide</h1><h1>Table Of Contents</h1></td></tr><tr><td><blockquote><a class=toclink href=#overview>Overview</a><br>
+<a class=toclink href=#runadmin>Running WebAsyst Administrator</a><br>
+<a class=toclink href=#common>Common Settings</a><br>
+<a class=toclink href=#mysql>Setting up MySQL Server</a><br>
+<a class=toclink href=#workingdb>Working Database List</a><br>
+<a class=toclink href=#login>Login to your Working Database</a><br>
+<a class=toclink href=#localization>Language List / Localization</a><br>
+<a class=toclink href=#smscontrolpanel>SMS Control Panel</a><br>
+&nbsp; &nbsp;<a class=toclink href=#clickatell>Clickatell SMS Gateway</a><br>
+</blockquote></td></tr><tr><td><a name=overview></a><br>
+<h2>Overview<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p><strong>WebAsyst Administrator</strong> is the key tool which allows you to setup WebAsyst properties and manage your MySQL servers and working databases. With WebAsyst Administrator you can:</p>
+    <ol>
+      <li>Customize common WebAsyst settings</li>
+      <li>Add and modify MySQL Servers</li>
+      <li>Add and modify working database(s)</li>
+      <li>Localize (translate) WebAsyst to other languages</li>
+      <li>Tune SMS gateways to allow sending SMS messages from WebAsyst applications</li>
+    </ol>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=runadmin></a><br>
+<h2>Running WebAsyst Administrator<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>WebAsyst Administrator is a PHP script located in <em><strong>published</strong></em> subdirectory in your WebAsyst hierarchy like in a sample below: </p><blockquote>
+      <p><font face="courier new,courier,monospace">http://[DOMAIN][/WEBASYST]/published/admin.php</font></p></blockquote>
+    <p>Here [DOMAIN] is domain name or IP address of the server, and [/WEBASYST] is optional path to the directory where you have installed WebAsyst.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=common></a><br>
+<h2>Common Settings <hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>Common Settings section of WebAsyst Administrators allows you to customize certain parameters applicable to all WebAsyst database accounts created on the server.</p>
+    <p>
+      <table style="BORDER-RIGHT: #999999 1px outset; BORDER-TOP: #999999 1px outset; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: #999999 1px outset; WIDTH: 90%; COLOR: #000000; BORDER-BOTTOM: #999999 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left; cssFloat: none" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+        <tbody>
+          <tr>
+            <td><strong>Parameter</strong></td>
+            <td><strong>Description</strong></td>
+          </tr>
+          <tr>
+            <td>Session Timeout </td>
+            <td>
+              <p>Designates default HTML session timeout (in minutes) which is applicable by default to every new WebAsyst database created on your server. You can overwrite this parameter for every particular database. Re-login is required after timeout expired.</p>
+              <p><strong>NOTE</strong>: If you leave this field blank, HTML session never expires.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Send Notifications</td>
+            <td>
+              <p>If set ON (default), WebAsyst will send email notifications to users, e.g. new issue assignments, folder update notifications etc…</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Robot Email Address</td>
+            <td>
+              <p>Notification robot is a sender of anonymous emails associated with multiple system events, e.g. assignments, reminders etc.</p>
+              <p><strong>NOTE</strong>: If you leave this field blank some recipient mail servers may consider notification messages as a spam and deny receiving.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>HTTPS Port<br /></td>
+            <td>
+              <p>Default value = 443. If your SSL is bound to another port, you must expressly specify it.</p>
+              <p><strong>NOTE</strong>: If you don’t use SSL the value in this box&nbsp;is ignored.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Data Path</td>
+            <td>
+              <p>WebAsyst data directory path. [WBS_PATH]/data directory was created during the installation process.</p>
+              <p>You can use different data directory. Always use [WBS_PATH] clause to specify WebAsyst data directory relative to your WebAsyst root directory. If you want to use data directory out of WebAsyst root directory make sure that directory exists and provide absolute path to that directory.</p>
+              <p><strong>NOTE</strong>: PHP user must have read/write rights in WebAsyst data directory.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Memory Limit</td>
+            <td>
+              <p>Maximum amount of memory in megabytes that a script is allowed to allocate.</p>
+              <p><strong>NOTE</strong>: If you leave this field blank 32 MB default value will be used.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=mysql></a><br>
+<h2>Setting up MySQL Server <hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>You can use WebAsyst with multiple MySQL Servers installed on your web server. On each MySQL Server you can install as many WebAsyst working databases as you need.</p>
+    <p><strong>The benefit of using multiple MySQL Servers:</strong> For each server you may customize language settings to provide multi-lingual support for your WebAsyst content.</p>
+    <p>In the SQL Servers section of WebAsyst Administrator you can see the full list of MySQL Servers defined in your system. You must have at least one MySQL server configuration record. To add MySQL Server configuration record, click <strong>Add MySQL Server</strong> button and specify following parameters:</p>
+    <p>
+      <table style="BORDER-RIGHT: #999999 1px outset; BORDER-TOP: #999999 1px outset; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: #999999 1px outset; WIDTH: 90%; COLOR: #000000; BORDER-BOTTOM: #999999 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left; cssFloat: none" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+        <tbody>
+          <tr>
+            <td><strong>Parameter</strong></td>
+            <td><strong>Description</strong></td>
+          </tr>
+          <tr>
+            <td>Server Name</td>
+            <td>
+              <p>Create a name for MySQL server for further reference (e.g. MyServer).</p>
+              <p><strong>NOTE:</strong> Server Name can not be modified later.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>MySQL Host</td>
+            <td>IP-address or name of the computer where MySQL server is installed. If MySQL server resides on the same computer as WebAsyst scripts then leave default value in this field: localhost.</td>
+          </tr>
+          <tr>
+            <td>WebAsyst Host</td>
+            <td>IP-address or name of the computer where WebAsyst scripts are installed as it is visible from MySQL server. If MySQL server resides on the same computer as WebAsyst scripts then leave default value in this field: localhost.</td>
+          </tr>
+          <tr>
+            <td>Port<br /></td>
+            <td>
+              <p>TCP/IP port number for MySQL server. If the port number is not given, the default value 3306 is used.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Languages</td>
+            <td>
+              <p>The list of User Interface (UI) languages defined in your system (English is default).</p>
+              <p><strong>NOTE</strong>: To learn how to add new language refer to <a href=#localization>Language List / Localization</a>&nbsp;section of this Guide.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>My SQL User Name &amp; Password</td>
+            <td>Name and password of MySQL User as given by your MySQL Server administrator. If this user has administrative privileges on the server, you should choose “MySQL Administrator” option below. Otherwise you must use “I have&nbsp;no administrative rights on this MySQL Server” option, which does not allow you to create new databases on the server.</td>
+          </tr>
+        </tbody>
+      </table>
+    </p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=workingdb></a><br>
+<h2>Working Database List <hr /></h2><blockquote>
+    <p>With WebAsyst you can create as many working databases as you need. For a working database you can either use new or existing MySQL database. If you want to use existing database, we strongly recommend using empty database which does not contain previously created tables or other objects.</p>
+    <p>In the Working Database List section of WebAsyst Administrator you can see the full list of your working databases. You must have at least one working database to work with WebAsyst applications.</p>
+    <p>To add working database, click <strong>Add Database</strong> button and specify following parameters:</p>
+    <table style="BORDER-RIGHT: rgb(153,153,153) 1px outset; BORDER-TOP: rgb(153,153,153) 1px outset; FLOAT: none; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: rgb(153,153,153) 1px outset; WIDTH: 90%; COLOR: rgb(0,0,0); BORDER-BOTTOM: rgb(153,153,153) 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: rgb(255,255,255); TEXT-ALIGN: left" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+      <tbody>
+        <tr>
+          <td><strong>Parameter</strong></td>
+          <td><strong>Description</strong></td>
+        </tr>
+        <tr>
+          <td>Database Server</td>
+          <td>Select MySQL Server which you have added on the previous step of the installation process.</td>
+        </tr>
+        <tr>
+          <td>Create new database</td>
+          <td>Use this option if you have rights to create database on the selected server. If you use this option you must create unique name for your new database.&nbsp;Database Name can not be modified later.</td>
+        </tr>
+        <tr>
+          <td><br />Use existing database</td>
+          <td>
+            <p>Use this option if you want to install WebAsyst into existing empty database.</p>
+            <p><strong>NOTE:</strong> This is usual option for virtual hosting where you can create database only by use of stand-alone tools given by ISP, e.g.&nbsp;phpMyAdmin or CPanel.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>MySQL User Name &amp; Password</td>
+          <td>Name and password of MySQL User as given by your MySQL Server administrator. If this user has administrative privileges on the server, you can create new database. Otherwise you must use existing MySQL database as described above.</td>
+        </tr>
+        <tr>
+          <td>Database Name</td>
+          <td>If you have chosen &quot;Create new database&quot; option then create a unique name for your new database. Otherwise, enter the name of existing database.</td>
+        </tr>
+        <tr>
+          <td>Database Key</td>
+          <td>
+            <p>Enter optional unique nickname (alias) to identify your database (e.g. MyWebAsyst or MyDatabase). Create Database Key which you can easily remember. This database key will be used in your login URL and on your WebAsyst Login page. </p>
+            <p><strong>NOTE:</strong> If you leave this field blank Database Key will be automatically generated from the Database Name (first 16 characters will be used). Once created Database Key can not be modified later</p>
+          </td>
+        </tr>
+        <tr>
+          <td>Expire Date </td>
+          <td>Database login will be prohibited after this date.</td>
+        </tr>
+        <tr>
+          <td>DB Size Limit</td>
+          <td>Enter maximum on-disk space in MB allowed for database (including file attachments). Leave blank to ignore limitation.</td>
+        </tr>
+        <tr>
+          <td>Date Format</td>
+          <td>Choose how you want date values to appear on your WebAsyst pages: e.g. mm/dd/yyyy or dd.mm.yyyy etc.</td>
+        </tr>
+        <tr>
+          <td>User Count Limit</td>
+          <td>Limit total amount of users for current database. Leave blank to ignore limitation.</td>
+        </tr>
+        <tr>
+          <td>Recipients Limit</td>
+          <td>Maximum number of email recepients that you may enter in Send Email form in the Contact Manager application.</td>
+        </tr>
+        <tr>
+          <td>Default Encoding</td>
+          <td>Specify encoding that will be used when default English language is selected. When selecting other languages, encoding specified for corresponding language in Localization section will be used.</td>
+        </tr>
+        <tr>
+          <td>Administrator Language &amp; Password</td>
+          <td>Select database administrator interface language and enter login password. Use this password with ADMINISTRATOR login name to access your WebAsyst working database with administrative privileges.</td>
+        </tr>
+        <tr>
+          <td>Company</td>
+          <td>Used as a title for your database. Could be a name of the company who owns this database or your nickname. </td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td>First name of the first user who will be able to login this database. This user will be added in the User List of this database.</td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>Last name of the first user who will be able to login this database. This user will be added in the User List of this database.</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>Enter Email address of the first user whose name has been entered above.<br /><strong>NOTE:</strong> Specify valid email in this field to receive login instructions. Used also as an email for administrative login – can be modified later.<br /></td>
+        </tr>
+        <tr>
+          <td>Login Name &amp; Password</td>
+          <td>Create a login name and password for the first user to login this database.</td>
+        </tr>
+        <tr>
+          <td>Enable SMS</td>
+          <td>Turn ON this option if you want to enable SMS messaging from this database. You must have SMS module(s) installed and configured. Refer to <a href=#smscontrolpanel>SMS Control Panel</a>&nbsp;section for details.</td>
+        </tr>
+        <tr>
+          <td>Gateway</td>
+          <td>Select SMS Gateway provider if you have SMS function enabled.</td>
+        </tr>
+        <tr>
+          <td>Recipients Limit</td>
+          <td>Maximum number of SMS recepients that you may enter in Send&nbsp;SMS form in the Contact Manager application.</td>
+        </tr>
+        <tr>
+          <td>Applications</td>
+          <td>Turn ON applications you want to install in the database.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>NOTE</strong>: Once you have entered and saved working database properties, new entry appears in your <strong>Database List</strong>. Database itself will be <strong>physically created on your server only after you login this database</strong>.</p>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=login></a><br>
+<h2>Login to your Working Database <hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p dir="ltr">In the bottom of Working Database List page you can see a login URL to any of your working databases like in a sample below:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><font face="courier new,courier,monospace">http://[DOMAIN][/WEBASYST]/published/login.php</font></p>
+      <p>Here [DOMAIN] is domain name or IP address of the server, and [/WEBASYST] is optional path to the directory where you have installed WebAsyst.</p></blockquote>
+    <p>To login your working database for the first time you must use the Username and Password which you have specified in the <strong>Database Owner Information</strong> on the <strong>Add Database</strong> page as described above.</p>
+    <p><strong>NOTE</strong>: You can also login your working database as <strong>Administrator</strong>. The primary purpose of Administrator is to create accounts for other users and customize their access rights. Please do not confuse <strong>Administrator account</strong> with <strong>WebAsyst Administrator</strong> tools described in this document.</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=localization></a><br>
+<h2>Language List / Localization<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>All WebAsyst user interface elements (e.g. page titles, field labels, button names, messages, notes etc…; hereafter called localization strings) are stored in special files on the WebAsyst server. In the <strong>Language List / Localization</strong> section of the WebAsyst Administrator you can add/delete/modify languages and tool to edit localization strings for each language. </p>
+    <p>To add new language click <strong>Add Language</strong> button and specify following parameters:</p>
+    <p>
+      <table style="BORDER-RIGHT: rgb(153,153,153) 1px outset; BORDER-TOP: rgb(153,153,153) 1px outset; FLOAT: none; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: rgb(153,153,153) 1px outset; WIDTH: 90%; COLOR: rgb(0,0,0); BORDER-BOTTOM: rgb(153,153,153) 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: rgb(255,255,255); TEXT-ALIGN: left" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+        <tbody>
+          <tr>
+            <td><strong>Parameter</strong></td>
+            <td><strong>Description</strong></td>
+          </tr>
+          <tr>
+            <td>ID</td>
+            <td>Language Identifier, e.g. ENG – for English, GER – German etc.</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>Language name, e.g. English, German…</td>
+          </tr>
+          <tr>
+            <td>Encoding</td>
+            <td>Enter character set coding used with this language, e.g. iso-8859-1 is default encoding for English</td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+    <p>Localization strings, can be imported from another language existing in your system or from external file. When you add new language you can import all localization strings from English (it’s default language) and edit them later – translate in your native language.</p>
+    <p>For every entry in the Language List you can modify properties (Name and Encoding parameters as above) and edit localization strings. To edit strings click <strong>Edit</strong> link.</p>
+    <p>To import/export strings from/to TAB-separated file, click <strong>Import</strong> or <strong>Export</strong> link in the Language List. Valid import/export file must have following fields separated by tabs:</p><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+      <p><strong>Application ID</strong>, e.g. PM, IT...<br /><strong>String ID</strong>, e.g. app_name_long...<br /><strong>String Group</strong>, e.g. Common, Project Manager…<br /><strong>String Description</strong>, e.g. &quot;Save button title in the Add User form&quot;<br /><strong>String Value</strong>, e.g. &quot;Save&quot;</p></blockquote>
+    <p><strong>NOTE</strong>: You can not edit or import strings for English language.</p>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=smscontrolpanel></a><br>
+<h2>SMS Control Panel<hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>Some WebAsyst applications have SMS messaging feature, e.g. Contact Manager allows you to send SMS directly to the mobile phones of selected contacts. To enable SMS messaging feature you must have SMS Gateway properly installed and configured in your system.</p>
+    <p>WebAsyst has a built-in module that implement SMS messaging via SMS service provider: <strong>Clickatell SMS Gateway</strong> (<a href=http://www.clickatell.com>http://www.clickatell.com</a>). To be able to send SMS messages from WebAsyst installed on your server, you must have an account with Clickatell. To create an account, please refer to the gateway provider website mentioned above.</p>
+    <p>Once you have an account with Clickatell, click <strong>Modify</strong> button in the list of modules shown in the <strong>SMS Control Panel</strong> section of your <strong>WebAsyst Administrator</strong>. To configure module, click <strong>Enable</strong> button to activate module, and follow further instructions for configuring <a href=#clickatell>Clickatell SMS Gateway</a>.</p>
+    <p>In the list of modules you can see <strong>Dummy SMS Gateway</strong>. It’s for developers only. Use this module if you need to disable actual SMS messaging when you modify WebAsyst sources or for testing purposes.</p>
+    <p>&nbsp;</p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+<a name=clickatell></a><br>
+<h2>Clickatell SMS Gateway <hr /></h2><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>In order to use the Clickatell gateway you need a <strong>Clickatell account</strong> and at least one registered connection (API sub-product instance) between WebAsyst application and Clickatell gateway. To create Clickatell account please refer to <a href=http://www.clickatell.com/>http://www.clickatell.com/</a></p>
+    <p>While configuring Clickatell gateway for your WebAsyst installation you have to enter certain parameters shown in the table below. These parameters should be supplied to you by Clickatell after you create account with them.</p>
+    <p>
+      <table style="BORDER-RIGHT: #999999 1px outset; BORDER-TOP: #999999 1px outset; BACKGROUND-IMAGE: none; VERTICAL-ALIGN: top; BORDER-LEFT: #999999 1px outset; WIDTH: 90%; COLOR: #000000; BORDER-BOTTOM: #999999 1px outset; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left; cssFloat: none" cellspacing="1" cellpadding="5" rules="all" width="100%" border="1" frame="box">
+        <tbody>
+          <tr>
+            <td><strong>Parameter</strong></td>
+            <td><strong>Description</strong></td>
+          </tr>
+          <tr>
+            <td>Username:&nbsp;</td>
+            <td>The username you specified when creating Clickatell account.</td>
+          </tr>
+          <tr>
+            <td>Password:&nbsp;</td>
+            <td>Your account password.</td>
+          </tr>
+          <tr>
+            <td>URL:&nbsp;</td>
+            <td>Clickatell gateway base URL where all messages are being sent. Usually <a href=http://api.clickatell.com/>http://api.clickatell.com</a></td>
+          </tr>
+          <tr>
+            <td>API ID:&nbsp;</td>
+            <td>Issued by Clickatell upon creating your account. A single account may have multiple API IDs associated with it.</td>
+          </tr>
+          <tr>
+            <td>Unicode:&nbsp;</td>
+            <td>If enabled, converts your text to Unicode [UCS-2 encoding]. See <a href=http://www.unicode.org/>http://www.unicode.org/</a> for details. To enable Unicode you must <strong><em>mbstrings</em></strong> PHP extension installed on your server.</td>
+          </tr>
+          <tr>
+            <td>Delivery Queue:&nbsp;</td>
+            <td>Delivers the message through one of three queues assigned to each client account. Messages in the highest priority queue will be delivered first.</td>
+          </tr>
+          <tr>
+            <td>Sender Address:</td>
+            <td>
+              <p>The <strong>from</strong> address that appears on the recipient’s handset (mobile phone) when he/she receives SMS. There are two options for this parameter:</p>
+              <ul>
+                <li><strong>Company Name</strong> – this is the name of company (owner of WebAsyst database) specified for every WebAsyst database installed on your server, it appears in the left top corner of the main WebAsyst screen.</li>
+                <li><strong>Custom</strong> – allows you to set a unified Sender name for all WebAsyst databases installed on your server. This unified name should be specified in the “Custom Sender Address” field below.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Custom Sender Address:</td>
+            <td>A unified Sender name used in conjunction with Custom option of the Sender Address property as described above.</td>
+          </tr>
+          <tr>
+            <td>One Credit Price (USD):</td>
+            <td>
+              <p>Clickatell charges for each SMS in Credits. Generally 1 SMS Message will cost you 1 SMS credit. In some instances however, the destination network may charge 2 or more credits to deliver your message. One Clickatell Credit is equal approximately 0.05 USD (at the moment of writing this document; please refer to Glickatell website for up-to-date information).</p>
+              <p>Every time WebAsyst sends SMS, a receipt from Clickatell comes back with an actual cost of SMS measured in Credits. WebAsyst then multiples “One Credit Price” value by the amount of Credits to calculate Actual Charge for SMS. This Actual Charge is then used to update Available Balance and in SMS Billing History reports.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Reserve Charge (USD):</td>
+            <td>Actual Charge is updated every time when receipt is confirmed from gateway provider. However, receipt sometimes is not available immediately. In such a case a Reserve Charge amount approximating the Actual Charge is calculated when SMS is sent to reduce Available Balance in SMS accounts.</td>
+          </tr>
+        </tbody>
+      </table>
+    </p></blockquote><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+    <p>To learn more about configuring Clickatell gateway refer to original documentation available at <a href=http://www.clickatell.com/>http://www.clickatell.com/</a></p></blockquote><br><br><a href=#toc>Table Of Contents</a><br><br>
+</td></tr></table></body></html>

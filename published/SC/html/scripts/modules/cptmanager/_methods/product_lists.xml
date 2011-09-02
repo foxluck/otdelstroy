@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>cpt_lbl_product_lists</name>
+		<key>product_lists</key>
+		<type>INTCOMPONENT</type>
+		<allowed_templates>general_layout,home_page</allowed_templates>
+		<settings visibility="local">
+			<product_list_select name="list_id" title="&amp;nbsp;" />
+			<text name="block_height" title="cpt_lbl_block_height" />
+		</settings>
+	</interface>
+</interfaces>

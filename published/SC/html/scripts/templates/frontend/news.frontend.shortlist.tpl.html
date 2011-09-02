@@ -1,0 +1,33 @@
+{* news *}
+<form action="{''|set_query_html}" name="subscription_form" method="post" onSubmit="return validate(this);">
+	{section name=i loop=$news_array}
+	<div class="news_date">{$news_array[i].add_date}</div>
+	<div class="news_title"><a style="color: inherit; text-decoration: none; font-weight: inherit;" href="{"?ukey=news&blog_id="|cat:$news_array[i].NID|set_query_html}">{$news_array[i].title}</a></div>
+	{/section}
+	{if $news_array}
+	<div class="news_viewall">
+		<a href="{"?ukey=news"|set_query}">{"blog_view_all_posts"|translate}...</a>
+	</div>
+	{/if}
+	
+	{if $subscribe == NULL} {* show newsletter subscription form *}
+	<div class="news_subscribe">
+		{if $error_message}
+		<div class="error_block"> 
+		{$error_message}
+		</div>
+		{/if}
+		{"usrreg_subscribe_for_blognews"|translate}:
+		<div><input type="text" name="email" value="{$email_to_subscribe|escape:'html'|default:''}" title="Email" class="input_message" ></div>
+		<div><input type="submit" value="{"btn_ok"|translate}" >
+		{if $news_rss_link} {"lbl_or"|translate} <a href="{$smarty.const.URL_ROOT}/{$news_rss_link}"><img src="{$smarty.const.URL_IMAGES_COMMON}/rss-feed.png" alt="RSS 2.0"  style="padding-left:10px;"></a>{/if}
+		</div>
+	</div>
+	
+	<input type="hidden" name="subscribe" value="yes" >
+
+	{else} {* show 'thank you' message *}
+	
+		<div class="news_thankyou">{"usr_thank_you_for_subscription"|translate}</div>
+	{/if}
+</form>

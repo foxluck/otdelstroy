@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>YandexMarket</Name>
+		<File>class.yandexmarket.php</File>
+		<Title>Эксопорт списка товаров для Yandex.Market</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

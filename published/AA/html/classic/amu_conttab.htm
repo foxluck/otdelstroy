@@ -1,0 +1,78 @@
+<? if $ShowExtendedInfo ?>
+	<? assign var=HideBtnDisplay value="block" ?>
+	<? assign var=ParamsContainerDisplay value="block" ?>
+	<? assign var=ShowBtnDisplay value="none" ?>
+<? else ?>
+	<? assign var=HideBtnDisplay value="none" ?>
+	<? assign var=ParamsContainerDisplay value="none" ?>
+	<? assign var=ShowBtnDisplay value="block" ?>
+<? /if ?>
+
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+
+			<div style="overflow: auto; width: 580px; height: 380px" class="framearea" id="UserInfoArea">
+				<a name="section_CONTACT"></a>
+				<table border=0 cellpadding=0 cellspacing=2 width="100%">
+					<? include file="amu_customtab.htm" CUSTOM_ID=0 ?>
+				</table>
+
+				<div style="display:<? $ParamsContainerDisplay ?>; padding: 0; margin: 0" id="ExtendedParamsContainer">
+					<? include file="../../../common/html/classic/formtabs_templates/formsections.htm" width="100%" tabsID="contactTabs" extraLine=true tabs=$contactTabs ?>
+				</div>
+			</div>
+			<? if !$userIsDeleted ?>
+				<? if $foldersFound ?>
+					<table border=0 cellpadding=2 cellspacing=0>
+						<tr><td colspan="2">&nbsp;</td></tr>
+						<tr>
+							<td>
+								<? conditionalOutput invalidField=$invalidField field="FOLDER" text=#invalidFieldHighlight# ?>
+								<? $kernelStrings.amu_contactfolder_label|cat:": " ?>
+							</td>
+							<td>
+								<? if $action == 'new' ?>
+									<select class="control" name="curCF_ID" style="width: 300px">
+										<? include file="../../../common/html/classic/tree_templates/tree_folders_selector.htm" selectedID=$currentFolder showAnyRights=true denyNoAccess=true showPromt=false ?>
+									</select>
+								<? else ?>
+									<input type=hidden name="curCF_ID" value="<? $curCF_ID ?>">
+									<? $folderName|htmlsafe:true:true ?>
+								<? /if ?>
+							</td>
+						</tr>
+						<tr height=5></tr>
+					</table>
+					<table border=0 cellpadding=2 cellspacing=0>
+						<tr>
+							<td colspan=2 class="SmallFont"><? "<b>"|cat:$kernelStrings.app_tips_label|cat:"</b>: "|cat:$kernelStrings.amu_folder_tip ?></td>
+						</tr>
+					</table>
+				<? else ?>
+					<input type=hidden name="unsortedContacts" value="1">
+					<input type=hidden name="curCF_ID" value="<? $curCF_ID ?>">
+				<? /if ?>
+			<? else ?>
+				<input type=hidden name="curCF_ID" value="<? $curCF_ID ?>">
+			<? /if ?>
+		</td>
+		<td valign="top" align="left" style="padding-left: 10px; width: 250px;">
+			<div id="HideExtendedContainer" style="display: <? $HideBtnDisplay ?>;padding: 0; margin: 0;">
+					<a href="<? "#section_CONTACT" ?>" class="ActiveLink"><? $kernelStrings.amu_contactsection_label ?></a>
+
+				<? foreach from=$contactTabs item=tabData name=tabLoop ?>
+					<? if $smarty.foreach.tabLoop.first ?><br><? /if ?>
+					<a href="<? "#section_"|cat:$tabData.CUSTOM_ID ?>" class="ActiveLink"><? $tabData.NAME|htmlsafe:true:true ?></a>
+					<? if !$smarty.foreach.tabLoop.last ?><br><? /if ?>
+				<? /foreach ?>
+				<hr noshade="noshade" size="1">
+
+				<span class="SmallFont"><a href="javascript:hideExtendedInfoBlock()" class="ActiveLink"><? $kernelStrings.amu_hideextended_btn ?></a></span>
+			</div>
+			<div id="ShowExtendedContainer" style="display: <? $ShowBtnDisplay ?>;padding: 0; margin: 0;" class="SmallFont">
+				<a href="javascript:showExtendedInfoBlock()" class="ActiveLink"><? $kernelStrings.amu_showextended_btn ?></a>
+			</div>
+		</td>
+	</tr>
+</table>

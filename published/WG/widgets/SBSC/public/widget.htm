@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"/>
+
+<style>
+	body {margin: 0px; background: transparent}
+	
+	#SBSC {background: <? $widgetParams.BGCOLOR|default:"#E4F4B5" ?>; width: <? $widgetParams.WIDTH ?>px; border: 1px solid #C0C0C0; margin-left: 7px; margin-top: 7pt}
+	#SBSC, table tr td, input {font-family: "Trebuchet MS"; font-size: 10pt;  }
+	#SBSC tr td {padding: 5px}
+	#TITLE, #BOTTOM  {background: <? $widgetParams.TITLE_bgcolor|default:"#99BB43"  ?>}
+	#TITLE {font-weight: bold; color: <? $widgetParams.TITLE_color|default:"white"  ?>}
+	.Label {margin-top: 4px}
+	
+	input.Text {width: 98%; border: 1px solid #C0C0C0;}
+	input.File {width: 98%; border: 1px solid #C0C0C0;}
+	textarea.Text {width: 98%; border: 1px solid #C0C0C0;}
+	select.Select {width: 98%; border: 1px solid #C0C0C0;}
+	
+	<? math equation="x-30" x=$widgetParams.WIDTH|default:100 assign=w ?>
+	#SBSCErrorBlock {position: absolute; top: 20px; left: 20px; width: <? $w ?>px ; overflow-y: auto; background: #F0F0F0; border: 1px solid #999999}
+	.SBSCError {font-style: italic}
+</style>
+
+<script>
+	function fieldChanged (fieldName, value) {
+		if (fieldName == "WIDTH")
+			document.getElementById ("SBSC").style.width = value;
+		if (fieldName == "BGCOLOR")
+			document.getElementById ("SBSC").style.background = value;
+		if (fieldName == "TITLE")
+			document.getElementById ("TITLE").innerHTML = value;
+		if (fieldName == "TITLE_color")
+			document.getElementById ("TITLE").style.color = value;
+		if (fieldName == "TITLE_bgcolor") {
+			document.getElementById ("TITLE").style.background = value;
+			document.getElementById ("BOTTOM").style.background = value;
+		}
+		if (fieldName == "SIGNUPTEXT" || fieldName == "CMFIELDS") {
+			tm_modalBOX('<font class=f1><? $widgetStrings.amwg_savetoapply_messagetitle	?></font>','120');
+		}
+			
+		if (fieldName == "SAVEBTN")
+			document.getElementById ("SAVEBTN").value = value;
+	}
+	
+	function toStart () {
+		document.location.href=document.location.href;
+	}	
+	
+	function hideError () {
+		document.getElementById("SBSCErrorBlock").style.display = "none";
+		var objs = document.getElementsByTagName ("select");
+		for (i = 0; i < objs.length; i++) {
+			var obj = objs[i];
+			obj.style.visibility = "visible";
+		}
+	}
+	
+	function showError () {
+		var objs = document.getElementsByTagName ("select");
+		for (i = 0; i < objs.length; i++) {
+			var obj = objs[i];
+			obj.style.visibility = "hidden";
+		}
+	}
+</script>
+<? if $params.mode == "preview" ?>
+	<? include file="preview_inc.htm" ?>
+<? /if ?>				
+
+</head>
+
+<body style='height: 100%; margin: 0px; padding: 0px'>
+
+<form action='' method='post' enctype='multipart/form-data'>
+	<input type='hidden' name='code' value="<? $widgetData.WG_FPRINT ?>" >
+	<input type='hidden' name='mode' value="<? $params.mode ?>" >
+	<input type='hidden' name='action' value="signup" >
+	
+	<? if $errorStr ?>
+		<table id='SBSCErrorBlock' cellspacing="0" cellpadding="0" height="0">
+			<tr><td style='background: darkred; color: white; font-weight: bold; padding: 3px'><span style='border: 1px solid #999999; color: #666666; background: #E0E0E0; float:right; padding-left: 3px; padding-right: 3px; cursor: pointer' onClick='hideError();'>x</span><? $widgetStrings.error_title ?></td></tr>
+			<tr><td style='padding: 4px; height: 50px; overflow-y: auto' valign='top'>
+				<? $errorStr ?>
+			</td></tr>
+		</table>
+	<? /if ?>
+		
+		
+	<table cellspacing="0" cellpadding="0" id='SBSC' <? if $result == "success" ?>onClick='toStart();'<? /if ?>>
+		<tr height="30">
+			<td id='TITLE'>
+				<? $widgetParams.TITLE|htmlsafe:true:true ?>
+			</td>
+		</tr>
+		<tr height="30" valign='top'>
+			<td>
+				<? include file=$contentFilename ?>				
+			</td>
+		</tr>
+		<tr height="30">
+			<td id='BOTTOM'>
+				<? if $result !="success" ?>
+				<input id='SAVEBTN' type='submit' style='color: black; border: 1px solid #C0C0C0; background: #DEDEDE; ' value='<? $widgetParams.SAVEBTN ?>'>
+				<? /if ?>
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+</form>
+
+<? if $errorStr ?>
+	<script>
+		showError ();
+	</script>
+<? /if ?>
+
+</body>
+</html>

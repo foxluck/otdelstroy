@@ -1,0 +1,253 @@
+<style type="text/css">
+div.popup-title {font-weight: bold; font-size: 20px; margin-bottom: 20px}
+#construct-edit div.buttons {margin-top: 10px; text-align:center;}
+input.error {border: 1px solid red;}
+div.error {color: red}
+div.note {margin: 10px 5px 5px 5px; color: red; text-align: center; }
+</style>
+<form id="construct-edit" method="post" action="">
+<input type="hidden" name="type_id" value="{{$type_id}}" />
+{{if $field.standart}}
+[`Field`] <b>{{$field.name[$user_lang]}}</b> [`is a standart field and can not be modified.`]<br />
+ {{else}}
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+<div class="block-title">[`Field name`]:</div>
+<div style="height:100px">
+{{foreach from=$langs item=lang key=l}}
+<div class="lang" {{if !$field.name[$l] && ($act != 'add' || $l!=$user_lang)}}style="display:none"{{assign var="add_lang" value="1"}}{{/if}}>
+	<input {{if $l==$user_lang}}id="name-user-lang"{{/if}} type="text" name="name[]" value="{{$field.name[$l]}}" />
+	<select name="lang[]">
+	{{foreach from=$langs item=select_lang key=select_l}} 
+	<option value="{{$select_l}}" {{if $select_l == $l}}selected{{/if}}>{{$select_lang}}</option>
+	{{/foreach}}
+	</select>
+</div>
+{{/foreach}}
+{{if $add_lang}}
+<a href="javascript:void(0)" id="add_lang">[`Add name in other language`]</a>
+{{/if}} 
+</div>
+<div class="block-title gray">[`Database name`]:</div>
+<div>
+	<div class="gray dbname">{{$field.dbname}}&nbsp;</div>
+	<input class="dbname" style="width:90%" id="dbname" name="dbname" type="text" value="{{$field.dbname}}" />
+</div>
+<script type="text/javascript">
+$("#add_lang").click(function () {
+	$("div.lang:hidden:first").show();
+	if ($("div.lang:hidden:first").length == 0) {
+		$(this).hide();
+	}
+});
+$("div.dbname").click(function () {
+	$(this).hide();
+	$("#dbname").show();
+});
+{{if $act=='add'}}
+$("#name-user-lang").keyup(function () {
+	var str = $(this).val().toLowerCase();
+	var from = new Array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ', 'э', 'ю', 'я', ' ');
+	var to = new Array('a', 'b', 'v', 'g', 'd', 'e', 'yo', 'zh', 'z', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'csh', '', 'y', '', 'e', 'yu', 'ya', '_');
+	for (var i = 0; i < from.length; i++) {
+		var r = new RegExp(from[i], 'gi');
+		str = str.replace(r, to[i]);
+	}
+	str = str.replace(/[^a-z0-9_]/gi, '');
+	if (str.length && $("#dbname").hasClass('error')) {
+		$("#dbname").removeClass('error'); $(this).unbind('focus');
+		if ($("input.error").length == 0) {
+			$("#dlg-error").html('');
+		}									
+	}	
+	$("#dbname").val(str.toUpperCase());
+	$("div.dbname").html(str.toUpperCase());
+});
+{{/if}}
+</script>
+</td>
+<td width="50%">
+	<div class="block-title">[`Field type`]:</div>
+	<div>
+		<select name="type" id="dbtype" style="width:90%">
+		{{foreach from=$dbtypes key=t item=tname}}
+			<option {{if $field.type==$t}}selected="selected"{{/if}} value="{{$t}}">{{$tname}}</option>
+		{{/foreach}}
+		</select>
+	</div>
+	<div class="type-desc" id="descVARCHAR" {{if $field.type != "VARCHAR" && $field.type}}style="display:none"{{/if}}>
+	[`Width`]: <input id="options" type="text" name="options" value="{{if $act=='add' || $field.type!="VARCHAR"}}50{{else}}{{$field.options}}{{/if}}"{{if $field.type && $field.type != "VARCHAR"}}disabled="disabled"{{/if}} />
+	</div>
+	<div class="type-desc" id="descNUMERIC" {{if $field.type != "NUMERIC"}}style="display:none"{{/if}}>
+	[`Number of decimal places`]: 
+	<select name="options" {{if $field.type != "NUMERIC"}}disabled="disabled"{{/if}}>
+		<option value="0" {{if $field.type == 'NUMERIC' && $field.options == "0"}}selected{{/if}}>0</option>
+		<option value="1" {{if $field.type == 'NUMERIC' && $field.options == "1"}}selected{{/if}}>1</option>
+		<option value="2" {{if $field.type == 'NUMERIC' && $field.options == "2"}}selected{{/if}}>2</option>
+		<option value="3" {{if $field.type == 'NUMERIC' && $field.options == "3"}}selected{{/if}}>3</option>
+		<option value="4" {{if $field.type == 'NUMERIC' && $field.options == "4"}}selected{{/if}}>4</option>
+	</select>
+	</div>
+	<div class="type-desc" id="descMENU" {{if $field.type != "MENU"}}style="display:none"{{/if}}>
+[`Items`]: <br />
+<textarea style="width:90%" rows="4" name="options" {{if $field.type != "MENU"}}disabled="disabled"{{/if}}>
+{{if $field.type == 'MENU'}}
+{{foreach from=$field.options item=m}}
+{{$m}}
+{{/foreach}}
+{{/if}}
+</textarea>
+	</div>
+	
+	<script type="text/javascript">
+	$("#dbtype").change(function () {
+		var t = $(this).val();
+		$(".type-desc:visible").hide().find("input, select, textarea").attr("disabled", "disabled");
+		$("#desc" + t).show().find("input, select, textarea").removeAttr("disabled");
+	});
+	</script>
+</td>
+</tr>
+</table>
+{{/if}}
+<div style="margin: 10px 0; text-align: center" id="dlg-error">&nbsp;</div>
+{{if $act == 'add'}}
+<div style="margin-top:10px; padding-top: 10px; border-top: 1px solid #C6C9CC; ">[`Place this field after`]: 
+<select id="after" name="after">
+{{foreach from=$fields item=section}}
+<option value="{{$section.id}}" {{if $section.id==$after_id}}selected{{/if}}>{{$section.name}}</option>
+	{{foreach from=$section.fields item=f}}
+		{{if $section.id != $main_section || !$f.standart}}
+		<option value="{{$f.id}}" {{if $f.id==$after_id}}selected{{/if}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$f.name}}</option>
+		{{/if}}
+	{{/foreach}}
+{{/foreach}}
+</select>
+</div>
+{{/if}}
+<div class="buttons" style="margin-top: 20px">
+	<input type="button" id="save" value="[`Save`]" />
+	<input type="button" value="[`Cancel`]" onClick="jQuery('#popup').wbsPopupClose();" />
+</div>
+{{if $act == 'edit'}}
+<div class="note">
+<b>[`NOTE`]</b>:
+[`Changing field type may cause a partial or complete loss of data in this field.`] 
+</div>
+{{/if}}
+</form>
+<script type="text/javascript">
+{{if $act=='add'}}
+jQuery(document).ready(function () {
+	jQuery("#after option:last").attr('selected', 'selected');
+});
+{{/if}}
+
+function showFieldError(response) {
+	$("#dlg-move-desc").show();
+	$("#dlg-move-load").html('');
+	$("#dlg-error").html('');
+	for (var i = 0; i < response.error.length; i++) {
+		if (response.error[i][1] != undefined) {
+			if (typeof(response.error[i][1]) == 'string') {
+				$("#" + response.error[i][1]).addClass('error').focus(function () {
+					$(this).removeClass('error'); $(this).unbind();
+					if ($("input.error").length == 0) {
+						$("#dlg-error").html('');
+					}
+				});
+			} else {
+				for (var j = 0; j < response.error[i][1].length; j++) {
+					$("#" + response.error[i][1][j]).addClass('error').focus(function () {
+						$(this).removeClass('error'); $(this).unbind('focus');
+						if ($("input.error").length == 0) {
+							$("#dlg-error").html('');
+						}							
+					});						
+				}
+			}
+		}  
+		$("#dlg-error").append('<div class="error">' + response.error[i][0]  + '</div>');
+	}				
+}
+
+jQuery("#save").click(function () {
+	{{if $act=='add'}}
+	jQuery.post("?mod=construct&act=addField&ajax=1" + ($("#dbname").is(":visible") ? "&dbname=1" : ""), $("#construct-edit").serialize() + "&save=1", function (response) {
+		if (response.status == 'OK') {
+			var field_info = response.data;
+			var str = '<div id="' + field_info.id + '" class="field">' + 
+			'<div class="label">' + field_info.name + ':</div>' +
+			'<div class="edit">' + 
+			'<div class="field-type">' + field_info.type + '</div>' +
+			'</div>' +
+			'<div class="link">' +
+				'<span class="disabled">' +
+				'[`disabled for `]"{{$type_name}}"' + 
+				' | ' +
+				'<a href="javascript:void(0)" onclick="enableField(' + field_info.id + ')">[`Enable`]</a>' +
+				' | ' +
+				'<a href="javascript:void(0)" onclick="deleteField(' + field_info.id + ', 1)">[`Delete`]</a>' +				
+				'</span>' +
+				'<span class="enabled">' +
+				'<label><input type="checkbox" style="width: auto;" onclick="setReq(this, '+field_info.id+')"/>[`Required`]</label>' +
+				' | '+ 
+				'<a href="javascript:void(0)" onclick="editField(' + field_info.id + ')">[`Edit`]</a>' + 
+				' | '+
+				'<a href="javascript:void(0)" onclick="moveField(' + field_info.id + ')">[`Move`]</a>' +
+				' | '+
+				'<a href="javascript:void(0)" onclick="deleteField(' + field_info.id + ', 0)">[`Disable`]</a>' +
+				' | '+ 
+				'<a href="javascript:void(0)" onclick="deleteField(' + field_info.id + ', 1)">[`Delete`]</a>' +
+				'</span>'			
+			'</div>' + 		
+			'</div>';
+			var el = $(str).hover(function () {
+				$(this).addClass("hover");
+			}, function () {
+				$(this).removeClass("hover");
+			});
+			if ($("#section" + field_info.after_id).length > 0) {
+				el.insertAfter("#section" + field_info.after_id + " div.title");
+			} else {
+				if (field_info.after_id == 'aux-fields') {
+					$("#aux-fields").show();
+				}
+				el.insertAfter("#" + field_info.after_id);
+			}
+			$("#section" + field_info.section + " div.title div.link").html('<a href="javascript:void(0)" onclick="editSection(' + field_info.section + ')">[`Edit`]</a>');
+			$("#popup").wbsPopupClose();
+			if (parent && parent.document.app) { 
+				parent.document.listfields = response.data.listfields;
+				parent.document.photoField = response.data.photoField;
+				parent.document.dbfields = response.data.dbfields;
+			}			
+		} else if (response.status == 'ERR') {
+			showFieldError(response);
+		}		
+	}, "json");	
+	$("#dlg-move-desc").hide();
+	$("#dlg-move-load").show().html('[`Please wait`]... <img src="../common/img/loading.gif" /><br /><br />');	
+	{{else}}
+		jQuery.post("?mod=construct&act=editField&ajax=1" + ($("#dbname").is(":visible") ? "&dbname=1" : ""), "field_id=" + {{$field.id}} + "&" + jQuery("#construct-edit").serialize() + "&save=1", function (response) {
+			if (response.status == 'OK') {		
+				var field_info = response.data; 
+				jQuery("#" + field_info.id + " .label").html(field_info.name + ":");
+				jQuery("#" + field_info.id + " .edit .field-type").html(field_info.type);		
+				jQuery("#popup").wbsPopupClose();
+				if (parent && parent.document.app) { 
+					parent.document.listfields = response.data.listfields;
+					parent.document.photoField = response.data.photoField;
+					parent.document.dbfields = response.data.dbfields;
+				}						
+			} else if (response.status == 'ERR') {
+				showFieldError(response);
+			}		
+		}, "json");
+		$("#dlg-move-desc").hide();
+		$("#dlg-move-load").show().html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');		
+	{{/if}}			
+});
+
+</script>

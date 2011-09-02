@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Head start -->
+		{$tpl_head}
+<!-- Head end -->
+		{ if $overridestyles}<link rel="stylesheet" href="{$URL_THEME_OFFSET}/overridestyles.css" type="text/css" id="orig-overridestyles" />{/if}
+		
+		<link rel="alternate stylesheet" type="text/css" href="{$URL_THEME_OFFSET}/overridestyles.css" title="overridestyles" id="overridestyles" media="screen" />
+		
+		<link rel="stylesheet" href="{$URL_THEME_OFFSET}/main.css" type="text/css" />
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/cpt_constructor.css" type="text/css">
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/general.css" type="text/css" />
+		<script type="text/javascript">
+{if $smarty.const.CONF_WAROOT_URL}var WAROOT_URL = '{$smarty.const.CONF_WAROOT_URL}';{/if}
+
+{if $smarty.const.CONF_ON_WEBASYST}var CONF_ON_WEBASYST = '{$smarty.const.CONF_ON_WEBASYST}';{/if}
+		var translate = {ldelim}
+			'msg_unsaved_changes': '{"msg_unsaved_changes"|transcape}'
+			{rdelim};
+		var theme_id = '{$theme_id}';
+		</script>
+
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/functions.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/lists.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/drag.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/behavior.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/widget_checkout.js"></script>
+		<script type="text/javascript" src="{$smarty.const.URL_JS}/cpt_constructor.js"></script>
+		<script type="text/javascript" src="{$URL_THEME_OFFSET}/head.js"></script>
+
+	</head>
+	<body>
+		<style type="text/css">{literal}
+.cpt_product_images{
+display:block!important;
+float: none!important;
+}
+		{/literal}</style>
+{if $templated_changed}
+<script type="text/javascript">
+beforeUnloadHandler_contentChanged = true;
+</script>
+{/if}
+		<table width="100%" style="height:100%" cellpadding="0" cellspacing="0">
+		<tr>
+			<td rowspan="3" valign="top" id="ss-template-content">{$tpl_content}</td>
+			<td id="cpt-constructor-right-panel">
+			<div style="text-align:center;">
+			<input type="button" id="fm-save-template" value="{'thm_btn_save_tpl'|transcape}" >
+			</div>
+			<br />
+			
+			<ul id="components-list">
+			{foreach from=$components item=component}
+			<li>
+				<a href="#add_component" class="cpt_dontblock cpt_addcomponent_hndl" id="cpt-component-{$component.id}">{$component.name|translate}</a>
+				<div style="display:none" id="cpt-lsettings-{$component.id}" class="cpt_lsettings">
+				<form action="{''|set_query_html}" method="post" id="cptlsettings-form-{$component.id|escape:'html'}" enctype="multipart/form-data"  class="cpt_dontblock">
+					<input type="hidden" name="action" value="CPT_PREPARE_HTMLCODE" >
+					<input type="hidden" name="component_id" value="{$component.id|escape:'html'}" >
+					{$component.__lsettings_form}
+					<p><input type="submit" value="{'thm_btn_embed'|translate}" id="cptlsettings-submit-{$component.id|escape:'html'}" class="cptlsettings_submit" ></p>
+				</form>
+				</div>
+			</li>
+				{/foreach}
+			</ul>
+			
+			<table align="center" width="100%">
+			<tr>
+				<td valign="top" align="center" height="1%"><strong>{lbl_cpt_bin}</strong></td>
+			</tr>
+			<tr>
+				<td class="cpt_container" id="ssTrashBin" rel="{lbl_cpt_drop_for_delete}">{lbl_cpt_drop_for_delete}</td>
+			</tr>
+			</table>
+			</td>
+		</tr>
+		</table>
+		<div id="dnd-dblckick-tooltip">{'thm_component_dnd_or_dblclick'|transcape}</div>
+	</body>
+</html> 

@@ -1,0 +1,20 @@
+{* second level navigation *}
+<table cellpadding="0" cellspacing="0" width="98%" style="height: 98%; width: 98%;">
+	<tr>
+		<td id="content">
+		{if $safemode}
+			<p class="faq">{$safemode}</p>
+		{/if}
+		{if $admin_sub_dpt ne ''}
+		{include file="backend/$admin_sub_dpt"}
+		{else}
+		{if $sub_template ne ''}
+		{include file=$sub_template}
+		{/if}
+		{if $compiled_html ne ''}
+			{$compiled_html}
+		{/if}
+		{/if}
+		</td>
+	</tr>
+</table>

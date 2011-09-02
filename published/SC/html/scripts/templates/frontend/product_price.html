@@ -1,0 +1,75 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+	{if $currencies_count ne 0 && $product_info.Price > 0}
+		{* show list price? *}
+		{if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0} 
+		<span class="regularPrice">{$product_info.list_priceWithUnit}</span> 
+		{/if}
+	
+		<span class="totalPrice">{$product_info.PriceWithUnit}</span>
+	
+		{* you save *}
+		{if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0} 
+		<div>
+			<span class="youSaveLabel">{"str_you_save"|translate}:</span>
+			<span class="youSavePrice">{$product_info[14]} ({$product_info[15]}%)</span>
+		</div>
+		{/if}
+	{/if}
+	
+	{* product code (SKU) *}
+	{if $product_info.product_code && $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+	<div>
+		<span class="productCodeLabel">{"prdset_product_code"|translate}:&nbsp;</span>
+		<span class="productCode"><i>{$product_info.product_code|escape:'html'}</i></span>
+	</div>
+	{/if}
+	
+	{* in stock info *}
+	{if $smarty.const.CONF_CHECKSTOCK == '1'}
+		{if $product_info.in_stock > 0}
+		<div>
+			{"str_in_stock"|translate}: 
+			{if $smarty.const.CONF_EXACT_PRODUCT_BALANCE}
+				{$product_info.in_stock}
+			{else}
+				{"str_answer_yes"|translate}
+			{/if}
+		</div>
+		{/if}
+	{/if}
+
+
+	{if $product_info.shipping_freightUC}
+	<div>
+		{"prdset_handling_charge"|translate}:&nbsp;
+			<span style="color: brown;">{$product_info.shipping_freightUC}</span>
+	</div>
+	{/if}
+
+	{if $product_info.min_order_amount > 1}
+	<div>
+		{"prdset_minimal_order_quantity"|translate}: {$product_info.min_order_amount} 
+			{"str_items"|translate}
+	</div>
+	{/if}
+
+	{if $product_info.weight > 0}
+	<div>
+		{"prdset_weight"|translate}: {$product_info.weight} {$smarty.const.CONF_WEIGHT_UNIT}
+	</div>
+	{/if}
+{else}
+	<span class="regularPrice">$100</span> 
+	<span class="totalPrice">$90</span>
+
+	<div>
+		<span class="youSaveLabel">{"str_you_save"|translate}:</span>
+		<span class="youSavePrice">$10 (10%)</span>
+	</div>
+	{if $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+	<div>
+		<span class="productCodeLabel">{"prdset_product_code"|translate}:&nbsp;</span>
+		<span class="productCode">ART2800</span>
+	</div>
+	{/if}
+{/if}

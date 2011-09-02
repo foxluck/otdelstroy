@@ -1,0 +1,31 @@
+{* address editor *}
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" name="editAddress">
+<input type="hidden" name="action" id="address-action" value="save" >
+
+<p>{"usrreg_required_regform_fields_descr"|translate}</p>
+
+{include file="address_form.html" name_space=address address=$address form_name="editAddress" ukey="address_editor"} 
+<input type="hidden" name="action" value="save">
+		
+<p><input type=submit name='save' value='{"btn_save"|translate}'></p>
+
+</form>
+
+<script type="text/javascript">
+{literal}
+/*var hndls = {
+	'.country_box': function(e){
+		e.onchange = function(){
+
+			var objForm = getFormByElem(this);
+			getLayer('address-action').value = 'change_country';
+			objForm.submit();
+		}
+	}
+};*/
+//Behaviour.register(hndls);
+{/literal}
+</script>

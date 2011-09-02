@@ -1,0 +1,44 @@
+	<h1>{$CurrentDivision.name|translate}</h1>
+
+	{$MessageBlock}
+
+	<h2>{lbl_thm_str_current_theme}</h2>
+	<table>
+	<tr>
+		<td valign="top"><img src="{$current_theme.thumbnail_url|escape:'html'}" hspace="8" /></td>
+		<td valign="top">
+			<h2>{$current_theme.title|translate}
+			{if $current_theme.last_modified}<span class="thm_last_modified">({lbl_thm_str_last_customized} {$current_theme.last_modified|date_format})</span>{/if}</h2>
+			{if $current_theme.author}<div>{lbl_thm_str_author} {$current_theme.author|escape:'html'}</div><br />{/if}
+			<div>
+			<a href='{"?ukey=theme_preview&theme_id=`$current_theme.id`"|set_query_html}' target="_blank">{lbl_thm_preview_link}</a>
+			| <a href='{"?ukey=theme_edit&theme_id=`$current_theme.id`"|set_query_html}'>{lbl_btn_edit}</a>
+			</div>
+		</td>
+	</tr>
+	</table>
+	
+	<h2>{lbl_thm_str_other_themes}</h2>
+	<table>
+	{foreach from=$themes item=theme}
+	<tr>
+		<td valign="top"><img src="{$theme.thumbnail_url|escape:'html'}" hspace="8"></td>
+		<td valign="top">
+			<h2>{$theme.title|translate}
+			{if $theme.last_modified}<span class="thm_last_modified">({lbl_thm_str_last_customized} {$theme.last_modified|date_format})</span>{/if}</h2>
+			{if $theme.author}<div>{lbl_thm_str_author} {$theme.author|escape:'html'}</div><br />{/if}
+			<div>
+			<a href='{"?ukey=theme_preview&theme_id=`$theme.id`"|set_query_html}' target="_blank">{lbl_thm_preview_link}</a>
+			| <a href='{"?ukey=theme_edit&theme_id=`$theme.id`"|set_query_html}'>{lbl_btn_edit}</a>
+			| <a href='{"action=apply_theme&theme_id=`$theme.id`"|set_query_html}'>{lbl_thm_lnk_setforstorefront}</a></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	{foreachelse}
+	<tr>
+		<td colspan="2">{lbl_thm_new_comming_soon}</td>
+	</tr>
+	{/foreach}
+	</table>

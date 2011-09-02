@@ -1,0 +1,101 @@
+{* advanced search in category *}
+<div id="cat_advproduct_search">
+	<h3>
+	{if $categories_to_select}
+		{"pgn_advanced_search"|translate}
+	{else}
+		{"srch_products_within_category"|translate}
+	{/if}
+	</h3>
+	
+	<form name='AdvancedSearchInCategory' method='get' action='{"?ukey=category_search"|set_query_html}'>
+
+	{if !$smarty.const.FURL_ENABLED||!$smarty.const.MOD_REWRITE_SUPPORT}	
+		<input name='ukey' value='category_search' type="hidden" >
+	{/if}
+	
+	{if $categories_to_select}
+		<input type='hidden' name='search_with_change_category_ability' value='yes' >
+	{else}
+		<input type='hidden' name='search_with_change_category_ability' value='1' >
+		<input name='categoryID' value='{$categoryID}' type="hidden" >
+	{/if}
+	
+	<table>
+	{if $categories_to_select}
+	<tr>
+		<td>{"str_category"|translate}</td>
+		<td>
+			<select name='categoryID'>
+			{if !$categoryID}<option value='0'>{"str_please_select"|translate}</option>{/if}
+			{section name=i loop=$categories_to_select}
+				<option value='{$categories_to_select[i].categoryID}' {if $categories_to_select[i].categoryID == $categoryID} selected="selected"{/if} />
+					{"&nbsp;&nbsp;&nbsp;"|string_repeat:$categories_to_select[i].level}{$categories_to_select[i].name|escape:'html'}
+				</option>
+			{/section}
+			</select>
+		</td>
+	</tr>
+	{/if}{* $categories_to_select *}
+	{if $categoryID}
+	<tr>
+		<td>{"str_name"|translate}</td>
+		<td><input type="text" name="search_name" value="{$search_name}" size="16" ></td>
+	</tr>
+	<tr> 
+		<td valign="bottom">{"str_price"|translate}</td>
+		<td nowrap="nowrap">
+			<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td>{"str_from"|translate}</td>
+				<td>{"srch_price_to"|translate}</td>
+			</tr>
+			<tr>
+				<td><input name="search_price_from" type="text" size="7" value="{$search_price_from}" >&nbsp;</td>
+				<td><input name="search_price_to" type="text" size="7" value="{$search_price_to}" ></td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	{/if}{* $categoryID *}
+	
+	{section name=i loop=$params}
+	<tr>
+		<td>{$params[i].name|escape:'html'}</td>
+		<td>
+			{if $params[i].controlIsTextField eq 1}
+			<input type="text" name='param_{$params[i].optionID}' value="{$params[i].value|escape:'html'}" size="16" >
+			{else}
+			<select name='param_{$params[i].optionID}'>
+				<option value='0'>{"str_anyvalue"|translate}</option>
+				
+				{section name=j loop=$params[i].variants}
+				<option value='{$params[i].variants[j].variantID}' {if $params[i].value == $params[i].variants[j].variantID}selected{/if}>
+					{$params[i].variants[j].value|escape:'html'}
+				</option>
+				{/section}
+			</select>
+			{/if}
+		</td>
+	</tr>
+	{/section}
+	
+	{if $show_subcategory_checkbox}
+	<tr>
+		<td colspan='2'>
+			{if $show_subcategories_products}<input type='hidden' value='1' name='search_in_subcategory' >
+			{else}
+				<input value='1' name='search_in_subcategory' id="cat_search_in_subcategory" {if $search_in_subcategory} checked="checked"{/if} type='checkbox' class="checknomarging" > <label for="cat_search_in_subcategory">{"str_search_in_subcategories"|translate}</label>
+			{/if}
+		</td>
+	</tr>
+	{/if}
+	{if $categoryID}
+	<tr>
+		<td colspan="2"><input type='submit' value='{"btn_find"|translate}' name='advanced_search_in_category' ></td>
+	</tr>
+	{/if}
+	</table>
+	
+	</form>
+</div>

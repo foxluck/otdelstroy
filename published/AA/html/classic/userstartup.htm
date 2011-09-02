@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="javascript" src="../styles/classic/helpopen.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+  <? include file="../../../common/html/classic/header.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+  <? $kernelStrings.app_welcomenote_text ?>
+  <? /if ?>
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+
+<? /strip ?>
+</body>
+</html>

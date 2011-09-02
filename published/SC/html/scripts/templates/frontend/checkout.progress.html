@@ -1,0 +1,42 @@
+{if $PAGE_VIEW eq 'noframe'}
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td class="background_cart_top checkout_noframe_title">
+		<h1>{$smarty.const.CONF_SHOP_NAME|escape:'html'}</h1>
+		{if !$WIDGET_PROCESSING}
+		<div><a href='{"?ukey=home&view=frame"|set_query_html}'>{lbl_goto_storefront}</a></div>
+		{/if}
+	</td>
+	<td class="background_cart_top checkout_noframe_title" align="right">
+		<table id="tbl-checkout-progress" align="right" cellspacing="5" cellpadding="0">
+{else}
+		<table id="tbl-checkout-progress" align="center" cellspacing="5" cellpadding="0">
+{/if}
+		<tr>
+			{foreach from=$steps_chain item=_chain_link name=_frchain}
+			<td align="center">{if $_chain_link.url}<a href="{$_chain_link.url|escape:'html'}">{/if}<img src="{$_chain_link.image|escape:'html'}" alt="{$_chain_link.title|transcape}" border="0" />{if $_chain_link.url}</a>{/if}</td>
+			{if !$smarty.foreach._frchain.last}
+			<td style="vertical-align:middle!important;"><div class="checkout_steps_divider"></div></td>
+			{/if}
+			{/foreach}
+		</tr>
+		<tr>
+			{foreach from=$steps_chain item=_chain_link name=_frchain}
+			<td align="center">
+			{if $_chain_link.status eq 'current'}
+			<strong>{$_chain_link.title|transcape}</strong>
+			{elseif $_chain_link.url}
+			<a href="{$_chain_link.url|escape:'html'}">{$_chain_link.title|transcape}</a>
+			{else}{$_chain_link.title|transcape}{/if}
+			</td>
+			{if !$smarty.foreach._frchain.last}
+			<td></td>
+			{/if}
+			{/foreach}
+		</tr>
+		</table>
+{if $PAGE_VIEW eq 'noframe'}
+	</td>
+</tr>
+</table>
+{/if}

@@ -1,0 +1,9 @@
+<table border="0" align="<? $align ?>" cellpadding="0" cellspacing="0">
+	<tr> 
+		<? if $space_left ?><td><img src="<? "images/buttons/btn_separator.gif"|stylesetitem:"classic":$styleSet ?>" border="0" height=5 width="<?$space_left?>"></td><?/if?>
+			<td><img src="<? "images/buttons/btn_start.gif"|stylesetitem:"classic":$styleSet ?>" border="0"></td>
+			<td valign=middle class=formButton <? if $buttonWidth ?>width=<?$buttonWidth?><?/if?> background="<? "images/buttons/btn_bg.gif"|stylesetitem:"classic":$styleSet ?>" <? if $textAlign ?>align=<?$textAlign?><?/if?>><a class="btnText" <? if $target ?>target="<?$target?>"<?/if?> <?if !$link ?>href="javascript:processTextButton('<? $name ?>', '<? $formname ?>')"<?else?>href="<?$link?>"<?/if?> class="btnText" <? if $onClick ?>onClick="<?$onClick?>"<?/if?> <? if $buttonWidth ?>style="width: <?$buttonWidth?>px"<?/if?>><nobr><? $caption ?></nobr></a></td>
+			<td><img src="<? "images/buttons/btn_end.gif"|stylesetitem:"classic":$styleSet ?>" border="0"></td>
+		<? if $space_right ?><td><img src="<? "images/buttons/btn_separator.gif"|stylesetitem:"classic":$styleSet ?>" border="0" width="<?$space_right?>" height=5></td><?/if?>
+	</tr>
+</table>

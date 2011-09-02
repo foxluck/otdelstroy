@@ -1,0 +1,4 @@
+<?xml version="1.0"?> 
+<modules>
+	<class ID="sms" NAME="sms_class_name"></class> 
+</modules>

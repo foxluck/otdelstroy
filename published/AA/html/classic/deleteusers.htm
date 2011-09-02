@@ -1,0 +1,47 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+	<? if !$fatalError ?>
+
+		<table border=0 cellpadding=2 cellspacing=0>
+			<? foreach from=$result item=resultText key=contactName ?>
+				<tr>
+					<td valign=top><b><? $contactName|htmlsafe:true:true ?></b></td>
+				</tr>
+				<tr height="5px">
+				</tr>
+				<tr>
+					<td width=500><? $resultText ?></td>
+				</tr>
+				<tr>
+					<td colspan=2>&nbsp;</td>
+				</tr>
+			<? /foreach ?>
+		</table>
+
+		<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_close_btn formname="form" space_right=10 ?>
+
+	<? /if ?>
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="contactlist" value="<? $contactlist ?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

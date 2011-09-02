@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+	function returnToCM()
+	{
+		location.href="usersandgroups.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>";
+	}
+
+	function processForm( formObj )
+	{
+		formObj =  document.forms[0];
+
+		formObj.target="_blank";
+		formObj.submit();
+		returnToCM();
+	}
+
+	function cancelForm( formObj )
+	{
+		returnToCM();
+	}
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm"?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+	<table cellpadding=0 cellspacing=4 border=0>
+		<tr>
+			<td><? $kernelStrings.pcl_form_label|cat:":" ?></td>
+		</tr>
+		<tr>
+			<td style="height: 5px"></td>
+		</tr>
+		<tr>
+			<td style="padding-left: 20px"><input type=radio <? switchedOutput val=$printMode true_val=0 str1="checked " ?> name=printMode value=0>&nbsp;<? $kernelStrings.pul_selected_label|cat:" ("|cat:$showSelected|cat:")" ?></td>
+		</tr>
+
+		<tr>
+			<td style="padding-left: 20px">
+				<table cellpadding=0 cellspacing=0 border=0>
+					<tr>
+						<td><input type=radio <? switchedOutput val=$printMode true_val=1 str1="checked " ?> name=printMode value=1>&nbsp;</td>
+						<td>
+							<? if $objectType == 'searchresult' ?>
+								<? $kernelStrings.ecl_searchresult_label ?>
+							<? else ?>
+								<? $kernelStrings.ecl_group_label|cat:":&nbsp;" ?>
+							<? /if ?>
+						</td>
+						<td>
+							<? if $objectType != 'searchresult' ?>
+								<select class="control" name="currentSrcId">
+									<? html_options values=$srcIds output=$srcNames selected=$currentSrcId ?>
+								</select>
+							<? /if ?>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="padding-left: 20px"><input type=radio <? switchedOutput val=$printMode true_val=2 str1="checked " ?> name=printMode value=2>&nbsp;<? $kernelStrings.pul_entirelist_label ?></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+
+	<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.pcl_screen_print_btn formname="form" space_right=10 link="javascript:processForm(this.form);"?>
+	<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form"  link="javascript:cancelForm(this.form);"?>
+  <? /if ?>
+  <input type="hidden" name="action" value="<?$action?>">
+  <input type="hidden" name="btndummy">
+  <input type="hidden" name="edited" value="1">
+  <input type="hidden" name="selectedObj" value="<? $selectedObj ?>">
+  <input type="hidden" name="objType" value="<? $objType ?>">
+
+  <input type="hidden" name="doclist" value="<?$doclist?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

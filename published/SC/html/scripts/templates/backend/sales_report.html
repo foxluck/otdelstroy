@@ -1,0 +1,108 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/swfobject.js"></script>
+<script type="text/javascript">
+translate.srep_this_p_week = "{'srep_this_p_week'|transcape}";
+translate.srep_this_p_month = "{'srep_this_p_month'|transcape}";
+translate.srep_this_p_year = "{'srep_this_p_year'|transcape}";
+</script>
+
+<p>{lbl_srep_description}</p>
+
+{if $no_orders}
+<div style="text-align: center">{lbl_srep_noorders}</div>
+{else}
+<h2>{lbl_srep_sreport_thismonth}</h2>
+
+<div class="blockquote">
+{lbl_srep_data_range}:
+	<select id="order-months">
+	{foreach from=$order_months key=_title item=_period name=fr_ordermonths}
+	<option value='{"?ukey=sales_report&action=data_this_month&utime_begin=`$_period[0]`&utime_end=`$_period[1]`"|set_query_html}'{if $smarty.foreach.fr_ordermonths.first} selected="selected"{/if}>{$_title|escape:'html'}</option>
+	{/foreach}
+	</select>
+	<div id="this-month-container" style="height: 320px; width: 650px;margin-top:5px;">
+			<strong>You need to upgrade your Flash Player</strong>
+	</div>
+</div>
+
+<h2>{lbl_srep_compare}</h2>
+<div class="blockquote">
+{lbl_srep_data_range}:
+	<select id="change-period-handler">
+	{foreach from=$periods item=_period key=_key}
+	<option value='{$_key}' {if $_key eq 'month'}selected="selected"{/if}>{$_period|translate}</option>
+	{/foreach}
+	</select>
+<div id="flashcontent" style="height: 320px; width: 650px;margin-top:5px;">
+	<div id="content_week">
+		<strong>You need to upgrade your Flash Player</strong>
+	</div>
+	<div id="content_month">
+	</div>
+	<div id="content_year">
+	</div>
+</div>
+</div>
+
+<br />
+<br />
+	
+<h2>{lbl_srep_sreport_alltime}</h2>
+{if $srep_statistic}<p>{$srep_statistic}</p>{/if}
+<div class="blockquote" id="all-time-container" style="height: 320px; width: 650px;">
+		<strong>You need to upgrade your Flash Player</strong>
+</div>
+
+<script type="text/javascript">
+		// <![CDATA[		
+		var periods = ['week', 'month', 'year'];
+		var r_swf = {ldelim}{rdelim};
+		var current_period = 'month';
+		
+		for(var k=periods.length-1; k>=0; k-- ){ldelim}
+
+			if(periods[k] != 'month')
+				getLayer("content_"+periods[k]).style.display = 'none';
+				
+			r_swf[periods[k]] = new SWFObject("{$smarty.const.URL_CHARTS}/amcolumn.swf", "amcolumn_"+periods[k], "100%", "100%", "8", "#FFFFFF");
+			r_swf[periods[k]].addVariable("path", "{$smarty.const.URL_CHARTS}/");
+			r_swf[periods[k]].addVariable("settings_file", escape("{'?ukey=sales_report&action='|set_query}&action=settings_period_sales_report_"+periods[k]));
+			r_swf[periods[k]].addVariable("data_file", escape("{'?ukey=sales_report&action='|set_query}&action=get_period_sales_report_"+periods[k]));
+			r_swf[periods[k]].addVariable("preloader_color", "#000000");
+			r_swf[periods[k]].write("content_"+periods[k]);
+		{rdelim}		
+		
+		var so = new SWFObject("{$smarty.const.URL_CHARTS}/amcolumn.swf", "amcolumn_alltime", "100%", "100%", "8", "#FFFFFF");
+		so.addVariable("path", "{$smarty.const.URL_CHARTS}/");
+		so.addVariable("settings_file", escape("{'?ukey=sales_report&action=settings_all_time'|set_query}"));
+		so.addVariable("data_file", escape("{'?ukey=sales_report&action=data_all_time'|set_query}"));
+		so.addVariable("preloader_color", "#000000");
+		so.write("all-time-container");
+		
+		getLayer('change-period-handler').onchange = function(){ldelim}
+
+			getLayer("content_"+current_period).style.display = "none";
+			current_period = select_getCurrValue(this);
+			getLayer("content_"+current_period).style.display = "";
+		{rdelim}
+
+		getLayer('order-months').onchange = function(){ldelim}
+		
+			var objSWF = getLayer('amline_thismonth');
+			if(objSWF){ldelim}
+				var p = objSWF.parentNode;
+				p.removeChild(objSWF);
+			{rdelim}
+			
+			var so = new SWFObject("{$smarty.const.URL_CHARTS}/amline.swf", "amline_thismonth", "100%", "100%", "8", "#FFFFFF");
+			so.addVariable("path", "{$smarty.const.URL_CHARTS}/");
+			so.addVariable("settings_file", escape("{'?ukey=sales_report&action=settings_this_month'|set_query}"));
+			so.addVariable("data_file", escape(select_getCurrValue(this)));
+			so.addVariable("preloader_color", "#000000");
+			so.write("this-month-container");
+		{rdelim}
+		getLayer('order-months').onchange();
+		// ]]>
+	</script>
+{/if}

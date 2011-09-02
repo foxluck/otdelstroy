@@ -1,0 +1,8 @@
+<Connector>
+	<Class>
+		<Name>tmod</Name>
+		<File>class.tmod.php</File>
+		<Title>Пробный модуль 1</Title>
+		<Description>Позволяет делать несколько установок</Description>
+	</Class>
+</Connector>

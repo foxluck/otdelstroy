@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=320"> <!--  user-scalable=no,initial-scale=1.0 -->
+		<base href="{$smarty.const.CONF_FULL_SHOP_URL}">
+
+
+		<!-- Head start -->
+		{include file="head.html"}
+		<!-- Head end -->
+		{if $overridestyles}<link rel="stylesheet" href="{$URL_THEME_OFFSET}/overridestyles.css" type="text/css" />{/if}
+		
+		<link rel="stylesheet" href="{$URL_THEME_OFFSET}/main.css" type="text/css" />
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/general.css" type="text/css" />
+	</head>
+	<body style="padding:6px;background: #fff;">
+		{if $page_not_found404}
+			{include file="404.html"}
+		{else}
+			{include file=$main_body_tpl}
+		{/if}
+
+		<div style="padding:6px;border-color:#777777;border-style:solid;border-width:0px;border-top-width:1px;text-align:center;">
+		{cpt_divisions_navigation divisions="mobile" view="horizontal"}
+		</div>{if !$smarty.get.productwidget && !$productwidget &&!$printable_version && $show_powered_by }
+		<div id="powered_by">{if $show_powered_by_link}{lbl_powered_by}{else}{lbl_powered_by_text}{/if}</div>
+{/if}
+	</body>
+</html>

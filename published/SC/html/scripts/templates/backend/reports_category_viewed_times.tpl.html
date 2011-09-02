@@ -1,0 +1,27 @@
+{* reports:  reports category viewed times *}
+
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{if $categories}
+<table class="grid">
+
+<tr class="gridsheader">
+	<td>{"prdcat_category_title"|translate}</td>
+	<td>{"rep_views_count"|translate}</td>
+</tr>
+
+{section name=i loop=$categories}
+<tr class="{cycle values="gridline1,gridline"}">
+	<td>{$categories[i].name|escape:'html'}</td>		
+	<td align="center"><b>{$categories[i].viewed_times}</b></td>
+</tr>
+{/section}
+
+<tr class="gridsfooter">
+	<td colspan="2">{include file="backend/lister.tpl.html"}</td>
+</tr>
+</table>
+
+{else}
+	{"str_empty_list"|translate}
+{/if}

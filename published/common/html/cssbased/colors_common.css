@@ -1,0 +1,101 @@
+/* Common params for document */
+body, table tr td, input { font-family: 'Trebuchet MS'; font-size: 14px; }
+
+/* Toolbar Background Color */
+#TabbarTop, #SubToolbar {background:#ddd; }
+#Toolbar, #TabbarTop td div, #ToolbarIn {background:#fff/* url(themes/toolbarIn_bg.gif) top left repeat-x*/; }
+
+
+#Toolbar {padding:0; /*border-bottom: solid 1px #bdbcbd;*/ }
+#Toolbar ul li ul li {font-size: 0.85em}
+
+/* Page Title */
+#SubToolbar {color: #333; background:#fff;/* background:#e9edf0 url(themes/subtoolbar.gif) left bottom repeat-x;*/ }
+#SubToolbar {font-size: 1.2em;}
+#SubToolbar div { line-height:32px;}
+
+/* Toolbar buttons params */
+div#Toolbar a.Button {font-size: 1.2em; line-height:1.2em;}
+div#Toolbar a.Button { background:#f5f5f5; border: solid 1px #bdbcbd; /*url(themes/button-background-toolbar.jpg) repeat-x*//*; background-position: top left;*/ font-weight: normal; padding-left: 1em; padding-right: 1em; line-height:1.2em;}
+div#Toolbar a.Button:hover {/*background: url(themes/button-background-hover.jpg) repeat-x;*/  background:#bdbcbd; border: solid 1px #989898; font-size: 1.2em; }
+
+/* Other buttons params */
+a.Button { /*url(themes/button-background.jpg) repeat-x; background-position: top left;*/; background:#f5f5f5; font-size: 1em; }
+a.Button:hover { background:#ddd; /*background: url(themes/button-background-hover.jpg) repeat-x;*/ }
+
+/* Left Menu Background */
+#MainMenu {overflow: hidden}
+#MainMenu #MainMenuContent {background: #dedede; color: white }
+#MainMenu #MainMenuContent .MenuBlock {}
+#MainMenu .MenuBlock a {font-size: 1.2em; color: #dedede }
+#MainMenu .MenuBlock a.ActiveItem {color: #06608F}
+
+
+/* Tabs background */
+div.TabbedForm dl.TabbedFormList dd.Tab{background: #f1f1f1; padding-bottom: 9px; color: black}
+div.TabbedForm dl.TabbedFormList dd.Tab.Active{	background: #dedede; color:#333;}
+
+/* Vertical tabs background */
+div.TabbedForm table.VerticaslTabForm  dl.TabbedFormList dd a span {background: #edbc80; color: black}
+div.TabbedForm table.VerticaslTabForm dl.TabbedFormList dd.Active a span {background: #dedede; color: white}
+
+/* Tabs foreground */
+div.TabbedForm dl.TabbedFormList dd.Tab a span {
+	font-weight: normal; color: black
+}
+div.TabbedForm dl.TabbedFormList dd.Tab.Active a span {
+	font-weight: bold; color:#333
+}
+
+/* Scrollable into tabbed forms and other places */
+div.TabbedForm div.ScrollableArea
+{
+	background: #ffffea;
+	border: 1px solid #f5f0bb;
+}
+
+/* Form Caption */
+span.FormCaption {}
+
+
+
+/* Lists titles */
+div.SplitterPanelHeader.Active,div.SplitterHeaderPanelDiv { background: url(top_bg.gif) repeat-x; color: black; height: 33px; font-family: "Trebuchet MS"}
+.SplitterLeftPanelContainer div.SplitterPanelHeader {height: 25px}
+.SplitterRightPanelContainer div.SplitterPanelHeader.Active tr td {font-size: 1.4em; }
+.SplitterRightPanelContainer div.SplitterPanelHeader.Active tr td  .HeaderLinks tr td {font-size: 0.7em}
+
+
+
+/* Tables */
+	/* Tables titles */
+	/* table.SimpleList thead tr td {background: white url(../simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;} */
+	table.Grid thead tr {background: white url(./themes/simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	table.List thead tr {}
+	
+	table.ListHeader tr {background: white url(./themes/simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	
+	
+	/* Tables body (even rows) */
+	table.Grid tbody {background: white}
+	table.Grid tbody tr td img {margin-right: 2px}
+	table.SimpleList tbody {background: white}
+	table.List tbody {}
+	
+	
+	
+	/* Tables odd rows */
+	table.Grid tr.Odd {background: #fafae7;}
+	table.SimpleList tr.Odd {background: #fafae7;}
+
+	/* Tables active row */
+	table.List tr:hover {background: #f5f0bb;}
+	table.SimpleList tbody tr:hover {background: #f5f0bb;}
+	table.Grid tbody tr:hover {background: #f5f0bb;}
+	
+	div.TabbedForm dl.TabbedFormList dt.TabPage {background: #FCFCFC}
+	
+	#ListFooterContainer {background: white url(./themes/simplelist-background-gradient-gray.gif) repeat-x; background-position: bottom;}
+	.TBLabel {font-size: 1.25em; padding-top: 4px; padding-left: 10px}
+	
+/* Tabbar */	

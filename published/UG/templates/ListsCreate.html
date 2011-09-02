@@ -1,0 +1,65 @@
+<style type="text/css">
+div.block { padding-left: 15px}
+div.block div.title {font-size: 120%}
+div.header {padding:1.5em 0 1em 0;}
+div.title img {vertical-align:middle;}
+div.list {padding-left: 70px; padding-bottom: 10px; padding-right: 25px; line-height: 150%}
+div.list p { margin:0 30% 10px 0; padding:0; color:#444; line-height:1.2em;}
+div.help {padding: 10px 15px; margin: 0 25px 20px 0; background-color: #fafaed; border: 1px solid #fde3c3; float:right}
+div.br {padding: 5px 0; font-weight:bold;}
+.search_lists td {vertical-align:top}
+</style>
+<div class="container">
+<h1>[`Create a new list`]</h1>
+
+<div class="block header">
+	[`There are two kinds of lists`]:
+</div>
+
+<div class="block">
+	<div class="title">
+		<img width="32" src="img/icon-list32.gif" /> &nbsp; 1. [`Static list`]
+	</div>
+	<div class="list">
+		<p>[`Consists of expressly selected contacts. Simply add individual contacts to this list. You can add or delete from this list at any time.`]</p>
+		<input type="button" onclick="openCreateList(0)" value="[`Create static list`]" />
+	</div>
+</div>
+
+<div class="block">
+	
+			<div class="title">
+				<img width="32" src="img/icon-list-search32.gif" /> &nbsp; 2. [`Search-based list`]
+			</div>
+			<div class="list">
+				<p>
+					[`Consists of contacts which satisfy certain search criteria. The list will be dynamically updated, when any contact is added, modified, or deleted from your account.`]
+				</p>
+				<div class="br">
+					[`Choose a search method to create new list`]:
+				</div>
+				<input class="search_type" id="type_simple" value="simple" name="search" type="radio" /> <label for="type_simple">[`Simple search by a person or company name`]</label>
+				<br />
+				<input class="search_type" id="type_advanced" value="advanced" name="search" type="radio" /> <label for="type_advanced">[`Advanced search by any field`]</label>
+				<br />
+				<input class="search_type" id="type_smart" value="smart" name="search" type="radio" /> <label for="type_smart">[`Smart search based on a sophisticated search criteria`]</label>
+				<div style="padding:10px 0 ">
+					<input disabled="disabled" id="create_list" onClick="openCreateList(1);" type="button" value="[`Create search-based list`]" />
+				</div>
+			</div>
+
+</div>
+</div>
+<script type="text/javascript">
+	$("input.search_type").click(function () {
+		$("#create_list").removeAttr("disabled");
+	});
+	function openCreateList (t) {
+		if (t == 0) {
+			loadPage("?mod=lists&act=add");
+		} else {
+			var type = $("div.list input[name='search']:checked").val();
+			document.app.setSearchType(type, "list=1", 2);
+		}
+	}	
+</script>

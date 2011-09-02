@@ -1,0 +1,4 @@
+<input id='field_input_<? $fieldName ?>' onChange='document.getElementById("<? $fieldName ?>Preview").src= "file://" + document.getElementById("<? $fieldName ?>").value; ' class='File' type=file name="imgfiles[<? $fieldName ?>]" id="<? $fieldName ?>">
+<div style='width: 100%; overflow-x: hidden; text-align: center; ; padding-top: 3px; padding-bottom: 3px'>
+<img style='display: none; border: 1px solid #999999' height='96' id='<? $fieldName ?>Preview' src='<? $WG_SRC ?>widgets/SBSC/public/img/emptyFile.png'>
+</div>

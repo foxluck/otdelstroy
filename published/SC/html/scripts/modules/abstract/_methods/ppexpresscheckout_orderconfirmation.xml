@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>PP Express Checkout - Order confirmation screen</name>
+		<key>ppexpresscheckout_orderconfirmation</key>
+	</interface>
+</interfaces>

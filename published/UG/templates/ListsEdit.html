@@ -1,0 +1,363 @@
+<style type="text/css">
+table.list-edit { 
+	height: 100%
+}
+table.list-edit td {
+	padding: 10px;
+}
+table.list-edit table.inner td {
+	padding: 0;
+}
+.list-edit-right {
+	border-left: 1px solid #000;
+	backgrund: #eee;
+}
+.div-button {
+	border: 1px solid #666;
+	padding: 5px 10px;
+	background: #fff;
+	width: 200px;
+	cursor: pointer;
+}
+.div-button span.desc {
+	font-size:80%
+}
+
+ul.tabs {
+	height: 25px;
+	line-height: 22px;
+	margin: 0;
+	padding:0;
+	list-style: none;
+}
+* html ul.tabs {margin-bottom: 0;}
+ul.tabs li {
+	float: left;
+	margin:0 3px 0 0;
+	line-height:22px;
+	//height:25px;
+}
+ul.tabs li a {
+	display: block;
+	padding: 0 13px 1px;
+	margin-bottom: -1px;
+	color: #444;
+	text-decoration: none;
+	cursor: pointer;
+	background: #F9F9F9;
+	border: 1px solid #f5f9fc;
+	border-bottom: 1px solid #F9F9F9;
+	position: relative;
+}
+* html ul.tabs li a {float: left}
+*+html ul.tabs li a {float: left}
+ul.tabs li a:hover {
+	color: #F70;
+	padding: 0 13px;
+	background: #FFFFDF;
+	border: 1px solid #FFCA95;
+}
+ul.tabs li.tab-current a {
+	color: #444;
+	background: #E1E8ED;
+	padding: 0px 13px 2px;
+	border: 1px solid #dae1e5;
+}
+div.t2, div.t3, div.t4, div.t5, div.t6, div.t7 {display: none;}
+div.t1, div.t2, div.t3, div.t4, div.t5, div.t6, div.t7, .selected-contacts {
+	border: 1px solid #DAE1E5;
+	background: #f5f9fc;
+	padding: 10px;
+}
+.t1 td, .t2 td, .t3 td, .t4 td, .t5 td, .t6 td, .t7 td {padding:3px 5px;}
+	.t1 td .horiz_separator {padding:0 5px; font-weight: bold;  padding-top: 10px}
+	.horiz_row {padding-top: 10px}
+	.level_2 {padding-left: 30px}
+	.level_3 {padding-left: 60px}
+	.class_disabled {color: lightgray}
+.t1 td.edbox_label, .t4 td.edbox_label {width:1%; white-space:nowrap; color:#444;  text-align:right; padding-right:10px; padding-left:50px;}
+
+  .inner select, .inner input { padding:0; margin:0}
+  .contacts-search { //padding-bottom:9px}
+  .select-folder select { //margin:0.15em 0 0 0 0;}
+html>/**/body .select-folder select { margin:0.25em 0;}
+
+ p { margin:0;}
+ .selected-contacts select { height:310px; width:380px;}
+ .select-folder select { width:380px;}
+ .results select { height:260px; width:380px;}
+ .list-name { padding:0 0 0.5em 0;}
+ .s-field { width:310px;}
+</style>
+
+<div class="container" style="padding-top:20px;">
+{{if !$edit}}
+<h4>[`Create a name for this list`]:</h4>
+{{/if}}
+<div class="list-name"><input class="title" id="title" type="text" name="name" value="{{if $edit}}{{$list.CL_NAME}}{{else}}[`New list`]{{/if}}" /></div>
+<table class="inner">
+<tr>
+<td valign="top">
+<h4>[`Selected contacts`]</h4>
+<div class="selected-contacts">
+<select id="contacts" multiple="multiple" onDblClick="removeSelect()">
+{{foreach from=$contacts item=c}}
+<option value="{{$c.id}}">{{$c.name}}</option>
+{{/foreach}}
+</select></div>
+</td>
+<td style="padding-top:150px;"><div class="control-btns">
+<div class="wbs-move-btn disable" id="btn-left">
+		<a href="javascript:void(0)" onclick="moveSelect()" style="text-decoration:none">&larr;</a>
+</div>
+<div class="wbs-move-btn disable" id="btn-right">
+		<a href="javascript:void(0)" onclick="removeSelect()" style="text-decoration:none">&rarr;</a>
+</div>
+</div>
+</td>
+<td  valign="top">
+<h4>[`All available contacts`]</h4>
+<ul class="tabs tabs1">
+	<li id="t1" class="t1 tab-current"><a>[`Browse`]</a></li>
+	<li id="t2" class="t2"><a>[`Search`]</a></li>
+</ul>
+                
+<div class="t1">
+	<div class="select-folder">
+		<select id="folder_id" class="fix-width">
+			<option value="ALL">&lt;[`All folders`]&gt;</option>
+			{{foreach from=$folders item=f}}
+			<option value="{{$f.ID}}" style="padding-left:{{$f.OFFSET*7}}px">{{$f.NAME}}</option>
+			{{/foreach}}
+		</select>
+	</div>
+	<div class="results" id="contact-by-folder">
+		<select id="result-contacts" multiple="multiple"></select>
+	</div>
+</div>
+<div class="t2">
+	<div class="contacts-search">
+		<input type="text" id="name" name="name" class="s-field" /> 
+		<input id="searchByName" type="button" value="[`Search`]" />
+	</div>
+	<div class="results" id="contact-by-name">
+	</div>
+</div>
+
+<p style="font-size:80%; padding-top:5px;">[`Use <b>Ctrl+click</b> and <b>Shift+click</b> to select multiple contacts`]</p> 
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center" style="padding-top:15px;">
+{{if $share}}
+<label><input id="list-share" type="checkbox" name="share" {{if $list.CL_SHARED }}checked="checked"{{/if}} /> [`Share this list with other users (read only)`]</label><br /><br />
+{{/if}}
+{{if !$edit}}
+<input id="create_list" type="button" value="[`Save`]" />
+{{else}}
+<input id="edit_list" type="button" value="[`Save`]" />
+{{/if}}
+<input type="button" value="[`Cancel`]" onClick="{{if !$edit}}loadPage('?mod=lists&act=create');{{else}}document.app.navBarBlockActivated({id: 'lists'});{{/if}}" />
+</td>
+</tr>
+</table>
+</div>
+
+<script type="text/javascript">
+	var offset = 0;
+	var type = 1;
+	var lock = false;
+
+
+	jQuery("#name").keydown(function(event){
+		  if (event.keyCode == 13) {
+			  jQuery("#searchByName").click();
+		  }
+	});
+	
+	jQuery("ul.tabs li").click(function () {
+		if (jQuery(this).hasClass("tab-current")) {
+			return false;
+		}
+		var old_tab = jQuery("ul.tabs li.tab-current").removeClass('tab-current').attr('id');
+		var new_tab = jQuery(this).addClass('tab-current').attr('id');
+		jQuery('div.' + old_tab).hide();
+		jQuery('div.' + new_tab + ' div.results').append(jQuery("#result-contacts"));
+		jQuery('div.' + new_tab).show();
+		jQuery("#result-contacts").empty();
+		offset = 0;
+		lock = false;
+		var folder_id = jQuery("#folder_id").val();
+		var name = jQuery("#name").val();
+		type = type ? 0 : 1;
+
+		if (jQuery("#name").is(":visible")) {
+			jQuery("#name").select();
+		}
+
+		if (type || name.length > 0) {
+			jQuery.post("?mod=contacts&act=list&ajax=1", {name: name, folder_id: folder_id, type: type, offset: offset}, function (response) {
+				appendContacts(response.data.contacts);
+			}, "json");
+		}
+						
+	});
+	
+	function moveSelect() 
+	{
+		jQuery("#result-contacts option:selected:enabled").each(function () {
+			var opt = jQuery(this).clone();
+			opt.appendTo("#contacts").attr("selected", "");
+			jQuery(this).attr("disabled","disabled");
+		});	
+		jQuery("#result-contacts").val(0);
+		jQuery("#btn-left").addClass("disable");
+	}
+
+	function removeSelect()
+	{
+		jQuery("#contacts option:selected").each(function () {
+			jQuery("#result-contacts option[value='" + jQuery(this).attr('value')  + "']").removeAttr('disabled');
+			jQuery(this).remove();
+		});
+		jQuery("#btn-right").addClass("disable");
+	}
+	
+
+	function appendContacts(contacts) 
+	{
+		if (offset == 0 && contacts.length == 0) {
+			jQuery("#result-contacts").append('<option></option><option style="text-align:center">&lt;' + (type ? '[`no contacts in this folder`]' : '[`not found`]') + '&gt;</option>');
+		} else {
+			for (var i = 0; i < contacts.length; i++) {
+				var disable = jQuery("#contacts option[value='" + contacts[i][0] + "']").length;
+				var option = '<option ' + (disable ? 'disabled="disabled" ' : '') + ' onDblClick="moveSelect()" value="' + contacts[i][0] + '">' + contacts[i][1] + '</option>';
+				jQuery("#result-contacts").append(option);						
+			}
+		}		
+	}
+
+	jQuery(document).ready(function () {
+		jQuery("#title").select();
+		jQuery.post("?mod=contacts&act=list&ajax=1", {folder_id: 0, type: 1, offset: 0}, function (response) {
+			appendContacts(response.data.contacts);
+		}, "json");		
+	});
+		
+	jQuery("#folder_id").change(function () {
+		offset = 0;
+		var folder_id = jQuery(this).val();
+		jQuery.post("?mod=contacts&act=list&ajax=1", {folder_id: folder_id, type: 1, offset: offset}, function (response) {
+			jQuery("#result-contacts").empty();
+			type = 1;
+			lock = false;
+			appendContacts(response.data.contacts);
+		}, "json");
+	});
+
+	jQuery("#searchByName").click(function () {
+		offset = 0;
+		var name = jQuery("#name").val();
+		if (name.length == 0) return false;
+		jQuery.post("?mod=contacts&act=list&ajax=1", {name: name, type: 0, offset: offset}, function (response) {
+			type = 0;
+			lock = false;
+			jQuery("#result-contacts").empty();
+			appendContacts(response.data.contacts);
+		}, "json");		
+	});
+
+
+	jQuery("input[title!='']").each(function () {
+		jQuery(this).val(jQuery(this).attr('title')).focus(function () {
+			if (jQuery(this).val() == jQuery(this).attr('title')) {
+				jQuery(this).val("");
+			}
+		}).blur(function () {
+			if (!jQuery(this).val().length) {
+				jQuery(this).val(jQuery(this).attr('title'));
+			}
+		});		
+	});
+
+	var scr = 0;
+	jQuery("#result-contacts").scroll(function () {
+		if  (!lock && jQuery(this).scrollTop() + jQuery(this)[0].offsetHeight + 200 > jQuery(this)[0].scrollHeight) {
+			scr = jQuery(this).scrollTop();
+			lock = true;
+			var folder_id = jQuery("#folder_id").val();
+			var name = jQuery("#name").val();
+			if (name == jQuery("#name").attr('title')) {
+				name = '';
+			}
+			offset = offset + 100;		
+			var elem = jQuery(this);
+			jQuery(this).append('<option class="load">Loading...</option>').scrollTop(scr);
+			jQuery.post("?mod=contacts&act=list&ajax=1", {folder_id: folder_id, name: name, type: type, offset: offset}, function (response) {
+				jQuery("#result-contacts .load").remove();
+				var option = "";
+				for (var i = 0; i < response.data.contacts.length; i++) {
+					if (!jQuery("#contacts option[value='" + response.data.contacts[i][0] + "']").length) {
+						option += '<option onDblClick="moveSelect()" value="' + response.data.contacts[i][0] + '">' + response.data.contacts[i][1] + '</option>';
+					}
+				}
+				elem.append(option);
+				elem.scrollTop(scr);
+				if (response.data.contacts.length > 0) {
+					lock = false;
+				}
+			}, "json");					
+		}
+	});
+	
+	{{if !$edit}}
+	jQuery("#create_list").click(function () {
+		var contacts = new Array();
+		jQuery("#contacts option").each(function () {
+			var cid = jQuery(this).val();
+			contacts.push(cid);
+		});
+		var title = jQuery("#title").val();
+		var share = $("#list-share").is(":checked") ? 1 : 0;
+		jQuery.post("?mod=lists&act=add&ajax=1", {add: 1, "contacts[]": contacts, name: title, share: share}, function (response) {
+			document.app.listsList.addList(response.data.list);
+			document.app.selectList(response.data.list.id);
+			var cls = 'icon-list';				
+			document.app.listsList.addClass(share ? cls + '-shared' : cls);
+			document.app.listsList.removeClass(share ? cls : cls + '-shared');			
+		}, "json");		
+	});
+	{{else}}
+	jQuery("#edit_list").click(function () {
+		var contacts = new Array();
+		jQuery("#contacts option").each(function () {
+			var cid = jQuery(this).val();
+			contacts.push(cid);
+		});
+		var title = jQuery("#title").val();
+		var share = $("#list-share").is(":checked") ? 1 : 0;
+		jQuery.post("?mod=lists&act=edit&ajax=1", {edit: 1, id: {{$list_id}}, "contacts[]": contacts, name:title, share: share}, function (response) {
+			if (response.status == 'OK') {
+				document.app.getCurrentFolder().renameFolder(response.data.list.name);
+				document.app.selectList(response.data.list.id);
+				var cls = 'icon-list';				
+				document.app.listsList.addClass(share ? cls + '-shared' : cls);
+				document.app.listsList.removeClass(share ? cls : cls + '-shared');
+				
+			}
+		}, "json");		
+	});	
+	{{/if}}
+
+	jQuery("#contacts").change(function () {
+		jQuery("#result-contacts").val(0);
+		jQuery("#btn-right").removeClass("disable");
+		jQuery("#btn-left").addClass("disable");
+	});
+	jQuery("#result-contacts").change(function () {
+		jQuery("#contacts").val(0);
+		jQuery("#btn-left").removeClass("disable");
+		jQuery("#btn-right").addClass("disable");
+	});
+
+</script>

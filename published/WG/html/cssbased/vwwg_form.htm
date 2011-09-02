@@ -1,0 +1,47 @@
+<? if $subtypeObj->embType == "inplace" ?>
+	<? include file="inplace_address.htm" ?>
+<? else ?>
+	<? $wgStrings.vwwg_address_label ?>: <a href='<? $embInfo.src ?>' target='_blank' style='font-size: 1.1em; font-weight: bold'> <? $embInfo.src ?></a>
+		<BR>
+<? /if ?>
+
+<BR>
+
+<? if $subtypeObj->embType != "inplace" ?>
+	<font style='font-size: 1.3em'><? $wgStrings.vwwg_preview_label ?>:</font>
+	<? if $formFilename ?>
+		<? include file=$formFilename ?>
+	<? /if ?>
+<? /if ?>
+
+<iframe style='border: 1px solid #999' width='100%' height='400' id='previewFrame' name='previewFrame' src='<? $embInfo.previewSrc ?>' frameborder=0></iframe>
+<div id="customizeWidgetForm" class='x-hidden'>
+  <div class='x-dlg-bd' id='customizeTabs'>
+  	<? foreach from=$subtypeObj->type->fieldsPlaces key=placeKey item=placeData ?>
+  		<? if !in_array($placeKey, $subtypeObj->hidePlaces) ?>
+	  		<div class="x-dlg-tab x-hidden" title="<? $placeData.title ?>">
+		      <div class="inner-tab" style='padding-top: 10px;padding-left: 15px'>
+		      	<? include file="amwg_form.htm" place=$placeKey?>
+		      </div>
+		  	</div>
+	  	<? /if ?>
+  	<? /foreach ?>
+	</div>
+</div>
+
+<div id="embedWidgetForm" class="x-hidden">
+  <div class="x-dlg-hd"><? $wgStrings.vwwg_embeddialog_title ?></div>
+  <div class='x-dlg-bd' style='padding: 10px'>
+  	<? $wgStrings.amwg_wghtml_label ?>:
+  	<textarea class='FormControl' onClick='this.select()' onFocus='this.select()' style='width: 97%; overflow-x: hidden' rows='2'><? $embInfo.code|htmlsafe:true:true ?></textarea>
+  	<br /><br />
+  	<? if $embInfo.html_code ?>
+		<textarea class='FormControl' onClick='this.select()' onFocus='this.select()' style='width: 97%; overflow-x: hidden' rows='2'><? $embInfo.html_code|htmlsafe:true:true ?></textarea>
+		<br /><br />  		
+  	<? /if ?>
+  	<? $wgStrings.amwg_wgpermalink_label ?> (<a target='_blank' href='<? $embInfo.src ?>'><? $wgStrings.amwg_wglinkopen_label ?></a>):
+  	<input class='FormControl' onClick='this.select()' style='width: 97%' type='text' value='<? $embInfo.src ?>'>
+  	<br /><br />
+  	<a target='_blank' href='<? $embInfo.typepadSrc ?>'><img src='../../../WG/html/cssbased/installs/add_typepad.gif'></a> <a href='http://fusion.google.com/add?moduleurl=<? $embInfo.igoogleSrc ?>' target='_blank'><img src='../../../WG/html/cssbased/installs/add_igoogle.gif'></a>
+	</div>
+</div>

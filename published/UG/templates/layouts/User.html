@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>{{$name}}</title>
+{{csscombine file="`$url.css`contact-edit.css"}}
+	{{$url.css}}users-common.css
+	{{$url.css}}users-edit.css
+{{/csscombine}}
+<link rel="stylesheet" type="text/css" href="{{$url.common}}css/datepicker.css" />
+<script type="text/javascript" src="{{$url.common}}js/jquery.js"></script>
+{{jscombine file="`$url.js`contact-edit.js"  }}
+	{{$url.common}}js/jquery.upload.js
+	{{$url.common}}js/jquery.wbs.popup.js
+	{{$url.common}}js/jquery.wbspopup.js
+	{{$url.common}}js/wbs-common.js
+	{{$url.common}}js/datepicker.js
+	{{$url.js}}users-edit.js
+{{/jscombine}} 
+{{if $user_lang=='rus'}}<script type="text/javascript" src="{{$url.common}}js/datepicker-rus.js"></script>{{/if}}
+<script type="text/javascript">
+	WbsData.set({'url.common' : "{{$url.common}}", 'url.app' : "{{$url.app}}", 'url.img' : "{{$url.img}}"});
+	var contact = {user_id: "{{$user_id}}", user_status: "{{$user_status}}", status: "{{$status}}", contact_id: '{{$contact_id}}'};
+</script>
+<style type="text/css">
+div.edit img.e {margin-top: 2px}
+</style>
+</head>
+<body style="overflow:hidden;">
+{{if !$is_mw}}
+<div id="header">
+	<div id="toolbar_new" class="contact-tools">
+		<table class="top_panel">
+			<tr>
+			<td width="1%">
+			<div class="backlink">
+			<span>&larr;</span><a id="back-url" href="{{if $is_mw}}javascript:history.back(){{else}}index.php" onClick="if (parent && parent.document.app) {parent.document.app.table.reloadView(); parent.document.app.closeSubframe(); return false}{{/if}}">[`Back`] {{if $back_title}} — {{$back_title}}{{/if}}</a>		
+			<div id="onload-message" class="info-message" {{if !$message}}style="display:none"{{/if}}>{{$message}}</div>
+			</div>
+			</td>
+            </tr>
+        </table>
+   </div>
+</div>
+{{/if}}
+<div id="scroll" style="position:relative">
+<table id="sub-main-content" class="contact" height="100%" cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+  	<td class="contacts_main"><div id="ajax_result" class="wrap-scroller" >{{$content}}</div></td>
+	<td class="user_rightbar">
+	<div id="right-panel">
+	<div class="rigth-panel-block{{if $tab!=""}} noactiveblock{{/if}}">
+		<div class="block_link"><a href="#contact" class="link" nobr>[`Contact information`]</a></div>
+		<div class="instead_oflink"><h3>[`Contact information`]</h3>
+        {{if $right.contact >= 3}}
+		<div id="contact_help" class="help" {{if $tab && $tab!='contact'}}style="display:none"{{/if}}>
+			<table width="100%">
+			<tr>
+				<td><input type="button" onClick="UserControl.setEditAll(this)" value="[`Edit`]" /></td>
+			</tr>
+			</table>
+			{{if $right.delete}}
+			<div class="customize-link" style="padding-top:10px;">
+				<a href="#" onClick="deleteContact('{{$contact_info.C_ID}}')">
+					{{if $contact_info.CT_ID == 1}}[`Delete this person`]{{else}}[`Delete this company`]{{/if}}
+				</a>
+			</div>
+			{{/if}}
+			{{if $right.admin}}
+			<div class="customize-link" style="padding-top:5px;">
+				<a href="?mod=construct&type_id={{$type_id}}">[`Customize fields`]</a>
+			</div>
+			{{/if}}	
+		</div>
+		{{/if}}
+        </div>
+			
+	</div>
+	{{if $right.notes}}
+	<div style="z-index:100" class="rigth-panel-block{{if $tab!="notes"}} noactiveblock{{/if}}">
+		<div class="block_link">
+			<a href="#notes" class="link"><!--<img src="{{$url.app}}img/i-notes.png">-->[`Notes`]</a></div>
+			<div class="instead_oflink"><h3>[`Notes`]</h3>
+		
+		<ul id="ul_apps">
+			{{foreach from=$notes item=n}}
+			<li>{{$n}}</li>
+			{{/foreach}}
+		</ul></div>
+	</div>
+	{{/if}}
+
+	{{if $partner_info}}
+	<div style="z-index:100" class="rigth-panel-block{{if $tab!='partners'}} noactiveblock{{/if}}">
+		<div class="block_link"><a href="#partners" class="link">[`Partners`]</a></div>
+		<div class="instead_oflink"><h3>[`Partners`]</h3></div>		
+	</div>
+	{{/if}}
+		
+	{{if $right.user && $user_id}}
+	<div class="rigth-panel-block{{if $tab!="settings"}} noactiveblock{{/if}}">
+		<div class="block_link">
+			{{if $user_id}}<a href="#settings" class="link">[`User account`]</a>
+			{{else}}
+			{{/if}}</div>
+			<div class="instead_oflink"><h3>[`User account`]</h3>
+            </div>
+		
+		{{if $user_id}}
+		<ul>
+			{{if $user_status == 3}}
+			<li style="color:red">[`Registration is not complete.`]</li>
+			{{else}}
+			<li>[`Login`]: 
+				<span class="big" style="padding-right: 30px">{{$user_id}}</span>
+				<span id="status" class="status{{$status}}">
+				{{if $status == 1}}
+					[`online`]
+				{{elseif $status == -1}}
+					[`disabled`]
+				{{else}}
+					[`offline`]
+				{{/if}}
+				</span>
+			</li>
+			<li style="font-size:85%; border-bottom: 1px solid #C6C9CC; margin-bottom: 10px; padding-bottom: 5px">
+				[`Last activity`]: <span id="last_time">{{if $last_time}}{{$last_time}}{{else}}[`never`]{{/if}}</span>
+			</li>
+			{{/if}}
+			{{if $right.user == 7}}
+			<li class="smallfont">
+				<b>[`Groups`]:</b>
+				<span id="user-groups">
+{{foreach name="usergroups" from=$user_groups item=g}}{{if $smarty.foreach.usergroups.index}}, {{/if}}{{$g}}{{foreachelse}}<span style="color:#666">[`none`]</span>{{/foreach}}
+				</span>
+			</li>
+			<li class="smallfont">
+				<b>[`Access:`]</b>
+				<span id="user-apps">
+{{foreach name="useraccess" from=$access item=app}}{{if $smarty.foreach.useraccess.index}}, {{/if}}{{$app}}{{foreachelse}}<span style="color:#666">[`none`]</span>{{/foreach}}
+				</span>
+			</li>
+			{{/if}}
+		</ul>
+		{{/if}}
+	</div>
+	{{/if}}
+	
+	{{if $right.user == 7 && !$user_id && !$contact_info.SC_ID}}
+	<a href="javascript:void(0)" style="display:block; margin: 15px 16px" id="set_login">[`Create user account for this contact`]</a>
+	<script type="text/javascript">
+		$("#set_login").click(function () {
+		   $('#popup').wbsPopup({
+		       width: 650,
+		       height: 'auto',
+		       backgroundColor: '#000000',
+		       opacity: 0.1,
+		       url: "{{$url.app}}?mod=contacts&act=login&id={{$contact_id}}",
+		       loadComplite: function () {
+					$('#popup').wbsPopupRender();
+					$("#popup .close-btn").click(function () {
+						$("#popup").wbsPopupClose();
+					});					
+		       }		       
+		     });
+			return false;	
+		});	
+	</script>
+	{{/if}}
+	<br />
+	<div id="info-message" style="padding-left:20px"></div>
+	</div>	
+</td>
+</tr>
+</table>
+</div>
+
+<div id="popup" style="display: none;" class="wbs-iframe-popup wbs-dlg">
+	<div class="content" style="display: none; height: 100%;">		
+	</div>
+	<div id="progress" style="display: none;">
+		<img src="{{$url.app}}img/ajax-loader.gif" />
+	</div>
+</div>
+
+<div id="popup2" style="display: none;" class="wbs-iframe-popup wbs-dlg">
+	<div class="content" style="display: none; height: 100%;">		
+	</div>
+	<div id="progress" style="display: none;">
+		<img src="{{$url.app}}img/ajax-loader.gif" />
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$("#onload-message").fadeOut(5000, function () {$(this).hide()});
+$("#sub-main-content td.user_rightbar a.link").click(function () {
+	$("#cancel_all:visible").click();
+	$(".wbs-popmenu").hide();
+	var url = $(this).get(0).href;
+	url = url.indexOf("?") == -1 ? url.replace("#", "?act=") : url.replace("#", "&act=");
+	$("#ajax_result").load(url);
+	$("#right-panel > div.rigth-panel-block").each(function () {
+		if (!$(this).hasClass("noactiveblock")) {
+			$(this).addClass("noactiveblock");
+		} 
+	});
+	$(this).parents("div.rigth-panel-block").removeClass("noactiveblock");
+	$("#toolbar_new div.help").hide();
+	$($(this).attr('href') + "_help").show();
+	return false;
+});
+
+var resize = function () {
+	$("#scroll").height($(window).height() - $("#header").height());
+};
+$(document).ready(resize);
+$(window).resize(resize);	
+	
+function deleteContact(C_ID) {
+	if (confirm("[`Are you sure?`]")) {
+		jQuery("#loading-block", parent.document).css("visibility", "");
+		jQuery.post("?mod=users&act=delete&ajax=1",
+		{"ids[]": C_ID},
+		function (response) {
+			if (response.status == "OK") {
+				$("#back-url").click();
+			}
+		}, "json");
+	}
+}
+</script>
+</body>
+</html>

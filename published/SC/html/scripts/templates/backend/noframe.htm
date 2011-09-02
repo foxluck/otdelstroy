@@ -1,0 +1,32 @@
+{* main admin template*}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<script type="text/javascript"><!--
+			function open_window(link,w,h)
+			{literal}{{/literal}
+				var win = "width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=yes";
+				newWin = window.open(link,'newWin',win);
+			}
+		//-->
+		</script>
+		<link rel="stylesheet" href="{$smarty.const.DIR_CSS}/style1.css" type="text/css" />
+		<link rel="stylesheet" href="{$smarty.const.DIR_CSS}/admin.css" type="text/css" />
+		<script type="text/javascript" src="{$smarty.const.DIR_JS}/nifty.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset="{"str_default_charset"|translate}"" />
+		<title>{"str_admin_title"|translate}</title>
+	</head>
+
+	<body>
+		{if $safemode}
+			<p><font class=faq color=red><b>{$safemode}</b></font>
+		{/if}
+		{if $admin_sub_dpt ne ''}
+		{include file="backend/$admin_sub_dpt"}
+		{else}
+		{if $sub_template ne ''}
+		{include file=$sub_template}
+		{/if}
+		{/if}
+	</body>
+</html>

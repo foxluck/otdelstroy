@@ -1,0 +1,20 @@
+{* Pagination template
+@param int pages_count - count of pages
+@param int current_page - number of current page
+@param string base_vars - GET vars string
+*}
+{if $pages_count gt 1}
+{if $current_page gt 1}
+&nbsp;<a class="listhref" href="{$SCRIPT_NAME}{if $base_vars}?{$base_vars}&{else}?{/if}page={$current_page-1}">&lt;&lt;{"str_previous"|translate}</a>
+{/if}
+{section name=pagination start=1 loop=$pages_count+1 step=1}
+{if $current_page neq $smarty.section.pagination.index}
+&nbsp;<a class=listerhref"" href="{$SCRIPT_NAME}{if $base_vars}?{$base_vars}&{else}?{/if}page={$smarty.section.pagination.index}">{$smarty.section.pagination.index}</a>
+{else}
+&nbsp;<span style="color: navy;">{$smarty.section.pagination.index}</span>
+{/if}
+{/section}
+{if $current_page lt $pages_count}
+&nbsp;<a class="listhref" href="{$SCRIPT_NAME}{if $base_vars}?{$base_vars}&{else}?{/if}page={$current_page+1}">{"str_next"|translate}&gt;&gt;</a>
+{/if}
+{/if}

@@ -1,0 +1,152 @@
+<h1 class="breadcrumbs">
+	<a href="{'?did='|set_query_html}">{lbl_pmnt_to_list}</a>
+	&raquo;
+	{'pmnt_add_payment_method'|translate|replace:'%STEP_NUMBER%':$step_num}
+</h1>
+
+{if $step eq 'type'}
+
+	<p>
+	{lbl_pmnt_modules_types_title}
+	</p>
+
+	<form action="{'action=add_method'|set_query_html}" method="post">
+	
+	<table cellspacing="0" cellpadding="5">
+	{foreach from=$paymtd_types item=_info key=_key}
+	{if $_info.count}
+	<tr>
+		<td valign="top"><input type="radio" name="mt" value="{$_key}" id="paymtd-{$_key}" /></td>
+		{*<td valign="top">({$_info.count})</td>*}
+		<td><label for="paymtd-{$_key}">{$_info.title|translate}</label></td>
+	</tr>
+	{/if}
+	{/foreach}
+	</table>
+	<p>
+	<input value="{'btn_next'|transcape}" type="submit" />
+	</form>
+{/if}
+
+{if $step eq 'module'}
+
+	<p>{$method_type_const|translate}</p>
+
+	<form action="{'action=add_method'|set_query_html}" method="post">
+	
+	<table cellspacing="0" cellpadding="5">
+	{foreach from=$payment_modules item=_module key=_key name=_fe}
+	<tr>
+		<td valign="top">
+			{if $_module->default_logo}<label for="paymdl-{$_key}"><img src="{$_module->default_logo|escape:'html'}" alt=""></label>{else}&nbsp;{/if}
+		</td>
+		<td valign="top">
+{*		<input type="radio" name="mid" value="{$_key}" id="paymdl-{$_key}" />*}
+		<input type="radio" name="mclass" value="{$_module->className}" id="paymdl-{$_key}" />
+		</td>
+		
+		<td valign="top"><label for="paymdl-{$_key}">{$_module->title}</label>
+			<div class="notice">{$_module->description}</div>
+		</td>
+	</tr>
+	{/foreach}
+	</table>
+	{if $more_modules}
+	<p>{'pmnt_more_modules_available'|translate}</p>
+	{/if}
+	<p>
+	<input value="{'btn_next'|transcape}" type="submit" />
+	</form>
+{/if}
+
+{if $step eq 'settings'}
+
+	{$MessageBlock}
+	
+	<form action='{""|set_query_html}' method="post" enctype="multipart/form-data">
+	<input name="action" value="save_new_method" type="hidden" />
+	<input name="module_id" value="{$module_id}" type="hidden" />
+	
+	<table cellspacing="0" cellpadding="5" style="table-layout:fixed;">
+	<tr>
+		<td width="250">{'enabled'|translate}</td>
+		<td>
+			<input type="checkbox" name="Enabled" {if $data.Enabled} checked{/if} value="1" />
+		</td>
+	</tr>
+	<tr>
+		<td width="250">{"str_name"|translate}:</td>
+		<td>
+			{html_text name="Name" values=$data style="width:250px"}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">{"str_description"|translate}:
+			<br />
+			{html_textarea rows="2" cols="30" name="description" values=$data style="width:510px"}
+		</td>
+	</tr>
+	<tr>
+		<td width="250">{"mdl_shipping_methods_are_allowed"|translate}:</td>
+		<td>
+			{foreach from=$ShippingMethodsToAllow item=_method}
+			<div>
+				<input type="checkbox" name='ShippingMethodsToAllow_{$_method.SID}'
+					{assign var=_t value="ShippingMethodsToAllow_`$_method.SID`"}
+					{if $data[$_t] == 1} checked{/if} id="shm-{$_method.SID}" value="1" />
+					<label for="shm-{$_method.SID}">{$_method.Name}</label>
+			</div>
+			{/foreach}
+		</td>
+	</tr>
+	<tr>
+		<td width="250">{"pmnt_calctax_for_this_payment_type"|translate}:</td>
+		<td>
+			<input type="checkbox" name="calculate_tax" value="1" {if $data.calculate_tax} checked{/if} />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">{"pmnt_email_comments_text"|translate}:
+			<br />
+			{html_textarea rows="2" cols="30" name="email_comments_text" values=$data style="width:510px"}
+		</td>
+	</tr>
+	
+	<tr>
+		<td valign="top" width="250">{"str_logo"|translate}:</td>
+		<td>
+			<input type="text" name="logo" value="{$data.logo|escape:'html'}" style="width:250px;"/>
+			{if $data.logo}<br/><img src="{$data.logo|escape:'html'}" alt="" />{/if}
+		</td>
+	</tr>
+	
+{if $settings}
+	<tr>
+		<td colspan="2">
+		<br />
+		<strong>{'pmnt_module_settings'|translate|replace:'%MODULE_NAME%':$moduleEntry->title}</strong>
+		{if $moduleEntry->description}<p>{$moduleEntry->description}</p>{/if}
+		</td>
+	</tr>
+	
+	{section name=i loop=$settings}
+	<tr> 
+		<td width="250">{$settings[i].settings_title}:
+			<div class="notice">{$settings[i].settings_description}</div>
+		</td>
+		<td>
+			{$controls[i]}
+		</td>
+	</tr>
+	{/section}
+{/if}	
+	<tr>
+		<td colspan="2">
+			<input value="{'btn_save'|transcape}" type="submit" />
+		</td>
+	</tr>
+	
+	</table>
+	
+	</form>
+{/if}

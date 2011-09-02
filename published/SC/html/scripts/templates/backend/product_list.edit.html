@@ -1,0 +1,72 @@
+<h1 class="breadcrumbs"><a href="{'?ukey=product_lists'|set_query_html}">{lbl_pgn_product_lists}</a>
+&raquo;
+{'prdlist_edit_list_title'|translate|replace:'%LIST_NAME%':$productList->name|escape:'html'}</h1>
+
+<p>{'prdlist_products_title'|translate}</p>
+
+{$MessageBlock}
+
+{if $products}
+
+	<form action="{''|set_query_html}" class="ajaxform" method="post" id="form-save-order" style="display: inline;" enctype="multipart/form-data">
+	<input name="action" value="save_order" type="hidden" />
+	<input name="list_id" value="{$productList->id|escape:'html'}" type="hidden" />
+	
+	<table id="products-tbl" class="grid">
+	{foreach from=$products item=_product name=_fe}
+	<tbody class="dragable">
+	<tr>
+		<td class="handle">
+			{$_product.name}{if !$_product.enabled} <span class="notice">{lbl_prep_invisible_in_storefront}</span>{/if}
+			<input name="priority_{$_product.productID}" value="{$smarty.foreach._fe.index}" class="field_priority" type="hidden" />
+		</td>
+		<td><a href='{"action=delete_product&productID=`$_product.productID`"|set_query_html}' class="confirm_action" title="{'cnfrm_areyousure'|transcape}"><img src="images_common/remove.gif" alt="{'btn_delete'|transcape}" border="0" /></a></td>
+	</tr>
+	</tbody>
+	{/foreach}
+	</table>
+	</form>
+	{include file="backend/sortable_table.html" table_id="products-tbl"}	
+{else}
+	<p>{lbl_prdlist_no_products_in_list}</p>
+{/if}
+
+<p><a href="#add_product" id="prdlist-add-product-hndl">{lbl_prdlist_add_product}</a></p>
+
+<div id="prdlist-add-product-block" {if $searchstring == null}style="display: none;"{/if}>
+
+	<div>
+	<form method="post" action="{''|set_query_html}">
+	<input name="searchstring" value="{$searchstring|escape:'html'}" type="text" size="30" />
+	<input value="{'prdlist_find_product'|transcape}" type="submit" />
+	</form>
+	</div>
+	{if $GridRows}
+		<br />
+		<div><strong>{lbl_search_results}</strong></div>	
+		
+		<table class="grid">	
+		{foreach from=$GridRows item=_row}
+		<tr>
+			<td><a href='{"action=add_product&productID=`$_row.productID`"|set_query_html}'>{$_row.name|escape:'html'}</a>
+			{if !$_row.enabled} <span class="notice">{lbl_prep_invisible_in_storefront}</span>{/if}
+			</td>
+			<td>{$_row.price_str}</td>
+		</tr>
+		{/foreach}
+		</table>
+		<p>{include file="backend/lister.tpl.html"}</p>
+	{elseif  $searchstring != null}
+		<p>{lbl_no_results}</p>
+	{/if}
+</div>
+
+<script type="text/javascript">
+{literal}
+	getLayer('prdlist-add-product-hndl').onclick = function(){
+	
+		var block = getLayer('prdlist-add-product-block');
+		block.style.display = block.style.display=='none'?'block':'none';
+	}
+{/literal}
+</script>

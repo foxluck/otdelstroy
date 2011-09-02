@@ -1,0 +1,78 @@
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: white url(images/middle-stripe-background-top-bottom-grayscale.gif) repeat-x; background-position: top;">
+  <tr>
+    <td width="200" ><!-- cpt_container_start -->{cpt_logo file='mc20.gif'}<!-- cpt_container_end --></td>
+    <td colspan="2" valign="top" width="*"> 
+
+       <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+         <td width="80%" valign="top">
+
+            <table border="0" cellspacing="0" cellpadding="0" style="margin-left:20px">
+              <tr>
+{section name=i loop=$Dpts}
+                <td valign="top">
+                   <div style="margin-top: 0px; {if $CurrentDivision.id == $Dpts[i].id}background: #203560; padding: 13px; font-size: 120%;{else}background: #496BAB; padding: 10px; font-size: 100%;{/if}">
+					{if $Dpts[i].ukey}
+					{assign var=_div_url value="?ukey=`$Dpts[i].ukey`"|set_query_html}
+					{else}
+					{assign var=_div_url value="?did=`$Dpts[i].id`"|set_query_html}
+					{/if}
+					<a class="lightmenu" href="{$_div_url}">{$Dpts[i].name}</a>
+                   </div>
+                </td>
+                <td>
+                   &nbsp;&nbsp;
+                </td>
+{/section}
+              </tr>
+            </table>
+
+         </td>
+         <td rowspan="2" width="20%" align="right" valign="top">
+            <!-- cpt_container_start -->{cpt_language_selection view='flags'}<!-- cpt_container_end -->
+         </td>
+        </tr>
+        <tr>
+         <td style="margin-left:20px">
+            <!-- cpt_container_start -->{cpt_product_search}<!-- cpt_container_end -->
+         </td>
+        </tr>
+       </table>
+
+        </td>
+  </tr>
+  <tr> 
+    <td width="200" valign="top"><!-- cpt_container_start -->{cpt_shopping_cart_info}{cpt_category_tree}{cpt_divisions_navigation divisions='' view='vertical'}{cpt_authorization}{cpt_currency_selection}<!-- cpt_container_end --></td>
+    <td valign="top" width="*"><!-- cpt_container_start -->{cpt_maincontent}<!-- cpt_container_end --></td>
+    <td valign="top" width="200"><!-- cpt_container_start -->{cpt_auxpages_navigation auxpages='' view='horizontal'}{cpt_news_short_list news_num='4'}{cpt_survey}<!-- cpt_container_end --></td>
+  </tr>
+  <tr align="center" height="20"> 
+    <td colspan="3" bgcolor="#B4B4B4" height="20"><font color=white>[ <a class=lightstandard href="index.php">{"lnk_homepage"|translate}</a>
+      
+       
+      {if $smarty.const.CONF_SHOW_ADD2CART eq 1}
+      | <a class=lightstandard href="{if $smarty.const.CONF_OPEN_SHOPPING_CART_IN_NEW_WINDOW eq 1}javascript:open_window('{"?ukey=cart_popup"|set_query}',400,300);{else}{"?ukey=cart"|set_query}{/if}">{"cart_title"|translate}</a> 
+      {/if}
+      | <a href="index.php?show_aux_page={$aux_page1.aux_page_ID}"
+										   class=lightstandard  >{$aux_page1.aux_page_name}</a> |
+										   <a href="index.php?show_aux_page={$aux_page2.aux_page_ID}"
+										   class=lightstandard  >{$aux_page2.aux_page_name}</a> |
+										   <a class=lightstandard href="index.php?show_price=yes">{"pgn_pricelist"|translate}</a> | 
+      {* register/my_account link *}
+      {if ($log ne "")}
+      <a class=lightstandard href="index.php?user_details=yes">{"lnk_my_account"|translate}</a> 
+      {else}
+      <a class=lightstandard href="index.php?register=yes">{"str_register"|translate}</a>
+       
+      {/if}
+      ] </font></td>
+  </tr>
+  <tr align="center"> 
+    <td colspan="3" class="small"><i><br>
+      Copyright &copy; <a href="{$smarty.const.CONF_FULL_SHOP_URL}"><u> 
+      {$smarty.const.CONF_SHOP_NAME}
+      </u></a>. All rights reserved.</i> <br><br>
+		Powered by Shop-Script
+    </td>
+  </tr>
+</table>

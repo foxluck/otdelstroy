@@ -1,0 +1,137 @@
+{* products extra parameters *}
+
+{if $option_name == null}
+
+<h1>{lbl_pgn_product_customparams}</h1>
+
+<p>{lbl_prdopt_page_description}</p>
+{$MessageBlock}
+	
+	<form action="{''|set_query_html}" method="post">
+	<input name="action" value="save_options" type="hidden" />
+	
+	<table class="grid">
+	<tr class="gridsheader">
+		<td>{"prdopt_custom_option_title"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td></td>
+		<td>{'btn_delete'|transcape}</td>
+	</tr>
+		
+	{foreach from=$options item=_row}
+	<tr class='{cycle values="gridline1,gridline"}'>
+		<td>
+			{html_text dbfield="name" name="extra_option_%lang%_`$_row.optionID`" values=$_row table=$smarty.const.PRODUCT_OPTIONS_TABLE style="width:250px"}
+		</td>
+		<td align="center">
+			<input type="text" name="extra_sort_{$_row.optionID}" value="{$_row.sort_order}" size="3" />
+		</td>
+		<td nowrap="nowrap">
+			<a href="{"&optionID=`$_row.optionID`"|set_query_html}">{"prdcustopt_value_variants"|translate} ({$_row.count_variants})</a>
+		</td>
+		<td align="center">
+			<a href='{"action=delete_option&optionID=`$_row.optionID`"|set_query_html}' class="confirm_action" title='{"cnfrm_areyousure"|transcape}'><img src="images_common/remove.gif" alt="{"btn_delete"|translate}" /></a>
+		</td>
+	 </tr>
+	{foreachelse}
+	
+	<tr>
+		<td colspan="4" align="center">{"prdopt_no_product_options"|translate}</td>
+	</tr>
+	{/foreach}
+		
+	<tr class="gridsheader_simple">
+		<td colspan="4">{"prdopt_add_new_option"|translate}</td>
+	</tr>
+	<tr class="gridsheader">
+		<td>{"prdopt_custom_option_title"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>
+			{html_text name="name_%lang%" values="" table=$smarty.const.PRODUCT_OPTIONS_TABLE  style="width:250px"}
+		</td>
+		<td align="center">
+			<input type="text" name="add_sort" value="" size="3" />
+		</td>
+		<td></td>
+		<td></td>
+		</tr>
+	</table>
+	
+	<p><input type="submit" value="{"btn_save"|translate}" /></p>
+	
+	</form>
+
+{else}
+
+	<h1 class="breadcrumbs"><a href='{"&optionID="|set_query}'>{lbl_pgn_product_customparams}</a>
+	&raquo;
+	{"prdcustopt_availablevalues"|translate|replace:'%OPTION_NAME%':$option_name|escape:'html'}</h1>
+
+	{$MessageBlock}
+
+	<form action="{''|set_query_html}" method="post">
+	<input name="action" value="save_values" type="hidden" />
+	
+	<table class="grid">
+	<tr class="gridsheader">
+		<td>{"prdcustopt_value"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td>{"btn_delete"|translate}</td>
+	</tr>
+	
+	{section name=i loop=$values}
+	<tr class="{cycle values="gridline1,gridline"}">
+		<td>
+			{html_text dbfield="option_value" name="option_value_%lang%_`$values[i].variantID`" values=$values[i] style="width: 250px"}
+		</td>
+		<td align="center">
+			<input type="text" name="sort_order_{$values[i].variantID}" value="{$values[i].sort_order}" size="3" />
+		</td>
+		<td align="center">
+			<a href='{"&action=delete_variant&variantID=`$values[i].variantID`"|set_query_html}' class="confirm_action" title='{"cnfrm_delete"|translate}'>
+				<img alt='{"btn_delete"|translate}' src="images_common/remove.gif" />
+			</a>
+		</td>
+	</tr>
+	
+	{sectionelse}
+	
+	 <tr>
+		<td colspan="3" align="center">{"prdcustopt_option_has_no_values"|translate}</nobr>
+		</td>
+	 </tr>
+	
+	{/section}
+	
+	<tr class="gridsheader_simple">
+		<td colspan="3">{"prdcustopt_value_add"|translate}</td>
+	</tr>
+	<tr class="gridsheader">
+		<td>{"prdcustopt_value"|translate}</td>
+		<td>{"str_sort_order"|translate}</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>
+			{html_text name="option_value" values='' style="width: 250px" }
+		</td>
+		<td align="center">
+			<input type="text" name="sort_order" value="" size="3" />
+		</td>
+		<td>
+		</td>
+	</tr>
+	</table>
+	
+	<input type="hidden" name="optionID" value="{$optionID}" />
+
+	<p><input type="submit" value="{"btn_save"|translate}" /></p>
+
+	</form>
+
+{/if}{* if $option_name == null *}

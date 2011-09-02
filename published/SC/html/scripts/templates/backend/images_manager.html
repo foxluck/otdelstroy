@@ -1,0 +1,174 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+
+
+
+<h1>{$CurrentDivision.name|translate}</h1>
+<p>{'imm_description'|translate}</p>
+
+{$MessageBlock}
+
+<ul id="edmod">
+	<li class="tab{if $folder_id eq 'images'} current{/if}"><a href='{"page=&folder_id=images"|set_query_html}'>{lbl_imm_folder_images}</a></li>
+	<li class="tab{if $folder_id eq 'prdpicts'} current{/if}"><a href='{"page=&folder_id=prdpicts"|set_query_html}'>{lbl_imm_folder_prdpicts}</a></li>
+</ul>
+
+<script type="text/javascript">
+<!--
+var another_type = 'upload';
+//-->
+</script>
+
+
+<span style="float: right;">
+{lbl_imm_view_mode}:&nbsp;
+{if $view_mode eq 'thumbnails'}
+<a href="{"view_mode=list"|set_query_html}" title="{lbl_imm_view_mode_list}">{lbl_imm_view_mode_list}</a>
+|
+<span style="font-weight:bolder;" title="{lbl_imm_view_mode_thumbnails}">{lbl_imm_view_mode_thumbnails}</span>
+{else}
+<span style="font-weight:bolder;" title="{lbl_imm_view_mode_list}">{lbl_imm_view_mode_list}</span>
+|
+<a href="{"view_mode=thumbnails"|set_query_html}" title="{lbl_imm_view_mode_thumbnails}">{lbl_imm_view_mode_thumbnails}</a>
+{/if}
+</span>
+{$folder.description|translate|replace:'[url]':"`$folder.url`/"}
+
+<div style="display:block;margin-top:40px;width:500px;">
+	<div class="imm_upload_swf_link_block" style="display:none;margin:0;padding:0">
+		<a style="padding:10px;" href="#swfupload_image" id ="tab-swfupload-link">{"imm_upload_swf_link"|translate}</a>
+	</div>
+	<a style="padding:10px;" href="#upload_image" id="tab-upload-link" style="background-color: #f5f0bb;">{lbl_imm_upload_link}</a>
+	{if $folder_id eq 'prdpicts' && $images_list}
+	<a style="padding:10px;" href='#deleteall_images' id="tab-deleteall-link" title='{"imm_delall_confirmation"|translate}'>{lbl_imm_delete_all}</a>
+	{/if}
+
+	<div id="tab-swfupload-section" style="display:block;background-color: #f5f0bb;padding:10px;margin:10px 0;min-height: 80px;">
+		<div id="divSWFUploadUI">
+			<div class="fieldset  flash" id="fsUploadProgress" style="display:none;width:450px;max-height:300px;overflow: auto;">
+				{*<span class="legend">{"imm_swf_upload_queue"|translate}</span>*}
+				{*<input id="btnswfCancel" type="button" value="{'imm_swf_cancel_uploads'|translate}" disabled="disabled" style="display:none;margin-left: 2px; height: 22px; font-size: 8pt;" />*}
+			</div>
+			<p>
+				<span id="spanButtonPlaceholder"></span>
+			</p>
+		
+		</div>
+	</div>
+	
+	<div id="tab-upload-section" style="display:none;background-color: #f5f0bb;padding:10px;margin:10px 0;min-height: 80px;">
+	<form class="imm_upload_form" method="post" action="{'action=upload_image'|set_query_html}" enctype="multipart/form-data">
+		<input name="upload_picture" type="file" />
+		<input value="{'btn_upload'|translate}" type="submit"/>
+		</form>
+	</div>
+	{if $folder_id eq 'prdpicts' && $images_list}
+	<div id="tab-deleteall-section" style="display:none;background-color: #f5f0bb;padding:10px;margin:10px 0;min-height: 80px;">
+	<form class="imm_upload_form" method="post" action="{'action=delete_all'|set_query_html}" enctype="multipart/form-data">
+		<br />
+		<br />
+		<input value="{'btn_delete_all'|translate}" class="confirm_action" title="{"imm_delall_confirmation"|translate}" type="submit"/>
+		</form>
+	</div>
+	{/if}
+
+</div>		
+
+
+<div id="divStatus" class="success_block" style="display:none" ></div>
+{if $images_list}
+{capture name="page_navigator"}
+<nobr><span style="margin-right:20px;">{$images_list_info.string}</span>{include file="backend/lister.tpl.html"}</nobr>
+{/capture}
+{$smarty.capture.page_navigator}
+<form action="{""|set_query_html}" id="image_list" method="post">
+<ul id="imm-images-box" style="clear:both;">
+{if $view_mode eq 'thumbnails'}
+<table>
+<tr><td>
+{foreach from=$images_list item=_image name=frimlist}
+	<li class="imm_img_blck">
+		<table align="center">
+		<tr>
+			<td height="110" width="110" align="center" valign="middle" class="imm_img_box">
+				<img align="middle" valign="middle" src="{$_image.url|escape:'html'}" alt="{$_image.file|escape:'html'}" width="{$_image.thumb_width}" height="{$_image.thumb_height}" img_width="{$_image.width}" img_height="{$_image.height}" img_id="{$_image.id}" img_file="{$_image.file|escape:'html'}" />
+			</td>
+		</tr>
+		</table>
+	</li>
+{/foreach}
+</td></tr>
+</table>
+</ul>
+
+{else}
+<table class="grid" width="100%">
+<tr class="gridsheader">
+	<td width="5%">				&nbsp;								</td>
+	<td colspan="3" width="50%">{"prdset_product_picture"|translate}</td>
+	<td colspan="1" width="15%">{"imm_modify_time"|translate}		</td>
+	<td width="30%">			{"imm_permalink"|translate}			</td>
+</tr>
+{foreach from=$images_list item=_image name=frimlist}
+<tr class="{cycle values="gridline1,gridline"}">
+	<td>
+		<input type="checkbox" class="checkbox select_images" rel="group-box" name="image_{$_image.id}" id="image_{$_image.id}" value="1">
+	</td>
+	<td><a class="imm_img_view bluehref" href="{$_image.url|escape:'html'}" alt="{$_image.file|escape:'html'}" target="_blank" img_width="{$_image.width}" img_height="{$_image.height}">{$_image.file}</a></td>
+	<td>{$_image.width}&times;{$_image.height}&nbsp;px</td>
+	<td>{$_image.size}</td>	
+	<td>{$_image.mtime}</td>
+	<td><input style="width:400px;" onclick="this.select();" onfocus="this.select();" readonly="readonly" value="{$_image.full_url|escape:'html'}"></td>
+</tr>
+{/foreach}
+<tr class="gridsfooter">
+	<td><input type="checkbox" rel="select_images" id="group-box" class="groupcheckbox"/></td>
+	<td colspan="5">{if $images_list}
+	{lbl_le_with_selected}&nbsp;
+	<input type="hidden" name="action" value="delete_image">
+	<input type="submit" class="confirm_action" title="{"imm_delall_confirmation"|translate}" value="{lbl_btn_delete}">
+	{else}&nbsp;{/if}
+	</td>
+</tr>
+</table>
+{/if}
+</form>
+{$smarty.capture.page_navigator}
+<br />
+<br />
+
+
+{else}
+
+<p>{lbl_imm_noimages}</p>
+{/if}
+
+<div style="display: none;" id="blck-img-menu"><div id="blck-img-menu-sub">
+<div id="imm-img-file"></div>
+<a href="#view" id="imm-img-view">{'imm_view_image'|translate}</a><br />
+<a href="#permalink" id="imm-img-permalink">{'imm_permalink'|translate}</a><span id="imm-img-permalink-field-box">
+	<textarea id="imm-img-permalink-field" rows="3" cols="30" onclick="this.select();" onfocus="this.select();" readonly="readonly"></textarea>
+</span>
+<div>
+<a href='{"action=delete_image&img_id="|set_query_html}' id="imm-img-delete" title="{'imm_img_delete_confirmation'|transcape}">{lbl_btn_delete}</a>
+</div>
+</div></div>
+
+<link rel="stylesheet" href="../../../common/html/res/swfupload/swfupload.css" type="text/css"/>
+
+<script type="text/javascript" src="{$smarty.const.URL_3RDPARTY}/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_3RDPARTY}/swfupload/js/swfupload.swfobject.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_3RDPARTY}/swfupload/js/swfupload.queue.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_3RDPARTY}/swfupload/js/fileprogress.js"></script>
+<script type="text/javascript" src="{$smarty.const.URL_3RDPARTY}/swfupload/js/handlers.js"></script>
+
+
+<script type="text/javascript">
+var phploadurl = "{'?ukey=&did=&folder_id='|set_query}";
+var swfurl = "{$smarty.const.URL_3RDPARTY}/swfupload/swfupload.swf";
+var swfbtn = "{$smarty.const.URL_3RDPARTY}/swfupload/61x22.png";
+var refreshString = '  <a href="{''|set_query_html}">{lbl_btn_update}</a>';
+var session_id = "{$session_id}";
+</script>
+
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/images_manager.js"></script>

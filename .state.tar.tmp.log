@@ -1,0 +1,4623 @@
+array (
+  'state' => 'extract',
+  'offset' => 0,
+  'progress' => 0,
+  'tarsize' => 0,
+  'time' => 1301290939,
+  'msg' => 'file not exists  initial start extract',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():160',
+    2 => 'checkResumable():125',
+    3 => 'restartableTar():46',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 0,
+  'progress' => 0,
+  'tarsize' => 0,
+  'time' => 1301290939,
+  'msg' => 'extracting',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():171',
+    2 => 'restart():182',
+    3 => '_extractList():421',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 1491,
+  'progress' => 1,
+  'tarsize' => 110619,
+  'time' => 1301290939,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 2811,
+  'progress' => 2,
+  'tarsize' => 110619,
+  'time' => 1301290939,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 5551,
+  'progress' => 5,
+  'tarsize' => 110619,
+  'time' => 1301290939,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 7055,
+  'progress' => 6,
+  'tarsize' => 110619,
+  'time' => 1301290939,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 7821,
+  'progress' => 7,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 9618,
+  'progress' => 8,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 9873,
+  'progress' => 8,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 10339,
+  'progress' => 9,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 10852,
+  'progress' => 9,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 11636,
+  'progress' => 10,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 11876,
+  'progress' => 10,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 12071,
+  'progress' => 10,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 12368,
+  'progress' => 11,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 12726,
+  'progress' => 11,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 14010,
+  'progress' => 12,
+  'tarsize' => 110619,
+  'time' => 1301290940,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 14287,
+  'progress' => 12,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 14860,
+  'progress' => 13,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 15086,
+  'progress' => 13,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 15296,
+  'progress' => 13,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 15432,
+  'progress' => 13,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 15554,
+  'progress' => 14,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 15642,
+  'progress' => 14,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 16337,
+  'progress' => 14,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1168',
+    3 => '_readLongHeader():1279',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 16736,
+  'progress' => 15,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 17024,
+  'progress' => 15,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 17204,
+  'progress' => 15,
+  'tarsize' => 110619,
+  'time' => 1301290941,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 17395,
+  'progress' => 15,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 17589,
+  'progress' => 15,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 17884,
+  'progress' => 16,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 18903,
+  'progress' => 17,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 19511,
+  'progress' => 17,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 20477,
+  'progress' => 18,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 22489,
+  'progress' => 20,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 24080,
+  'progress' => 21,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 24708,
+  'progress' => 22,
+  'tarsize' => 110619,
+  'time' => 1301290942,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 25187,
+  'progress' => 22,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 25760,
+  'progress' => 23,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 26465,
+  'progress' => 23,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 27168,
+  'progress' => 24,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 27791,
+  'progress' => 25,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 28009,
+  'progress' => 25,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 28131,
+  'progress' => 25,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 28453,
+  'progress' => 25,
+  'tarsize' => 110619,
+  'time' => 1301290943,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 28789,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29069,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29191,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29362,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29615,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29823,
+  'progress' => 26,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 29995,
+  'progress' => 27,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 30214,
+  'progress' => 27,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 30332,
+  'progress' => 27,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 30697,
+  'progress' => 27,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 31169,
+  'progress' => 28,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 31420,
+  'progress' => 28,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 31586,
+  'progress' => 28,
+  'tarsize' => 110619,
+  'time' => 1301290944,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 31842,
+  'progress' => 28,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 32045,
+  'progress' => 28,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 32240,
+  'progress' => 29,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 32549,
+  'progress' => 29,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 32927,
+  'progress' => 29,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 33431,
+  'progress' => 30,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 33716,
+  'progress' => 30,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 33898,
+  'progress' => 30,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 34088,
+  'progress' => 30,
+  'tarsize' => 110619,
+  'time' => 1301290945,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 36985,
+  'progress' => 33,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 37435,
+  'progress' => 33,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 37832,
+  'progress' => 34,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 38254,
+  'progress' => 34,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 38702,
+  'progress' => 34,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 38960,
+  'progress' => 35,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 39247,
+  'progress' => 35,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 39493,
+  'progress' => 35,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 39809,
+  'progress' => 35,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 40122,
+  'progress' => 36,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 40445,
+  'progress' => 36,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 40755,
+  'progress' => 36,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 41055,
+  'progress' => 37,
+  'tarsize' => 110619,
+  'time' => 1301290946,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 41342,
+  'progress' => 37,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 41678,
+  'progress' => 37,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 41980,
+  'progress' => 37,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 42389,
+  'progress' => 38,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 42577,
+  'progress' => 38,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 44582,
+  'progress' => 40,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 44817,
+  'progress' => 40,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 45065,
+  'progress' => 40,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 45276,
+  'progress' => 40,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 45653,
+  'progress' => 41,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 45933,
+  'progress' => 41,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 46232,
+  'progress' => 41,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 46655,
+  'progress' => 42,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 47016,
+  'progress' => 42,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 47095,
+  'progress' => 42,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 47161,
+  'progress' => 42,
+  'tarsize' => 110619,
+  'time' => 1301290947,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 47421,
+  'progress' => 42,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 48536,
+  'progress' => 43,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 50087,
+  'progress' => 45,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 51019,
+  'progress' => 46,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 51142,
+  'progress' => 46,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 51224,
+  'progress' => 46,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 52925,
+  'progress' => 47,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 57988,
+  'progress' => 52,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 61192,
+  'progress' => 55,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 61352,
+  'progress' => 55,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 61808,
+  'progress' => 55,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 62429,
+  'progress' => 56,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 62702,
+  'progress' => 56,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 62899,
+  'progress' => 56,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 63005,
+  'progress' => 56,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 63447,
+  'progress' => 57,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 63793,
+  'progress' => 57,
+  'tarsize' => 110619,
+  'time' => 1301290948,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 63990,
+  'progress' => 57,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 64193,
+  'progress' => 58,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 64400,
+  'progress' => 58,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 64641,
+  'progress' => 58,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 66296,
+  'progress' => 59,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 66646,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 66743,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 66832,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 66907,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67008,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67238,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67329,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67460,
+  'progress' => 60,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67550,
+  'progress' => 61,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67641,
+  'progress' => 61,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 67813,
+  'progress' => 61,
+  'tarsize' => 110619,
+  'time' => 1301290949,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 68155,
+  'progress' => 61,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 68629,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 68727,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 68984,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 69131,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 69342,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 69632,
+  'progress' => 62,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 70003,
+  'progress' => 63,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 70124,
+  'progress' => 63,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 70267,
+  'progress' => 63,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 70463,
+  'progress' => 63,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 70644,
+  'progress' => 63,
+  'tarsize' => 110619,
+  'time' => 1301290950,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 71046,
+  'progress' => 64,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 71362,
+  'progress' => 64,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 71496,
+  'progress' => 64,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 71691,
+  'progress' => 64,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 71880,
+  'progress' => 64,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72040,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72160,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72281,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72455,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72614,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72748,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 72901,
+  'progress' => 65,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73044,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73157,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73312,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73486,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73631,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73735,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290951,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 73883,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74068,
+  'progress' => 66,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74290,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74474,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74603,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74725,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 74916,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290952,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 75091,
+  'progress' => 67,
+  'tarsize' => 110619,
+  'time' => 1301290953,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 75337,
+  'progress' => 68,
+  'tarsize' => 110619,
+  'time' => 1301290953,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 75608,
+  'progress' => 68,
+  'tarsize' => 110619,
+  'time' => 1301290954,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 75839,
+  'progress' => 68,
+  'tarsize' => 110619,
+  'time' => 1301290955,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 76031,
+  'progress' => 68,
+  'tarsize' => 110619,
+  'time' => 1301290956,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 77450,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290956,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 77673,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290956,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 77888,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 77991,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 78164,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 78253,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 78388,
+  'progress' => 70,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 78965,
+  'progress' => 71,
+  'tarsize' => 110619,
+  'time' => 1301290958,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 79816,
+  'progress' => 72,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 80147,
+  'progress' => 72,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 80609,
+  'progress' => 72,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 81021,
+  'progress' => 73,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 81333,
+  'progress' => 73,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 81647,
+  'progress' => 73,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 81830,
+  'progress' => 73,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 85975,
+  'progress' => 77,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 86975,
+  'progress' => 78,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87253,
+  'progress' => 78,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87354,
+  'progress' => 78,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87465,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87588,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87691,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290959,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87782,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 87975,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 88097,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 88209,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 88333,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 88451,
+  'progress' => 79,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 88601,
+  'progress' => 80,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 89187,
+  'progress' => 80,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 90304,
+  'progress' => 81,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 91117,
+  'progress' => 82,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 91548,
+  'progress' => 82,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 92444,
+  'progress' => 83,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 93163,
+  'progress' => 84,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 93697,
+  'progress' => 84,
+  'tarsize' => 110619,
+  'time' => 1301290960,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 95252,
+  'progress' => 86,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 96227,
+  'progress' => 86,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 96330,
+  'progress' => 87,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 96484,
+  'progress' => 87,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97344,
+  'progress' => 87,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97468,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97601,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97718,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97848,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 97973,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 98298,
+  'progress' => 88,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 98490,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 98556,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 98760,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 99046,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 99277,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 99397,
+  'progress' => 89,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 99566,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 99802,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100172,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100300,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290961,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100396,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100622,
+  'progress' => 90,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100768,
+  'progress' => 91,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 100933,
+  'progress' => 91,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 101374,
+  'progress' => 91,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 101536,
+  'progress' => 91,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 101680,
+  'progress' => 91,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 101803,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 101948,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102072,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102173,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102313,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102456,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290962,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102619,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 102839,
+  'progress' => 92,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103029,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103209,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103290,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103377,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103457,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103541,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103625,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103710,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 103795,
+  'progress' => 93,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 104310,
+  'progress' => 94,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 105018,
+  'progress' => 94,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 105175,
+  'progress' => 95,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 105468,
+  'progress' => 95,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 105541,
+  'progress' => 95,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 105892,
+  'progress' => 95,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 106313,
+  'progress' => 96,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 106478,
+  'progress' => 96,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 106799,
+  'progress' => 96,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 107230,
+  'progress' => 96,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 108211,
+  'progress' => 97,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 108447,
+  'progress' => 98,
+  'tarsize' => 110619,
+  'time' => 1301290963,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 108860,
+  'progress' => 98,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 109148,
+  'progress' => 98,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 109450,
+  'progress' => 98,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 109700,
+  'progress' => 99,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 109898,
+  'progress' => 99,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'extract',
+  'offset' => 110173,
+  'progress' => 99,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => 'read header',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():257',
+    2 => '_readHeader():1271',
+    3 => '_extractList():185',
+  ),
+)
+
+=====================
+array (
+  'state' => 'complete',
+  'offset' => 110173,
+  'progress' => 99,
+  'tarsize' => 110619,
+  'time' => 1301290964,
+  'msg' => '',
+  'debug' => 
+  array (
+    0 => 'setState():272',
+    1 => '_setState():64',
+    2 => 'extract():34',
+  ),
+)
+
+=====================
+array (
+  'state' => 'none',
+  'offset' => NULL,
+  'progress' => 0,
+  'tarsize' => NULL,
+  'time' => 1301290965,
+  'msg' => 'install complete',
+  'debug' => 
+  array (
+    0 => 'setState():317',
+    1 => 'isExtractSucces():453',
+    2 => 'installScripts():1250',
+    3 => 'step3():1865',
+  ),
+)
+
+=====================

@@ -1,0 +1,49 @@
+	<h1 class="breadcrumbs">
+		<a href="{'?ukey=languages'|set_query_html}">{lbl_pgn_languages}</a>
+		&raquo;
+		{$CurrentDivision.name|translate}{if $language.name}: {$language.name|escape:'html'}{/if}
+	</h1>
+
+	{$MessageBlock}
+	
+	<form action="{''|set_query_html}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="lang_id" value="{$language.id|escape:'html'}" />
+		
+		<ul class="form">
+		
+		<li id="lang_name">
+			{'loc_lang_name'|translate}<br />
+			<input class="text" type="text" size="25" name="lang_name" value="{$language.name|escape:'html'}" />
+		</li>
+		
+		<li id="lang_ltr">
+			{'loc_lang_direction'|translate}<br />
+			<label><input class="text" type="radio" name="direction" value="0" {if !$language.direction}checked="checked"{/if}/>{'loc_lang_ltr_enabled'|translate}</label>
+			<label><input class="text" type="radio" name="direction" value="1" {if $language.direction}checked="checked"{/if}/>{'loc_lang_ltr_disabled'|translate}</label>
+			<div class="field_descr">{'loc_lang_ltr_descr'|translate}</div>
+		</li>
+		<li id="lang_iso2">
+			{'loc_lang_iso2'|translate}<br />
+		
+			<input class="text" type="text" maxlength="2" size="2" name="lang_iso2" value="{$language.iso2|escape:'html'}" />
+			<div class="field_descr">{'loc_langiso2_descr'|translate}</div>
+		</li>
+		
+		<li id="lang_enabled">
+			<label for="lang_enabled">{'loc_lang_enable'|translate}</label><br />
+			<input type="checkbox" value="1" name="lang_enabled" id="lang_enabled" {if $language.enabled} checked="checked"{/if}{if $language.is_default} disabled{/if} />
+		</li>
+		
+		<li id="upload_thumbnail">
+			{'loc_lang_icon'|translate}<br />
+			{if $language.thumbnail_url}
+			<img src="{$language.thumbnail_url|escape:'html'}" alt="{$language.name|escape:'html'}" hspace="6" align="left" />
+			{/if}
+			<input class="file" type="file" name="upload_thumbnail" />
+		</li>
+		
+		</ul>
+		
+		<br />
+		<input type="submit" value="{'btn_save'|translate}" name="addmodlang" class="button" />
+	</form>

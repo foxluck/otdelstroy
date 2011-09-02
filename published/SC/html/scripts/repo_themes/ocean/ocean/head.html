@@ -1,0 +1,103 @@
+<title>{$page_title|default:$smarty.const.CONF_DEFAULT_TITLE|escape:'html'}</title>
+{$page_meta_tags}
+<script type="text/javascript" src="{$smarty.const.URL_JS}/niftycube.js"></script>
+{literal}
+<script type="text/javascript">
+var BrowserDetect = {
+	init: function () {
+		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+		this.version = this.searchVersion(navigator.userAgent)
+			|| this.searchVersion(navigator.appVersion)
+			|| "an unknown version";
+		this.OS = this.searchString(this.dataOS) || "an unknown OS";
+	},
+	searchString: function (data) {
+		for (var i=0;i<data.length;i++)	{
+			var dataString = data[i].string;
+			var dataProp = data[i].prop;
+			this.versionSearchString = data[i].versionSearch || data[i].identity;
+			if (dataString) {
+				if (dataString.indexOf(data[i].subString) != -1)
+					return data[i].identity;
+			}
+			else if (dataProp)
+				return data[i].identity;
+		}
+	},
+	searchVersion: function (dataString) {
+		var index = dataString.indexOf(this.versionSearchString);
+		if (index == -1) return;
+		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+	},
+	dataBrowser: [
+		{
+			string: navigator.vendor,
+			subString: "Apple",
+			identity: "Safari"
+		}
+	],
+	dataOS : []
+};
+
+function roundElems(){
+BrowserDetect.init();
+if(BrowserDetect.browser == 'Safari'){
+	var oldonload = window.onload;
+	window.onload = function(){
+		if(oldonload)oldonload();
+
+Nifty("a.ocn_logo","bl");
+Nifty("div.ocn_blueline a","");
+Nifty("div.cpt_logo","top");
+Nifty("div.ocn_whiteline div","left transparent fixed-height");
+Nifty("div.ocn_right_wh","right");
+Nifty("div.ocn_rightrel","right fixed-height");
+Nifty("div.ocn_left_wh","top");
+Nifty("div.bluebg","top");
+Nifty("div.orangebg","top");
+Nifty("div.greenbg","transparent top");
+Nifty("div.ocn_left_bott_wh","bottom");
+Nifty("div.cpt_category_tree","bottom");
+Nifty("div.cpt_currency_selection","bottom");
+Nifty("div.cpt_maincontent","");
+Nifty("div.cpt_product_search","bottom");
+Nifty("div.cpt_shopping_cart_info","");
+Nifty("div.ocn_left_full_wh","");
+Nifty("div#container_footer div","transparent");
+Nifty("div.cpt_news_short_list","bottom transparent");
+Nifty("div#cat_advproduct_search","");
+Nifty("div.cpt_language_selection","bottom");
+
+	}
+}else{
+
+
+Nifty("a.ocn_logo","bl");
+Nifty("div.ocn_blueline a","");
+Nifty("div.cpt_logo","top");
+Nifty("div.ocn_whiteline div","left transparent fixed-height");
+Nifty("div.ocn_right_wh","right");
+Nifty("div.ocn_rightrel","right fixed-height");
+Nifty("div.ocn_left_wh","top");
+Nifty("div.bluebg","top");
+Nifty("div.orangebg","top");
+Nifty("div.greenbg","transparent top");
+Nifty("div.ocn_left_bott_wh","bottom");
+Nifty("div.cpt_category_tree","bottom");
+Nifty("div.cpt_currency_selection","bottom");
+Nifty("div.cpt_maincontent","");
+Nifty("div.cpt_product_search","bottom");
+Nifty("div.cpt_shopping_cart_info","");
+Nifty("div.ocn_left_full_wh","");
+Nifty("div#container_footer div","transparent");
+Nifty("div.cpt_news_short_list","bottom transparent");
+Nifty("div#cat_advproduct_search","");
+Nifty("div.cpt_language_selection","bottom");
+Nifty("div.cpt_survey","bottom");
+
+
+
+}
+}
+</script>
+{/literal}

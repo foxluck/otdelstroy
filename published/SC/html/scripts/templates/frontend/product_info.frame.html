@@ -1,0 +1,35 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/product_detailed.js"></script>
+{if $widget}
+	{assign var=_ext_url value="&view=noframe&external=1"}
+{/if}
+<form rel="{$product_info.productID}" action='{""|set_query_html}' method="post">
+<input name="productID" value="{$product_info.productID}" type="hidden" >
+<input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" >
+<input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" >
+
+{if $product_info ne NULL || $CPT_CONSTRUCTOR_MODE}
+
+{if $PAGE_VIEW ne 'printable'}
+
+<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td valign="top">{cpt_product_category_info}</td>
+		{if $PAGE_VIEW ne 'mobile'}
+		<td align=right> {* printable version link *}
+		 <table cellpadding="0" cellspacing="0" class="product_print_v">
+		  <tr><td><a rel="nofollow" href="javascript:open_printable_version('{"view=printable"|set_query}');"><img src="{$smarty.const.URL_IMAGES}/printer-icon.gif" alt="{lbl_btn_printable_version}" /></a></td>
+		  <td><a rel="nofollow" href="javascript:open_printable_version('{"view=printable"|set_query}');">{lbl_btn_printable_version}</a></td>
+		  </tr>
+		 </table>
+		</td>
+		{/if}
+	</tr>
+</table>
+
+{/if}
+
+{include file="product_info.html"}
+
+{/if}
+
+</form>

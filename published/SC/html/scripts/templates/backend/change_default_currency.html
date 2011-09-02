@@ -1,0 +1,28 @@
+<h1 class="breadcrumbs">
+	<a href="{'?ukey=currencies'|set_query_html}">{'pgn_currency_types'|translate:escape:'html'}</a>
+	&raquo;
+	{$CurrentDivision.name|translate}
+</h1>
+
+{if $smarty.get.saved}
+{'msg_information_save'|translate}
+
+{else}
+<form action="{''|set_query_html}" method="post">
+<input name="action" value="set_default_currency" type="hidden" />
+
+{lbl_curr_select_new_default_currency}:
+<select name="new_default_currency">
+{foreach from=$currencies item=_currency}{if $_currency.CID ne $smarty.const.CONF_DEFAULT_CURRENCY}
+<option value="{$_currency.CID|escape:'html'}">{$_currency.Name|escape:'html'}</option>
+{/if}{/foreach}
+</select>
+
+<p>{lbl_curr_change_default_curr_important}</p>
+
+<p>
+	<input value="{'btn_save'|transcape}" name="btn_save" type="submit" />
+</p>
+
+</form>
+{/if}

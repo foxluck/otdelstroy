@@ -1,0 +1,58 @@
+<style type="text/css">
+	h4 {margin-top: 0} 
+</style>
+<div id="create-form-container" class="container">
+	<h1>[`Create a new form`]</h1>
+
+	<p class="text">
+[`Signup form will appear as a simple form into which people will enter their name, email address, and whatever other fields you specify. Using two lines of code you will be able to add this form to your website or blog. Information entered by visitors will be posted to your WebAsyst Contacts account.`]	
+	</p>
+
+
+<h4 >[`Form name`]:</h4> 
+<p>
+<input class="title" type="text" id="wg_name" value="[`New form`]" /><br />
+([`subscribers will not see this name, it appears only in the list of forms on the left panel`])
+</p>
+<div class="colorblock" style="margin-top: 10px; width:560px; //width:600px;">
+<h5>[`Folder to which new subscribers will be added`]:</h5>
+<p><select id="wg_folder_id" class="fix-width">
+	<option value="">&nbsp;&lt;[`none folder`]&gt;</option>
+	{{foreach from=$folders item=f key=folder_id}}
+		{{if $f.RIGHTS < 3}}
+		{{assign var="disable" value='disabled="disabled"'}}
+		{{else}}
+		{{assign var="disable" value=""}}
+		{{/if}}			
+	<option value="{{$f.ID}}" {{$disable}}>{{"&nbsp;"|repeat:$f.OFFSET}}{{$f.NAME}}</option>
+	{{/foreach}}
+</select></p>
+
+<h5>[`This form will add contacts of this type`]:</h5>
+<p><select id="widget-type">
+{{foreach from=$types item=type key=type_id}}
+	<option value="{{$type_id}}">{{$type}}</option>
+{{/foreach}}
+</select></p>
+</div>
+<div class="end-button"><input id="wg_create" type="button" onClick="createWidget()" value="[`Create form`]" /></div>
+</div>
+<script type="text/javascript">
+	function createWidget() {
+		var type = jQuery("#widget-type").val();
+		var name = jQuery("#wg_name").val();
+		var folder_id = jQuery("#wg_folder_id").val();
+		if (!name.length) {
+			alert('Please fill name');
+			return false;
+		}
+					
+		jQuery.post("?mod=widgets&act=create&ajax=1", {name: name, folder_id: folder_id, type: type, create: 1}, function (response) {
+			if (response.status == 'OK') {
+				document.app.widgetsList.addWidget(response.data);
+			} else if (response.status == 'ERR') {
+				alert(response.error);
+			}
+		}, "json");
+	}
+</script>

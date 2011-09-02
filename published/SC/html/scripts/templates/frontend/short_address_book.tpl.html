@@ -1,0 +1,21 @@
+<tr>
+	<td valign="top">
+		<strong>{"usr_custinfo_default_address"|translate}</strong>
+		<div class="paddingblock">
+		<p>
+		{if $addressStr}
+			{$addressStr}
+		{else}
+			{lbl_str_not_defined}
+		{/if}
+		</p>
+		{if $addresses_num}
+		{'usr_addresses_num'|translate|replace:'%ADRESSES_NUM%':$addresses_num}
+		{/if}
+		</div>
+	</td>
+	
+	<td valign="top" align="right">
+		<a href="{"?ukey=address_book"|set_query}">{"lnk_manage_address_book"|translate}</a>
+	</td>
+</tr>

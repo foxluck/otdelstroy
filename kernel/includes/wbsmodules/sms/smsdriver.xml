@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<wbsparams>
+
+	<param name="module_description" special="yes">SMSdriver SMS gateway</param>
+	<param name="module_classname" special="yes">sms_smsdriver</param>
+
+	<param name="user" type="text" default="user" label="User" />
+	<param name="password" type="text" default="password" label="Password" />
+	<param name="host" type="text" default="sms2.smsdriver.com" label="Remote Server Name" />
+	<param name="gateway" type="numeric" default="0" label="GateWay ( possible values are: from 0 to 15 or 92. )" />
+
+	<param name="cost" type="float" default="0.07" label="One Credit Price (USD)" />
+	<param name="reserve" type="float" default="0.11" label="Reserve Charge (USD)" />
+
+</wbsparams>

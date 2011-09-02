@@ -1,0 +1,92 @@
+
+.voite span {  margin:0 0 0 1em ; display:block; float:left;}
+.voite span.colorbg {  color:#7d6854; width:90px; background:#EEEECC; -webkit-border-radius:5px; -moz-border-radius:5px; padding:0 .25em;line-height:1.6em; font-size:1.1em;  font-family:Arial, Helvetica, sans-serif; serif; text-align:center;}
+.voite span.colorbg b { color:#714d08; }
+.default-link a { font-size:15px; text-decoration:underline; padding:1em;}
+.response { padding: 0 0 0 10px;}
+.response .voiting { width:20em; margin-top:0;  float:right;}
+.response h4 {  margin:0;font-size:11pt;
+line-height:100%;}
+.response-item { border:1px solid #E0E0E0; border-top-width:2px; padding:10px 10px 10px 20px; margin: 0 0 10px 0;}
+.response .date {padding-left:.5em; font-size:0.95em;font-size:0.95em;
+padding-left:0.5em;
+color:#B2B2B2;
+font-style:italic;}
+.response .comment-indent {padding:15px 0 10px 50px;}
+.response .comment-indent h4  {background:#EEEEDD; color:#444; padding:0.25em 0.5em; border:none;}
+.response .comment-indent span.header-name {  margin-right:3em; }
+.response .comment-indent h4 a { font-size:0.85em; font-weight:normal; color:#333; text-decoration:underline;}
+.response .comment-indent p  {color:#666; font-family:Arial, Helvetica, sans-serif; font-style:italic; }
+.response span.v-label { font-weight:bold; width:10em; white-space:nowrap; text-align:right; padding-right:.25em;}
+
+.response p {color:#454545;
+font-size:10pt;
+line-height:130%; }
+.response p img { vertical-align:middle;}
+.editor-btns * { font-size:0.95em;}
+
+.breadcrumbs * { display:inline;}
+.breadcrumbs ul { padding:30px 0 0 0; margin:0;list-style:none;} 
+.breadcrumbs li { line-height:30px;color:#0043A7;list-style:none;
+white-space:nowrap;}
+
+/*breadcrumbs*/
+.breadcrumbs li.sep { padding: 10px 5px 0 3px; color:#0043A7; font-size:0.85em;}
+.breadcrumbs a:link, .breadcrumbs a:visited { font-size:0.95em;} 
+
+.response .title { padding:0.25em 20px; margin:0 0 10px 0;}
+
+.partner-service { padding:10px 20px 20px 0; zoom:1;}
+.partner-service table {
+border-collapse:collapse;
+
+}
+.partner-service td {
+border-bottom:1px solid #EEEEEE;
+color:#222222;
+padding:0.75em 20px;
+text-align:center;
+
+}
+.partner-service td.f-col {
+font-size:11pt;
+font-weight:normal;
+text-align:left;
+
+}
+.partner-service td.price-col span {
+font-size:12pt;
+font-weight:bold;
+}
+.partner-service th {
+border-bottom:2px solid #DDDDDD;
+color:#777777;
+font-family:Tahoma,Arial,Helvetica,sans-serif;
+font-size:8pt;
+padding:0.25em 3em 0.5em;
+text-align:center;
+text-transform:uppercase;
+white-space:nowrap;
+}
+.partner-service td.stars {
+white-space:nowrap;
+ width:240px;
+}
+
+.resp-delete, .resp-delete:visited, .port-delete, .port-delete:visited { line-height:16px; background:#E4E7EB url(../img/del.png) 6px 4px no-repeat; padding:4px 5px 4px 25px; -moz-border-radius:5px; -webkit-border-radius:5px; display:block; float:right; color:#444; font-size:0.85em; font-family:Arial, Helvetica, sans-serif; font-weight:bold; }
+.resp-delete:hover, .port-delete:hover { background-color:#cdd3da; color:#000; text-decoration:none; font-weight:bold;}
+
+.response_save, .response_save:visited, .jobs_save, .jobs_save:visited, .portfolio_save, .portfolio_save:visited { line-height:16px; background:#E4E7EB url(../img/save.png) 6px 4px no-repeat; padding:4px 5px 4px 25px; -moz-border-radius:5px; -webkit-border-radius:5px; display:inline-block; color:#444; font-size:0.85em; font-family:Arial, Helvetica, sans-serif; font-weight:bold; }
+.response_save:hover, .jobs_save:hover, .portfolio_save:hover { background-color:#cdd3da; color:#000; text-decoration:none; font-weight:bold;}
+
+.resp-actions {  padding:10px; overflow:hidden; } 
+.response_edit_link span, .jobs_edit_link span, .portfolio_edit_link span { background:url(../img/edit.png) 0 0 no-repeat; display:inline-block; width:16px; height:16px; margin:0 2px -3px -16px;}
+.response_edit_link, .jobs_edit_link, .portfolio_edit_link { padding-left:22px;}
+.jobs-actions {padding:10px 0 0 15px;}
+.portfolio_row {border-top:2px solid #E0E0E0; border-right:1px solid #E0E0E0; border-bottom:1px solid #E0E0E0; border-left:1px solid #E0E0E0;}
+.portfolio_item {padding:0 1em;}
+.portfolio_controls {padding-top:1em; padding-bottom:1em;}
+.portfolio_area {width:100%; height:6em;}
+.portfolio_edit p {padding-top:0.5em;}
+.online_edit_link, .online_edit_link:hover, .online_edit_link:visited {text-decoration:none; color:#000; font-weight:bold;}
+.info_view p {padding-bottom:1em;}

@@ -1,0 +1,41 @@
+<html>
+<head>
+<title> 
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+<link href="../../../common/html/classic/styles/reports.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form" >
+	<? include file="../../../common/html/classic/header.htm"?>
+	<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+	<? if !$fatalError ?>
+
+			<ul id="reportlist">
+				<li>
+					<a href="rep_acessrights_users.php"><? $kernelStrings.rp_accessrightsusers_title ?></a><br>
+					<div><? $kernelStrings.rp_accessrightsusers_note ?></div>
+				</li>
+				<li>
+					<a href="rep_acessrights_groups.php"><? $kernelStrings.rp_accessrightsgroups_title ?></a><br>
+					<div><? $kernelStrings.rp_accessrightsgroups_note ?></div>
+				</li>
+			</ul>
+
+	<? /if ?>
+	<input type="hidden" name="btndummy">
+	<input type="hidden" name="contactlist" value="<? $contactlist ?>">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

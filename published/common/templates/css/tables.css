@@ -1,0 +1,6 @@
+table.wbs-html-grid {border-collapse: collapse; }
+table.wbs-html-grid tr td {padding: 3px}
+table.wbs-html-grid thead tr {background: white url(../img/background-gradient-gray.gif) repeat-x scroll center bottom}
+table.wbs-html-grid tr.odd td {background: #F9F9F9}
+table.wbs-html-grid td a {text-decoration: none}
+table.wbs-html-grid td a:hover {text-decoration: underline}

@@ -1,0 +1,89 @@
+{* it is ordering etap *}
+
+<h1><u>{"str_checkout"|translate}</u></h1>
+
+<h3>{"str_authorization"|translate}</h3>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="5">
+	<tr>
+    		<td colspan="2" bgcolor="#CCCCCC">
+			<p>
+				<strong>{"checkout_i_am_new_customer"|translate}</strong>
+			</p>
+  		</td>
+  	</tr>
+  	<tr>
+    		<td width="15">
+      			<p>&nbsp;</p>
+     		 </td>
+    		<td width="99%">
+			<p>
+				{if $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS == '1'}
+					<a href='{"?ukey=register&order=yes"|set_query}'>{"str_register"|translate}</a>
+				{/if}
+				{if $smarty.const.CONF_ORDERING_REQUEST_BILLING_ADDRESS == '0'}
+					<a href="{"?ukey=register&order_without_billing_address=yes"|set_query}">
+						{"str_register"|translate}
+					</a>
+				{/if}
+			</p>
+			{if $smarty.const.CONF_QUICK_ORDER}
+      				<p>
+					<a href="{"?ukey=quick_register"|set_query}">{"checkout_with_no_registration"|translate}</a>				
+				</p>
+			{/if}
+		</td>
+  	</tr>
+  	<tr> 
+    		<td colspan="2" bgcolor="#CCCCCC">
+			<strong>{"str_i_am_registered_customer"|translate}</strong>
+		</td>
+  	</tr>
+  	<tr> 
+    		<td width="15">&nbsp;</td>
+    		<td>
+				<form action="{''|set_query_html}" method="POST">
+					<table border=0>
+						<tr>
+							<td align=right>
+								{"usr_custinfo_login"|translate}
+							</td>
+							<td>
+								<input type="text" class="ss" name="user_login" size="10" value='{$user_login}' >
+							</td>
+						</tr>
+						<tr>
+							<td align=right>
+								{"usr_custinfo_password"|translate}
+							</td>
+							<td>
+								<input name="user_pw" class="ss" type="password" size="10" >
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" name="login" value="{"btn_ok"|translate}" ></td>
+						</tr>
+					</table>
+				</form>
+				<form action="{"__tt="|set_query}" method="POST">
+					{if $password_sent_notifycation eq 'yes'}
+						<div><b>{"usr_password_sent"|translate}</b></div>
+					{elseif  $password_sent_notifycation eq 'no'}
+						<div class="error_msg_f">{"usr_cant_find_user_in_db"|translate} ({$remind_user_login})!</div>
+					{/if}
+					&nbsp;
+					{if !$remind_password}
+					<a href="{"remind_password=yes"|set_query}">
+						{"lnk_forgot_password"|translate}
+					</a>
+					{else}
+						{"usr_forgot_password_descr"|translate}
+						<input type="text" name="login_to_remind_password" value="{$user_login}" >
+						<input type="hidden" name="remind_password" >
+						<input type="submit" value="{"btn_ok"|translate}" >
+					{/if}
+				</form>
+			</td>
+  	</tr>
+</table>

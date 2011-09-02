@@ -1,0 +1,67 @@
+{* discount managment *}
+<h1>{lbl_pgn_discounts}</h1>
+
+<form name='MainForm' method="post">
+	<h2>{"dscnt_select_calculation_method"|translate}</h2>
+	
+	{$control}
+	
+	<p>
+	  <input name="discount_type_save" type="submit" value='{"btn_save"|translate}' />
+	</p>
+	
+	<h2>{"dscnt_method_order_amount_criteria"|translate}</h2>
+	
+	<p>{"dscnt_method_order_amount_criteria_descr"|translate}</p>
+	
+	{if $error}
+		ERROR_IRCKA
+	{/if}
+	
+	<table class="grid">
+	<tr class="gridsheader">
+		<td>{"dscnt_order_amount"|translate}</td>
+		<td>{"dscnt_order_amount_percent_value"|translate}</td>
+		<td>{lbl_btn_delete}</td>
+	</tr>
+	
+	{section name=i loop=$discounts}
+	<tr class="{cycle values='gridline,gridline1'}">
+		<td>
+			<input type="text" name='price_range_{$discounts[i].discount_id}' value='{$discounts[i].price_range|escape:"html"}' style="width:100%" />
+		</td>
+		<td>
+			<input type="text" name='percent_discount_{$discounts[i].discount_id}' value='{$discounts[i].percent_discount|escape:"html"}' style="width:100%" />
+		</td>
+		<td align="center">
+			<a href='{"delete=`$discounts[i].discount_id`"|set_query_html}' title='{"cnfrm_delete"|translate}' class="confirm_action">
+				<img src="images_common/remove.gif" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	</tr>
+	{/section}
+	
+	<tr class="gridsheader_simple">
+		<td colspan="3"><b>{"btn_add"|translate}</b></td>
+	</tr>
+	<tr class="gridsheader">
+		<td>{"dscnt_order_amount"|translate}</td>
+		<td>{"dscnt_order_amount_percent_value"|translate}</td>
+		<td></td>
+	</tr>
+	<tr> 
+		<td>
+			<input type="text" name='new_price_range' style="width:100%" />
+		</td>
+		<td>
+			<input type="text" name='new_percent_discount' style="width:100%" />
+		</td>
+		<td></td>
+	</tr>
+	
+	</table>
+	
+	<p>
+		<input name="save_order_price_discounts" type="submit" value='{"btn_save"|translate}' />
+	</p>
+</form>

@@ -1,0 +1,16 @@
+<tr>
+	<td><? $widgetStrings.field_folder_label ?>:</td>
+	<td>
+		<? assign var=fieldName value="FOLDER" ?>
+		<? assign var=fieldValue value=$itemData.params.$fieldName ?>
+		
+		<? if !$fieldValue ?>
+			<? assign var=fieldValue value=$field.default ?>
+		<? /if ?>
+		<? if !$fieldValue ?>
+			<? assign var=fieldValue value=$params.FOLDER ?>
+		<? /if ?>
+		
+		<? $folderName ?>
+	</td>
+</tr>

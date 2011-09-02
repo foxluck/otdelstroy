@@ -1,0 +1,31 @@
+<h1>{lbl_ordr_id}: {$order.orderID_view} ({$order_time})</h1>
+
+<h2>{$smarty.const.CONF_SHOP_NAME}</h2>
+
+<p>{lbl_ordr_customer}: {$customer_firstname} {$customer_lastname}
+<br />{lbl_usr_custinfo_email} {$customer_email}
+{section name=i loop=$customer_add_fields}
+<br />{$customer_add_fields[i].reg_field_name|escape:'html'}: {$customer_add_fields[i].reg_field_value|escape:'html'}
+{/section}
+<br />{lbl_ordr_customer_ip}: {$customer_ip}
+<br />{lbl_ordr_customer_comments}: {$customer_comments}</p>
+
+<p>{lbl_email_ordr_ordered_products}:</p>
+
+<p style="padding-left:20px;">{section name=i loop=$content}
+{if $content[i].product_code}[{$content[i].product_code}] {/if}{$content[i].name|escape:'html'} (x{$content[i].Quantity}): {$content[i].Price}<br />
+{/section}</p>
+
+<p>{lbl_usr_custinfo_group_discount}: {$discount}
+<br />{lbl_shipping}: {$shipping_type}
+<br />{lbl_ordr_shipping_handling_cost}: {$shipping_cost}
+<br />{lbl_ordr_recipient}: {$shipping_firstname} {$shipping_lastname}
+<br />{lbl_ordr_shipping_address}: {if $shipping_address ne ""}{$shipping_address}, {/if}{if $shipping_city ne ""}{$shipping_city},{/if} {if $shipping_state ne ""}{$shipping_state} {/if}{if $shipping_zip ne ""}{$shipping_zip} {/if}{if $shipping_country ne ""}{$shipping_country}{/if}</p>
+
+<p>{lbl_payment}: {$payment_type}
+<br />{lbl_ordr_payee}: {$billing_firstname} {$billing_lastname}
+<br />{lbl_ordr_billing_address}: {if $billing_address ne ""}{$billing_address}, {/if}{if $billing_city ne ""}{$billing_city},{/if} {if $billing_state ne ""}{$billing_state} {/if}{if $billing_zip ne ""}{$billing_zip} {/if}{if $billing_country ne ""}{$billing_country}{/if}</p>
+
+<p>{lbl_ordr_tax}: {$total_tax}</p>
+
+<h2>{lbl_str_total}: {$order_amount}</h2>

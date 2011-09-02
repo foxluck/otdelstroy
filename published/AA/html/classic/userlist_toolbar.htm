@@ -1,0 +1,28 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="pageTopPanel">
+			<? if $searchString == "" ?>
+				<? include file="../../../common/html/classic/toolbar_button.htm" align="left" caption=$kernelStrings.app_group_label formname="form" space_right=#toolbarSmallSpace# button_menu=$groupMenu popupMenuIndex=1 menuIcon=1 showTopBar=1 menuClass="btnText" ?>
+			<? /if ?>
+
+			<? include file="../../../common/html/classic/toolbar_button.htm" align="left" caption=$kernelStrings.ul_user_menu formname="form" space_right=#toolbarSmallSpace# button_menu=$contactMenu popupMenuIndex=3 menuIcon=1 showTopBar=1 menuClass="btnText" ?>
+
+			<? include file="../../../common/html/classic/toolbar_button.htm" align="left" caption=$kernelStrings.ul_view_menu formname="form" space_right=#toolbarSmallSpace# button_menu=$viewMenu popupMenuIndex=15002 menuIcon=1 showTopBar=1 checkboxes=1 menuClass="btnText"?>
+
+			<img src="<? "images/buttons/top_separator.gif"|stylesetitem:"classic":$styleSet ?>" border="0" align="left"> 
+			<table border="0" cellpadding="0" cellspacing="0" align="left">
+				<tr>
+					<td><img src="<? "images/buttons/btn_separator.gif"|stylesetitem:"classic":$styleSet ?>" border="0" width="5" height="22"></td>
+					<td valign="middle" class="btnText"><? $kernelStrings.cm_search_label|cat:":&nbsp;" ?></td>
+					<td><input type="text" class="control" name="searchString" value="<? $searchString|htmlsafe:true:true ?>" style="width: 200px"></td>
+					<td>
+						<? include file="../../../common/html/classic/toolbar_button.htm" align="left" name="searchbtn" caption=$kernelStrings.cm_search_btn formname="form" space_left=#toolbarSmallSpace# ?>
+						<? if $searchString != "" ?>
+							<? include file="../../../common/html/classic/toolbar_button.htm" align="left" name="foldersbtn" caption=$kernelStrings.app_treefolders_text formname="form" space_left=#toolbarSmallSpace# ?>
+						<? /if ?>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

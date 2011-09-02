@@ -1,0 +1,61 @@
+<h3><u>{"pgn_customer_search"|translate}</u></h3>
+
+<form name="CustomerSearchForm" method="post">
+<input type="hidden" name="search" value="go">
+
+<table border="0" cellspacing="1" cellpadding="3" width="100%">
+    <tr>
+        <td>{"lbl_search_customer_simple"|translate}:</td>
+    </tr>
+    <tr>
+        <td><input type="text" name="search_string" id="search_string" value='{$search_string}' style="width: 380px;" /></td>
+        <td align="center"><button type="submit">{"str_search"|translate}</button></td>
+    </tr>
+</table>
+
+</form>
+
+{if $customers}
+<form action="{'&action='|set_query}" name="SetCustomerForm" method="post" target="sc_frame">
+<input type="hidden" name="action" value="set_customer">
+<input type="hidden" name="order_id" value="{$smarty.get.order_id}">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+    <colgroup>
+        <col width="5%" />
+        <col width="25%" />
+        <col width="30%" />
+        <col width="40%" />
+    </colgroup>
+    <tr class="gridsheader">
+        <td></td>
+        <td>{"usr_custinfo_login"|translate}</td>
+        <td>{"usr_custinfo_email"|translate}</td>
+        <td>{"str_name"|translate}</td>
+    </tr>
+    {foreach from=$customers item=customer}
+    <tr class="{cycle values='gridline,gridline1'}" onClick="this.cells[0].childNodes[0].click();" style="cursor: default;">
+        <td><input type="radio" name="customer_id" value="{$customer.customerid}" onClick="document.getElementById('select_button').disabled = false;" /></td>
+        <td>{$customer.login}</td>
+        <td>{$customer.email}</td>
+        <td>{$customer.first_name}&nbsp;{$customer.last_name}</td>
+    </tr>
+    {/foreach}
+	<tr class="gridsfooter">
+		<td colspan="4">{include file="backend/share/pagination.html" current_page=$pagination.page pages_count=$pagination.pages base_vars=$pagination.base_vars}</td>
+	</tr>
+    <tr>
+        <td colspan="4" align="left"><button type="submit" disabled="disabled" id="select_button">{"btn_select"|translate}</button></td>
+    </tr>
+</table>
+</form>
+{/if}
+
+{if $empty_result}
+<center><b>{"srch_no_matches_found"|translate}</b></center>
+{/if}
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+setTimeout("document.getElementById('search_string').focus();", 1000);
+{/literal}
+</script>

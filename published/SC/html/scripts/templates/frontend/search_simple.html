@@ -1,0 +1,46 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/category.js"></script>
+{* simple search *}
+<center>
+{if $products_to_show_count > 0}
+
+	<p>{"srch_found"|translate} <b>{$products_found}</b> {"srch_products_plural"|translate}</p>
+
+	{if $string_product_sort}<p id="cat_product_sort">{$string_product_sort}</p>{/if}
+{*
+@features "Products comparison"
+*}
+	{if $smarty.const.CONF_ALLOW_COMPARISON_FOR_SIMPLE_SEARCH}
+	{include file="comparison_products_button.html"}
+	{/if}
+{*
+@features
+*}
+
+	{if $search_navigator}<p>{$search_navigator}</p>{/if}
+
+	<table cellpadding=6 border=0 width=95%>
+		{section name=i1 loop=$products_to_show max=$products_to_show_count}
+			{if $smarty.section.i1.index is div by $smarty.const.CONF_COLUMNS_PER_PAGE}<tr>{/if}
+				<td valign=top width="{math equation="100 / x" x=$smarty.const.CONF_COLUMNS_PER_PAGE format="%d%%"}">
+					{include file="product_brief.html" product_info=$products_to_show[i1]}
+				</td>
+			{if ($smarty.section.i1.index+1) is div by $smarty.const.CONF_COLUMNS_PER_PAGE}</tr>{/if}
+		{/section}
+	</table>
+
+	{if $search_navigator}<p>{$search_navigator}</p>{/if}
+
+{*
+@features "Products comparison"
+*}
+	{if $smarty.const.CONF_ALLOW_COMPARISON_FOR_SIMPLE_SEARCH}
+	{include file="comparison_products_button.html"}
+	{/if}
+{*
+@features
+*}
+
+{else}
+	<p>{"srch_no_matches_found"|translate}
+{/if}
+</center>

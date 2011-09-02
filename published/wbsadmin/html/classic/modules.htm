@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <? include file="../../../common/html/classic/header.htm" nospace=1 ?>
+
+
+  <? include file="../../../common/html/classic/toppanel_fix.htm" ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+
+
+<table border="0" cellspacing="2" cellpadding="0" class="list" >
+	<tr style="background-color: #eee;">
+		<th align="left" width=40%><? $kernelStrings.mod_class_title ?></th>
+		<th align="left" width=40%><? $kernelStrings.mod_assign_class_title ?></th>
+		<th align="left" width=20%>&nbsp;</th>
+	</tr>
+
+	<? foreach from=$modulesSummary item=data key=id name=curLoop ?>
+		<tr<? if ($smarty.foreach.curLoop.iteration % 2) == 0 ?> bgcolor="<? #oddRowsColor#?>"<? /if ?>>
+			<td valign="middle" class="default"><? $data.NAME ?></td>
+			<td valign="middle" class="default">
+					<select name="module[<? $id ?>]" class="control" >
+							<OPTION VALUE=empty >---</OPTION>
+							<? foreach from=$data.MODULES item=mdata key=mid name=curLoop2 ?>
+								<OPTION VALUE=<? $mdata.MODULE ?> <? if $data.DEFAULT == $mdata.MODULE ?>selected<? /if ?> ><? $mdata.TITLE ?></OPTION>
+							<? /foreach ?>
+					</select>			
+			</td>
+			<td><a href="<? $moduleListURL ?>?class=<? $id ?>"><b><? $kernelStrings.mod_setup_list ?></b></a></td>
+		</tr>
+	<? foreachelse ?>
+	<tr align="center"<? if ($smarty.section.userSec.index % 2) != 0 ?> bgcolor="<? #oddRowsColor#?>"<? /if ?>> 
+		<td colspan="2" class="default"><? $kernelStrings.ul_norecords_text ?></td>
+	</tr>
+	<? /foreach ?>
+	</table>
+	<br>
+	<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_save_btn formname="form"?>
+<? else ?>
+<? /if ?>
+
+<input name="edited" type="hidden" id="edited" value="1">
+
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<? assign var=controlWidth value=150 ?>
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? wbs_label fieldName="U_ID" for="U_ID" text=$kernelStrings.amu_loginname_label ?></td>
+		<td valign=top>
+			<? if $newUser ?>
+				<input class=FormControl id="U_ID" type=text name="contactData[U_ID]" value="<? $contactData.U_ID|htmlsafe:true:true ?>" maxlength=20 style="width: <? $controlWidth|cat:"px" ?>">
+			<? else ?>
+				<? $targetUser|htmlsafe:true:true ?>
+			<? /if ?>
+		</td>
+	</tr>
+	<tr>
+		<td><? wbs_label fieldName="U_PASSWORD1" for="U_PASSWORD1" text=$kernelStrings.amu_password_label ?></td>
+		<td valign=top><input class=FormControl id="U_PASSWORD1" type=password name="contactData[U_PASSWORD1]" style="width: <? $controlWidth|cat:"px" ?>"/></td>
+	</tr>
+	<tr>
+		<td><? wbs_label fieldName="U_PASSWORD1" for="U_PASSWORD2" text=$kernelStrings.amu_passconf_label ?></td>
+		<td valign=top><input class=FormControl id="U_PASSWORD2" type=password name="contactData[U_PASSWORD2]" style="width: <? $controlWidth|cat:"px" ?>"/></td>
+	</tr>
+</table>
+
+<table class="FormLayout">
+	<tr>
+		<td align=right><input type=checkbox id="NOTIFICATIONS" name="contactData[receivesmessages]" value=1 <? switchedOutput val=$contactData.receivesmessages true_val=1 str1="checked" ?>></td>
+		<td><? wbs_label skipColon=true for="NOTIFICATIONS" text=$kernelStrings.amu_notificationscb_label ?></td>
+	</tr>
+	<tr class="SeparatedRow">
+		<td><? wbs_label for="MAILFORMAT" text=$kernelStrings.amu_notfirmat_label ?></td>
+		<td>
+				<select name="contactData[mailformat]" id="MAILFORMAT" class="FormControl">
+					<? html_options values=$formatIDs selected=$contactData.mailformat output=$formatNames ?>
+				</select>
+		</td>
+	</tr>
+	<tr class="SeparatedRow">
+		<td><? wbs_label for="LANGUAGE" text=$kernelStrings.amu_language_label ?></td>
+		<td>
+			<select name="contactData[language]" class="FormControl" id="LANGUAGE">
+				<? html_options values=$language_ids selected=$contactData.language output=$language_names ?>
+			</select>
+		</td>
+	</tr>
+
+	<? if $enableTZ ?>
+		<!-- TimeZone -->
+		<tr class="SeparatedRow">
+			<td><? wbs_label for="timezone" fieldName="timezone" text=$kernelStrings.amu_timezone_label ?></td>
+			<td>
+				<select onchange="checkDST()"  name="userdata[timezone]" class="FormControl" id="timezone">
+					<? foreach from=$timeZones key=ID item=tz name=tzLoop ?>
+						<option value='<? $tz.ID ?>' <? if $tz.DST==true ?> class="hasdst" <? else ?> class="nodst" <? /if ?> <? if $userdata.timezone==$tz.ID ?> selected <? /if ?>><? $tz.NAME ?></option>
+					<? /foreach ?>
+				</select>
+			</td>
+		</tr>
+		<tr class="SeparatedRow">
+			<td><? wbs_label for="tzdst" fieldName="ReceivesMessages" text=$kernelStrings.amu_timezone_dst_label ?></td>
+			<td>
+				<input onclick="checkDST()"  type="checkbox" value="1" id="tzdst" name="userdata[tzdst]" <? wbs_checkboxStatus val=$userdata.tzdst true_val=1 ?>/>
+			</td>
+		</tr>
+		<tr class="SeparatedRow">
+			<td><? wbs_label for="tzdst" fieldName="ReceivesMessages" text=$kernelStrings.amu_userlocaltime_label ?></td>
+			<td>
+				<div id="timeMessage" style="font-size: 16px;"></div>
+			</td>
+		</tr>
+	<? /if ?>
+
+	<tr>
+		<td><? wbs_label for="START_PAGE" fieldName="START_PAGE" text=$kernelStrings.amu_startpage_label ?></td>
+		<td>
+			<select id="START_PAGE" name="contactData[START_PAGE]" class="FormControl">
+				<? html_options values=$page_ids selected=$contactData.START_PAGE output=$page_names ?>
+			</select>
+		</td>
+	</tr>
+	<tr class="SeparatedRow">
+		<td><? wbs_label for="START_PAGE" text=$kernelStrings.amu_status_label ?></td>
+		<td>
+			<? if !$userIsDeleted ?>
+				<select name="contactData[U_STATUS]" class="FormControl">
+					<? html_options values=$statusIDs selected=$contactData.U_STATUS output=$statusNames ?>
+				</select>
+			<? else ?>
+				<? $kernelStrings.app_deletedstatus_name ?>
+				<input type=hidden name="contactData[U_STATUS]" value="1">
+			<? /if ?>
+		</td>
+	</tr>
+</table>
+
+<input type=hidden name=loginURL value="<? $loginURL|htmlsafe:true:true ?>">

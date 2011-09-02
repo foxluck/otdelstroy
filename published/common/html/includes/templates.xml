@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<TEMLATELIST>
+	<TEMPLATE ID="classic" NAME="Classic" FODER="classic" FRAMES="1"/>
+	<TEMPLATE ID="cssbased" NAME="CSS Based" FODER="cssbased" FRAMES="0"/>
+</TEMLATELIST>

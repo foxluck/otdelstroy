@@ -1,0 +1,63 @@
+<div>
+{cpt_category_tree overridestyle=''}
+
+
+{* category view *}
+<ul class="bredcrumps">
+{if $selected_category.picture}
+	<li class="cat-logo"><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category.picture|escape:'url'}" alt="{$selected_category.name|escape:'html'}" title="{$selected_category.name|escape:'html'}" /></li>
+{/if}
+	<li><a href="{"?"|set_query}">{"lnk_homepage"|translate}</a></li><li class="delimeter">{$BREADCRUMB_DELIMITER}</li>
+	{section name=i loop=$product_category_path}
+	{if $product_category_path[i].categoryID != 1}
+	<li><a href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'}</a></li>{if !$smarty.section.i.last}<li>{$BREADCRUMB_DELIMITER}</li>{/if}
+	{/if}
+	{/section}
+</ul>
+	{* description *}
+	{if $selected_category.description}<div class="cat-description">{$selected_category.description}</div>{/if}
+	
+
+
+<center style="display:block; clear:both">
+
+{if $subcategories_to_be_shown}
+{/if}
+{section name=i loop=$subcategories_to_be_shown}
+ <a href="{"?categoryID=`$subcategories_to_be_shown[i][0]`"|set_query_html}">{$subcategories_to_be_shown[i][1]}</a>
+ ({$subcategories_to_be_shown[i][2]})
+{/section}
+
+{if $products_to_show}
+
+	{if $string_product_sort}<p id="cat_product_sort">{$string_product_sort}</p>{/if}
+	
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+		
+	 {section name=i1 loop=$products_to_show}
+		{include file="product_brief.html" product_info=$products_to_show[i1]}
+		<br />
+		<br />
+	  {/section}
+	 
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+
+{else}
+<p>
+	{if $search_with_change_category_ability && !$advanced_search_in_category}
+		&nbsp;
+	{else}
+		{if $advanced_search_in_category}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"srch_no_matches_found"|translate} >
+		{else}
+			&nbsp;&nbsp;&nbsp;&nbsp;< {"str_empty_category"|translate} >
+		{/if}
+	{/if}
+</p>
+{/if}
+
+</center>
+</td>
+</tr>
+</tbody>
+</table></div>

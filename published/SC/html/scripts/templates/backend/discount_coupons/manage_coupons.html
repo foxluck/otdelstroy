@@ -1,0 +1,367 @@
+<h1>{"discount_coupons"|translate}</h1>
+
+{if $_errors}
+    <div class="error_block">
+	<ul>
+	{foreach from=$_errors item=_error}
+		<li>{$_error|translate}</li>
+	{/foreach}
+	</ul>
+    </div>
+	{assign var='new_coupon_form_display' value=''}
+{else}
+	{assign var='new_coupon_form_display' value='none'}	
+{/if}
+
+{if $smarty.const.CONF_DSC_COUPONS_ENABLED eq 'N'}
+<div class="comment_block">
+{"msg_coupons_disabled"|translate} <a href="javascript: void(0);" onClick="top.location='frame.php?did={"discount_settings"|division_id}'">{"lbl_discount_settings"|translate}</a>
+</div>
+{/if}
+
+<form name="NewDiscountCouponForm" method="post">
+<input type="hidden" name="coupon_action" value="add_new" />
+
+<div style="background-color: #fafae7; padding: 10px; width: 550;">
+<table id="new_coupon_form" cellpadding="2" cellspacing="1" border="0" width="100%">
+	<colgroup>
+		<col width="20%" />
+		<col width="80%" />
+	</colgroup>
+	<tr>
+		<td colspan="2"><button type="button" onClick="javascript: toogleNewCouponForm();">{"lbl_create_discount_coupon"|translate}</button></td>
+	</tr>
+    <tr style="display: {$new_coupon_form_display}; height: 10px;"></tr>
+	<tr style="display: {$new_coupon_form_display};">
+		<td align="left">{"lbl_coupon_code"|translate}:</td>
+		<td><input type="text" name="new_coupon[code]" value="{$new_coupon_data.code}" maxlength="10" /></td>
+	</tr>
+	<tr style="display: {$new_coupon_form_display};">
+		<td align="left">{"lbl_coupon_is_active"|translate}:</td>
+		<td><input type="checkbox" name="new_coupon[is_active]" {if $new_coupon_data.is_active eq 'Y'}checked="checked"{/if} /></td>
+	</tr>
+	<tr style="display: {$new_coupon_form_display};">
+		<td align="left" valign="top">{"lbl_coupon_type"|translate}:</td>
+		<td>
+			<table cellpadding="2" cellspacing="1" width="100%">
+				<colgroup>
+					<col width="2%" />
+					<col width="98%" />
+				</colgroup>
+				<tr>
+					<td><input id="new_coupon_su" type="radio" name="new_coupon[type]" value="SU" {if $new_coupon_data.type eq 'SU'}checked="checked"{/if} /></td>
+					<td><label for="new_coupon_su">{"lbl_coupon_type_single_use"|translate}</label></td>
+				</tr>
+				<tr>
+					<td><input id="new_coupon_mx"  type="radio" name="new_coupon[type]" value="MX" {if $new_coupon_data.type eq 'MX'}checked="checked"{/if} /></td>
+					<td><label for="new_coupon_mx">{"lbl_coupon_type_multi_use_expire"|translate}</label> <input type="text" name="new_coupon[expire_date]" value="{$new_coupon_data.expire_date}" /></td>
+				</tr>
+				<tr>
+					<td><input id="new_coupon_mn"  type="radio" name="new_coupon[type]" value="MN" {if $new_coupon_data.type eq 'MN'}checked="checked"{/if} /></td>
+					<td><label for="new_coupon_mn">{"lbl_coupon_type_multi_use_no_expire"|translate}</label></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr style="display: {$new_coupon_form_display};">
+		<td align="left" valign="top">{"lbl_coupon_discount"|translate}:</td>
+		<td>
+			<table cellpadding="2" cellspacing="1" width="100%" border="0">
+				<colgroup>
+					<col width="2%" />
+					<col width="25%" />
+					<col width="73%" />
+				</colgroup>
+				<tr>
+					<td><input type="radio" name="new_coupon[discount_type]" value="P" {if $new_coupon_data.discount_type eq 'P'}checked="checked"{/if} /></td>
+					<td><input type="text" name="new_coupon[discount_percent]" value="{$new_coupon_data.discount_percent}" /></td>
+					<td>%</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="new_coupon[discount_type]" value="A" {if $new_coupon_data.discount_type eq 'A'}checked="checked"{/if} /></td>
+					<td><input type="text" name="new_coupon[discount_absolute]" value="{$new_coupon_data.discount_absolute}" /></td>
+					<td>{$currency_sign}</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+    <tr style="display: {$new_coupon_form_display};">
+        <td align="left" valign="top">{"lbl_coupon_comment"|translate}:</td>
+        <td>
+            <input type="text" name="new_coupon[comment]" value="{$new_coupon_data.comment|escape:'html'}" maxlength="255" style="width: 400px;" />
+        </td>
+    </tr>
+	<tr style="display: {$new_coupon_form_display};">
+		<td align="left" colspan="2"><input type="submit" value="{"lbl_btn_create_coupon"|translate}" /></td>
+	</tr>
+</table>
+</div>
+
+</form>
+
+{* include file="$coupons_tpls_dir/pagination.html" _pagination=$coupons_pagination *}
+{$coupons_nav}
+<table class="grid" width="90%" border="0">
+	<colgroup>
+		<col width="15%" />
+		<col width="25%" />
+		<col width="17%" />
+        <col width="17%" />
+        <col width="25%" />
+        <col width="1%" />
+	</colgroup>
+	<tr class="gridsheader">
+		<td>{"lbl_coupon_code"|translate}</td>
+		<td align="center">{"lbl_coupon_type"|translate}</td>
+		<td align="center">{"lbl_coupon_discount"|translate}</td>
+        <td align="center">{"lbl_coupon_is_active"|translate}</td>
+        <td align="center">{"lbl_coupon_comment"|translate}</td>
+        <td align="center"><input type="checkbox" id="toogle_coupons_check" {if not $coupons_list}disabled="disabled"{else}onClick="toogleCheckboxes('coupon_check', this.checked)"{/if} /></td>
+	</tr>
+	{if $coupons_list}
+		{foreach from=$coupons_list item=coupon_item}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td {if $coupon_item.is_disabled}style="color: #888888;"{/if}>{$coupon_item.coupon_code}</td>
+			<td align="center" {if $coupon_item.is_disabled}style="color: #888888;"{/if}>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr><td align="center">
+				{if $coupon_item.coupon_type eq 'SU'}
+					{"lbl_coupon_type_single_use"|translate}
+				{else}
+					{"lbl_coupon_type_multi_use"|translate}
+				{/if}
+                </td></tr>
+                {if $coupon_item.coupon_type eq 'MX'}
+                    <tr><td align="center" nowrap="nowrap">{$coupon_item.expire_info}</td></tr>
+                {/if}
+                <tr><td nowrap="nowrap" align="center">
+                {if $coupon_item.coupon_type eq 'SU'}
+                    {if $coupon_item.orders_count gt 0}
+                        <span style="cursor: pointer; border-bottom: dashed 1px;" onClick="toogleElementVisibility('co_{$coupon_item.coupon_id}');">{"lbl_coupon_used"|translate}</span>
+                    {else}
+                        {"lbl_coupon_not_used"|translate}
+                    {/if}
+                {else}
+                    {if $coupon_item.orders_count gt 0}
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="right" style="padding: 1px;">{"lbl_coupon_used"|translate}</td>
+                            <td align="left" style="padding: 1px;"><span style="cursor: pointer; border-bottom: dashed 1px;" onClick="toogleElementVisibility('co_{$coupon_item.coupon_id}');">{$coupon_item.orders_count}&nbsp;{"lbl_used_times"|translate}</span></td>
+                        </tr>
+                        </table>
+                    {else}
+                        {"lbl_coupon_not_used"|translate}
+                    {/if}
+                {/if}
+                </td></tr>
+                
+                {if $coupon_item.orders_count gt 0}
+                <tr id="co_{$coupon_item.coupon_id}" style="display: none;"><td align="center">
+                {foreach name=coupon_orders from=$coupon_item.orders item=order_id}{if not $smarty.foreach.coupon_orders.first}, {/if}<span style="cursor: pointer;" onClick="window.location='{'&ukey=admin_order_detailed&orderID='|cat:$order_id|set_query}'">{$smarty.const.CONF_ORDERID_PREFIX}{$order_id}</span>{/foreach}
+                </td></tr>
+                {/if}
+                
+                </table>
+			</td>
+			<td align="center" style="border-left: solid 1px #F5F0BB;">
+                <input type="text" size="6" name="coupon_discount" id="cd_{$coupon_item.coupon_id}" value="{if $coupon_item.discount_type eq 'P'}{$coupon_item.discount_percent}{else}{$coupon_item.discount_absolute}{/if}" onBlur="checkDiscount(this.id);" />
+                <select name="coupon_discount_type" id="cdt_{$coupon_item.coupon_id}" onChange="checkDiscount(this.id.replace('cdt_','cd_'));">
+                    <option value="P" {if $coupon_item.discount_type eq 'P'}selected="selected"{/if}>%</option>
+                    <option value="A" {if $coupon_item.discount_type eq 'A'}selected="selected"{/if}>{$currency_sign}</option>
+                </select>
+			</td>
+            <td align="center" style="border-right: solid 1px #F5F0BB;">
+                <input type="checkbox" name="coupon_status" id="cs_{$coupon_item.coupon_id}"
+                    {if $coupon_item.is_disabled}
+                        disabled="disabled"
+                    {else}
+                        {if $coupon_item.is_active eq 'Y'}checked="checked"{/if}
+                    {/if}
+                />
+            </td>
+            <td align="left" {if $coupon_item.is_disabled}style="color: #888888;"{/if}>{$coupon_item.comment|escape:'html'}</td>
+            <td align="center">
+                <input type="checkbox" name="coupon_check" id="cc_{$coupon_item.coupon_id}" onClick="setDelButton();" />
+            </td>
+		</tr>
+		{/foreach}
+        <tr style="height: 40px;">
+            <td colspan="2">&nbsp;</td>
+            <td colspan="2" align="center" style="border: solid 1px #F5F0BB; background-color: #FFFFFF; border-top: none;"><button type="button" id="upd_coupons_button" onClick="submitUpdateForm();">{"btn_update"|translate}</button></td>
+            <td></td>
+            <td align="right" style="padding: 0px;"><button type="button" id="del_coupons_button" disabled="disabled">{"btn_delete"|translate}</button></td>
+        </tr>
+	{else}
+        <tr>
+            <td colspan="5" align="center">{"msg_no_coupons_defined"|translate}</td>
+        </tr>
+	{/if}
+</table>
+{$coupons_nav}
+{* include file="$coupons_tpls_dir/pagination.html" _pagination=$coupons_pagination *}
+
+<form name="CouponsForm" method="post">
+<input type="hidden" name="coupon_action" value="" />
+<input type="hidden" name="coupons_ids" value="" />
+<input type="hidden" name="coupons_discounts" value="" />
+<input type="hidden" name="discount_types" value="" />
+</form>
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+
+function toogleNewCouponForm()
+{
+	var tbl = document.getElementById('new_coupon_form');
+	var state = (tbl.rows[1].style.display != 'none');
+	
+	for(i=1; i < tbl.rows.length; i++)
+	{
+		tbl.rows[i].style.display = (state ? 'none' : '');
+	};
+	
+	return;
+};
+
+function toogleCheckboxes(cb_name, state)
+{
+    var els = document.getElementsByName(cb_name);
+    
+    for(i=0; i < els.length; i++)
+    {
+        els[i].checked = state;
+    };
+    
+    setDelButton();
+};
+
+function toogleElementVisibility(el_id)
+{
+    if(document.getElementById(el_id))
+    {
+        document.getElementById(el_id).style.display = (document.getElementById(el_id).style.display == '' ? 'none' : ''); 
+    };
+};
+
+function getCheckedCheckboxes(cb_name, id_prefix)
+{
+    return getCheckboxes(cb_name, id_prefix, true);
+};
+
+function getUncheckedCheckboxes(cb_name, id_prefix)
+{
+    return getCheckboxes(cb_name, id_prefix, false);
+};
+
+function getCheckboxes(cb_name, id_prefix, cb_status)
+{
+    var els = document.getElementsByName(cb_name);
+    var ids = new Array();
+    
+    for(i=0; i < els.length; i++)
+    {
+        if(els[i].checked == cb_status)
+        {
+            ids[ids.length] = els[i].id.replace(id_prefix,'');
+        };
+    };
+    
+    return ids;
+};
+
+function setDelButton()
+{
+    var cb_ids = getCheckedCheckboxes('coupon_check', 'cc_');
+    var del_button = document.getElementById('del_coupons_button');
+    del_button.disabled = (cb_ids.length == 0);
+    del_button.onclick = (cb_ids.length == 0 ? function() {} : submitDelForm);
+};
+
+function submitDelForm()
+{
+    if(!confirm('{/literal}{"qst_del_coupons"|translate}{literal}'))
+    {
+        return;
+    };
+    
+    var ids = getCheckedCheckboxes('coupon_check', 'cc_');
+    submitCouponForm('del_coupons', ids.join('|'));
+};
+
+function getCouponsDiscounts()
+{
+    return getElementsValues('coupon_discount', 'cd_');
+};
+
+function getDiscountTypes()
+{
+    return getElementsValues('coupon_discount_type', 'cdt_');
+};
+
+function getElementsValues(el_names, id_prefix)
+{
+    var elements = document.getElementsByName(el_names);
+    var values = new Array();
+    for(i=0; i < elements.length; i++)
+    {
+        values.push((elements[i].id.replace(id_prefix,'').concat('-').concat(elements[i].value)));
+    };
+    return values;
+}
+
+function submitUpdateForm()
+{
+    var ids_active = getCheckedCheckboxes('coupon_status', 'cs_');
+    var ids_inactive = getUncheckedCheckboxes('coupon_status', 'cs_');
+    document.forms['CouponsForm'].coupons_discounts.value = getCouponsDiscounts().join('|');
+    document.forms['CouponsForm'].discount_types.value = getDiscountTypes().join('|');
+    submitCouponForm('upd_coupons', ids_active.join('|')+'-'+ids_inactive.join('|'));
+};
+
+function submitCouponForm(action, ids_value)
+{
+    var frm = document.forms['CouponsForm'];
+    frm.coupon_action.value = action;
+    frm.coupons_ids.value = ids_value;
+    frm.submit();
+};
+
+function checkDiscount(element_id)
+{
+    var element = document.getElementById(element_id);
+    element.value = formatFloat(element.value);
+    var dsc_value = parseFloat(element.value);
+    var coupon_id = element.id.replace('cd_','');
+    var dsc_type = document.getElementById('cdt_'+coupon_id).value;
+    if(dsc_type == 'P' && dsc_value > 100)
+    {
+        element.value = '100.00';
+    };
+};
+
+function formatFloat(string)
+{
+    string = string.replace(/[^0123456789.]/g,'');
+    var parts = string.split('.');
+    
+    while(parts.length > 2)
+    {
+        parts[1] = parts[1].concat(parts[2]);
+        parts.splice(2,1);
+    };
+    
+    if(parts[0] == '')
+    {
+        parts[0] = '0';
+    };
+    
+    if(parts.length !=2 || parts[1] == '')
+    {
+        parts[1] = '00';
+    };
+    
+    return parts.join('.');
+}
+
+{/literal}
+</script>

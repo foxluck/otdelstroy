@@ -1,0 +1,18 @@
+<input type='hidden' name='datefields[]' value='<? $fieldName ?>'>
+<select name='<? $fieldName ?>[d]' class='Select' style='width: 40px'>
+	<option></option>
+	<? section name=d start=1 loop=31 ?>
+		<option <? if $params.$fieldName.d==$smarty.section.d.index ?>selected<? /if ?> value=<? $smarty.section.d.index ?>><? $smarty.section.d.index ?>
+	<? /section ?>
+</select>
+
+<? assign var=months value="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"|split:"," ?>
+
+<select name='<? $fieldName ?>[m]' class='Select' style='width: 50px'>
+	<option></option>
+	<? foreach key=monthNo name=m item=month from=$months ?>
+		<option <? if $params.$fieldName.m == $smarty.foreach.m.iteration ?>selected<? /if ?> value='<? $smarty.foreach.m.iteration ?>'><? $month ?>
+	<? /foreach ?>
+</select>
+
+<input class="year" maxlength=4 type=text id='<? $fieldName.y ?>' class='Text' style="width:35px; " name="<? $fieldName ?>[y]" value="<? $params.$fieldName.y|htmlsafe:true:true ?>">

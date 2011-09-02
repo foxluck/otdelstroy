@@ -1,0 +1,31 @@
+<? if $searchString == "" ?>
+	<? wbs_toolbarItem?>
+		<? wbs_button caption=$kernelStrings.app_group_label menu=$groupMenu ?>
+	<? /wbs_toolbarItem ?>
+<? /if ?>
+
+<? wbs_toolbarItem?>
+	<? wbs_button caption=$kernelStrings.ul_user_menu menu=$contactMenu ?>
+<? /wbs_toolbarItem ?>
+
+<? wbs_toolbarItem?>
+	<? wbs_button caption=$kernelStrings.ul_view_menu menu=$viewMenu ?>
+<? /wbs_toolbarItem ?>
+
+<? wbs_toolbarItem?>
+	<? $kernelStrings.cm_search_label|cat:": " ?>
+<? /wbs_toolbarItem ?>
+
+<? wbs_toolbarItem?>
+	<input type="text" ID="Search" name="searchString" value="<? $searchString|htmlsafe:true:true ?>" style="width: 200px"/>
+<? /wbs_toolbarItem ?>
+
+<? wbs_toolbarItem?>
+	<? wbs_button name="searchbtn" caption=$kernelStrings.cm_search_btn?>
+<? /wbs_toolbarItem ?>
+
+<? if $searchString != "" ?>
+	<? wbs_toolbarItem?>
+		<? wbs_button name="foldersbtn" caption=$kernelStrings.app_treefolders_text ?>
+	<? /wbs_toolbarItem ?>
+<? /if ?>

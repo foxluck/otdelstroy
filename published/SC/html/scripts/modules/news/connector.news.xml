@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>News</Name>
+		<File>class.newsmodule.php</File>
+		<Title>Новости</Title>
+		<Description />
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

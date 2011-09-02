@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="focusFormControl( 'groupData[UG_NAME]' )">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" name="form">
+		<? include file="../../../common/html/classic/header.htm" ?>
+		<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+		<? if !$fatalError ?>
+
+			<table cellspacing=2 cellpadding=0 border=0 >
+				<tr>
+					<td><? conditionalOutput invalidField=$invalidField field="groupID" text=#invalidFieldHighlight# ?><? $kernelStrings.adg_group_label|htmlsafe:true:true|cat:":&nbsp;" ?></td>
+					<td>
+						<select name=groupID>
+							<option value=""><? $kernelStrings.adg_selectgroup_item|htmlsafe:true:true ?></option>
+							<? html_options values=$groupIDs selected=$groupID output=$groupNames ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>&nbsp;</td>
+				</tr>
+			</table>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_ok_btn formname="form" space_right=10 ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+
+		<? else ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+		<? /if ?>
+		<input name="edited" type="hidden" id="edited" value="1">
+		<input name="UG_ID" type="hidden" value="<? $UG_ID ?>">
+		<input name="USERS" type="hidden" value="<? $USERS ?>">
+		<input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+<? /strip ?>
+</body>
+</html>

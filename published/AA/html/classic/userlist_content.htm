@@ -1,0 +1,258 @@
+<? if $viewMode == "GRID" ?>
+	<!-- Grid mode view -->
+
+	<div style="overflow: auto; width: 100%; height: 100%" id="rightscrolldiv">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeDocumentListTable">
+				<tr height=20>
+					<? if $numUsers ?>
+						<th align="left" width="10px" style="width: 10px"><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"></th>
+					<? /if ?>
+
+					<? foreach from=$visibleColumns item=columnID ?>
+						<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+						<? assign var=columnName value=$colDescription.SHORT_NAME ?>
+						<th align=left>
+							<? if $colDescription.TYPE != "IMAGE" ?><? makeSortHeader URL=$genericLinkUnsorted fieldName=$columnID curStatus=$sorting text=$columnName|htmlsafe:true:true descImg=#sortImgDesc# ascImg=#sortImgAsc# ?><? else ?><? $columnName|htmlsafe:true:true ?><? /if ?>
+						</th>
+					<? /foreach ?>
+
+				</tr>
+
+				<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+
+					<? assign var=subscrClass value="" ?>
+					<? if $groupItem.C_SUBSCRIBER == -1 ?>
+						<? assign var=subscrClass value="cm_subscriber_pending" ?>
+					<? elseif $groupItem.C_SUBSCRIBER == 1 ?>
+
+						<? assign var=subscrClass value="cm_subscriber" ?>
+					<? /if ?>
+
+					<tr <? if ($smarty.foreach.itemLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor# ?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if ?> class="<? $subscrClass ?>">
+
+						<? assign var=itemclass value="" ?>
+						<? if $groupItem.U_STATUS == 2 ?>
+							<? assign var=itemclass value="dampedText" ?>
+						<? /if ?>
+
+						<? if $numUsers ?>
+							<td align=left valign=top width="10px" style="width: 10px"><input type="checkbox" name="document[<? $groupItem.C_ID ?>]" value="<? $groupItem.C_ID ?>"><input type=hidden name="contactrights[<?$groupItem.C_ID?>]" value="<? $groupItem.TREE_ACCESS_RIGHTS ?>"></td>
+						<? /if ?>
+
+						<? foreach from=$visibleColumns item=columnID ?>
+							<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+								<? assign var=fieldValue value=$groupItem.$columnID ?>
+
+							<? assign var=linkStart value="" ?>
+							<? assign var=linkEnd value="" ?>
+
+							<? if $colDescription.TYPE == "URL" ?>
+								<? assign var=linkStart value="<A target=_blank href='"|cat:$groupItem.$columnID|cat:"'>" ?>
+								<? assign var=linkEnd value="</A>" ?>
+							<? /if ?>
+
+							<td valign=top align=left class="<? $itemclass ?>">
+								<? if $colDescription.TYPE == "URL" ?>
+									<? if $fieldValue != "" ?>
+										<? $linkStart|cat:$fieldValue|trim|sureecho|cat:$linkEnd ?>
+									<? else ?>
+										&nbsp;
+									<? /if ?>
+								<? elseif $colDescription.TYPE == "IMAGE" ?>
+									<? if $fieldValue.FILENAME != "" ?>
+										<? include file="../../../common/html/classic/autoforms/imagefield.htm" fieldData=$fieldValue ?>
+									<? else ?>
+										&lt;<? $kernelStrings.app_noimage_label ?>&gt;
+									<? /if ?>
+								<? else ?>
+									<? if $columnID == "NAME" ?>
+										<? if $groupItem.$columnID != "" ?>
+											<a href="<? $groupItem.ROW_URL ?>"><? $groupItem.$columnID|htmlsafe:true:true|trim|sureecho ?></a>
+										<? else ?>
+											&lt;<a href="<? $groupItem.ROW_URL ?>" class=activeLink><? $kernelStrings.app_noname_text ?></a>&gt;
+										<? /if ?>
+									<? else ?>
+										<a href="<? $groupItem.ROW_URL ?>"><? $groupItem.$columnID|htmlsafe:true:true|trim|sureecho ?></a>
+									<? /if ?>
+								<? /if ?>
+							</td>
+						<? /foreach ?>
+
+					</tr>
+				<? foreachelse ?>
+					<? math equation="x + 2" x=$numColumns assign=numColumns?>
+					<tr>
+						<td colspan="<? $numColumns ?>" align="center">
+							<div class="noentries"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></div>
+						</td>
+					</tr>
+				<? /foreach ?>
+		</table>
+		<? include file="../../../common/html/classic/tree_templates/tree_pages.htm" showFolderID=0?>
+	</div>
+
+<? else ?>
+	<!-- List mode view -->
+	<script language="JavaScript">treeRightPanelHeaderObj = "rightPanelHeader";</script>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewTable noBottomBorder" id="rightPanelHeader">
+		<? if $numUsers ?>
+			<tr>
+				<td height=20>
+					<!-- Sorting bar -->
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th align=left colspan=2>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewHeader">
+										<tr>
+											<td><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"></td>
+											<td align=right><nobr>
+													<? $kernelStrings.ul_sorting_title|cat:":&nbsp;" ?>
+													<? foreach from=$visibleColumns item=columnID name=columnLoop ?>
+														<? assign var=colDescription value=$fieldsPlainDesc.$columnID ?>
+														<? assign var=columnName value=$colDescription.SHORT_NAME ?>
+
+														<? makeSortHeader URL=$genericLinkUnsorted fieldName=$columnID curStatus=$sorting text=$columnName descImg=#sortImgDesc# ascImg=#sortImgAsc# ?>
+														<? if !$smarty.foreach.columnLoop.last ?> | <? /if ?>
+													<? /foreach ?>
+													&nbsp;
+												</nobr>
+											</td>
+										</tr>
+									</table>
+								</th>
+							</tr>
+
+					</table>
+				</td>
+			</tr>
+		<? /if ?>
+	</table>
+	<div style="overflow: auto; width: 100%; height: 100%" id="rightscrolldiv">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewTable">
+			<? foreach from=$groupContent item=groupItem name=itemLoop ?>
+				<tr>
+					<td align=left valign=top width="10px" style="width: 10px"><input type="checkbox" name="document[<? $groupItem.C_ID ?>]" value="<? $groupItem.C_ID ?>"><input type=hidden name="contactrights[<?$groupItem.C_ID?>]" value="<? $groupItem.TREE_ACCESS_RIGHTS ?>"></td>
+
+					<? if $listViewImage != "NOIMG" ?>
+						<? assign var=fieldData value=$groupItem.$listViewImage ?>
+						<td width=96>
+							<? if $fieldData.FILENAME ?>
+								<? include file="../../../common/html/classic/thumbnails_templates/thumbnail.htm" srcURL=$fieldData.THUMB_URL size=96 URL=$groupItem.ROW_URL target='_self' ?>
+							<? else ?>
+								<div style="width: 96; height: 96; padding=0!important; border: 1px solid #EDEDED; margin: 5px">
+										<table width=96 height=96 border=0 cellpadding=0 cellspacing=0>
+											<tr>
+												<td valign=middle align=center class=smallFont>
+													[<? $kernelStrings.app_noimage_label ?>]
+												</td>
+											</tr>
+										</table>
+								</div>
+							<? /if ?>
+						</td>
+					<? /if ?>
+
+					<? assign var=subscrClass value="" ?>
+
+					<? if $groupItem.C_SUBSCRIBER == -1 ?>
+						<? assign var=subscrClass value="cm_subscriber_pending" ?>
+					<? elseif $groupItem.C_SUBSCRIBER == 1 ?>
+
+						<? assign var=subscrClass value="cm_subscriber" ?>
+					<? /if ?>
+
+					<td valign=top>
+						<table border="0" cellspacing="0" cellpadding="0" class="treeDocumentListViewTable noBottomBorder">
+							<tr class="<? $subscrClass ?>">
+								<td width="100%" style="padding-left: 5px; padding-top: 3px" class="listviewblack">
+										<? if $groupItem.NAME != "" ?>
+											<a href="<? $groupItem.ROW_URL ?>" class=activelink><? $groupItem.NAME|htmlsafe:true:true ?></a>
+										<? else ?>
+											&lt;<a href="<? $groupItem.ROW_URL ?>" class=activeLink><? $kernelStrings.app_noname_text ?></a>&gt;
+										<? /if ?>
+								</td>
+							</tr>
+
+							<? if $groupItem.U_ID != "" && $canManageUsers ?>
+								<tr>
+									<td class="treeDocumentListViewContent  <? if $groupItem.U_STATUS == 2 ?>dampedText<? /if ?>">
+										<? "<b>"|cat:$kernelStrings.cman_user_label|cat:"</b>: "|cat:$groupItem.U_ID|cat:" (" ?><? $statusNames[$groupItem.U_STATUS]|cat:")" ?>
+									</td>
+								</tr>
+							<? /if ?>
+
+							<!-- Other fields -->
+							<? foreach from=$typeDescription item=groupData ?>
+									<? assign var=groupText value="" ?>
+
+									<!-- Fill group text -->
+									<? foreach from=$groupData.FIELDS item=fieldData name=fieldloop ?>
+										<? assign var=fieldID value=$fieldData.ID ?>
+										<? assign var=fieldDesc value=$fieldData.SHORT_NAME ?>
+										<? assign var=fieldValue value=$groupItem.$fieldID ?>
+
+										<? assign var=tag value=" ("|cat:$fieldDesc|cat:")" ?>
+										<? if $fieldData.HIDETAG ?>
+											<? assign var=tag value="" ?>
+										<? /if ?>
+
+										<? assign var=linkStart value="" ?>
+										<? assign var=linkEnd value="" ?>
+
+										<? if $fieldData.TYPE == "URL" ?>
+											<? assign var=linkStart value="<A target=_blank href='"|cat:$fieldValue|cat:"'>" ?>
+											<? assign var=linkEnd value="</A>" ?>
+										<? elseif $fieldData.TYPE == "EMAIL" ?>
+											<? assign var=linkStart value="<A href='mailto:"|cat:$fieldValue|cat:"'>" ?>
+											<? assign var=linkEnd value="</A>" ?>
+										<? /if ?>
+
+										<? if $fieldData.TYPE != "IMAGE" ?>
+											<? if $fieldValue != "" ?>
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$linkStart|cat:$fieldValue|cat:$linkEnd|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$linkStart|cat:$fieldValue|cat:$linkEnd|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? else ?>
+											<? if $fieldValue.FILENAME != "" ?>
+												<? assign var=imgLink value="<a target='_blank' href='"|cat:$fieldValue.FILE_URL|cat:"'>" ?>
+												<? assign var=imageText value="&lt;"|cat:$imgLink|cat:$kernelStrings.app_image_text|cat:"</a>&gt;" ?>
+
+												<? if !$smarty.foreach.fieldloop.first && $groupText != "" ?>
+													<? assign var=groupText value=$groupText|cat:", "|cat:$linkStart|cat:$imageText|cat:$linkEnd|cat:$tag ?>
+												<? else ?>
+													<? assign var=groupText value=$linkStart|cat:$imageText|cat:$linkEnd|cat:$tag ?>
+												<? /if ?>
+											<? /if ?>
+										<? /if ?>
+									<? /foreach ?>
+
+									<!-- Output group data if group text is not empty -->
+									<? if $groupText != "" ?>
+										<tr>
+											<td class="treeDocumentListViewContent"><? $groupData.LONG_NAME|htmlsafe:true:true|cat:": "|cat:$groupText ?></td>
+										</tr>
+									<? /if ?>
+							<? /foreach ?>
+
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<? foreachelse ?>
+				<tr>
+					<td colspan=3 align="center">
+						<div class="noentries"><? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?></div>
+					</td>
+				</tr>
+			<? /foreach ?>
+		</table>
+		<? include file="../../../common/html/classic/tree_templates/tree_pages.htm" showFolderID=0?>
+	</div>
+
+<? /if ?>

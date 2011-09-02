@@ -1,0 +1,87 @@
+#Toolbar
+{
+	padding: 0;
+	margin: 0;
+
+	top: 0;
+	left: 0;
+
+
+	width: 120%;
+	z-index: 12;
+}
+
+
+/*
+	Toolbar
+*/
+
+#Toolbar ul
+{
+	padding:0px;
+}
+
+#Toolbar ul li
+{
+	z-index: 9;
+	padding-right: 5px;
+}
+
+div#Toolbar a.Button
+{
+	margin: 0;
+	margin-top: 2px;
+}
+
+
+/* Toolbar dropdown menus */
+
+#Toolbar ul li table ul {margin-top: 6px; }
+* html #Toolbar ul li table ul {margin-top: 4px; }
+#Toolbar ul li a:hover table ul li a, #Toolbar ul li a:hover table ul li a:visited, #Toolbar ul li:hover table ul li a, #Toolbar ul li:hover table ul li a:visited
+{
+	padding-top: 4px;
+	padding-left: 20px;
+	font-size: 1.3em;
+}
+
+/* Header and footer items */
+#Toolbar ul li a:hover table ul li.ToolbarMenuHeader, #Toolbar ul li:hover table ul li.ToolbarMenuHeader,
+#Toolbar ul li a:hover table ul li.ToolbarMenuFooter, #Toolbar ul li:hover table ul li.ToolbarMenuFooter
+{
+	width: 180px;
+	padding-left: 10px;
+}
+
+/*
+	Toolbar Controls
+*/
+
+#Toolbar input
+{
+	font-size: 0.85em;
+	padding: 1px 2px 0 2px;
+	margin-top: 4px;
+}
+
+#Toolbar label
+{
+	padding: 0;
+	margin: 0;
+}
+
+#Toolbar input {font-size: 0.85em}
+
+
+
+#Toolbar ul li span.ie7
+{
+	display: none;
+}
+
+
+.ext-safari #Toolbar ul li table ul {margin-top: 4px; }
+
+.inboxtoolbar_btn {font-size: 0.7em; text-align: left}
+
+#ToolbarIn {}

@@ -1,0 +1,14 @@
+<table border="0" align="<? $align ?>" cellpadding="0" cellspacing="0">
+    <tr> 
+	  <? if $space_left ?><td><img src="../../../common/html/classic/images/buttons/btn_separator.gif" border="0" width="<?$space_left?>" height="22"></td><?/if?>
+      <td><img src="<? $left_img ?>" border="0"></td>
+  	  <? assign var="enabled" value=$btn_enabled|default:1 ?>
+	  <? if $enabled ?>	  
+      <td background="<? $bg_img ?>" class="btnText"><a href="javascript:processTextButton('<? $name ?>', '<? $formname ?>')" class="btnText" <? if $onClick ?>onClick="<?$onClick?>"<?/if?>><nobr><? $caption ?></nobr></a></td>
+ 	  <? else ?>
+      <td background="<? $bg_img ?>" class="btnText_disabled"><? $caption ?></td>
+	  <? /if ?>
+      <td><img src="<? $right_img ?>" border="0"></td>
+	  <? if $space_right ?><td><img src="../../../common/html/classic/images/buttons/btn_separator.gif" border="0" width="<? $space_right?>" height="22"></td><?/if?>
+    </tr>
+ </table>

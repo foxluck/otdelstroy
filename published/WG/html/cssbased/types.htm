@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout toolbar=false ?>
+	</head>
+	
+	<body>
+		<? wbs_pageLayout  ?>
+			<? wbs_errorBlock ?>
+
+			<span class='FormCaption' style='display:inline'><? $wgStrings.ty_page_caption ?></span>
+			<BR><BR>
+			
+			<table width="500">
+				<? foreach from=$types item=typeData key=typeKey ?>
+					<tr>
+						<!--td style='border: 0px solid red; width: 10px' width="10">&nbsp;</td-->
+						<td width="*">
+							<a href='<? $typeData.widgetsURL ?>'><span class='FormCaption' style='display:inline'><? $typeData.name ?></span></a><BR>
+							<? $typeData.shortDesc ?>
+							<BR><BR>
+						</td>
+					</tr>
+				<? /foreach ?>
+			</table>
+
+
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

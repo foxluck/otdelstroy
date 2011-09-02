@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>YourPay Connect</name>
+		<key>yourpaymentconnect</key>
+	</interface>
+</interfaces>

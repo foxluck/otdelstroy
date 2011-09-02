@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+
+					<? wbs_formContent ?>
+						<tr>
+							<td><? wbs_label for="group" text=$kernelStrings.adg_group_label fieldName="groupID" ?></td>
+							<td>
+								<select name="groupID" id="group" class="FormControl">
+									<option value=""><? $kernelStrings.adg_selectgroup_item|htmlsafe:true:true ?></option>
+									<? html_options values=$groupIDs selected=$groupID output=$groupNames ?>
+								</select>
+							</td>
+						</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+							<? wbs_buttonSet ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_ok_btn name="savebtn" ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+							<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_formLayout ?>
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+			<input name="UG_ID" type="hidden" value="<? $UG_ID ?>">
+			<input name="USERS" type="hidden" value="<? $USERS ?>">
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

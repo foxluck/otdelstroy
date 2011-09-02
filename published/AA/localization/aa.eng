@@ -1,0 +1,2020 @@
+app_name_long	Common	Application full name	Account
+app_name_short	Common	Application short name	Account
+
+app_comment_text	Common	Application Comment text	This user can manage account settings, e.g. customize system parameters, upgrade/downgrade services, and even cancel account.
+
+app_readonly_message	Common	Warning message appears when user attempts to edit read-only database	The system is set to read-only mode. Any data changes are prohibited.
+app_queryerr_message	Common	Error executing query message	Error executing query
+app_errxml_message	Common	Error processing XML data message	Error processing XML data
+app_requiredfields_message	Common	Warning if some required fields are not filled	Please fill required fields
+app_allfields_message	Common	Warning if some fields are not filled	Please fill all fields
+app_saveusersets_message	Common	If error occurs while saving user settings	Error saving user settings
+app_invdateformat_message	Common	Invalid date format message	Invalid date or invalid date format. Correct format: %s
+app_invtimeformat_message	Common	Invalid time format message	Invalid time format.
+app_invcolorformat_message	Common	Invalid color format	Invalid color value.
+app_textlen_message	Common	Maximum text length exceeded	Text is too long
+app_generalaccess_message	Common	Warning if user has no rights to work with a screen	You have no rights to work with this screen
+app_attachfile_message	Common	Error attaching file message	Unable to attach file
+app_createdir_message	Common	Error creating directory message	Unable to create directory
+app_delfromlist_message	Common	Error deleting a file from the attached files list message	Unable to remove file from file list
+app_deletefile_message	Common	Error deleting file message	Unable to delete file %s
+app_copyfile_message	Common	Error copying files message	Unable to copy file %s
+app_unknownaddr_message	Common	Incorrect recipient e-mail address message	Recipient e-mail address is undefined
+app_handlernotfound_message	Common	Error message if application does not answer to request	Dependent application (%s) is not answering on request. Operation was aborted.
+app_notapproved_message	Common	Error message if operation is not allowed by dependent application	Dependent application (%s) did not approve this operation due to unknown reason.
+app_notapprovederr_message	Common	Message if error occurs while system query processing	ERROR: %s. RETURNED BY: %s application.
+app_deperror_message	Common	Message if error occurs in dependent application	Error executing operation in dependent application (%s). Error: %s
+app_invnumformat_message	Common	Invalid numeric format message	Invalid numeric format: %s
+app_spacelimit_message	Common	Database limit exceeded message	Database limit exceeded. Operation canceled.
+app_aopsignedup_name	Common	Signed Up account action	Signed Up
+app_aopdbcreate_name	Common	DB Created account action	DB Created
+app_aopmodify_name	Common	Modified account action	Modified
+app_aopdelete_name	Common	Deleted account action	Deleted
+app_aopremove_name	Common	Removed account action	Removed
+app_aoprestore_name	Common	Restored account action	Restored
+app_readaccess_name	Common	Read access	Read
+app_readwraccess_name	Common	Read/Write access	Read/Write
+app_readwrfldaccess_name	Common	Read/Write/Folder access	Read/Write/Folder
+app_readaccess_name	Common	Read access	Read
+app_writeaccess_name	Common	Read/Write access	Write
+app_folderaccess_name	Common	Read/Write/Folder access	Folder
+app_readaccessshort_name	Common	Read access	R
+app_writeaccessshort_name	Common	Read/Write access	RW
+app_folderaccessshort_name	Common	Read/Write/Folder access	RWF
+app_user_invited	Common	User Invited	invited user, login not created yet
+app_user_disabled	Common	User Disabled	login disabled
+app_disabled_label	Common	Label "Disabled"	Disabled
+app_enabled_label	Common	Label "Enabled"	Enabled
+app_ok_btn	Common	OK button	OK
+app_back_btn	Common	Back button	Back
+app_cancel_btn	Common	Cancel button	Cancel
+app_done_btn	Common	OK button	Done
+app_copy_btn	Common	Copy button	Copy
+app_move_btn	Common	Move button	Move
+app_delete_btn	Common	Delete button	Delete
+app_copying_label	Common	Copying label	Copying
+app_moving_label	Common	Moving label	Moving
+app_deleting_label	Common	Deleting label	Deleting
+app_confirm_label	Common	Confirm label	Confirm
+app_activestatus_name	Common	Active status	Active
+app_deletedstatus_name	Common	Deleted status	Deleted
+app_lockedstatus_name	Common	Locked status	Inactive
+app_note_text	Common	NOTE text	NOTE
+app_details_text	Common	Details text	details
+app_save_btn	Common	Save button	Save
+app_apply_btn	Common	Apply button	Apply
+app_print_btn	Common	Print button	Print
+app_pagewelcome_title	Common	Welcome page header	Welcome
+app_welcomenote_text	Common	Tips appears on the Welcome page	Please use main menu to work with available services.
+app_close_btn	Common	Close button	Close
+app_pagemessage_title	Common	Message page header	Message
+app_report_text	Common	Text on the message page	To continue please use main menu
+app_adminstart_text	Common	Administrator Welcome page: first line	%sAdministrator%s - is a special account.
+app_admingreeting_text	Common	Administrator Welcome page: greeting	Welcome to WebAsyst Account Administrator!
+app_adminexpl_text	Common	Administrator Welcome page: description	The primary purpose of Administrator is - to create accounts for other users and customize their rights.
+app_adminnote_text	Common	Administrator Welcome page: notes	Please note that Administrator login itself has no entry in the User List. That's why you have no access to any other services but "Users and Groups" and "Account". In other words, you can see only two items in the main menu: 1). Users and Groups and 2). Account
+app_dbsizelimit_message	Common	Database storage space limit exceeded warning	Your Database limit has been exceeded. Please sign up for extra space or delete some files and/or database entries
+app_usersizelimit_message	Common	User disk space quota limit exceeded warning	Your personal storage space quota has been exceeded. Please contact your account administrator.
+app_monjanfull_name	Common	January full month name	January
+app_monfebfull_name	Common	February full month name	February
+app_monmarfull_name	Common	March full month name	March
+app_monaprfull_name	Common	April full month name	April
+app_monmayfull_name	Common	May full month name	May
+app_monjunfull_name	Common	June full month name	June
+app_monjulfull_name	Common	July full month name	July
+app_monaugfull_name	Common	August full month name	August
+app_monsepfull_name	Common	September full month name	September
+app_monoctfull_name	Common	October full month name	October
+app_monnovfull_name	Common	November full month name	November
+app_mondecfull_name	Common	December full month name	December
+app_monjanshort_name	Common	January short month name	Jan
+app_monfebshort_name	Common	February short month name	Feb
+app_monmarshort_name	Common	March short month name	Mar
+app_monaprshort_name	Common	April short month name	Apr
+app_monmayshort_name	Common	May short month name	May
+app_monjunshort_name	Common	June short month name	Jun
+app_monjulshort_name	Common	July short month name	Jul
+app_monaugshort_name	Common	August short month name	Aug
+app_monsepshort_name	Common	September short month name	Sept
+app_monoctshort_name	Common	October short month name	Oct
+app_monnovshort_name	Common	November short month name	Nov
+app_mondecshort_name	Common	December short month name	Dec
+app_invrobotlogin_message	Common	Robot authorization error message	Invalid robot name or password
+app_unlimitedspace_label	Common	Label "Unlimited"	Unlimited
+app_availablespace_text	Common	Tips to available space limitation	Available space: %s
+app_totalsizelimit_text	Common	Tips to uploaded files overall size limitation	Total size of files can not exceed %s
+app_filesizelimit_text	Common	Tips to uploaded file size limitation	Each file can not exceed %s
+app_dbkeynotfound_message	Common	No Database matches the entered Key message	Database Key is not found
+app_servernotfound_message	Common	Specified SQL server name not found	mySQL Server "%s" is not found
+app_makedbnoopt_message	Common	Attempt to create database without setting database option message	Please select database option
+app_invfieldchars_message	Common	Invalid characters entered in a field message	Field contains invalid characters
+app_dbkeyexists_message	Common	Duplicate database key entered message	Database key already exists
+app_invdbkeyformat_message	Common	Invalid database key format entered message	Invalid database key format. Database key must start with a Latin character.
+app_invdbnameformat_message	Common	Invalid database name format entered message	Invalid database name format. Database name must start with a Latin character.
+app_dbnameexists_message	Common	Duplicate database name entered message	Database with this name already exists
+app_invnameformat_message	Common	First of Last name entered in an invalid format message	First name and last name must start with a Latin character
+app_passmismatch_message	Common	First and repeated password do not match message	Password and password confirmation do not match
+app_invpwdlen_message	Common	Password too short message	Password must contain at least %s symbols
+app_makedbprof_message	Common	Error creating database profile message	Unable to create database profile file
+app_editdeldb_message	Common	Modifying a deleted database message	Database is marked as deleted
+app_erraccountlog_message	Common	Error adding account log error message	Error adding account log error
+app_emptycsv_message	Common	Empty CSV-file message	File is empty
+app_errreadingfile_mesage	Common	Error reading file message	Error reading file
+app_errparsingfile_message	Common	Error parsing file message	Error parsing file
+app_noverfile_message	Common	Version information file not found message	Version information file is not found
+app_errxmlparsing_message	Common	Error parsing XML file message	Error parsing XML file
+app_openverfile_message	Common	Error opening version info file message	Error opening version info file
+app_invverfilestuct_message	Common	Invalid version file message	Invalid version file structure
+app_invsqlconnect_message	Common	Error connecting to the SQL server message	Unable to connect to SQL server
+app_invdbconnect_message	Common	Database connection error message	Unable to connect to database "%s"
+app_filenotfound_message	Common	File doesn't exist message	File not found: %s
+app_filequeryerr_message	Common	Error executing SQL script file message	Error executing SQL script file: %s
+app_errdropdb_message	Common	Error deleting database message	Unable to drop database
+app_errdropuser_message	Common	Error deleting mySQL user message	Unable to drop databse user
+app_errdelprofile_message	Common	Error deleting profile message	Unable to delete database profile file
+app_nosubscrdata_message	Common	No information on subscription in database profile file message	Subscription data is not found
+app_invlogindata_message	Common	Invalid login name or password entered message	Invalid login name or password
+app_errcreatingdb_message	Common	Error creating database message	Unable to create database
+app_errmysqluser_message	Common	Error creating mySQL user message	Unable to create mySQL user. Operation was aborted.
+app_errregapp_message	Common	Error registering applications message	Error registering applications
+app_sqluserrightsupd_message	Common	mySQL user access grants update failed message	Unable to update database user access grants
+app_trialexpired_message	Common	Account expired message	Your account is expired
+app_cancelledaccount_message	Common	Cancelled account message	This account has been canceled
+app_notactivelogin_message	Common	Accessing deleted or an expired account message	Access disabled by administrator
+app_invdirectaccess_message	Common	Logging in without direct access rights message	You have no direct access rights
+app_performedby_text	Common	E-mail notification Performed By text	Performed by
+app_notifytitle_text	Common	E-mail notification header	%s auto-notification. Do not reply to this message!
+app_treerecycled_name	Common	Recycled folder name	Recycled
+app_treeavailfolders_name	Common	Available Folders folder name	Available Folders
+app_treefoldernotfound_message	Common	Folder not found message	Folder not found
+app_treeinvfoldername_message	Common	Invalid characters in the folder name entered message	Folder name can not contain following characters: / \ ? : * < >
+app_treeinvfolderlenname_message	Common	Invalid characters or name exceeds length in folder name entered message	Folder name is limited by 255 characters and can not contain following symbols: / \ ? : * < >
+app_treenofldrights_message	Common	Lack of administrative rights to work with a folder message	You have no rights to add folders into this folder
+app_treenorootrights_message	Common	Lack of administrative rights to create a folder message	You have no rights to create root folders
+app_treenofldmodrights_message	Common	Lack of administrative rights to modify a folder message	You have no rights to modify this folder
+app_treenoflddelrights_message	Common	Lack of administrative rights to delete a folder message	You have no rights to delete current folder or subfolders included in current folder
+app_treenocopymoverights_message	Common	Lack of administrative rights to copy files in this folder message	You have no rights to copy or move entries into this folder
+app_treenocopyfromrights_message	Common	Lack of administrative rights to copy files from this folder message	You have no rights to copy entries from this folder
+app_treenomovefromrights_message	Common	Lack of administrative rights to move files from this folder message	You have no rights to move entries from this folder
+app_treenocopytorights_message	Common	Lack of administrative rights to copy files in this folder message	You have no rights to copy folders into this folder
+app_treenocopyfldrights_message	Common	Lack of administrative rights to copy a folder message	You have no rights to copy current folder
+app_treenomovetofldrights_message	Common	Lack of administrative rights to move a folder in the specified folder message	You have no rights to move folders into this folder
+app_treenomovetosubfldrights_message	Common	Lack of administrative rights to move a folder, or subfolders in the other folder message	You have no rights to move the current folder, or subfolders included in the current folder
+app_treenocreatefldrights_message	Common	Lack of administrative rights to create folders message	You have no rights to create folders
+app_treenofldviewrights_message	Common	Lack of any rights to work with a folder message	You have no rights to work with this folder
+app_treeroot_name	Common	Root folder name	<root>
+app_treeaddfolder_title	Common	Modifying folder page in Create Folder mode name	Add Folder
+app_treerenamefolder_title	Common	Rename folder page	Rename Folder
+app_treemodfolder_title	Common	Modifying folder page in Modify Folder mode name	Customize Access Rights
+app_treeadduser_title	Common	Modifying user page in Creating User mode name	Add User
+app_treemoduser_title	Common	Modifying user page in Modify User Rights mode name	User Rights
+app_treecopyfld_text	Common	Copy Folder text	Copy Folder
+app_treemovefld_text	Common	Move Folder text	Move Folder
+app_treedelfolder_text	Common	Delete Folder text	Delete Folder
+app_treesavecopymove_message	Common	Copying or moving files in the same folder message	Can not copy/move file(s) in the same folder
+app_treeselectfolder_message	Common	Copying/moving without specifying the folder message	Please select folder
+app_treefrom_text	Common	Text From in the Copy/Move dialog	From
+app_treeto_text	Common	Text To in the Copy/Move dialog	To
+app_treenofolders_message	Common	Folders don't exist message in copy/move dialog	There are no folders to perform this operation
+app_treefurnote_text	Common	Folders & Users Rights page hint	To modify user rights click user ID in a column title
+app_treefurfldname_title	Common	Folder Name column header on the Folders & Users Rights page	Folder Name
+app_treeinvcurfldrights_message	Common	Lack of administrative right to modify current folder message	You have no rights to modify current folder
+app_treefolder_text	Common	Folder text	Folder
+app_treefolders_text	Common	Folders text	Folders
+app_treeparentfolder_text	Common	Parent Folder text	Parent Folder
+app_treenousers_message	Common	Unable to add user in the user rights settings message	There are no users to add
+app_treerootfolders_label	Common	Can create root folders in the user rights settings label	Can create root folders
+app_treeflduserscb_label	Common	Label for "can show other users" checkbox	Can see list of users who share access to his/her folders
+app_treeuser_label	Common	User label in the user rights form	User
+app_treeread_label	Common	Read label in the user rights form	Read
+app_treewrite_label	Common	Write label in the user rights form	Write
+app_treefolder_label	Common	Folder label in the user rights form	Folder
+app_add_btn	Common	Add button	Add
+app_treeuserperms_text	Common	User permissions in this folder text in the folders user list	User permissions in this folder
+app_treeuserindperms_text	Common	Personal user permissions text	Personal permissions
+app_treeuserpermscomment_text	Common	Comment for the personal permissons settings	Applied to users not included in any group
+app_treegrouppermscomment_text	Common	Comment for the group permissons settings	Applied to all users included in the groups below
+app_treegroupname_label	Common	Group Name label	Group Name
+app_treeusers_title	Common	Users column title	Users
+app_treegroups_title	Common	Groups column title	Groups
+app_treeingeritrights_btn	Common	Label for the button "Inherit from parent folder"	Inherit from Parent Folder
+app_treenoperms_text	Common	No permissions text	<none>
+app_userlisttotal_text	Common	User list total text	...total %s users
+app_grouplisttotal_text	Common	Group list total text	...total %s groups
+app_listshowall_text	Common	User and Group list show all text	<Show All>
+app_treeusergroupperms_text	Common	Group permissions text	Group permissions
+app_treemyperms_label	Common	List of systems users label (my permissions)	My permissions in this folder
+app_treeyes_label	Common	Yes label in the systems users list	Yes
+app_treeno_label	Common	No label in the systems users list	No
+app_filesizelimit_message	Common	Upload file size limitation message	You have %s limit for uploading file size
+app_noentrieis_text	Common	<no entries> text	<no entries>
+app_upbtn_hint	Common	Column Move Up button hint	Move Up
+app_downbtn_hint	Common	Column Move Down button hint	Move Down
+app_leftbtn_hint	Common	Column Move Left button hint	Move Left
+app_rightbtn_hint	Common	Column Move Right button hint	Move Right
+app_errloadapplist_message	Common	Error loading application list message	Unable to load application list
+app_deletefiles_btn	Common	Delete files) button	Delete file(s)
+app_attachfiles_btn	Common	Attach button	Attach
+app_pages_text	Common	Pages text	Pages
+app_tips_label	Common	Tips label	Tips
+app_delete_btn	Common	Delete button	Delete
+app_today_text	Common	Today text	Today
+app_yesterday_text	Common	Yesterday text	Yesterday
+app_minutesago_text	Common	Minutes ago text	%d min ago
+app_hoursago_text	Common	Hours Minutes ago text	%d hr ago
+app_hoursminutesago_text	Common	Hours Minutes ago text	%d hr %d min ago
+app_daysago_text	Common	Days ago text	%d days ago
+app_dayshoursago_text	Common	Days hours ago text	%d days %d hr ago
+app_monthsdaysago_text	Common	Months days ago text	%d months %d days ago
+app_yearsdaysago_text	Common	Years days days ago text	%d yr %d days ago
+app_justnow_text	Common	Just now text	Just now
+app_treesetrights_label	Common	Setup rights for label	Setup rights for
+app_helplink_text	Common	Help link text	Help
+app_logoutlink_text	Common	Logout link text	Logout
+app_error_text	Common	Error text in the error message	Error
+app_warning_text	Common	Warning text in the warning message	Warning
+app_treeuserstip1_text	Common	First hint text above user list	1. To modify user rights click user ID in a column title\n2. To modify folder properties or access rights click folder name
+app_treeflddelconfirm_text	Common	Folder deletion confirmation	Delete Folder?
+app_treerights_title	Common	Rights column header	Rights
+app_treeshared_title	Common	Shared column header	Shared
+app_treerightslegend_text	Common	User rights legend	User access rights are designated as:\n\nR (Read) - can list and read files in this folder\nW (Write) - can add/modify files in this folder\nF (Folder) - can add/modify files, folders and permissions
+app_treeselfld_item	Common	<select folder> item	<select folder>
+app_treename_title	Common	Name column header in the folder user list	Name
+app_treeid_title	Common	ID column header in the folder user list	ID
+app_treeshowfld_hint	Common	Popup hint above the Show Folders button	Show Folders
+app_treehidefld_hint	Common	Popup hint above the Hide Folders button	Hide Folders
+app_treeaddfolderperms_text	Common	Text on the Folder tab of the Add/Modify Folder form	To customize access rights to this folder use "Users" tab for personal permissions, and "Groups" tab for user group permissions.
+app_treeaddfolderusers_text	Common	Add/Modify Folder note text	A combination of personal and group access rights will be applied.
+app_treeaddfolderparent_text	Common	Add/Modify Folder note text	If you are adding new folder, parent folder settings are used by default.
+app_treeaddfolderuseraccess_text	Common	Add/Modify Folder users tab text	Customize personal access rights to this folder
+app_treeaddfoldergroupaccess_text	Common	Add/Modify Folder groups tab text	Customize group access rights to this folder
+app_treegrouprights_title	Common	Group rights title in the Add/Modify folder page	Group Rights
+app_treeaccessrights_title	Common	Title "Access Rights Information"	Access Rights Information
+app_treeselfaccessrights_label	Common	Label for a section describing user personal rights	Your access rights in this folder
+app_treefoldernotshared_text	Common	Text "This folder is NOT shared with other users and groups"	This folder is NOT shared with other users and groups
+app_treefoldershared_text	Common	Text "This folder is shared with following users and groups"	This folder is shared with following users and groups
+app_propagategrouprights_title	Common	Text "Propagate access rights to all subfolders"	Propagate access rights to all subfolders
+app_propagategrouprights_note	Common	Propageate groups rights note	Propagate these access rights to all subfolders where you have F (Folder) permissions
+app_treefldaccessrights_label	Common	Label for a section describing user rights in current folder	Your access rights
+app_treeuserid_title	Common	User ID column title	User ID
+app_treeshared_label	Common	Label "Shared"	Shared
+app_treenotshared_label	Common	Label "Not Shared"	Not Shared
+app_treemodrightstip_text	Common	Tip - how to modify user rights	To modify access rights use Folder.../Modify Folder menu.
+app_treekeepaccess_text	Common	Folder copy/move keep access rights option	Keep access rights not changed
+app_treeinheritaccess_text	Common	Folder copy/move inherit access rights option	Inherit access rights from the destination parent folder
+app_treecopymovedest_message	Common	Copy/move error message	Please select destination folder
+app_tree_folderid_label	Common	Folder ID label	Folder ID
+app_weekmonshort_name	Common	Monday short name	M
+app_weektueshort_name	Common	Tuesday short name	T
+app_weekwedshort_name	Common	Wednesday short name	W
+app_weekthushort_name	Common	Thursday short name	T
+app_weekfrishort_name	Common	Friday short name	F
+app_weeksatshort_name	Common	Saturday short name	S
+app_weeksunshort_name	Common	Sunday short name	S
+app_cldtoday_text	Common	Today calendar text	Today
+app_yearshort_text	Common	Year short text	y.
+app_cldwk_text	Common	Wk. calendar text	wk.
+app_cldweelnum_text	Common	Week Number calendar text	Week Number
+app_cldclose_text	Common	Close calendar text	Close
+app_cldprevyear_text	Common	Previous Year calendar text	Previous Year
+app_cldnextyear_text	Common	Next Year calendar text	Next Year
+app_cldprevmon_text	Common	Previous Month calendar text	Previous Month
+app_cldtnextmon_text	Common	Next Month calendar text	Next Month
+app_accessdenied_message	Common	Access denied message	Access denied
+app_importingcols_label	Common	Import Column list header	Importing Column
+app_importchecks_label	Common	Checkbox Column header	Import
+app_selectcolumn_item	Common	First item in column selection	<select column>
+app_importfirst_label	Common	Import first line checkbox label	Import first line
+app_importfielderr_message	Common	Importing required field match not specified	You must specify correspondence for "%s" column
+app_importfieldgrouperr_message	Common	Importing required field group match not specified	One of the following fields must have a value:\n %s
+app_importinvformat_message	Common	Invalid file import format message	Invalid file format - no correspondence for column "%s" was found
+app_importmanageformats_label	Common	Label Import File Formats	Manage Import File Formats
+app_importmanageformats_title	Common	Import File Formats page title	Import File Formats
+app_imporformats_tipes	Common	Tips in the Import File Formats screen	To create new import file format, run Import operation with File Format = <custom format> option. Once you customize columns for imported file, you will be offered to save new format for further usage.
+app_importoformats_delete	Common	Import File Formats screen Delete button	Delete Selected
+app_importformatsnofmt_label	Common	Import File Formats screen no file formats label	No Import File Formats found.
+app_usingnotemptydb_message	Common	Database is not empty message	Database is not empty
+app_gdunavailable_message	Common	Graphic Library unavailable message	Error creating thumbnail: GD library is not available
+app_gdoutimgsupport_message	Common	Unsupported output image formats message	Error creating thumbnail: GD library does not support GIF and JPEG format processing
+app_gdunsupportedfmt_message	Common	Message about unsupported input format	Error creating thumbnail: GD library does not support %s format processing
+app_gdresexceeds_message	Common	Message about exceeding image resolution	Error creating thumbnail: Not enough memory for this size of file. Refer to your system administrator to increase Memory Limit parameter on your server
+app_gdcommonerr_message	Common	Common graphics library error message	Error creating thumbnail: Unknown error
+app_thumbcreated_message	Common	Common graphics library success message	Thumbnail successfully created
+app_mysqluserexists_message	Common	MySQL user exists message	User you have entered already exists
+app_return_btn	Common	Return button	Return
+app_back_btn	Common	Back button	Back
+app_imagedesc_label	Common	Image description label	Description
+app_addimage_label	Common	Add image label	Add Image
+app_noimage_label	Common	No Image label	no image
+app_select_item	Common	Select item	<select>
+app_upload_btn	Common	Upload buttom	Add
+app_clear_btn	Common	Clear buttom	Clear
+app_image_text	Common	Image text	image
+app_invalidimageformat_message	Common	Invalid image file format message	Unsupported file format for Image field. Supported formats:
+app_noname_text	Common	No name text	no name
+app_uniquefieldviolation_message	Common	Unique field violation message	Entry with this %s already exists. Duplicates are not allowed for %s field.
+app_entrynumexceeded_message	Common	Maximum allowed entry number exceeded message	New entry could not be added. Maximum number of allowed entries: %s
+app_usd_brief_text	Common	Brief name for US Dollar	USD
+app_uid_text	Common	User identifier text	User ID
+app_user_text	Common	User text	User
+app_cantremoveself_message	Common	Cannot revoke user privileges for yourself messasge	You can not revoke user privileges for yourself.
+app_cmpname_name	Common	Company Name variable name	Company Name
+app_cmpstreetaddr_name	Common	Company Street Address variable name	Company Street Address
+app_cmpcity_name	Common	Company City variable name	Company City
+app_cmpstatev_name	Common	Company State variable name	Company State
+app_cmpzip_name	Common	Company Zip variable name	Company Zip
+app_cmpcountry_name	Common	Company Country variable name	Company Country
+app_cmpcontactname_name	Common	Company Contact Name variable name	Company Contact Name
+app_cmpcontactemail_name	Common	Company Contact Email variable name	Company Contact Email
+app_cmpcontactphone_name	Common	Company Contact Phone variable name	Company Contact Phone
+app_cmpcontactfax	Common	Company Contact Fax variable name	Company Contact Fax
+app_group_label	Common	Group label	Group
+app_user_label	Common	User label	User
+app_activeusergr_title	Common	Active Users group name	Active Users
+app_inactiveusergr_title	Common	Inactive Users group name	Inactive Users
+app_deletedusergr_title	Common	Deleted Users group name	Deleted Users
+app_generalgroup_title	Common	General contact fields group	General
+app_longname_firstname	Common	First Name field full name	First Name
+app_longname_lastname	Common	Last Name field full name	Last Name
+app_longname_midname	Common	Middle Name field full name	Middle Name
+app_longname_nickname	Common	Nickname field full name	Nickname
+app_longname_email	Common	E-Mail field full name	E-Mail
+app_phonesgroup_title	Common	Phones contact field group	Phones
+app_longname_homeph	Common	Home field full name	Home
+app_longname_workph	Common	Work field full name	Work
+app_longname_mobileph	Common	Mobile field full name	Mobile
+app_longname_fax	Common	Fax field full name	Fax
+app_longname_pager	Common	Pager field full name	Pager
+app_longname_workfax	Common	Business Fax field full name	Business Fax
+app_group_home	Common	Home contact field group	Home
+app_group_business	Common	Business contact field group	Business
+app_group_photo	Common	Photo contact field group	Photo
+app_group_work	Common	Work contact field group	Work
+app_longname_homestreet	Common	Street Address field full name	Street Address
+app_longname_homecity	Common	City field full name	City
+app_longname_homestate	Common	State field full name	State
+app_longname_homepostcode	Common	Postal Code field full name	Postal Code
+app_longname_homecountry	Common	Country field full name	Country
+app_longname_perspage	Common	Personal Web Page field full name	Personal Web Page
+app_longname_workstreet	Common	Street Address field full name	Street Address
+app_longname_workcity	Common	City field full name	City
+app_longname_workstate	Common	State field full name	State
+app_longname_workpostcode	Common	Postal Code field full name	Postal Code
+app_longname_workcountry	Common	Country field full name	Country
+app_longname_officelocation	Common	Office Location field full name	Office Location
+app_longname_company	Common	Company field full name	Company
+app_longname_department	Common	Department field full name	Department
+app_longname_jobtitle	Common	Job Title field full name	Job Title
+app_longname_buspage	Common	Business Web Page field full name	Business Web Page
+app_longname_photo	Common	Photo field full name	Photo
+app_group_notes	Common	Notes field group	Notes
+app_included_label	Common	Label "Included"	Included
+app_notincluded_label	Common	Label "Not Included"	Not Included
+app_conttypenotfound_message	Common	Contact type not found error message	Requested contact type is not found
+app_invconttype_message	Common	Invalid contact type description message	Invalid contact type description
+app_longname_birthdayday	Common	Birthday day field full name	Day
+app_longname_birthdaymon	Common	Birthday month field full name	Month
+app_longname_birthdayyear	Common	Birthday year field full name	Year
+app_longname_birthday	Common	Birthday field full name	Birthday
+app_longname_notes	Common	Notes field full name	Notes
+app_group_dates	Common	Dates contact field group	Dates
+app_selectmonth_item	Common	Select Month item	<select month>
+app_shortname_homeph	Common	H/Phone field short name	H/Phone
+app_shortname_workph	Common	Work phone field short name	W/Phone
+app_shortname_workfax	Common	B/Fax field short name	B/Fax
+app_shortname_mobileph	Common	Mobile field short name	Mobile
+app_shortname_fax	Common	H/Fax field short name	H/Fax
+app_shortname_pager	Common	Pager field short name	Pager
+app_shortname_homestreet	Common	H/Street field short name	H/Street
+app_shortname_homecity	Common	H/City field short name	H/City
+app_shortname_homestate	Common	H/State field short name	H/State
+app_shortname_homepostcode	Common	H/ZIP field short name	H/ZIP
+app_shortname_homecountry	Common	H/Country field short name	H/Country
+app_shortname_perspage	Common	Personal WWW field short name	Personal WWW
+app_shortname_birthday	Common	Birthday field short name	Birthday
+app_shortname_company	Common	Company field short name	Company
+app_shortname_department	Common	Department field short name	Department
+app_shortname_jobtitle	Common	Job Title field short name	Job Title
+app_shortname_buspage	Common	Business WWW field short name	Business WWW
+app_shortname_photo	Common	Photo field short name	Photo
+app_shortname_workstreet	Common	B/Street field short name	B/Street
+app_shortname_workcity	Common	B/City field short name	B/City
+app_shortname_workstate	Common	B/State field short name	B/State
+app_shortname_workpostcode	Common	B/ZIP field short name	B/ZIP
+app_shortname_workcountry	Common	B/Country field short name	B/Country
+app_shortname_officelocation	Common	B/Office field short name	B/Office
+app_shortname_notes	Common	Notes field full name	Notes
+app_contactgroup_title	Common	Contact fields group	Contact
+app_shortname_firstname	Common	First Name field short name	First Name
+app_shortname_lastname	Common	Last Name field short name	Last Name
+app_shortname_midname	Common	Middle Name field short name	Middle Name
+app_shortname_nickname	Common	Nickname field short name	Nickname
+app_shortname_email	Common	E-Mail field short name	Email
+app_sms_recipient_error	Common	SMS recipient address error	Phone number must consists 11 digits.
+app_sms_delivered_status	Common	SMS Status: Delivered	Delivered
+app_sms_pending_status	Common	SMS Status: Pending	Sent
+app_sms_canceled_status	Common	SMS Status: Canceled	ERROR
+app_sms_phone_format_note	Common	Note with international phone number format	Use country code + area code + phone number. Don’t use leading zeros, e.g. "00". Not numeric characters are ignored. Multiple phone numbers must be delimited with semicolon ";" Sample: +1 (215) 999-9999; 15551000000; 44 123 5550000
+app_mdl_class_notfound_error	Common	Module class not found error message	Module class not found.
+app_mdl_default_notset_error	Common	Default module not set error message	%s module is not installed or disabled.
+app_mdl_notfound_error	Common	Module not found error message	Module not found.
+app_mdl_alr_installed_error	Common	Module already installed error message	Module already installed.
+app_sms_out_system_balance	Common	SMS Error	Available SMS balance has been exceeded.
+app_sms_out_user_balance	Common	SMS Error	Available SMS balance has been exceeded.
+app_imagefieldindicator_label	Common	Image field indicator	Image
+app_impnote_label	Common	Label Important Note	IMPORTANT NOTE
+app_vlctrlvar_title	Common	Variable list control variable name title	Variable
+app_vlctrldesc_title	Common	Variable list control variable description title	Description
+app_trialdemo_note	Common	The trial demo account notification	This account will expire when you close your browser.
+app_trialdemo_link	Common	The trial demo account link	Register to make it permanent. It's free!
+app_accountunconfirmed_note	Common	The Unconfirmed account note	ACCOUNT NOT CONFIRMED
+app_accountunconfirmed_link	Common	The Unconfirmed account link	What's this?
+app_contactslimit_message	Common	Contact number limitation message	<b>ACCOUNT LIMIT</b>: Number of contacts can not exceed %s.
+app_userslimit_message	Common	User number limitation message	<b>ACCOUNT LIMIT</b>: Number of users can not exceed %s.
+app_spacelimit_message	Common	Database size limitation message	<b>ACCOUNT LIMIT</b>: Database size can not exceed %s MB.
+app_upgradeacc_label	Common	Upgrade your account label	Upgrade Your Account
+app_registeracc_label	Common	Register your account label	Register Your Account.
+app_billingalert1_label	Common	Billing alert line 1 label	We had a billing problem with your account.
+app_billingalert2_label	Common	Billing alert line 2 label	Account may be suspended in %s day(s).
+app_billingalert3_label	Common	Billing alert line 3 label	Click to resolve.
+app_suspended_title	Common	Account suspended page title	Account Suspended
+app_suspended_message	Common	Account suspended message	Your account has been suspended because next hosting period was not paid.
+app_referadmin_message	Common	Refer your system administrator message	Please contact your account administrator.
+app_accountexpired_message	Common	Account expired message	Your account has been expired.
+app_accountexpire_message	Common	Account expire message	Your account will expire in %s day(s).
+app_account_givename	Common	Give name message	Give name to your account
+app_account_givename_sample	Common	Give name message sample	Sample: mycompany.webasyst.net (<a target="_blank" href="http://blog.webasyst.net/creating-personal-name-for-your-webasyst-account/">Learn more</a>)
+app_add_remove_services	Common	Add or Remove services link	Add Services...
+app_loggedas_label	Common	Logged As	Logged as
+
+
+app_changes_applied_message	Common	Changes applied message	Your changes have been successfully applied.
+app_changes_canceled_message	Common	Changes applied message	Your changes have been canceled.
+
+app_importtemplate_label	Common	Import template label	Template
+app_managetemplates_btn	Common	Manage Templates button	Manage Templates
+app_customtemplate_item	Common	Custom template list item	<custom>
+
+app_pendingsubscr_label	Common	Pending subscriber label	Pending
+app_normalsubscr_label	Common	Pending subscriber label	Normal
+
+app_unable_loadapps	Common	Unable load host application list message	Unable load host application list
+app_error_regapps	Common	Error registering applications message	Error registering applications
+app_wrong_accname	Common	Wrong account name message	Wrong account address
+app_login2account	Common	Login to your WebAsyst account label	Login to your WebAsyst account
+app_your_accountname	Common	Your account name label	Your account address (database key)
+app_loginname	Common	Login name label	Login name
+app_use_ssl	Common	Use SSL label	Use SSL connection (secure)
+app_already_ssl	Common	Use SSL label	Secure connection (SSL) is ON
+app_nouse_ssl	Common	Use SSL label	Switch to fast (no SSL) mode
+app_login_btn	Common	Login button	Login
+app_login_link	Common	Login button	Login form
+app_donthaveaccount	Common	Don't have account label	Don't have account?
+app_signup	Common	Sign Up label	Sign Up
+app_itsfree	Common	it's free label	it's free
+app_copyright	Common	Copyright label	Copyright © <A href="http://www.webasyst.net/">WebAsyst LLC</A>, 2007. All rights reserved.
+app_session_expired	Common	Session expired message	Session is expired
+app_system_enter	Common	System enter message	Please use <a href="../../../login.php">login page</a> to enter the system
+
+
+app_forgotpassword_link	Common	Forgot password link	Forgot Password?
+app_forgotpassword	Common	Forgot password account label	Forgot Password
+app_remind_btn	Common	Forgot password remind button	Submit
+app_remember	Common	Remeber me	Remember me on this computer
+
+app_mail_forgotpassword_subject	Common	Mail forgot password subject	WebAsyst account password has been reset
+app_forgotpassword_sended	Common	Mail forgot password sended	We have just sent your new password to <b>%s</b>
+app_forgotpassword_error	Common	Mail forgot password sended	Account with this login name and Email doesn't exist
+
+app_widgetsmenu_label	Common	Widgets Menu	Widgets
+
+tpl_page_title	Manage Templates	Page Title	Manage Templates
+tpl_systemtemplates_label	Manage Templates	System Templates label	System Templates
+tpl_customtemplates_label	Manage Templates	Custom Templates label	Custom Templates
+tpl_notemplates_label	Manage Templates	No Templates label	<no templates>
+tpl_deleteselected_btn	Manage Templates	Delete Selected button	Delete Selected
+tpl_imporformats_tipes	Manage Templates	Tips in the Manage Templates screen	To create new custom template, run Import operation with File Template = <custom> option. Once you customize columns for imported file, you will be offered to save new template for further usage.
+tpl_format_note	Manage Templates	File Format Note	To save this template for further usage, click checkbox and enter template name below
+tpl_formatname_label	Manage Templates	Label "Template Name"	Save template as
+
+du_page_title	Delete Users	Page Title	Delete Users
+du_success_message	Delete Users	User processing success result message	User has been successfully deleted
+
+ci_screen_long_name	Company Information	Company Information page full name	Account name, logo, and colors
+ci_screen_short_name	Company Information	Company Information page short name	Account name, logo, and colors
+lf_screen_long_name	Company Information	Company Information page full name	Look and Feel
+lf_screen_short_name	Company Information	Company Information page short name	Look and Feel
+ci_nochanges_message	Company Information	Changes canceled message	Account information has not been changed
+ci_savechanges_message	Company Information	Changes saved message	Account information has been successfully changed
+ci_compname_message	Company Information	Company Name label	Account Name
+ci_adddress_title	Company Information	Address section header	Address
+ci_streetaddr_label	Company Information	Street Address label	Address
+ci_city_label	Company Information	City label	City
+ci_state_label	Company Information	State label	State
+ci_zip_label	Company Information	Zip label	Zip
+ci_country_label	Company Information	Country label	Country
+ci_contperson_title	Company Information	Contact Person section header	Contact Information
+ci_name_label	Company Information	Name label	Name
+ci_email_label	Company Information	E-Mail label	Email
+ci_phone_label	Company Information	Phone label	Phone
+ci_fax_label	Company Information	Fax label	Fax
+ci_logo_title	Company Information	Company Logo section header	Logo
+ci_selectlogo_label	Company Information	Select Logo label	Select Logo Image
+ci_delete_btn	Company Information	Delete button	Delete
+ci_invlogoformat_message	Company Information	Image with other than GIF extension message	Only GIF images are allowed as company logo
+ci_logo_comment_caption	Company Information	Logo Comment Caption	Logo
+ci_logo_comment_text	Company Information	Logo Comment Text	Once selected, your logo will appear on the top next to your Company Name. For best view, please use image file with dimensions not larger than 250 x 100 px (GIF files only).
+ci_nameandlogo_title	Company Information	Name and logo section title	Company Name and Logo
+ci_logo_note	Company Information	Logo Note	For best view, use image file with dimensions not larger than 250 x 100 pixels (GIF files only).
+ci_showlogotop_label	Company Information	Show logo top 	Display logo at the top panel
+ci_showcompanynametop_label	Company Information	Show company name top 	Display account name at the top panel
+
+cl_screen_long_name	Currency List	Currency List page full name	Currency List
+cl_screen_short_name	Currency List	Short name	Currency
+cl_addcur_btn	Currency List	Add Currency button	Add Currency
+cl_id_title	Currency List	ID column header	ID
+cl_name_title	Currency List	Column name	Name
+
+amc_pageadd_title	Add/Modify Currency	Page header in Add Currency mode	Add Currency
+amc_pagemodify_title	Add/Modify Currency	Page header in Modify Currency mode	Modify Currency
+amc_delete_message	Add/Modify Currency	Currency deletion confirmation	Delete currency?
+amc_curexists_message	Add/Modify Currency	Entered currency already exists message	Currency already exists
+
+ul_page_label	User List	Page label	Page
+ul_usernamefull_title	User List	Primary Name column title	Primary Name
+ul_sorting_title	User List	Sorting bar header	Sorting
+ul_emptyaddtogroup_message	User List	Adding users to group without selecting the users message	You must select user(s) for this operation first.
+ul_emptyremove_message	User List	Removing users from group without selecting the users message	You must select user(s) for this operation first.
+ul_user_menu	User List	User menu	User
+ul_deleteusers_menu	User List	Delete Users menu item	Delete
+ul_emptydel_message	User List	User deletion without selecting the files message	You must select user(s) for this operation first.
+ul_confirmdel_message	User List	User deletion confirmation	Do you really want to delete this user(s)?
+ul_emptycongroup_message	User List	Empty contact required group message	One of the following fields must have a value:\n %s
+ul_adduser_menu	User List	Add User menu	Add User
+ul_userid_title	User List	User ID column header	User ID
+ul_email_title	User List	E-mail column header	E-mail
+
+amu_blank_item	Add/Modify User	blank text in pages list	blank
+amu_lastopened_item	Add/Modify User	last opened text in pages list	last opened
+amu_htmlmail_name	Add/Modify User	HTML message format	HTML
+amu_textmail_name	Add/Modify User	Text message format	Text
+amu_lastname_label	Add/Modify User	Last Name label	Last Name
+amu_firstname_label	Add/Modify User	First Name label	First Name
+amu_middlename_label	Add/Modify User	Middle Name label	Middle Name
+amu_password_label	Add/Modify User	Password label	Password
+amu_passconf_label	Add/Modify User	Confirm password label	Confirm password
+amu_language_label	Add/Modify User	Language label	Language
+amu_encoding_label	Add/Modify User	Encoding label	Encoding
+amu_status_label	Add/Modify User	Status label	Status
+amu_notfirmat_label	Add/Modify User	Notification Format label	Notification Format
+amu_startpage_label	Add/Modify User	Start Page label	Start Page
+amu_diraccess_text	Add/Modify User	Direct Access checkbox text	Allow direct access
+amu_diraccessnote_text	Add/Modify User	Direct login comment text	You must expressly select start page to allow direct access.
+amu_emailinstructions_text	Add/Modify User	E-mail login restrictions checkbox text	Email login instruction to user
+amu_reservedname_message	Add/Modify User	Message in case of using the ADMINISTRATOR name as ID for new user	ADMINISTRATOR user name is reserved and can not be used
+amu_usrexists_message	Add/Modify User	User already exists message	User %s already registered
+amu_maxusers_message	Add/Modify User	Number of maximum users exceeded	Number of users can not exceed %s. Refer to system administrator please.
+amu_invidsymbols_message	Add/Modify User	Invalid characters in Login Name field entered message	Invalid characters in Login Name field
+amu_invpassword_message	Add/Modify User	Invalid password message	Invalid password
+amu_notchanged_text	Add/Modify User	***not changed*** text in the E-mail	***not changed***
+amu_usermailheader_text	Add/Modify User	Header in a user connection instructions	Your WebAsyst account has been created or modified
+amu_loginurlcomment_text	Add/Modify User	Login address comments	To login from your web-browser please use following address:
+amu_loginparams_text	Add/Modify User	Text above the login parameters list	Here is your account login information:
+amu_maildbkey_label	Add/Modify User	Database Key label	Database Key
+amu_mailloginname_label	Add/Modify User	Login Name label	Login Name
+amu_mailpassword_label	Add/Modify User	Password label	Password
+amu_maildacomment_text	Add/Modify User	Direct system login comments	You are also allowed to login directly following WebAsyst pages:
+amy_mailgreeting_text	Add/Modify User	Greetings in a user connection instructions	Dear %s,
+amu_perssettings_title	Add/Modify User	Text for the personal settings section on the Access tab	Allow to change personal settings
+amu_perspassword_label	Add/Modify User	Label "Password" for the Access tab	Password
+amu_perslookandfeel_label	Add/Modify User	Label "Look and Feel" for the Access tab	Look and Feel
+amu_persnameandcont_label	Add/Modify User	Label "Name and Contact" for the Access tab	Name and Contact Information
+amu_persswitchemail_label	Add/Modify User	Label "Enable/Disable email notifications" for the Access tab	Enable/Disable email notifications
+amu_removefromgroup_message	Add/Modify User	Remove user from group confirmation	Do you really want to remove selected users from the group?
+amu_directaccess_title	Add/Modify User	Direct access section title	Direct Access
+amu_directaccess_text	Add/Modify User	Description for the direct access feature	Direct access allows user to pass by WebAsyst Login screen and open any accessible WebAsyst page by entering its URL in browser address field.
+amu_directaccessemail_note	Add/Modify User	Login instructions direct access note	The list of direct access URLs will be included into Login Instruction message
+amu_addpage_title	Add/Modify User	Add User page title	Add User
+amu_modpage_title	Add/Modify User	Modify User page title	Edit User
+amu_showextended_btn	Add/Modify User	Show Extended Information button	Show more...
+amu_hideextended_btn	Add/Modify User	Hide Extended Information button	Show fewer...
+amu_newuser_label	Add/Modify User	New User label	<new user>
+
+amu_timezone_label	Add/Modify User	Label for timezone combobox	Time Zone
+amu_timezone_dst_label	Add/Modify User	DST combobox	Daylight Saving Time
+amu_localtime_label	Add/Modify User	Your Local Time label	User Local Time
+amu_userlocaltime_label	Add/Modify User	Local Time label	User Time Zone
+
+amg_name_label	Add/Modify Group	Name label	Name
+
+usa_screen_long_name	Access Rights Diagram	User Screen Access page full name	Access Rights Diagram
+usa_screen_short_name	Access Rights Diagram	User Screen Access page short name	Access
+usa_select_item	Access Rights Diagram	select item for user list	select
+usa_list_text	Access Rights Diagram	Text above the list	To modify user rights click user ID in a column title
+usa_finduser_label	Access Rights Diagram	Find user label	Find User
+usa_findgroup_label	Access Rights Diagram	Find group label	Find Group
+usa_accessobj_title	Access Rights Diagram	Access Object column header	Access Object
+usa_notifylist_title	Access Rights Diagram	E-mail Notification list header	E-mail Notification
+usa_perssettings_title	Access Rights Diagram	Personal Settings column header	Personal Settings
+usa_indqualifier_label	Access Rights Diagram	Individual access type label	Personal
+usa_groupqualifier_label	Access Rights Diagram	Group access type label	Group
+usa_sumqualifier_label	Access Rights Diagram	Summary access type label	Summary
+usa_diraccess_text	Access Rights Diagram	Direct Access checkbox text	Allow direct access
+usa_passwordqualifier_text	Access Rights Diagram	Can change password qualifier text	Can change Password
+usa_lookandfeelqualifier_text	Access Rights Diagram	Can change look and feel qualifier text	Can change Look and Feel
+usa_namequalifier_text	Access Rights Diagram	Can change Name and Contact qualifier text	Can change Name and Contact Information
+usa_emailqualifier_text	Access Rights Diagram	Can Enable/Disable email qualifier text	Can Enable/Disable email notifications
+usa_folders_title	Access Rights Diagram	Folders title	Folders
+usa_permlevel_title	Access Rights Diagram	Permission Level title	Permission Level
+usa_showmode_label	Access Rights Diagram	Label "Show"	Show
+usa_usersmode_item	Access Rights Diagram	Users view mode name	Users
+usa_groupsmode_item	Access Rights Diagram	Groups view mode name	Groups
+usa_nogroups_label	Access Rights Diagram	No user groups label	No User Groups defined
+usa_userstip_text	Access Rights Diagram	Tip text for for user view mode	To customize user access rights click user name in the column title
+usa_groupstip_text	Access Rights Diagram	Tip text for for group view mode	To customize group access rights click group name in the column title
+
+mur_loadntfc_message	Modify User Rights	Error loading notification list message	Error loading notification list
+
+aa_screen_long_name	Account Administrator	Account Administrator page full name	Account
+aa_screen_short_name	Account Administrator	Account Administrator short name	Account
+aa_page_title	Account Administrator	Page Title	Account Administrator
+aa_sys_comment_text	Account Administrator	System Comment Text	Customize date format (e.g. MM/DD/YYYY or DD.MM.YYYY) and set a session expiration interval.
+aa_ci_comment_text	Account Administrator	System Comment Text	Edit your company name and contact information. Have your logo and company name appear on the top panel in your WebAsyst account.
+aa_cl_comment_text	Account Administrator	System Comment Text	Manage a list of currency units used by all WebAsyst services, e.g. US Dollar, Euro etc.
+aa_sms_comment_text	Account Administrator	System Comment Text	View your current SMS Balance and a history of all SMS messages sent from your WebAsyst account.
+aa_ai_comment_text	Account Administrator	System Comment Text	Account Information screen comment
+
+sys_screen_long_name	System	System page full name	System Settings
+sys_screen_short_name	System	System page short name	System Settings
+sys_errgettingdbsize_message	System	Database size query message	Unable to calculate database size
+sys_neverexp_text	System	Never expires text	Never expires
+sys_totalfiles_text	System	Number of files text	(%s file(s) total)
+sys_availspace_text	System	Available free space text	(%s%% of available space)
+sys_space_title	System	On-disk space allocation section header	On-disk space allocation
+sys_database_label	System	Database label	Database
+sys_files_label	System	File attachments label	File attachments
+sys_total_label	System	Total label	Total
+sys_totallimit_label	System	Total space limit label	Total space limit
+sys_attachmentlimit_label	System	One attachment limit label	One attachment limit
+sys_dataformat_label	System	Date output format label	Date Format
+sys_expinterval_text	System	Session Expiration Interval (min) text	Session Expiration Interval
+sys_change_btn	System	Change button	Change
+sys_apply_btn	System	Apply button	Apply Changes
+sys_nochanges_message	System	Changes canceled message	System settings have not been changed
+sys_savechanges_message	System	Changes saved message	System settings have been successfully changed
+
+sei_page_title	Session Expiration Interval	Page header	Session Expiration Interval
+sei_default_label	Session Expiration Interval	Default label	Default
+sei_never_label	Session Expiration Interval	Never expires label	Never expires
+sei_browserclose_label	Expiration Interval	Browser close label	on browser close
+sei_custom_label	Session Expiration Interval	Custom (min) label	Custom (min)
+sei_min_label	Session Expiration Interval	min label	min
+sei_form_text	Session Expiration Interval	Text above form	Please specify HTML session timeout:
+
+ul_addgroup_menu	User List	Menu item Group/Add Group	Add Group
+ul_modifygroup_menu	User List	Menu item Group/Modify Group	Modify Group
+ul_deletegroup_menu	User List	Menu item Group/Delete Group	Delete Group
+ul_delgroup_message	User List	Group deletion confirmation	Do you really want to delete this group?
+ul_delgroup_note	User List	Group deletion note	NOTE: User entries will NOT be deleted.
+ul_addtogroup_menu	User List	Menu item Add To Group	Add To Group...
+ul_removefromgroup_menu	User List	Menu item Remove To Group	Remove from Group...
+ul_view_menu	User List	Menu View	View
+ul_groups_title	User List	Groups list title	Groups
+ul_hidegroups_hint	User List	Hint for hide groups icon	Hide Groups
+ul_availablegroups_title	User List	Column in the Available Groups table	Available Groups
+ul_username_title	User List	Name column title	Name
+ul_groupname_title	User List	Group Name column title	Group Name
+ul_usercount_title	User List	User Count column title	Users
+ul_summary_note	User List	Label below the Available Groups table	%s user(s) in %s group(s)
+ul_emptyrevoke_message	User Listr	Revoking privileges without selecting the contacts message	You must select user(s) for this operation first.
+ul_revokeprivs_message	User Listr	Revoke user privileges confirmation message	Do you really want to revoke user privileges for selected user(s)?
+ul_deleteusers_menu	User Listr	Delete users menu	Delete
+
+amgr_pageadd_title	Add/Modify Group	Add/Modify Group page header in add group mode	Add Group
+amgr_pagemod_title	Add/Modify Group	Add/Modify Group page header in modify group mode	Modify Group
+amgr_newgroup_label	Add/Modify Group	The group name for add group mode	<new group>
+amgr_group_title	Add/Modify Group	Title for the Group tab	Group
+amgr_users_title	Add/Modify Group	Title for the Users tab	Users
+amgr_membershp_label	Add/Modify Group	Label "User Group Membership"	Select users you want to include in this group
+amgr_included_label	Add/Modify Group	Label "Included"	Included
+amgr_notincluded_label	Add/Modify Group	Label "Not Included"	Not Included
+amgr_access_title	Add/Modify Group	Title for the Access tab	Access
+amgr_access_label	Add/Modify Group	Label for the Access tab	All users of this group have following access rights
+amgr_groupid_label	Add/Modify Group	Group ID label	Group ID
+
+amu_user_title	Add/Modify User	Title for the User tab	User
+amu_groups_title	Add/Modify User	Title for the Groups tab	Groups
+amu_access_title	Add/Modify User	Title for the Access tab	Access
+amu_quota_title	Add/Modify User	Title for the Quota tab	Quota
+amu_lookandfeel_title	Add/Modify User	Title for the Look And Feel tab	Look and Feel
+amu_sms_title	Add/Modify User	Title for the SMS tab	SMS
+amu_storagespacequota_label	Add/Modify User	Storage space quota label	Storage Space (KB)
+amu_quotas_note	Add/Modify User	Quotas note	Some applications allow you to specify quotas on resource usage. Use the form below to set quota values for current user.
+amu_noquotas_text	Add/Modify User	No quotas text	No applications enable quotas.
+amu_leaveblankquotas_text	Add/Modify User	Leave blank quota text	Leave blank to set unlimited quota.
+amu_noaccess_label	Add/Modify User	Warning: no access rights granted	No access rights granted.\n\nUser does not belong to any group.
+amu_groupperms_text	Add/Modify User	Note about combination rights on the Groups tab	Once user is associated to one or more groups, a combination of personal and group access rights will be applied to this user.
+amu_combinationrights_text	Add/Modify User	Note about user rights in case if user belongs to one or more groups	This user belongs to %s group(s). A combination of personal and group access rights will be applied.
+amu_personalrights_text	Add/Modify User	Note about user rights in case if user does not belongs to any groups	This user does not belong to any group. Personal access rights will be applied.
+amu_loginname_label	Add/Modify User	Label "Login Name"	Login Name (ID)
+amu_notificationscb_label	Add/Modify User	Label for email notifications checkbox	This user may receive email notifications
+amu_contact_title	Add/Modify User	Contact tab title	Contact
+amu_contactsection_label	Add/Modify User	Contact section label	Contact
+amu_contactfolder_label	Add/Modify User	Contact folder label	Contact Folder
+amu_folder_tip	Add/Modify User	Folder tip	Every user entry appears in your Contacts database. When you add user, you can specify any available folder. You can change it later using Contacts service.
+amu_groups_label	Add/Modify User	Group tab label	Select groups you want to include this user
+
+adg_page_title	Add To Group	Page header	Add To Group
+adg_selectgroup_item	Add To Group	Item <select group>	<select group>
+adg_group_label	Add To Group	Groups selector label	Select group
+
+cv_page_title	Customize View	Page header	Customize View
+cv_form_label	Customize View	Label above the form	Specify visible columns for Grid View.
+cv_visible_list	Customize View	Visible Columns list header	Visible Columns
+cv_hidden_list	Customize View	Hidden Columns list header	Hidden Columns
+cv_entriesnum_label	Customize View	Number of entries on one page selection label	Number of entries on one page:
+cv_details_text	Customize View	Details tab text	In Details View all available contact/user information is displayed. You can customize which field of Image type (if any) will be displayed in the list as a thumbnail.
+cv_addimages_note	Customize View	Add images note	To add image fields use Contact Manager / Service.
+
+we_tooltips_bold	WYSIWYG Editor	"Bold" button tooltip	Bold
+we_tooltips_italic	WYSIWYG Editor	"UItalic" button tooltip	Italic
+we_tooltips_underline	WYSIWYG Editor	"Undeline" button tooltip	Underline
+we_tooltips_strikethrough	WYSIWYG Editor	"Strikethrough" button tooltip	Strikethrough
+we_tooltips_sub	WYSIWYG Editor	"Subscript" button tooltip	Subscript
+we_tooltips_super	WYSIWYG Editor	"Superscript" button tooltip	Superscript
+we_tooltips_justifyleft	WYSIWYG Editor	"Justifyleft" button tooltip	Justify Left
+we_tooltips_justifycenter	WYSIWYG Editor	"Justify Center" button tooltip	Justify Center
+we_tooltips_justifyright	WYSIWYG Editor	"Justify Right" button tooltip	Justify Right
+we_tooltips_justifyfull	WYSIWYG Editor	"Justify Full" button tooltip	Justify Full
+we_tooltips_orderedlist	WYSIWYG Editor	"Ordered List" button tooltip	Ordered List
+we_tooltips_unorderedlist	WYSIWYG Editor	"Bulleted List" button tooltip	Bulleted List
+we_tooltips_outdent	WYSIWYG Editor	"Decrease Indent" button tooltip	Decrease Indent
+we_tooltips_indent	WYSIWYG Editor	"Increase Indent" button tooltip	Increase Indent
+we_tooltips_forecolor	WYSIWYG Editor	"Font Color" button tooltip	Font Color
+we_tooltips_hilitecolor	WYSIWYG Editor	"Background Color" button tooltip	Background Color
+we_tooltips_horizontalrule	WYSIWYG Editor	"Horizontal Rule" button tooltip	Horizontal Rule
+we_tooltips_createlink	WYSIWYG Editor	"Insert Web Link" button tooltip	Insert Web Link
+we_tooltips_insertimage	WYSIWYG Editor	"Insert/Modify Image" button tooltip	Insert/Modify Image
+we_tooltips_inserttable	WYSIWYG Editor	"Insert Table" button tooltip	Insert Table
+we_tooltips_htmlmode	WYSIWYG Editor	"Toggle HTML Source" button tooltip	Toggle HTML Source
+we_tooltips_popupEditor	WYSIWYG Editor	Enlarge Editor" button tooltip	Enlarge Editor
+we_tooltips_about	WYSIWYG Editor	"About this editor" button tooltip	About this editor
+we_tooltips_showhelp	WYSIWYG Editor	"Help using editor" button tooltip	Help using editor
+we_tooltips_textindicator	WYSIWYG Editor	"Current style" button tooltip	Current style
+we_tooltips_undo	WYSIWYG Editor	"Undoes your last action" button tooltip	Undoes your last action
+we_tooltips_redo	WYSIWYG Editor	"Redoes your last action" button tooltip	Redoes your last action
+we_tooltips_cut	WYSIWYG Editor	"Cut selection" button tooltip	Cut selection
+we_tooltips_copy	WYSIWYG Editor	"Copy selection" button tooltip	Copy selection
+we_tooltips_paste	WYSIWYG Editor	"Paste from clipboard" button tooltip	Paste from clipboard
+we_tooltips_lefttoright	WYSIWYG Editor	"Direction left to right" button tooltip	Direction left to right
+we_tooltips_righttoleft	WYSIWYG Editor	"Direction right to left" button tooltip	Direction right to left
+we_button_ok	WYSIWYG Editor	OK Button	OK
+we_button_cancel	WYSIWYG Editor	Cancel Button	Cancel
+we_msg_path	WYSIWYG Editor	"Path" message	Path
+we_msg_textmode	WYSIWYG Editor	"Textmode" message	You are in TEXT MODE.  Use the [<>] button to switch back to WYSIWYG.
+we_dlg_cancel	WYSIWYG Editor	"Cancel"	Cancel
+we_dlg_link	WYSIWYG Editor	"Insert/Modify Link"	Insert/Modify Link
+we_dlg_nwindow	WYSIWYG Editor	"New window (_blank)"	New window (_blank)
+we_dlg_none	WYSIWYG Editor	"None (use implicit)"	None (use implicit)
+we_dlg_ok	WYSIWYG Editor	"OK"	OK
+we_dlg_other	WYSIWYG Editor	"Other"	Other
+we_dlg_sameframe	WYSIWYG Editor	"Same frame (_self)"	Same frame (_self)
+we_dlg_target	WYSIWYG Editor	"Target:"	Target:
+we_dlg_title	WYSIWYG Editor	"Title (tooltip):"	Title (tooltip):
+we_dlg_topframe	WYSIWYG Editor	"Top frame (_top)"	Top frame (_top)
+we_dlg_url	WYSIWYG Editor	"URL:"	URL:
+we_dlg_editor	WYSIWYG Editor	"You must enter the URL where this link points to"	You must enter the URL where this link points to
+
+tt_page_title	Tips & Tricks	Page title	Tips & Tricks
+tt_pagetitle_item	Tips & Tricks	Page title combobox item	tips & tricks
+tt_loadingbook_message	Tips & Tricks	Error loading book message	Error loading page
+tt_openttonstartup_label	Tips & Tricks	Show Tips & Tricks on startup label	Show Tips & Tricks on startup
+hlp_basics_title	Help	WebAsyst Basics title	WebAsyst Basics
+
+sms_ua_screen_long_name	SMS User Accounts	SMS User Accounts screen long name	SMS User Accounts
+sms_ua_screen_short_name	SMS User Accounts	SMS User Accounts short name	SMS User Accounts
+sms_bh_screen_long_name	SMS User Accounts	SMS User Accounts screen long name	SMS Billing
+sms_bh_screen_short_name	SMS User Accounts	SMS User Accounts short name	SMS Billing
+sms_sd_screen_name	SMS Details	SMS Details screen name	SMS Details
+sms_screen_long_name	SMS	Screen Name	SMS Billing
+sms_page_title	SMS	Page Title	SMS
+sms_history_label	SMS	History Label	SMS History
+
+sms_actual_balance_title	SMS Balance & History	Actual system balance	Actual system balance
+sms_amount_label	SMS Balance & History	Amount label	Amount
+sms_avail_balance_title	SMS Balance & History	Available system balance	Available Balance
+sms_history_btn	SMS Balance & History	History button	History
+sms_update_balance_btn	SMS Balance & History	Update Balance button	Update Available
+sms_update_balance_screen	SMS Balance & History	Update Balance screen name	Update Available Amount of SMS
+sms_screen_empty_message	SMS Balance & History	Error message if no users were selected	You must select at least one user for this operation
+sms_userid_title	SMS Balance & History	User ID	User ID
+sms_username_title	SMS Balance & History	User Name	User Name
+sms_sent_title	SMS Balance & History	Sent	Sent
+sms_balance_title	SMS Balance & History	Balance	Balance
+sms_available_title	SMS Balance & History	Available	Available
+sms_credit_title	SMS Balance & History	Credit	Credit
+sms_date_title	SMS Balance & History	Date	Date
+sms_action_title	SMS Balance & History	Action	Action
+sms_source_title	SMS Balance & History	Source	Source
+sms_phone_title	SMS Balance & History	Phone	Phone
+sms_width_title	SMS Balance & History	Length	Length
+sms_app_title	SMS Balance & History	Application	Application
+sms_cost_title	SMS Balance & History	Cost	Cost
+sms_charge_title	SMS Balance & History	Charge	Charge
+sms_sender_title	SMS Balance & History	Sender	Sender
+sms_status_title	SMS Balance & History	Status	Status
+sms_text_title	SMS Balance & History	Text	Text
+sms_unlim_title	SMS Balance & History	Unlimited	Unlimited
+sms_modifiedby_title	SMS Balance & History	Modified by	Modified by
+sms_fill_btn	SMS Balance & History	Fill	Fill
+sms_fill_amount_text	SMS Balance & History	Note in the Modify Actual amount of sms form	Enter Amount below and click Fill button to substitute it for all users.
+sms_blnk_note_text	SMS Balance & History	Note under available amount field box	Enter blank value to grant Unlimited amount of available SMS.
+sms_comment_note_text	SMS Balance & History	Note text	Use the form below to set available amount of SMS messages current user can send.
+sms_credit_history_title	SMS Balance & History	Credit History	Credit History
+sms_sms_history_title	SMS Balance & History	SMS History	SMS History
+sms_err_balance_not_valid	SMS Balance & History	Balance value less or equal 0 error mesage	The SMS-Balance value entered must be integer, greater or equal 0
+sms_err_balance_update	SMS Balance & History	Balance update failed error message	Balance update failed with database error.
+sms_ua_form_comment_text	SMS Balance & History	Comment before table with user list in Users Accounts	Specify available amount of SMS messages for users and monitor user activity.
+sms_bh_form_comment_text	SMS Balance & History	Comment before table with user list in Billing History	View billing statistics.
+sms_history_form_comment_text	SMS Balance & History	Comment for History link	View sending history.
+sms_sms_select_users_title	SMS Balance & History	Select users	1. To change amount of available SMS for one user, click in Available column.\n2. For bulk update, select users and click "Update Available" button below.\n3. Click in Sent column to get history of SMS sent by user.
+sms_screen_sms_disabled	SMS Balance & History	SMS disabled message	SMS function disabled. Please contact your WebAsyst Administrator.
+sms_add_action_title	SMS Balance & History	SMS ADD Action Title	Added to balance
+sms_set_action_title	SMS Balance & History	SMS SET Action Title	Overridden balance
+sms_history_total_sent	SMS Balance & History	Total SMS sent	Total amount of SMS sent
+sms_history_sent	SMS Balance & History	Total SMS sent	Total
+sms_history_nosent_text	SMS Balance & History	No messages sent	No messages sent.
+sms_billing_total_charge_text	SMS Balance & History	Total charge	Total Charge
+sms_billing_actual_charge_text	SMS Balance & History	Actual charge	Actual Charge
+sms_billing_res_charge_text	SMS Balance & History	Reserve charge	Reserve Charge
+sms_show_history_text	SMS Balance & History	Show History	Show History
+sms_period_last10day_text	SMS Balance & History	Selected period	Last 10 Days
+sms_period_allhistory_text	SMS Balance & History	Selected period	All Available History
+sms_charge_btn	SMS Balance & History	Update Actual Charge button label	Update Actual Charge
+sms_charge_updated_text	SMS Balance & History	Charge updated text	Actual Charge has been updated for %d sms.
+sms_open_sms_note	SMS Balance & History	Open SMS text in the history list note	Click a line in the History list to open SMS text
+sms_actual_status_text	SMS Balance & History	Charged SMS status	Actual
+sms_reserved_status_text	SMS Balance & History	Charged SMS status	Reserve
+sms_history_download_title	SMS Balance & History	Download CSV file	You can download .CSV file with detailed SMS history log
+sms_history_from_date_label	SMS Balance & History	From date field label	From Date
+sms_history_to_date_label	SMS Balance & History	To date field label	To
+sms_history_get_btn	SMS Balance & History	Get SMS History button	Get History
+sms_history_date_error	SMS Balance & History	Invalid date error	Invalid date format
+sms_history_id_error	SMS Balance & History	Invalid SMS ID	There is no SMS with this ID in the database.
+sms_history_fromdate_error	SMS Balance & History	Error message if From date is later than To date	"From" date must be earlier than "To"
+sms_charge_comment_formula_text	SMS Balance & History	Charge comment	Total Charge = Actual + Reserve
+sms_charge_comment_text	SMS Balance & History	Charge comment	Actual Charge is updated every time when receipt is confirmed from gateway provider. However, receipt sometimes is not immediately available. In such a case a Reserve amount approximating the actual charge is calculated when SMS is sent to reduce available balance in SMS accounts.\n\nClick the button below to connect to gateway provider and update Actual Charge value.
+sms_sorted_by_date_text	SMS Balance & History	Sorted by date text	Sorted by Date (most recent on top)
+
+ung_page_title	Users & Groups	Page Title	Users & Groups
+
+eul_page_title	Export Users	Page Title	Export Users
+eul_selectedusers_label	Export Users	Selected users label	Selected Users
+eul_entire_label	Export Users	Entire User List radiobutton text	Entire User List
+eul_return_btn	Export Users	Return to the User List button	Return to Users & Groups
+eul_download_label	Export Users	User List link text	Please click the link below to download exported users
+
+iul_usergroups_label	Import User List	User groups label	Include imported users into groups
+iul_page_title	Import User List	Page Title	Import Users
+iul_crsccols_label	Import User List	Column match list header	User List Column
+iul_finished_message	Import User List	Import finished message	Import completed. %s user(s) successfully added.
+iul_notaddedusers_label	Import User List	Not imported users list label	Following users have not been added:
+iul_finished_message	Import User List	Import finished message	Import completed. %s user(s) successfully added.
+iul_importinvfield_message	Import User List	Invalid import file field message	Can not import user: field "%s" is empty
+
+pul_selected_label	Print User List	Selected users label	Selected Users
+pul_entirelist_label	Print User List	Entire User List radiobutton text	Entire User List
+
+rp_accessrighsdiags_title	Reports	Access Rights Diagrams page title	Access Rights Diagrams
+rp_accessrightsusers_title	Reports	Access Rights Diagram for Users report title	Access Rights Diagram for Users
+rp_accessrightsgroups_title	Reports	Access Rights Diagram for Groups report title	Access Rights Diagram for User Groups
+
+app_administrator_rights_text	Common	 Full Access rights object descriptor text	Administrator (Full Access)
+
+app_available_pages_name	Common	 Available Pages rights name	Available Pages
+app_available_subpages_name	Common	 Available SubPages rights name	Available Pages
+app_available_functions_name	Common	 Available Functions	Available Functions
+
+pcl_print_title	Print Contact List	Page header	Print
+pcl_form_label	Print Contact List	Text above form	Print
+pcl_screen_selected_label	Print Contact List	Selected Notes radiobutton text	Selected Contacts
+pcl_screen_folder_label	Print Contact List	Folder radiobutton text	Folder
+pcl_screen_entire_label	Print Contact List	Entire Address Book radiobutton text	Entire Contact List
+pcl_screen_print_btn	Print Contact List	Print button	Preview
+pcl_printas_label	Print Contact List	Print as label	Print as
+pcl_printasgrid_label	Print Contact List	Print as grid label	Grid
+pcl_printaslist_label	Print Contact List	Print as list label	Details
+
+ecl_page_title	Export Contact List	Page header	Export Contacts
+ecl_filetype_label	Export Contact List	Select File Format label	File Format
+ecl_nofileformat_item	Export Contact List	No file formats item	<none>
+ecl_tmpfilerr_message	Export Contact List	Error creating temporary file message	Error creating temporary file
+ecl_form_label	Export Contact List	Text above the form	Export
+ecl_selectedcontacts_label	Export Contact List	Selected contacts label	Selected Contacts
+ecl_folder_label	Export Contact List	Folder label	Folder
+ecl_group_label	Export Contact List	User group label	User Group
+ecl_list_label	Export Contact List	Contact list label	List
+ecl_searchresult_label	Export Contact List	Search result label	Entire Search Results
+ecl_entirelist_label	Export Contact List	Entire Contact Manager label	Entire Contact Manager (available contacts only)
+ecl_export_btn	Export Contact List	Export button	Export
+ecl_download_label	Export Contact List	Contact List link text	Please click the link below to download exported contacts
+ecl_download_link	Export Contact List	Download link	Download
+ecl_return_btn	Export Contact List	Return to the Contact List button	Return to Contact List
+ecl_separator_label	Export Contact List	Separator label	Delimiter
+ecl_comma_item	Export Contact List	Comma item	Comma
+ecl_tab_item	Export Contact List	Tab item	Tab
+ecl_semicolon_item	Export Contact List	Semicolon item	Semicolon
+ecl_period_item	Export Contact List	Period item	Period
+ecl_included_label	Export Contact List	Included label	Included
+ecl_notincluded_label	Export Contact List	Not Included label	Not Included
+ecl_exportfields_label	Export Contact List	Export fields label	Export Fields
+ecl_userid_item	Import Contact List	User identifier list item	User ID
+ecl_noexprights_message	Import Contact List	No export rights message	You have no rights to export contacts from this folder
+
+cm_screen_long_name	Contact Manager	Contact Manager page full name	Contact Manager
+cm_screen_short_name	Contact Manager	Contact Manager page short name	Contact Manager
+cm_numcontacts_label	Contact Manager	Text under the list of contacts	Contact(s)
+cm_summarydoc_title	Contact Manager	Column in the Available Folders table	Contacts
+cm_summary_note	Contact Manager	Label below the Available Folders table	%s contact(s) in %s accessible folder(s)
+cm_searchresult_title	Contact Manager	Search results header	Search Results
+cm_flddelete_message	Contact Manager	Folder deletion confirmation	Your contacts will be permanently deleted. Are you sure?
+cm_emptycopy_message	Contact Manager	Contact copying without selecting the contacts message	You must select contact(s) for this operation first.
+cm_emptysend_message	Contact Manager	Sending email without selecting the contacts message	You must select contact(s) for this operation first.
+cm_invrights_message	Contact Manager	Lack of administrative rights to move/delete contacts message	You have no rights to move/delete some of selected contacts.
+cm_emptydel_message	Contact Manager	Contact deletion without selecting the files message	You must select contact(s) for this operation first.
+cm_confirmdel_message	Contact Manager	Contact deletion confirmation	Do you really want to delete this contact(s)?
+cm_addcontacts_menu	Contact Manager	Menu item Contact/Add Contact	Add Contact
+cm_copycontacts_menu	Contact Manager	Menu item Contact/Copy Contact(s)	Copy Contact(s)
+cm_movecontacts_menu	Contact Manager	Menu item Contact/Move Contact(s)	Move Contact(s)
+cm_deletecontacts_menu	Contact Manager	Menu item Contact/Delete Contact(s)	Delete Contact(s)
+cm_print_menu	Contact Manager	Menu item Contact/Print…	Print...
+cm_import_menu	Contact Manager	Menu item Contact/Import…	Import...
+cm_export_menu	Contact Manager	Menu item Contact/Export…	Export...
+cm_contact_menu	Contact Manager	Contact... menu 	Contact
+cm_deleteuser_message	Contact Manager	 Deleting user contact message	Contact %s is registered WebAsyst User. To delete this contact please use Account Administrator/Users & Groups menu.
+cm_nomodrights_message	Contact Manager	Lack of administrative rights to delete or modify a contact message	You have no rights to modify or delete this contact
+cm_deletefolderuser_message	Contact Manager	Deleting folder containinf user contacts message	Can not delete folder, containing contacts registered as WebAsyst User, or subfolders containing such contacts
+cm_gridview_menu	Contact Manager	Menu View/Grid View	Grid
+cm_listview_menu	Contact Manager	Menu View/List View	Details
+cm_custview_menu	Contact Manager	Menu View/Customize View	Customize View
+cm_rp_accessrightsusers_menu	Contact Manager	Menu Reports/Access Rights Users	Access Rights for Users
+cm_rp_accessrightsgroups_menu	Contact Manager	Menu Reports/Access Rights Groups	Access Rights for Groups
+cm_search_label	Contact Manager	Search bar label	Search
+cm_search_btn	Contact Manager	Search button	Go
+cm_searchresult_title	Contact Manager	Search results header	Search Results
+cm_usersmovedel_message	Contact Manager	Error message	You can not move or delete WebAsyst Users folder.
+cm_addwebasystcont_message	Contact Manager	Error Message	Contact can not be added directly to WebAsyst Users folder. Please use Administrator/Users & Groups tools to add new user.
+cm_sendemail_menu	Contact Manager	Menu item Contact/Send Email…	Send Email...
+cm_sendsms_menu	Contact Manager	Menu item Contact/Send SMS…	Send SMS...
+cm_folderid_label	Contact Manager	Folder ID label	Folder ID
+cm_canmanageusrs_title	Contact Manager	Can manage Users & Groups title	Can manage Users & Groups
+cm_canmanagelists_title	Contact Manager	Can manage Contact Lists title	Can manage Contact Lists
+cm_confirmlistdel_message	Contact Manager	List deletion confirmation	Do you really want to delete this list?
+cm_dellist_note	Contact Manager	List deletion note	NOTE: Contact entries will NOT be deleted.
+cm_nouserrights_message	Contact Manager	No manage users rights message	This contact has user privileges. Can not delete this contact because you have no rights to manage user accounts.
+cm_userprivs_label	Contact Manager	User privileges label	This contact has user privileges
+cm_show_label	Contact Manager	Show label	<show>
+
+cm_copy_title	Copy/Move	Copying Contacts page header	Copy Contacts
+cm_move_title	Copy/Move	Moving Contacts page header	Move Contacts
+cm_copyfolder_title	Copy/Move	Copying Folder page header	Copy Folder
+cm_movefolder_title	Copy/Move	Moving Folder page header	Move Folder
+cm_copy_btn	Copy/Move	Copying process button	Copy
+cm_move_btn	Copy/Move	Moving process button	Move
+cm_contactnum_text	Copy/Move	Number of Contacts selscted text	contact(s) selected
+
+cman_page_title	Contact Manager	Page Title	Contact Manager
+cman_groups_title	Contact Manager	User groups title	User Groups
+cman_lists_title	Contact Manager	Lists title	Lists
+cman_list_menu	Contact Manager	List menu	List
+cman_addlist_menu	Contact Manager	Add list menu item	Add List
+cman_modifylist_menu	Contact Manager	Modify list menu item	Modify List
+cman_deletelist_menu	Contact Manager	Delete list menu item	Delete List
+cman_availablelist_title	Contact Manager	Available Lists title	Available Lists
+cman_listssummary_note	Contact Manager	Label below the Available Lists table	%s contact(s) in %s list(s)
+cman_listname_title	Contact Manager	List name title	List Name
+cman_contacts_title	Contact Manager	Contacts title	Contacts
+cman_user_label	Contact Manager	User label	User ID
+cman_status_label	Contact Manager	Status label	Status
+cman_userid_label	Contact Manager	User ID label	User ID
+cman_folders_item	Contact Manager	Folders item	--- FOLDERS ---
+cman_groups_item	Contact Manager	Groups item	--- USER GROUPS ---
+cman_lists_item	Contact Manager	Lists item	--- LISTS ---
+cman_revokeprivs_menu	Contact Manager	Revoke user priviletes menu item	Revoke User Privileges
+cman_emptyrevoke_message	Contact Manager	Revoking privileges without selecting the contacts message	You must select user(s) for this operation first.
+cman_emptychangestatus_message	Contact Manager	Changing user status without selecting the contacts message	You must select user(s) for this operation first.
+cman_revokeprivs_message	Contact Manager	Revoke user privileges confirmation message	Do you really want to revoke user privileges for selected contact(s)?
+cman_changeuserstatus_menu	Contact Manager	Change user status menu item	Change User Status...
+cman_addtolist_menu	Contact Manager	Add to list menu item	Add To List...
+cman_emptyaddtolist_message	Contact Manager	Adding contacts to list without selecting the contacts message	You must select contact(s) for this operation first.
+
+rp_page_title	Reports	Page Title	Reports
+rp_accessrightsusers_title	Reports	Access Rights Diagram for Users report title	Access Rights Diagram for Users
+rp_accessrightsusers_note	Reports	Access Rights Diagram for Users report note	This report shows access rights for selected users on one page. Every column displays access rights information for individual user. Overall diagram allows you easily compare and analyze permissions for multiple users.
+rp_accessrightsgroups_title	Reports	Access Rights Diagram for Groups report title	Access Rights Diagram for User Groups
+rp_accessrightsgroups_note	Reports	Access Rights Diagram for Groups report note	This report shows access rights for selected user groups on one page. Every column displays access rights information for individual user group. Overall diagram allows you easily compare and analyze permissions for multiple groups.
+rp_runreport_btn	Reports	Run Report button	Run Report
+rp_unsubsribers_title	Reports	Unsubsribers report title	Unsubscribed Email Recipients
+rp_unsubsribers_note	Reports	Unsubsribers report note	This report shows the list of email addresses which owners have unsubscribed from your database. No messages can be sent to these emails form WebAsyst applications. To remove entry from this list you must create Sign-Up form with Double Opt-In function enabled and have your subscriber to sign up and confirm subscription.
+rp_norecords_label	Reports	No records label	<no records>
+rp_signupstats_title	Reports	Sign-Up Statistics report title	Sign-Up Statistics
+rp_signupstats_label	Reports	Sign-Up Statistics report label	This report displays a number of subscribers grouped by date, signed up to your Contact Manager database using Sign-Up Form.
+rp_total_title	Reports	Total title	Total
+
+amc_screen_add_title	Add/Modify Contact	Add Contact mode header	Add Contact
+amc_screen_edit_title	Add/Modify Contact	Modify Contact mode header	Edit Contact
+amc_newcontact_label	Add/Modify Contact	The contact name for add contact mode	<new contact>
+amc_noaddrights_message	Add/Modify Contact	Lack of administrative rights to add a contact message	You have no rights to add contact to this folder
+amc_nomodrights_message	Add/Modify Contact	Lack of administrative rights to delete or modify a contact message	You have no rights to modify or delete this contact
+amc_addanother_btn	Add/Modify Contact	Save and Add Another button	Save and Add Another
+amc_deletecontact_btn	Add/Modify Contact	Delete Contact button	Delete Contact
+amc_confirmdel_message	Add/Modify Contact	Contact deletion confirmation	Do you really want to delete this contact?
+amc_display_label	Add/Modify Contact	Display label	Display
+amc_separatetabs_item	Add/Modify Contact	Display list item	every section on separate tab
+amc_allinone_item	Add/Modify Contact	Display list item	all sections on one page
+amc_erroruploadingfile_message	Add/Modify Contact	Error uploading file message	Error uploading file
+amc_contact_tab	Add/Modify Contact	Contact tab	Contact
+amc_user_tab	Add/Modify Contact	User tab	User
+amc_selectfolder_message	Add/Modify Contact	Select folder message	Please select folder
+amc_grantpriv_btn	Add/Modify Contact	Grant User Privileges button	Grant User Privileges
+amc_privs_text	Add/Modify Contact	Grant User Privileges text	To grant user privileges to this contact, click the button below and provide User ID, password and assign access rights. This user will be able then to login his/her account and work with available WebAsyst applications.
+amc_privs_note	Add/Modify Contact	Grant User Privileges note	This contact has no user privileges.
+amc_revokepriv_btn	Add/Modify Contact	Revoke User Privileges button	Revoke User Privileges
+amc_revoke_message	Add/Modify Contact	Revoke User Privileges message	Do you really want to revoke user privileges for this contact?
+amc_accessupdate_message	Add/Modify Contact	Updating access tab message	You have just changed Groups for this user.\nPlease wait while we updating access information.
+amc_modifiedby_label	Add/Modify Contact	Modified by label	Modified
+amc_addedby_label	Add/Modify Contact	Added by label	Added
+amc_status_label	Add/Modify Contact	Status label	Status
+
+cus_page_title	Change User Status	Page Title	Change User Status
+cus_usernum_label	Change User Status	User number label	%s user(s) selected.
+cus_changestatus_label	Change User Status	Change status label	Change status for
+
+cv_page_title	Customize View	Page header	Customize View
+cv_form_label	Customize View	Label above the form	Select visible columns
+cv_visible_list	Customize View	Visible Columns list header	Visible Columns
+cv_hidden_list	Customize View	Hidden Columns list header	Hidden Columns
+cv_nofields_message	Customize View	Error Message	At least one column must be visible.
+cv_screen_contactsnum_label	Customize View	Number of contacts on one page selection label	Number of entries on one page:
+cv_selectimage_label	Customize View	Select image label	Select image field to display in the leftmost column
+cv_donotdisplayimg_label	Customize View	Do not display image label	Don't display image
+cv_imagefieldsopt_label	Customize View	Image fields options label	For image fields show
+cv_thumbnails_label	Customize View	Thumbnails label	Thumbnails
+cv_textlinks_label	Customize View	Text links label	Text links
+cv_screen_viewopt_label	Customize View	Label "Once you change View option:"	Once you switch Grid/Details view:
+cv_screen_applutoall_label	Customize View	Label "Apply selected view to all folders"	Apply selected view to all groups
+cv_screen_applutocurrent_label	Customize View	Label "Apply selected view to current folder only"	Apply selected view to current group only
+cv_general_tab	Customize View	General tab	General
+cv_grid_tab	Customize View	Grid tab	Grid
+cv_list_tab	Customize View	List tab	Details
+cv_noimages_label	Customize View	There are no image fields defined label	There are no image fields defined.
+cv_addimages_note	Customize View	Add images note	To add image fields use Contacts -> Tools -> Constructor
+
+icl_page_title	Import Contact List	Page header	Import Contacts
+icl_file_label	Import Contact List	Select File label	File
+icl_filetype_label	Import Contact List	Select File Type label	File Format
+icl_import_btn	Import Contact List	Import label	Import
+icl_custformat_item	Import Contact List	Custom format item text	<custom format>
+icl_selectfile_message	Import Contact List	File Import without selecting the file message	Please select file to import
+icl_erruploading_message	Import Contact List	Error uploading file message	Error uploading file
+icl_crsccols_label	Import Contact List	Column match list header	Contact List Column
+icl_importinvfield_message	Import Contact List	Invalid import file field message	Can not import contact: field "%s" is empty
+icl_finished_message	Import Contact List	Import finished message	Import completed. %s contact(s) successfully added.
+icl_error_label	Import Contact List	Label "Error message"	Error
+icl_savefileformat_label	Import Contact List	Label "Save file format"	Save file format
+icl_formatname_label	Import Contact List	Label "Format Name"	Save import file format as
+icl_format_note	Import Contact List	File Format Note	To save this import file format for further usage, click checkbox and enter format name below
+icl_group_label	Import Contact List	Add To Group label	Add To Group
+icl_selectfolder_item	Import Contact List	Select folder item	<select folder>
+icl_notaddedusers_label	Import Contact List	Not imported contacts list label	Following contacts have not been added:
+icl_contactname_label	Import Contact List	Label "Contact Name"	Contact Name
+icl_error_label	Import Contact List	Label "Error message"	Error
+icl_filetype_label	Import Contact List	Select File Type label	File Format
+icl_custformat_item	Import Contact List	Custom format item text	<custom format>
+icl_addtofolder_label	Import Contact List	Label "Add to Folder"	Add to Folder
+
+icl_grantuserprivs_label	Import Contact List	Grant user privileges label	Grant User Privileges to imported contacts
+icl_userstatus_label	Import Contact List	User status label	Specify Status for new users
+icl_usergroups_label	Import Contact List	User groups label	Include imported contacts into user groups
+icl_userid_item	Import Contact List	User identifier list item	User ID
+icl_userprivs_label	Import Contact List	User Privileges label	User Privileges
+icl_specifyuid_label	Import Contact List	Specify U_ID label	Please specify the column that will be used as User ID
+
+rprdu_selectusers_note	Reports	Select users note	Select users you want to include into report
+rprdu_usernum_note	Reports	User number note	Every user takes separate column. To make your report easy to read, do not include more than 10-12 users.
+rprdu_selectgroups_note	Reports	Select users note	Select groups you want to include into report
+rprdu_groupnum_note	Reports	Group number note	Every group takes separate column. To make your report easy to read, do not include more than 10-12 groups.
+rprdu_groupnum_note	Reports	Access rights note	Combination of personal and group access rights is shown for every user.
+
+cml_addpage_title	Create/Modify List	Create page title	Create Contact List
+cml_modpage_title	Create/Modify List	Modify page title	Modify Contact List
+cml_list_tab	Create/Modify List	List tab	List
+cml_folders_tab	Create/Modify List	Folders tab	Folders
+cml_contacts_tab	Create/Modify List	Contacts tab	Contacts
+cml_groups_tab	Create/Modify List	Groups tab	Groups
+cml_listname_label	Create/Modify List	List name label	List Name
+cml_folders_note	Create/Modify List	Folders note	Select contact folders to include them into current Contact List.
+cml_contacts_note	Create/Modify List	Contacts note	Select individual contacts to include them into current Contact List.
+cml_contactsbottom_note	Create/Modify List	Contacts bottom note	Only contacts from available folders appear above.
+cml_included_label	Create/Modify List	Label "Included"	Included
+cml_notincluded_label	AddCreate/Modify List	Label "Not Included"	Not Included
+cml_groups_note	Create/Modify List	Groups note	Select user groups to include them into current Contact List.
+cml_shared_label	Create/Modify List	Shared label	Shared
+cml_shared_note	Create/Modify List	Shared not	Enable "Shared" option to make this list available for other users.
+cml_novolders_label	Create/Modify List	No available folders label	<no available folders>
+
+rup_page_title	Revoke User Privileges	Page Title	Revoke User Privileges
+rup_success_message	Revoke User Privileges	Contact processing success result message	User Privileges have been successfully revoked.
+
+rt_page_title	Register Trial	Page Title	Register Account
+rt_nottemporary_message	Register Trial	Account is not temporary message	This account is registered
+rt_form_title	Register Trial	Form title	This is one-page registration form
+rb_submit_btn	Register Trial	Submit button	Submit
+rb_company_label	Register Trial	Company label	Company Name
+rb_firstname_label	Register Trial	First Name label	First Name
+rb_lastname_label	Register Trial	Last Name label	Last Name
+rb_email_label	Register Trial	Email label	E-mail
+rb_email_note	Register Trial	Email note	E-Mail address will be used to send you confirmation request and notify you about any further software upgrades and important service related information. No spam, ever.
+rb_invalidemail_message	Register Trial	Invalid Email email	Invalid e-mail address
+rb_greeting	Register Trial	Greeting message	Dear
+rb_done1_label	Register Trial	Trial created message line 1	Registration is NOT COMPLETE yet.
+rb_done2_label	Register Trial	Trial created message line 2	We have just sent confirmation request to
+rb_done3_label	Register Trial	Trial created message line 3	If you do not receive our message immediately, there is a problem with email delivery. Almost always, the problem can be rectified in one of two ways:
+rb_done4_label	Register Trial	Trial created message line 4	Temporarily disable SPAM filters and repeat Registration procedures.
+rb_done5_label	Register Trial	Trial created message line 5	Check spelling of e-mail address you have entered, and if misspelled, repeat Registration procedures.
+rb_done6_label	Register Trial	Trial created message line 6	Contact <a href="mailto:support@webasyst.net">support@webasyst.net</a> if you continue to encounter problems.
+rb_done7_label	Register Trial	Trial created message line 7	Please check your E-Mail.
+rb_submit_note	Register Trial	Submit button note	You will be able to cancel your account at any time
+
+ai_page_title	Account Information	Page Title	Account Information
+ai_screen_long_name	Account Information	AI page full name	Account Information
+ai_registar_label	Account Information	Registar label	Registar
+ai_demo_label	Account Information	Demo account label	This is demo account. It will expire when you close your browser.
+ai_licence_label	Account Information	Licence label	Licensee
+ai_company_label	Account Information	Company label	Company
+ai_firstname_label	Account Information	First name label	First Name
+ai_lastname_label	Account Information	Last name label	Last Name
+ai_email_label	Account Information	Email label	E-Mail
+ai_accountname_label	Account Information	Account name label	Account Name
+ai_dbkey_label	Account Information	Database key label	Database Key
+ai_regdate_label	Account Information	Registration date label	Create Date
+ai_limitseach_title	Account Information	Limitations for each applications title	Limitations applied to each application
+ai_application_title	Account Information	Application title	Applications &amp; Limitations
+ai_limit_title	Account Information	Limit title	Limit
+ai_used_title	Account Information	Used title	Used
+ai_resources_title	Account Information	Resources title	Common Resources
+ai_limitalll_title	Account Information	Limitations for all applications title	Limitations applied to all applications
+al_unlimited_label	Account Information	Unlimited label	Unlimited
+ai_nextbillingdate_label	Account Information	Next billing date label	Next Billing Date
+app_upgradeacc_label	Account Information	Upgrade label	Upgrade
+
+ai_limit_cm_label	Account Information	Contact Manager limitation description	Number of contacts
+ai_limit_dd_label	Account Information	Document Depot limitation description	Number of files
+ai_limit_pm_label	Account Information	Project Manager limitation description	Number of projects
+ai_limit_it_label	Account Information	Issue Tracker limitation description	Number of issues
+ai_limit_qn_label	Account Information	Quick Notes limitation description	Number of notes
+ai_limit_qp_label	Account Information	Quick Pages limitation description	Number of pages
+ai_limit_pd_label	Account Information	Photo Depot limitation description	Number of images
+ai_limit_mm_label	Account Information	Mail Master limitation description	Number of recipients (daily)
+
+ai_limit_space_label	Account Information	Storage Space limitation description	Storage Space
+ai_limit_users_label	Account Information	Number of users limitation description	Number of Users
+ai_limit_sms_label	Account Information	SMS balance limitation description	SMS Balance
+
+ai_upgrade_comment	Account Information	Upgrade comment	<a target="_blank" class="activelink" href="%s">Upgrade/Downgrade</a> account to add/remove applications or change options, add users, storage space or SMS credit.
+ai_upgrade_btn	Account Information	Upgrade button	Upgrade/Downgrade
+ai_extend_comment	Account Information	Extend comment	Next billing date for your account
+ai_extend_btn	Account Information	Extend button	Extend Account
+ai_cancel_comment	Account Information	Cancel comment	<a target="_blank" class="activelink" href="%s">Cancel account</a>
+ai_cancelaccount_btn	Account Information	Cancel account button	Cancel Account
+ai_days_left	Account Information	Days left label	%s day(s) left
+ai_days_after_suspend	Account Information	Days after suspend label	expired %s day(s) ago
+ai_no_accountname	Account Information	No account name label	no name
+
+ai_upgradedowngrade_label	Account Information	Upgrade Downgrade Service link	Upgrade/Downgrade Services
+ai_upgradedowngrade_comment	Account Information	Upgrade Downgrade Service comment	Remove limitations on the number of files, photos, notes etc. Add more storage space or users or downgrade to a free version if you don’t need extra resources.
+ai_addremove_label	Account Information	Add/Remove Services link	Add or Remove Services
+ai_addremove_comment	Account Information	Add/Remove Services comment	Make sure you don’t miss useful WebAsyst online services: Files, Photos, Contacts, Mail, Projects, Issue Tracker, Notes, Pages. Remove a service that is not needed.
+ai_cancelaccount_label	Account Information	Cancel Account link	Cancel Account
+ai_cancelaccount_comment	Account Information	Cancel Account comment	Use this option if you don’t need your WebAsyst account anymore. All your data will be destroyed and no charges will be applied to your credit card anymore.
+
+app_back_label	Common	Back label	Back to 
+app_tools_menu	Common	Tools menu	Tools
+app_reports_menu	Common	Reports menu	Reports
+
+app_cantools_title	Common	Can use Tools Rights	Can use Tools
+app_canreports_title	Common	Can use Reports Rights	Can use Reports
+
+app_cantools_label	Common	Can use Tools Rights	Can use Tools
+app_canreports_label	Common	Can use Reports Rights	Can use Reports
+
+lf_changeaccepted_message	Look and Feel	Look and Feel settings have been successfully changed message	Your look and feel settings have been successfully changed
+lf_changecanceled_message	Look and Feel	Look and Feel settings chages have been canceled message	Your look and feel settings have not been changed
+lf_layouttopmenu_title	Look and Feel	Top menu layout title	Bottom
+lf_layouttopmenu2_title	Look and Feel	Top menu layout title	Top
+lf_layoutleftsidemenu_title	Look and Feel	Leftside menu layout title	Left
+lf_themebeach_title	Look and Feel	Beach color theme title	Blue
+lf_themegarden_title	Look and Feel	Forest color theme title	Green
+lf_themeoffice_title	Look and Feel	Office color theme title	Grey
+lf_themeultramarine_title	Look and Feel	Ultramarine color theme title	Ultramarine
+lf_themered_title	Look and Feel	Red color theme title	Pink
+lf_themedarkorange_title	Look and Feel	Dark Orange color theme title	Dark Orange
+lf_themeyellow_title	Look and Feel	Yellow color theme title	Yellow
+lf_themekhaki_title	Look and Feel	Khaki color theme title	Khaki
+lf_themepurple_title	Look and Feel	Purple color theme title	Purple
+lf_seltheme_label	Look and Feel	Select Theme label	Select Color Scheme
+lf_sellayout_label	Look and Feel	Select Layout label	Main Menu Position
+lf_sellogo_label	Look and Feel	Select Layout label	Logo
+lf_selcorners_label	Look and Feel	Select Corners label	Corners (buttons & panels):
+lf_cornersrounded_title	Look and Feel	Select Corners Round Title	Rounded
+lf_cornersstraight_title	Look and Feel	Select Corners Straight Title	Straight
+
+lf_logoapp_title	Look and Feel	Application logo title	Service Name and Logo
+lf_logocustom_title	Look and Feel	Application logo title	Company Logo
+
+amu_mw_page_title	My Webasyst	Page title	My settings
+amu_mw_user_note	My Webasyst	User Note	Some options may be hidden or disabled for modification by your system administrator.
+
+cc_update_page_title	Customer Center	Upgrade page title	Upgrade or Downgrade Account
+cc_addapps_page_title	Customer Center	Add/remove page title	Add or Remove Services
+wa_cancelaccount_page_title	Control Panel	Add/remove page title	Cancel Hosted Account
+wa_cancelaccount_text	Control Panel	Add/remove page title	Please be aware of the following terms of cancellation:<br><ul type="disc"><li>All records in your database and all attachments will be deleted.</li><li>All user accounts associated with your hosted account will be deleted.</li><li>The deletion will take effect immediately. WE CAN NOT UNDO THIS DELETION.</li><li>There are no refunds for partial months. If you pre-paid for several months or for a year of the service, we can not refund your payments\n for the remaining months.</li></ul>
+wa_cancelaccount_confirm	Control Panel	Add/remove page title	I understand and agree to the terms of cancellation
+wa_cancelaccount_btn	Control Panel	Cancel account label	Cancel Account
+wa_cancelaccount_confirmerror	Control Panel	Cancel account conferror	You should confirm you understand and agree to the terms of cancellation.
+
+cnf_account_confirmed_text	Confirmed	Confirmed Text	Account <b>%s</b> has been confirmed.<BR><BR>Thank you!
+cnf_page_title	Confirmed	page title	Account Confirmation
+
+cinfo_page_title	Account Confirmation	Account Confirmation page title	Account not confirmed
+cinfo_incorrectemail_text	Account Confirmation	Incorrect email text	Incorrect E-Mail Address?
+cinfo_incorrectemail_link	Account Confirmation	Incorrect email link	Change It!
+cinfo_text	Account Confirmation	Account confirmation text	We have sent a confirmation request to <b>%s</b>.<BR><BR>Please check your email to confirm WebAsyst account creation. 
+cinfo_changeit_btn	Account Confirmation	Change it button	Change It!
+cinfo_email_label	Account Confirmation	E-Mail label	E-Mail address
+cinfo_emailupdate_btn	Account Confirmation	E-Mail update button	Update Email
+cinfo_wrongemail_error	Account Confirmation	Wrong email	Please enter correct E-mail address
+
+
+sm_recipientlimit_message	Send Email	Error message	You have chosen to send this message to %s recipient(s). Maximum number of recipients can not exceed %s.
+sm_recipientnull_message	Send Email	Error message	The message could not be sent. Your recipient list is empty.
+app_folderactionrights_error	Common	Folder action no rights	You do not have rights for this action
+app_folderrenamenorights_error	Common	Folder rename no rights	You have no rights to rename this folder.
+
+app_fullscreen_label	Common	Full Screen	Full Screen
+app_fullscreenoff_link	Common	Full Screen off	Off
+
+
+shsd_dialog_title	Share Send Dialog	Title	Send Email
+shsd_entermessage_text	Share Send Dialog	Enter message text	enter your message here
+
+shsd_send_btn	Share Send Dialog	Send button	Send
+shsd_cancel_btn	Share Cancel Dialog	Cancel button	Cancel
+shsd_enteremails_error	Share Send Dialog	Enter emails error	Please specify correct email recepients
+shsd_to_label	Share Send Dialog	To	To
+shsd_subject_label	Share Send Dialog	Subject	Subject
+shsd_message_label	Share Send Dialog	Message	Message
+shsd_dblclick_note	Share Send Dialog	Double click note	Double click to add this email address
+shsd_dblclicklist_note	Share Send Dialog	Double click note	Double click to add this Contact List
+shsd_mycontacts_title	Share Send Dialog	My contacts title	My Contacts
+shsd_mycontacts_close	Share Send Dialog	My contacts close	Close
+shsd_mails_note	Share Send Dialog	Mails note	One E-Mail address per line or delimited by semicolon (;)
+shsd_mails_select	Share Send Dialog	Mails select	or select from
+
+shsd_message_sended	Share Send Dialog	Message sended message	The message has been successfully sent to %s recipient(s)
+
+
+shurl_dialog_title	Share change address dialog	Title	Change Link Address
+shurl_change_btn	Share change address dialog	Change button	Change
+shurl_cancel_btn	Share change address dialog	Cancel button	Cancel
+shurl_description_text	Share change address dialog	Change url description text	Change a last part of your link's address to make it more friendly and easy to remember: 
+shurl_emptyfprint_error	Share change address dialog	Change url empty fprint error	Please enter new link address
+shurl_wrongsymbols_error	Share change address dialog	Change url wrong symbols error	You can use only numbers and Latin characters.
+shurl_existedname_error	Share change address dialog	Change url existed name error	This name is already in use. Please try another one.
+shurl_message_changed	Share change address dialog	Change url empty changed message	Link address is changed
+shurl_message_notchanged	Share change address dialog	Change url empty not changed message	Link address is not changed
+shurl_caution_text	Share change address dialog	Caution text	<b>CAUTION:</b> Old address will not be available.
+
+app_createwidget_link	Common	Create widget link	Create a Widget
+app_createlink_link	Create link link	Title	Create a Link
+app_nowidgetsavailable_message	Common	No widgets available message	no available widgets 
+createwidget_dialog_title	Create Widget Dialog	Title	Create Widget
+createwidget_next_btn	Create widget dialog	Next button	Next
+createwidget_create_btn	Create widget dialog	Create button	Create
+createwidget_cancel_btn	Create widget dialog	Cancel button	Cancel
+createwidget_description_text	Create widget dialog	Description text	Select the widget you would like to create:
+createwidget_noselect_error	Create widget dialog	Not selected error	Please select widget type
+
+
+wg_createwidget_title	Create widget dialog	Title	Create Widget
+wg_createlink_title	Create link dialog	Title	Create a Link
+wg_next_btn	Widget Dialog	Next Button	Next
+wg_create_btn	Widget Dialog	Create Button	Create
+wg_cancel_btn	Widget Dialog	Create Button	Cancel
+wg_linkcreatename_label	Create widget 	Create name for link	Create a name for this link
+wg_widgetcreatename_label	Create widget 	Create name for widget	Create a name for this widget
+wg_linkemptyname_error	DDList Dialog	Empty name error	Please specify a name for your link
+wg_widgetemptyname_error	DDList Dialog	Empty name error	Please specify a name for your widget
+wg_linkdelete_confirm	Widget Dialog	delete confirm	Do you really want to delete this link?
+wg_widgetdelete_confirm	Widget Dialog	delete confirm	Do you really want to delete this widget?
+wg_and_label	Widget Dialog	and	and
+wg_customizedialog_title	Widget View	Customize Dialog title	Customize Widget
+wg_embeddialog_title	Widget View	Embed Dialog title	Embed Widget
+
+
+amwg_colorpick_named_label	Widget customize	Named colors label	Named Colors
+amwg_colorpick_slider_label	Widget customize	Slide colors label	Color Slider
+amwg_savebtn_label	Widget customize	Save button label	Save
+amwg_cancelbtn_label	Widget customize	Cancel button label	Cancel
+
+selcontacts_searchmanycontacts_text	Select Contacts Form	Folder - Too many contacts found.	too many contacts found
+selcontacts_searchmanycontacts_text2	Select Contacts Form	Search - Please make your search more specific 	please make your search more specific
+selcontacts_foldermanycontacts_text	Select Contacts Form	Search - Too many contacts in this folder	too many contacts in this folder
+selcontacts_foldermanycontacts_text2	Select Contacts Form	Folder - please use Search function	please use Search function
+selcontacts_searchnofound_text	Select Contacts Form	Search not found	not found
+selcontacts_folderempty_text	Select Contacts Form	Folder empty	no Emails in this folder
+selcontacts_searchsmalllength_text	Select Contacts Form	Search small length	Please specify 3 or more characters
+selcontacts_searchresults_label	Select Contacts Form	Search results label	Search Results
+
+app_searchresult_title	Common	Search Result in tree	Search Results
+app_emptysearchstring_error	Common	Empty search string	Please specify keyword
+
+app_copymovefolder_label	Common	Copy move folder label	Do you really want to Copy or Move this folder to
+app_deletefolder_label	Common	Delete folder label	Do you really want to delete this folder?
+
+app_inheritedprojects_label	Common rights	Inherited from projects label	-- inherited from Projects --
+
+
+
+service_DD_title	Billing	Title of DD	Files
+service_CM_title	Billing	Title of CM	Contacts
+service_MM_title	Billing	Title of MM	Mail
+service_PM_title	Billing	Title of PM	Projects
+service_IT_title	Billing	Title of IT	Issue Tracker
+service_QN_title	Billing	Title of QN	Notes
+service_QP_title	Billing	Title of QP	Pages
+service_SC_title	Billing	Title of SC	Shopping Cart
+service_PD_title	Billing	Title of PD	Photos
+service_ST_title	Billing	Title of ST	Help Desk
+
+service_PD_desc_label	Billing	Description for Photos	Upload and share your pictures, create photoalbum for your blog and website.
+service_DD_desc_label	Billing	Description for Files	Upload your files and access them from anywhere. Share files with your friends and family.
+service_CM_desc_label	Billing	Description for Contacts	Simple CRM. Store and organize your contacts online. Create signup forms for your blog and website.
+service_MM_desc_label	Billing	Description for Mail	Organize email campaigns. Send newsletters to your customers and prospects.
+service_PM_desc_label	Billing	Description for Projects	Create projects, outline scope of work with due dates and estimated cost, assign people. Track project from start to completion.
+service_IT_desc_label	Billing	Description for Issue Tracker	Add issues, work orders, bug reports. Assign personnel, setup workflow and track implementation.
+service_QN_desc_label	Billing	Description for Notes	Add and organize notes and memos. Create your online notepad and share it with collegues and friends.
+service_QP_desc_label	Billing	Description for Pages	Create and instantly publish online manuals, tutorials, rule books etc.
+service_SC_desc_label	Billing	Description for Shopping Cart	Create your own online store in minutes. Embed ordering feature on any website or blog. Accept online payments and credit cards.
+
+DBSIZE_LIMIT_label	Billing	Storage space	Storage
+DBSIZE_LIMIT_desc	Billing	Storage space	storage space
+SSL_label	Billing	SSL	SSL
+MAX_USER_COUNT_label	Billing	Maximum of users	Users
+MAX_USER_COUNT_desc	Billing	Maximum of users for description of plan	users
+MAX_MAILBOX_COUNT_desc	Billing	Maximum of mailboxes for description of plan	mail boxes
+MAX_USER_COUNT_desc2	Billing	Maximum of users for description of plan	users
+MAX_MAILBOX_COUNT_desc2	Billing	Maximum of mailboxes for description of plan	mail boxes
+
+tariff_FREE_label	Billing	Plan title	FREE
+tariff_CUSTOM_label	Billing	Plan title	CUSTOM
+
+tariff_File#1_label	Billing	Plan title	My Files
+tariff_File#2_label	Billing	Plan title	My Box
+tariff_File#3_label	Billing	Plan title	File Manager
+tariff_File#4_label	Billing	Plan title	File Repository
+
+tariff_Photo#1_label	Billing	Plan title	My Photos
+tariff_Photo#2_label	Billing	Plan title	Photo Gallery
+tariff_Photo#3_label	Billing	Plan title	Photographer
+tariff_Photo#4_label	Billing	Plan title	Photo Studio
+
+tariff_Contact#1_label	Billing	Plan title	Address Book
+tariff_Contact#2_label	Billing	Plan title	Contact Manager
+tariff_Contact#3_label	Billing	Plan title	Email Marketing
+tariff_Contact#4_label	Billing	Plan title	Bulk Mailer
+
+tariff_Kiosk#1_label	Billing	Plan title	Kiosk
+tariff_Kiosk#2_label	Billing	Plan title	Retail Store
+tariff_Kiosk#3_label	Billing	Plan title	Supermarket
+tariff_Kiosk#4_label	Billing	Plan title	Shopping Mall
+			
+tariff_Project#1_label	Billing	Plan title	My Projects
+tariff_Project#2_label	Billing	Plan title	Supervisor
+tariff_Project#3_label	Billing	Plan title	Project Manager
+tariff_Project#4_label	Billing	Plan title	Director
+			
+tariff_Writer#1_label	Billing	Plan title	Writer
+tariff_Writer#2_label	Billing	Plan title	Bookshelf
+tariff_Writer#3_label	Billing	Plan title	Library
+
+tariff_Helpdesk#1_label	Billing	Plan title	Support Team
+			
+tariff_ALL#1_label	Billing	Plan title	Team
+tariff_ALL#2_label	Billing	Plan title	Business
+tariff_ALL#3_label	Billing	Plan title	Enterprise
+
+tariff_group_File_label	Billing	Title of "File" group	Files
+tariff_group_Photo_label	Billing	Title of "Photo" group	Photos
+tariff_group_Contact_label	Billing	Title of "Contact" group	Contacts" & "Mail
+tariff_group_Kiosk_label	Billing	Title of "Shopping Cart" group	Shopping Cart
+tariff_group_Project_label	Billing	Title of "Project" group	Projects" & "Issue Tracker
+tariff_group_Writer_label	Billing	Title of "Writer" group	Pages
+tariff_group_Helpdesk_label	Billing	Title of "Helpdesk" group	Help Desk
+tariff_group_ALL_label	Billing	Title of "ALL" group	All Services
+
+bill_error_plan_not_found	Billing	Plan not found	Selected plan not found.
+bill_error_over_limit	Billing	Over limit error	WARNING: Current account parameters do not meet new plan limitations.
+bill_error_mail_format	Billing	Wrong Email format	Wrong Email format.
+bill_error_type_payment	Billing	Not selected payment type	Choose payment option.
+bill_error_depend_on	Billing	Selected service depends on other service	Service %s can not be added without %s.
+bill_error_depend_off	Billing	Selected service depends off other service	Service %s is required by %s and can not be deleted.
+bill_error_service_not_found	Billing	Service not found	The service you have selected does not exist (%s).
+bill_error_rest_not_found	Billing	Restriction not found	The limitation you have selected does not exist for service %s (%s).
+bill_error_have_limit	Billing	Have limit on service	Can not change plan because of limitations for service %s. New limitation is %s and you have %s.
+bill_error_new_service	Billing	Dependent on new service	Can not change plan. Service %s requires %s.
+bill_error_empty_service	Billing	All services have been deleted	You must select at least one service.
+bill_error_unreal_param	Billing	Parameter does not exist	The limitation you have selected for this parameter does not exist %s (%s).
+bill_error_limit_param	Billing	Have limit on parameter	Can not change plan because of limitations for parameter %s. New limitation is %s and you have %s.
+bill_error_unknow_parameter	Billing	Unknown parameter	Unknown parameter.
+bill_error_wrong_period	Billing	Wrong period	Not valid extension period.
+bill_error_soap	Billing	SOAP error	Query sending error.
+bill_error_soap_connection	Billing	SOAP connection	Server connection error.
+bill_error_soap_internal	Billing	Internal SOAP error	Error executing query: #%s
+
+bill_mail_instruction	Billing	Message on confirmation email sent	We have sent you a confirmation email.
+bill_change_plan_title	Billing	Change plan page title	Change Plan
+bill_account_profile_title	Billing	Account Profile page title	Upgrade/Downgrade
+bill_style_currency_label	Billing	Style currency	$%.2f
+
+bill_current_plan_label	Billing	Current plan	YOUR PLAN:
+bill_paid_to_label	Billing	Paid to	Next billing date:
+bill_free_services_label	Billing	Free add-ons	Additional free services
+bill_per_month_label	Billing	per month	/mo
+bill_free_cost_label	Billing	Free paid	free
+bill_exceed_day_label	Billing	Exceed days	(%s day(s) left)
+bill_select_other_plan	Billing	Select other plan	change/customize your plan
+bill_extend_period_label	Billing	Extend period	EXTEND
+bill_delete_service_label	Billing	Delete service	delete
+bill_paid_services_label	Billing	Paid services	Services included in your plan
+bill_enlarge_service_label	Billing	add/increase	UPGRADE
+bill_max_service_parameter_label	Billing	Max	Max:
+bill_used_service_parameter_label	Billing	Used	Used:
+bill_unlimited_label	Billing	Unlimited resources	unlimited
+ 
+bill_resources_MM_label	Billing	Limit resources for MM	Max: %s messages/day
+bill_all_free_label	Billing	All free services	All services are free
+bill_non_install_service_label	Billing	Service does not install	Service not installed
+bill_install_label	Billing	Install	INSTALL
+bill_common_params_label	Billing	Common parameters	Common parameters
+bill_upgrade_flash_label	Billing	Need to upgrade your Flash Player	You must upgrade Flash Player
+bill_unlim_user_count_label	Billing	Unlimited users	Unlimited (now used %s)
+bill_sms_balance_label	Billing	SMS balance	SMS Balance
+bill_enlarge_sms_balance_label	Billing	Add SMS credit	Buy SMS
+bill_from_seed_label	Billing	For X from Y	of
+bill_used_amchart_label	Billing	Used label for Amchart	Used
+bill_free_amchart_label	Billing	Free label for Amchart	free
+
+bill_delete_attention_label	Billing	Attention when delete services	Attention!
+bill_confirm_delete_label	Billing	Confirm delete services	Selected services will be removed and you will not be able to restore data. Are you sure?
+bill_select_standart_plan_label	Billing	Select standard plan	Choose standard plan
+bill_select_custom_plan_label	Billing	Select custom plan	Build your own plan
+bill_disk_change_label	Billing	Storage space	Storage
+bill_users_change_label	Billing	Users	Users
+bill_select_new_plan_label	Billing	Select new standard plan	Choose new standard plan
+bill_based_on_label	Billing	Plan based on 	Plans based on the service "%s"
+bill_based_ons_label	Billing	Plan based ons 	Plans based on the services "%s"
+
+bill_proceed_button	Billing	Proceed button 	Next
+bill_apply_button	Billing	Apply button 	Apply
+bill_js_formula	Billing	js formula 	(%s + %s/mo * %s month(s))
+
+bill_curren_used_label	Billing	Now used	Now used
+bill_set_new_label	Billing	Specify new value	Specify new value
+bill_not_install_label	Billing	Service not installed	Service not installed
+bill_delete_service_label	Billing	Delete service	Uninstall
+bill_delete_service_select	Billing	Delete service link	delete service
+bill_choose_service_select	Billing	Select link	select
+bill_tatol_price_label	Billing	Total price	Price:
+
+
+
+bill_js_confirm_delete_label	Billing	Confirm delete in JavaScript	This service will be removed and you will not be able to restore data. Are you sure?
+bill_proceed_account_title_label	Billing	Proceed account title	Extend Account
+bill_account_paid_to_label	Billing	Account paid to	Your account is paid until:
+bill_empty_billing_date_label	Billing	Empty billing date	n/a
+bill_additional_proceed_label	Billing	For additional proceed	Extend account for another:
+bill_enlarge_SMS_label	Billing	Enlarge SMS balance	Add SMS Credit
+bill_current_SMS_label	Billing	Current SMS balance	You available SMS balance:
+bill_increase_SMS_label	Billing	Additional enlarge SMS balance	Add SMS Credit:
+bill_not_need_SMS_label	Billing	Not need enlarge SMS balance	not required
+bill_about_SMS_label	Billing	Approximately count of text message	(approx. %s text messages)
+bill_proceed_period_label	Billing	Period of proceed	%s /mo.
+			
+bill_verify_mail_label	Billing	Verify your Email	Please verify your Email Address:
+bill_unconfirmed_mail_label	Billing	You have unconfirmed Email	You Email address is not verified
+bill_proceed_select_label	Billing	Choose proceed period	Extension Period:
+bill_proceed_select_label_v2	Billing	Choose proceed period	Subscription period:
+bill_you_can_proceed_label	Billing	Right now proceed account	You can also extend your account now.
+bill_for_new_rate_label	Billing	For apply new rate	New rate will be applicable starting from the date specified
+bill_need_pay_label	Billing	For apply new rate need to pay	To change your plan you have to pay
+bill_just_paid_label	Billing	Just paid to	Your account is already paid by old plan until:
+bill_new_selected_plan_label	Billing	Selected new plan	You have selected the following plan:
+bill_immediately_apply_label	Billing	Immediately apply new settings	New plan will be applied immediately.
+bill_apply_settings_title	Billing	Apply settings title	Confirm changes
+bill_selected_free_plan_label	Billing	Selected free plan	You have selected <b>FREE</b> plan.
+
+
+
+bill_change_applied	Billing	Change applied	Changes have been successfully applied
+bill_per_month_MM_label	Billing	Change applied	msg/day
+
+bill_service_param_prod_label	Billing	Change applied	prod
+bill_service_param_mo_label	Billing	Change applied	ord/mo
+bill_special_for_QN_label	Billing	Change applied	unlimited
+bill_empty_exceed_label	Billing	Change applied	You must specify extension period and/or SMS credit.
+bill_empty_cost_label	Billing	Change applied	Have amount error
+
+service_PD_param_label	Billing	Description for services PD parameter	%s photos
+service_DD_param_label	Billing	Description for services DD parameter	%s files
+service_CM_param_label	Billing	Description for services CM parameter	%s contacts
+service_MM_param_label	Billing	Description for services MM parameter	%s messages/day
+service_PM_param_label	Billing	Description for services PM parameter	%s projects
+service_IT_param_label	Billing	Description for services IT parameter	%s issues
+service_QN_param_label	Billing	Description for services QN parameter	%s notes
+service_QP_param_label	Billing	Description for services QP parameter	%s pages
+service_ST_param_label	Billing	Description for services ST parameter	%s requests
+
+service_SC_prod_param_label	Billing	Description for services SC of products parameter	%s products
+service_SC_mo_param_label	Billing	Description for services SC of cat parameter	%s orders/mo
+
+service_all_services_label	Billing	Description for services SC of cat parameter	Plans including all services
+service_best_value_label	Billing	Description for services SC of cat parameter	(best value)
+
+bill_months_label	Billing	Months	%s months
+bill_signle_month_label	Billing	Single month	%s month
+
+
+
+
+bill_go_to_back_label	Billing	Back to account 	Back to Account Profile
+bill_tatol_amount_label	Billing	Total price	Total amount:
+bill_more_label	Billing	More label	more
+bill_can_free_service_label	Billing	Can use free service	With this plan you can optionally use any other services whithin limitations of FREE plan.
+bill_submit_button	Billing	Submit button	Submit
+bill_applicable_label	Billing	New rate applicable	Your account is already paid by old plan until:
+bill_exceed_day_ago_label	Billing	Expired day	(expired %s day(s) ago)
+bill_next_bill_d_label	Billing	Next Billing Date	Next Billing Date
+bill_extend_account_title	Billing	Extend Account page title	Extend Account
+ 
+service_DD_table	Billing	Title of DD	Files
+service_CM_table	Billing	Title of CM	Contacts
+service_MM_table	Billing	Title of MM	Mail
+service_PM_table	Billing	Title of PM	Projects
+service_IT_table	Billing	Title of IT	Issues
+service_QN_table	Billing	Title of QN	Notes
+service_QP_table	Billing	Title of QP	Pages
+service_SC_table	Billing	Title of SC	Shop
+service_PD_table	Billing	Title of PD	Photos
+service_ST_table	Billing	Title of ST	Help Desk
+
+bill_and_label	Billing	"AND" label	and
+bill_view_label	Billing	"View" label	View
+bill_list_label	Billing	"List" label	List
+bill_table_label	Billing	"Table" label	Table
+
+aa_gb_style	Billing	GB style	%s GB
+aa_mb_style	Billing	MB style	%s MB
+aa_kb_style	Billing	KB style	%s KB
+
+bill_desc_page	Billing	Description of "Account profile" page	Change your profile now
+bill_con_not_proceed_label	Billing	Can not proceed user`s account	Can not extend your account, you have maximum of billing date (1 year).&nbsp;
+bill_user_current_plan_label	Billing	Current plan label on select plan page	(your current plan)
+
+
+
+
+
+
+
+bill_country_3_label	Billing	'Afghanistan' label	Afghanistan
+bill_country_4_label	Billing	'Albania' label	Albania
+bill_country_5_label	Billing	'Algeria' label	Algeria
+bill_country_6_label	Billing	'American Samoa' label	American Samoa
+bill_country_7_label	Billing	'Andorra' label	Andorra
+bill_country_8_label	Billing	'Angola' label	Angola
+bill_country_9_label	Billing	'Anguilla' label	Anguilla
+bill_country_10_label	Billing	'Antarctica' label	Antarctica
+bill_country_11_label	Billing	'Antigua and Barbuda' label	Antigua and Barbuda
+bill_country_12_label	Billing	'Argentina' label	Argentina
+bill_country_13_label	Billing	'Armenia' label	Armenia
+bill_country_14_label	Billing	'Aruba' label	Aruba
+bill_country_15_label	Billing	'Australia' label	Australia
+bill_country_16_label	Billing	'Austria' label	Austria
+bill_country_17_label	Billing	'Azerbaijan' label	Azerbaijan
+bill_country_18_label	Billing	'Bahamas' label	Bahamas
+bill_country_19_label	Billing	'Bahrain' label	Bahrain
+bill_country_20_label	Billing	'Bangladesh' label	Bangladesh
+bill_country_21_label	Billing	'Barbados' label	Barbados
+bill_country_22_label	Billing	'Belarus' label	Belarus
+bill_country_23_label	Billing	'Belgium' label	Belgium
+bill_country_24_label	Billing	'Belize' label	Belize
+bill_country_25_label	Billing	'Benin' label	Benin
+bill_country_26_label	Billing	'Bermuda' label	Bermuda
+bill_country_27_label	Billing	'Bhutan' label	Bhutan
+bill_country_28_label	Billing	'Bolivia' label	Bolivia
+bill_country_29_label	Billing	'Bosnia and Herzegowina' label	Bosnia and Herzegowina
+bill_country_30_label	Billing	'Botswana' label	Botswana
+bill_country_31_label	Billing	'Bouvet Island' label	Bouvet Island
+bill_country_32_label	Billing	'Brazil' label	Brazil
+bill_country_33_label	Billing	'Brunei Darussalam' label	Brunei Darussalam
+bill_country_34_label	Billing	'Bulgaria' label	Bulgaria
+bill_country_35_label	Billing	'Burkina Faso' label	Burkina Faso
+bill_country_36_label	Billing	'Burundi' label	Burundi
+bill_country_37_label	Billing	'Cambodia' label	Cambodia
+bill_country_38_label	Billing	'Cameroon' label	Cameroon
+bill_country_2_label	Billing	'Canada' label	Canada
+bill_country_39_label	Billing	'Cape Verde' label	Cape Verde
+bill_country_40_label	Billing	'Cayman Islands' label	Cayman Islands
+bill_country_41_label	Billing	'Central African Republic' label	Central African Republic
+bill_country_42_label	Billing	'Chad' label	Chad
+bill_country_43_label	Billing	'Chile' label	Chile
+bill_country_44_label	Billing	'China' label	China
+bill_country_45_label	Billing	'Christmas Island' label	Christmas Island
+bill_country_46_label	Billing	'Cocos (Keeling) Islands' label	Cocos (Keeling) Islands
+bill_country_47_label	Billing	'Colombia' label	Colombia
+bill_country_48_label	Billing	'Comoros' label	Comoros
+bill_country_49_label	Billing	'Congo' label	Congo
+bill_country_50_label	Billing	'Cook Islands' label	Cook Islands
+bill_country_51_label	Billing	'Costa Rica' label	Costa Rica
+bill_country_52_label	Billing	'Cote D'Ivoire' label	Cote D'Ivoire
+bill_country_53_label	Billing	'Croatia' label	Croatia
+bill_country_54_label	Billing	'Cuba' label	Cuba
+bill_country_55_label	Billing	'Cyprus' label	Cyprus
+bill_country_56_label	Billing	'Czech Republic' label	Czech Republic
+bill_country_110_label	Billing	'D.P.R. Korea' label	D.P.R. Korea
+bill_country_57_label	Billing	'Denmark' label	Denmark
+bill_country_58_label	Billing	'Djibouti' label	Djibouti
+bill_country_59_label	Billing	'Dominica' label	Dominica
+bill_country_60_label	Billing	'Dominican Republic' label	Dominican Republic
+bill_country_61_label	Billing	'East Timor' label	East Timor
+bill_country_62_label	Billing	'Ecuador' label	Ecuador
+bill_country_63_label	Billing	'Egypt' label	Egypt
+bill_country_64_label	Billing	'El Salvador' label	El Salvador
+bill_country_65_label	Billing	'Equatorial Guinea' label	Equatorial Guinea
+bill_country_66_label	Billing	'Eritrea' label	Eritrea
+bill_country_67_label	Billing	'Estonia' label	Estonia
+bill_country_68_label	Billing	'Ethiopia' label	Ethiopia
+bill_country_69_label	Billing	'Falkland Islands' label	Falkland Islands
+bill_country_70_label	Billing	'Faroe Islands' label	Faroe Islands
+bill_country_71_label	Billing	'Fiji' label	Fiji
+bill_country_72_label	Billing	'Finland' label	Finland
+bill_country_73_label	Billing	'France' label	France
+bill_country_74_label	Billing	'France, Metropolitan' label	France, Metropolitan
+bill_country_75_label	Billing	'French Guiana' label	French Guiana
+bill_country_76_label	Billing	'French Polynesia' label	French Polynesia
+bill_country_77_label	Billing	'Gabon' label	Gabon
+bill_country_78_label	Billing	'Gambia' label	Gambia
+bill_country_79_label	Billing	'Georgia' label	Georgia
+bill_country_80_label	Billing	'Germany' label	Germany
+bill_country_81_label	Billing	'Ghana' label	Ghana
+bill_country_82_label	Billing	'Gibraltar' label	Gibraltar
+bill_country_83_label	Billing	'Greece' label	Greece
+bill_country_84_label	Billing	'Greenland' label	Greenland
+bill_country_85_label	Billing	'Grenada' label	Grenada
+bill_country_86_label	Billing	'Guadeloupe' label	Guadeloupe
+bill_country_87_label	Billing	'Guam' label	Guam
+bill_country_88_label	Billing	'Guatemala' label	Guatemala
+bill_country_89_label	Billing	'Guinea' label	Guinea
+bill_country_90_label	Billing	'Guinea-Bissau' label	Guinea-Bissau
+bill_country_91_label	Billing	'Guyana' label	Guyana
+bill_country_92_label	Billing	'Haiti' label	Haiti
+bill_country_93_label	Billing	'Honduras' label	Honduras
+bill_country_94_label	Billing	'Hong Kong' label	Hong Kong
+bill_country_95_label	Billing	'Hungary' label	Hungary
+bill_country_96_label	Billing	'Iceland' label	Iceland
+bill_country_97_label	Billing	'India' label	India
+bill_country_98_label	Billing	'Indonesia' label	Indonesia
+bill_country_99_label	Billing	'Iran' label	Iran
+bill_country_100_label	Billing	'Iraq' label	Iraq
+bill_country_101_label	Billing	'Ireland' label	Ireland
+bill_country_102_label	Billing	'Israel' label	Israel
+bill_country_103_label	Billing	'Italy' label	Italy
+bill_country_104_label	Billing	'Jamaica' label	Jamaica
+bill_country_105_label	Billing	'Japan' label	Japan
+bill_country_106_label	Billing	'Jordan' label	Jordan
+bill_country_107_label	Billing	'Kazakhstan' label	Kazakhstan
+bill_country_108_label	Billing	'Kenya' label	Kenya
+bill_country_109_label	Billing	'Kiribati' label	Kiribati
+bill_country_111_label	Billing	'Korea' label	Korea
+bill_country_112_label	Billing	'Kuwait' label	Kuwait
+bill_country_113_label	Billing	'Kyrgyzstan' label	Kyrgyzstan
+bill_country_114_label	Billing	'Lao People's Republic' label	Lao People's Republic
+bill_country_115_label	Billing	'Latvia' label	Latvia
+bill_country_116_label	Billing	'Lebanon' label	Lebanon
+bill_country_117_label	Billing	'Lesotho' label	Lesotho
+bill_country_118_label	Billing	'Liberia' label	Liberia
+bill_country_119_label	Billing	'Libyan Arab Jamahiriya' label	Libyan Arab Jamahiriya
+bill_country_120_label	Billing	'Liechtenstein' label	Liechtenstein
+bill_country_121_label	Billing	'Lithuania' label	Lithuania
+bill_country_122_label	Billing	'Luxembourg' label	Luxembourg
+bill_country_123_label	Billing	'Macau' label	Macau
+bill_country_124_label	Billing	'Macedonia' label	Macedonia
+bill_country_125_label	Billing	'Madagascar' label	Madagascar
+bill_country_126_label	Billing	'Malawi' label	Malawi
+bill_country_127_label	Billing	'Malaysia' label	Malaysia
+bill_country_128_label	Billing	'Maldives' label	Maldives
+bill_country_129_label	Billing	'Mali' label	Mali
+bill_country_130_label	Billing	'Malta' label	Malta
+bill_country_131_label	Billing	'Marshall Islands' label	Marshall Islands
+bill_country_132_label	Billing	'Martinique' label	Martinique
+bill_country_133_label	Billing	'Mauritania' label	Mauritania
+bill_country_134_label	Billing	'Mauritius' label	Mauritius
+bill_country_135_label	Billing	'Mayotte' label	Mayotte
+bill_country_136_label	Billing	'Mexico' label	Mexico
+bill_country_137_label	Billing	'Micronesia' label	Micronesia
+bill_country_138_label	Billing	'Moldova' label	Moldova
+bill_country_139_label	Billing	'Monaco' label	Monaco
+bill_country_140_label	Billing	'Mongolia' label	Mongolia
+bill_country_141_label	Billing	'Montserrat' label	Montserrat
+bill_country_142_label	Billing	'Morocco' label	Morocco
+bill_country_143_label	Billing	'Mozambique' label	Mozambique
+bill_country_144_label	Billing	'Myanmar' label	Myanmar
+bill_country_145_label	Billing	'Namibia' label	Namibia
+bill_country_146_label	Billing	'Nauru' label	Nauru
+bill_country_147_label	Billing	'Nepal' label	Nepal
+bill_country_148_label	Billing	'Netherlands' label	Netherlands
+bill_country_149_label	Billing	'Netherlands Antilles' label	Netherlands Antilles
+bill_country_150_label	Billing	'New Caledonia' label	New Caledonia
+bill_country_151_label	Billing	'New Zealand' label	New Zealand
+bill_country_152_label	Billing	'Nicaragua' label	Nicaragua
+bill_country_153_label	Billing	'Niger' label	Niger
+bill_country_154_label	Billing	'Nigeria' label	Nigeria
+bill_country_155_label	Billing	'Niue' label	Niue
+bill_country_156_label	Billing	'Norfolk Island' label	Norfolk Island
+bill_country_157_label	Billing	'Northern Mariana Islands' label	Northern Mariana Islands
+bill_country_158_label	Billing	'Norway' label	Norway
+bill_country_159_label	Billing	'Oman' label	Oman
+bill_country_232_label	Billing	'Other-Not Shown' label	Other-Not Shown
+bill_country_160_label	Billing	'Pakistan' label	Pakistan
+bill_country_161_label	Billing	'Palau' label	Palau
+bill_country_162_label	Billing	'Panama' label	Panama
+bill_country_163_label	Billing	'Papua New Guinea' label	Papua New Guinea
+bill_country_164_label	Billing	'Paraguay' label	Paraguay
+bill_country_165_label	Billing	'Peru' label	Peru
+bill_country_166_label	Billing	'Philippines' label	Philippines
+bill_country_167_label	Billing	'Pitcairn' label	Pitcairn
+bill_country_168_label	Billing	'Poland' label	Poland
+bill_country_169_label	Billing	'Portugal' label	Portugal
+bill_country_170_label	Billing	'Puerto Rico' label	Puerto Rico
+bill_country_171_label	Billing	'Qatar' label	Qatar
+bill_country_172_label	Billing	'Reunion' label	Reunion
+bill_country_173_label	Billing	'Romania' label	Romania
+bill_country_174_label	Billing	'Russian Federation' label	Russian Federation
+bill_country_175_label	Billing	'Rwanda' label	Rwanda
+bill_country_176_label	Billing	'Saint Kitts and Nevis' label	Saint Kitts and Nevis
+bill_country_177_label	Billing	'Saint Lucia' label	Saint Lucia
+bill_country_178_label	Billing	'Samoa' label	Samoa
+bill_country_179_label	Billing	'San Marino' label	San Marino
+bill_country_180_label	Billing	'Sao Tome and Principe' label	Sao Tome and Principe
+bill_country_181_label	Billing	'Saudi Arabia' label	Saudi Arabia
+bill_country_182_label	Billing	'Senegal' label	Senegal
+bill_country_183_label	Billing	'Seychelles' label	Seychelles
+bill_country_184_label	Billing	'Sierra Leone' label	Sierra Leone
+bill_country_185_label	Billing	'Singapore' label	Singapore
+bill_country_186_label	Billing	'Slovakia' label	Slovakia
+bill_country_187_label	Billing	'Slovenia' label	Slovenia
+bill_country_188_label	Billing	'Solomon Islands' label	Solomon Islands
+bill_country_189_label	Billing	'Somalia' label	Somalia
+bill_country_190_label	Billing	'South Africa' label	South Africa
+bill_country_191_label	Billing	'Spain' label	Spain
+bill_country_192_label	Billing	'Sri Lanka' label	Sri Lanka
+bill_country_193_label	Billing	'St Helena' label	St Helena
+bill_country_194_label	Billing	'St Pierre and Miquelon' label	St Pierre and Miquelon
+bill_country_195_label	Billing	'Sudan' label	Sudan
+bill_country_196_label	Billing	'Suriname' label	Suriname
+bill_country_197_label	Billing	'Swaziland' label	Swaziland
+bill_country_198_label	Billing	'Sweden' label	Sweden
+bill_country_199_label	Billing	'Switzerland' label	Switzerland
+bill_country_200_label	Billing	'Syrian Arab Republic' label	Syrian Arab Republic
+bill_country_201_label	Billing	'Taiwan Region' label	Taiwan Region
+bill_country_202_label	Billing	'Tajikistan' label	Tajikistan
+bill_country_203_label	Billing	'Tanzania' label	Tanzania
+bill_country_204_label	Billing	'Thailand' label	Thailand
+bill_country_205_label	Billing	'Togo' label	Togo
+bill_country_206_label	Billing	'Tokelau' label	Tokelau
+bill_country_207_label	Billing	'Tonga' label	Tonga
+bill_country_208_label	Billing	'Trinidad and Tobago' label	Trinidad and Tobago
+bill_country_209_label	Billing	'Tunisia' label	Tunisia
+bill_country_210_label	Billing	'Turkey' label	Turkey
+bill_country_211_label	Billing	'Turkmenistan' label	Turkmenistan
+bill_country_212_label	Billing	'Turks and Caicos Islands' label	Turks and Caicos Islands
+bill_country_213_label	Billing	'Tuvalu' label	Tuvalu
+bill_country_214_label	Billing	'Uganda' label	Uganda
+bill_country_215_label	Billing	'Ukraine' label	Ukraine
+bill_country_216_label	Billing	'United Arab Emirates' label	United Arab Emirates
+bill_country_217_label	Billing	'United Kingdom' label	United Kingdom
+bill_country_1_label	Billing	'United States of America' label	United States of America
+bill_country_218_label	Billing	'Uruguay' label	Uruguay
+bill_country_219_label	Billing	'Uzbekistan' label	Uzbekistan
+bill_country_220_label	Billing	'Vanuatu' label	Vanuatu
+bill_country_221_label	Billing	'Vatican City State' label	Vatican City State
+bill_country_222_label	Billing	'Venezuela' label	Venezuela
+bill_country_223_label	Billing	'Viet Nam' label	Viet Nam
+bill_country_224_label	Billing	'Virgin Islands (British)' label	Virgin Islands (British)
+bill_country_225_label	Billing	'Virgin Islands (US)' label	Virgin Islands (US)
+bill_country_226_label	Billing	'Wallis and Futuna Islands' label	Wallis and Futuna Islands
+bill_country_228_label	Billing	'Yemen' label	Yemen
+bill_country_227_label	Billing	'Yugoslavia' label	Yugoslavia
+bill_country_229_label	Billing	'Zaire' label	Zaire
+bill_country_230_label	Billing	'Zambia' label	Zambia
+bill_country_231_label	Billing	'Zimbabwe' label	Zimbabwe
+
+
+
+
+purchase_ordernotfound_message	Billing	Order not found	Order not found
+purchase_payment_form	Billing	Online credit	Online credit card secure payment form
+purchase_SSL_secured	Billing	Your input	Your input is <b>SSL-secured</b>
+purchase_verify_our_certificate	Billing	Click this	Click this icon to verify our SSL certificate
+purchase_we_accept	Billing	We accept	We accept VISA, MasterCard, American Express, Discover: 
+purchase_card_information	Billing	Credit card information	Credit card information
+purchase_provide_following_information	Billing	Please provide	Please provide following information as it appears on your credit card
+purchase_please_field	Billing	Please_field	Attention!!! Please comlete all form
+purchase_card_type	Billing	Card type	Card type:
+purchase_Business	Billing	Business	Business
+purchase_Individual	Billing	Individual	Individual
+purchase_first_name	Billing	First name	First name:
+purchase_last_name	Billing	Last name	Last name:
+purchase_company	Billing	Company	Company:
+purchase_card_number	Billing	Card number	Card number:
+purchase_expiration_date	Billing	Expiration date	Expiration date:
+purchase_month_	Billing	Month select	-month-
+purchase_year_	Billing	Year select	-year-
+purchase_CVV	Billing	CVV	CVV is a three-digit number on the back of your card. American Express users: CVV is a four-digit number on the right side of the front of your card above the card number.
+purchase_billing_address	Billing	Billing address	Billing address
+purchase_address	Billing	Address	Address:
+purchase_city	Billing	City	City:
+purchase_province	Billing	State	State/province:
+purchase_zip	Billing	Zip	Zip:
+purchase_country	Billing	Country	Country:
+purchase_email_address	Billing	Email address	Email address:
+purchase_phone	Billing	Phone	Phone:
+purchase_valid_phone	Billing	Make sure to provide a valid phone	Make sure to provide a valid phone number where we can reach you for payment verification
+purchase_Submit	Billing	Submit button	Submit
+purchase_Continue	Billing	Continue button	Continue
+purchase_account_payment_notice	Billing	Payment notice	Once you click Submit button below, you will be redirected to a secure Authorize.net payment form.<br />As soon as payment is done, all changes will be immediatelly applied to your account and your card will be charged %AMOUNT%.
+purchase_account_payment_card_notice	Billing	Payment card notice	<strong>Extend my account automatically</strong> (starting on the next billing date %BILLING_DATE% WebAsyst will continue to charge your card %COST% every month until you cancel your account).
+purchase_account_card_charge	Billing	Payment card charge	<strong>Note:</strong> Charge on your credit card will appear as WebAsyst LLC.
+purchase_account_card_charge_remark	Billing	Payment card remark	<strong>NOTE:</strong> We recommend that you enable the autoextend option. This ensures that your account is always available for your users; if you forget to extend it manually on the billing date, your account would be unavailable until payment is made. You still retain full control of your payments when you enable the auto-extend option, because you can, at any time, cancel your account or downgrade to a free plan &#151; in this case all subsequent charges will void.
+purchase_account_cc_notice	Billing	Payment notice	Once you click Submit button below, you will be redirected to a secure Authorize.net payment form.
+
+purchase_for_proceed	Billing	Submit button	Payment instructions
+purchase_about_order	Billing	Submit button	Order information
+purchase_great	Billing	Submit button	Your payment has been approved!
+purchase_order_emailed	Billing	Order emailed	This information has been emailed to %email%.
+purchase_order_email	Billing	Order email	This information will be emailed to %email%.
+purchase_card_charged	Billing	Card charged	We have successfully authorized and charged your card.
+purchase_card_charge_targed	Billing	Card charge target	<strong>NOTE:</strong> The charge on your card will appear from WebAsyst LLC.
+purchase_thanks	Billing	Purchase thanks	Thank you for your order!
+purchase_support	Billing	Purchase support	Should you have any questions, please feel free to contact us.
+purchase_error	Billing	Submit button	Error page
+bill_custom_note	Billing	Note for custom plan	NOTE: Custom pricing is more flexible, but not as cost effective as standard.
+bill_free_settings	Billing	New settings is free	Required changes are free, and will be applied immediately.
+bill_amount_due_label	Billing	Amount due	Amount due:
+
+bill_js_formula_label_v5	Billing	JS formula	 <span style="color:#666666;"><small>(%s)</small></span>
+bill_js_formula_label_v2	Billing	JS formula	 <span style="color:#666666;"><small>(%s + %s)</small></span>
+bill_js_formula_label_v3	Billing	JS formula	%s
+bill_js_formula_label_v4	Billing	JS formula	%s * %s
+
+
+bill_settings_label	Billing	Settings label	Settings
+bill_sms_history_label	Billing	SMS History label	SMS History
+bill_owner_label	Billing	Account Owner label	Account Owner:
+bill_email_title	Billing	E-mail label	E-mail:
+bill_created_label	Billing	Created label	Created:
+bill_checkout_title	Billing	Checkout page title	Checkout
+
+bill_limit_exceed_error	Billing	Limit error	Selected %s, now used %s.
+bill_space_exceed_error	Billing	Limit error for space	Storage space can not exceed %s.
+
+
+bill_advertisement_desc_stand	Billing	Advertisement for standard plans	We offer substantial discounts in these bundled service plans. Individual components cannot be changed. BEST VALUE.
+bill_advertisement_desc_custa	Billing	Advertisement for custom plans	This option designed for customers with specific or limited requirements. Individual components may be purchased in varying levels.
+bill_free_restriction	Billing	Free restriction	Disabled for FREE account.
+bill_update_now	Billing	Upgrade now	Upgrade now
+bill_paypal_error	Billing	paypal_error	Error processing paypal payment
+bill_shipping_error	Billing	shipping_error	Error shipping order
+
+
+bill_mail_invalid	Billing	Invalid e-mail	E-mail address you specified (%s) is incorrect. <br/>
+bill_mail_exists	Billing	Exists e-mail	E-mail address you specified (%s) is already registered<br/>
+bill_mail_owner_error	Billing	Owner error	E-mail address you specified (%s) belongs to someone else.<br/>
+bill_other_mail_label	Billing	Other email	Other email addresses you are using for contacting customer support:
+bill_unconfirmed_mail_label	Billing	Unconfirmed email	unconfirmed
+bill_add_mail_label	Billing	Add email address	Add email address
+bill_add_mail_reduced	Billing	Add email reduced	Add email:
+bill_additional_field	Billing	Create additional field for extra mails	If you wish to add more than one email addresses click here:
+bill_additional_field_desc	Billing	Description for "addon field" pic	Add addon field
+bill_empty_mails	Billing	Has field an empty mail	Please specify at least one email address
+
+bill_recommended_tariff	Billing	Recommended tariff	Recommended!
+
+domains_link_label	Domains	Domains control label	My&nbsp;Domains
+domains_names_link_label	Domains	Domains control label	Domain names
+dl_screen_long_name	Domains List	Domains List page full name	My Domains
+dl_screen_short_name	Domains List	Short name	Domains
+dl_adddom_btn	Domains List	Add Domain button	Add domain
+dl_name_title	Domains List	Column name	Domain
+de_pageadd_title	Add/Modify Domain	Page header in Add Domain mode	Add domain
+de_pagemodify_title	Add/Modify Domain	Page header in Modify Domain mode	Edit domain
+de_domainexists_message	Add/Modify Domain	Entered domain already exists message	Domain already exists
+de_incorrectdomain_message	Add/Modify Domain	Incorrect domain	Entered domain name is incorrect
+de_add_domain_comment	Add/Modify Domain	Comment for add domain	You can add domain in your account.<br>Correct IP-address in DNS records must be set for this domain.<br>If you haveh't your own domain yet you can <a %s>buy</a> it now.
+de_edit_domain_comment	Add/Modify Domain	Comment for edit domain	ATTENTION:<br>correct IP-address in DNS records must be set for this domain.<br>
+de_delete_message	Add/Modify Domain	Domain deletion confirmation	Delete domain?
+
+app_install_protect	Warning	Label	File INSTALL.PHP exists in your main WebAsyst installation folder &mdash; this is insecure. Please delete this file by FTP.
+app_install_wbstgz	Warning	Label	File WBS.TGZ exists in your main WebAsyst installation folder.  Please delete this file by FTP.
+app_installer_protect	Warning	Label	<strong>WebAsyst Installer is not protected</strong>. You should <a href="%s">enter login and password</a> to protect Installer.
+
+help_page_name	Help System	Page Title	Help
+help_forum_lbl	Help	Forum label	Forum
+help_forum_desc	Help	Forum desc	WebAsyst community forum.
+help_manual_lbl	Help	Manual label	Manual
+help_manual_desc	Help	Manual desc	Browse online.
+help_support_lbl	Help	Support label	Support
+help_support_desc	Help	Support desc	Get help at WebAsyst knowledge base or contact customer support.
+help_blog_lbl	Help	Blog label	Blog
+help_blog_desc	Help	Blog desc	Info about WebAsyst updates.
+dom_mydomains_label	Domains	My Domains	My Domains
+dom_back_btn	Domains	Back btn	Back to My Domains
+dom_registered_domains	Domains	Registered domains	Registered domain names
+dom_domain_name	Domains	Domain name	Domain name
+dom_expire_label	Domains	Domain expire	expires
+dom_domain_link_label	Domains	Domain link	Link
+dom_domain_nolink_label	Domains	Domain nolink	unlinked
+dom_domain_link_setup	Domains	Domain link setup	customize
+dom_nodom_message	Domains	No registered domains	You have no registered domain names.
+dom_domains_waid_paid	Domains	Wait paid	Not paid domain names
+dom_order_date	Domains	Order date	Order date
+dom_order_number	Domains	Order number	Order number
+dom_cancel_order	Domains	Cancel order	Cancel this order
+dom_dom_not_available	Domains	Domain not available for register	This domain name is not available.
+dom_change_domain	Domains	Change domain name	Modify domain name
+dom_mes_free_dom	Domains	Free domain policy	Your billing plan allows you to register one domain name for free.
+dom_register_domain	Domains	Register domain	Register domain name
+dom_renew_domain	Domains	Register domain	Renewal domain name
+dom_get_free_domain	Domains	Get free domain	Get free domain name
+dom_buy_domain	Domains	Buy domain	Buy domain name
+dom_buy_another_domain	Domains	Buy another domain	Buy another domain
+dom_mes_plan_extend	Domains	Extend plan	Your account plan includes one free domain name if you pay for your account\nfor one year or more.\n Currently your account has already been paid for %s month(s).To get a free\ndomain name, you have to extend your account for another %s month(s).
+dom_extend_link_label	Domains	Extend account link	Extend account and get a free domain name
+dom_buy_order_noextend	Domains	Buy domain without extending	Buy domain name without extending your account
+dom_mes_nodomreg_forfree	Domains	No domain registering	Sorry, we do not allow registering domain names for free account.
+dom_upgrade_account	Domains	Upgrade Account	Upgrade account
+dom_enter_domain	Domains	Enter domain	Enter domain name
+dom_domain_available	Domains	Domain available	Domain name %s is available for registration
+dom_fill_form	Domains	Fill form	Please fill in the form
+dom_latin_characters	Domains	Domain 	Latin characters and numbers only
+dom_price	Domains	Price	Price
+dom_company_name	Domains	Company name	Company name
+dom_company_blank_message	Domains	Company blank	Leave blank if you do not have a company name
+dom_contact_person	Domains	Contact person	Contact person name
+dom_address	Domains	Address	Address
+dom_city	Domains	City	City
+dom_zip	Domains	Zip	Postal code
+dom_country	Domains	Country	Country
+dom_loading	Domains	Loading	Loading
+dom_state	Domains	State	State/Province
+dom_phone	Domains	Phone	Phone
+dom_phone_cc	Domains	Phone country code	Country code
+dom_phone_number	Domains	Phone number	Number
+dom_agreement	Domains	Agreement	I agree with the Terms of Service.
+dom_agreement_error	Domains	Agreement error	You must accept terms and conditions
+dom_domain_to_reg	Domains	Domain to register	Domain name to register
+dom_confirm_data	Domains	Confirm data	Please, verify the information below
+dom_register_success	Domains	Registration success	Domain name registration has been successfully completed.
+dom_period	Domains	Period	Period: 1 year
+dom_confirm_cancelation	Domains	Confirm order cancellation	Confirm order cancellation
+dom_domain_registeration	Domains	Domain registration	domain name registration
+dom_domain_prolongation	Domains	Domain prolongation	renewal of domain name
+dom_order_not_found	Domains	Order not found	Order does not exist or has been completed
+dom_back_to_edit	Domains	Back to edit	or %s go back to change data %s
+dom_paymenttype_error	Domains	Wrong payment type	Wrong payment type
+dom_linked_SC	Domains	Linked to SC	This domain is linked to your shopping cart storefront.
+dom_linked_login	Domains	Linked to login	This domain is linked to your account Login form.
+dom_link_defto_login	Domains	Link to login	<b>NOTE:</b> This domain will be linked to your account Login form.
+dom_link_defto_SC	Domains	Link to login	<b>NOTE:</b> This domain will be linked to your shopping cart storefront.
+dom_dns_awaiting	Domains	Awaiting dns changes	This domain is waiting for DNS registration. It may take another 2-3 hours.
+dom_order_not_paid	Domains	Order not paid	This domain has been ordered but not paid yet.
+dom_price_year	Domains	Year	year
+dom_dns_info_message	Domains	Dns info message	Your new domain will be accessible upon its propagation. This usually takes less than 24h.
+dom_continue_btn	Domains	continue_btn	Continue
+dom_ssl_info_message	Domains	ssl_info	If you need a secure connection (SSL), you have to purchase an SSL certificate for your domain name. The price of the certificate is $89 per year. This price includes the acquisition cost of the certificate, the price of a static IP address and the installation works.<p>To order SSL certificate, please contact our customer support service: support@webasyst.net.</p>
+dom_renew	Domains	Renew	Renew
+
+contact_email_exist_error	Specified email is already in use
+
+app_required_fields	Common	Warning if some required fields are not filled	This field required

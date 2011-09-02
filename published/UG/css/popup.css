@@ -1,0 +1,46 @@
+html, body { //width:100%;}
+
+.popup-wrapper {position: relative; height:100%; zoom:1;}
+.popup-content {
+padding:20px;}
+
+.popup-footer {
+	position: absolute; width: auto; padding:10px; bottom: 0px; text-align: right; right: 0;
+}
+
+.popup-header  {
+background:#F7FAFC none repeat scroll 0 0;
+border-bottom:1px solid #EAEAEA;
+font-weight:bold;
+line-height:28px;
+font-size:20px;
+background:#F7FAFC none repeat scroll 0 0;
+border-bottom:1px solid #EAEAEA;
+font-weight:bold;
+line-height:28px;
+padding:3px 10px;
+zoom:1;
+}
+.popup-header h2 { margin:0;} 
+
+.popup-content p {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	 
+}
+.popup-help { float:left; color:#787878; font-size:0.85em; width:110px; margin:0 0 10px 12px;}
+.popup-title { float:left; font-size:0.85em; width:110px; margin:0 0 10px 12px;}
+
+.popup-content div.border {
+	border: 1px solid #CCC;
+	width: 96px;
+	padding: 2px;
+}
+
+.right-block{
+	padding-top:5px;
+	position:absolute;
+	right:0;
+	text-align:left;
+	width:450px;
+}

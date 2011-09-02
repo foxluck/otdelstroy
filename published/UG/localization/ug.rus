@@ -1,0 +1,27 @@
+app_name_long	Common	Application full name	Команда
+app_name_short	Common	Application short name	Команда
+
+app_cantools_title	Common	Can use Tools Rights	Может использовать Инструменты
+app_canreports_title	Common	Can use Reports Rights	Может использовать Отчеты
+
+app_cantools_label	Common	Can use Tools Rights	Может использовать Инструменты
+app_canreports_label	Common	Can use Reports Rights	Может использовать Отчеты
+
+
+app_comment_text	Common	Application Comment text	Этот пользователь может управлять другими пользователями или группами пользователей.
+
+pv_page_title	Preview Page Title	Preview page title	Предпросмотр
+pv_button_title	Preview button title	Button title	Кнопка
+pv_tab_title	Preview tab title	Button title	Таб
+pv_ug_title	Preview app title	Preview app title	Пользователи
+pv_aa_title	Preview app title	Preview app title	Панель управления
+pv_mw_title	Preview app title	Preview app title	Мои настройки
+pv_dd_title	Preview app title	Preview app title	Файлы
+pv_pd_title	Preview app title	Preview app title	Фото
+pv_cm_title	Preview app title	Preview app title	Контакты
+pv_mm_title	Preview app title	Preview app title	Почта
+pv_pm_title	Preview app title	Preview app title	Проекты
+pv_it_title	Preview app title	Preview app title	Задания
+pv_qn_title	Preview app title	Preview app title	Блокнот
+pv_qp_title	Preview app title	Preview app title	Страинцы
+pv_tab_content	Preview Tab Content	Preview tab content	Содержание

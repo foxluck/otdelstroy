@@ -1,0 +1,26 @@
+logout_btn	Logout
+help_btn	Help
+fullscreen_on	Fullscreen On
+fullscreen_off	Fullscreen Off
+view_btn	View
+settings_btn	Account
+loading_lbl	Loading	
+menu_position	Menu position
+menu_type	Show
+menupos_top	Top
+menupos_left	Left
+menupos_bottom	Bottom
+menupos_right	Right
+menutype_iconslabels	Icons and Names
+menutype_onlyicons	Icons only
+menutype_onlylabels	Names only
+fullscreen_on_lbl	Full screen
+fullscreen_off_lbl	Exit full screen
+viewselector_close_btn	Close
+account_unconfirmed_message	ACCOUNT NOT CONFIRMED
+account_unconfirmed_link	What's this?
+account_expired_link	Extend account
+account_expired_message	Your account has been expired.
+account_will_expire_message	Your account will expire in %s day(s).
+help_title	Help
+welcome_title	Welcome

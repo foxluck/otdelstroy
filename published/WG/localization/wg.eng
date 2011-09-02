@@ -1,0 +1,89 @@
+app_name_long	Common	Application full name	Widgets
+app_name_short	Common	Application short name	Widgets
+
+wg_add_label	Widgets	Add label	Add Widget
+
+
+wg_addwidget_menu	Widgets	menu	Create New
+wg_repository_menu	Widgets	menu	Back to Widgets Repository
+wg_deleteconfirm_message	Widgets	Message	Do you really want to delete this widget?
+
+wg_id_title	Widgets	Table title	ID
+wg_created_title	Widgets	Table title	When
+wg_type_title	Widgets	Table title	Type
+wg_wgtype_title	Widgets	Table title	Widget Type
+wg_desc_title	Widgets	Table title	Description
+wg_author_title	Widgets	Table title	Author
+wg_preview_label	Widgets	Label	preview
+wg_sendbyemail_label	Widgets	Send by email Label	Send by Email
+wg_changeaddress_label	Widgets	Send change address Label	Change Address
+wg_customize_label	Widgets	Customize Label	Customize
+wg_embed_label	Widgets	Embed Label	Embed
+wg_delete_label	Widgets	Delete Label	Delete
+wg_delete_message	Widgets	Delete message	Do you really want to delete this widget?
+wg_deletelink_message	Widgets	Delete message	Do you really want to delete this link?
+
+ty_page_title	Types	Page title	Widgets Repository
+ty_page_caption	Types	Page title	Widget Types
+
+amwg_addpage_title	Add/mod widget	Page title	Create New
+amwg_modpage_title	Add/mod widget	Page title	Modify
+amwg_confirmdelete_message	Add/mod widget	Confirm delete	Are you sure?
+amwg_wghtml_label	Add/mod widget	Widget insert HTML	Copy and paste this HTML code into your blog or webpage
+amwg_wgpermalink_label	Add/mod widget	Widget insert permalink	Permalink to this widget
+amwg_wglink_label	Add/mod widget	Widget insert Link	Use the code below to open this widget in popup window <preview>
+amwg_wglinkopen_label	Add/mod widget	Widget open Link label	open in new window
+amwg_showproperties_label	Add/mod widget	Show properties label	Show Properties
+amwg_hideproperties_label	Add/mod widget	Show properties label	Hide Properties
+amwg_oruseb_label	Add/mod widget	Widget show more embed or label	or use
+amwg_moreemb_label	Add/mod widget	Widget show more embed	embed options
+amwg_addemb_label	Add/mod widget	Widget show more embed	Additional embedding options
+amwg_hideaddemb_label	Add/mod widget	Widget show more embed	Hide
+amwg_wglinksample_label	Add/mod widget	Widget insert Link	sample
+amwg_permalink_label	Add/mod widget	Widget premalink 	Permalink to this widget <preview>
+amwg_wgdesc_label	Add/mod widget	Widget Desc	Name
+amwg_wglang_label	Add/mod widget	Widget Language	Language
+amwg_typepadinstall_label	Add/mod widget	Type pad install	Install Widget on TypePad
+amwg_preview_label	Add/mod widget	Preview label	Preview
+
+amwg_save_menu	Widget	menu	Save
+amwg_saveclose_menu	Widget	menu	Save and Close
+amwg_cancel_menu	Widget	menu	Cancel
+amwg_delete_menu	Widget	menu	Delete
+
+amwg_created_label	Add/mod widget	Created label	Created by
+amwg_modified_label	Add/mod widget	Modified label	Modified by
+amwg_preview_btn	Add/mod widget	Preview button	Preview
+
+amwg_colorpick_label	Add/mod widget	Color pick button	pick
+
+vwwg_page_title	View widget	Page title	View widget
+
+widgets_noright_error	Widgets	No right	To create widgets you must have access to Contact Manager / Tools menu
+widgets_noapp_error	Widgets	No right	Required applications are not installed
+
+message_title	Widget	Message Title	Message
+
+vwwg_address_label	Widgets	Address	Address
+vwwg_delete_label	Widgets	Delete	Delete
+vwwg_emaillink_label	Widgets	Email this link	Email this Link
+vwwg_changeurllink_label	Widgets	Email this link	Change Link Address
+vwwg_preview_label	Widgets	Preview label	View
+vwwg_customizedialog_title	Widgets	Customize dialog title	Customize Widget
+
+error_title	Widgets	Error title	Error
+
+createwg_captcha_label	Create widget	Captcha label	Enter numbers shown below
+createwg_captchaerror_message	Create widget	Captcha error message	Enter the numbers as they are shown on the image
+createwg_submit_label	Create widget	Submit label	Submit
+
+wgedit_subtitle_note	Edit widget	Subtitle note	Use the address below to manage your widget
+wgedit_customize_button	Edit widget	Customize Button	Customize
+
+wg_page_header	Widgets	Page header	Widgets
+wg_what_is_page_header	Widgets	Page header	What are "Widgets"?
+wg_page_text	Widgets	Widgets page text	<b>Widget</b> – is a tool that you can embed within a page on your website or blog. Generally, widgets allow you to post data from an external web page to your WebAsyst account or publish your WebAsyst content on an external web page. 
+wg_types_text	Widgets	Types text	You can create following types of widgets
+wg_types_text_dd	Widgets	Available Widgets	In WebAsyst Files you can create following types of widgets:
+wg_create_text	Widgets	Create text	To create new widget, go to any available folder and use widget creation options in actions menu.
+wg_availablewidgets_label	Widgets	Available Widgets	Available Widgets

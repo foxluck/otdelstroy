@@ -1,0 +1,149 @@
+{* шаблон квитанции на оплату для клиентов *}
+<HTML>
+
+<HEAD>
+<TITLE>Квитанция на оплату</TITLE>
+<LINK href="style1.css" type=text/css rel=stylesheet>
+<META http-equiv=Content-Type content="text/html;  charset=utf-8">
+</HEAD>
+
+<BODY bgColor=#ffffff>
+<DIV align=center><BR>
+<TABLE cellSpacing=0 cellPadding=4 width=600 border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=bottom width="25%">
+      <P align=right>Извещение</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>Кассир</P></TD>
+    <TD width="75%">
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3><STRONG>Получатель платежа</STRONG></TD></TR>
+        <TR>
+          <TD colSpan=3>Наименование: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_COMPANYNAME|escape:"html"}</TD></TR>
+        <TR>
+          <TD>Счет: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_ACCOUNT_NUMBER|escape:"html"}</TD>
+          <TD>ИНН: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_INN|escape:"html"}</TD>
+          <TD>КПП: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_KPP|escape:"html"}</TD></TR>
+        <TR>
+          <TD colSpan=3>Наименование банка: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANKNAME|escape:"html"}</TD></TR>
+        <TR>
+          <TD>Кор. счет: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_KOR_NUMBER|escape:"html"}</TD>
+          <TD colSpan=2>БИК: {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BIK|escape:"html"}</TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><STRONG>Плательщик</STRONG></TD></TR>
+        <TR>
+          <TD>{$billing_firstname} {if $second_name}{$second_name} {/if}{$billing_lastname}</TD></TR>
+        <TR>
+          <TD>{$billing_city}, {$billing_address}</TD></TR>
+        </TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV align=center>Назначение платежа</DIV></TD>
+          <TD>
+            <DIV align=center>Дата</DIV></TD>
+          <TD>
+            <DIV align=center>Сумма</DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV align=center>{$invoice_description}</DIV></TD>
+          <TD>
+            <DIV align=center>&nbsp;</DIV></TD>
+          <TD>
+            <DIV align=center>{$invoice_amount}</DIV></TD></TR></TBODY></TABLE>
+      <P>Подпись плательщика:</P></TD></TR>
+  <TR>
+    <TD vAlign=bottom>
+      <P align=right>Извещение</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>&nbsp;</P>
+      <P align=right>Кассир</P></TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3><STRONG>Получатель платежа</STRONG></TD></TR>
+        <TR>
+                <TD colSpan=3>Наименование: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_COMPANYNAME|escape:"html"}
+                </TD>
+              </TR>
+        <TR>
+                <TD>Счет: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_ACCOUNT_NUMBER|escape:"html"}
+                </TD>
+                <TD>ИНН: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_INN|escape:"html"}
+                </TD>
+                <TD>КПП: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_KPP|escape:"html"}
+                </TD>
+              </TR>
+        <TR>
+                <TD colSpan=3>Наименование банка: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANKNAME|escape:"html"}
+                </TD>
+              </TR>
+        <TR>
+                <TD>Кор. счет: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BANK_KOR_NUMBER|escape:"html"}
+                </TD>
+                <TD colSpan=2>БИК: 
+                  {$invoice_data.CONF_PAYMENTMODULE_INVOICE_PHYS_BIK|escape:"html"}
+                </TD>
+              </TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=0>
+            <TBODY>
+              <TR> 
+                <TD><STRONG>Плательщик</STRONG></TD>
+              </TR>
+              <TR> 
+                <TD> 
+                  {$billing_firstname} {if $second_name}{$second_name} {/if}{$billing_lastname}
+                </TD>
+              </TR>
+              <TR> 
+                <TD> 
+                  {$billing_city}
+                  , 
+                  {$billing_address}
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+          <BR>
+      <TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV align=center>Назначение платежа</DIV></TD>
+          <TD>
+            <DIV align=center>Дата</DIV></TD>
+          <TD>
+            <DIV align=center>Сумма</DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV align=center>
+                    {$invoice_description}
+                  </DIV></TD>
+          <TD>&nbsp;</TD>
+          <TD>
+            <DIV align=center>
+                    {$invoice_amount}
+                  </DIV></TD></TR></TBODY></TABLE>
+      <P>Подпись плательщика:</P></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

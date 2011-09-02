@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Poll</Name>
+		<File>class.poll.php</File>
+		<Title>Голосование</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

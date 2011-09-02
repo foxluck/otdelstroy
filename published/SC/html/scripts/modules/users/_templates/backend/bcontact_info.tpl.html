@@ -1,0 +1,82 @@
+<form method="post" name="MainForm">
+<table>
+	<tr>
+		<td><strong>{"usr_custinfo_login"|translate}</strong></td>
+		<td>{$customerInfo.Login}</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_first_name"|translate}</strong></td>
+		<td>{$customerInfo.first_name}</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_last_name"|translate}</strong></td>
+		<td>{$customerInfo.last_name}</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_custinfo_email"|translate}</strong></td>
+		<td>{if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}{$customerInfo.Email}{else}{"msg_safemode_info_blocked"|translate}{/if}</td>
+	</tr>
+	{section name=i loop=$reg_fields_values}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{$reg_fields_values[i].reg_field_name}</strong></td>
+		<td>{$reg_fields_values[i].reg_field_value}</td>
+	</tr>
+	{/section}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top"><strong>{"usrreg_subscribe_for_blognews"|translate}</strong></td>
+		<td>
+			<input type="checkbox" {if $customerInfo.subscribed4news}checked{/if} name = 'subscribed4news' value='1' />
+		</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top">
+			<strong>{"str_group"|translate}</strong>
+		</td>
+		<td>
+			<select name='custgroupID'>
+				<option value='null'>-</option>
+				{section name=i loop=$customer_groups}
+					<option value='{$customer_groups[i].custgroupID}' {if $customer_groups[i].custgroupID == $customerInfo.custgroupID}selected{/if}>
+						{$customer_groups[i].custgroup_name}
+					</option> 
+				{/section}
+			</select>
+		</td>
+	</tr>
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td valign="top"><strong>{"usr_account_state"|translate}</strong></td>
+		<td>
+		{if $customerInfo.ActivationCode}
+			{"usr_account_notactivated"|translate}
+			<div><a href="{"activateID=`$customerInfo.customerID`"|set_query}" onclick="return confirm('{"usr_account_confirm_activate"|translate|replace:'[email]':$customerInfo.Email}');">{"btn_activate"|translate}</a></div>
+		{else}
+			{"usr_account_activated"|translate}
+		{/if}
+		</td>
+	</tr>
+	{if $customerInfo.ActivationCode}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td><strong>{"usr_account_activation_key"|translate}</strong></td>
+		<td>{$customerInfo.ActivationCode}</td>
+	</tr>
+	{/if}
+	<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+	<tr>
+		<td></td>
+		<td>
+			<input value="{'btn_save'|transcape}" name="save" type="submit" />
+			{if $customerInfo.allowToDelete}
+			<input type="button" onclick="if(window.confirm('{"cnfrm_delete"|translate}'))document.location.href='{"&safemode=&deleteCustomerID=`$customerInfo.customerID`"|set_query}';" value="{"lnk_terminate_account"|translate}" />
+			{/if}
+		</td>
+	</tr>
+</table>
+</form>

@@ -1,0 +1,34 @@
+<h1>{$CurrentDivision.name|translate}</h1>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post"><div class="form_wrapper">
+<p><input name="enter" value="1" type="hidden" >
+
+	{"usr_custinfo_login"|translate}:
+	<br>
+	<input type="text" name="user_login" id="ln_user_login" value="{$user_login|escape:'html'}" size="40" ></p>
+	
+	<p>
+		{"usr_custinfo_password"|translate}:
+		<br>
+		<input name="user_pw" type="password" size="40" >
+	</p>
+	
+	<p>
+		<input type="submit" value='{"btn_login"|translate}' >
+	</p>
+	
+	<p>
+		<a rel="nofollow" href="{'?ukey=remind_password'|set_query_html}">{lbl_lnk_forgot_password}</a>
+		&nbsp;
+		<a rel="nofollow" href="{'?ukey=register'|set_query_html}">{lbl_pgn_register}</a>
+        &nbsp;
+        <a rel="nofollow" href="{$admin_login_url}">{"lbl_admin_login"|translate}</a>
+	</p>
+
+</div></form>
+
+<script type="text/javascript">
+getLayer('ln_user_login').focus();
+</script>

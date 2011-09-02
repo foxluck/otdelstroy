@@ -1,0 +1,21 @@
+{* printable version template *}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	{include file="head.html"}
+<script type="text/javascript">
+	function position_this_window()
+	{literal}{{/literal}
+		var x = (screen.availWidth - 600) / 2;
+		window.resizeTo(600, screen.availHeight - 100);
+		window.moveTo(Math.floor(x),50);
+	{literal}}{/literal}
+	</script>
+</head>
+
+<body onLoad="position_this_window();window.print();" style="background-color:#FFFFFF;background-image:none;">
+
+{include file="$main_content_template"}
+
+</body>
+</html>

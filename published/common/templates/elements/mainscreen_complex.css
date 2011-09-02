@@ -1,0 +1,274 @@
+img {border:0px}
+table {border-collapse: collapse; }
+body {overflow-y: hidden}
+a { color:#0043A7;}
+.viewmode-selector .mode-elem {float: left; }
+.viewmode-selector .mode-elem img {cursor: pointer; height: 23px; width: auto}
+
+.wbs-table .columns {width: 100%}
+.wbs-table .columns thead tr th {text-align: left;}
+.wbs-table .columns {border-width: 0px; border-top-width: 0px; border-color: #CCC; border-style: solid}
+.wbs-table .columns tr td, .wbs-table .columns tr th {border-width: 0px; border-color: #DDD; border-bottom-width: 0px; border-style: solid}
+.wbs-table .columns tr.even td {background: #FAFAFA}
+.wbs-table .columns tr td, .wbs-table .columns tr th {padding: 1px 3px}
+
+.wbs-editable-links-block a, .wbs-editable-links-block input {margin-right: 3px; cursor: pointer}
+.wbs-editable-text textarea {width: 100%}
+.wbs-editable-text textarea {font-family:"Trebuchet MS"; font-size: 10pt}
+.wbs-editable-label {float: left; margin-right: 5px}
+
+
+
+
+.wbs-table .columns thead tr {background:white url("img/background-gradient-gray.gif") repeat-x scroll center bottom;}
+
+.wbs-table .columns thead tr th {
+border-bottom:1px solid #DCDCDC;
+border-right:1px solid #DCDCDC !important;
+font-weight: normal
+}
+
+.wbs-table .no-records {text-align: center; padding: 15px;	}
+.wbs-table .wbs-loading {text-align: center; padding: 15px;	}
+
+.sort-header {cursor: pointer; }
+*html .sort-header-empty {width: 16px}
+.sort-header label {cursor: pointer; bor}
+.sort-header.current-asc, .sort-header.current-desc {padding-right: 14px}
+.sort-header.current-asc {background-image: URL('img/sorting-asc.gif'); background-position: right center; background-repeat: no-repeat;}
+.sort-header.current-desc {background-image: URL('img/sorting-desc.gif'); background-position: right center; background-repeat: no-repeat;	}
+
+.wbs-table .columns thead .sort-header {float: left;}
+.wbs-table .columns thead .sort-header.current-asc, .wbs-table .columns thead .sort-header.current-desc {padding-right: 12px}
+
+.wbs-popmenu-images ul li.sorting-menu-asc {background-image: URL('img/sorting-asc.gif'); background-position: 5px center !important; }
+.wbs-popmenu-images ul li.sorting-menu-desc {background-image: URL('img/sorting-desc.gif'); background-position: 5px center !important;}
+
+
+
+.wbs-table .header {background:white url("img/background-gradient-gray.gif") repeat-x scroll center bottom; border-bottom:1px solid #DCDCDC; padding: 0px 3px; margin-bottom: 5px}
+.wbs-table .header .sorting-panel {float: right; margin-right: 5px; font-size: 0.9em; padding-top: 3px; line-height: 15px; height: 15px;}
+.wbs-table .header .sorting-panel .sort-column {padding-right: 7px; border-right: 1px solid #CCC; padding-left: 7px; float: left;}
+/*.wbs-table .header .sorting-panel .sort-column .sorting-icon {width: 10px; height: 5px; margin-top: 4px; float: right; background-repeat: no-repeat; margin-left: 3px; border: 1px solid #0043A7;}*/
+.wbs-table .header .sorting-panel .sort-column.last {border-right: 0px}
+.wbs-table .header .sorting-panel .label {float: left}
+.wbs-table .date-cell {white-space: nowrap}
+
+
+.wbs-table .list .item {margin-left: 3px; padding-bottom: 10px; overflow: hidden; zoom: 1; margin-bottom: 10px}
+.wbs-table .list .item .name {font-size: 1.1em; }
+.wbs-table .list .item a.wrap-image img.icon {float: left; margin-right: 10px}
+
+.wbs-table .list input.shared-url  {background: #FFF}
+.wbs-table .list.bigicons input.shared-url  {display: block; }
+*html .wbs-table .list.bigicons input.shared-url  {margin-left: -60px}
+
+.wbs-table .list .controls {float: left}
+
+.wbs-table .list .controls .control-icon {margin-left: 3px}
+.wbs-table .list input.wbs-table-checkbox {display: block}
+.wbs-table .list.smallicons input.wbs-table-checkbox {margin-top: 2px; }
+*html .wbs-table .list .controls .control-icon {margin-left: 2px; display: block}
+*html .wbs-table .list.smallicons input.wbs-table-checkbox {margin-top: -2px}
+
+
+.wbs-table .list.smallicons .item {border-bottom: 1px solid #EEE}
+.wbs-table .list.smallicons .item .content {float: left; margin: 0px; width: 87%}
+.wbs-table .list.smallicons a.wrap-image {display: block; margin-left: 5px; float: left}
+.wbs-table .list.bigicons .item {border-bottom: 1px solid #EEE; padding-bottom: 15px}
+.wbs-table .list.bigicons .item .content {margin: 0px; margin-left: 140px; }
+.wbs-table .list.bigicons input.wbs-table-checkbox {margin-top: 0px}
+.wbs-table .list.bigicons a.wrap-image {width: 100px; height: 100px; display: block; float: left; text-align: center}
+.wbs-table .list.bigicons a.wrap-image img {float: none; }
+
+.wbs-table .list .shared-info {overflow: hidden; zoom: 1}
+.wbs-table .list .shared-info img, .wbs-table .list .shared-info input {float: left; margin-right: 4px}
+.wbs-table .list .shared-info img {margin-top: 2px}
+.wbs-table .list .checked-info img {margin-top: 3px; margin-right: 4px}
+
+.wbs-table .tile .item {text-align: center; float: left; width: 110px; height: 150px; overflow: hidden; margin: 8px; font-size: 0.9em;}
+.wbs-table .tile .item .name {font-size: 1em; overflow: hidden; white-space: nowrap; }
+* html .wbs-table .tile .item .name {width: 100%; white-space: nowrap; }
+* html .wbs-table .tile .item .name a {width: 83%; float: left; overflow-x: hidden}
+
+.wbs-table .list .item .name {overflow: hidden; zoom: 1}
+.wbs-table .list .item .name a {float: left}
+.wbs-table .tile .item input.wbs-table-checkbox {float: left; margin-left: 1px}	
+*html .wbs-table .tile .item input.wbs-table-checkbox {margin-left: -3px}
+.wbs-table .tile .item .controls div.control-icon {float: left;}	
+.wbs-table .tile .item .controls {text-align: center}
+.wbs-table .tile .item .controls img {float: left}
+.wbs-table .tile .item .controls img {margin-left: 1px; }
+
+.wbs-table .item .addinfo {font-size: 0.9em}
+.wbs-table .item .small-gray {padding-top: 3px; margin-top: 3px}
+.wbs-table .item .small-gray span {padding-right: 10px; font-size: 0.8em; color: #999; }
+.wbs-table .item .small-gray img {margin-right: 5px; }
+
+.control-icon {float: left; cursor: pointer; width: 15px; height: 15px; background: URL("img/control-icon.gif"); background-repeat: no-repeat }
+
+.wbs-table {overflow: auto}
+
+* html  .screen-left-block {margin-right: -3px}
+.screen-content-block {overflow-y: auto; padding: 0px; height: 100%; /*background:#f7fafc url(img/main_content_bg.gif) left top repeat-x;*/}
+
+.wbs-flexcontainer {height: 100%; overflow: hidden}
+.wbs-flexcontainer .wbs-flexcontainer-header {padding: 0px; border-bottom: 1px solid #DCDCDC}
+.wbs-flexcontainer .wbs-flexcontainer-content {overflow: auto; width: 100%; background:#fff;}
+.wbs-flexcontainer .wbs-flexcontainer-footer {padding: 0px; overflow: hidden; zoom: 1; border-top: 1px solid #DCDCDC; background-color: #F0F0F0; background:white url(../img/background-gradient-gray.gif) repeat-x scroll center bottom;}
+
+.wbs-table-pager {padding-top: 3px; padding-bottom: 3px; float: left}
+.wbs-table-status-bar {float: right; padding-top: 3px; padding-bottom: 3px; padding-right: 3px}
+
+
+.wbs-header {overflow: hidden; zoom: 1}
+.wbs-header .title-wrapper {overflow: hidden; zoom: 1; margin-bottom: -20px; padding: 0px 10px}
+.wbs-header .title {font-size: 1.4em; font-weight: bold; margin-bottom: 5px; float: left; clear: both; }
+.wbs-header .title .text {float: left; margin-top: 2px; margin-left: 0px}
+.wbs-header .title .control-icon {float: left; margin-top: 7px; margin-left: 5px}
+
+.wbs-control-panel { padding: 0 0 5px 10px; overflow: hidden; zoom: 1; clear: both;}
+
+.icon-btn {float: left}
+.icon-btn .icon {float: left; }
+.icon-btn .label {float: left; margin-top: 10px; font-weight: bold; color: black; margin-left: 5px; text-decoration: none}
+.icon-btn .label:hover {text-decoration: underline}
+
+input.shared-url {color: black; background: #E7E7E7; border: 1px solid #DDD; width: 400px}
+
+.wbs-popwindow {background: #FFF; background: #F7F8FC; border: 1px solid #5A5A5A}
+.wbs-popwindow .wbs-popwindow-inner {padding: 5px}
+
+.wbs-popmenu ul, .wbs-popmenu ul li {list-style-image:none; list-style-position:outside; list-style-type:none; margin:0px; padding:0px; white-space: nowrap}
+
+.wbs-popmenu ul li .label {color: #8C8C8C; }
+.wbs-popmenu ul li .smalllabel {}
+.wbs-popmenu input.shared-url {width: 250px}
+
+.wbs-popmenu {background: #FFF; background: #F7F8FC; background:#f0f2f5; background:#f5f8fa}
+.wbs-popmenu ul { display: block; border: 1px solid #7c7e80}
+.wbs-popmenu ul li { margin:0px; padding: 3px;display: block; cursor: pointer; padding-left: 12px; padding-right: 30px; }
+.wbs-popmenu ul li.nopadding { padding-right: 10px}
+.wbs-popmenu ul li.nopadding-nolink { padding-right: 10px; cursor: default}
+.wbs-popmenu ul li.separator {padding: 0px; font-size:0px; line-height:1px;}
+.wbs-popmenu ul li.separator div {border-bottom: 1px solid #F9FBFE;border-top: 1px solid #D7DBDE;/* margin-bottom: 3px*/}
+.wbs-popmenu ul li.highlight {background-color: #dae0e5}
+.wbs-popmenu ul li.hidden {display: none}
+.wbs-popmenu ul li.disabled {cursor: default; color: #8C8C8C;}
+.wbs-popmenu ul li.disabled a {color: #8C8C8C; cursor: default}
+.wbs-popmenu ul li {color: #333; }
+.wbs-popmenu ul li a {color: #333; text-decoration: none}
+
+.wbs-popmenu ul li.unactive {cursor: default;}
+.wbs-popmenu ul li.unactive.highlight {background-color:#f5f8fa} 
+.wbs-popmenu ul li.unactive a {cursor: default;  color:#222; font-weight:bold; font-size:13px; }
+
+.wbs-popmenu-images ul li {padding-left: 25px;}
+.wbs-popmenu ul li.unactive { padding:8px 30px 3px 8px;}
+.wbs-popmenu-images ul li.with-image {background-position: 5px 2px; background-repeat: no-repeat;}
+
+.wbs-dlg {position: absolute; width: 400px; height: 200px; border: 1px solid #555; padding: 0px; z-index: 1002}
+.wbs-dlg {background: #FFF }
+.wbs-dlg .wbs-dlg-header {overflow: hidden; color: black; zoom: 1; padding: 3px}
+.wbs-dlg .wbs-dlg-header .label {float: left; font-weight: bold; font-size: 1.4em; color: black; padding-top: 10px; padding-left: 15px}
+.wbs-dlg .wbs-dlg-content {overflow-y: auto; position: relative}
+.wbs-dlg .wbs-dlg-content-inner {padding: 0px 20px; padding-left: 20px; overflow: auto}
+.wbs-dlg .close-btn {float: right; cursor: pointer; padding-right: 5px; color: #0043A7; font-size: 1.2em}
+.wbs-dlg .wbs-dlg-footer {padding: 10px; padding-top: 5px; text-align: right}
+.wbs-dlg .wbs-dlg-footer input.wbs-dlg-button {margin-left: 5px}
+.black-overlay{display: none;position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index:1001;-moz-opacity: 0.10;opacity:.10;filter: alpha(opacity=10);}
+
+.wbs-dlg .wbs-absolute-full-size {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: white}
+.wbs-dlg .wbs-absolute-full-size {text-align: center; }
+.wbs-dlg .wbs-absolute-full-size .wbs-loading {margin-top: 50px; display: block}
+.wbs-dlg .wbs-loading {font-size: 1.3em;}
+.wbs-dlg .wbs-loading .wbs-loading-icon {background-position: 0px 5px}
+
+
+.upload-dlg {width: 500px; height: 400px}
+* html .upload-dlg {width: 500px; height: 300px}
+
+.hidden {display: none;}
+
+.thumbnail {width: 110px; height: 110px; background: URL("img/thumbnail.gif") no-repeat; cursor: pointer}
+.thumbnail table {width: 100%; height: 100%}
+.thumbnail table tr td {vertical-align: middle; text-align: center; padding: 0px}
+.thumbnail table tr td img {margin: 0px; }
+
+
+.pages-list {padding: 0px; display: block; float: left; overflow: hidden; margin: 0px; margin-right: 5px; padding-right: 5px}
+.pages-list li {float: left; list-style: none; padding-left: 3px; padding-right: 3px;}
+.pages-list li.page-item {cursor: pointer; text-decoration: underline; color: #0043A7} 
+.pages-list li.selected {color: black; text-decoration: none; cursor: default}
+.pages-list .records-label {padding-right: 5px}
+
+.nav-bar {/*overflow-x: hidden;*/ height: 100%; border-right: 1px solid #DDD; padding-right: 4px; background: #E4E7EB}
+
+.nav-bar .btn-expand {display: block}
+/*.nav-bar .btn-collapse { position: absolute; top: 1px; right: 4px; background: URL("img/btn-collapse-panel.gif") no-repeat; width: 20px; height: 32px; cursor: pointer; display: none}*/
+.nav-bar .btn-expand {position: absolute; cursor: pointer; display: none; z-index:100; background: URL("img/btn-expand-panel.gif") no-repeat; background-position: left 13px; top: 0px; left: 5px; height: 100%; width: 15px}
+
+.nav-bar.collapsed {width: 20px;border-right:1px solid #D5E7F4; }
+.nav-bar .close-panel {cursor: pointer; position: absolute; right: 5px; height: 38px; background: URL("img/btn-collapse-panel.gif") no-repeat; background-position: center 13px; width: 25px}
+.nav-bar-expander a {font-size: 8.5pt; color: #666; cursor: pointer; text-decoration: none}
+.nav-bar-expander {visibility: hidden; }
+.nav-bar-expander.visible {visibility: visible}
+
+* html .nav-bar.collapsed {width: 20px}
+.nav-bar.collapsed .acc-block {visibility: hidden}
+.nav-bar.collapsed * { display:none;}
+.nav-bar.collapsed .btn-expand {display: block}
+.nav-bar.collapsed .btn-collapse {display: none}
+
+.nav-bar {height: 100% ;}
+.nav-bar .acc-block {/*border-right: 1px solid #DDD*/}
+.nav-bar .acc-block .title {background: #e4e7eb/*URL("img/navbar-title-bg.gif")*/; height: 32px; font-weight: normal; cursor: pointer; border-style:solid; /*border-color: #bcd0e4;*/; border-color: #f9fbfe #d7dbde #c6c9cc #f7fafd;  border-width:1px; }
+.nav-bar .acc-block .title .label {padding: 3px; padding-left: 8px; padding-top: 5px; font-size: 13px; font-weight:bold;  color:#223445; line-height:23px; }
+.nav-bar .acc-block .content {display: none; background: white}
+.nav-bar .acc-block.active .content {display: block}
+.nav-bar .acc-block.active .title {border-bottom: 1px solid #bcd0e4; /*background: #416E98*/; background: #E4E7EB; cursor: default}
+.nav-bar .acc-block.active .title .label {}
+.nav-bar .acc-block.active .title .wbs-menu-btn  { position:relative; top:2px;}
+/*.nav-bar .acc-block.active .title .wbs-menu-btn a { color:#2e4e6c}
+*/
+#nav-bar .content {overflow: hidden; border-left: 1px solid #bcd0e4;}
+.nav-bar .acc-block .content .links {margin: 0px; padding: 0px}
+
+
+.title-editor {padding: 0px; }
+.title-editor input {padding: 0px; font-size: 1.4em; font-weight: bold; border: 1px solid #E0E0E0; font-family: "Trebuchet MS"}
+.title-editor a {margin-left: 5px; font-size: 1.2em; }
+
+#folders-tree {height: 100%;}
+
+.wbs-btn, .wbs-menu-btn, .wbs-link-btn {float: left; height: 23px; margin: 5px; cursor: pointer}
+.wbs-link-btn {margin: 0px}
+.wbs-btn-adv {float: left; background-image: URL("img/btn-left.gif"); background-repeat: no-repeat; background-position: left top; width: 4px; height: 23px}
+.wbs-btn-content {float: left; /*background-image: URL("img/btn-right.gif"); background-repeat: no-repeat; background-position: right top;*/ height: 23px; padding-left: 5px; padding-right: 5px}
+.wbs-btn-content {text-decoration: none; line-height:23px; white-space:nowrap; font-size:1em; font-family:'Trebuchet MS'; /*color:#465e75;*/ padding:0 5px;}
+.wbs-btn-content:hover {text-decoration: underline;}
+.wbs-menu-btn .wbs-btn-adv {width: 9px; background-image: URL("img/menu-arr.gif"); float: left; background-position:left 10px; }
+.wbs-menu-btn .wbs-btn-content, .wbs-link-btn .wbs-btn-content {background-image: none; font-size: 1em; color:#0043A7; padding-top: 0px; }
+.wbs-btn-disabled {cursor: default}
+.wbs-btn-disabled .wbs-btn-content {color: #999999; }
+.wbs-btn-disabled .wbs-btn-content:hover {text-decoration: none}
+.wbs-btn-withicon {width: 24px}
+.wbs-btn-withicon {padding: 0px}
+.wbs-btn-withicon .wbs-btn-content {padding: 0px}
+.wbs-btn-left-icon {width: 24px; background-position:7px 4px;}
+
+
+
+.create-widget-dlg {width: 500px; height: 300px}
+.widgets-types-list {margin: 0px; padding: 0px}
+.widgets-types-list li {list-style: none; margin: 0px; padding: 0px; margin-bottom: 10px}
+.widgets-types-list li label {font-weight: bold}
+.widgets-types-list li .wg-desc {padding-left: 20px}
+.create-widget-dlg .wg-type-label {font-weight: bold; }
+.create-widget-dlg .subject-selector {}
+.create-widget-dlg .wbs-dlg-content-inner {padding-top: 15px}
+.widgets-subjects-list {margin: 0px; padding: 0px; margin-top: 10px}
+.widgets-subjects-list li {margin: 0px; padding: 0px; list-style: none}
+
+
+.wbs-loading-icon {width: 1px; height: 16px; background: URL("../img/loading.gif") no-repeat; display: inline; padding-left: 15px}

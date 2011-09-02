@@ -1,0 +1,5 @@
+{* order notification for customer *}
+<p>{$_AFFP_NEW_PAYMENT}</p>
+
+<p>{lbl_email_bestregards}, {$smarty.const.CONF_SHOP_NAME}
+<br />{$smarty.const.CONF_SHOP_URL}</p>

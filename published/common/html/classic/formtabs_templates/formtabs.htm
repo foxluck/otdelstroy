@@ -1,0 +1,85 @@
+<table border=0 cellpadding=0 cellspacing=0>
+
+	<!-- Make JS array -->
+	<? assign var=tabArray value="tabs"|cat:$tabsID ?>
+
+	<script language=JavaScript>
+		var activeTab = null;
+
+		var <? $tabArray ?> = new Array( <? foreach from=$tabs item=tabData name=tabloop?><? "'"|cat:$tabData.PAGE_ID|cat:"'" ?><? if !$smarty.foreach.tabloop.last ?>,<?/if?><?/foreach?> );
+	</script>
+
+	<!-- Tabs row -->
+	<tr>
+		<td>
+
+			<table border=0 cellpadding=0 cellspacing=0 width=100% class=tabbar>
+				<tr>
+					<? foreach from=$tabs item=tabData name=tabloop ?>
+						<? if $activeTab == "" ?>
+							<? assign var=isCurrent value=$smarty.foreach.tabloop.first ?>
+						<? else ?>
+							<? if $tabData.PAGE_ID == $activeTab ?>
+								<? assign var=isCurrent value=1 ?>
+							<? else ?>
+								<? assign var=isCurrent value=0 ?>
+							<? /if ?>
+						<? /if ?>
+
+						<td ID="<? $tabData.PAGE_ID|cat:"TAB" ?>" width=10 <? if $isCurrent ?>class=tabbar_active_tab<? else ?>class=tabbar_tab<? /if ?>><nobr><span style="cursor: pointer; cursor: hand" onClick="switchFormTab( '<? $tabData.PAGE_ID ?>', <? $tabArray ?>, '<? $tabData.CONTROL ?>' ); <? $tabData.ON_OPEN ?>"><? $tabData.NAME|htmlsafe:true:true ?></span></nobr></td>
+
+						<? if !$smarty.foreach.tabloop.last ?>
+							<td width=2 class=tabbar_separator>&nbsp;</td>
+						<? else ?>
+							<td class=tabbar_separator>&nbsp;</td>
+						<? /if ?>
+					<? /foreach ?>
+				</tr>
+			</table>
+
+		</td>
+	</tr>
+
+	<!-- Page row --> 
+
+	<? if $align == "" ?>
+		<? assign var=align value="left" ?>
+	<? /if ?>
+
+	<? if $valign == "" ?>
+		<? assign var=valign value="top" ?>
+	<? /if ?>
+
+		<tr>
+			<td class=tabpage align=<? $align ?> valign=<? $valign ?>>
+				<? foreach from=$tabs item=tabData name=tabloop ?>
+
+					<? if $tabData.PATH != "" ?>
+						<? assign var=filePath value=$tabData.PATH|cat:"/"|cat:$tabData.FILE  ?>
+					<? else ?>
+					<? assign var=filePath value=$basePath|cat:"/"|cat:$tabData.FILE  ?>
+					<? /if ?>
+
+					<? assign var=style value="width: "|cat:$width|cat:"px; height: "|cat:$height|cat:"px" ?>
+
+					<? if $activeTab == "" ?>
+						<? assign var=isCurrent value=$smarty.foreach.tabloop.first ?>
+					<? else ?>
+						<? if $tabData.PAGE_ID == $activeTab ?>
+							<? assign var=isCurrent value=1 ?>
+						<? else ?>
+							<? assign var=isCurrent value=0 ?>
+						<? /if ?>
+					<? /if ?>
+
+					<div ID="<? $tabData.PAGE_ID ?>" <? if !$isCurrent ?>style="display:none; <? $style ?>"<? else ?>style="<? $style ?>"<? /if ?>>
+						<? include file=$filePath CUSTOM_ID=$tabData.CUSTOM_ID ?>
+					</div>
+				<? /foreach ?>
+			</td>
+		</tr>
+
+	<? if $extraLine ?>
+		<tr><td>&nbsp;</td></tr>
+	<? /if ?>
+</table>

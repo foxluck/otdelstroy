@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>cpt_lbl_category_tree</name>
+		<key>category_tree</key>
+	</interface>
+</interfaces>

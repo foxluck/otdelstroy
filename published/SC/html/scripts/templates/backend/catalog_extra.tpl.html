@@ -1,0 +1,168 @@
+{* products extra parameters *}
+
+<p>
+{if $save_successful ne NULL}
+{$save_successful}
+{/if}
+
+<form action="{''|set_query_html}" method="post">
+
+{if $option_name != null}
+	<a href="{"&optionID="|set_query}">{"prdcustopt_goback_to_option_list"|translate}</a>
+	<p>
+{/if}
+
+<table border="0" cellpadding="5" cellspacing="1" bgcolor="#BEDDDB">
+
+
+{if $option_name == null}
+	
+	<tr bgcolor="#56AFD6">
+	<td colspan="4" align="center">
+	<b>{lbl_pgn_product_customparams}</b>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#BEDDDB">
+	<td align="center">{"prdopt_custom_option_title"|translate}</td>
+	<td align="center">{"str_sort_order"|translate}</td>
+	<td align="center">{"prdcustopt_value_variants"|translate}</td>
+	
+	<td></td>
+	</tr>
+	
+	{section name=i loop=$options}
+	
+	 <tr bgcolor="white">
+		<td>
+		{html_text dbfield="name" name="extra_option_%lang%_`$options[i][0]`" values=$options[i] table=$smarty.const.PRODUCT_OPTIONS_TABLE}
+		</td>
+		<td>
+			<input type="text" name="extra_sort_{$options[i][0]}" value="{$options[i][2]}" />
+		</td>
+		<td>
+			<a href="{"&optionID=`$options[i][0]`"|set_query}">
+				{"prdcustopt_value_variants"|translate}
+			</a>
+			({$options[i].count_variants})
+		</td>
+		<td>
+			<a href="javascript:confirmDelete({$options[i][0]},'{"btn_delete"|translate}?','{"kill_option="|set_query}&kill_option=');"><img src="images/remove.jpg" border="0" alt="{"btn_delete"|translate}" />
+			</a>
+		</td>
+	 </tr>
+	
+	{sectionelse}
+	
+	 <tr>
+	 <td colspan="4" align="center"><nobr>{"prdopt_no_product_options"|translate}</nobr></td>
+	 </tr>
+	
+	{/section}
+	
+	<tr>
+	<td colspan="2" align="center">{"prdopt_add_new_option"|translate}</td>
+	</tr>
+	
+	<tr bgcolor="white">
+	<td>
+		{html_text name="name_%lang%" values="" table=$smarty.const.PRODUCT_OPTIONS_TABLE}
+	</td>
+	<td>
+		<input type="text" name="add_sort" value="" />
+	</td>
+	<td></td>
+	<td></td>
+	</tr>
+	
+	<input type="hidden" name="save_options" value="yes" />
+
+{else}
+
+	<tr bgcolor="#56AFD6">
+		<td colspan="4" align="center">
+			{"prdcustopt_availablevalues"|translate}
+		</td>
+	</tr>
+	
+	<tr bgcolor="#BEDDDB">
+		<td align="center">
+			{"prdcustopt_optionname"|translate}
+		</td>
+		<td align="center">
+			{"prdcustopt_value"|translate}
+		</td>
+		<td align="center">
+			{"str_sort_order"|translate}
+		</td>
+		<td>
+			{"btn_delete"|translate}
+		</td>
+	</tr>
+	
+	{section name=i loop=$values}
+	
+	<tr bgcolor="white">
+		{if $smarty.section.i.index eq 0}
+			<td valign="top" rowspan="{$value_count}">
+				{$option_name}
+			</td>
+		{/if}
+		<td>
+			{html_text dbfield="option_value" name="option_value_%lang%_`$values[i].variantID`" values=$values[i]}
+		</td>
+		<td>
+			<input type="text" name="sort_order_{$values[i].variantID}" value="{$values[i].sort_order}" />
+		</td>
+		<td>
+			<a href="javascript:confirmDelete({$values[i].variantID},'{"cnfrm_delete"|translate}', '{"optionID=`$values[i].optionID`&kill_value="|set_query}&kill_value=');">
+				<img alt='{"btn_delete"|translate}' src="images/remove.jpg" border="0" />
+			</a>
+		</td>
+	</tr>
+	
+	{sectionelse}
+	
+	 <tr>
+		<td colspan="4" align="center">
+			<nobr>
+				{"prdcustopt_option_has_no_values"|translate}
+			</nobr>
+		</td>
+	 </tr>
+	
+	{/section}
+	
+	<tr>
+		<td colspan="4" align="center">
+			{"prdcustopt_value_add"|translate}
+		</td>
+	</tr>
+	
+	<tr bgcolor="white">
+		<td>
+		</td>
+		<td>
+			{html_text name="option_value" values=''}
+		</td>
+		<td>
+			<input type="text" name="sort_order" value="" />
+		</td>
+		<td>
+		</td>
+	</tr>
+	
+	<input type="hidden" name="save_values" value="yes" />
+	<input type="hidden" name="optionID" value="{$optionID}" />
+{/if}{* if $option_name == null *}
+
+
+</table>
+
+<p>
+<input type="hidden" name="dpt" value="catalog" />
+<input type="hidden" name="sub" value="extra" />
+
+<input type="submit" value="{"btn_save"|translate}" />
+
+</form>

@@ -1,0 +1,57 @@
+{* order notification for customer *}
+<h1>{lbl_email_thank_you_for_shopping_at} {$smarty.const.CONF_SHOP_NAME}!</h1>
+
+<h2>{lbl_ordr_id}: {$order.orderID_view}</h2>
+
+<p>{lbl_email_ordr_ordered_products}:</p>
+
+<blockquote>{section name=i loop=$content}
+<div>{$content[i].name|escape:'html'} (x{$content[i].Quantity}): {$content[i].Price}
+{if $content[i].eproduct_filename}
+<blockquote>{lbl_btn_download} : <a href="{$smarty.const.CONF_FULL_SHOP_URL}{if !$smarty.const.MOD_REWRITE_SUPPORT}{*$smarty.const.WBS_INSTALL_PATH*}published/SC/html/scripts/{/if}get_file.php?getFileParam={$content[i].getFileParam}">{$smarty.const.CONF_FULL_SHOP_URL}{if !$smarty.const.MOD_REWRITE_SUPPORT}{*$smarty.const.WBS_INSTALL_PATH*}published/SC/html/scripts/{/if}get_file.php?getFileParam={$content[i].getFileParam}</a> ({$content[i].file_size_str})
+{if $content[i].eproduct_available_days}
+- {lbl_prdset_download_is_available_for} {$content[i].eproduct_available_days} {lbl_msg_days}
+{/if}
+{if $content[i].eproduct_download_times}
+- {lbl_prd_download_downloads_left} {$content[i].eproduct_download_times} {lbl_prd_download_str_downloads}
+{/if}
+</blockquote>
+{/if}
+</div>
+{/section}</blockquote>
+
+{if $discount!=''}<p>{lbl_str_discount}: {$discount}</p>{/if}
+
+<p>{lbl_email_ordr_total_tax}: {$order_total_tax}</p>
+
+<h2>{lbl_str_total} {$order_amount}</h2>
+
+<p>{section name=i loop=$customer_add_fields}
+<br />{$customer_add_fields[i].reg_field_name|escape:'html'}: {$customer_add_fields[i].reg_field_value|escape:'html'}
+{/section}</p>
+
+{if $shipping_type ne ""}
+<h2>{lbl_email_ordr_shipping}:</h2>
+<p>{lbl_shipping}: {$shipping_type|escape:'html'}{if $order.shippingServiceInfo} ({$order.shippingServiceInfo|escape:'html'}){/if}
+<br />{lbl_ordr_recipient}: {$shipping_firstname|escape:'html'} {$shipping_lastname|escape:'html'}
+<br />{lbl_ordr_shipping_address}: {if $shipping_address ne ""}{$shipping_address|escape:'html'}, {/if}{if $shipping_city ne ""}{$shipping_city|escape:'html'},{/if} {if $shipping_state ne ""}{$shipping_state|escape:'html'} {/if}{if $shipping_zip ne ""}{$shipping_zip|escape:'html'} {/if}{if $shipping_country ne ""}{$shipping_country|escape:'html'}</p>{/if}
+
+<p>{lbl_ordr_shipping_handling_cost}: {$shipping_cost}
+{if $shipping_comments ne ""}<br />{lbl_email_ordr_shipping_comments}: {$shipping_comments}{/if}
+{/if}</p>
+
+{if $payment_type ne ""}
+<h2>{lbl_email_ordr_payment}:</h2>
+<p>{lbl_payment}: {$payment_type|escape:'html'}
+<br />{lbl_ordr_payee}: {$billing_firstname|escape:'html'} {$billing_lastname|escape:'html'}
+<br />{lbl_ordr_billing_address}: {if $billing_address ne ""}{$billing_address|escape:'html'}, {/if}{if $billing_city ne ""}{$billing_city|escape:'html'},{/if} {if $billing_state ne ""}{$billing_state|escape:'html'} {/if}{if $billing_zip ne ""}{$billing_zip|escape:'html'} {/if}{if $billing_country ne ""}{$billing_country|escape:'html'}</p>{/if}
+
+{if $payment_comments ne ""}<p>{lbl_email_ordr_payment_comments}: {$payment_comments}</p>{/if}
+{/if}
+
+<p>{$order_status_url}</p>
+
+<p>{lbl_email_we_contact_you_asap}</p>
+
+<p>{lbl_email_bestregards}, {$smarty.const.CONF_SHOP_NAME}
+<br />{$smarty.const.CONF_SHOP_URL}</p>

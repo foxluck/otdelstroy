@@ -1,0 +1,83 @@
+<h3><u>{"pgn_customer_search"|translate}</u></h3>
+
+<form name="CustomerSearchForm" method="post">
+<input type="hidden" name="search" value="go">
+
+<p>{"usr_customer_search_descr"|translate}</p>
+<table border="0" cellspacing="1" cellpadding="3" width="100%">
+    <tr>
+        <td>{"lbl_search_customer_simple"|translate}:</td>
+    </tr>
+    <tr>
+        <td><input type="text" name="search_string" id="search_string" value='{$search_string}' style="width: 380px;" /></td>
+        <td align="center"><button type="submit">{"str_search"|translate}</button></td>
+    </tr>
+</table>
+
+</form>
+
+{if $customers}
+<form name="customers_form">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="grid">
+    <colgroup>
+        <col width="5%" />
+        <col width="25%" />
+        <col width="30%" />
+        <col width="40%" />
+    </colgroup>
+    <tr class="gridsheader">
+        <td></td>
+        <td>{"usr_custinfo_login"|translate}</td>
+        <td>{"usr_custinfo_email"|translate}</td>
+        <td>{"str_name"|translate}</td>
+    </tr>
+    {foreach from=$customers item=customer}
+    <tr class="{cycle values='gridline,gridline1'}" onClick="this.cells[0].childNodes[0].click();" style="cursor: default;">
+        <td><input type="radio" name="customer_id" value="{$customer.customerid}" onClick="document.getElementById('select_button').disabled = false;" /></td>
+        <td>{$customer.login}</td>
+        <td>{$customer.email}</td>
+        <td>{$customer.first_name}&nbsp;{$customer.last_name}</td>
+    </tr>
+    {/foreach}
+	<tr class="gridsfooter">
+	    <td colspan="4">{include file="backend/share/pagination.html" current_page=$pagination.page pages_count=$pagination.pages base_vars=$pagination.base_vars}</td>
+	</tr>
+    <tr>
+        <td colspan="4" align="left"><button type="button" disabled="disabled" id="select_button" onClick="onSelectBtnClick();">{"btn_select"|translate}</button></td>
+    </tr>
+</table>
+</form>
+{/if}
+
+{if $empty_result}
+<center><b>{"srch_no_matches_found"|translate}</b></center>
+{/if}
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+
+setTimeout("document.getElementById('search_string').focus();", 1000);
+
+function onSelectBtnClick()
+{
+    var customer_id = 0 ;
+    var els = document.forms['customers_form'];
+    for(i=0; i<els.length; i++)
+    {
+        if(els[i].name == 'customer_id' && els[i].checked)
+        {
+            customer_id = els[i].value;
+            break;
+        };
+    };
+    
+    if(customer_id == 0) return;
+    
+//    top.document.getElementById('sc_frame').contentWindow.closeFadeIFrame();
+    parent.window.closeFadeIFrame();
+//    top.document.getElementById('sc_frame').contentWindow.loadCustomerInfo(customer_id);
+    parent.window.loadCustomerInfo(customer_id);
+};
+
+{/literal}
+</script>

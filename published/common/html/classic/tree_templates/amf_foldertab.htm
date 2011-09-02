@@ -1,0 +1,47 @@
+<table border=0 cellpadding=0 cellspacing=0 height="100%">
+	<tr>
+		<td valign=top>
+			<table border="0" cellpadding="0" cellspacing="2">
+				<tr>
+					<td>
+						<? conditionalOutput invalidField=$invalidField field=DF_NAME text=#invalidFieldHighlight# ?>
+						<? $folderNameLabel|cat:":&nbsp;" ?>
+					</td>
+					<td>
+						<? if !$protectFolderName ?>
+							<input type=text class="control" name="folderData[DF_NAME]" value="<? $folderData.DF_NAME|htmlsafe:true:true ?>" maxlength="255" style="width: 300px">
+						<? else ?>
+							<b><? $folderData.DF_NAME|htmlsafe:true:true ?></b>
+							<input type=hidden name="folderData[DF_NAME]" value="<? $folderData.DF_NAME|htmlsafe:true:true ?>">
+						<? /if ?>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>&nbsp;</td>
+				</tr>
+			</table>
+			<table border="0" cellpadding="0" cellspacing="2">
+				<tr>
+					<td><? $kernelStrings.app_treeaddfolderperms_text ?></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><b><? $kernelStrings.app_note_text|cat:":" ?></b></td>
+				</tr>
+				<tr>
+					<td style="padding-left: 15px"><? "1. "|cat:$kernelStrings.app_treeaddfolderusers_text ?></td>
+				</tr>
+				<tr>
+					<td style="padding-left: 15px"><? "2. "|cat:$kernelStrings.app_treeaddfolderparent_text ?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<? if $showFolderID ?>
+		<tr>
+			<td valign=bottom><? $kernelStrings.app_tree_folderid_label|cat:": "|cat:$folderID ?></td>
+		</tr>
+	<? /if ?>
+</table>

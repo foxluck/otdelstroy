@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script src="../../../common/html/includes/modules/JsHttpRequest/JsHttpRequest.js"></script>
+
+		<script language="JavaScript">
+
+			function loadTipsContent()
+			{
+				var req = new Subsys_JsHttpRequest_Js();
+
+				req.onreadystatechange = function() {
+					if (req.readyState == 4) {
+						if (req.responseJS) {
+							var cellObj = $('contentCell');
+							if (cellObj) {
+								if ( req.responseJS.error != 0 )
+									cellObj.innerHTML = req.responseJS.data;
+								else {
+									cellObj.innerHTML = req.responseJS.data;
+								}
+							}
+						}
+					}
+				}
+
+				req.open('POST', 'gettipscontent.php?showQuickStart=<? $showQuickStart ?>&protocol=<? $protocol ?><? if $trans_sid ?><? "&"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>', true);
+				req.send({id:0});
+			}
+
+		</script>
+
+		<style type="text/css">
+			.TipsContainer
+			{
+				padding: 15px;
+				margin: 0;
+				font-size: 1.1em;
+			}
+
+			.TipsContainer h1
+			{
+				margin: 0!important;
+			}
+
+		</style>
+
+	</head>
+	<body onLoad="loadTipsContent()"">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+				<? wbs_noteBlock caption=$kernelStrings.tt_page_title width="650px" class="TipsContainer" ?>
+						<div style="width: 650px; height: 400px; overflow: auto; overflow-x: hidden">
+							<div id="contentCell" class="TipsContainer">
+								<img src="../../../common/html/cssbased/res/images/progress.gif">
+							</div>
+						</div>
+				<? /wbs_noteBlock ?>
+			<? /if ?>
+			<table class="FormLayout">
+				<tr>
+					<td><input type=checkbox value=1 id="showTtOnStartUp" name=showTtOnStartUp <? switchedOutput val=$showTtOnStartUp true_val=1 str1="checked" ?> onClick="this.form.submit()"></td>
+					<td><? wbs_label for="showTtOnStartUp" skipColon=1 text=$kernelStrings.tt_openttonstartup_label ?></td>
+				</tr>
+			</table>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

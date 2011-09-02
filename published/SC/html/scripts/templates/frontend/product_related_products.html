@@ -1,0 +1,63 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+	{if !$printable_version}
+
+	{if $product_related_number > 0}
+		<h2>{"str_related_items"|translate}</h2>
+		
+		<table {if $PAGE_VIEW eq 'mobile'}align="center"{/if}>
+		{section name=i loop=$product_related}
+		<tr>
+		{if $PAGE_VIEW eq 'mobile'}
+			<td align="center">
+			{if $product_related[i].pictures.default.thumbnail}
+			<a href='{"?productID=`$product_related[i].productID`&product_slug=`$product_related[i].slug`"|set_query_html}'>
+			<img border="0" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_related[i].pictures.default.thumbnail|escape:'url'}" />
+			</a>
+			<br />
+			{/if}
+			<a href='{"?productID=`$product_related[i].productID`&product_slug=`$product_related[i].slug`"|set_query_html}'>
+			{$product_related[i][1]}
+			</a>
+			<br />
+			<span style="color: brown;">{$product_related[i][2]}</span>
+			</td>
+		{else}
+			<td align="center">
+			{if $product_related[i].pictures.default.thumbnail}
+			<a href='{"?productID=`$product_related[i].productID`&product_slug=`$product_related[i].slug`"|set_query_html}'>
+			<img border="0" src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_related[i].pictures.default.thumbnail|escape:'url'}" />
+			</a>
+			{/if}
+			</td>
+			<td>
+			<a href='{"?productID=`$product_related[i].productID`&product_slug=`$product_related[i].slug`"|set_query_html}'>
+			{$product_related[i][1]}
+			</a>
+			</td>
+			<td>
+			<span style="color: brown; white-space: nowrap;">&nbsp;{$product_related[i][2]}</span>
+			</td>
+		{/if}
+		</tr>
+		{/section}
+		</table>
+	{/if}
+	{/if}
+{else}
+
+		<h2>{"str_related_items"|translate}</h2>
+		<table border=0>
+		<tr>
+			<td align="center">
+				<a href="#"><img border="0" src="{$smarty.const.URL_DEMOPRD_IMAGES}/related_product1.jpg" /></a>
+			</td>
+			<td>
+				<a href="#">	COWON iAudio G3</a>
+			</td>
+			<td nowrap>
+				&nbsp;<span style="color: brown;">$160.00</span>
+			</td>
+		</tr>
+		</table>
+{/if}
+

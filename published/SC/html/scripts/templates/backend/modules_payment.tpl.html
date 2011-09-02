@@ -1,0 +1,111 @@
+{* payment modules managment*}
+
+
+{if $constant_managment}
+
+	<h1>{"mdl_payment_module_setup"|translate} : {$payment_module->title}</h1>
+
+	<a href='{"setting_up="|set_query}'>
+		&lt;&lt; {lbl_pgn_payment_modules}
+	</a>
+	<br />
+	<br />
+
+<form method="post" enctype="multipart/form-data" action="">
+
+	{if $settings}
+
+	<table cellspacing="1" cellpadding="5" bgcolor="#bedddb" width="100%">
+		{section name=i loop=$settings}
+		<tr bgcolor="white"> 
+			<td width="50%" align="right" valign="top">
+				<strong>
+					{$settings[i].settings_title}
+				</strong>:
+				{if $settings[i].settings_description}
+					<br />
+					<small>{$settings[i].settings_description}</small>
+				{/if}
+			</td>
+			<td width="50%" align="left" valign="top">
+				{$controls[i]}
+			</td>
+		</tr>
+
+		{/section}
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+				<input type="submit" name='save' value='{"btn_save"|translate}' />
+			</td>
+		</tr>
+	</table>
+
+	{else}
+		&lt; {"cfg_config_no_options"|translate} &gt;	
+	{/if}
+
+</form>
+{else}
+
+	<h1>{$CurrentDivision.name|translate}</h1>
+	{"mdl_payment_modules_description"|translate}
+	<p>
+<table width="100%">
+	<tr>
+		<td width="50%" valign="top">
+			<table cellspacing="1" cellpadding="5" bgcolor="#bedddb" border="0">
+				<tr>
+					<td align="middle">{"mdl_name"|translate}</td>
+					<td align="middle">{"str_description"|translate}</td>
+					<td align="middle">{"mdl_actions"|translate}</td>
+				</tr>
+			
+				{section name=i loop=$payment_modules}
+				<tr bgcolor="white"> 
+					<td valign="top">
+						{$payment_modules[i]->title}
+					</td>
+					<td valign="top">
+						{$payment_modules[i]->description}
+					</td>
+					<td align="center">
+						{if $payment_modules[i]->ModuleType || !$payment_modules[i]->is_installed()}
+						<a href='{"install=0`$smarty.section.i.index`"|set_query}'>{"mdl_install"|translate}</a>
+						{/if}
+					</td>
+			    </tr>
+				{/section}
+			</table>
+		</td>
+		<td width="50%" valign="top">
+			<form method="post" name="do_with_configs">
+			<table cellspacing="1" cellpadding="5" bgcolor="#bedddb" border="0" width="100%">
+				<tr>
+					<td colspan="2" align="center">
+						{"msg_installed_modules"|translate}
+					</td>
+				</tr>
+				{section name=i loop=$payment_configs}
+				{assign var="InstalledModuleConfigs" value=1}
+				<tr bgcolor="white">
+					<td width="100%"><a title="{"btn_edit"|translate}" href="{"setting_up=`$payment_configs[i].ConfigID`"|set_query}">{$payment_configs[i].ConfigName}</a></td>
+					<td><input type="checkbox" name="config_id_{$payment_configs[i].ConfigID}" /></td>
+				</tr>
+				{/section}
+				{if !$InstalledModuleConfigs}
+				<tr bgcolor="white">
+					<td width="100%" align="center" colspan="2">{"msg_no_installed_modules"|translate}</td>
+				</tr>
+				{else}
+				<tr>
+					<td colspan="2" align="right"><input type="submit" name="delete_configs" value="{"btn_delete"|transcape}" /></td>
+				</tr>
+				{/if}
+			</table>
+			</form>
+		</td>
+	</tr>
+</table>
+
+{/if}

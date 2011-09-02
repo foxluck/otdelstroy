@@ -1,0 +1,5 @@
+/* Pixel texture creator   Richard Schumann, http://www.richardschumann.de///*/
+#menu-block {background:#e5dada;}
+#top-line {  background:url(tapestry.gif) left -20px repeat; border-bottom:solid 1px #aaa;}
+#logo-block .label { color:#bf999a;}
+#top-line #user-block, #top-line a { color:#dccccd;}

@@ -1,0 +1,114 @@
+	{$MessageBlock}
+	{if $payment_error}
+	<p>
+		<font color="red"><b>{"err_payment_processing"|translate}{if $payment_error ne 1}: {$payment_error}{/if}</b></font>
+	</p>
+	{/if}
+
+	<table cellspacing="0" cellpadding="15">
+	{if ($orderSum.shipping_name && $orderSum.shipping_name ne "-") || ($orderSum.payment_name && $orderSum.payment_name ne "-")}
+	<tr>
+	{if $orderSum.shipping_name && $orderSum.shipping_name ne "-"}
+		<td>
+			{lbl_shipping} (<strong>{$orderSum.shipping_name|escape:'html'}{if $orderSum.shippingServiceInfo} - {$orderSum.shippingServiceInfo|escape:'html'}{/if}</strong>):
+			<p><strong>{$orderSum.shippingAddress->getHTMLString()}</strong></p>
+		</td>
+	{/if}
+	{if $orderSum.payment_name && $orderSum.payment_name ne "-"}
+		<td>
+			{lbl_payment} (<strong>{$orderSum.payment_name|escape:'html'}</strong>):
+			<p><strong>{$orderSum.billingAddress->getHTMLString()}</strong></p>
+		</td>
+	{/if}
+	</tr>
+	{/if}
+
+	<tr>
+	<td colspan="2">	
+	
+		<table id="cart_content_tbl" cellspacing="0" width="100%">
+		<tr id="cart_content_header">
+			<td>&nbsp;</td>
+			{if $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+			<td>&nbsp;</td>
+			{/if}
+			<td>&nbsp;</td>
+			<td align="center">{"cart_product_quantity"|translate}</td>
+			<td align="center">{"ordr_itemprice_excluding_tax"|translate}</td>
+		</tr>
+	
+		{section name=i loop=$orderSum.sumOrderContent}
+		<tr class='row_{cycle values="odd,even"}'>
+			<td align="center" valign="top" width="1%">{if $orderSum.sumOrderContent[i].thumbnail_url}<img src="{$orderSum.sumOrderContent[i].thumbnail_url|escape:'html'}" width="{$orderSum.sumOrderContent[i].thumbnail_width}" alt="{$orderSum.sumOrderContent[i].name|escape:'html'}" />{else}&nbsp;{/if}</td>
+			{if $smarty.const.CONF_ENABLE_PRODUCT_SKU}
+			<td>{if $orderSum.sumOrderContent[i].product_code}<i>{$orderSum.sumOrderContent[i].product_code|escape:'html'}</i>{/if}</td>
+			{/if}
+			<td>{$orderSum.sumOrderContent[i].name|escape:'html'}</td>
+			<td align="center">{$orderSum.sumOrderContent[i].quantity}</td>
+			<td align="center" nowrap="nowrap">{$orderSum.sumOrderContent[i].cost}</td>
+		</tr>
+		{/section}
+		<tr><td colspan="4">&nbsp;</td></tr>
+	
+		{if $orderSum.discount gt 0}
+		<tr>
+			<td colspan="3">{"usr_custinfo_group_discount"|translate}{$orderSum.discount_percent|string_format:', %0.1f%%'|default:'nbsp;'}</td>
+			<td align="center">-{$orderSum.discount_str}</td>
+		</tr>
+		{/if}
+		{if $orderSum.shipping_costUC}
+		<tr>
+			<td colspan="3">{lbl_shipping} ({$orderSum.shipping_name})</td>
+			<td align="center">{$orderSum.shipping_cost}</td>
+		</tr>
+		{/if}
+		{if $orderSum.totalTaxUC}
+		<tr>
+			<td colspan="3">{"ordr_tax"|translate}</td>
+			<td align="center">{$orderSum.totalTax}</td>
+		</tr>
+		{/if}
+		<tr>
+			<td id="cart_total_label" colspan="3">{"str_total"|translate}</td>
+			<td id="cart_total" align="center">{$orderSum.total}</td>
+		</tr>
+		</table>
+		
+		<form action="{''|set_query_html}" name='MainForm' method="POST">
+		<input type="hidden" name='totalUC' value='{$totalUC}' >
+		<input name="action" value="process_order" type="hidden" >
+{if $orderSum.payment_form_html}		
+			<div style="padding: 20px;" class="background1">{$orderSum.payment_form_html}</div>
+{/if}		
+			<p>
+				{"checkout_comment"|translate}:<br />
+				<textarea name="order_comment" cols="50" rows="3"></textarea>
+			</p>
+		
+		{if $OrdersNumOverflow}
+			<p><input type="submit" name="submit" value="{"checkout_place_order"|translate}" disabled="disabled"></p>
+			<div class="error_msg_f">{$smarty.const.TRIAL_STRING_ORDERS_OVERFLOW|replace:'[NUM]':$smarty.const.TRIAL_MAX_ORDERS_NUM}</div>
+			<p>{$smarty.const.TRIAL_STRING_LIMITATIONS}
+		{else}
+<script type="text/javascript">
+<!--
+{literal}
+disable_button = function(){
+	setTimeout(
+		function(){
+			var button = document.getElementById('checkout_button');
+			if(button)button.disabled = true;
+				},50);
+	};
+{/literal}
+//-->
+</script>
+			<p><input type="submit" class="checkout_buttons" id="checkout_button" name="submit" value="{"checkout_place_order"|translate}"  
+			onclick="disable_button();"></p>
+		{/if}
+		
+		</form>
+	</td>
+	
+</tr></table>
+	

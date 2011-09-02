@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>1C</Name>
+		<File>class.exportto1c.php</File>
+		<Title>Эксопорт товаров для 1C</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

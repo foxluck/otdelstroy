@@ -1,0 +1,143 @@
+<!-- frontend.html -->
+<? assign var="invalidFieldMarkup" value=' style="color: #FF0000"' ?>
+<? strip ?>
+
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+			<h2 class="page-title"><? $waStrings.fes_page_name ?></h2><br>
+			<? if $errorStr ?>
+			<table cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td<? $invalidFieldMarkup ?>>
+								<? $errorStr ?>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+				</table>
+			<? /if ?>
+
+		<? if !$fatalError ?>
+         <table border="0" cellpadding="5" cellspacing="0" class="settings-table">
+         <tr>
+         <td colspan="2" style="background-color:#eeeeee;padding:20px;">
+         <div id="message-block" >
+         <? $waStrings.fes_page_main_page ?> <a href="<?$indexUrl?>"><?$indexUrl?></a> <? $waStrings.fes_page_select_desc ?><br>
+         <h2 style="padding-left: 0px; padding-top: 10px;"><? $mainPageInfo ?></h2>
+
+			</div>
+         </td>
+         </tr>
+
+
+            <tr>
+         	<td colspan="2"><div class="formSection" style="color: #555;"><? $waStrings.fes_gen_desc2 ?></div></td>
+            </tr>
+            <tr>
+          <td colspan="2" class="comment"><? $waStrings.wbs_frontend_core_url_description ?></td>
+          </tr>
+            <? foreach from=$commondata.SERVICES key=ID item=sl name=slLoop ?>
+				<tr><td style="width: 20px;">
+				<input type="radio" name="commondata[CURRENT_SERVICE_ID]" class="FormControl nodst" id="service<? $sl.ID ?>" value='<? $sl.ID ?>' <? if $commondata.CURRENT_SERVICE_ID==$sl.ID ?> checked <? /if ?>>
+				</td><td style="width: 99%;"  class="nobr">
+				<label for="service<? $sl.ID ?>"><? $sl.NAME ?></label>
+				<? if $sl.LINK?>&nbsp;&nbsp;&nbsp;<a href="<?$indexUrl?><?$sl.LINK?>"><?$indexUrl?><?$sl.LINK?></a><? /if?>
+				</td></tr>
+
+			<? /foreach ?>
+          <tr><td colspan="2">&nbsp;</td>
+          
+          </tr>
+          
+			
+			<?if $SCinstalled||$PDinstalled ?>
+			<? foreach from=$commondata.DBKEYS key=ID item=dbk name=dbLoop ?>
+				<?if $smarty.foreach.dbLoop.first&&!$smarty.foreach.dbLoop.last?>
+				<tr>
+					<td>&nbsp;</td>
+            		<td>      
+              			<? $waStrings.fes_gen_opt1 ?>:<br>
+						<select name="commondata[CURRENT_DBKEY]" class="FormControl" id="service" style="width: 300px">
+				<?/if?>
+				<?if !($smarty.foreach.dbLoop.first&&$smarty.foreach.dbLoop.last)?>
+					<option value='<? $dbk ?>' class="nodst" <? if $commondata.CURRENT_DBKEY==$dbk ?> selected <? /if ?>><? $dbk ?></option>
+				<?else?>
+					<tr>
+					<td>&nbsp;</td>
+            		<td><input name="commondata[CURRENT_DBKEY]" type="hidden" value="<? $dbk ?>"></td>
+            		</tr>
+				<?/if?>
+				<?if !$smarty.foreach.dbLoop.first&&$smarty.foreach.dbLoop.last?>
+					</select></td></tr>
+					<tr>
+            <td>&nbsp;</td>
+            <td width="300" class="comment"><? $waStrings.fes_gen_desc1 ?></td>
+             <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+				<?/if?>
+			<? /foreach ?>
+			<?/if?>
+          
+          
+          
+           <? if $SCinstalled||$PDinstalled?>
+          <tr>
+          <td colspan="2"><div class="formSection" style="color: #555;"><? $waStrings.wbs_frontend_rewrite_section ?></div></td>
+          </tr>
+          <tr>
+          <td colspan="2" class="comment"><? $waStrings.wbs_frontend_rewrite_description ?></td>
+          </tr>
+          <tr><td valign="top">
+          <input type="radio" name="commondata[MOD_REWRITE]" value="1" <?if $mod_rewrite_disabled?> disabled <?else?><? if $commondata.MOD_REWRITE ?>checked<?/if?><?/if?> id="friendly_urls_on"></td>
+          <td><label for="friendly_urls_on"><? $waStrings.wbs_frontend_rewrite_friendly ?></label></td></tr>
+          <tr><td>&nbsp;</td> <td>
+          <? if $SCinstalled?><font color="Blue"><?$indexUrl?><? if $commondata.CURRENT_SERVICE_ID!='SC' ?>shop/<?/if?>product/name/</font><?/if?>
+          <? if $SCinstalled&&$PDinstalled?><br><?/if?>
+          <? if $PDinstalled?><font color="Blue"><?$indexUrl?><? if $commondata.CURRENT_SERVICE_ID!='PD' ?>photos/<?/if?>album/album_name/</font><?/if?>
+          </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr><td valign="top">
+          <input type="radio" name="commondata[MOD_REWRITE]" value="0" <? if (!$commondata.MOD_REWRITE)||$mod_rewrite_disabled ?>checked<?/if?> id="friendly_urls_off"></td>
+          <td><label for="friendly_urls_off"><? $waStrings.wbs_frontend_rewrite_old ?></label></td></tr>
+          <tr><td>&nbsp;</td>
+          <td>
+          <? if $SCinstalled?><font color="Blue"><?$indexUrl?><? if $commondata.CURRENT_SERVICE_ID!='SC' ?>shop/<?/if?>index.php?productID=id</font><?/if?>
+          <? if $SCinstalled&&$PDinstalled?><br><?/if?>
+          <? if $PDinstalled?><font color="Blue"><?$indexUrl?><? if $commondata.CURRENT_SERVICE_ID!='PD' ?>photos/<?/if?>index.php?album=album_name</font><?/if?>
+          </td>
+          </tr>
+           <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <? /if?>
+         
+		
+		  <tr>	
+          <td colspan="2">
+          <?if !($SCinstalled||$PDinstalled)?><input name="commondata[CURRENT_DBKEY]" type="hidden" value="<? $commondata.DBKEY ?>"><?/if?>
+          <div class="formSection" style="color: #555;"><?'wbs_frontend_powered_by_section'|translate?></div></td>
+          </tr>
+          <tr><td valign="top">
+          <input type="checkbox" name="commondata[DISABLE_POWERED_BY]" value="1" <? if $commondata.DISABLE_POWERED_BY ?>checked<?/if?> id="powered_by_input"></td>
+          <td><label for="powered_by_input"><?'wbs_frontend_rpowered_by_checkbox'|translate ?></label></td></tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+         	
+          <tr>
+            <td colspan="2"> <input type="submit" name="savebtn" value="<? $waStrings.btn_save ?>">
+            </td>
+          </tr>
+           
+        </table>
+    <? /if ?>
+  </form>
+<? /strip ?>
+<!-- /frontend.html -->

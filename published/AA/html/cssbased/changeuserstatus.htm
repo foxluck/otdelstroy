@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? wbs_formLayout caption=$pageTitle ?>
+
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $usernumLabel ?><? /wbs_note ?>
+
+					<? wbs_formContent ?>
+						<tr>
+							<td><? wbs_label for="status" text= $kernelStrings.cus_changestatus_label fieldName="STATUS" ?></td>
+							<td>
+								<select name="selectedStatus" class="FormControl" id="status">
+									<? html_options values=$statusIDs selected=$selectedStatus output=$statusNames ?>
+								</select>
+							</td>
+						</tr>
+					<? /wbs_formContent ?>
+
+					<? wbs_formButtonsPanel ?>
+							<? wbs_buttonSet ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_ok_btn name="savebtn" ?>
+								<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+							<? /wbs_buttonSet ?>
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_formLayout ?>
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+			<input type="hidden" name="contactlist" value="<? $contactlist ?>"/>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

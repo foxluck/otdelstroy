@@ -1,0 +1,10 @@
+.contacts-selector {background: white; display: none; width: 400px; border: 1px solid black; margin-top: 0px; right: 30px; text-align: left; position: absolute;}
+.contacts-selector-tree-wrapper {overflow: auto; overflow-y: auto; width: 400px; overflow-x: hidden}
+
+.contacts-selector {height:205px; }
+.contacts-selector-tree-wrapper {height:155px; } 
+
+*html .contacts-selector {height: 250px;}
+*html .contacts-selector-tree-wrapper {height:205px; }
+
+.contacts-selector ol, .contacts-selector  ul {list-style:none; padding: 0px; margin: 0px}

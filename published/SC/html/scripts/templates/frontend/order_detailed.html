@@ -1,0 +1,312 @@
+{if $order}
+{if !$printable_version && $PAGE_VIEW ne 'mobile'}
+<form action="{"view=printable&orderID=`$order_id`&customer_email=`$customer_email`&customer_last_name=`$customer_last_name`"|set_query_html}" method="post"  target="_blank">
+<input type="hidden" name="customer_last_name" value="{$order.customer_last_name|escape:html}">
+<input type="hidden" name="customer_email" value="{$order.customer_email|escape:html}">
+<input type="hidden" name="orderID" value="{$order.orderID|escape:html}">
+<input type='submit' value='{"btn_open_invoice"|translate}' onclick="open_window('{"view=printable&orderID=`$order.orderID`&customer_last_name=`$order.customer_lastname`&customer_email=`$order.customer_email`"|set_query_html}',700,500); return false">
+{*<input value='{"btn_open_invoice"|translate}' type="submit">*}
+</form>
+{/if}
+		<table border="0" cellspacing="1" cellpadding="10" width="98%">
+		<tr>
+			<td>
+				<strong><font size="+1"><u>{"ordr_order"|translate}</u></font></strong>
+			</td>
+			<td>
+				<strong><font size="+1"><u>{lbl_payment}</u></font></strong>
+			</td>
+			<td>
+				<strong><font size="+1"><u>{lbl_shipping}</u></font></strong>
+			</td>
+			<td class="noprint">{if !$printable_version && $PAGE_VIEW ne 'mobile'}
+				<strong><font size="+1"><u>{lbl_print_forms}</u></font></strong>
+				{else}&nbsp;
+				{/if}
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<td>
+				<table>
+					<tr>
+						<td>{"ordr_id"|translate}: <b>{$order.orderID_view|escape:'html'}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_order_time"|translate}: <b>{$order.order_time|escape:'html'}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_customer"|translate}: <b>{$order.customer_firstname|escape:'html'} {$order.customer_lastname|escape:'html'}</b></td>
+					</tr>
+					<tr>
+						<td>{"usr_custinfo_email"|translate} <b>{$order.customer_email|escape:'html'}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_customer_ip"|translate}: <b>{$order.customer_ip}</b></td>
+					</tr>
+					<tr>
+						<td>{"ordr_status"|translate}: <b>{$order.status_name|escape:'html'}</b></td>
+					</tr>
+
+					{if $order.customers_comment ne ""}
+					<tr>
+						<td>{"ordr_comment"|translate}: <b>{$order.customers_comment|escape:'html'}</b></td>
+					</tr>
+					{/if}
+
+				</table>
+			</td>
+			<td>
+				<table>
+				<tr>
+					<td>{lbl_payment}: <b>{$order.payment_type|escape:'html'}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_payee"|translate}: <b>{$order.billing_firstname|escape:'html'} {$order.billing_lastname|escape:'html'}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_billing_address"|translate}: 
+						<b>
+						{if $smarty.const.CONF_ADDRESSFORM_STATE != 2}
+						<br />{$order.billing_address|escape:'html'} 
+						{/if}
+						{if $smarty.const.CONF_ADDRESSFORM_CITY != 2 || $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2 || $smarty.const.CONF_ADDRESSFORM_ZIP != 2}<br />{/if}
+						{if $smarty.const.CONF_ADDRESSFORM_CITY != 2}
+						{$order.billing_city|escape:'html'}
+						{/if}
+						{if $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2}
+						{$order.billing_state|escape:'html'}
+						{/if}
+						{if $smarty.const.CONF_ADDRESSFORM_ZIP != 2}
+						{$order.billing_zip|escape:'html'}
+						{/if}
+						<br />{$order.billing_country|escape:'html'}
+						</b>
+					</td>
+				</tr>
+				{if !$printable_version && $payment_html}
+				<tr>
+				<td class="background1">{$payment_html}</td>
+				</tr>{/if}
+				</table>
+			</td>
+		<td>
+			<table>
+			<tr>
+				<td>{lbl_shipping}: <b>{$order.shipping_type|escape:'html'}</b> {if $order.shippingServiceInfo}({$order.shippingServiceInfo|escape:'html'}){/if}</td>
+			</tr>
+			<tr>
+				<td>{"ordr_recipient"|translate}: <b>{$order.shipping_firstname|escape:'html'} {$order.shipping_lastname|escape:'html'}</b></td>
+			</tr>
+			<tr>
+				<td>{"ordr_shipping_address"|translate}: 
+					<b>
+					{if $smarty.const.CONF_ADDRESSFORM_STATE != 2}
+					<br />{$order.shipping_address|escape:'html'}
+					{/if}
+					{if $smarty.const.CONF_ADDRESSFORM_CITY != 2 || $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2 || $smarty.const.CONF_ADDRESSFORM_ZIP != 2}<br />{/if}
+					{if $smarty.const.CONF_ADDRESSFORM_CITY != 2}
+					{$order.shipping_city|escape:'html'}
+					{/if}
+					{if $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2}
+					{$order.shipping_state|escape:'html'}
+					{/if}
+					{if $smarty.const.CONF_ADDRESSFORM_ZIP != 2}
+					{$order.shipping_zip|escape:'html'} 
+					{/if}
+					<br />{$order.shipping_country|escape:'html'}
+					</b>
+				</td>
+			</tr>
+			</table>
+		</td>
+{* PRINT_FORMS*}	
+	<td class="noprint" style="padding-right: 15px;" valign="top">
+	{if !$printable_version && $PAGE_VIEW ne 'mobile'}
+	{if $print_forms}
+	<script type="text/javascript">
+{literal}
+function show_printforms()
+{
+	var boxes = getElementsByClass('printforms', document, 'input');
+	var win = "menubar=no,location=no,resizable=yes,scrollbars=yes";
+	for(var i_max = boxes.length-1; i_max>=0; i_max--){
+		if(boxes[i_max].checked){
+			window.open(boxes[i_max].value, 'printableWin'+i_max, win);
+		}
+	}
+	return false;
+}
+{/literal}
+</script>
+		<form action="{''|set_query_html}">
+		<table>
+			{foreach from=$print_forms item=print_form key=print_form_class}
+			<tr>
+				<td><input type="checkbox" checked="checked" class="printforms" id="print_{$print_form_class}"
+				 name="printforms[{$print_form_class}]" 
+				 value="{"?ukey=print_form&orderID=`$order.orderID`&form_class=`$print_form_class`&order_time=`$order.order_time_encoded`&customer_email=`$order.customer_email_encoded`"|set_query_html}">
+				</td>
+				<td>
+					<label for="print_{$print_form_class}">{$print_form.name}</label>
+				</td>
+			</tr>
+			{/foreach}
+			<tr class="gridsfooter"><td colspan="2"><input id="printforms" onclick="show_printforms();" type="button" value="{lbl_btn_print}"></td></tr>
+		</table>
+		</form>
+		{else}
+		&lt;{"str_empty_list"|translate}&gt;
+		{/if}
+	{else}&nbsp;
+	{/if}
+	</td>	
+	</tr>
+	<tr valign="top"> 
+       	<td colspan="4">&nbsp;</td>
+    </tr>
+	<tr valign="top"> 
+       	<td colspan="4"><strong><font size="+1"><u>{"ordr_ordered_products"|translate}</u></font></strong></td>
+    </tr>
+	<tr>
+		<td colspan="4">
+			<table width="100%" cellpadding="6" cellspacing="0">
+			<tr class="background1"> 
+         		<td><strong>{"prdset_product_name"|translate}</strong></td>
+         		<td align="center"><strong>{"cart_product_quantity"|translate}</strong></td>
+         		<td align="right"><strong>{"ordr_itemprice_excluding_tax"|translate}</strong></td>
+       		</tr>
+			{section name=i loop=$orderContent}
+			<tr class="{cycle values='row_odd,row_even'}"> 
+             	<td>
+					{$orderContent[i].name|escape:'html'}
+{*
+* @features "Supporting e-products, which user can download after payment"
+*}
+					{if $orderContent[i].eproduct_filename}
+						{if $smarty.const.CONF_ORDSTATUS_DELIVERED == $order.statusID}
+
+								<a href='{$smarty.const.URL_ROOT}/get_file.php?getFileParam={$orderContent[i].getFileParam}'>
+									{"btn_download"|translate} {$orderContent[i].file_size_str}
+								</a>
+
+								{if $orderContent[i].day_count_remainder > 0}
+									- {"prdset_download_is_available_for"|translate} 
+										{$orderContent[i].day_count_remainder|escape:'html'}
+									{"msg_days"|translate}
+									{if $orderContent[i].load_counter_remainder != 0}
+										,
+										{"prd_download_downloads_left"|translate} 
+											{$orderContent[i].load_counter_remainder|escape:'html'}
+										{"prd_download_str_downloads"|translate}
+									{/if}
+								{/if}
+						{/if}
+					{/if}
+{*
+* @features
+*}
+				</td>
+             	<td align="center">{$orderContent[i].Quantity|escape:'html'}</td>
+             	<td align="right">{$orderContent[i].PriceToShow|escape:'html'}</td>
+           	</tr>
+			{/section}
+			<tr><td colspan="3">&nbsp;</td>
+			
+			{if $order.order_discount}
+			<tr>
+				<td colspan="2">{"usr_custinfo_group_discount"|transcape}{$order.order_discount_percent|string_format:', %0.1f%%'}</td>
+				<td align="right">{$order.order_discount_valueToShow}</td>
+			</tr>
+			{/if}
+			{if $order.shipping_cost || $order.tax}
+			<tr>
+				<td colspan="2">{"ordr_subtotal"|transcape}</td>
+				<td align="right">{$order.clear_total_priceToShow}</td>
+			</tr>
+			{/if}
+			{if $order.shipping_cost}
+			<tr>
+				<td colspan="2">{"ordr_shipping_handling_cost"|transcape}</td>
+				<td align="right">{$order.shipping_costToShow}</td>
+			</tr>
+			{/if}
+			{if $order.tax}
+			<tr>
+				<td colspan="2">{"ordr_tax"|translate}</td>
+				<td align="right">{$order.tax_toShow}</td>
+			</tr>
+			{/if}
+			<tr id="ord_total_row">
+				<td colspan="2">{"str_total"|translate}</td>
+				<td align="right">{$order.order_amountToShow}</td>
+			</tr>
+			</table>
+
+		</td>
+	</tr>
+
+{* *}
+	{if $order_status_report}
+	<tr>
+		<td colspan="4">
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<h3>{"ordr_order_processing_history"|translate}</h3>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<table width="100%" border="0" cellpadding="5" cellspacing="1">
+				<tr>
+					<td>
+						<b>{"str_time"|translate}</b>
+					</td>
+					<td>
+						<b>{"ordr_comment"|translate}</b>
+					</td>
+					<td>
+						<b>{"str_status"|translate}</b>
+					</td>
+				</tr>
+
+				{section name=i loop=$order_status_report}
+				<tr class="{cycle values='row_odd,row_even'}">
+					<td>
+						{$order_status_report[i].status_change_time|escape:'html'}
+					</td>
+					<td>
+						{$order_status_report[i].status_comment|escape:'html'|replace:"\n":'<br>'}
+					</td>
+					<td>
+						{if  $order_status_report[i].status_name != "ordr_status_cancelled"|translate}
+							{$order_status_report[i].status_name|escape:'html'}
+						{else}
+							{"ordr_status_cancelled"|translate}
+						{/if}
+					</td>
+				</tr>
+				{/section}
+
+			</table>
+
+		</td>
+	</tr>
+	{/if}
+
+	<tr>
+		<td colspan="4">
+			
+
+			<input type=hidden name='orders_detailed' value='yes'>
+			
+		</td>
+	</tr>
+{* *}
+		</table>
+{else}
+{if !$silent}<p>{"lbl_not_found"|translate}</p>{/if}
+{/if}

@@ -1,0 +1,5 @@
+<select name={$name} {if $class}class="{$class}"{/if} {if $id}id="{$id}"{/if}>
+{foreach from=$states item=state}
+    <option value="{$state.zoneID}" {if $state.zoneID eq $selected}selected="selected"{/if}>{$state.zone_name}</option>
+{/foreach}
+</select>

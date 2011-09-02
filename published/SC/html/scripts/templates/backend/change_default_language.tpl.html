@@ -1,0 +1,40 @@
+{if $refreshInterfaceReq}
+<script type="text/javascript">
+setTimeout("parent.location.href='{if !$smarty.const.CONF_ON_WEBASYST}{$smarty.const.CONF_FULL_SHOP_URL}published{/if}/SC/html/scripts/frame.php';",3000);
+</script>
+<div id="message-block" class="success_block">
+<span class="success_message">{"msg_information_saved"|translate}<br>{"lbl_please_wait"|translate}</span>
+</div>
+
+{else}
+<h1 class="breadcrumbs">
+	<a href="{'?ukey=languages'|set_query_html}">{lbl_pgn_languages}</a>
+	&raquo;
+	{lbl_pgn_change_deflang}
+</h1>
+
+<form action="{''|set_query_html}" method="post">
+	<table cellpadding="4">
+	<tr>
+		<td>{'loc_current_default_language'|translate}: </td>
+		<td><strong>{$defaultLanguage->getName()|escape:'html'}</strong></td>
+	</tr>
+	<tr>
+		<td valign="top">{'loc_new_default_language'|translate}: </td>
+		<td>
+			<select name="new_language_id">
+			{foreach from=$languages item=language}
+				<option value="{$language.id}">{$language.name|escape:'html'}</option>
+			{/foreach}
+			</select>
+		</td>
+	</tr>
+	</table>
+
+	<p>{'loc_change_default_description'|translate}</p>
+
+	<p>
+		<input type="submit" class="button" name="change_default" value="{'btn_ok'|translate}" />
+	</p>
+</form>
+{/if}

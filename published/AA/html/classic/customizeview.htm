@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+
+<script language="JavaScript">
+<!--
+	function changePosition( obj, direction ) {
+		srcObj = findObj(obj);
+		
+		if (srcObj.selectedIndex>=0) {
+		
+			selected = srcObj.selectedIndex;
+			len = srcObj.options.length;
+		
+			if ( (selected == 0 && direction == -1) || (selected == (len-1) && direction == 1)  )
+				return;
+			
+			selObj = srcObj.options[selected];
+			obj1 = srcObj.options[selected+direction];
+			
+			srcObj.options[selected+direction] = new Option(selObj.text, selObj.value);
+			srcObj.options[selected] = obj1;
+			
+			srcObj.selectedIndex = selected+direction;
+		}	
+	}
+//-->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="focusFormControl( 'groupData[UG_NAME]' )">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" name="form">
+		<? include file="../../../common/html/classic/header.htm" ?>
+		<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+		<? if !$fatalError ?>
+
+			<?include file="../../../common/html/classic/formtabs_templates/formtabs.htm" width=600 height=330 basePath="../../../AA/html/classic" tabsID="userstabs" extraLine=true ?>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_ok_btn formname="form" space_right=10  onClick="fillSelectedLists( new Array( 'shownFieldsIDs[]' ) );"?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+
+		<? else ?>
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" ?>
+		<? /if ?>
+		<input name="edited" type="hidden" id="edited" value="1">
+		<input name="UG_ID" type="hidden" value="<? $UG_ID ?>">
+		<input name="USERS" type="hidden" value="<? $USERS ?>">
+		<input type="hidden" name="btndummy">
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+
+<? /strip ?>
+</body>
+</html>

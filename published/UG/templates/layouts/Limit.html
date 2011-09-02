@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>{{$time}}</title>
+<link rel="stylesheet" type="text/css" href="{{$url.common}}templates/css/wrapper.css">
+<link rel="stylesheet" type="text/css" href="{{$url.css}}users-common.css" />
+<script src="{{$url.common}}js/jquery.js"></script>
+<script src="{{$url.common}}js/wbs-common.js"></script>
+<script src="{{$url.common}}js/wbs.js"></script>
+<script src="{{$url.common}}js/wbs-elements.js"></script>
+<script src="{{$url.js}}users-common.js"></script>
+<script>
+$(document).ready(function () {
+var container = new WbsFlexContainer ({
+	elem: $("#scroll"),
+	headerElem: $("#header"), 
+	contentElem: $("#content")
+});
+	
+});
+</script>
+</head>
+<body>
+
+<div id="header">
+	<div class="page_title">[`ACCOUNT LIMIT`]</div>
+</div>
+<div id="scroll">
+	<div id="content">
+		<div class="content">
+   			{{$content}}
+   			<br />
+   			<a href="{{$back}}">[`Back`]</a>
+   		</div>
+   </div>
+</div>
+</body>
+</html>

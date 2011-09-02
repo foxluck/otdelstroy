@@ -1,0 +1,7 @@
+#TContentWrapper {left: 0px; top: 0px}
+#ToolbarIn {display: none; background: #F7FAFC}
+#SubToolbar {background: #F7FAFC; padding:0; padding-bottom: 3px; font-size:1em; font-weight: bold; padding-left: 10px; height: 30px}
+
+.SplitterHeaderPanelList tr td {font-size: 14pt}
+
+div.SplitterHeaderPanelDiv, div.SplitterPanelHeader.Active {background: #F7FAFC !important; }

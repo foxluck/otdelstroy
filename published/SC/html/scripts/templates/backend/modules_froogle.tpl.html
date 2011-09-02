@@ -1,0 +1,102 @@
+{* Froogle module *}
+<h1>{lbl_pgn_export2googlebase}</h1>
+{if $froogle_export_successful eq 1}
+<div id="message-block" class="success_block">{"gglbase_msg_exported_products"|translate}</div>
+{if $froogle_file}
+<div style="background-color: #fafae7;padding: 20px;margin: 10px 0;">
+<a href="get_file.php?getFileParam={$getFileParam}">{"btn_download"|translate}</a> ({$froogle_file.size} Kb, {$froogle_file.mtime})
+</div>
+{/if}
+
+{else}
+
+<p>
+{if $froogle_errormsg ne NULL}
+<font color=red><b>{$froogle_errormsg}</b></font>
+{/if}
+
+{if $froogle_file}
+<div style="background-color: #fafae7;padding: 20px;margin: 10px 0;">
+<a href="get_file.php?getFileParam={$getFileParam}">{"btn_download"|translate}</a> ({$froogle_file.size} Kb, {$froogle_file.mtime})
+</div>
+{/if}
+
+<form action="" method=post name="form_export">
+
+	<ol type="1">
+		<li>
+			<b class="header2">{"str_choose_products"|translate}</b>
+			{include file="backend/product_tree.tpl.html"}
+		</li>
+		<li>
+			<b class="header2">{"prdcat_advsearch_customoption_availablevalues"|translate}</b>
+			<p>{"gglbase_pricing_description"|translate}
+			<br>
+			{"gglbase_usd_currency_type"|translate}:
+			<input name="froogle_currency_iso3" value="USD" maxlength="3" size="3"> &rarr;
+			<select name='froogle_currency' onchange='JavaScript:_changeCurrency()'>
+				{section name=i loop=$currencies}
+					<option value='{$currencies[i].CID}'
+						{if $currencies[i].CID eq $smarty.const.CONF_DEFAULT_CURRENCY}
+							selected
+						{/if}
+					>
+						{$currencies[i].Name}
+					</option>
+				{/section}
+			</select>
+			
+		
+			<p>
+			{"gglbase_description_hint1"|translate}
+		
+			<select name=froogle_export_description>
+				<option value=2 selected>{"prdset_description_brief"|translate}</option>
+				<option value=0>{"prdset_meta_description"|translate}</option>
+				<option value=1>{"str_description"|translate}</option>
+			</select>
+			<br>
+			<B>{"gglbase_description_hint2"|translate}</B>
+			<br>
+			<!-- TODO: add comments -->
+			<b></b>
+			<table class="grid">
+			{*
+			<tr class="gridsheader" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<td>source</td><td>&nbsp;</td><td>target</td>
+			</tr>
+			*}
+			{foreach from=$google_fields item=field_name key=field}
+			<tr class="{cycle values='gridline,gridline1'}">
+			<td>
+			<select name="data_mapping[{$field}]">
+			<option value="">—</option>
+			<optgroup label="{"Доп. характеристики"|translate}">
+			{foreach from=$options_fields item=name key=field}
+			<option value="option__{$field|escape:'html'}">{$name|escape:'html'}</option>
+			{/foreach}
+			</optgroup>
+			<optgroup label="{"prdset_str_extraoptions"|translate}">
+			{foreach from=$product_fields item=name key=field}
+			<option value="{$field|escape:'html'}">{$name|escape:'html'}</option>
+			{/foreach}
+			</optgroup>
+			</select>
+			</td>
+			<td>&rarr;</td>
+			<td>{$field_name}</td>
+			</tr>
+			{/foreach}
+			</table>
+		</li>
+	</ol>
+
+	<p>
+	<input type="button" onclick="document.form_export.elements['froogle_export'].value='froogle_export'; document.form_export.submit(); return false;" value="{"gglbase_btn_create_feed"|translate}">
+	<input type=hidden name=dpt value=modules>
+	<input type=hidden name=sub value=froogle>
+	<input type=hidden name=froogle_export value=''>
+
+</form>
+
+{/if}

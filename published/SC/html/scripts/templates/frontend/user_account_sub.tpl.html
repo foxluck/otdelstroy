@@ -1,0 +1,25 @@
+<h1 {if $printable_version}align="center"{/if}>
+{if !$printable_version}
+	<a href='{"?ukey=office"|set_query_html}'>{lbl_pgn_my_account}</a>
+	&raquo;
+	{if $CurrentDivision.ukey eq 'address_editor' || $CurrentDivision.ukey eq 'add_address'}
+	<a href='{"?ukey=address_book"|set_query_html}'>{lbl_pgn_address_book}</a>
+	&raquo;
+	{/if}
+	{if $CurrentDivision.ukey eq 'affiliate_balance' || $CurrentDivision.ukey eq 'affiliate_settings'|| $CurrentDivision.ukey eq 'affiliate_money'|| $CurrentDivision.ukey eq 'affiliate_history'}
+	{lbl_affp_title}
+	&raquo;
+	{/if}
+{/if}
+	{if $CurrentDivision.ukey eq 'order_detailed'}
+{if !$printable_version}
+	<a href='{"ukey=order_history&did=&orderID="|set_query_html}'>{lbl_pgn_order_history}</a>
+	&raquo;
+{/if}
+	{"ordr_order"|translate} #{$order.orderID_view}
+	{else}
+	{$CurrentDivision.name|translate}
+	{/if}
+</h1>
+
+{include file=$CurrentSubTpl}

@@ -1,0 +1,11 @@
+{* transaction result *}
+<h1 style="text-align:center;">
+{if $TransactionResult eq 'success'}
+	{"checkout_transaction_result_success"|translate}
+{elseif  $TransactionResult eq 'failure'}
+	{"checkout_transaction_result_failure"|translate}
+{else}
+	{$Message}
+{/if}
+</h1>
+<p>{$additionalMessage}</p>

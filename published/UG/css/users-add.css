@@ -1,0 +1,122 @@
+body {
+	font-family: "Trebuchet MS";
+	font-size:14px;
+}
+
+a {color: #0043A7; text-decoration: none;}
+
+a:hover {text-decoration: underline;}
+
+#toolbar_new {
+	margin: 0 10px;
+	clear:left;
+}
+div.label {
+	float:left; 
+	clear:both;
+	padding: 2px 15px 2px 0;
+	color:#666;
+	width: 25%;
+	text-align: right;
+}
+div.label.middlesize { font-size:17px; color:#000; font-weight:bold; white-space:nowrap;}
+div.edit {
+	float: left;
+	padding: 2px 3px 2px 0;
+}
+
+div.edit.middlesize input {font-size:17px; }
+
+div.title {
+	border-bottom:2px solid #416E98; /* background: #fcf9ed;  */
+    //width: 100%;
+	font-size: 19px;
+	color:#333;
+	font-weight: bold;
+	margin: 20px 0 10px 0;
+	padding: 0;
+	line-height: 140%;
+	position:relative;
+	clear:both;
+
+}
+div.field {clear:left;}
+div.field p { margin:0;}
+
+div.edit input {
+	width: 270px;
+	//margin:-2px 0 ;
+}
+div.edit input.no {
+	width: auto;
+	margin-left: 0;
+}
+
+div.group {
+	clear:both;
+	padding:0 0 0 30px;
+}
+
+.invite-header { margin-left:24px; font-size:26px; font-weight:normal; padding-bottom:0.5em;}
+#top-line {border-bottom:3px solid #D8E0E5; overflow:hidden;}
+#top-line span {padding: 0 0 0 10px;}
+#logo-block {padding: 1px}
+#logo-block img {
+	float:left;
+	margin:5px 7px 5px 5px;
+}
+#logo-block td { vertical-align:middle;}
+#logo-block .label { font-size:25px; line-height:44px;}
+.intbl  { width:600px;padding-top:30px; }
+.intbl div.edit input { width:220px; margin:0; }
+.field { zoom:1;}
+#toolbar_new.btns_panel { //width:100%; background:none; border:none; height:auto;}
+#toolbar_new.btns_panel ul { list-style: none;padding:0; background:none; width:220px; text-align:center;  white-space:nowrap; margin:0 0 0 32%; padding:5px 0;  }
+
+#toolbar_new li.tlb_btn {
+ padding:0;
+ }
+#toolbar_new li.tlb_btn a {
+	font-size:19px;
+	letter-spacing:-0.04em;
+	line-height:30px;
+	text-decoration: none;
+	display: block;
+	width:171px; height:44px;
+	color:#fff;
+	text-decoration: none;
+	text-align:center;
+	background:url(../img/big_blue_button.png) no-repeat;
+}
+
+#toolbar_new li.tlb_btn a:hover {
+background:url(../img/big_blue_button_over.png) no-repeat;
+}
+
+div.error div.edit input.error {
+	border:1px solid red;
+	padding: 1px;
+	margin: 1px 0;
+}
+div.error div.label {color: red;}
+
+.login-help { clear:left;  padding:0 0 0 0;}
+.login-help p { border-top:solid 1px #aaa; padding:0.5em 0 0.5em 0;}
+.login-subcr { font-size:0.8em; line-height:1.05em; color:#999; margin:0.5em 0 1em 0; width:250px;}
+.colorblock div.label.middlesize { font-size:15px;  width:32%; padding:5px 4px 2px 0; //padding:6px 4px 2px 0;}
+
+h2.big_header { font-size:24px; margin:10px 10px 10px 30px;}
+
+div.blueline { border-top: 3px solid #416E98; padding-top:15px;}
+div.add_user_form { padding:20px 0 0 80px;}
+div.group.norightblock { margin-right:30px;}
+.rel_f { position:relative;}
+.popup_subcr { position:absolute; width:285px; }
+.popup_subcr .popup_l { background:url(../img/subscr_left.gif) left top no-repeat;  }
+.popup_subcr .popup_r { background:url(../img/subscr_right.gif) right top no-repeat;  position:relative; }
+.popup_subcr .popup_corn { background:url(../img/subscr_corn.gif) left top no-repeat; width:8px; height:14px; left:-8px; position:absolute;}
+.popup_content { padding:15px 15px 15px 20px;}
+.popup_subcr p { margin:0; font-size:13px; white-space:normal; font-weight:normal; color:#444;}
+.popup_subcr p b { color:#333;}
+
+#error {display: none; color: red; font-size: 18px; padding-bottom: 5px; text-align: center; margin-right: 30%}

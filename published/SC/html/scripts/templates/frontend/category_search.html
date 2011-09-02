@@ -1,0 +1,89 @@
+{* category view *}
+<script type="text/javascript" src="{$smarty.const.URL_JS}/category.js"></script>
+
+<table cellpadding=3 width="95%" align="center">
+<tr>
+{if $selected_category.picture}
+	<td width="1%"><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category.picture|escape:'url'}" alt="{$selected_category.name|escape:'html'}" title="{$selected_category.name|escape:'html'}" /></td>
+{/if}
+	<td>
+		{section name=i loop=$product_category_path}
+			{if $product_category_path[i].categoryID != 1}
+				<a href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'}</a> {if !$smarty.section.i.last} {$BREADCRUMB_DELIMITER}{/if}
+			{/if}
+		{/section}
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+{*
+@features "Search products by params"
+*}
+		{if $allow_products_search}
+		{include file="advanced_search_in_category.tpl.html"}
+		{/if}
+{*
+@features
+*}
+		<div id="cat_info_left_block">
+		{* description *}
+		{$selected_category.description}
+		<br />
+		<br />
+		{* show subcategories *}
+		{section name=i loop=$subcategories_to_be_shown}
+		 {if $subcategories_to_be_shown[i][3]}
+			{assign var=_sub_category_url value="?categoryID=`$subcategories_to_be_shown[i][0]`&category_slug=`$subcategories_to_be_shown[i][3]`"|set_query_html}
+		{else}
+		{assign var=_sub_category_url value="?categoryID=`$subcategories_to_be_shown[i][0]`"|set_query_html}
+		{/if}
+		 <a href="{$_sub_category_url}">{$subcategories_to_be_shown[i][1]}</a>
+		 ({$subcategories_to_be_shown[i][2]})<br />
+		{/section}
+		</div>
+	</td>
+</tr>
+</table>
+
+<center>
+{if $products_to_show}
+
+	{*
+	 * @features "Products comparison"
+	*}
+	{include file="comparison_products_button.html"}
+	{*
+	 * @features
+	*}
+
+	{if $string_product_sort}<p id="cat_product_sort">{$string_product_sort}</p>{/if}
+
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+	
+	<table cellpadding=6 border=0 width=95%>
+	 {section name=i1 loop=$products_to_show}
+	{if $smarty.section.i1.index is div by $smarty.const.CONF_COLUMNS_PER_PAGE}<tr>{/if}
+	<td valign=top width="{math equation="100 / x" x=$smarty.const.CONF_COLUMNS_PER_PAGE format="%d%%"}">
+		{include file="product_brief.html" product_info=$products_to_show[i1]}
+	</td>
+	{if ($smarty.section.i1.index+1) is div by $smarty.const.CONF_COLUMNS_PER_PAGE}</tr>{/if}
+	 {/section}
+	</table>
+	
+	{if $catalog_navigator}<p>{$catalog_navigator}</p>{/if}
+	
+	{*
+	 * @features "Products comparison"
+	*}
+	{include file="comparison_products_button.html"}
+	{*
+	 * @features
+	*}
+{else}
+<p>
+	{if $search_with_change_category_ability}
+		&lt; {"srch_no_matches_found"|translate} &gt;
+	{/if}
+</p>
+{/if}
+</center>

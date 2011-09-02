@@ -1,0 +1,7 @@
+{if $orders}
+	<form action='{$urlToSubmit}' method=POST>
+		{include file='backend/admin_order_history.tpl.html'}
+	</form>
+{else}
+	&lt; {"srch_no_matches_found"|translate} &gt;
+{/if}

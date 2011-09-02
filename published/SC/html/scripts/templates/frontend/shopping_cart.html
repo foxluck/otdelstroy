@@ -1,0 +1,302 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<div id="blck-content">	
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<td {if $PAGE_VIEW eq 'noframe'}class="background_cart_top"{/if} id="cart_page_title">
+		<h1>{$CurrentDivision.name|translate}</h1>
+	{if $cart_content&&!$widget_view}
+	<div>
+		<a id="my_closeLink" href='{"?ukey=home&view=frame"|set_query_html}' target="_parent">
+			{lbl_goto_shopping}
+		</a>
+	</div>
+	{/if}
+	</td>
+	{if $cart_content}
+	<td {if $PAGE_VIEW eq 'noframe'}class="background_cart_top"{/if} id="cart_clear"><a href='{"?ukey=cart&view&clear_cart=yes"|set_query}'>{"cart_clear_cart"|translate}</a>
+	</td>
+	{/if}
+</tr>
+</table>
+
+<div {if $PAGE_VIEW eq 'noframe'}class="paddingblock"{/if}>
+
+{$MessageBlock}
+
+{* shopping cart *}
+
+{if $cart_content}
+
+
+	{if $make_more_exact_cart_content}
+	<p>{"cart_items_left_from_prev_session"|translate}</p>
+	{/if}
+	{if $cart_amount lt $smarty.const.CONF_MINIMAL_ORDER_AMOUNT & $cart_error_show eq 1 & !$MessageBlock}
+	<div class='error_block'><span class="error_flag">{"cart_min_order_amount_not_reached"|translate} {$cart_min}</span></div>
+	{/if}
+	
+	<form action="{'?ukey=cart&view'|set_query_html}" name="ShoppingCartForm" method="post" target="_self">
+	<input type="hidden" name="update" value="1" >
+	<input type="hidden" name="shopping_cart" value="1" >
+	
+	<table id="cart_content_tbl" cellspacing="0">
+    <colgroup>
+        <col width="10%" />
+        <col width="50%" />
+        <col width="15%" />
+        <col width="20%" />
+        <col width="5%" />
+    </colgroup>
+	<tr id="cart_content_header">
+		<td></td>
+		<td></td>
+		<td align="center">{lbl_cart_product_quantity}</td>
+		<td align="center">{lbl_cart_products_total}</td>
+		<td></td>
+	</tr>
+
+	{assign var="ProductsNum" value=0}
+	{section loop=$cart_content name=i}
+
+	<tr class='row_{cycle values="odd,even"}'>
+		<td align="center" valign="top" width="1%">{if $cart_content[i].thumbnail_url}<img src="{$cart_content[i].thumbnail_url|escape:'html'}" width="{$cart_content[i].thumbnail_width}" />{else}&nbsp;{/if}</td>
+		<td>
+			{if !$widget_view}
+			{if $smarty.const.CONF_ENABLE_PRODUCT_SKU&&$cart_content[i].product_code}<i>{$cart_content[i].product_code}</i> {/if}
+			<a href='{"?ukey=product&productID=`$cart_content[i].productID`&product_slug=`$cart_content[i].slug`"|set_query_html}' {if $PAGE_VIEW eq 'noframe'}class="gofromfade"{/if}>{$cart_content[i].name}</a>
+			{else}
+			{if $smarty.const.CONF_ENABLE_PRODUCT_SKU&&$cart_content[i].product_code}<i>{$cart_content[i].product_code}</i> {/if}
+			{$cart_content[i].name}
+			{/if}
+			{if $cart_content[i].brief_description}<div class="cart_product_brief_description">{$cart_content[i].brief_description}</div>{/if}
+		</td>
+		<td align="center">
+			{assign var="ProductsNum" value=$ProductsNum+$cart_content[i].quantity}
+
+			{if $session_items}{assign var=_prdid value=$session_items[i]}
+			{else}{assign var=_prdid value=$cart_content[i].id}
+			{/if}
+			
+			<input class="cart_product_quantity digit" type="text" maxlength="10" name="count_{$_prdid}" value="{$cart_content[i].quantity}" size="5" >
+			
+			{if $cart_content[i].min_order_amount}
+			<div class="error_block"><span class="error_msg" style="font-size:smaller">
+				{"prdset_minimal_order_quantity"|translate} 
+				{$cart_content[i].min_order_amount} 
+				{"str_items"|translate}
+			</span></div>
+			{/if}
+		</td>
+		<td align="center" nowrap="nowrap">
+			{$cart_content[i].cost}
+		</td>
+		<td align="center">
+			<a href='{"?ukey=cart&view&remove=`$_prdid`"|set_query_html}' title='{"btn_delete"|transcape}'>
+			<img src="{$smarty.const.URL_IMAGES}/remove.gif" alt='{"btn_delete"|transcape}' />
+			</a>
+		</td>
+	</tr>
+	{/section}
+
+    {if $cart_discount neq ''}
+    <tr>
+        <td colspan="3" class="cart_discount_label">
+            {"usr_custinfo_group_discount"|translate},&nbsp;{$discount_percent|string_format:'%0.1f%%'}
+        </td>
+        <td align="center" nowrap="nowrap">
+            - <span id="discount_value">{$cart_discount}</span>    
+        </td>
+        <td></td>
+    </tr>
+    {/if}
+
+    {if $smarty.const.CONF_DSC_COUPONS_ENABLED eq 'Y'}
+    	<tr id="coupon_form" style="display: {if $current_coupon neq '0'}none{/if};">
+    		<td colspan="3" class="cart_discount_label">
+    			{"lbl_frnt_discount_coupon"|translate}:
+                <input type="text" size="12" maxlength="10" name="discount_coupon_code" id="discount_coupon_code" value="" onBlur="onApplyButtonClick();" onkeypress="return noenter(event);" >
+                <button type="button" onClick="onApplyButtonClick();"  tabindex="1001">{"btn_apply"|translate}</button>
+    		</td>
+    		<td align="center">
+                <span id="wrong_coupon_lbl" style="color: #666666; font-size: 80%; display: none;">{"lbl_wrong_coupon"|translate}</span>
+                <b id="processing_coupon_lbl" style="color: blue; display: none;">{"lbl_processing_coupon"|translate}</b>
+            </td>
+    	</tr>
+        <tr id="coupon_info" style="display: {if $current_coupon eq '0'}none{/if};">
+            <td colspan="3" class="cart_discount_label">
+                {"lbl_frnt_discount_coupon"|translate}:
+                <b id="coupon_info_code">{$current_coupon}</b>
+                <button type="button" onClick="onDeleteCouponClick();" tabindex="1002">{"btn_change"|translate}</button>
+            </td>
+            <td align="center">
+                - <span id="coupon_discount_value">{$coupon_discount}</span>
+            </td>
+        </tr>
+    {/if}
+
+    {if $cart_discount eq '' and $smarty.const.CONF_DSC_COUPONS_ENABLED eq 'N'}
+    <tr style="height: 30px;"></tr>
+    {/if}
+
+	<tr>
+		<td id="cart_total_label" colspan="2">
+			{"str_total"|translate}
+		</td>
+		<td align="center">
+			<input type="submit" name="recalculate" value='{"btn_recalculate"|transcape}' tabindex="1004" >
+		</td>
+		<td id="cart_total" align="center">{$cart_total}</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="5" align="right" id="cart_checkout_btn">
+			<input type="submit" class="btn_checkout" name="checkout" value="{"str_checkout"|translate}" id="btn-checkout" type="submit" tabindex="1005" >
+			
+<!-- 			{if ($GoogleCheckout_CheckoutButton || $PPExpressCheckout_button || $VKontakteCheckout_button) && $PAGE_VIEW ne 'mobile'} Checkout replacement -->
+			<p>{lbl_cart_checkout_alternative}</p>
+			<!-- {literal} hack for vkontakte-->
+			<style type="text/css">
+				#checkout_replacements td {padding: 0;}
+			</style>
+			<!-- {/literal} -->
+			<table id="checkout_replacements" style="padding: 0;">
+			<tr>
+				<td valign="middle">{$GoogleCheckout_CheckoutButton|default:'&nbsp;'}</td>
+				<td valign="middle">{$PPExpressCheckout_button|default:'&nbsp;'}</td>
+				<td valign="middle">{$VKontakteCheckout_button|default:'&nbsp;'}</td>
+			</tr>
+			</table>
+<!--			{/if} -->
+		</td>
+	</tr>
+	</table>
+
+	</form>
+{else}
+
+	<p style="text-align: center;">{"cart_cart_is_empty"|translate}</p>
+{/if}
+</div>
+
+</div>
+
+<script type="text/javascript" language="javascript">
+{if $PAGE_VIEW eq 'noframe' && !$smarty.get.external} {* adjust cart window height *}
+	
+	{literal}
+	function adjust_cart_window(){
+		
+		var wndSize = getWindowSize(parent);
+		
+		var scr_h = wndSize[1] - 100;
+		var wnd_h = getLayer('blck-content').offsetHeight + 85;
+		parent.resizeFadeIFrame(null, Math.min(scr_h, wnd_h));
+	}
+	{/literal}
+	adjust_cart_window();
+	
+	{if $ProductsNum}
+		parent.document.getElementById('shpcrtgc').innerHTML="{$ProductsNum} {"srch_products_plural"|translate}";
+		parent.document.getElementById('shpcrtca').innerHTML='{$cart_total}';
+	{else}
+		parent.document.getElementById('shpcrtgc').innerHTML="{"cart_content_empty"|translate}";
+		parent.document.getElementById('shpcrtca').innerHTML="&nbsp;";
+	{/if}
+{/if}
+		
+	{if $jsgoto}
+		document.getElementById('btn-checkout').disabled = true;
+		if (!top)closeFadeIFrame(true);
+	    if (top)top.location = "{$jsgoto}";
+	    else document.location.href = "{$jsgoto}";
+	{/if}
+
+{literal}
+function onApplyButtonClick()
+{
+    var coupon_code = document.getElementById('discount_coupon_code').value;
+    document.getElementById('wrong_coupon_lbl').style.display = 'none';
+    document.getElementById('processing_coupon_lbl').style.display = '';
+    document.forms['ShoppingCartForm'].recalculate.disabled = true;
+    document.forms['ShoppingCartForm'].checkout.disabled = true;
+    
+    var req = new JsHttpRequest();
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4)return;
+        
+        document.getElementById('processing_coupon_lbl').style.display = 'none';
+        document.forms['ShoppingCartForm'].recalculate.disabled = false;
+        document.forms['ShoppingCartForm'].checkout.disabled = false;
+        if(req.responseJS.applied == 'N')
+        {
+            document.getElementById('wrong_coupon_lbl').style.display = '';
+            return;
+        };
+        
+        document.getElementById('coupon_form').style.display = 'none';
+        document.getElementById('coupon_info').style.display = '';
+        document.getElementById('coupon_info_code').innerHTML = coupon_code;
+        document.getElementById('cart_total').innerHTML = req.responseJS.new_total_show_value;
+        {/literal}{if $PAGE_VIEW eq 'noframe' && !$smarty.get.external}{literal}
+            parent.document.getElementById('shpcrtca').innerHTML = req.responseJS.new_total_show_value;
+        {/literal}{/if}{literal}
+        if(req.responseJS.new_coupon_show != '')
+        {
+            document.getElementById('coupon_discount_value').innerHTML = req.responseJS.new_coupon_show;
+        };
+    };
+    
+    try
+    {
+        req.open(null, set_query('&ukey=cart&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'try_apply_discount_coupon', 'coupon_code': coupon_code});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+function onDeleteCouponClick()
+{
+    var req = new JsHttpRequest();
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4)return;
+        document.getElementById('coupon_form').style.display = '';
+        document.getElementById('wrong_coupon_lbl').style.display = 'none';
+        document.getElementById('coupon_info').style.display = 'none';
+        document.getElementById('discount_coupon_code').value = document.getElementById('coupon_info_code').innerHTML; 
+        document.getElementById('cart_total').innerHTML = req.responseJS.new_total_show_value;
+        {/literal}{if $PAGE_VIEW eq 'noframe' && !$smarty.get.external}{literal}
+            parent.document.getElementById('shpcrtca').innerHTML = req.responseJS.new_total_show_value;
+        {/literal}{/if}{literal}
+    };
+    
+    try
+    {
+        req.open(null, set_query('&ukey=cart&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'remove_doscount_coupon'});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+};
+
+function noenter(event)
+{
+    if(event.keyCode == 13)
+    {
+        document.getElementById('discount_coupon_code').blur();
+        return false;
+    };
+};
+ 
+{/literal}
+</script>

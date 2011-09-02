@@ -1,0 +1,24 @@
+{if $__cpt_local_settings.product_extra}
+{assign var=product_extra value=$__cpt_local_settings.product_extra}
+{/if}
+
+{if !$CPT_CONSTRUCTOR_MODE}
+{if !$printable_version}
+	{if $product_info.ordering_available && $product_info.Price>0 && ( $smarty.const.CONF_SHOW_ADD2CART eq 1 ) && ( $smarty.const.CONF_CHECKSTOCK==0 || $product_info.in_stock > 0 ) }
+	{if $__cpt_local_settings.request_product_count&&!$widget}
+		{lbl_cart_product_quantity}:&nbsp;<input name="product_qty" class="product_qty" type="text" size="3" default_value="{$product_info.min_order_amount}" value="{$product_info.min_order_amount}">&nbsp;
+	{/if}
+	<input name='add2cart' {if ($PAGE_VIEW eq 'facebook')||($PAGE_VIEW eq 'vkontakte')}type="submit" value="{"str_add_to_cart_string"|transcape}" {else}type="image" src="{if $__cpt_local_settings.view eq 'small'}{$button_add2cart_small}{else}{$button_add2cart_big}{/if}" alt="{"str_add_to_cart_string"|translate}" {/if} title="{"str_add_to_cart_string"|translate}"
+		{if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE || $widget}
+		class="add2cart_handler" rel="{if $widget}widget{/if}" {/if} >
+	{elseif $smarty.const.CONF_SHOW_ADD2CART eq 1 && $smarty.const.CONF_CHECKSTOCK && !$product_info.in_stock && $product_info.ordering_available}
+		<div class="prd_out_of_stock">{lbl_prd_out_of_stock}</div>
+	{/if}
+	
+{/if}
+{else}
+	{if $__cpt_local_settings.request_product_count&&!$widget}
+		{lbl_cart_product_quantity}:&nbsp;<input name="product_qty" type="text" size="3" value="{"cart_product_quantity"|translate}">&nbsp;
+	{/if}
+	<img border="0" src="{$button_add2cart_big}" alt="{"str_add_to_cart_string"|translate}" title="{"str_add_to_cart_string"|translate}"/>
+{/if}

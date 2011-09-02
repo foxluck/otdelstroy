@@ -1,0 +1,12 @@
+<tr>
+	<td>
+		<? $widgetStrings.field_visiblefiles_label ?>:
+	</td>
+	<td>
+		<select name='fields[VISIBLEFILES]'>
+			<? section name=fcount start=$field.min loop=$field.max step=1 ?>
+  			<option <? if $smarty.section.fcount.index == $fieldValue ?>selected<? /if ?> value=<? $smarty.section.fcount.index ?>><? $smarty.section.fcount.index ?>
+			<? /section ?>
+		</select>
+	</td>
+</tr>

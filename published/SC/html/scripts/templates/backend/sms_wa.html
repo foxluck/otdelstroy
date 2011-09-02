@@ -1,0 +1,137 @@
+<h1>{lbl_pgn_sms_notifications}</h1>
+
+{$MessageBlock}
+
+<form name="SMSSettingsForm" method="post" action="{''|set_query_html}">
+
+{if $SMSGateways}
+<table border="0" cellpadding="0" cellspacing="4" width="100%" style="background-color: #FAFAE7;">
+<colgroup>
+    <col width="10%" />
+    <col width="90%" />
+</colgroup>
+<tr>
+    <td colspan="2">{"sms_mail_choose_sms_sending_module"|translate}</td>
+</tr>
+<tr>
+    <td>
+        <select name="gwID" onChange="loadSMSGWSettings(this.value);">
+        {foreach from=$SMSGateways item=gw}
+            <option value="{$gw.value}"{if $gw.value eq $smarty.const.CONF_SMSNOTIFY_SMSSENDER_CONFIG_ID} selected="selected"{/if}>{$gw.title}</option>
+        {/foreach}
+        </select>
+    </td>
+    <td id="loading_cnt" style="display: none;">{"lbl_loading"|translate}...</td>
+</tr>
+</table>
+{else}
+	<input type="hidden" name="gwID" value="0" />
+{/if}
+
+	<input type="hidden" name="action" value="save" />
+	
+	<table id="SMSGWSettingsTable" cellpadding="6" cellspacing="0" width="100%">
+    <colgroup>
+        <col width="80%" />
+        <col width="20%" />
+    </colgroup>
+    {foreach from=$GWSettings item=gws}
+	<tr style="background-color: #FAFAE7;">
+		<td valign="top" style="width:450px;">{$gws.descr}</td>
+		<td valign="top">{$gws.form_field}</td>
+	</tr>
+    {/foreach}
+	<tr>
+        <td colspan="2"><p>{lbl_smshosted_description}</p></td>
+    </tr>
+	<tr>
+		<td valign="top" style="width:450px;">{"sms_phone_list_descr"|translate}</td>
+		<td valign="top">{$PhoneNumbersHTML}</td>
+	</tr>
+	<tr>
+		<td valign="top">{"sms_sending_allowed_timeframe"|translate}</td>
+		<td valign="top">{$SendPeriodHTML}</td>
+	</tr>
+	</table>
+
+	<p>
+		<button type="button" onClick="if(checkSettingsForm()) document.forms['SMSSettingsForm'].submit();">{"btn_save"|translate}</button>
+	</p>
+</form>
+
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+<script type="text/javascript" language="JavaScript">
+{literal}
+
+function loadSMSGWSettings(gw_id)
+{
+    var req = new JsHttpRequest();
+
+    document.getElementById('loading_cnt').style.display = '';
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4) return;
+        if(req.responseText) alert(req.responseText);
+        
+        document.getElementById('loading_cnt').style.display = 'none';
+        
+        var gw_settings = req.responseJS.gw_settings;
+        var gw_sets_tbl = document.getElementById('SMSGWSettingsTable');
+        
+        while(gw_sets_tbl.rows.length > 3)
+        {
+            gw_sets_tbl.deleteRow(0);
+        };
+        
+        for(i=gw_settings.length-1; i>=0; i--)
+        {
+            var r = gw_sets_tbl.insertRow(0);
+            var c1 = r.insertCell(0);
+            var c2 = r.insertCell(1);
+            
+            r.style.backgroundColor = "#FAFAE7";
+            c1.innerHTML = gw_settings[i].descr;
+            c2.innerHTML = gw_settings[i].form_field;
+        };
+    };
+    
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'ajax_get_gw_settings', 'gw_id': gw_id});
+    }
+    catch ( e )
+    {
+        catchResult(e);
+    }
+    finally { ;}    
+};
+
+function checkSettingsForm()
+{
+    var frm = document.forms['SMSSettingsForm'];
+    if(frm.elements['gwID'].value == 0) return true;
+    
+    var sets_tbl = document.getElementById('SMSGWSettingsTable');
+    if(sets_tbl.rows.length == 3) return true;
+    
+    for(i=0; i<frm.elements.length; i++)
+    {
+        var el = frm.elements[i];
+        if(el.name.indexOf('CONF_SMSNOTIFY_PHONES') == 0) continue;
+        if(el.name.indexOf('CONF_SMSNOTIFY_SEND_PERIOD') == 0) continue;
+        
+        if(el.type == 'text' && el.value == '')
+        {
+            alert('{/literal}{"msg_fill_required_fields"|translate}{literal}');
+            el.focus();
+            return false;
+        };
+    };
+    
+    return true;
+};
+
+{/literal}
+</script>

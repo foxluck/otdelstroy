@@ -1,0 +1,25 @@
+{{if $notes}}<div class="note">&nbsp;</div>
+{{foreach from=$notes item=n}}
+<div class="note" id="note{{$n.id}}">
+		<div class="text">{{$n.text|escape:'html'|nl2br}}</div>
+		<div class="note-header">		
+			<span class="added-by">[`added by`] {{$n.author}} {{$n.date}}</span>
+			{{if $right_edit}}
+			<span class="buttons">
+			<a href="javascript:void(0)" onClick="editNote({{$n.id}})">[`Edit`]</a> | <a href="javascript:void(0)" onClick="deleteNote({{$n.id}})">[`Delete`]</a>
+			</span>
+			{{/if}}
+		</div>		
+</div>
+{{/foreach}}{{/if}}{{if $num_pages > 1}}<div class='pager'>
+{{section name=i loop=$num_pages+1 start=1 step=1}}
+        {{if $smarty.section.i.index <= 3 || ($smarty.section.i.index > $page - 2 && $smarty.section.i.index < $page + 2) || $smarty.section.i.index > ($num_pages - 3)}}
+                {{if $index == 1}}<a href="#" onClick="loadPage({{$smarty.section.i.index-1}})">{{$smarty.section.i.index-1}}</a>{{elseif $index}}...{{/if}}
+                {{if ($smarty.section.i.index == $page) }}{{$smarty.section.i.index}}
+                {{else}}<a href="#" onClick="loadPage({{$smarty.section.i.index}})">{{$smarty.section.i.index}}</a>{{/if}}
+                {{assign var="index" value="0"}}
+        {{else}}
+                {{math equation="x+1" x=$index assign="index"}}
+        {{/if}}
+{{/section}}
+</div>{{/if}}

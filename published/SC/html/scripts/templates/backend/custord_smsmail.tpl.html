@@ -1,0 +1,157 @@
+{* smsmail modules managment*}
+
+{if $constant_managment}
+
+	<h1 class="breadcrumbs">
+		<a href="{'setting_up='|set_query:$xREQUEST_URI}">{"sms_gateway_modules"|translate}</a>
+		&raquo;
+		{"sms_gateway_module_config"|translate} : {$ModuleObject->title}
+	</h1>
+
+<form method=POST>
+
+	{if $settings}
+
+	<table width="100%" class="grid">
+		
+	<tr class="gridsheader">
+		<td align=middle>
+			{"cfg_config_option"|translate}
+		</td>
+		<td align=middle>
+			{"prdcustopt_value_variants"|translate}
+		</td>
+	</tr>
+
+	{section name=i loop=$settings}
+	<tr class="{cycle values='gridline,gridline1'}"> 
+		<td width="50%" align="right" valign="top" class="normal">
+			<strong>
+				{$settings[i].settings_title}
+			</strong>:
+			<br>
+			<font size="-2">
+				{$settings[i].settings_description}
+			</font>
+		</td>
+		<td width="50%" align="left" valign="top">
+			{$controls[i]}
+		</td>
+	</tr>
+
+	{/section}
+
+	<tr class="gridsfooter">
+		<td></td>
+		<td><input type=submit name='save' value='{"btn_save"|translate}'></td>
+	</tr>
+	
+	</table>
+
+	{else}
+		&lt; {"cfg_config_no_options"|translate} &gt;	
+	{/if}
+
+</form>
+{else}
+	<h1>{lbl_sms_gateway_modules}</h1>
+	{"sms_modules_description"|translate}
+	<p>
+<fieldset class="admin_fieldset">
+<legend id="affp_enabled" style="color: black;">
+	<input type="checkbox"{if $SMSNotifyEnabled} checked="checked"{/if} onclick="document.endis_form.submit();" />{"sms_enable_notifications"|translate}
+</legend>
+
+	{if !$SMSNotifyEnabled}
+		<form method="post" action="{'&enableSMSNotify=1'|set_query:$xREQUEST_URI}" name="endis_form">
+		</form>
+	{else}
+		<form method="post" action="{'disableSMSNotify=1'|set_query:$xREQUEST_URI}" name="endis_form">
+		</form>
+		<form method="post" style="display:inline;">
+		{if $MSGInfo.status}
+			<div class="{if $MSGInfo.status==1}ok_msg_f{else}error_msg_f{/if}">{$MSGInfo.message}</div>
+		{/if}
+		<input type="hidden" name="SAVE_NOTIFY_SETTINGS" value="1" />
+		<table>
+			<tr>
+				<td align="right" valign="top">{"sms_mail_choose_sms_sending_module"|translate}</td>
+				<td valign="top">{$ConfigIDHTML}</td>
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr>
+				<td align="right" valign="top">{"sms_sending_allowed_timeframe"|translate}</td>
+				<td valign="top">{$SendPeriodHTML}</td>
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr>
+				<td align="right" valign="top">{"sms_phone_list_descr"|translate}</td>
+				<td valign="top">{$PhoneNumbersHTML}</td>
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr><td colspan="2" align="right"><input type=submit name='save' value='{"btn_save"|translate}'></td></tr>
+		</table>
+		</form>
+	<hr />
+	{/if}{* if !$SMSNotifyEnabled *}
+	
+	<p>
+	<div class="header2">{"sms_gateway_modules"|translate}</div>
+	<p>
+	
+	<table width="100%">
+	<tr>
+		<td width="50%" valign="top">
+			<table class="grid" width="100%">
+			<tr class="gridsheader">
+				<td>{"mdl_name"|translate}</td>
+				<td>{"str_description"|translate}</td>
+				<td>{"mdl_actions"|translate}</td>
+			</tr>
+		
+			{section name=i loop=$ModuleObjects}
+			<tr class="{cycle values='gridline,gridline1'}"> 
+				<td>
+					{$ModuleObjects[i]->title}
+				</td>
+				<td class="normal">
+					{$ModuleObjects[i]->description}
+				</td>
+				<td class="normal">
+					{if !$ModuleObjects[i]->is_installed()}
+					<a href={'&install='|cat:$smarty.section.i.index|set_query:$xREQUEST_URI}>
+						{"mdl_install"|translate}
+					</a>
+					{/if}
+				</td>
+		    </tr>
+			{/section}
+			</table>
+		</td>
+		<td width="50%" valign="top">
+			<table class="grid" width="100%">
+			<tr class="gridsheader">
+				<td colspan="3">
+					{"msg_installed_modules"|translate}
+				</td>
+			</tr>
+			{section name=i loop=$ModuleConfigs}
+			{assign var="InstalledModuleConfigs" value=1}
+			<tr class="{cycle values='gridline,gridline1'}">
+				<td width="100%">{$ModuleConfigs[i].ConfigName}</td>
+				<td class="normal"><a href="{'&setting_up='|cat:$ModuleConfigs[i].ConfigID|set_query:$xREQUEST_URI}">{"btn_edit"|translate}</a></td>
+				<td class="normal"><a href="{'&uninstall='|cat:$ModuleConfigs[i].ConfigID|set_query:$xREQUEST_URI}">{"btn_delete"|translate}</a></td>
+			</tr>
+			{/section}
+			{if !$InstalledModuleConfigs}
+			<tr>
+				<td width="100%" align="center" colspan="3">{"msg_no_installed_modules"|translate}</td>
+			</tr>
+			{/if}
+			</table>
+		</td>
+	</tr>
+</table>
+</fieldset>
+
+{/if}

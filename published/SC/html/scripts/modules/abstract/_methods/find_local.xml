@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Localization strings search</name>
+		<key>find_local</key>
+	</interface>
+</interfaces>

@@ -1,0 +1,337 @@
+{* Affiliate program settings and info *}
+<script language="javascript" type="text/javascript">
+<!--
+window.reloadURL = '{$REQUEST_URI}';
+//-->
+</script>
+
+<h1>{$CurrentDivision.name|translate}</h1>
+
+
+<fieldset class="admin_fieldset">
+<legend id="affp_enabled" style="color: black;">
+<form method="POST" action="{$REQUEST_URI}" name="form_enable_affiliate" style="display:inline">
+<input name="fACTION" value="ENABLE_AFFILIATE" type="hidden" />
+<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+<input name="save" value="save" type="hidden" />
+	{$htmlEnabledSettings}{"affp_enable_program"|translate}
+</form>
+</legend>
+
+{if $CONF_AFFILIATE_PROGRAM_ENABLED}
+	<form method="POST" action="{$REQUEST_URI}">
+	<input name="fACTION" value="SAVE_SETTINGS" type="hidden" />
+	<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+	<h5>{"affp_commissions_calculate"|translate}</h5>
+	{"affp_amount_percent"|translate}
+	<br />
+	{if $ErrorPercent}
+	<div class="error_msg_f">{"err_percent_is_out_of_0_100"|translate}</div>
+	{/if}
+	{$htmlAmountPercent}  %
+	<h5>{"affp_user_settings_control"|translate}</h5>
+	<p>{$htmlEmailNewCommission} {"affr_email_new_commission_ctrl"|translate}
+	<br /><br />
+	{$htmlEmailNewPayment} {"affr_email_new_payment_ctrl"|translate}
+	<br />
+	<br />
+	<input name="save" value="{"btn_save"|translate}" type="submit" />
+	</form>
+
+<hr />
+<h4>{"affp_commission_payments"|translate}</h4>
+
+<h5>{"str_indicate_period"|translate}</h5>
+<form method="POST" action="{$REQUEST_URI}">
+{if $Error_DateFormat}
+<div class="error_msg_f">{"affp_msg_error_date_format"|translate}</div>
+{/if}
+{"str_from"|translate}: <input type="text" name="from" value="{$from}" size="12" /> {"str_to"|translate}: <input name="till" value="{$till}" type="text" size="12" /> <input value="{"btn_view"|translate}" type="submit" />
+</form>
+{if !$show_tables}
+{"msg_timeframe_isnot_specified"|translate}
+{/if}
+{if $show_tables}
+
+{* commissions table *}
+
+{if $CommissionsNumber}
+
+	<h5>{"affp_customer_commissions"|translate} ({"str_from"|translate} {$from} {"str_to"|translate} {$till})</h5>
+	
+	<form action="{$REQUEST_URI}" method="POST" name="form_delete_commission" style="display:none;">
+	<input name="fACTION" value="DELETE_COMMISSION" type="hidden" />
+	<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+	<input name="COMMISSION[cID]" value="" type="hidden" />
+	</form>
+	
+	<p><a href="#new_commission_anchor">{"affp_submit_new_commission"|translate}</a></p>
+	
+	{if $delete_commission}<div class="ok_msg_f">{"affp_msg_commission_deleted"|translate}</div>{/if}
+	<table width="100%" class="grid">
+	<tr class="gridsheader">
+		{assign var=GridHeaders value=$GridHeadersC}
+		{include file="backend/gridheader.tpl.html"}
+		<td width="1%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+	</tr>
+		{foreach from=$Commissions item=_Commission}
+			{assign_array var="TotalCommissionsAmount" index=$_Commission.CurrencyISO3 value=$TotalCommissionsAmount[$_Commission.CurrencyISO3]+$_Commission.Amount}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>C-{$_Commission.cID}</td>
+			<td>{$_Commission.xDateTime}</td>
+			<td class="normal"><a href='{"?ukey=user_info&userID=`$_Commission.customerID`"|set_query_html}'>{$_Commission.CustomerLogin}</a></td>
+			<td>{$_Commission.Description}</td>
+			<td nowrap="nowrap">{$_Commission.Amount} {$_Commission.CurrencyISO3}</td>
+			<td class="normal"><a href="#edit" onclick="open_window('{"sub_page=edit_commission&cID=`$_Commission.cID`"|set_query:$REQUEST_URI}',500,400);return false;">{"btn_edit"|translate}</a></td>
+			<td><a href="javascript:void(0)" onclick="
+				if(!confirm('{"cnfrm_areyousure"|translate}'))return false;
+				document.form_delete_commission.elements['COMMISSION[cID]'].value = {$_Commission.cID};
+				document.form_delete_commission.submit();
+				return false;
+				"  title="{"btn_delete"|translate}"><img src="images_common/remove.gif" alt="{"btn_delete"|translate}" /></a></td>
+		</tr>
+		{/foreach}
+		<tr class="background1 gridsfooter">
+			<td colspan="1" valign="top">
+				<strong>{"str_total"|translate}</strong>
+			</td>
+			<td colspan="6" align="right">
+				<table align="right">
+				{foreach from=$TotalCommissionsAmount key=_key item=_total}
+					<tr><td align="right" style="border-width:0px;padding:0px">{$_total|string_format:"%.2f"} {$_key}</td></tr>
+				{/foreach}
+				</table>
+			</td>
+		</tr>
+	</table>
+{else}
+<br /><br />{"affp_msg_nocommisisons_found"|translate}
+{/if}{* if $CommissionsNumber *}
+
+
+{* payments table *}
+
+{if $PaymentsNumber}
+
+	<h5>{"affp_payments_to_customers"|translate} ({"str_from"|translate} {$from} {"str_to"|translate} {$till})</h5>
+	<form action="{$REQUEST_URI}" method="POST" name="form_delete_payment" style="display:none;">
+	<input name="fACTION" value="DELETE_PAYMENT" type="hidden" />
+	<input name="fREDIRECT" value="{$REQUEST_URI}" type="hidden" />
+	<input name="PAYMENT[pID]" value="" type="hidden" />
+	</form>
+	
+	<p>
+	<a href="#new_payment_anchor">{"affp_submit_new_payment"|translate}</a>
+	</p>
+	
+	{if $delete_payment}<div class="ok_msg_f">{"affp_msg_payment_deleted"|translate}</div>{/if}
+	<table width="100%" class="grid">
+	<tr class="gridsheader">
+		{assign var=GridHeaders value=$GridHeadersP}
+		{include file="backend/gridheader.tpl.html"}
+			<td width="1%">&nbsp;</td>
+			<td width="1%">&nbsp;</td>
+		</tr>
+		{foreach from=$Payments item=_Payment}
+			{assign_array var="TotalPaymentsAmount" index=$_Payment.CurrencyISO3 value=$TotalPaymentsAmount[$_Payment.CurrencyISO3]+$_Payment.Amount}
+		<tr class="{cycle values='gridline,gridline1'}">
+			<td>P-{$_Payment.pID}</td>
+			<td>{$_Payment.xDate}</td>
+			<td class="normal"><a href='{"?ukey=user_info&userID=`$_Payment.customerID`"|set_query_html}'>{$_Payment.CustomerLogin}</a></td>
+			<td>{$_Payment.Description}</td>
+			<td nowrap="nowrap">{$_Payment.Amount} {$_Payment.CurrencyISO3}</td>
+			<td class="normal"><a href="#" onclick="open_window('{"sub_page=edit_payment&pID=`$_Payment.pID`"|set_query:$REQUEST_URI}',500,400);return false;">{"btn_edit"|translate}</a></td>
+			<td><a href="javascript:void(0)" onclick="
+				if(!confirm('{"cnfrm_areyousure"|translate}'))return false;
+				document.form_delete_payment.elements['PAYMENT[pID]'].value = {$_Payment.pID};
+				document.form_delete_payment.submit();
+				return false;
+				" title="{"btn_delete"|translate}"><img src="images_common/remove.gif" alt="{"btn_delete"|translate}" /></a></td>
+		</tr>
+		{/foreach}
+		<tr class="background1 gridsfooter">
+			<td colspan="1" valign="top">
+				<strong>{"str_total"|translate}</strong>
+			</td>
+			<td colspan="6" align="right">
+				<table align="right">
+				{foreach from=$TotalPaymentsAmount key=_key item=_total}
+					<tr><td align="right" style="border-width:0px;padding:0px">{$_total|string_format:"%.2f"} {$_key}</td></tr>
+				{/foreach}
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+	{* balance *}
+	<br />
+	
+	<table width="100%" class="grid">
+		<tr class="background1">
+			<td valign="top">
+			<strong>{"affp_user_balance"|translate}</strong>
+			</td>
+			<td align="right">
+				<table align="right">
+				{foreach from=$CurrencyISO3 item=_currency}
+				{if $TotalCommissionsAmount[$_currency.currency_iso_3] or $TotalPaymentsAmount[$_currency.currency_iso_3]}
+					<tr>
+						<td align="right"style="border-width:0px;padding:0px">
+						{"`$TotalCommissionsAmount[$_currency.currency_iso_3]-$TotalPaymentsAmount[$_currency.currency_iso_3]`"|string_format:"%.2f"}
+						{$_currency.currency_iso_3}
+						</td>
+					</tr>
+				{/if}
+				{/foreach}
+				</table>
+			</td>
+		</tr>
+	</table>
+{else}
+<br /><br />{"affp_msg_nopayments_found"|translate}
+{/if}{* if PaymentsNumber *}
+<br />
+{/if}
+
+<table cellspacing="10" cellpadding="0" align="center"><tr><td valign="top">
+{* new commission form *}
+<a name="new_commission_anchor"></a>
+
+<h5>{"affp_submit_new_commission"|translate}</h5>
+
+{if $error_new_commission}<div class="error_block">{$error_new_commission}</div>{/if}
+
+{if $newCommissionStatus}<div class="success_block">{"affp_msg_new_commission_ok"|translate}</div>{/if}
+
+<form method="POST" action="{'#new_commission_anchor'|set_query:$REQUEST_URI}">
+<input name="fACTION" value="NEW_COMMISSION" type="hidden" />
+<input name="fREDIRECT" value="{'#new_commission_anchor'|set_query:$REQUEST_URI}" type="hidden" />
+<table>
+	<tr>
+		<td>
+			{"blog_postdate"|translate}
+		</td>
+		<td>
+			<input name="NEW_COMMISSION[xDate]" value="{$NEW_COMMISSION.xDate|escape:'html'}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"str_total"|translate}
+		</td>
+		<td nowrap="nowrap">
+			<input name="NEW_COMMISSION[Amount]" value="{$NEW_COMMISSION.Amount|escape:'html'}" type="text" size="20" />&nbsp;
+			<select name="NEW_COMMISSION[CurrencyISO3]">
+			{foreach from=$CurrencyISO3 item=_currency}
+				<option
+				{if $_currency.currency_iso_3==$NEW_COMMISSION.CurrencyISO3}
+					selected="selected"
+				{/if}
+				>{$_currency.currency_iso_3}</option>
+			{/foreach}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"usr_custinfo_login"|translate}
+		</td>
+		<td>
+			<input name="NEW_COMMISSION[customerLogin]" value="{if $NEW_COMMISSION.customerLogin}{$NEW_COMMISSION.customerLogin|escape:'html'}{elseif $edCustomerLogin}{$edCustomerLogin}{/if}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"str_description"|translate}
+		</td>
+		<td>
+			<input name="NEW_COMMISSION[Description]" value="{$NEW_COMMISSION.Description|escape:'html'}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input value="{"btn_add"|translate}" type="submit" />
+		</td>
+	</tr>
+</table>
+
+</form>
+</td>
+<td style="background-color: #666666;width:1px;"><hr style="height:100%; width:1px;" /></td>
+<td valign="top">
+{* new payment form *}
+<a name="new_payment_anchor"></a>
+<h5>{"affp_submit_new_payment"|translate}</h5>
+{if $error_new_payment}<div class="error_block">{$error_new_payment}</div>{/if}
+{if $newPayStatus}<div class="success_block">{"affp_msg_new_pay_ok"|translate}</div>{/if}
+<form method="POST" action="{'#new_payment_anchor'|set_query:$REQUEST_URI}">
+<input name="fACTION" value="NEW_PAYMENT" type="hidden" />
+<input name="fREDIRECT" value="{'#new_payment_anchor'|set_query:$REQUEST_URI}" type="hidden" />
+<table>
+	<tr>
+		<td>
+			{"blog_postdate"|translate}
+		</td>
+		<td>
+			<input name="NEW_PAYMENT[xDate]" value="{$NEW_PAYMENT.xDate|escape:'html'}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"str_total"|translate}
+		</td>
+		<td nowrap="nowrap">
+			<input name="NEW_PAYMENT[Amount]" value="{$NEW_PAYMENT.Amount|escape:'html'}" type="text" size="20" />&nbsp;
+			<select name="NEW_PAYMENT[CurrencyISO3]">
+			{foreach from=$CurrencyISO3 item=_currency}
+				<option
+				{if $_currency.currency_iso_3==$NEW_PAYMENT.CurrencyISO3}
+					selected="selected"
+				{/if}
+				>{$_currency.currency_iso_3}</option>
+			{/foreach}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"usr_custinfo_login"|translate}
+		</td>
+		<td>
+			<input name="NEW_PAYMENT[customerID]" value="{if $NEW_PAYMENT.customerID}{$NEW_PAYMENT.customerID|escape:'html'}{elseif $edCustomerLogin}{$edCustomerLogin}{/if}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{"str_description"|translate}
+		</td>
+		<td>
+			<input name="NEW_PAYMENT[Description]" value="{$NEW_PAYMENT.Description|escape:'html'}" type="text" size="20" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input value="{"btn_add"|translate}" type="submit" />
+		</td>
+	</tr>
+</table>
+
+</form>
+
+</td></tr></table>
+
+{else}
+	<div style="text-align:center;">{"affp_msg_program_disabled"|translate}</div>
+{/if}{* if $CONF_AFFILIATE_PROGRAM_ENABLED *}
+</fieldset>
+	<script language="javascript" type="text/javascript">
+	<!--
+	{literal}
+		document.form_enable_affiliate.elements['settingCONF_AFFILIATE_PROGRAM_ENABLED'].onclick = function(){
+			document.form_enable_affiliate.submit()
+			return true;
+		}
+	{/literal}
+	//-->
+	</script>

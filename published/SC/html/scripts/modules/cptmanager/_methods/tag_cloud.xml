@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interfaces>
+	<interface>
+		<name>cpt_lbl_tag_cloud</name>
+		<key>tag_cloud</key>
+		<type>INTCOMPONENT</type>
+		<allowed_templates>general_layout,home_page</allowed_templates>
+		<settings visibility="local">
+			<select name="tags_num" title="cpt_tgcld_tags_num" options="10::10||20::20||30::30||40::40||50::50" />
+		</settings>
+	</interface>
+</interfaces>

@@ -1,0 +1,13 @@
+<div id="rights">
+{{if $groups_count}}
+<script type="text/javascript">
+	var groups_rights = {{$groups_rights}};
+	$(document).ready(function () {
+		$("#rights").renderRights(true, {{$all}});
+	});
+</script>
+{{else}}
+[`There are no user groups in your account.`]<br /><br />
+[`To add a group navigate to "Users" service in the main menu.`]
+{{/if}}
+</div>

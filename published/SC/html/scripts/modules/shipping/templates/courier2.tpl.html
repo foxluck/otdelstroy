@@ -1,0 +1,39 @@
+<table>
+	<tr>
+		<td valign="bottom">
+			{$smarty.const.COURIER2_TXT_AMOUNT}
+		</td>
+		<td valign="bottom">
+			{$smarty.const.COURIER2_TXT_COST}
+		</td>
+		<td width="100%">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input name="fORDER_AMOUNTS[]" />
+		</td>
+		<td>
+			<input name="fRATES[]" />
+		</td>
+		<td>
+			<input type="submit" name="save" value='{"btn_add"|translate}' />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><hr /></td>
+	</tr>
+{foreach from=$Rates item=_Rate}
+	<tr>
+		<td>
+			<input name="fORDER_AMOUNTS[]" value="{$_Rate.orderAmount}" />
+		</td>
+		<td>
+			<input name="fRATES[]" value="{$_Rate.rate}{if $_Rate.isPercent}%{/if}" />
+		</td>
+		<td valign="middle">
+			<a href='{"&delete_rate=`$_Rate.orderAmount`"|set_query_html}' title='{"btn_delete"|translate}'><img alt='{"btn_delete"|translate}' src="./images_common/remove.gif" align="left" border="0" /></a>
+		</td>
+	</tr>
+{/foreach}
+</table>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>[`My personal page at `]{{$company}}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="robots" content="noindex, nofollow" >
+{{csscombine file="`$url.css`personal.css"}}
+	{{$url.css}}reset.css
+	{{$url.css}}users-edit.css
+	{{$url.css}}client.css
+	{{$url.css}}frontend.css
+{{/csscombine}}
+<link rel="stylesheet" type="text/css" href="{{$url.common}}css/datepicker.css" />
+<!--script type="text/javascript" src="{{$url.common}}js/jquery.js"></script-->
+
+<script type="text/javascript" src="{{$url.published}}ST/js/source/lib/jquery/jquery-1.4.2.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{{$url.published}}ST/css/base/ui.all.css">
+<link type="text/css" rel="stylesheet" href="{{$url.published}}ST/css/base/wbs-theme.css"/>
+<link type="text/css" rel="stylesheet" href="{{$url.published}}ST/css/style.css">
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div class="body-wrapper">
+<form id="contact_profile_edit" method="post">
+<div id="header_div">
+<table class="company_ident" width="100%" cellpadding="0" cellspacing="0"><tr>
+	{{if $show_logo}}
+		<td class="company_logo" width="1%"><img id="logo" src="{{$url.common}}html/scripts/getlogo.php?lt={{$logo_time}}" /></td>
+	{{/if}}
+		<td class="company_name">{{$company}}</td>
+		<td class="userblock" width="1%">
+			<p class="username"><a href="" id="display_name">{{$contact_name}}</a></p>
+			<!--<p class="usermail"><a href="">{{$contact.C_EMAILADDRESS[0]}}</a></p>-->
+		</td>
+	</tr></table>
+</div>
+
+{{if $contact_subscript>=0}}
+<div class="rounded user-report" style="display:{{if $show_message}}block{{else}}none{{/if}}">
+<a class="close_y" href=""><img src="UG/img/close_y.gif"/></a>
+<b>[`Thank you for your subscription!`]</b><br />
+<br />
+[`{{$contact_name}}, this is your personal page at {{$company}}. Please bookmark this page address.`]
+</div>
+{{/if}}
+<div id="body_div">
+
+{{if $contact_subscript == -2 }}
+ <div style="margin-left: 15px; margin-top: 10px;"><p>[`You account has been cancelled.`]</p></div>
+ <div style="height: 100%;"></div>
+{{else}}
+ 
+<div class="left-panel">
+	<div class="left-nav">
+		<ul id="profile-tabs">
+			<li class="leftrounded"><a href="{{$contact_url}}&i" id="profile-link" class="leftrounded"><span>&raquo;</span>[`My profile`] </a></li>
+			{{if $subscribe_exists}}
+			<li class="leftrounded"><a href="{{$contact_url}}" id="subscribe-link" class="leftrounded"><span>&raquo;</span>[`Subscription`] </a></li>
+			{{/if}}
+            <li class="leftrounded"><a href="{{$contact_url}}&t=requests" id="request-link" class="current leftrounded"><span>&raquo;</span>[`My requests`] </a></li>
+		</ul>
+	</div>			
+</div>
+<div id="main_div" class="main manage-subscribe">  
+	<div id="request-content" class="tab-content">
+		<div class="profile_view preview">
+		{{$content}}
+		</div>
+	</div>
+</div>
+{{/if}}
+</div>
+</form>		
+</div>
+</body>
+</html>

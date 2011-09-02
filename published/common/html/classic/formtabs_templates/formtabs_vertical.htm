@@ -1,0 +1,84 @@
+<!-- Make JS array -->
+<? assign var=tabArray value="tabs"|cat:$tabsID ?>
+
+<script language=JavaScript>
+	var <? $tabArray ?> = new Array( <? foreach from=$tabs item=tabData name=tabloop?><? "'"|cat:$tabData.PAGE_ID|cat:"'" ?><? if !$smarty.foreach.tabloop.last ?>,<?/if?><?/foreach?> );
+</script>
+
+<table border=0 cellpadding=0 cellspacing=0>
+	<!-- Tabs row -->
+	<tr>
+		<td valign=top>
+
+			<table border=0 cellpadding=0 cellspacing=0 width=120 height=<? $height+22 ?> class=tabbar>
+
+					<? foreach from=$tabs item=tabData name=tabloop ?>
+
+						<? if $activeTab == "" ?>
+							<? assign var=isCurrent value=$smarty.foreach.tabloop.first ?>
+						<? else ?>
+							<? if $tabData.PAGE_ID == $activeTab ?>
+								<? assign var=isCurrent value=1 ?>
+							<? else ?>
+								<? assign var=isCurrent value=0 ?>
+							<? /if ?>
+						<? /if ?>
+
+						<? if $tabData.NAME != "" ?>
+							<tr onClick="switchHorFormTab( '<? $tabData.PAGE_ID ?>', <? $tabArray ?>, '<? $tabData.CONTROL ?>' ); <? $tabData.ON_OPEN ?>" height=20>
+								<td ID="<? $tabData.PAGE_ID|cat:"TAB" ?>" width=10 <? if $isCurrent ?>class=tabbar_hor_active_tab<? else ?>class=tabbar_hor_tab<? /if ?>><nobr><span style="cursor: pointer; cursor: hand" onClick="switchHorFormTab( '<? $tabData.PAGE_ID ?>', <? $tabArray ?>, '<? $tabData.CONTROL ?>' ); <? $tabData.ON_OPEN ?>"><? $tabData.NAME|htmlsafe:true:true ?></span></nobr></td>
+							</tr>
+						<? else ?>
+							<tr height=15>
+								<td class=tabbar_hor_separator><div style="height: 20px"/></td>
+							</tr>
+						<? /if ?>
+
+					<? /foreach ?>
+
+					<tr height=100%><td class=tabbar_hor_separator>&nbsp;</td></tr>
+			</table>
+		</td>
+
+	<!-- Page row -->
+
+	<? if $align == "" ?>
+		<? assign var=align value="left" ?>
+	<? /if ?>
+
+	<? if $valign == "" ?>
+		<? assign var=valign value="top" ?>
+	<? /if ?>
+
+			<td class=tabpage_hor align=<? $align ?> valign=<? $valign ?>>
+				<? foreach from=$tabs item=tabData name=tabloop ?>
+
+					<? if $tabData.PATH != "" ?>
+						<? assign var=filePath value=$tabData.PATH|cat:"/"|cat:$tabData.FILE  ?>
+					<? else ?>
+						<? assign var=filePath value=$basePath|cat:"/"|cat:$tabData.FILE  ?>
+					<? /if ?>
+
+					<? assign var=style value="width: "|cat:$width|cat:"px; height: "|cat:$height|cat:"px" ?>
+
+					<? if $activeTab == "" ?>
+						<? assign var=isCurrent value=$smarty.foreach.tabloop.first ?>
+					<? else ?>
+						<? if $tabData.PAGE_ID == $activeTab ?>
+							<? assign var=isCurrent value=1 ?>
+						<? else ?>
+							<? assign var=isCurrent value=0 ?>
+						<? /if ?>
+					<? /if ?>
+
+					<div ID="<? $tabData.PAGE_ID ?>" <? if !$isCurrent ?>style="display:none; <? $style ?>"<? else ?>style="<? $style ?>"<? /if ?>>
+						<? include file=$filePath CUSTOM_ID=$tabData.CUSTOM_ID PAGE_ID=$tabData.PAGE_ID ?>
+					</div>
+				<? /foreach ?>
+			</td>
+		</tr>
+
+	<? if $extraLine ?>
+		<tr><td>&nbsp;</td></tr>
+	<? /if ?>
+</table>

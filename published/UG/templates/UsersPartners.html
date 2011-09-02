@@ -1,0 +1,368 @@
+{{if !$tpl}}
+<link rel="stylesheet" type="text/css" href="{{$url.published}}UG/css/partner.css" />
+<script type="text/javascript" src="{{$url.published}}common/html/res/highslide/highslide.js"></script>
+<link type="text/css" rel="stylesheet" href="{{$url.published}}common/html/res/highslide/highslide.css" />
+
+<script type="text/javascript">
+	var tabs = Array('info', 'jobs', 'portfolio', 'responses');
+	$(document).ready(function() {
+		$('#tab-' + tabs[0] ).click(function() { switchTabs(0) });
+		$('#tab-' + tabs[1] ).click(function() { switchTabs(1) });
+		$('#tab-' + tabs[2] ).click(function() { switchTabs(2) });
+		$('#tab-' + tabs[3] ).click(function() { switchTabs(3) });
+	})
+	function switchTabs(id) {
+		for(var i=0; i<tabs.length; i++) {
+			if(id == i) {
+				$('#tab-' + tabs[i]).addClass('tab-current');
+				$('#div-' + tabs[i]).show();
+			} else {
+				$('#tab-' + tabs[i]).removeClass('tab-current');
+				$('#div-' + tabs[i]).hide();
+			}
+		}
+	}
+	function deleteResponse(id) {
+		if(confirm('[`Remove response together with the votes?`]')) {
+			$.post('?mod=users&C_ID={{$partner_id}}&act=partners', { act: 'delete', id: id, C_ID: '{{$partner_id}}' }, function(data) {
+				if(typeof(data) == 'object') {
+					for(var key in data) {
+						var str = '';
+						for(var i=1; i<=5; i++) {
+							var prefix = '';
+							if(data[key][0] < i) {
+								prefix = '00';
+							} else {
+								prefix = '10';
+							}
+							str += '<img src="{{$url.app}}img/stars/star' + prefix + '.png" /> ';
+						}
+						$('#vote_img_' + key).html(str);
+						$('#vote_text_' + key).html(data[key][0] + ' (' + data[key][1] + ' [`votes`])');
+					}
+					$('#response_' + id).html('[`Response deleted`]');
+					$('#response_' + id).addClass('rigth-panel-block');
+				} else {
+					alert(data);
+				}
+			}, 'json');
+		}
+	}
+	function editResponse(id, content, comment) {
+		if(typeof(comment) == 'undefined') {
+			comment = '';
+		}
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'edit', id:id, C_ID:'{{$partner_id}}', content:content, comment:comment}, function(data) {
+			$('#response_view_' + id).html(content.replace(/\n/g, '<br />'));
+			$('#comment_view_' + id).html(comment.replace(/\n/g, '<br />'));
+			switchEditor(id);
+			if(typeof(data) != 'number') {
+				alert(data);
+			}
+		}, 'json');
+	}
+	function saveModerated() {
+		var moderated = $('#CP_MODERATED:checked').val() == 'on';
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'save_moderated', C_ID:'{{$partner_id}}', value:moderated}, function(data) {
+			var link = moderated ? '[`yes`]' : '[`no`]';
+			$('#moderated_link').html(link);
+			switchModeratedEditor(false);
+			if(moderated) {
+				$('#moderated_url').show();
+			} else {
+				$('#moderated_url').hide();
+			}
+		});
+	}
+	function saveJobs() {
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'save_jobs', C_ID:'{{$partner_id}}', data:$('#jobs_form').serialize()}, function(data) {
+			$('#jobs_view_container').html(data);
+			switchJobsEditor(false);
+		});
+	}
+	function savePortfolio(id) {
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'save_portfolio', C_ID:'{{$partner_id}}', CPP_ID:id, data:$('#portfolio_form').serialize()}, function(data) {
+			$('#div-portfolio').html(data);
+			switchJobsEditor(false);
+		});
+	}
+/*
+		var content = $('#portfolio_area_' + id).val();
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'save_portfolio', id:id, C_ID:'{{$partner_id}}', content:content}, function(data) {
+			$('#portfolio_descr_' + id).html(content.replace(/\n/g, '<br />'));
+			switchPortfolioEditor(id, false);
+			if(typeof(data) != 'number') {
+				alert(data);
+			}
+		}, 'json');
+*/
+	function deletePortfolio(id) {
+		if(confirm('[`Realy delete this project?`]')) {
+			$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'delete_portfolio', id:id, C_ID:'{{$partner_id}}'}, function(data) {
+				$('#portfolio_row_' + id).slideUp();
+				if(typeof(data) != 'number') {
+					alert(data);
+				}
+			}, 'json');
+		}
+	}
+	function saveInfo() {
+		$.post('?mod=users&C_ID={{$partner_id}}&act=partners', {act:'save_info', C_ID:'{{$partner_id}}', data:$('#info_form').serialize()}, function(data) {
+			$('#div-info').html(data);
+			switchInfoEditor(false);
+		});
+	}
+
+	function switchEditor(id) {
+		if($('#response_edit_area_' + id).css('display') == 'none') {
+			$('.response_edit_area').hide();
+			$('.response_view').show();
+			$('#response_view_' + id).slideUp();
+			$('#response_edit_area_' + id).slideDown();
+			$('.response_edit_link').html('[`Edit`]');
+			$('#response_edit_link_' + id).html('[`Cancel`]');
+			$('.response_save').hide();
+			$('#response_save_' + id).show();
+
+			$('.comment_edit_area').hide();
+			$('.comment_view').show();
+			$('#comment_view_' + id).slideUp();
+			$('#comment_edit_area_' + id).slideDown();
+		} else {
+			$('#response_edit_area_' + id).slideUp();
+			$('#response_view_' + id).slideDown();
+			$('#response_edit_link_' + id).html('<span></span>[`Edit`]');
+			$('.response_save').hide();
+			
+			$('#comment_edit_area_' + id).slideUp();
+			$('#comment_view_' + id).slideDown();
+		}
+	}
+	function switchJobsEditor(show) {
+		if(show) {
+			$('#jobs_view').slideUp(function() {$('#jobs_edit').slideDown();});
+		} else {
+			$('#jobs_edit').slideUp(function() {$('#jobs_view').slideDown();});
+		}
+	}
+	function switchPortfolioEditor(id, show) {
+		if(show) {
+			$('#portfolio_view_' + id).slideUp(function() {$('#portfolio_edit_' + id).slideDown();});
+		} else {
+			$('#portfolio_edit_' + id).slideUp(function() {$('#portfolio_view_' + id).slideDown();});
+		}
+	}
+	function switchModeratedEditor(show) {
+		if(show) {
+			$('#moderated_link').hide();
+			$('#moderated_edit').show();
+		} else {
+			$('#moderated_edit').hide();
+			$('#moderated_link').show();
+		}
+	}
+	function switchInfoEditor(show) {
+		if(show) {
+			$('#info_view').slideUp(function() {$('#info_edit').slideDown();});
+		} else {
+			$('#info_edit').slideUp(function() {$('#info_view').slideDown();});
+		}
+	}
+	hs.graphicsDir = '{{$url.published}}common/html/res/highslide/graphics/';
+	hs.dimmingOpacity = 0.5;
+    hs.outlineType = 'rounded-white';
+	
+	function getActivity(id) {
+		if ($('#activity_view_' + id).css('display') == 'none') {
+			$.post('?mod=users&C_ID={{$partner_id}}&act=partners&tpl=activity', { act: 'activity', id: id }, function(data) {
+				$('#activity_view_' + id).html(data);
+				$('#activity_view_' + id).slideDown();
+			});
+		} else {
+			$('#activity_view_' + id).slideUp();
+		}
+		return false;
+	}
+
+</script>
+
+<div id="editMain">
+
+	<h2><span style="color:black; background:#E1E8ED; padding:0 5px; font-size:0.6em; margin-right:20px;">{{$partner_domain}}</span> {{$partner_info.$cp_company}}</h2>
+
+	<div style="padding:0 0 10px 25px;">
+		[`Moderated`]:
+		<a href="#" id="moderated_link" class="online_edit_link" title="[`Edit`]" onclick="switchModeratedEditor(true)">{{if $partner_info.CP_MODERATED}}[`yes`]{{else}}[`no`]{{/if}}</a>
+		<span id="moderated_edit" style="display:none;">
+			<input type="checkbox" id="CP_MODERATED"{{if $partner_info.CP_MODERATED}} checked{{/if}} />
+			<input type="button" value="[`Save`]" onclick="saveModerated()" />
+			<input type="button" value="[`Cancel`]" onclick="switchModeratedEditor(false)" />
+		</span>
+
+		<a href="{{$home_url}}" target="_blank" id="moderated_url" style="margin-left:10px;{{if !$partner_info.CP_MODERATED}}display:none;{{/if}}">{{$home_url}}</a>
+
+	</div>
+	<div style="padding:0 0 10px 25px;">
+		[`Registred in catalog`]: {{$partner_info.created}}
+	</div>
+	
+	<ul id="user-tabs" class="big-tabs">
+		<li id="tab-info" class="tab-current"><a href="javascript:void(0)">[`Info`]</a></li>
+		<li id="tab-jobs"><a href="javascript:void(0)">[`Jobs`]</a></li>
+		<li id="tab-portfolio"><a href="javascript:void(0)">[`Portfolio`]</a></li>
+		<li id="tab-responses"><a href="javascript:void(0)">[`Responses`]</a></li>
+	</ul>
+	<div id="user-tabs-content" class="tabs-content"><div id="contact">
+
+<!-- Info tab --------------------------------------------------------- -->
+
+		<div id="div-info">
+
+			<div id="info_view_container">
+				{{include file='_UsersPartnersInfo.html'}}
+			</div>
+
+			<div id="info_edit" class="info_view" style="display:none;"><form id="info_form">
+			
+				<p>
+					<b>[`Short description`]:</b>
+					<br />
+					<textarea name="data[CP_SHORT_DESCRIPTION]" class="portfolio_area">{{$partner_info.CP_SHORT_DESCRIPTION}}</textarea>
+				</p>
+				<p>
+					<b>[`Description`]:</b>
+					<br />
+					<textarea name="data[CP_DESCRIPTION]" class="portfolio_area">{{$partner_info.CP_DESCRIPTION}}</textarea>
+				</p>
+				<p>
+					<b>[`Email`]:</b>
+					<input type="text" name="data[CP_ADV_EMAIL]" value="{{$partner_info.CP_ADV_EMAIL}}" style="width:20em;" />
+				</p>
+				<p>
+					<b>[`I wish to receive email notifications of published comments about me`]:</b>
+					<input type="checkbox" name="data[CP_RECIEVE_NOTICE]" value="1"{{if $partner_info.CP_RECIEVE_NOTICE}} checked{{/if}} />
+				</p>
+			
+				<div class="info-actions">
+					<a id="info_save" href="javascript:void(0)" onclick="saveInfo()" class="jobs_save">[`Save`]</a>
+					<a id="info_cancel" href="javascript:void(0)" onclick="switchInfoEditor(false)" class="jobs_edit_link">[`Cancel`]</a>
+				</div>
+			</form></div>
+
+		</div>
+
+<!-- Jobs tab --------------------------------------------------------- -->
+
+		<div id="div-jobs" style="display:none">
+
+			<div id="jobs_view_container">
+				{{include file='_UsersPartnersJobs.html'}}
+			</div>
+
+			<div id="jobs_edit" style="display:none;"><form id="jobs_form">
+				<table id="partner_jobs">
+					{{foreach from=$jobs key=job_id item=job}}
+						{{assign var=job_id value=$job.CPJ_ID}}
+						<tr id="job_tr_{{$job.CPJ_ID}}">
+							<td width="1%"><input type="checkbox" name="new_jobs[{{$job_id}}][checked]" id="job_{{$job.CPJ_ID}}" {{if $partner_jobs.$job_id}}checked {{/if}}/></td>
+							<td width="30%" nowrap><label for="job_{{$job.CPJ_ID}}">{{$job.$job_name_field}}</label></td>
+							<td nowrap>
+								[`from`]
+								<input type="text" name="new_jobs[{{$job_id}}][CPPJ_MIN]" size="5" class="job_cost"
+									value="{{if $partner_jobs.$job_id.CPPJ_MIN}}{{$partner_jobs.$job_id.CPPJ_MIN}}{{/if}}" id="j_min_{{$job_id}}" />
+								[`to`]
+								<input type="text" name="new_jobs[{{$job_id}}][CPPJ_MAX]" size="5" class="job_cost"
+									value="{{if $partner_jobs.$job_id.CPPJ_MAX}}{{$partner_jobs.$job_id.CPPJ_MAX}}{{/if}}" id="j_max_{{$job_id}}" />
+								{{$partner_currency}}
+							</td>
+						</tr>
+					{{/foreach}}
+				</table>
+				<div class="jobs-actions">
+					<a id="jobs_save" href="javascript:void(0)" onclick="saveJobs()" class="jobs_save">[`Save`]</a>
+					<a id="jobs_cancel" href="javascript:void(0)" onclick="switchJobsEditor(false)" class="jobs_edit_link">[`Cancel`]</a>
+				</div>
+			</form></div>
+
+		</div>
+
+<!-- Portfolio tab --------------------------------------------------------- -->
+
+		<div id="div-portfolio" style="display:none"><form id="portfolio_form">
+
+			{{include file='_UsersPartnersPortfolio.html'}}
+
+		</form></div>
+
+<!-- Responses tab --------------------------------------------------------- -->
+
+		<div id="div-responses" style="display:none" class="response">
+
+		{{foreach from=$responses key=MTC_ID item=res}}
+
+			<div id="response_{{$MTC_ID}}" class="response-item">
+			
+				<div class="voiting">
+				{{foreach from=$votes.$MTC_ID key=CPJ_ID item=vote}}
+					{{if $vote.CPG_VALUE}}
+					
+						<p class="voite"><span class="v-label">{{$jobs.$CPJ_ID.$job_name_field}}:</span>
+
+						<span>
+						{{section name=vote_section start=1 loop=6 step=1}}
+							{{if $smarty.section.vote_section.index > $vote.CPG_VALUE}}
+								<img src="{{$url.app}}img/stars/star00.png" />{{else}}<img src="{{$url.app}}img/stars/star10.png" />{{/if}}
+						{{/section}}
+						</span>
+
+						</p>
+
+					{{/if}}
+				{{/foreach}}
+
+				</div>
+
+				<h4><a href="#" onclick="return getActivity('{{$MTC_ID}}')">{{$res.CPR_NAME}}</a><span class="date">{{$res.date}}</span></h4>
+				<div id="activity_view_{{$MTC_ID}}" style="display:none;"></div>
+				<p id="response_view_{{$MTC_ID}}" class="response_view" style="clear:both;">
+					{{$res.escaped_content}}
+				</p>
+				<p id="response_edit_area_{{$MTC_ID}}" class="response_edit_area" style="clear:both; display:none;"><textarea
+					id="response_content_{{$MTC_ID}}" rows="5" cols="50" style="width:100%;">{{$res.CPR_CONTENT}}</textarea></p>
+				
+				{{if $res.CPR_PARTNER_COMMENT}}
+
+					<div class="comment-indent">
+						<h4>[`Partner comment`]</h4>
+						<p id="comment_view_{{$MTC_ID}}" class="comment_view">{{$res.escaped_comment}}</p>
+						<p id="comment_edit_area_{{$MTC_ID}}" class="comment_edit_area" style="display:none;"><textarea
+							id="response_comment_{{$MTC_ID}}" rows="5" cols="50" style="width:100%;">{{$res.CPR_PARTNER_COMMENT}}</textarea></p>
+					</div>
+
+				{{/if}}
+
+				<div class="resp-actions">
+					<a id="response_save_{{$MTC_ID}}" href="javascript:void(0)"
+						onclick="editResponse('{{$MTC_ID}}', $('#response_content_{{$MTC_ID}}').val(), $('#response_comment_{{$MTC_ID}}').val())"
+						class="response_save" style="display:none;">[`Save`]</a>
+					<a id="response_edit_link_{{$MTC_ID}}" href="javascript:void(0)" onclick="switchEditor('{{$MTC_ID}}')" class="response_edit_link"><span></span>[`Edit`]</a>
+					
+					<a href="javascript:void(0)" onclick="deleteResponse('{{$MTC_ID}}')" class="resp-delete">[`Delete`]</a>
+				</div>
+			</div>
+
+		{{/foreach}}
+
+		</div>
+
+	</div></div>
+</div>
+{{elseif $tpl == 'jobs'}}
+	{{include file='_UsersPartnersJobs.html'}}
+{{elseif $tpl == 'portfolio'}}
+	{{include file='_UsersPartnersPortfolio.html'}}
+{{elseif $tpl == 'info'}}
+	{{include file='_UsersPartnersInfo.html'}}
+{{elseif $tpl == 'activity'}}
+	{{include file='_UsersPartnersActivity.html'}}
+{{/if}}

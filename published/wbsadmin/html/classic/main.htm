@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<?if $meta?><?$meta?><?/if?>
+<title><?"6"|translate?><?if $pageTitle?> &mdash; <? $pageTitle|translate ?><?/if?></title>
+<link href="../../html/classic/installer-styles.css" rel="stylesheet" type="text/css" >
+<script type="text/javascript" language="javascript" src="../../../common/html/classic/styles/wbscommon.js"></script>
+<script type="text/javascript" language="javascript" src="../classic/updatewa.js"></script>	
+
+</head>
+<body>
+<? strip ?>
+<?*Main menu *?>
+<div style="position: absolute; top: 0px; right: 20px; color: #999;">
+	<?if $mainMenu?><em><?"upd_m_wa_license"|translate?><?if $installInfo.LICENSE?>:</em> <?$installInfo.LICENSE?><?else?> <?"upd_m_wa_license_not_reg"|translate?></em><?/if?><?/if?>
+</div>
+<div class="main-navigation">
+	<div style="margin: 7px;">
+		<?if $mainMenu?><a href="wbsadmin.php"<?else?><span<?/if?> class="installer-logo">
+		<span style="font-size:225%;">web<i style="color: rgb(119, 204, 255);">Asyst</i> <em style="color: #777;">Installer</em></span>
+		<?if $mainMenu?></a><?else?></span><?/if?>
+	</div>
+	<?if $mainMenu?>
+		<ul>
+			<? foreach from=$mainMenu item=mainMenuItem ?>
+			<li<?if !$mainMenuItem.link?> class="active white"<?/if?>>
+			<?if $mainMenuItem.link ?>
+				<a href="<?$mainMenuItem.link?>" title="<?$mainMenuItem.title|translate|escape:'html'?>">
+			<?/if?>
+			<?if $mainMenuItem.img?>
+				<img src="<?$mainMenuItem.img?>" alt="<?$mainMenuItem.title|translate|escape:'html'?>">
+			<?else?>
+				<?$mainMenuItem.title|translate?>
+			<?/if?>
+			<?if $mainMenuItem.link?></a><?/if?>
+			</li>
+			<? /foreach ?>
+		</ul>
+	<?/if?>
+	</div>
+<?*/Main menu*?>
+
+
+<?*Sub menu *?>
+<?if $subMenu?>
+<div class="sub-navigation">
+	<ul>
+		<?foreach from=$subMenu item=subMenuItem ?>
+			<?if $subMenuItem.link?>
+				<li>
+					<a href="<?$subMenuItem.link?>" title="<?if $subMenuItem.description?><?$subMenuItem.description|translate?><?else?><?$subMenuItem.title|translate?><?/if?>">
+						<?$subMenuItem.title|translate?>	 
+					</a>
+			<? else ?>
+				<li class="active">
+					<strong><?$subMenuItem.title|translate?></strong>
+			<? /if ?>
+			<?if $subMenuItem.warning?>
+			&nbsp;<em style="color: red; font-weight: bold;">!</em>
+			<?/if?>
+		</li>
+		<? /foreach ?>
+	</ul>
+</div>
+<? /if ?>
+<?*/Sub menu *?>
+
+<? if $message ?>
+<div id="message-block" class="<?if $messageType?>error_block<?else?>success_block<?/if?>">
+<? $message|translate?>
+</div>
+<? /if ?>
+
+<? /strip ?>
+<div class="i-wrapper">
+
+<?include file=$mainTemplate?>
+
+</div>
+</body>
+</html>

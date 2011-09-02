@@ -1,0 +1,7 @@
+admin@example.com
+john@johnswebsite.com
+example@example.org
+
+yournickname@yourwebsite.net
+hello@world.net
+my@email.name

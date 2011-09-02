@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<script type="text/javascript">
+			function fillAll( )
+			{
+
+					fill = document.getElementById( "fillcredit" );
+
+					value = fill.value;
+
+					thisForm = document.forms[0];
+
+					for ( i = 0; i < thisForm.elements.length; i++ )
+						if (thisForm.elements[i].type == 'text')
+							thisForm.elements[i].value = value;
+
+					return false;
+			}
+		</script>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$smsDisabled ?>
+
+					<? if $usersCount == 1?>
+						<!-- Single user mode -->
+
+						<? foreach from=$usersBalance item=balance name=balanceLoop ?>
+
+							<? wbs_formCaption text=$balance.C_FIRSTNAME|cat:" "|cat:$balance.C_LASTNAME|cat:" ("|cat:$balance.U_ID|cat:")" ?>
+
+							<? wbs_formLayout ?>
+								<? wbs_formContent ?>
+									<tr>
+										<td><? wbs_label for="credit["|cat:$balance.U_ID|cat:"]" text=$kernelStrings.sms_amount_label fieldName="VALUE" ?></td>
+										<td>
+											<input type="text" name="credit[<? $balance.U_ID ?>]" id="credit[<? $balance.U_ID ?>]" value="<? $balance.VALUE ?>" class="FormControl" style="width: 70px;">
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><? wbs_note ?><? $kernelStrings.sms_blnk_note_text ?><? /wbs_note ?></td>
+									</tr>
+								<? /wbs_formContent ?>
+								<? wbs_formButtonsPanel ?>
+									<? wbs_buttonSet ?>
+										<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" ?>
+										<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+									<? /wbs_buttonSet ?>
+								<? /wbs_formButtonsPanel ?>
+							<? /wbs_formLayout ?>
+
+						<? /foreach ?>
+					<? else ?>
+						<!-- Multiple users mode -->
+
+						<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_fill_amount_text ?><? /wbs_note ?>
+
+						<? wbs_formLayout width="550px"?>
+							<? wbs_formContent ?>
+								<tr>
+									<td><? wbs_label for="fillcredit" text=$kernelStrings.sms_amount_label fieldName="VALUE" ?></td>
+									<td width="70"><input type=text name="fillcredit" id="fillcredit" class="FormControl" value="" style="width: 70px;"></td>
+									<td><? wbs_button caption=$kernelStrings.sms_fill_btn link="#" onClick="return fillAll();" ?></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="2"><? wbs_note ?><? $kernelStrings.sms_blnk_note_text ?><? /wbs_note ?></td>
+								</tr>
+							<? /wbs_formContent ?>
+						<? /wbs_formLayout ?>
+
+						<table class="SimpleList" width="550">
+							<thead>
+								<tr>
+									<th scope="col"><? $kernelStrings.sms_userid_title ?></th>
+									<th scope="col"><? $kernelStrings.sms_username_title ?></th>
+									<th scope="col" width="70"><? $kernelStrings.sms_available_title ?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<? foreach from=$usersBalance item=balance name=balanceLoop?>
+									<tr class="<? wbs_oddItem index=$smarty.foreach.balanceLoop.iteration ?>">
+										<td><? $balance.U_ID ?></td>
+										<td><? $balance.C_FIRSTNAME ?> <? $balance.C_LASTNAME ?></td>
+										<td><input type=text name="credit[<? $balance.U_ID ?>]" id="credit[<? $balance.U_ID ?>]" value="<? $balance.VALUE ?>" class="FormControl" style="width : 70px;"/></td>
+									</tr>
+								<? /foreach ?>
+							</tbody>
+						</table>
+
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+						<? /wbs_buttonSet ?>
+
+					<? /if ?>
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.sms_screen_sms_disabled ?><? /wbs_note ?>
+				<? /if ?>
+			<? /if ?>
+
+			<input name="USERS_ID" type="hidden" id="USERS_ID" value="<? $USERS_ID ?>">
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

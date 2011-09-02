@@ -1,0 +1,32 @@
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td class="treeNumDocumentsCell <? if $showFolderID ?>treeNoBottomPadding<?/if?>" valign=middle>
+			<? include file="../../../common/html/classic/list_pages.htm" ?>
+		</td>
+		<? if $thisFolderRights != "" ?>
+			<td class="treeNumDocumentsCell <? if $showFolderID ?>treeNoBottomPadding<?/if?>" style="padding-right: 5px;" valign=top align=right><nobr>
+				<? $kernelStrings.app_treefldaccessrights_label|cat:": " ?>
+				<? assign var=rightShort value=$tree_access_mode_names.$thisFolderRights ?><? $kernelStrings.$rightShort ?> - 
+				<? assign var=longKeyindex value=$tree_access_mode_long_names.$thisFolderRights ?>
+				<? $kernelStrings.$longKeyindex ?>
+				<? if $folderIsShared ?>
+					<? if $showSharedPanel ?>
+						[<a href="<? $accessRightsURL ?>"><? $kernelStrings.app_treeshared_label ?></a>]
+					<? else ?>
+						[<? $kernelStrings.app_treeshared_label ?>]
+					<? /if ?>
+				<? else ?>
+						[<? $kernelStrings.app_treenotshared_label ?>]
+				<? /if ?>
+			</nobr></td>
+		<? /if ?>
+	</tr>
+	<? if $showFolderID ?>
+		<tr>
+			<td height=5 colspan=2></td>
+		</tr>
+		<tr>
+			<td colspan=2 class="treeNumDocumentsCell treeNoTopPadding"><? $kernelStrings.app_tree_folderid_label|cat:": "|cat:$currentFolder ?></td>
+		</tr>
+	<? /if ?>
+</table>

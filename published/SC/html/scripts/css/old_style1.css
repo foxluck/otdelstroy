@@ -1,0 +1,153 @@
+/* style for template #1  */
+
+p, body, font, span, div
+{ font-family:		Tahoma, Verdana, Arial;
+}
+td
+{ font-family:		Tahoma, Verdana, Arial;
+  font-size:		11px;
+}
+h1
+{ font-family:		Tahoma;
+  font-size:		18px;
+  color:			black;
+}
+a
+{ font-family:		Tahoma;
+  font-weight:		bold;
+  font-size:		11px;
+  color:			navy;
+}
+.no_underline
+{ text-decoration:		none;
+}
+.small
+{ font-size:		10px;
+}
+.faq
+{ font-size:		13px;
+}
+.big
+{ font-size:		18px;
+  text-decoration:		none;
+
+}
+.cat
+{ font-size:		16px;
+}
+.standard
+{ font-weight:		normal;
+}
+.light
+{ color:			white;
+}
+.lightsmall
+{ color:			white;
+  font-size:		10px;
+}
+.lightstandard
+{ color:			white;
+  font-weight:		normal;
+}
+.middle
+{ color:			#F0B5B5;
+}
+.cart
+{ font-family:		Tahoma;
+  font-size:		11px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:			1px;
+  font-weight:		bold;
+  color:			#F0B5B5;
+  background-color:  transparent;
+}
+.totalPrice
+{ font-size:	    	16px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:		1px;
+  font-weight:		bold;
+  color:		red;
+  background-color:  transparent;
+}
+
+.le_links{padding:3px;}
+.new_link_category{padding:10px; display:none;}
+input.input_text1{width:95%}
+#form_new_linkcategory{display:inline;}
+#le_new_link{display:none; text-align:left; padding:6px;}
+div.divider_grey{padding:0px; margin:4px; border:0px solid #bbbbbb; border-bottom-width:1px;}
+div.subheader{font-size:11pt; font-weight:bold;}
+div.edit_le_category{display:none; border: 1px dashed #999999; border-top-width:0px; padding:4px; padding-top:0px;}
+
+.error_message{
+	color: red; 
+	padding: 4px;
+	font-weight: bold;
+}
+.error_msg_f{
+	color: red; 
+	padding:6px 0px 6px 0px;
+	font-weight: bold;
+}
+.ok_msg_f{
+	color: blue; 
+	padding:6px 0px 6px 0px;
+	font-weight: bold;
+}
+
+/*Affiliate program styles*/
+.affp_login {
+	border: solid #AAAAAA; 
+	border-width: 0px 0px  1px 1px; 
+	padding: 0px 10px 10px 10px; 
+	font-size:10pt; 
+	font-weight:bold;
+	}
+.affp_user_info {
+	padding: 6px 10px 10px 10px;
+}
+
+fieldset.admin_fieldset{
+	border: 1px inset black; 
+	padding: 10px;
+	color: black;
+}
+
+fieldset.admin_fieldset input{
+	margin: 0px;
+}
+
+#affp_enabled input{
+	margin: 0px 4px 0px 4px !important;
+}
+
+.edittitle
+{
+	font-size: 130%;
+	font-weight: bold;
+	color: #000000;
+}
+
+.header2
+{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+input.inlradio{
+	vertical-align:middle;
+	margin:0px;
+}
+
+/*************************/
+a.admdivslst:hover,a.admdivslst:link,a.admdivslst:visited,a.admdivslst:active{text-decoration: none;color: blue;font-weight:normal;font-size:10pt;}
+a.admdivslst:hover{color: navy;}
+
+a.h_admdivslst:hover,a.h_admdivslst:link,a.h_admdivslst:visited,a.h_admdivslst:active{text-decoration: none;color: #888888;font-weight:normal;font-size:10pt;}
+a.h_admdivslst:hover{color: #555555;}

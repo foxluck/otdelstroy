@@ -1,0 +1,50 @@
+<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td colspan=2><? $kernelStrings.cv_details_text ?></td>
+	</tr>
+	<tr>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+</table>
+
+<? if $imageFieldNames ?>
+	<table border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan=2><? $kernelStrings.cv_selectimage_label ?></td>
+		</tr>
+		<tr>
+			<td colspan=2>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<table cellpadding=2 cellspacing=0 border=0 style='margin-left: 20px'>
+					<tr>
+						<td><input type=radio name="listViewImage" value=NOIMG <? switchedOutput val=$listViewImage true_val=NOIMG str1="checked" ?>></td>
+						<td><? $kernelStrings.cv_donotdisplayimg_label ?></td>
+					</tr>
+					<? foreach from=$imageFieldNames key=imgFieldID item=imgFieldName ?>
+						<tr>
+							<td><input type=radio name="listViewImage" value="<? $imgFieldID ?>" <? switchedOutput val=$listViewImage true_val=$imgFieldID str1="checked" ?>></td>
+							<td><? $imgFieldName|htmlsafe:true:true ?></td>
+						</tr>
+					<? /foreach ?>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>&nbsp;</td>
+		</tr>
+	</table>
+<? else ?>
+	<table border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><? $kernelStrings.cv_noimages_label ?></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><b><? $kernelStrings.app_note_text|cat:":&nbsp;" ?></b><? $kernelStrings.cv_addimages_note ?></td>
+		</tr>
+	</table>
+<? /if ?>

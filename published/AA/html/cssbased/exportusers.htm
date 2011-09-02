@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$done ?>
+
+					<? wbs_formLayout caption=$pageTitle ?>
+
+						<? wbs_formContent ?>
+							<tr class="SeparatedRow">
+								<td><? wbs_label text=$kernelStrings.ecl_form_label ?></td>
+							</tr>
+
+							<tr>
+								<td class="Indent">
+									<table class="FormLayout">
+										<tr>
+											<td><input id="Selected" type=radio <? wbs_checkboxStatus val=$exportMode true_val=0 ?> name=exportMode value=0></td>
+											<td colspan="2"><? wbs_label skipColon=true for="Selected" text=$kernelStrings.eul_selectedusers_label|cat:" ("|cat:$showSelected|cat:")" ?></td>
+										</tr>
+										<tr>
+											<td><input id="Folder" type=radio <? wbs_checkboxStatus val=$exportMode true_val=1 ?> name=exportMode value=1/></td>
+											<td>
+												<? if $objectType == "searchresult" ?>
+													<? $kernelStrings.ecl_searchresult_label ?>
+												<? else ?>
+													<? $kernelStrings.ecl_group_label|cat:":&nbsp;" ?>
+												<? /if ?>
+											</td>
+											<td>
+												<? if $objectType != "searchresult" ?>
+													<select class="FormControl" name="currentSrcId">
+														<? html_options values=$srcIds output=$srcNames selected=$currentSrcId ?>
+													</select>
+												<? /if ?>
+											</td>
+										</tr>
+										<tr class="SeparatedRow">
+											<td><input type="radio" id="Entire"<? wbs_checkboxStatus val=$exportMode true_val=2 ?> name=exportMode value=2/></td>
+											<td colspan="2"><? wbs_label skipColon=true for="Entire" text=$kernelStrings.eul_entire_label ?></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+
+							<tr class="SeparatedRow">
+								<td>
+									<table class="FormLayout">
+										<tr>
+											<td><? wbs_label for="Delimiter" text=$kernelStrings.ecl_separator_label ?></td>
+											<td>
+												<select name="separator" class="FormControl" id="Delimiter">
+													<? html_options values=$separatorIDs selected=$separator output=$separatorNames ?>
+												</select>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<? wbs_fieldset legend=$kernelStrings.ecl_exportfields_label ?>
+										<? wbs_dualComboBox
+											leftCaption=$kernelStrings.ecl_included_label
+											rightCaption=$kernelStrings.cml_notincluded_label
+
+											leftVariableName="includedFields"
+											rightVariableName="notincludedFields"
+
+											leftValues=$includedFields
+											rightValues=$notincludedFields
+
+											leftNames=$includedFieldNames
+											rightNames=$notincludedFieldNames
+
+											showUpDown=false
+											separated=true
+
+											rows=12
+											width=285
+										?>
+									<? /wbs_fieldset ?>
+								</td>
+							</tr>
+						<? /wbs_formContent ?>
+
+						<? wbs_formButtonsPanel ?>
+								<? wbs_buttonSet ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_ok_btn name="savebtn" onClick="fillSelectedLists( new Array('includedFields[]') );" ?>
+									<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+								<? /wbs_buttonSet ?>
+						<? /wbs_formButtonsPanel ?>
+
+					<? /wbs_formLayout?>
+
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.ecl_download_label ?><? /wbs_note ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><b><a target="_blank" href="<? $link ?>"><? $kernelStrings.ecl_download_link ?></a></b><? /wbs_note ?>
+				<? wbs_button caption=$kernelStrings.eul_return_btn name="cancelbtn" ?>
+				<? /if ?>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+			<input type=hidden name="fileFormat" value="-1"/>
+			<input type="hidden" name="selectedObj" value="<? $selectedObj ?>"/>
+			<input type="hidden" name="objType" value="<? $objType ?>"/>
+			<input type="hidden" name="doclist" value="<? $doclist ?>"/>
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

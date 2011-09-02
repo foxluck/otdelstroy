@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+		<style type="text/css">
+			table.LogoTable
+			{
+				border-collapse: collapse;
+			}
+
+			table.LogoTable tr td
+			{
+				padding: 10px 10px 2px 0!important;
+			}
+
+			div.LogoContainer
+			{
+				padding: 5px;
+				border: 1px solid silver;
+				background: white;
+			}
+		</style>
+		<script src="../../../common/html/classic/styles/popupmenu.js"></script>
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'companyData' )">
+		<? wbs_pageLayout toolbar="aa_toolbar.htm" ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<table>
+					<tr valign='top'>
+						<td width="70%">
+							<? wbs_label for="COM_NAME" fieldName="COM_NAME" text=$kernelStrings.ci_compname_message ?><BR>
+							<input name="companyData[COM_NAME]" id="COM_NAME" type="text" class="FormControl" value="<? $companyData.COM_NAME?>" style='font-size: 1.5em; font-weight: bold' size="40" maxlength="30"/>
+							
+							<? include file="company_look.htm" ?>
+						</td>
+						
+						<td width="30%" style='background: #FAFAE7; padding: 10px'>
+							<table>
+							<? include file="company_info.htm" ?>
+							</table>
+						</td>
+					</tr>
+				</table>
+
+				<? wbs_formButtonsPanel ?>
+
+					<? wbs_buttonSet ?>
+						<? wbs_buttonSetButton caption=$kernelStrings.app_apply_btn name="savebtn" ?>
+						<?* wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"*?>
+					<? /wbs_buttonSet ?>
+
+				<? /wbs_formButtonsPanel ?>
+
+				
+
+				<input name="deleteLogo" type="hidden" value="<? $deleteLogo ?>"/>
+				<input name="prevName" type="hidden" value="<? $prevName ?>"/>
+				<input name="section" type="hidden" value="<? $section ?>"/>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn" ?>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

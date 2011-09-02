@@ -1,0 +1,57 @@
+<style type="text/css">
+div.popup-title {font-weight: bold; font-size: 20px; margin-bottom: 20px}
+#construct-edit div.buttons {margin-top: 10px; text-align:center;}
+input.error {border: 1px solid red;}
+div.error {color: red}
+div.note {margin: 10px 5px 5px 5px; color: red; text-align: center}
+</style>
+<form id="construct-edit" method="post" action="">
+<input type="hidden" name="type_id" value="{{$type_id}}" />
+
+<div>[`Place this field after`]: 
+<select id="after" name="after">
+{{foreach name="sections" from=$fields item=section}}
+<option value="{{$section.id}}" {{if $section.id==$after_id}}selected{{/if}}>{{if $smarty.foreach.sections.index == 0}}[`Primary identifying fields`]{{else}}{{$section.name}}{{/if}}</option>
+	{{foreach from=$section.fields item=f}}
+		{{if $section.id != $main_section || !$f.standart}}
+		<option value="{{$f.id}}" {{if $f.id==$after_id}}selected{{/if}}>{{if $smarty.foreach.sections.index}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}{{$f.name}}</option>
+		{{/if}}
+	{{/foreach}}
+{{/foreach}}
+</select>
+</div>
+<div class="buttons" style="margin-top: 20px">
+	<input type="button" id="save" value="[`Save`]" />
+	<input type="button" value="[`Cancel`]" onClick="jQuery('#popup').wbsPopupClose();" />
+</div>
+</form>
+<script type="text/javascript">
+
+jQuery("#save").click(function () {
+	jQuery.post("?mod=construct&act=moveField&ajax=1", "field_id=" + {{$field.id}} + "&" + jQuery("#construct-edit").serialize() + "&save=1", function (response) {
+		if (response.status == 'OK') {		
+			var field_info = response.data; 
+			var after_id = field_info.after_id;
+			if ($("#section" + field_info.after_id).length > 0) {
+				jQuery("#" + field_info.id).insertAfter(jQuery("#section" + after_id + " div.title"));
+			} else {
+				if (after_id == 'aux-fields') {
+					$("#aux-fields").show();
+				}				
+				jQuery("#" + field_info.id).insertAfter(jQuery("#" + after_id));
+			}	
+			jQuery("#popup").wbsPopupClose();
+			if (parent && parent.document.app) { 
+				parent.document.listfields = response.data.listfields;
+				parent.document.photoField = response.data.photoField;
+				parent.document.dbfields = response.data.dbfields;
+			}			
+		} else if (response.status == 'ERR') {
+			showFieldError(response);
+		}			
+	}, "json");
+	$("#dlg-move-desc").hide();
+	$("#dlg-move-load").show().html('[`Please wait`] <img src="../common/img/loading.gif" /><br /><br />');					
+});
+
+</script>

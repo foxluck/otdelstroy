@@ -1,0 +1,55 @@
+<script type="text/javascript">
+var clear = false;
+$(document).ready(function () {
+	showMultiSelect(['in', {{$visible_fields}}], ['out', {{$hide_fields}}], 'btn-right');
+});
+$("#link_up").click(function () {
+	$("#in option:selected").insertBefore($("#in option:selected:first").prev());
+});
+$("#link_down").click(function () {
+	$("#in option:selected").insertAfter($("#in option:selected:last").next());
+});
+$("#in").change(function () {
+	if($(this).val() != 0) {
+		$("#btn-right").removeClass("disable");
+	} else {
+		$("#btn-right").addClass("disable");
+	}
+	$("#out").val(-1);
+	$("#btn-up").removeClass("disable");
+	$("#btn-down").removeClass("disable");
+	$("#btn-left").addClass("disable");
+});
+$("#out").change(function () {
+	$("#in").val(-1);
+	$("#btn-left").removeClass("disable");
+	$("#btn-up").addClass("disable");
+	$("#btn-down").addClass("disable");
+	$("#btn-right").addClass("disable");
+});
+$("#btn-right").click(function () {
+	if($(this).val() == 0) {
+		return false;
+	}
+});
+</script>
+<table>
+<tr>
+<td><h4>[`Visible columns`]</h4><div class="select-container"><select id="in" name="fields[]" size="8"
+	style="width: 240px;" multiple="multiple"></select></div></td>
+<td width="30" align="center" valign="middle" style="vertical-align: middle">
+<div id="control" class="control-btns">
+<div class="wbs-move-btn disable" id="btn-up"><a id="link_up" href="#">&uarr;</a></div>
+<div class="wbs-move-btn disable" id="btn-down"><a id="link_down" href="#">&darr;</a></div>
+<div class="wbs-move-btn disable" id="btn-left"><a onclick="moveSelect('out', 'in');" href="#">&larr;</a></div>
+<div class="wbs-move-btn disable" id="btn-right"><a onclick="
+		if(!$('#btn-right').hasClass('disable')) moveSelect('in', 'out');"	href="#">&rarr;</a></div>
+</div>
+</td>
+<td><h4>[`Hidden columns`]</h4><div class="select-container"><select id="out" size="8" style="width: 240px;" multiple="multiple"></select></div></td>
+</tr>
+</table>
+<div class="setting-options">
+	<p><label for="apply-to-current"><input type="radio" id="apply-to-current" name="apply_to" checked />[`Apply to current folder only`]</label></p>
+	<p><label for="apply-to-all"><input type="radio" id="apply-to-all" name="apply_to"/>[`Apply to all folders`]</label></p>
+</div>

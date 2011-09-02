@@ -1,0 +1,53 @@
+<h1><a href="{""|set_query_html}">{$CurrentDivision.name|translate}</a> &raquo; {$properties.name}</h1>
+{$MessageBlock}
+<script type="text/javascript">
+<!--
+var preview_url='{"action=preview&form_id=`$form_id`"|set_query}';
+{literal}
+function preview_printform(){
+	if(open_window(preview_url, 700, 500)){
+		return false;
+	}else{
+		return true;
+	}
+}{/literal}
+//-->
+</script>
+{strip}
+<form action="{"action=preview&form_id=`$form_id`"|set_query_html}" target="_blank">
+<input type="submit" value="{'printforms_preview'|translate}" onclick="return preview_printform();">
+</form>
+
+<p>{$properties.description}</p>
+
+<form action="{""|set_query_html}" method="POST">
+<input type="hidden" name="form_id" value="{$form_id}">
+<input type="hidden" name="action" value="save">
+<table class="grid" id="custompages-settings">
+	<tr class="gridsheader" align="center">
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	{foreach from=$settings item=setting key=id}
+	<tr class="{cycle name='info' values='gridline,gridline1'}">
+		<td width="250">{$setting.settings_title}:
+		<div class="notice">{$setting.settings_description}</div>
+		</td>
+		<td>{$setting.control}</td>
+	</tr>
+	{foreachelse}
+	<tr class="{cycle name='info' values='gridline,gridline1'}">
+		<td colspan="2">{'cfg_config_no_options'|translate}</td>
+	</tr>
+	{/foreach}
+	<tr class="gridsfooter">
+		<td colspan="2">&nbsp;</td>
+	</tr>
+</table>
+<input type="submit" value="{lbl_btn_save}">
+</form>{/strip}{*
+<form action="{""|set_query_html}" method="POST">
+<input type="hidden" name="form_id" value="{$form_id}">
+<input type="hidden" name="action" value="uninstall">
+<input type="submit" title="{'cnfrm_delete'|transcape}" class="confirm_action" value="uninstall">
+</form>
+*}

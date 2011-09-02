@@ -1,0 +1,45 @@
+<h1>{lbl_shp_shipping_types}</h1>
+
+<p>{lbl_shp_page_description}</p>
+
+{$MessageBlock}
+
+{if $shipping_methods}
+<form action="{''|set_query_html}" class="ajaxform" method="post" enctype="multipart/form-data">
+<input name="action" value="save_order" type="hidden" />
+
+<table id="tbl-methods" class="grid">
+<tr class="gridsheader">
+	<td>{'enabled'|translate}</td>
+	<td>{'str_name'|translate}</td>
+	<td>&nbsp;</td>
+	<td>{'btn_delete'|translate}</td>
+</tr>
+{foreach from=$shipping_methods item=_method name=_fe}
+<tbody class="dragable">
+<tr>
+	<td class="handle" align="center">
+		<input {if $_method.Enabled}checked="checked"{/if} type="checkbox" disabled="disabled" />
+	</td>
+	<td class="handle">
+	{$_method.Name}
+	<input type="hidden" class="field_priority" name="priority_{$_method.SID}" value="{$smarty.foreach._fe.index}" />
+	</td>
+	<td>
+		<a href='{"action=edit_method&sid=`$_method.SID`"|set_query_html}'>{'btn_edit'|translate}</a>
+	</td>
+	<td align="center">
+		<a href='{"action=delete_method&sid=`$_method.SID`"|set_query_html}' class="confirm_action" title="{'cnfrm_areyousure'|transcape}"><img align="middle" alt="{'btn_delete'|transcape}" src="images_common/remove.gif" /></a>
+	</td>
+</tr>
+</tbody>
+{/foreach}
+</table>
+
+</form>
+
+{include file="backend/sortable_table.html" table_id="tbl-methods"}
+
+{/if}
+
+<input value="{'shp_add_method'|transcape}" onclick="document.location.href='{"action=add_method"|set_query_html}'" type="button" />

@@ -1,0 +1,44 @@
+widget_name_long	Common	Widget full name	Files
+widget_name_short	Common	Widget short name	Files
+
+subtype_inplace_igoogle_title	igoogle	Subtype Inplace Title	WebAsyst Online Folder
+subtype_inplace_igoogle_description	igoogle	Subtype Inplace Description	Upload files to your online storage and access them from anywhere. Click filename in the list to view or download file. Add new files or delete files you don't need anymore
+
+type_widgetsform_title	Widget Screen	type title	Files
+type_widget_name	Widget Screen	type title	Files
+type_widget_createname	Widget Screen	type title	Files
+type_widgetsform_desc	Widget Screen	type desc	
+type_widgetsform_short_desc	Widget Screen	type short desc	Files
+
+subtype_inplace_name	Subtypes	Subtype name	Online Folder
+subtype_inplace_desc	Subtypes	Subtype desc	Displays a quick listing of files in the selected folder. Lets you view and download files or add new files to the folder.
+field_folder_label	Fields	Folder	Folder
+field_width_label	Fields	Width	Width
+field_height_label	Fields	Height	Height
+field_candelete_label	Fields	Can delete	Can delete files
+field_candelete_desc	Fields	Can delete	Users can delete files from this widget
+field_bgcolor_label	Fields	Bgcolor	Body Background
+field_title_label	Fields	Title	Title
+field_wglang_desc	Fields	Lang	This language will be used for system messages, e.g. errors, warnings etc.
+field_bordercolor_label	Fields	Title	Title Background
+field_titlecolor_label	Fields	Title	Title Text
+field_showborder_label	Fields	Title	Show Border
+field_maxfilescount_label	Fields	Save button	Maximum number of files
+field_maxfilesize_label	Fields	Save button	Maximum file size (Mb)
+field_visiblefiles_label	Fields	Visible files count	Visible number of rows
+
+up_addfile_label	Widget	add file label	add file
+up_addfile_title	Widget add file button title	 
+up_uploadbtn_label	Widget	Upload button label	 Upload
+up_cancelbtn_label	Widget	Cancel button label	 Cancel
+up_nofiles_label	Widget	No files label	no files
+
+up_filedelete_message	Widget	File delete message	Are you sure you want to delete this file?
+up_filedelete_title	Widget	File delete title	delete file
+up_maxfilescount_error	Widget	Error max files count	Maximum number of files: %s
+up_maxfilesize_error	Widget	Error max file size	Maximum file size: %sMB
+
+place_general_title	Widget customize dialog	Place general title	General
+place_color_title	Widget customize dialog	Place color title	Color
+place_size_title	Widget customize dialog	Place size title	Size
+place_files_title	Widget customize dialog	Place files title	Files

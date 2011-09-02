@@ -1,0 +1,11 @@
+<interfaces>
+	<interface>
+		<name>cpt_lbl_custom_html</name>
+		<key>custom_html</key>
+		<type>INTCOMPONENT</type>
+		<allowed_templates>general_layout,home_page</allowed_templates>
+		<settings visibility="local">
+			<custom_html name="code" />
+		</settings>
+	</interface>
+</interfaces>

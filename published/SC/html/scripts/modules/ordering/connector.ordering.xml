@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Ordering</Name>
+		<File>class.ordering.php</File>
+		<Title>Оформление заказа</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

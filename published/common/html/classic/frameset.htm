@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<title><? $companyName ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+</head>
+
+<frameset rows="57,*,28" frameborder="NO" border="0" framespacing="0">
+  <frame src="header.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" name="topFrame" frameborder="no" scrolling="NO" noresize marginwidth="0" marginheight="0" id="navigation">
+  <frame src="<? if !$trans_sid ?><? $firstPage ?><? else ?><? $firstPage|cat:"?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" name="mainFrame" frameborder="no" id="content" marginwidth="0" marginheight="0" scrolling="auto">
+  <frame src="footer.php<? if $trans_sid ?><? "?"|cat:$session_name|cat:"="|cat:$session_id ?><? /if ?>" name="bottomFrame" frameborder="no" scrolling="NO" noresize marginwidth="0" marginheight="0" id="bottom">
+</frameset>
+<noframes><body>
+</body></noframes>
+</html>

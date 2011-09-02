@@ -1,0 +1,6 @@
+<select name='fields[<? $fieldName ?>]' <? if $preview ?>onChange='fieldChanged("<? $fieldName ?>", this.checked);'<? /if ?> >
+	<? foreach from=$field.values item=cValue ?>
+		<? assign var=valueString value="field_"|cat:$fieldName|lower|cat:"_value_"|cat:$cValue ?>
+		<option <? if $fieldValue==$cValue ?>selected<? /if ?> value='<? $cValue ?>'><? $widgetStrings.$valueString|default:$cValue ?>
+	<? /foreach ?>
+</select>

@@ -1,0 +1,14 @@
+<? assign var=thumbnailMargin value=$thumbnailMargin|default:"5px" ?>
+<? assign var=thumbnailBorderRequired value=$thumbnailBorderRequired|default:1 ?>
+
+<? assign var=target value=$target|default:"_blank" ?>
+
+<div style="margin: <? $thumbnailMargin ?>; padding: 0">
+	<table border=0 cellpadding=0 cellspacing=0 width="<? $size|cat:'px' ?>">
+		<tr>
+			<td style="width: <? $size|cat:'px' ?>; height: <? $size|cat:'px' ?>; <? if $thumbnailBorderRequired ?>border: 1px solid #EDEDED;<? /if ?>" valign=middle align=center>
+				<? if $URL != "" ?><a href="<? $URL ?>" target="<? $target ?>"><? /if ?><img src="<? $srcURL ?>" align=absmiddle alt="<? $thumbTitle ?>" title="<? $thumbTitle ?>" border=0><? if $URL != "" ?></a><? /if ?>
+			</td>
+		</tr>
+	</table>
+</div>

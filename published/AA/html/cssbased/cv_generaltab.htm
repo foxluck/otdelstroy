@@ -1,0 +1,30 @@
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><label for="Records"><? $kernelStrings.cv_screen_contactsnum_label ?></label></td>
+		<td>
+			<select id="Records" name="recordsPerPage" class="FormControl">
+				<? html_options values=$recordsPerPageIDs selected=$recordsPerPage output=$recordsPerPageIDs ?>
+			</select>
+		</td>
+	</tr>
+</table>
+
+<table class="FormLayout">
+	<tr class="SeparatedRow">
+		<td><? $kernelStrings.cv_screen_viewopt_label ?></td>
+	</tr>
+	<tr>
+		<td>
+			<table class="FormLayout" style="margin-left: 20px">
+				<tr>
+					<td><input id="local" type=radio name="folderViewMode" value=local <? wbs_checkboxStatus val=$folderViewMode true_val=local ?>/></td>
+					<td><? wbs_label for="local" text=$kernelStrings.cv_screen_applutocurrent_label skipColon=1 ?></td>
+				</tr>
+				<tr>
+					<td><input id="global" type=radio name="folderViewMode" value=global <? wbs_checkboxStatus val=$folderViewMode true_val=global ?>/></td>
+					<td><? wbs_label for="global" text=$kernelStrings.cv_screen_applutoall_label skipColon=1 ?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

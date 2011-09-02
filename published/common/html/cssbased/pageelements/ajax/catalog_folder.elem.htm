@@ -1,0 +1,35 @@
+<? foreach from=$hierarchy key=level item=data ?>
+	<? assign var=folderData value=$folders.$level ?>
+	
+	<? if $folderData->DF_SPECIALSTATUS ?>
+		<? assign var=iconCls value=$avIconCls|default:"system-folder" ?>
+		<? assign var=editable value=false ?>
+	<? elseif $folderData->RIGHT > 1 ?>
+		<? assign var=iconCls value=$avIconCls|default:"my-folder" ?>
+		<? assign var=editable value=true ?>
+	<? else ?>
+		<? assign var=iconCls value=$unavIconCls|default:"gray-folder" ?>
+		<? assign var=editable value=false ?>
+	<? /if ?>
+	
+	node = new Tree.TreeNode({text: '<? $folderData->NAME|escape:quotes ?>', iconCls: "<? $iconCls ?>", <? if $editable ?>allowDrag: true, allowDrop: true<? else ?>allowEdit: false, allowDrag: false, allowDrop: false<? /if ?>, id:'<? $folderData->ID|default:$availableFolders?>'});
+	node.attributes.link = "<? $folderData->ROW_URL ?>";
+	node.encId = "<? $folderData->ENC_ID ?>";
+	<? if $folderData->RIGHT >= 7 && !$folderData->DF_SPECIALSTATUS ?>
+		node.attributes.editable = true;
+	<? else ?>
+		node.attributes.editable = false;
+	<? /if ?>
+	parentNodes['<? $folderData->ID ?>'] = node;
+	<? if $parentId!==false ?>
+		parentNodes['<? $parentId ?>'].appendChild (node);
+	<? else ?>
+		superparentNode.appendChild(node);
+	<? /if ?>
+	
+	
+	
+	
+	<? include file=$elemFile hierarchy=$data parentId=$folderData->ID ?>
+	
+<? /foreach ?>

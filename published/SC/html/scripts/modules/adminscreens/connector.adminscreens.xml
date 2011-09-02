@@ -1,0 +1,8 @@
+<Connector>
+	<Class>
+		<Name>AdminScreens</Name>
+		<File>class.adminscreens.php</File>
+		<Title>Admin screens</Title>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

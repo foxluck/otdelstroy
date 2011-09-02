@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <? math assign='errorSize' equation='x-40' x=$widgetParams.SLWIDTH ?>
+    
+    <title><? $pageTitle ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>"/>
+    
+    <? if $params.mode=="preview" || $params.mode=="previewEdit" ?><? assign var="isPreview" value=1 ?><? /if ?>
+    <style>
+    	img {border: 0px}
+			html {height: 100%}
+			body {heigth: 100%; <? if $isPreview ?>background: URL("<? $WG_SRC ?>bg.gif");<? else ?>background: <? $widgetParams.SLBODYBGCOLOR ?>; <? /if ?> font-family: "Trebuchet MS"; font-size: 1em; margin: 0px; padding: 0px; overflow: hidden;}
+			#SBSCErrorBlock {z-index: 500; position: absolute; top: 20px; width: <? $errorSize ?>px ; overflow-y: auto; background: #F0F0F0; border: 1px solid #8B0000; font-size: 10pt}
+			.SBSCError {font-style: italic}
+    </style>
+</head>
+<body onLoad="start()" onResize="resizeWindow();" onClick='killPanelTimer()' onMouseMove='killPanelTimer()'>
+		<? assign var="CSUFFIX" value=".16" ?>
+    
+    <script src='<? $WG_SRC ?>widgets/_common/public/js/mootools.js'></script>
+
+		<style>
+			
+			#panel, #descPanel {
+				position: absolute; 
+				width: 100%; 
+				text-align:center; 
+				
+				bottom: -1px; 
+				z-index: 5
+			}
+			
+			#descPanel {bottom: 150px}
+			
+			#panelInner, #descInner {
+/*				width: 100%;
+*/				display:inline-block;
+				//display:inline; //padding: 2px 0px; 
+				margin-left: auto; margin-right: auto;
+/*				
+				padding-top: 4px;
+*/				text-align: center;
+				background: #222;
+				-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+			}
+			
+			#panelInner img {}
+			
+			#descPanel {text-align: left}
+			#descInner {background: #555; text-align: left; color: white; padding: 5px; font-size: 14px; text-align: center; }
+			
+			#panelInner table tr td {padding:3px 5px 0 5px;color: white; font-size: 12px; font-weight: bold;line-height:14px; vertical-align:middle;}
+			#panelInner table tr td a {color: white; font-weight: normal; font-size: 14px; line-height:14px;}
+			.watermark { position:absolute;bottom:2px; right:5px; z-index:100;
+			 filter:alpha(opacity=20);
+	-moz-opacity: 0.20;
+	opacity: 0.20;
+	
+	 } 
+	.watermark a  {
+	color:#fff;background:#222;-moz-border-radius:5px;
+	-webkit-border-radius:5px; padding:0 3px; font-weight:bold; font-size:13px; text-decoration:none;  }
+	.watermark .asyst { font-style:italic;}
+		</style>
+
+		<script>
+			var myImages = new Array ();
+			var image = null;
+			var currentImageNum = 0;
+			
+			var showedImage = null;
+			var nextImage = null;
+			
+			
+			<? foreach from=$filesList key=key item=file ?>
+				image = new Object ();
+				image.source = '<? $file.url.$IMG_SIZE ?>';
+				image.w = '<? $file.w ?>';
+				image.h = '<? $file.h ?>';
+				image.desc = "<? if $file.PL_DESC ?><? $file.PL_DESC|htmlsafe|escape:javascript|truncate:1000 ?><? else ?>&lt;<? $pdStrings.pd_slideshow_nodesc_label ?>&gt;<? /if ?>";
+				image.id = '<? $file.ENC_PL_ID ?>';
+				<? if $widgetParams.SLCPANEL == 'manage' ?>
+					image.deleteUrl = 'nofollow_<? $file.DELETE_URL ?>';
+				<? /if ?>
+				image.zoomUrl = '<? $file.ZOOM_URL ?>';
+				myImages[myImages.length] = image;
+			<? /foreach ?>
+			
+			function showImage (num) {
+				if (num == null)
+					num = currentImageNum;
+				
+				if (num < 0)
+					num = myImages.length - 1;
+				if (num >= myImages.length) {
+					num = 0;
+				}
+					
+				currentImageNum = num;
+				$("currentImageNum").value = currentImageNum;
+				
+				//bigImage.src = "s.gif";
+				
+				//bigImage.parentNode.appendChild(newImg);
+				//resizeImage (); 
+				//showImageSrc ();
+				window.setTimeout("showImageSrc()", 2);
+			}
+			
+			var cacheImages = new Array ();
+			function getImageSource(index) {
+				if (cacheImages[index] == null) {
+					cacheImages[index] = new Image();
+					cacheImages[index].src = myImages[index].source;
+				}
+				return cacheImages[index].src;
+			}
+			
+			var mimageLoadedFunc = null;
+			var showedImageLoaded = false;
+			function showImageSrc () {
+				if (nextImage.src != myImages[currentImageNum].source || !showedImageLoaded) {
+					mimageLoadedFunc = myLoadedFunc;
+					nextImage.src = getImageSource(currentImageNum);
+				} else {
+					mimageLoadedFunc = myLoadedFunc;
+					myLoadedFunc (nextImage);
+				}
+				/*if (currentImageNum < myImages.length -1)
+				{
+					var mySecondImage = new Image();
+					mySecondImage.src = myImages[currentImageNum+1].src;
+				}*/
+				/*if (currentImageNum < myImages.length -2) {
+					var mySecondImage2 = new Image();
+					mySecondImage2.src = myImages[currentImageNum+2].src;
+				}*/
+			}
+			
+			function myLoadedFunc () {
+				resizeImage (nextImage);
+				var nextStyle = new Fx.Style(nextImage.id, "opacity", {duration: 500});
+				var showedStyle = new Fx.Style(showedImage.id, "opacity", {duration: 50});
+				
+				showedStyle.start (0);
+				nextStyle.start(1);		
+				
+				//showedImage.src = "s.gif";
+				var buffer = nextImage;
+				nextImage = showedImage;
+				showedImage = buffer;
+				
+				window.setTimeout("preloadNextImage()", 300);
+				
+				$("descInnerTxt").innerHTML = myImages[currentImageNum].desc;
+				mimageLoadedFunc = null;
+			}
+			
+			function preloadNextImage() {
+				if (currentImageNum < myImages.length -1)
+				{
+					//alert("preload");
+					nextImage.src = getImageSource(currentImageNum+1);
+					showedImageLoaded = false;
+				}
+			}
+			
+			function imageLoaded (cimage) {
+				if (cimage == nextImage) {
+					if (mimageLoadedFunc != null) {
+						mimageLoadedFunc ();
+					} else {
+						showedImageLoaded = true;
+					}
+				}
+				//alert(cimage);		
+			}
+			
+			function showFirstImage () {
+				currentImageNum = 0;
+				showImage();
+				stopSlideshow ();
+			}
+			
+			function showLastImage () {
+				currentImageNum = myImages.length-1;
+				showImage();
+				stopSlideshow ();
+			}
+			
+			
+			function showNextImage () {
+				currentImageNum++;
+				showImage();
+			}
+			
+			function showPrevImage () {
+				currentImageNum--;
+				showImage();
+			}
+			
+			var played = false;
+			function playStopSlideshow () {
+				played = !played;
+				if ($('playBtn'))
+					window.setTimeout ("setPlayedBtnSrc(" + played + ")", 10);
+				if (!played && slideshowTimer!= null) {
+					window.clearTimeout(slideshowTimer);
+					slideshowTimer = null;
+				}
+				if (played && slideshowTimer == null)
+					slideshowTimer = window.setTimeout("doSlideshow()", slideshowSpeed*1000);
+			}
+			
+			function setPlayedBtnSrc (played) {
+				$("playBtn").src = (played) ? "<? $WG_SRC ?>widgets/PDList/public/img/slideshow/pause<? $CSUFFIX ?>.gif" : "<? $WG_SRC ?>widgets/PDList/public/img/slideshow/play<? $CSUFFIX ?>.gif";
+			}
+			
+			function stopSlideshow () {
+				played = true;
+				playStopSlideshow ();
+			}
+			
+			function startSlideshow () {
+				played = false;
+				playStopSlideshow ();
+			}
+			
+			
+			var slideshowSpeed = <? $widgetParams.SLSECONDS|default:3 ?>;
+			var slideshowTimer = null;
+			function doSlideshow () {
+				if (mimageLoadedFunc == null)
+					showNextImage ();
+				slideshowTimer = window.setTimeout ("doSlideshow()", slideshowSpeed*1000);
+			}
+			
+			function showSlideshowSpeed () {
+				return;
+				$("slideshowSpeed").innerHTML = slideshowSpeed + " <? $pdStrings.pd_slideshow_seconds_label ?>";
+			}
+			
+			function slideshowSlower () {
+				if (slideshowSpeed > 1)
+					slideshowSpeed--;		
+				showSlideshowSpeed ();
+			}
+			
+			function slideshowFaster () {
+				if (slideshowSpeed < 20)
+					slideshowSpeed++;		
+				showSlideshowSpeed ();
+			}
+			
+			panelTimer = null;
+			function checkNeedPanel () {
+				window.setTimeout ("checkNeedPanel()", 1000);
+				if (panelTimer == null) {
+					panelTimer = window.setTimeout ("hidePanel()", 2000);
+				}
+			}
+			
+			function killPanelTimer () {
+				if (panelTimer != null) {
+					window.clearTimeout (panelTimer);
+					panelTimer = null;
+				}
+				if ($("panel") && $("panel").style.display == "none")
+					$("panel").style.display = "block";
+			}
+			
+			function hidePanel () {
+				//alert("Hide");
+				if ($("panel") == null)
+					return;
+				if ($("panel").style.display != "none")
+					$("panel").style.display = "none";
+				panelTimer = null;
+			}
+			
+			function resizeWindow () {
+				//$("panelInner").style.marginLeft = ((document.documentElement.clientWidth - 500) /2) + "px";
+				resizeImage ();
+			}
+			
+			function resizeImage(img) {
+				var cimage = myImages[currentImageNum];
+				var clientHeight  = document.documentElement.clientHeight;
+				var clientWidth = document.documentElement.clientWidth;
+				
+				if (clientHeight == 0 && document.clientHeight != null)
+					clientHeight = document.clientHeight;
+				if (clientWidth == 0 && document.clientWidth != null)
+					clientWidth = document.clientWidth;
+					
+				<? if $isPreview ?>
+					clientHeight = <? $widgetParams.SLHEIGHT ?>;
+					clientWidth = <? $widgetParams.SLWIDTH ?>;
+				<? /if ?>
+			
+			
+				if (img == null)
+					img = showedImage;
+					
+				var ratio = cimage.h / cimage.w;
+				if (cimage.w > clientWidth) {
+					newWidth = clientWidth;
+					newHeight = newWidth * ratio;
+					img.style.width = clientWidth + "px";
+					img.style.height = newHeight + "px";
+				} else {
+					newHeight = cimage.h;
+					img.style.height = newHeight + "px";
+				}
+				
+				var ch = getElementComputedStyle (img, "height");
+				ch = ch.substr(0,ch.length-2);
+				
+				if (ch > clientHeight) {
+					newHeight = clientHeight;
+					newWidth = newHeight/ratio;
+					img.style.height = newHeight + "px";
+					img.style.width = newWidth + "px";
+				}
+				
+				
+				if (cimage.w <= clientWidth && cimage.h <= clientHeight) {
+					newWidth = cimage.w;
+					newHeight = cimage.h;
+					img.style.width = newWidth + "px";
+					img.style.height = newHeight + "px";
+				}
+				
+				img.style.top = (clientHeight-newHeight)/2 + "px";
+				img.style.left = (clientWidth-newWidth)/2 + "px";
+			}
+			
+			var showDescriptions = false;
+			function toggleDescriptions () {
+				showDescriptions = !showDescriptions;
+				$("descInner").style.display = showDescriptions ? "block" : "none";
+				$("descriptionsLink").innerHTML = 	showDescriptions ? "<? $pdStrings.pd_slideshow_hidedesc_label	 ?>" : "<? $pdStrings.pd_slideshow_showdesc_label	 ?>";
+			}
+			
+			function deleteCurrentImage () {
+				if (!confirm("<? $widgetStrings.up_filedelete_message ?>"))
+					return;
+				location.href = myImages[currentImageNum].deleteUrl.replace("nofollow_","");
+				return false;
+			}
+			
+			function zoomCurrentImage () {
+				<? if $widgetParams.SLONCLICK == "disable" ?>return;<? /if ?>
+				stopSlideshow ();
+				window.open(myImages[currentImageNum].zoomUrl, '', 'resizable=1,scrollbars=0,menubar=0,height=768,width=768');
+				return false;
+			}
+			
+			function showHideAddPanel () {
+				stopSlideshow ();
+				$("addPanel").style.display = ($("addPanel").style.display == "none") ? "block" : "none";
+			}
+			
+			function hideError () {
+				document.getElementById("SBSCErrorBlock").style.display = "none";
+				var objs = document.getElementsByTagName ("select");
+				for (i = 0; i < objs.length; i++) {
+					var obj = objs[i];
+					obj.style.visibility = "visible";
+				}
+			}
+	
+			function showError () {
+				var objs = document.getElementsByTagName ("select");
+				for (i = 0; i < objs.length; i++) {
+					var obj = objs[i];
+					obj.style.visibility = "hidden";
+				}
+				var width = 0;
+				width = document.documentElement.clientWidth;
+				if (width == 0)
+					width = document.body.clientWidth;
+					
+				if (width > 0) {
+					document.getElementById("SBSCErrorBlock").style.left = (width - <? $errorSize ?>) / 2 + "px";
+				}
+			}
+</script>
+		
+		<? if $errorStr ?>
+			<table id='SBSCErrorBlock' cellspacing="0" cellpadding="0" height="0">
+				<tr><td style='background: darkred; color: white; font-weight: bold; padding: 3px'><? $wgStrings.error_title ?></td></tr>
+				<tr><td style='padding: 4px; height: 50px; overflow-y: auto' valign='top'>
+					<? $errorStr ?>
+					<BR>
+					<span style='border: 1px solid #999999; color: #666666; background: #E0E0E0; float:right; padding-left: 3px; padding-right: 3px; cursor: pointer' onClick='hideError();'>OK</span>
+				</td></tr>
+			</table>
+		<? /if ?>
+		
+		
+		<? if $isPreview ?>
+			<div id='previewWrapper' style='border: 1px solid #999; width: <? $widgetParams.SLWIDTH ?>px; height: <? $widgetParams.SLHEIGHT ?>px; top: 10px; left: 60px; position: absolute; background: <? $widgetParams.SLBODYBGCOLOR ?>'>
+		<? else ?>
+			<div id='bodyWrapper'>
+		<? /if ?>
+		
+			<div id='addPanel' style='position: absolute; display: none; bottom: -1px; width: 100%; height: 32px; z-index: 100; background: #444; color: white;'>
+				<form action='' style='margin:0px; padding:0px' method='post'  enctype='multipart/form-data'>
+					<div style='padding: 3px'>
+						<input id='action' type='hidden' name='action' value='add'>
+						<input id='currentImageNum' type='hidden' name='currentImageNum' value='0'>
+						<input type='file' name='file' size='10' style='font-size: 8pt'> 
+						<input type='submit' value='<? $widgetStrings.up_addfile_btn ?>' style='font-size: 8pt'>
+						<input value='<? $widgetStrings.up_cancelbtn_label ?>' type='button' style='font-size: 8pt' onClick='showHideAddPanel()'>
+						<!--input type='submit' value='Cancel' style='font-size: 8pt'-->
+					</div>
+				</form>
+			</div>
+				
+			<img galleryimg="no" onClick='zoomCurrentImage()' id='bigImage' src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/s.gif' style='<? if $widgetParams.SLONCLICK != "disable" ?>cursor: pointer;<? /if ?> position: absolute; left: 0px; top: 0px; ' onLoad='imageLoaded(this)'>
+			<img galleryimg="no" onClick='zoomCurrentImage()' id='nextImage' src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/s.gif' style='<? if $widgetParams.SLONCLICK != "disable" ?>cursor: pointer;<? /if ?> position: absolute; left: 0px; top: 0px; ' onLoad='imageLoaded(this)'>
+			<div class="watermark"><a target="_blank" href="<? $widgetStrings.pd_linkWebasyst ?>"><span class="web">web</span><span class="asyst">Asyst</span></a></div>
+			<div id='descPanel'>
+				<div id='descInner' style='display:none'>
+					<div id='descInnerTxt'><? $pdStrings.pd_slideshow_loading_label ?></div>
+					
+				</div>
+			</div>
+			
+			<? if !$filesList ?>
+				<? math assign=mtop equation="(x-50)/2-20" x=$widgetParams.SLHEIGHT ?>
+				<div style='color: #333; font-weight: normal; position: absolute; height: 60px; top: <? $mtop ?>px; width: 100%; text-align: center; z-index: 100; '>
+					<span style='background: #F0F0F0'>&lt;<? $widgetStrings.up_nofiles_label ?>&gt;</span>
+					<? if $widgetParams.SLCPANEL == 'manage' ?>
+						<BR><BR>
+						<span style='font-weight:normal'><a href='javascript:void(0)' onClick='showHideAddPanel()' style='color: #333; background: #F0F0F0'><? $widgetStrings.up_addfile_label ?></a></span>
+					<? /if ?>
+				</div>
+			<? /if ?>
+				
+
+			<? if $filesList && $widgetParams.SLCPANEL != 'disable' ?>
+			<div id='panel'>
+				<div id='panelInner'>
+					<img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/pause<? $CSUFFIX ?>.gif' style='display: none'>
+					<img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/play<? $CSUFFIX ?>.gif' style='display: none'>
+					<table align='center' cellspacing='0' cellpadding='0'>
+						<tr valign='middle'>
+							<!--td><a href='javascript:void(0)' onFocus='this.blur()' onClick='showFirstImage()' style='color: white'><img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/first<? $CSUFFIX ?>.gif'></a></td-->
+								<td><a href='javascript:void(0)' onFocus='this.blur()' onClick='showPrevImage(); stopSlideshow ();' style='color: white'><img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/prev<? $CSUFFIX ?>.gif'></a></td>
+								<td><a href='javascript:void(0)' onFocus='this.blur()' onClick='playStopSlideshow()' style='color: white'><img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/play<? $CSUFFIX ?>.gif' id='playBtn'></a></td>
+								<td><a href='javascript:void(0)' onFocus='this.blur()' onClick='showNextImage(); stopSlideshow ();' style='color: white'><img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/next<? $CSUFFIX ?>.gif'></a></td>
+							<!--td><a href='javascript:void(0)' onClick='showLastImage()' style='color: white'><img src='<? $WG_SRC ?>widgets/PDList/public/img/slideshow/last<? $CSUFFIX ?>.gif'></a></td-->
+							<? if $widgetParams.SLCPANEL == 'manage' ?>
+								<td>&nbsp;&nbsp;</td>
+								<? if $filesList ?><td style='padding-bottom: 4px'><a href='javascript:void(0)' onClick='showHideAddPanel()'><? $widgetStrings.up_addfile_label ?></a></td><? /if ?>
+								<? if $filesList ?><td style='padding-bottom: 4px'><a href='javascript:void(0)' onClick='return deleteCurrentImage()'><? $widgetStrings.up_delfile_label ?></a></td><? /if ?>
+							<? /if ?>
+						</tr>
+					</table>		
+				</div>
+			</div>
+			<? /if ?>
+		
+		</div>
+		<? if $isPreview ?>
+			<script>
+				var clientWidth = document.documentElement.clientWidth;
+				
+				if (clientWidth == 0 && document.clientWidth != null)
+					clientWidth = document.clientWidth;
+				$("previewWrapper").style.left = (clientWidth - parseInt($("previewWrapper").style.width))/2+ "px";
+			</script>
+		
+		<? /if ?>
+
+		<script>
+			if($("panelInner") != null)
+				$("panelInner").setStyle("opacity", 0.8);
+			
+			function start () {
+				showedImage = $("bigImage");
+				nextImage = $("nextImage");
+				nextImage.setStyle("opacity", 0);
+				$("descInner").setStyle("opacity", 0.7);
+				
+				<? if !$filesList ?>
+					return;									
+				<? /if ?>
+				
+				showSlideshowSpeed ();
+				checkNeedPanel ();
+				showImage(<? $currentImageNum|default:0 ?>);
+				resizeImage();
+				<? if $widgetParams.SLAUTOPLAY && !$NO_SLIDESHOW_START && (sizeof($filesList) > 1) ?>
+					window.setTimeout("startSlideshow()", 500);
+				<? /if ?>
+			}
+			
+			
+			function getElementComputedStyle(elem, prop)
+			{
+			  if (typeof elem!="object") elem = document.getElementById(elem);
+			  
+			  // external stylesheet for Mozilla, Opera 7+ and Safari 1.3+
+			  if (document.defaultView && document.defaultView.getComputedStyle)
+			  {
+			    if (prop.match(/[A-Z]/)) prop = prop.replace(/([A-Z])/g, "-$1").toLowerCase();
+			    return document.defaultView.getComputedStyle(elem, "").getPropertyValue(prop);
+			  }
+			  
+			  // external stylesheet for Explorer and Opera 9
+			  if (elem.currentStyle)
+			  {
+			    var i;
+			    while ((i=prop.indexOf("-"))!=-1) prop = prop.substr(0, i) + prop.substr(i+1,1).toUpperCase() + prop.substr(i+2);
+			    return elem.currentStyle[prop];
+			  }
+			  
+			  return "";
+			}
+		</script>
+		
+<? if $errorStr ?>
+	<script>
+		showError ();
+	</script>
+<? /if ?>
+    
+</body>
+
+</html>

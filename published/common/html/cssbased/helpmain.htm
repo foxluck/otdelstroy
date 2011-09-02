@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<style>
+			#ToolbarIn {display: none}
+			.help-list {}
+			.help-list li {font-size: 1.1em; margin-bottom: 15px; list-style: none; font-weight: bold}
+			.help-list li .desc {display: block; font-weight: normal}
+			
+		</style>
+	</head>
+	<body>
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+				<ul class='help-list'>
+					<li>
+						<a href='help.php'><? $kernelStrings.help_manual_lbl ?></a>
+						<span class='desc'><? $kernelStrings.help_manual_desc ?></span>
+					</li>
+					<li>
+						<a target='_blank' href='http://<? $domain ?>/support/'><? $kernelStrings.help_support_lbl ?></a>
+						<img src='../cssbased/res/images/new_window_icon.gif'/>
+						<span class='desc'><? $kernelStrings.help_support_desc ?></span>
+					</li>
+					<li>
+						<a target='_blank' href='http://forum.<? $domain ?>'><? $kernelStrings.help_forum_lbl ?></a>
+						<img src='../cssbased/res/images/new_window_icon.gif'/>
+						<span class='desc'><? $kernelStrings.help_forum_desc ?></span>
+					</li>
+					<li>
+						<a target='_blank' href='http://blog.<? $domain ?>'><? $kernelStrings.help_blog_lbl ?></a>
+						<img src='../cssbased/res/images/new_window_icon.gif'/>
+						<span class='desc'><? $kernelStrings.help_blog_desc ?></span>
+					</li>
+				</ul>
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

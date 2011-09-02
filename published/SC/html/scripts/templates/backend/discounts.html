@@ -1,0 +1,281 @@
+<script type="text/javascript" src="{$smarty.const.URL_JS}/JsHttpRequest.js"></script>
+{* discount managment *}
+<h1>{"lbl_tune_discounts"|translate}</h1>
+
+<div style="background-color: #fafae7; padding: 10px; width: 50%; margin: 5px;">
+    <table cellpadding="1" cellspacing="1" width="100%" border="0">
+        <colgroup>
+            <col width="50%" />
+            <col width="30%" />
+            <col width="20%" />
+        </colgroup>
+        <tr>
+            <td align="left" style="font-weight: bold;">{"lbl_by"|translate} <a href="{$mng_coupons_url}">{"lbl_dsc_by_coupons"|translate}</a></td>
+            <td align="right"><b id="state_label_coupons" style="color: {if $dsc_states.by_coupons eq 'N'}red{else}green{/if};">{if $dsc_states.by_coupons eq 'N'}{"disabled_short"|translate}{else}{"enabled"|translate}{/if}</b></td>
+            <td align="right">
+                <button type="button" id="state_button_coupons" onClick="toogleDSC('coupons');">{if $dsc_states.by_coupons eq 'N'}{"btn_enable"|translate}{else}{"btn_disable"|translate}{/if}</button>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">{"msg_dsc_by_coupons"|translate}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="background-color: #fafae7; padding: 10px; width: 50%; margin: 5px;">
+    <table cellpadding="1" cellspacing="1" width="100%">
+        <colgroup>
+            <col width="50%" />
+            <col width="30%" />
+            <col width="20%" />
+        </colgroup>
+        <tr>
+            <td align="left" style="font-weight: bold;">{"lbl_by"|translate} <a href="{$mng_usergroups_url}">{"lbl_dsc_by_usergroup"|translate}</a></td>
+            <td align="right"><b id="state_label_usergroup" style="color: {if $dsc_states.by_usergroup eq 'N'}red{else}green{/if};">{if $dsc_states.by_usergroup eq 'N'}{"disabled_short"|translate}{else}{"enabled"|translate}{/if}</b></td>
+            <td align="right">
+                <button type="button" id="state_button_usergroup" onClick="toogleDSC('usergroup');">{if $dsc_states.by_usergroup eq 'N'}{"btn_enable"|translate}{else}{"btn_disable"|translate}{/if}</button>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">{"msg_dsc_by_usergroup"|translate}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="background-color: #fafae7; padding: 10px; width: 50%; margin: 5px;">
+    <table cellpadding="1" cellspacing="1" width="100%">
+        <colgroup>
+            <col width="50%" />
+            <col width="30%" />
+            <col width="20%" />
+        </colgroup>
+        <tr>
+            <td align="left" style="font-weight: bold;">{"lbl_dsc_by_amount"|translate}</td>
+            <td align="right"><b id="state_label_amount" style="color: {if $dsc_states.by_amount eq 'N'}red{else}green{/if};">{if $dsc_states.by_amount eq 'N'}{"disabled_short"|translate}{else}{"enabled"|translate}{/if}</b></td>
+            <td align="right">
+                <button type="button" id="state_button_amount" onClick="toogleDSC('amount');">{if $dsc_states.by_amount eq 'N'}{"btn_enable"|translate}{else}{"btn_disable"|translate}{/if}</button>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">{"msg_dsc_by_amount"|translate}</td>
+        </tr>
+        <tr id="sets_amount" style="display: {if $dsc_states.by_amount eq 'N'}none{/if};">
+            <td colspan="3">
+            
+                    <form name='MainForm' method="post">
+                    <input type="hidden" name="action" value="save_order_price_discounts">
+                    <input type="hidden" name="discount_type" value="A">
+                        <p>{"dscnt_method_order_amount_criteria_descr"|translate}</p>
+                        
+                        <table class="grid">
+                        <tr class="gridsheader">
+                            <td>{"dscnt_order_amount"|translate}</td>
+                            <td>{"dscnt_order_amount_percent_value"|translate}</td>
+                            <td>{lbl_btn_delete}</td>
+                        </tr>
+                        
+                        {section name=i loop=$discounts}
+                        <tr class="{cycle values='gridline,gridline1'}">
+                            <td>
+                                <input type="text" name='price_range_{$discounts[i].discount_id}' value='{$discounts[i].price_range|escape:"html"}' style="width:100%" />
+                            </td>
+                            <td>
+                                <input type="text" name='percent_discount_{$discounts[i].discount_id}' value='{$discounts[i].percent_discount|escape:"html"}' style="width:100%" />
+                            </td>
+                            <td align="center">
+                                <a href='{"action=del_discount&dsc_id=`$discounts[i].discount_id`"|set_query_html}' title='{"cnfrm_delete"|translate}' class="confirm_action">
+                                    <img src="images_common/remove.gif" alt="{"btn_delete"|translate}" />
+                                </a>
+                            </td>
+                        </tr>
+                        {/section}
+                        
+                        <tr class="gridsheader_simple">
+                            <td colspan="3"><b>{"btn_add"|translate}</b></td>
+                        </tr>
+                        <tr class="gridsheader">
+                            <td>{"dscnt_order_amount"|translate}</td>
+                            <td>{"dscnt_order_amount_percent_value"|translate}</td>
+                            <td></td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <input type="text" name='new_price_range' style="width:100%" />
+                            </td>
+                            <td>
+                                <input type="text" name='new_percent_discount' style="width:100%" />
+                            </td>
+                            <td></td>
+                        </tr>
+                        
+                        </table>
+                        
+                        <p>
+                            <input name="save_order_price_discounts" type="submit" value='{"btn_save"|translate}' />
+                        </p>
+                    </form>            
+            
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="background-color: #fafae7; padding: 10px; width: 50%; margin: 5px;">
+    <table cellpadding="1" cellspacing="1" width="100%">
+        <colgroup>
+            <col width="50%" />
+            <col width="30%" />
+            <col width="20%" />
+        </colgroup>
+        <tr>
+            <td align="left" style="font-weight: bold;">{"lbl_dsc_by_orders"|translate}</td>
+            <td align="right"><b id="state_label_orders" style="color: {if $dsc_states.by_orders eq 'N'}red{else}green{/if};">{if $dsc_states.by_orders eq 'N'}{"disabled_short"|translate}{else}{"enabled"|translate}{/if}</b></td>
+            <td align="right">
+                <button type="button" id="state_button_orders" onClick="toogleDSC('orders');">{if $dsc_states.by_orders eq 'N'}{"btn_enable"|translate}{else}{"btn_disable"|translate}{/if}</button>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">{"msg_dsc_by_orders"|translate}</td>
+        </tr>
+        <tr id="sets_orders" style="display: {if $dsc_states.by_orders eq 'N'}none{/if};">
+            <td colspan="3">
+            
+                    <form name='DscOrdersSumForm' method="post">
+                    <input type="hidden" name="action" value="save_order_price_discounts">
+                    <input type="hidden" name="discount_type" value="O">
+                    <br />    
+                        <table class="grid">
+                        <tr class="gridsheader">
+                            <td>{"lbl_dsc_order_sum"|translate}</td>
+                            <td>{"lbl_dsc_order_percent"|translate}</td>
+                            <td>{lbl_btn_delete}</td>
+                        </tr>
+                        
+                        {section name=i loop=$so_discounts}
+                        <tr class="{cycle values='gridline,gridline1'}">
+                            <td>
+                                <input type="text" name='price_range_{$so_discounts[i].discount_id}' value='{$so_discounts[i].price_range|escape:"html"}' style="width:100%" />
+                            </td>
+                            <td>
+                                <input type="text" name='percent_discount_{$so_discounts[i].discount_id}' value='{$so_discounts[i].percent_discount|escape:"html"}' style="width:100%" />
+                            </td>
+                            <td align="center">
+                                <a href='{"action=del_discount&dsc_id=`$so_discounts[i].discount_id`"|set_query_html}' title='{"cnfrm_delete"|translate}' class="confirm_action">
+                                    <img src="images_common/remove.gif" alt="{"btn_delete"|translate}" />
+                                </a>
+                            </td>
+                        </tr>
+                        {/section}
+                        
+                        <tr class="gridsheader_simple">
+                            <td colspan="3"><b>{"btn_add"|translate}</b></td>
+                        </tr>
+                        <tr class="gridsheader">
+                            <td>{"lbl_dsc_order_sum"|translate}</td>
+                            <td>{"lbl_dsc_order_percent"|translate}</td>
+                            <td></td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <input type="text" name='new_price_range' style="width:100%" />
+                            </td>
+                            <td>
+                                <input type="text" name='new_percent_discount' style="width:100%" />
+                            </td>
+                            <td></td>
+                        </tr>
+                        
+                        </table>
+                        
+                        <p>
+                            <input name="save_order_price_discounts" type="submit" value='{"btn_save"|translate}' />
+                        </p>
+                    </form>            
+            
+            </td>
+        </tr>
+    </table>
+</div>
+
+<form name="CfgCalcDscForm" method="post">
+<input type="hidden" name="action" value="set_cfg" />
+    <table cellpadding="2" cellspacing="1" width="50%">
+        <colgroup>
+            <col width="2%" />
+            <col width="98%" />
+        </colgroup>
+        <tr>
+            <td colspan="2">{"qst_how_calc_discount"|translate}</td>
+        </tr>
+        <tr valign="top">
+            <td><input type="radio" name="cfg_dsc_calc" id="cfg_dsc_calc_as_sum" value="as_sum" {if $cfg_dsc_calc eq 'as_sum'}checked="checked"{/if} /></td>
+            <td><label for="cfg_dsc_calc_as_sum"l>{"cfg_calc_dsc_summ"|translate}</label></td>
+        </tr>
+        <tr valign="top">
+            <td><input type="radio" name="cfg_dsc_calc" id="cfg_dsc_calc_as_max" value="as_max" {if $cfg_dsc_calc eq 'as_max'}checked="checked"{/if} /></td>
+            <td><label for="cfg_dsc_calc_as_max">{"cfg_calc_dsc_max"|translate}</label></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="left"><input type="submit" value="{"btn_save"|translate}"></td>
+        </tr>
+    </table>
+</form>
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+
+var dsc_states = {
+    coupons: '{/literal}{$dsc_states.by_coupons}{literal}'
+   ,usergroup: '{/literal}{$dsc_states.by_usergroup}{literal}'
+   ,amount: '{/literal}{$dsc_states.by_amount}{literal}'
+   ,orders: '{/literal}{$dsc_states.by_orders}{literal}'
+};
+
+function toogleDSC(dsc_type)
+{
+    var cur_state = dsc_states[dsc_type];
+    var new_state = (cur_state == 'Y' ? 'N' : 'Y');
+    var state_button = document.getElementById('state_button_'+dsc_type);
+    var state_label = document.getElementById('state_label_'+dsc_type);
+    
+    var req = new JsHttpRequest();
+    
+    req.onreadystatechange = function()
+    {
+        if (req.readyState != 4)return;
+        if(req.responseText)alert(req.responseText);
+        
+        dsc_states[dsc_type] = new_state;
+        state_button_label = (new_state == 'Y' ? '{/literal}{"btn_disable"|translate}{literal}' : '{/literal}{"btn_enable"|translate}{literal}');
+        state_button.innerHTML = state_button_label;
+        state_label.innerHTML = (new_state == 'Y' ? '{/literal}{"enabled"|translate}{literal}' : '{/literal}{"disabled_short"|translate}{literal}');
+        state_label.style.color = (new_state == 'Y' ? 'green' : 'red');
+        
+        if(document.getElementById('sets_'+dsc_type))
+        {
+            toogleVisibility('sets_'+dsc_type);
+        };
+    };
+    
+    state_button.disabled = true;
+    try
+    {
+        req.open(null, set_query('&caller=1&initscript=ajaxservice'), true);
+        req.send({'action': 'set_dsc_state', 'dsc_type':dsc_type, 'dsc_state': new_state});
+    }
+    catch ( e )
+    {
+      catchResult(e);
+    }
+    finally { ;}
+    state_button.disabled = false;
+};
+
+function toogleVisibility(el_id)
+{
+    var el = document.getElementById(el_id);
+    el.style.display = (el.style.display == 'none' ? '' : 'none');
+};
+
+{/literal}
+</script>

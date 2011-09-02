@@ -1,0 +1,6 @@
+<interfaces>
+	<interface>
+		<name>Edit theme</name>
+		<key>theme_edit</key>
+	</interface>
+</interfaces>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+		<script src="../../../common/html/classic/tree_templates/tree_functions.js"></script>
+		<link rel="stylesheet" href="../../../common/html/cssbased/rights.css" type="text/css"/>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+				<? wbs_formCaption text=$groupName|htmlsafe:true:true ?>
+
+				<? wbs_tabForm basePath="../../../AA/html/cssbased" activeTab=$activeTab tabs=$tabs width="710px" height="360px" ?>
+
+					<? wbs_formButtonsPanel ?>
+
+						<? wbs_buttonSet ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_save_btn name="savebtn" onClick="fillSelectedLists( new Array( 'included_users[]', 'notincluded_users[]' ) );" ?>
+							<? wbs_buttonSetButton caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+						<? /wbs_buttonSet ?>
+
+					<? /wbs_formButtonsPanel ?>
+
+				<? /wbs_tabForm ?>
+
+			<? else ?>
+				<? wbs_button caption=$kernelStrings.app_cancel_btn name="cancelbtn"?>
+			<? /if ?>
+
+			<input type="hidden" name="opener" value="<? $opener ?>"/>
+			<input type="hidden" name="openerParams" value="<? $openerParams ?>"/>
+			<input name="action" type="hidden" value="<? $action ?>"/>
+			<input name="activeTab" type="hidden" value="<? $activeTab ?>"/>
+			<input name="UG_ID" type="hidden" value="<? $UG_ID ?>"/>
+			<input name="thisUserGroup" type="hidden" value="<? $thisUserGroup ?>"/>
+			<input name="prevAccessSettings" type="hidden" value="<? $prevAccessSettings ?>"/>
+			<input type=hidden name=groupName value="<? $groupName|htmlsafe:true:true ?>"/>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+{* product discussion *}
+<p><span class=cat><b>{$product_name}</b> : <u>{"prddiscussion_title"|translate}</u></span> 
+	[ <a href="{"ukey=product&productID=`$productID`"|set_query}">{"str_more_info_on_product"|translate}</a> ]
+<p><center>
+
+{if $GridRows}
+
+
+ {foreach from=$GridRows item=_row}
+	<table width=90%>
+	<tr>
+	 <td width=1%>
+	  <span class="average" style="white-space: nowrap;">{"str_your_name"|translate}:</span></td>
+			<td width=99% align=left>{$_row.Author|escape:'html'} ({$_row.add_time|escape:'html'})
+	 </td>
+	</tr>
+	
+	<tr>
+	 <td width=1%>
+	  <span class=average style="white-space: nowrap;">{"str_subject"|translate}:</span></td><td width=99% align=left><b>{$_row.Topic|escape:'html'}</b>
+	 </td>
+	</tr>
+	
+	{if $_row.Body ne ""}
+		<tr>
+			<td width=1% valign=top><span class=average style="white-space: nowrap;">{"prddiscussion_body"|translate}:</span></td><td width=99% align=left>{$_row.Body|escape:'html'}
+			</td>
+		</tr>
+	{/if}
+	</table>
+				
+	{if $log ne "" && $log eq $smarty.const.ADMIN_LOGIN}
+	  [ <a href='{"&remove_topic=`$_row.DID`"|set_query_html}'>{"prddiscussion_delete_post_link"|translate}</a> ]
+	{/if}
+	
+	<hr size=1 width=90%>
+
+ {/foreach}
+	{include file="../backend/lister.tpl.html"}
+{else}
+{"prddiscussion_no_posts_on_item_string"|translate}
+{/if}
+
+
+
+</center>
+
+<h2>{"prddiscussion_add_message"|translate}</h2>
+
+{$MessageBlock}
+
+<form action="{''|set_query_html}" method="post" name="formD" onSubmit="return validate_disc(this);">
+<table>
+<tr>
+	<td align="right">{"str_your_name"|translate}:</td>
+	<td><input type="text" name="nick" value="{$new_topic.nick|escape:'html'}" ></td>
+</tr>
+<tr>
+	<td align=right>{"str_subject"|translate}:</td>
+	<td><input type="text" name="topic" value="{$new_topic.topic|escape:'html'}" ></td>
+</tr>
+<tr>
+<tr>
+	<td align="right" valign="top">{"prddiscussion_body"|translate}:</td>
+	<td>
+		<textarea name="body" cols="50" rows="10">{$new_topic.body|escape:'html'}</textarea>
+	</td>
+</tr>
+{if $smarty.const.CONF_ENABLE_CONFIRMATION_CODE}
+<tr>
+	<td align="right">
+		<img src="{$conf_image}" alt="code" align="right" border="0" />
+	</td>
+	<td align="left">
+		<input name="fConfirmationCode" style="color:#aaaaaa" value="{"str_enter_ccode"|translate}" type="text" onfocus="if(this.value=='{"str_enter_ccode"|translate}')
+		{literal}
+		{this.style.color='#000000';this.value='';}
+		{/literal}" onblur="if(this.value=='')
+		{literal}{{/literal}this.style.color='#aaaaaa';this.value='{"str_enter_ccode"|translate}'{literal}}{/literal}" >
+	</td>
+</tr>
+{/if}
+<tr>
+	<td>&nbsp;</td>
+	<td>
+		<input type=submit value="{"btn_post_message"|translate}">
+		<input type=hidden name=add_topic value=yes>
+		<input type=hidden name=productID value={$productID}>
+		<input type=hidden name=discuss value=yes>
+		<input type=reset value="{"btn_reset"|translate}">
+	</td>
+</tr>
+</table>
+</form>

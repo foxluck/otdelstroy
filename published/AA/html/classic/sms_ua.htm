@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="javascript">
+
+function treeCheckSelection( text )
+{
+         thisForm = document.forms[0];
+
+         checkedFound = false;
+
+         for ( i = 0; i < thisForm.elements.length; i++ )
+                 if (thisForm.elements[i].type == 'checkbox')
+                         if ( thisForm.elements[i].name != "selectAllDocsCB" && thisForm.elements[i].checked ) {
+                                 checkedFound = true;
+                                 break;
+                         }
+
+         if ( !checkedFound ) {
+                 alert( text );
+                 return false;
+         }
+
+         return true;
+}
+
+function treeSelectAll( obj )
+{
+         checked = obj.checked;
+
+         thisForm = document.forms[0];
+
+         for ( i = 0; i < thisForm.elements.length; i++ )
+                 if (thisForm.elements[i].type == 'checkbox')
+                         thisForm.elements[i].checked = checked;
+
+         return false;
+}
+
+function confirmSubmit()
+{
+      if ( !treeCheckSelection( '<? $kernelStrings.sms_screen_empty_message ?>' ) )
+            return false;
+
+      return true;
+}
+
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default">
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+<? include file="../../../common/html/classic/header.htm" ?>
+<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+
+<? if !$fatalError ?>
+
+	<? if !$smsDisabled ?>
+
+		<table border=0 width=98%>
+		<tr>
+			<td colspan=2>
+
+			<p><? $kernelStrings.sms_ua_form_comment_text ?>
+			<p>
+			<table border=0 cellsapcing=0 cellpadding=0>
+			<tr><td><b><? $kernelStrings.app_note_text ?> :</b><br></td></tr>
+			<tr><td style="padding-left: 15px"><? $noteusers ?></td></tr>
+			</table>
+			<br>
+			<table border="0" cellspacing="0" cellpadding="0" class="list" width=100%>
+			<tr>
+				<? if $usersCount ?>
+					<th align="left" width="10px" style="width: 10px"><input type="checkbox" name="selectAllDocsCB" onClick="treeSelectAll(this)"></th>
+				<? /if ?>
+				<th align="left" width=20%><? $kernelStrings.sms_userid_title ?></th>
+				<th align="left" width=50%><? $kernelStrings.sms_username_title ?></th>
+				<th align="left" width=15%><? $kernelStrings.sms_sent_title ?></th>
+				<th align="left" width=15%><? $kernelStrings.sms_available_title ?></th>
+			</tr>
+			<? foreach from=$usersBalance item=balance name=balanceLoop?>
+				<tr <? if ($smarty.foreach.balanceLoop.iteration % 2) == 0 ?>bgcolor="<? #oddRowsColor#?>"<?else?>bgcolor=<? #evenRowsColor# ?><? /if ?>>
+					<? if $usersCount ?>
+						<td align=left valign=top width="10px" style="width: 10px"><input type="checkbox" name="balance[<? $balance.U_ID ?>]" value="<? $balance.U_ID ?>"></td>
+					<? /if ?>
+						<td><? $balance.U_ID ?></td>
+						<td><? $balance.C_FIRSTNAME ?> <? $balance.C_LASTNAME ?></td>
+						<td><? if $balance.SMS_SENT != 0 ?><a href=<? $balance.HISTORY_URL ?>><? /if ?><? $balance.SMS_SENT ?><? if $balance.SMS_SENT != 0 ?></a><? /if ?></td>
+						<td><a href="<? $balance.BALANCE_URL ?>"><? if $balance.SMS_UNLIM ?><b><font color=green><? $kernelStrings.sms_unlim_title ?></font></b><? else ?><? $balance.SMS_BALANCE ?><? /if ?></a></td>
+				</tr>
+			<? /foreach ?>
+
+			</table>
+
+			</td>
+		</tr>
+		</table>
+		<br>
+			<? if $usersCount ?>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="updatebtn" caption=$kernelStrings.sms_update_balance_btn formname="form"?>
+			<br><br>
+
+			<? /if ?>
+	<? else ?>
+			<? $kernelStrings.sms_screen_sms_disabled ?>
+	<? /if ?>
+<? else ?>
+<? /if ?>
+
+<input name="edited" type="hidden" id="edited" value="1">
+<input type="hidden" name="btndummy">
+
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+</form>
+<? /strip ?>
+</body>
+</html>

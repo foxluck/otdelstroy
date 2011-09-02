@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>Users</Name>
+		<File>class.users.php</File>
+		<Title>Пользователи</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

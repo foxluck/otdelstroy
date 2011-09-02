@@ -1,0 +1,26 @@
+{* customers authorization form *}
+
+{if $log ne "" && !$CPT_CONSTRUCTOR_MODE}
+	{* logout link *}
+	<a href="{'?ukey=office'|set_query_html}">{'pgn_my_account'|translate}</a><br />
+	<a href="{'logout=yes'|set_query_html}">{"lnk_logout"|translate}</a>
+{else}
+	{* authorization form *}
+	<form action="{''|set_query_html}" method="post">
+	<input type="hidden" name="enter" value="1">
+	<table border=0>
+	 <tr>
+		<td>{"usr_custinfo_login"|translate}</td>
+		<td><input type="text" class=ss name="user_login" ></td>
+	 </tr>
+	 <tr>
+		<td>{"usr_custinfo_password"|translate}</td>
+		<td><input name="user_pw" type="password" ></td>
+	 </tr>
+	</table>
+	<input type="submit" value='{"btn_ok"|translate}' >
+	<br />
+	<a href="{'?ukey=remind_password'|set_query_html}" class="lightsmall">{lbl_lnk_forgot_password}</a>	
+	
+	</form>
+{/if}

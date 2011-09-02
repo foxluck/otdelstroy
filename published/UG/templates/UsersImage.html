@@ -1,0 +1,336 @@
+<script src='{{$url.common}}js/jquery.js'></script>
+<link rel="stylesheet" type="text/css" href="{{$url.css}}reset.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.css}}users-common.css" />
+<link rel="stylesheet" type="text/css" href="{{$url.css}}popup.css" />
+
+<script type="text/javascript">
+	$(function(){		
+		$(window).keydown(function(e){	
+	    	if (e.keyCode == 27) {
+				if (document.preCancel)
+					document.preCancel.apply(this);
+	    		window.parent.closePopup();
+	    	}
+	    });
+	});
+    $("<img>").attr("src", "{{$url.img}}progress.gif");
+</script>
+
+{{ if ($type == "add") }}
+<script type="text/javascript">
+	$(function(){		
+		$('#fileselect').change(function(){
+			$('<img src="{{$url.img}}progress.gif" />').insertAfter(this);			
+			$('#imageform').submit();
+		});
+	});
+</script>
+<a id="popupclose" href="javascript:window.parent.closePopup();"><img height="16" width="16" src="{{$url.common}}templates/img/close.gif"/></a>
+	<div class="popup-header">
+		<h2>[`Add photo`]</h2></div>
+        <div class="popup-content">
+        {{if ($error) }}<p class="error">{{$error}}</p>{{/if}}
+		<p>[`Choose a file from your local disk (JPG, GIF or PNG):`]</p>
+		<div>
+			<form id="imageform" action="index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=resize" method="post" enctype="multipart/form-data">	
+				<p><input id="fileselect" type="file" name="{{$CF_ID}}" /></p>
+				
+			</form>
+		</div></div>
+		<div class="popup-footer"><input type="button" value="[`Cancel`]" onclick="javascript:window.parent.closePopup();"/></div>
+
+{{ /if }}
+
+{{ if ($type == "resize") }}
+<script src='{{$url.common}}html/res/imgareaselect/scripts/jquery.imgareaselect.min.js'></script>
+<link rel="stylesheet" type="text/css" href="{{$url.common}}html/res/imgareaselect/css/imgareaselect-default.css">
+<script>
+	document.preCancel = function(){
+		$.get("index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=deletePreview");
+	};
+	
+	document.k = 1;
+
+	function setImageParam(param) {
+		if ( (param.w*96)/param.h > (param.h*96)/param.w ) {
+			var h = Math.round((param.h*96)/param.w);
+			$('#preview').width(96);
+			$('#preview').height(h);
+			
+			$('#preview').css({'margin-top': Math.round((96-h)/2) });
+			$('#preview').css({'margin-left': 0 });
+			document.k = 96 / param.w;
+		}
+		else {
+			var w = Math.round((param.w*96)/param.h);
+			$('#preview').width(w);
+			$('#preview').height(96);
+
+			$('#preview').css({'margin-top': 0 });
+			$('#preview').css({'margin-left': Math.round((96-w)/2) });
+			document.k  = 96 / param.h;
+		}
+
+		$('#preview img').css({
+	        width: Math.round(document.k * $('#photo').width()),
+	        height: Math.round(document.k * $('#photo').height()),
+	        marginLeft: -Math.round(document.k * param.x),
+	        marginTop: -Math.round(document.k * param.y)
+	    });
+	    
+	    $('#x').val(param.x);
+	    $('#y').val(param.y);
+	    $('#w').val(param.w);
+	    $('#h').val(param.h);		
+	}
+	
+	function preview(img, selection) {
+	    if (!selection.width || !selection.height)
+	        return;
+	    document.k = 96 / selection.width;
+	    setImageParam({
+		    x: selection.x1,
+		    y: selection.y1,
+		    w: selection.width,
+		    h: selection.height
+		});
+
+	    $('#full-crop').attr('checked', '');
+	}
+
+	$(function () {		
+
+		function init() {
+			$img = $('#photo');
+			var x1,x2,y1,y2;
+			if ( $img.width() > 96 ) {
+				x1 = Math.round( $img.width() / 2 )-48;
+				x2 = Math.round( $img.width() / 2 )+48;
+			}
+			else {
+				x1 = 0;
+				x2 = $img.width();
+			}
+			if ( $img.height() > 96 ) {
+				y1 = Math.round( $img.height() / 2 )-48;
+				y2 = Math.round( $img.height() / 2 )+48;
+			}
+			else {
+				y1 = 0;
+				y2 = $img.height();
+			}
+				 
+		    $('#photo').imgAreaSelect({
+		    	x1: x1, y1: y1, x2: x2, y2: y2,
+			    handles: true,
+		        onSelectChange: preview,
+		        minWidth: 10,
+				minHeight: 10 }
+			);
+		    setImageParam({
+			    x: x1,
+			    y: y1,
+			    w: x2-x1,
+			    h: y2-y1			    
+		    });
+
+		    var image_source = new Image();
+			$(image_source).load(function(){
+				$('#preview img').attr('src', "{{$IMG}}");
+				$('#preview img').css({
+			        width: Math.round(document.k * $('#photo').width()),
+			        height: Math.round(document.k * $('#photo').height())
+			    });
+			});
+			image_source.src = "{{$IMG}}";
+		}
+
+		if ($('#photo').get(0).complete) {
+			init();
+		}
+		else {
+			$('#photo').load(function(){
+				init();
+			});
+		}
+		
+	    $('#resize-form').submit(function(){
+		    $('#submit').attr('disabled', 'disabled');
+			$.get("index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=delete");		    
+		});
+		$('#cancel, #popupclose').click(function(){
+			$(this).attr('disabled', 'disabled');
+			$.get("index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=deletePreview",
+			function(){
+				window.parent.closePopup();
+			});
+		});
+
+		$('#fileselect').change(function(){
+			$('#imageform').submit();
+		});
+
+		$('#full-crop').click(function(){
+			if ( $(this).attr('checked') ) {
+				$('#photo').imgAreaSelect({
+			    	x1: 0, 
+			    	y1: 0, 
+			    	x2: $('#photo').width(),
+			    	y2: $('#photo').height() 
+				    }
+				);
+				setImageParam({
+				    x: 0,
+				    y: 0,
+				    w: $('#photo').width(),
+				    h: $('#photo').height()			    
+			    });
+			}
+			else {
+				var x1,x2,y1,y2;
+				var $img = $('#photo');
+				if ( $img.width() > 96 ) {
+					x1 = Math.round( $img.width() / 2 )-48;
+					x2 = Math.round( $img.width() / 2 )+48;
+				}
+				else {
+					x1 = 0;
+					x2 = $img.width();
+				}
+				if ( $img.height() > 96 ) {
+					y1 = Math.round( $img.height() / 2 )-48;
+					y2 = Math.round( $img.height() / 2 )+48;
+				}
+				else {
+					y1 = 0;
+					y2 = $img.height();
+				}
+					 
+			    $('#photo').imgAreaSelect({
+			    	x1: x1, y1: y1, x2: x2, y2: y2,
+				    handles: true,
+			        minWidth: 10,
+					minHeight: 10 }
+				);
+			    setImageParam({
+				    x: x1,
+				    y: y1,
+				    w: x2-x1,
+				    h: y2-y1			    
+			    });
+			}
+		});
+			
+	});
+</script>	
+<style>
+.popup-content {
+padding:10px;}
+	#preview {
+		height:100px;
+		overflow-x:hidden;
+		overflow-y:hidden;
+		width:100px;
+	}
+	div.frame {
+		background:#FFFFFF none repeat scroll 0 0;
+		border:2px solid #DDDDDD;
+
+	}
+	div.crop {
+		width: 416px; 
+		height: 312px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	div.crop img{
+		display: block;	
+		margin: 0 auto;
+	}
+	.crop-preview{
+	float:left;
+	margin: 0pt 1em; width: 96px; height: 96px;
+	}
+	.right-container {overflow: hidden; position:absolute; width:130px; right:30px; top:50px;}
+</style>
+<a id="popupclose" href="#"><img height="16" width="16" src="{{$url.img}}close.gif"/></a>
+    <div class="popup-header">
+		<h2>[`Add photo`]</h2></div>
+		<div class="popup-content">
+			<div class="frame crop">
+				   <img src="{{$IMG}}&size=512" id="photo"/>
+			    </div>
+			<div class="right-container">
+           
+				
+                <div class="popup-help">[`Drag or resize the frame to select an area of the image.`]</div>
+                <div class="popup-title"><label><input id="full-crop" type="checkbox" name="full" />[`Entire photo`]</label></div>
+                <div class="popup-title">[`Preview:`]</div>
+				<div class="frame crop-preview">
+					<div style="overflow: hidden; width: 96px; height: 96px;" id="preview">
+						<img src="{{$IMG}}&size=512" />
+					</div>
+				</div>
+			</div>
+			<div>
+				<form id="imageform" action="index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=resize" method="post" enctype="multipart/form-data">
+					<p>[`Choose another file (JPG, GIF or PNG):`]</p>	
+					<input id="fileselect" type="file" name="{{$CF_ID}}" />
+				</form>
+			</div></div>
+			<div class="popup-footer" style="bottom:12px;">
+		  		<form id="resize-form" action="index.php?mod=users&act=imageSave&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}" method="post">
+		  			<input id="x" name="x" type="hidden" value="" />
+		  			<input id="y" name="y" type="hidden" value="" />
+		  			<input id="w" name="w" type="hidden" value="" />
+		  			<input id="h" name="h" type="hidden" value="" />
+		  			<input id="submit" type="submit" value="[`Save`]" />
+		  			<input id="cancel" type="button" value="[`Cancel`]"/>
+		  		</form>
+	  		</div>
+
+
+{{ /if }}
+{{ if ($type == "change") }}
+<script>
+	$(function(){		
+		$('#deleteImage').click(function(){
+			$.get("index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=delete", 
+					function(){
+						$.post('?mod=users&act=edit&ajax=1', {
+							'C_ID': '{{$C_ID}}',
+							'info[{{$CF_ID}}]': ''
+						},
+						function(response){
+							window.parent.closePopup({deleteImage: true, close: true});
+						}
+					);
+				}
+			);
+			return false;
+		});
+		
+		$('#fileselect').change(function(){
+				$(' <img src="{{$url.img}}progress.gif" />').insertAfter(this);
+				$('#imageform').submit();
+				
+		});
+	});
+</script>
+<a id="popupclose" href="javascript:window.parent.closePopup();"><img height="16" width="16" src="{{$url.img}}close.gif"/></a>
+	   <div class="popup-header"><h2>[`Change photo`]</h2></div>
+	<div class="popup-content">
+		<div class="right-block">
+			<div><a href="#" id="deleteImage">[`Remove photo`]</a></div>
+		</div>
+		<div class="border"><img src="{{$IMG}}&size=96" /></div>
+				
+		<p>[`To change photo, choose new file (JPG, GIF or PNG):`]</p>
+		<form id="imageform" action="index.php?mod=users&act=image&C_ID={{$C_ID}}&CF_ID={{$CF_ID}}&type=resize" method="post" enctype="multipart/form-data">	
+			<p><input id="fileselect" type="file" name="{{$CF_ID}}" /></p>			
+		</form>
+		<div class="popup-footer" style="bottom:12px;">
+			<input type="button" value="[`Cancel`]" onclick="javascript:window.parent.closePopup();"/>
+		</div>
+	</div>
+{{ /if }}

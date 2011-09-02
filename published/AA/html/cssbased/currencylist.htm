@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<? wbs_initLayout toolbar=true ?>
+</head>
+<body>
+	<? wbs_pageLayout toolbar="currencylist_toolbar.htm" ?>
+		<? wbs_errorBlock ?>
+
+		<table class="SimpleList" width="400">
+			<thead>
+				<tr>
+					<th scope="col"><? $kernelStrings.cl_id_title ?></th>
+					<th scope="col"><? $kernelStrings.cl_name_title ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<? foreach from=$currencyList item=cur_data key=cur_id name=curLoop ?>
+					<tr class="<? wbs_oddItem index=$smarty.foreach.curLoop.iteration invert=true ?>">
+						<th scope="col"><a href="<? $cur_data.EDIT_URL ?>"><? $cur_id ?></a></th>
+						<td><a href="<? $cur_data.EDIT_URL ?>"><? $cur_data.CUR_NAME ?></a></td>
+					</tr>
+				<? foreachelse ?>
+					<tr class="NoRecords">
+						<td colspan="2"><? $kernelStrings.ul_norecords_text ?></td>
+					</tr>
+				<? /foreach ?>
+			</tbody>
+		</table>
+
+	<? /wbs_pageLayout ?>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<h2>{$ConfigTitle}</h2>
+<form action="" method="post">
+<input type="hidden" name="configID" value="{$ConfigID}" />
+<input type="hidden" name="fACTION" value="SAVE_CONFIG_SETTINGS" />
+<table width="100%" cellspacing=1 cellpadding=5 bgcolor=#bedddb border=0>
+	
+	<tr bgcolor=#bedddb>
+		<td align=middle>
+			{"cfg_config_option"|translate}
+		</td>
+		<td align=middle>
+			{"prdcustopt_value_variants"|translate}
+		</td>
+	</tr>
+{foreach from=$ConfigSettings item=_ConfigSetting}
+	<tr bgcolor=white> 
+		<td width="50%" align="right" valign="top">
+			<strong>
+				{$_ConfigSetting.title}
+			</strong>:
+			<br>
+			<font size="-2">
+				{$_ConfigSetting.description}
+			</font>
+		</td>
+		<td width="50%" align="left" valign="top">
+			{$_ConfigSetting.edit_html}
+		</td>
+	</tr>
+{/foreach}
+<tr><td>&nbsp;</td><td><input type="submit" value="{"btn_save"|translate}" /></td></tr>
+</table>
+</form>

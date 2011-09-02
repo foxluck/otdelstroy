@@ -1,0 +1,70 @@
+	{lbl_ordr_shipping_address} (<a href='{$change_address_url}'>{lbl_btn_change_address}</a>):
+	<p>
+	<strong>{if $shipping_address_str}{$shipping_address_str}{else}{lbl_str_not_defined}{/if}</strong>
+	</p>
+	
+	<p>{"checkout_select_shipping_type"|translate}:</p>
+	
+	<form action="{''|set_query_html}" name='MainForm' method='post'>
+	<input name="action" value="select_shipping" type="hidden" >
+	
+	{if $shipping_methods}
+	<table border="0" cellspacing="1" cellpadding="4">
+	{section name=i loop=$shipping_methods}
+	{if $shipping_costs[i] ne "n/a"}
+	{count item=_CostsNum array=$shipping_costs[i]}
+	<tr><td>
+	<label for="shipping-method-{$shipping_methods[i].SID}">{if $shipping_methods[i].logo}<img src="{$shipping_methods[i].logo|escape:'html'}" alt="{$shipping_methods[i].Name|escape:'html'}" title="{$shipping_methods[i].Name|escape:'html'}" />{else}&nbsp;{/if}</label>
+	</td>
+		<td valign="top">
+			<input name="shippingMethodID" class="radio_shipping_method" value="{$shipping_methods[i].SID}" id="shipping-method-{$shipping_methods[i].SID}" {if $shipping_methods_count == 1 || $shippingMethodID eq $shipping_methods[i].SID} checked{/if} type="radio" >
+		</td>
+		<td valign="top">
+			<strong><label for="shipping-method-{$shipping_methods[i].SID}">{$shipping_methods[i].Name}</label></strong>
+			<br />
+			{$shipping_methods[i].description}
+		</td>
+		<td valign="top">
+			{if $_CostsNum>1}
+			<select name="shippingServiceID[{$shipping_methods[i].SID}]">
+			{assign var="_SID" value=$shipping_methods[i].SID }
+			{foreach from=$shipping_costs[i] item=_Rate}
+				<option value="{$_Rate.id}" {if $shippingServiceID[$_SID] eq $_Rate.id}selected{/if}>{$_Rate.name} - {$_Rate.rate}</option>
+			{/foreach}
+			</select>
+			{else}
+			{if $shipping_costs[i][0].name}{$shipping_costs[i][0].name}{if $shipping_costs[i][0].rate} - {/if}{/if}{$shipping_costs[i][0].rate}
+			{/if}
+		</td>
+	</tr>
+	{/if}
+	{/section}
+	</table>
+	{else}
+		<font color="red"><b>{"checkout_no_shipping_methods"|translate}...</b></font>
+	{/if}
+	
+	{if $shipping_methods}<p>
+		<input type="submit" name="continue_button" class="checkout_buttons" value="{'checkout_next_step'|transcape}" >
+	</p>{/if}
+	
+		
+	{if $PAGE_VIEW ne 'mobile' && $shipping_methods_count > 1} {literal}
+	<script language='javascript' type="text/javascript">
+		function select_shipping_methodClickHandler(){
+	
+			document.MainForm.continue_button.disabled = true;
+			var r_shipping_method = getElementsByClass('radio_shipping_method', document.MainForm);
+			for(var i=r_shipping_method.length-1; i>=0; i--){
+	
+				r_shipping_method[i].onclick = select_shipping_methodClickHandler;
+				if(!r_shipping_method[i].checked)continue;
+				
+				document.MainForm.continue_button.disabled = false;
+				break;
+			}
+		}
+		select_shipping_methodClickHandler();
+	</script>
+	{/literal} {/if}
+	</form>

@@ -1,0 +1,25 @@
+{if $GridRows}
+<table class="grid" width="100%">
+<tr class="gridsheader">
+	{include file="backend/gridheader.tpl.html"}
+</tr>
+	
+{foreach from=$GridRows item=_row}
+{assign var=_order_url value="did=&ukey=admin_order_detailed&orderID=`$_row.orderID`&rdid=`$CurrentDivision.id`"|set_query_html}
+<tr class="{cycle values="gridline1,gridline"}">
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.orderID}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.order_time}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.payment_type}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.shipping_type}{if $_row.shippingServiceInfo} ({$_row.shippingServiceInfo}){/if}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.order_amount}</a></td>
+	<td><a href='{$_order_url}' style="{$_row._style}">{$_row.status_name}</a></td>
+</tr>	
+{/foreach}
+
+<tr class="gridsfooter"> 
+	<td colspan="{$GridHeadersNum}">{include file="backend/lister.tpl.html"}</td>
+</tr>
+</table>
+{else}
+	<p>{"srch_no_matches_found"|translate}</p>
+{/if}

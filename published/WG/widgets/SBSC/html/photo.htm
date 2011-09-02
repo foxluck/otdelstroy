@@ -1,0 +1,12 @@
+<!--tr>
+	<td>
+		Show Fields
+	</td>	
+	<td>
+		<? assign var=fieldValue value=$fields.PHOTOFIELDS|default:$itemData.params.PHOTOFIELDS ?>
+		<? if !$fieldValue ?><? assign var=fieldValue value="name_email" ?><? /if ?>
+		<input type='radio' name='fields[PHOTOFIELDS]' value='name' <? if $fieldValue=="name" ?>checked<? /if ?> > Name
+		<input type='radio' name='fields[PHOTOFIELDS]' value='name_email' <? if $fieldValue=="name_email" ?>checked<? /if ?> >Name and E-Mail
+		<input type='radio' name='fields[PHOTOFIELDS]' value='email' <? if $fieldValue=="email" ?>checked<? /if ?> >E-Mail only
+	</td>
+</tr-->

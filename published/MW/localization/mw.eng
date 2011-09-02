@@ -1,0 +1,50 @@
+app_name_long	Common	Application full name	My settings
+app_name_short	Common	Application short name	My settings
+
+app_available_pages_name	Common	 Available Pages rights name	Available Pages
+app_available_functions_name	Common	 Available Functions	Available Functions
+app_available_tabs_name	Common	 Available Functions	Available Tabs
+
+cp_screen_long_name	Change Password	Change Password page full name	Change Password
+cp_screen_short_name	Change Password	Change Password page short name	Password
+cp_changecanceled_message	Change Password	Change password cancellation message	Your password has not been changed
+cp_changeaccepted_message	Change Password	Password change successfull message	Your password has been successfully changed
+cp_oldpass_label	Change Password	Old password label	Old password
+cp_newpass_label	Change Password	New password label	New password
+cp_confirmnewpass_label	Change Password	Confirm new password label	Confirm new password
+pf_screen_long_name	Preferences	Preferences page full name	Preferences
+pf_screen_short_name	Preferences	Preferences page short name	Preferences
+pf_changeaccepted_message	Preferences	Changes saved successfully message	Your personal settings have been successfully changed
+pf_changecanceled_message	Preferences	Personnal settings changes canceled message	Your personal settings have not been changed
+pf_note_text	Preferences	Note for the Preferences screen	Some properties may be not allowed for modification by your system administrator
+pf_notificationscb_label	Preferences	Label for email notifications checkbox	Enable email notifications
+pf_timezone_label	Preferences	Label for timezone combobox	Time Zone
+pf_timezone_dst_label	Preferences	Label for timezone combobox	Daylight Saving Time
+
+lf_screen_long_name	Look and Feel	Look and Feel page full name	Look and Feel
+lf_screen_short_name	Look and Feel	Look and Feel page short name	Look and Feel
+lf_changeaccepted_message	Look and Feel	Look and Feel settings have been successfully changed message	Your look and feel settings have been successfully changed
+lf_changecanceled_message	Look and Feel	Look and Feel settings chages have been canceled message	Your look and feel settings have not been changed
+lf_layouttopmenu_title	Look and Feel	Top menu layout title	Top
+lf_layoutleftsidemenu_title	Look and Feel	Leftside menu layout title	Left
+lf_themebeach_title	Look and Feel	Beach color theme title	Beach
+lf_themegarden_title	Look and Feel	Forest color theme title	Garden
+lf_themeoffice_title	Look and Feel	Office color theme title	Office
+lf_seltheme_label	Look and Feel	Select Theme label	Select Theme
+lf_sellayout_label	Look and Feel	Select Layout label	Main Menu Position
+lf_sellogo_label	Look and Feel	Select Layout label	Logo
+lf_logoapp_title	Look and Feel	Application logo title	Service Name and Logo
+lf_logocustom_title	Look and Feel	Application logo title	Company Logo
+amu_persnameandcont_label	Add/Modify User	Label "Name and Contact" for the Access tab	Can change Name and Contact information
+amu_persswitchemail_label	Add/Modify User	Label "Enable/Disable email notifications" for the Access tab	Can enable/disable Email notifications
+amu_directaccess_title	Add/Modify User	Direct access section title	Direct Access
+amu_diraccess_text	Add/Modify User	Direct Access checkbox text	Allow direct access
+amu_directaccess_text	Add/Modify User	Description for the direct access feature	Direct access allows user to pass by WebAsyst Login screen and open any accessible WebAsyst page by entering its URL in browser address field.
+
+
+amu_contact_title	Add/Modify User	Contact tab title	Contact
+amu_user_title	Add/Modify User	Title for the User tab	User
+amu_groups_title	Add/Modify User	Title for the Groups tab	Groups
+amu_access_title	Add/Modify User	Title for the Access tab	Access
+amu_quota_title	Add/Modify User	Title for the Quota tab	Quota
+amu_lookandfeel_title	Add/Modify User	Title for the Look And Feel tab	Look and Feel

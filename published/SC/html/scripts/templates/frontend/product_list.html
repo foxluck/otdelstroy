@@ -1,0 +1,25 @@
+<table align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<ul class="product_list">
+{foreach from=$__products item=_product}
+{if $_product.slug}
+{assign var=_product_url value="?productID=`$_product.productID`&product_slug=`$_product.slug`"|set_query_html}
+{else}
+{assign var=_product_url value="?productID=`$_product.productID`"|set_query_html}
+{/if}
+<li style="width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE+20}; height: {if $__block_height}{$__block_height}{elseif $_product.thumbnail}{$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE+45}{else}55{/if};">
+{if $_product.thumbnail}
+<table cellpadding="0" cellspacing="0" style="width: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE}; height: {$smarty.const.CONF_PRDPICT_THUMBNAIL_SIZE};"><tr><td valign="bottom" align="center">
+<a href="{$_product_url}"><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_product.thumbnail|escape:'url'}" alt="{$_product.name|escape:'html'}"></a>
+</td></tr></table>
+{/if}
+<a href="{$_product_url}">{$_product.name}</a>
+{if $_product.Price}<div class="totalPrice">{$_product.price_str}</div>{/if}
+</li>
+{/foreach}
+</ul>
+
+</td>
+</tr>
+</table>

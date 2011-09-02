@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+<script language="JavaScript">
+<!--
+function updateAll() 
+{ 
+	<? if $updateAll ?>
+		if ( parent.frames[0] )
+			parent.frames[0].location.reload();
+
+		if ( parent.frames[2] )
+			parent.frames[2].location.reload();
+
+		location.href = "#action:reloadUI";
+	<? /if ?>
+}
+
+function setTitle()
+{
+	<? if $setTitle ?>
+		parent.document.title = "<? $title ?>";
+	<? /if ?>
+}
+
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="updateAll(); setTitle()">
+<? strip ?>
+  <? include file="../../../common/html/classic/header.htm" nospace=0 ?>
+  <? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+  <? if !$fatalError ?>
+	<table width="100%" height="100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td valign="middle">  
+			  <table align="center" cellpadding="1" cellspacing="1">
+        <tr> 
+          <td rowspan="3" align="center" class="infoStr">
+            <? if $reportType == 0 ?>
+            	<img src="../../../common/html/classic/images/stop.gif" border="0">
+            <? elseif $reportType == 1 ?>
+           		<img src="../../../common/html/classic/images/information.gif" border="0">
+            <? elseif $reportType == 2 ?>
+	            <img src="../../../common/html/classic/images/exclamation.gif" border="0">
+			<?/if?>
+          </td>
+          <td align="center" class="infoStr">&nbsp;</td>
+          <td align="center" class="infoStr"> 
+            <? $infoStr ?>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">&nbsp;</td>
+          <td align="center">&nbsp; </td>
+        </tr>
+        <tr>
+          <td align="center">&nbsp;</td>
+          <td align="center"> 
+            <? $kernelStrings.app_report_text ?>
+          </td>
+        </tr>
+        <tr> 
+          <td align="center"></td>
+          <td align="center"></td>
+          <td align="center"></td>
+        </tr>
+      </table>
+		</td>		 
+	</tr>
+	</table>
+  <? /if ?>
+<?include file="../../../common/html/classic/pagefooter.htm"?>
+
+<? /strip ?>
+</body>
+</html>

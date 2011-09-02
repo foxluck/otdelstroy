@@ -1,0 +1,94 @@
+/* style for template #2 */
+
+p, font
+{ font-family:		Verdana, Arial;
+  font-size:		12px;
+}
+td
+{ font-family:		Verdana, Arial;
+  font-size:		12px;
+}
+.small
+{ font-size:		10px;
+}
+.cat
+{ font-size:		16px;
+}
+.big
+{ font-size:		20px;
+}
+h1
+{ font-family:	Verdana, Arial;
+  font-size:	18px;
+  color:	black;
+}
+.standard
+{ font-weight:		normal;
+}
+.light
+{ color:			navy;
+}
+.lightsmall
+{ color:			navy;
+  font-size:		10px;
+}
+.lightstandard
+{ color:			navy;
+  font-weight:		normal;
+}
+.middle
+{ color:			black;
+}
+a
+{
+  font-family:		Verdana, Arial;
+  font-weight:		bold;
+  font-size:		12px;
+  color:			#10447C;
+}
+.no_underline
+{ text-decoration:		none;
+}
+a.small
+{
+  font-family:		Verdana, Arial;
+  font-size:		11px;
+  font-weight:		bold;
+  color:			#10447C;
+}
+a:hover
+{ color:		red;
+}
+a.standard
+{ font-family:		Verdana, Arial;
+  font-size:		12px;
+  font-weight:		normal;
+}
+a.cat
+{ font-family:		Verdana, Arial;
+  font-size:		16px;
+  font-weight:		bold;
+}
+.cart
+{ font-family:		Tahoma;
+  font-size:		11px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:			1px;
+  font-weight:		bold;
+  color:			black;
+  background-color:  transparent;
+}
+.totalPrice
+{ font-size:	    	16px;
+  BORDER-BOTTOM:	0px solid;	
+  BORDER-LEFT:		0px solid;
+  BORDER-RIGHT:		0px solid;	
+  BORDER-TOP:		0px solid;
+  margin:		1px;
+  font-weight:		bold;
+  color:		red;
+  background-color:  transparent;
+}

@@ -1,0 +1,253 @@
+<?*used by step1.php*?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><? $pageTitle ?></title>
+	<link href="../../html/classic/installer-styles.css" rel="stylesheet" type="text/css" >
+	<script type="text/javascript" language="javascript" src="../../../common/html/classic/styles/wbscommon.js"></script>
+	<script type="text/javascript" language="javascript" src="../classic/updatewa.js"></script>	
+<script type="text/javascript" language="JavaScript">
+<!--
+function focusControl(objName) {
+
+         <? if $invalidField ?>
+                 <? "objName = 'serverData["|cat:$invalidField|cat:"]'" ?>;
+         <? /if ?>
+
+	if ( objName != "serverData[ADMIN_ADMINRIGHTS]" )
+	{
+		var obj = MM_findObj(objName);
+		if (obj)
+			obj.focus( );
+	}
+
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+//-->
+</script>
+<link href="../../../../install.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="focusControl('serverData[SERVER_NAME]')">
+<p class="i-aright i-grey status">
+		<? $systemConfiguration ?>
+
+</p>
+<div class="i-header">
+		<div class="i-rel">
+			<div class="i-absleft">
+<h2><? $waStrings.install_step1_title ?>
+</h2><p class="i-small"><? $step ?></p>
+			</div>
+			<div class="i-absright i-aright"><p><a href="<? $GUIDE_FILE ?>" target=_blank><? $waStrings.manual_install_link ?></a></p>
+
+			</div>
+			
+		</div>
+		<h1><img src="../classic/images/logo.gif" width="150" height="37" alt="<? $waStrings.wbs_title ?>" title="<? $waStrings.wbs_title ?>" /><? $waStrings.wbs_installer ?></h1>
+
+	</div>
+
+<!-- here -->
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+
+  <? assign var="invalidFieldMarkup" value="<span style='color: #FF0000'>" ?>
+  <? if !$fatalError ?>
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td width="20px">&nbsp;</td>
+      <td bgcolor="#FFFFFF">
+		
+	<? if $action == edit ?><p class="pageHeader"><? $waStrings.addserv_header ?> <? $serverData.SERVER_NAME ?></p><?/if?>
+		<p><? $waStrings.forms_req_fields ?></p>
+        <? if $errorStr ?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr><td><? $invalidFieldMarkup ?><? $errorStr ?></td></tr>
+          <tr><td>&nbsp;</td></tr>
+        </table>
+        <? /if ?>
+        <? if $infoStr ?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr><td bgcolor="#CCFFCC"><? $infoStr ?></td></tr>
+          <tr><td>&nbsp;</td></tr>
+        </table>
+        <? /if ?>
+        <table width="500" border="0" cellpadding="0" cellspacing="2">
+          <tr>
+						<td colspan="2" class="formSection"><? $waStrings.addserv_gr_1_name ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+          <tr>
+            <td class="nobr">
+              <? conditionalOutput invalidField=$invalidField field=SERVER_NAME text=$invalidFieldMarkup  ?>
+              <? $waStrings.addserv_gr1_opt1 ?>:*&nbsp;</td>
+            <td>
+              <? if $disableChange == 0 ?>
+              <input name="serverData[SERVER_NAME]" type="text" class="control" value="<? $serverData.SERVER_NAME ?>" style="width: 100%">
+              <?else?>
+              <input name="serverData[SERVER_NAME]" type="text" class="readonlyControl" value="<? $serverData.SERVER_NAME ?>" style="width: 100%" readonly>
+              <?/if?>
+            </td>
+          </tr>
+          <? if $action == "new" ?>
+          <tr>
+            <td class="comment">&nbsp;</td>
+						<td class="comment"><p class="comment"><? $waStrings.addserv_gr1_desc1 ?></p>
+
+						<p class="comment"><b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr1_note1 ?></p>
+          </tr>
+          <? /if ?>
+          <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
+						<td colspan="2" class="formSection"><? $waStrings.addserv_gr2_name ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+
+          <tr>
+            <td>
+              <? conditionalOutput invalidField=$invalidField field=HOST text=$invalidFieldMarkup  ?>
+							<? $waStrings.addserv_gr2_opt1 ?>:*</td>
+            <td><input name="serverData[HOST]" type="text" class="control" value="<? $serverData.HOST ?>" style="width: 100%"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc1 ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><? $waStrings.addserv_gr2_opt2 ?>:</td>
+            <td><input name="serverData[WEBASYST_HOST]" type="text" class="control" value="<? $serverData.WEBASYST_HOST ?>" style="width: 100%"></td>
+          </tr>
+          <tr>
+            <td class="comment">&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc2 ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <? conditionalOutput invalidField=$invalidField field=PORT text=$invalidFieldMarkup  ?>
+							<? $waStrings.addserv_gr2_opt3 ?>:</td>
+            <td><input name="serverData[PORT]" type="text" class="control" value="<? $serverData.PORT ?>"  style="width: 100%"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+						<td class="comment"><? $waStrings.addserv_gr2_desc3 ?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+<!---------------------------->
+					<tr>
+						<td height="21" colspan="2" class="formSection"><? $waStrings.addserv_gr3_name ?></td>
+					</tr>
+
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td align=right valign=top>
+							<input type=radio value="TRUE" name="serverData[ADMIN_ADMINRIGHTS]" <? switchedOutput str1="checked" str2="" val=$serverData.ADMIN_ADMINRIGHTS true_val="TRUE" ?>>
+						</td>
+						<td><? conditionalOutput invalidField=$invalidField field=ADMIN_ADMINRIGHTS text=$invalidFieldMarkup ?><? $waStrings.addserv_gr5_opt1 ?></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class=comment><p class=comment><? $waStrings.addserv_gr5_desc1 ?></p>
+						<p class=comment><b><? $waStrings.lbl_form_note ?></b>: <? $waStrings.addserv_gr5_note1 ?></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<table cellpadding=0 cellspacing=2 border=0>
+								<tr> 
+									<td class="nobr"> 
+										<? conditionalOutput invalidField=$invalidField field=ADMIN_USERNAME text=$invalidFieldMarkup	?>
+										<? $waStrings.addserv_gr5_opt2 ?>:&nbsp;</td>
+									<td><input name="serverData[ADMIN_USERNAME]" type="text" class="control" value="<? $serverData.ADMIN_USERNAME ?>" style="width: 200px"></td>
+								</tr>
+								<tr> 
+									<td class="nobr"> 
+										<? conditionalOutput invalidField=$invalidField field=ADMIN_PASSWORD text=$invalidFieldMarkup	?>
+										<? $waStrings.addserv_gr5_opt3 ?>:&nbsp;</td>
+									<td><input name="serverData[ADMIN_PASSWORD]" type="text" class="control" style="width: 200px" value="<? $serverData.ADMIN_PASSWORD ?>"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>&nbsp;</td>
+					</tr>
+					<tr>
+						<td align=right valign=top>
+							<input type=radio value="FALSE" name="serverData[ADMIN_ADMINRIGHTS]" <? switchedOutput str1="checked" str2="" val=$serverData.ADMIN_ADMINRIGHTS true_val="FALSE" ?>>
+						</td>
+						<td><? conditionalOutput invalidField=$invalidField field=ADMIN_ADMINRIGHTS text=$invalidFieldMarkup ?><? $waStrings.addserv_gr5_opt4 ?></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class=comment><? $waStrings.addserv_gr5_desc2 ?></td>
+					</tr>
+
+          <tr>
+            <td>
+              <? if $action == "edit" ?>
+              <input type="hidden" value="<? $serverData.SERVER_NAME ?>" name="serverData[SERVER_NAME]">
+              <?/if?>
+              <input type="hidden" value="<? $action ?>" name="action"> <input type="hidden" value="1" name="edited">
+              <input name="languagesPacked" value="<? $languagesPacked ?>" type="hidden">
+              <input name="languageToDelete" type="hidden"> </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>
+		 <br>
+                    <input type="submit" name="savebtn" value="<? $buttonCaption ?>">
+                  </td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+   <? /if ?>
+  </form>
+<? /strip ?>
+
+<!-- here -->
+
+<BR><BR>
+
+</body>
+</html>

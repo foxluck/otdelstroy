@@ -1,0 +1,69 @@
+<h1 {if $printable_version}align="center"{/if}>{if $order}{if !$printable_version}<a href="{"?ukey=order_status"|set_query}">{"pgn_order_status"|translate}{if $order}</a>&nbsp;&raquo;&nbsp;{/if}{/if}{if $order}{"ordr_order"|translate}&nbsp;#{$order.orderID_view}{/if}</h1>
+	<p style="font-size:120%;font-weight:bolder;">
+		{"str_status"|translate}&nbsp;&mdash;&nbsp;<span style="{$order.status_info._style}">{$order.status_name}</span>
+	</p>
+{else}
+	</h1>
+	{if $edited}<span style="color:red">{"str_order_not_found"|translate}</span>{/if}
+{/if}
+{if $full_info}{include file= $CurrentSubTpl}{/if}
+{if !$printable_version}
+{if !$full_info}
+<form name="mainForm" method="post" action="{''|set_query_html}">
+<div class="form_wrapper">
+		<p>{"ordr_id"|translate}:&nbsp;<br><input type="text" name="orderID" value="{if $order && $order.orderID>0}{$order.orderID_view}{else}{$order_id}{/if}"></p>
+		<p>{"usr_custinfo_email"|translate}:&nbsp;<br><input type="text" name="customer_email" value="{$customer_email|escape:'html'}"></p>
+{if $order}		
+		{*<p>{"usr_custinfo_first_name"|translate}:&nbsp;<br><input type="text" name="customer_first_name" value=""></p>*}
+		<br>
+		{if $mode eq 'captcha'}
+		<div class="background1">
+		{"ordr_full_info_captcha_description"|translate}<br>
+		{"usr_custinfo_last_name"|translate}:&nbsp;<br>
+		<input type="text" name="customer_last_name" value="{$customer_last_name|escape:'html'}">
+		{if $wrong_last_name&&$customer_last_name}<br><span style="color:red">{"err_wrong_last_name"|translate}</span>{/if}
+		<br><br>
+		<img src="{$smarty.const.URL_ROOT}/imgval.php" alt="code"><br>
+		{"str_enter_ccode"|translate}:&nbsp;<br>
+		<input name="captcha" value="" type="text" style="width:200px;" >
+		{if $wrong_captcha}<br><span style="color:red">{"err_wrong_ccode"|translate}</span>{/if}
+		</div>
+		{elseif $mode eq 'lastname'}
+		
+		<div class="background1">
+		{if $wrong_last_name&&$customer_last_name}<span style="color:red">{"err_wrong_last_name"|translate}</span><br>{/if}
+		{"ordr_full_info_description"|translate}<br>
+		{"usr_custinfo_last_name"|translate}:&nbsp;<br>
+		<input type="text" name="customer_last_name" value="{$customer_last_name|escape:'html'}">
+		</div>
+		{elseif $mode eq 'code'}
+		<div class="background1">
+		{"ordr_full_info_code_description"|translate}<br>
+		{if $wrong_code}<span style="color:red">{"err_wrong_mcode"|translate}</span><br>{/if}
+		{if $code_sended}
+		<div id="input_code_block">
+		{"ordr_status_access_code"|translate}:&nbsp;<br>
+		<input type="text" name="code" value="">
+		<br><span style="color:green">{"mcode_sended"|translate}</span><br><a href="#" onclick="document.getElementById('send_code_button').style.display = 'block';document.getElementById('find_button').style.display = 'none';document.getElementById('input_code_block').style.display = 'none';return false">{"mcode_resend"|translate}</a>
+		</div>
+		<div id="send_code_button" style="display:none;">
+		<br>
+		<input type="submit" name="send_code" value="{"send_mcode"|transcape}">
+		</div>
+		
+		{else}
+		<br>
+		<input type="submit" name="send_code" value="{"send_mcode"|transcape}">
+		{/if}
+		</div>
+		{/if}
+		
+{/if}	{if (($mode eq 'code') && ($code_sended||!$order)) || ($mode ne 'code')}
+<div id="find_button">	
+		<p><input type="submit" name="find" value="{if $order}{"ordr_show_details"|translate}{else}{"ordr_check_status"|translate}{/if}"></p>
+</div>
+		{/if}
+</div>
+</form>
+{/if}
+{/if}

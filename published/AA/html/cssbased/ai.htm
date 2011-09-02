@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<? wbs_initLayout ?>
+
+	</head>
+	<body onLoad="autoFocusFormControl( '<? $invalidField ?>', 'folderData' )">
+		<? wbs_pageLayout ?>
+			<? wbs_errorBlock ?>
+
+			<? if !$fatalError ?>
+
+				<? if !$temporary_account ?>
+					<table class="NameValueList">
+						<tr>
+							<th><? $kernelStrings.ai_accountname_label|cat:": " ?></th>
+							<td><? if $account_name ?><? $account_name ?><? else ?> &lt;<? $kernelStrings.ai_no_accountname ?>&gt; <a href="<? $give_accountname_link|escape:'html' ?>" target="_blank"><? $kernelStrings.app_account_givename ?></a><? /if ?></td>
+						</tr>
+						<tr>
+							<th><? $kernelStrings.ai_dbkey_label|cat:": " ?></th>
+							<td><? $thisDbKey ?></td>
+						</tr>
+						<tr class="SeparatedRow">
+							<th><? $kernelStrings.ai_regdate_label|cat:": " ?></th>
+							<td><? $holderInfo.regDate|htmlsafe:true:true ?></td>
+						</tr>
+						<tr class="SeparatedRow">
+							<th><? $kernelStrings.ai_licence_label|cat:": " ?></th>
+							<td>
+								<? $holderInfo.firstName|htmlsafe:true:true ?>
+								<? $holderInfo.lastName|htmlsafe:true:true ?>
+								<? if $holderInfo.company ?>(<? $holderInfo.company|htmlsafe:true:true ?>)<? /if ?>
+							</td>
+						</tr>
+
+						<? if $displayBillingInfo ?>
+							<th><? $kernelStrings.ai_nextbillingdate_label|cat:": " ?></th>
+							<td>
+								<? $billingDate ?>
+								<span <? if $days_before_suspend<0 ?>style="color:red"<? /if ?>>
+								<? " ("|cat:$daysLeft|cat:")" ?>
+								</span>
+								<? if $displayExtendLink ?>
+									<a href="<? $extendLink ?>" class="activelink" target="_blank"><? $kernelStrings.ai_extend_btn ?></a>
+								<? /if ?>
+							</td>
+						<? /if ?>
+					</table>
+
+					<table class="SimpleList" width="500">
+						<thead>
+							<tr>
+								<th colspan="2"><? $kernelStrings.ai_application_title ?></th>
+								<th class="AlignRight"><? $kernelStrings.ai_limit_title ?></th>
+								<th class="AlignRight"><? $kernelStrings.ai_used_title ?></th>
+								<th class="AlignRight">%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<? foreach from=$eachAppLimits key=appId item=appData ?>
+								<tr>
+									<td><? $appData.appName ?></td>
+									<? if $appData.status ?>
+										<td><? $appData.comment ?></td>
+										<td class="AlignRight"><? $appData.limit ?></td>
+										<td class="AlignRight" width="50"><? $appData.used ?></td>
+										<td class="AlignRight <? if $appData.ratio >= 100 ?>Important<? /if ?>" width="50"><? $appData.ratio ?></td>
+									<? else ?>
+										<td class="Important">Removed</td>
+										<td class="AlignRight">&nbsp;</td>
+										<td class="AlignRight" width="50">&nbsp;</td>
+										<td class="AlignRight" width="50">&nbsp;</td>
+									<?/if ?>
+								</tr>
+							<? /foreach ?>
+						</tbody>
+					</table>
+
+					<table class="SimpleList" width="500">
+						<thead>
+							<tr>
+								<th><? $kernelStrings.ai_resources_title ?></th>
+								<th class="AlignRight"><? $kernelStrings.ai_limit_title ?></th>
+								<th class="AlignRight"><? $kernelStrings.ai_used_title ?></th>
+								<th class="AlignRight">%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<? foreach from=$allAppLimits key=appId item=appData ?>
+								<tr>
+									<td><? $appData.name ?></td>
+									<td class="AlignRight"><? $appData.limit ?></td>
+									<td class="AlignRight" width="50"><? $appData.used ?></td>
+									<td class="AlignRight <? if $appData.ratio >= 100 ?>Important<? /if ?>" width="50"><? $appData.ratio ?></td>
+								</tr>
+							<? /foreach ?>
+						</tbody>
+					</table>
+
+					<? wbs_note displayNoteMarker=false smallFont=false width="500px" ?><? $upgradeComment ?><? /wbs_note ?>
+					
+					<? wbs_note displayNoteMarker=false smallFont=false width="500px" ?><? $cancelComment ?><? /wbs_note ?>
+
+				<? else ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.ai_demo_label ?><? /wbs_note ?>
+					<? wbs_note smallFont=false displayNoteMarker=false ?><a href="<? $registerLink ?>" target="_blank"><? $kernelStrings.app_trialdemo_link ?></a><? /wbs_note ?>
+				<? /if ?>
+
+			<? /if ?>
+
+		<? /wbs_pageLayout ?>
+	</body>
+</html>

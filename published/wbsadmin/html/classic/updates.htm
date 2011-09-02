@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>WebAsyst Administrator - Updates</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<link href="../../../wbsadmin/html/classic/wbsadmin.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#FFFFFF" leftmargin="5" topmargin="5" marginwidth="5" marginheight="5" class="default" >
+<? strip ?>
+<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+  <h2 class="page-title">WebAsyst Administrator - Updates</h2>
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr> 
+      <td width="20px">&nbsp;</td>
+      <td>
+        <? if $errorStr ?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr><td><? $invalidFieldMarkup ?><? $errorStr ?></td></tr>
+          <tr><td>&nbsp;</td></tr>
+        </table>
+        <? /if ?>
+	 	<? if !$fatalError ?>
+			<? if !$systemUpdated ?>
+				<table cellspacing=0 cellpadding=2 border=0>
+					<tr>
+						<td><? $kernelStrings[715]|cat:": "|cat:$currentVersion ?></td>
+					</tr>
+					<tr>
+						<? if $updateData ?>
+							<td><? $kernelStrings[716]|cat:": "|cat:$updateData.VERSION ?></td>
+						<? else ?>
+							<td><? $kernelStrings[717] ?></td>
+						<? /if ?>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+
+				<? if $updateData ?>
+					<input type="submit" name="updatebtn" value="Update">&nbsp;
+					<input type="submit" name="cancelbtn" value="Cancel">
+				<? else ?>
+					<input type="submit" name="cancelbtn" value="  OK  ">
+				<? /if ?>
+			<? else ?>
+				Update successfull.<br><br>
+
+				Update log:
+				<table cellspacing=0 cellpadding=2 border=0>
+					<tr>
+						<td width=20>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=20>&nbsp;</td>
+						<td><? $updatelog|nl2br ?></td>
+					</tr>
+					<tr>
+						<td width=20>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+
+				<input type="submit" name="cancelbtn" value="  OK  ">
+			<? /if ?>
+		<? else ?>	
+				<input type="submit" name="cancelbtn" value="  OK  ">
+		<? /if ?>
+	  </td>
+    </tr>
+  </table>  
+</form>
+<? /strip ?>
+</body>
+</html>

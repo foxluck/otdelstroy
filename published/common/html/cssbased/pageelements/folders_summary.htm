@@ -1,0 +1,65 @@
+<table class="Grid">
+	<thead>
+		<tr>
+			<th><? $kernelStrings.app_treefurfldname_title ?></th>
+			<th class="AlignCenter"><nobr><? $kernelStrings.app_treerights_title|cat:" *)" ?></nobr></th>
+			<th class="AlignCenter"><? $docsColumnName ?></th>
+			<? if $showSharedPanel ?>
+				<th class="AlignCenter"><? $kernelStrings.app_treeshared_title ?></th>
+			<? /if ?>
+		</tr>
+	</thead>
+	<? assign var=index value=0 ?>
+	<? foreach from=$folders item=statisticsFolder key=curStatisticsFolderID name=statisticsLoop ?>
+		<? assign var=right value=$statisticsFolder->RIGHT ?>
+
+		<? compare_str assign=is_recycled arg1=$curStatisticsFolderID arg2=RECYCLED ?>
+		<? compare_str assign=is_availfolders arg1=$curStatisticsFolderID arg2=AVAILABLEFOLDERS ?>
+
+		<? assign var=systemFolder value=0 ?>
+		<? if $curStatisticsFolderID == '1.'?>
+			<? assign var=systemFolder value=1 ?>
+		<? /if ?>
+
+		<? if $right < 0 || $right == "" ?>
+			<? assign var=rowClass value="Disabled" ?>
+		<?/if?>
+
+		<? if $is_recycled != 0 && $is_availfolders != 0 ?>
+			<? math equation="x + 1" x=$index assign=index ?>
+			<tr class="<? $rowClass ?> <? wbs_oddItem index=$smarty.foreach.statisticsLoop.iteration ?>">
+				<td style="padding-left: <? math equation="x*10" x==$statisticsFolder->OFFSET ?>px!important">
+					<? assign var=nodeText value=$statisticsFolder->NAME|sureecho|htmlsafe:true:true ?>
+					<? conditionalLink spanclass=$spanClass href=$statisticsFolder->ROW_URL text=$nodeText ?>
+				</td>
+				<td class="AlignCenter">
+					<? assign var=rightShort value=$tree_access_mode_names.$right ?>
+					<? conditionalLink spanclass=$spanClass href=$statisticsFolder->ROW_URL text=$kernelStrings.$rightShort|sureecho ?>
+				</td>
+				<td class="AlignCenter">
+					<? if $right >= 0 ?>
+						<? conditionalLink spanclass=$spanClass href=$statisticsFolder->ROW_URL text=$statisticsFolder->DOCCOUNT|sureecho ?>
+					<?else?>
+						&nbsp;
+					<?/if?>
+				</td>
+				<? if $showSharedPanel ?>
+					<td>
+						<? if $right >= 0 ?><? wbs_statusImage align="center" value=$statisticsFolder->SHARED onValue=1 ?><?else?>&nbsp;<?/if?>
+					</td>
+				<? /if ?>
+			</tr>
+		<? /if ?>
+	<? /foreach ?>
+	<? if $index == 0 ?>
+		<tr class="NoRecords">
+			<td colspan="4">
+				<? $kernelStrings.app_noentrieis_text|htmlsafe:true:true ?>
+			</td>
+		</tr>
+	<? /if ?>
+</table>
+
+<? if $index > 0 ?>
+	<? include file="../../../common/html/cssbased/pageelements/tree_rights_legend.htm"?>
+<? /if ?>

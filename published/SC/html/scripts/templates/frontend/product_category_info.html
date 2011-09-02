@@ -1,0 +1,19 @@
+{if !$CPT_CONSTRUCTOR_MODE}
+<table cellpadding="0" cellspacing="0">
+<tr>
+	{if  $PAGE_VIEW ne 'mobile' && $selected_category[3]}
+	<td width="1%" style="padding-right:6px;"><img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$selected_category[3]|escape:'url'}" alt="{$selected_category[1]}" title="{$selected_category[1]}"></td>
+	{/if}
+	<td>
+	<a href="{'?'|set_query_html}" class="cat">{"lnk_homepage"|translate}</a>
+	{section name=i loop=$product_category_path}
+		{if $product_category_path[i].categoryID != 1}
+			{$BREADCRUMB_DELIMITER} <a class="cat" href='{"?categoryID=`$product_category_path[i].categoryID`&category_slug=`$product_category_path[i].slug`"|set_query_html}'>{$product_category_path[i].name|escape:'html'}</a>
+		{/if}
+	{/section}
+	</td>
+</tr>
+</table>
+{else}
+	<a href="#" class="cat">{'pgn_mainpage'|transcape}</a> / <a class="cat" href="#">mp3</a>
+{/if}

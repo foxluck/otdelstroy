@@ -1,0 +1,9 @@
+<Connector>
+	<Class>
+		<Name>CptManager</Name>
+		<File>class.cptmanager.php</File>
+		<Title>Component manager</Title>
+		<Description></Description>
+		<SingleInstallation>true</SingleInstallation>
+	</Class>
+</Connector>

@@ -1,0 +1,68 @@
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/_common/public/js/highslide.css'>
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/PDList/public/css/widget.css'>
+		<script src='<? $WG_SRC ?>widgets/_common/public/js/highslide-with-gallery.js'></script>
+		
+		<script type="text/javascript">    
+	    //hs.graphicsDir = '<? $WG_SRC ?>widgets/_common/public/js/graphics/';
+	    //hs.outlineType = 'rounded-white';
+
+	    hs.graphicsDir = '<? $WG_SRC ?>widgets/_common/public/js/graphics/';
+		hs.align = 'center';
+		hs.transitions = ['expand', 'crossfade'];
+		hs.wrapperClassName = 'dark borderless floating-caption';
+		hs.fadeInOut = true;
+		hs.dimmingOpacity = .75;
+		// Add the controlbar
+		if (hs.addSlideshow) hs.addSlideshow({
+			//slideshowGroup: 'group1',
+			interval: 5000,
+			repeat: false,
+			useControls: true,
+			fixedControls: 'fit',
+			overlayOptions: {
+				opacity: .6,
+				position: 'bottom center',
+				hideOnMouseOut: true
+			}
+		});
+
+	    
+		</script>
+
+		
+		<style>
+			body, table tr td {font-family: "Trebuchet MS"}
+			<? if !$iframe ?>
+				/* body {background: URL(<? $WG_SRC ?>widgets/_common/public/img/bg.gif) repeat-x; } */
+			<? /if ?>
+			
+			img {border: 0px}
+			
+			/*.FilesTable {border-left: 1px solid #BBB; border-top: 1px solid #BBB; width: 400px}
+			.FilesTable tr.Title td {background: #F0F0F0}
+			.FilesTable tr td {border-right: 1px solid #BBB; border-bottom: 1px solid #BBB}*/
+			.FilesTable tr td {padding: 3px}
+			.FilesTable tr td a {font-weight: bold}
+			.FilesTable tr.Title td {border-bottom: 1px solid #BBB; font-weight: bold}
+			.FilesTable .SubFile {font-size: 0.8em; padding: 0px; padding-bottom: 4px}
+			.FilesTable td.Icon {padding: 0px; padding-top: 0px; border: 1px solid red;}
+			.FilesTable tr td.Filename {padding-right: 20px}
+			.FilesTable div.FileDesc {border-bottom: 1px solid #BBB}
+			/*.FilesTable tr.Title {display: none}*/
+			
+			.BottomBlock {color: #666; margin-top: 20px; font-size: 0.75em}
+			.BottomBlock a {color: #666; }
+			.highslide-controls {
+				display: none;
+			}
+			
+		</style>
+	
+
+			
+		<? include file="photos_list.htm" ?>
+		
+	</body>
+</html>

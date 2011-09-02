@@ -1,0 +1,25 @@
+{if $_pagination.pages gt 1}
+<table border="0" cellpadding="2" cellspacing="0">
+    <tr>
+    {if $_pagination.page gt 1}
+        <td>
+            <a href="{$SCRIPT_NAME}?{$base_uri}&page={$_pagination.page-1}" style="text-decoration: none;">&lt;&lt;{"str_previous"|translate}</a>
+        </td>
+    {/if}
+    {section name=pagination start=1 loop=$_pagination.pages+1 step=1}
+        <td>
+        {if $_pagination.page neq $smarty.section.pagination.index}
+            <a href="{$SCRIPT_NAME}?{$base_uri}&page={$smarty.section.pagination.index}" style="text-decoration: none;">[{$smarty.section.pagination.index}]</a>
+        {else}
+            {$smarty.section.pagination.index}
+        {/if}
+        </td>
+    {/section}
+    {if $_pagination.page lt $_pagination.pages}
+        <td>
+            <a href="{$SCRIPT_NAME}?{$base_uri}&page={$_pagination.page+1}" style="text-decoration: none;">{"str_next"|translate}&gt;&gt;</a>
+        </td>
+    {/if}
+    </tr>
+</table>
+{/if}

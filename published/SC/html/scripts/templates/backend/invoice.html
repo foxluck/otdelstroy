@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+	{* printable invoice *}
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{"str_invoice_title"|translate}{if $error eq ""} :: {"ordr_order"|translate} #{$order.orderID_view}{/if}</title>
+		<link rel="stylesheet" href="{$smarty.const.URL_CSS}/admin.css" type="text/css" />
+		<!--[if IE]><link rel="stylesheet" href="{$smarty.const.URL_CSS}/ie.admin.css" type="text/css" /><![endif]-->
+	</head>
+
+	<body onLoad="window.print();" style="text-align:center;background-color:#FFFFFF;background-image:none;">
+	{if $error ne ""}
+	<p>{$error}</p>
+	{else}
+	
+	<h1>{$smarty.const.CONF_SHOP_NAME|escape:'html'}</h1>
+	{$smarty.const.CONF_SHOP_URL}
+	<h2>{"str_invoice_title"|translate}</h2>
+	
+	<table border="0" cellspacing="1" cellpadding="7" width="98%">
+	<tr valign="top">
+		<td>
+			<h3>{"ordr_order"|translate}</h3>
+			<table>
+				<tr>
+					<td>{"ordr_order_time"|translate}: <b>{$order.order_time}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_id"|translate}: <b>{$order.orderID_view}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_customer"|translate}: <b>{$order.customer_firstname} {$order.customer_lastname}</b></td>
+				</tr>
+				<tr>
+					<td>{"usr_custinfo_email"|translate}: <b>{$order.customer_email}</b></td>
+				</tr>
+				{foreach from=$order.reg_fields_values item=reg_field}
+				<tr><td>{$reg_field.reg_field_name}: <b>{$reg_field.reg_field_value}</b></td></tr>
+				{/foreach}
+				{if $order.customers_comment}
+				<tr><td colspan="2">{$order.customers_comment}</td></tr>
+				{/if}
+				
+			</table>
+		</td>
+		<td>
+			<h3>{lbl_payment}</h3>
+			<table>
+				<tr>
+					<td>{lbl_payment}: <b>{$order.payment_type}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_payee"|translate}: <b>{$order.billing_firstname} {$order.billing_lastname}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_billing_address"|translate}:<br>
+						<b>{if $order.billing_address ne ""}{$order.billing_address|replace:"<":"&lt;"}<br>{/if}
+				{if $order.billing_city ne ""}{$order.billing_city|replace:"<":"&lt;"}{/if}
+				{if $order.billing_state ne ""}{$order.billing_state|replace:"<":"&lt;"}{/if}
+				{if $order.billing_zip ne ""}{$order.billing_zip|replace:"<":"&lt;"}<br>{/if}{if $order.billing_country ne ""}{$order.billing_country|replace:"<":"&lt;"}{/if}</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<h3>{lbl_shipping}</h3>
+			<table>
+				<tr>
+					<td>{lbl_shipping}: <b>{$order.shipping_type}</b> {if $order.shippingServiceInfo}({$order.shippingServiceInfo}){/if}</td>
+				</tr>
+				<tr>
+					<td>{"ordr_recipient"|translate}: <b>{$order.shipping_firstname} {$order.shipping_lastname}</b></td>
+				</tr>
+				<tr>
+					<td>{"ordr_shipping_address"|translate}:<br>
+						<b>{if $order.shipping_address ne ""}{$order.shipping_address|replace:"<":"&lt;"}<br>{/if}
+						{if $order.shipping_city ne ""}{$order.shipping_city|replace:"<":"&lt;"}{/if}
+						{if $order.shipping_state ne ""}{$order.shipping_state|replace:"<":"&lt;"}{/if}
+						{if $order.shipping_zip ne ""}{$order.shipping_zip|replace:"<":"&lt;"}<br>{/if}{if $order.shipping_country ne ""}{$order.shipping_country|replace:"<":"&lt;"}{/if}</b>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="3">
+			<h3>{"ordr_ordered_products"|translate}</h3>
+
+			<table width="100%" cellpadding="5" cellspacing="0" class="grid">
+
+				<tr class="gridsheader"> 
+               		<td><strong>{"prdset_product_name"|translate}</strong></td>
+               		<td align="center"><strong>{"cart_product_quantity"|translate}</strong></td>
+               		<td align="right" nowrap="nowrap"><strong>{"ordr_itemprice_excluding_tax"|translate}</strong></td>
+             		</tr>
+
+				{section name=i loop=$orderContent}
+				<tr class="{cycle values='gridline,gridline1'}">
+               		<td>
+						{$orderContent[i].name}
+
+						{if $orderContent[i].eproduct_filename}
+							{if $completed_order_status}
+								{if $completed_order_status == $order.statusID}
+
+									<a href='get_file.php?getFileParam={$orderContent[i].getFileParam}'>
+										{"btn_download"|translate} {$orderContent[i].file_size} b
+									</a>
+
+									{if $orderContent[i].day_count_remainder > 0}
+										- {"prdset_download_is_available_for"|translate} 
+											{$orderContent[i].day_count_remainder}
+										{"msg_days"|translate}
+										{if $orderContent[i].load_counter_remainder != 0}
+											,
+											{"prd_download_downloads_left"|translate} 
+												{$orderContent[i].load_counter_remainder}
+											{"prd_download_str_downloads"|translate}
+										{/if}
+									{/if}
+								{/if}
+							{/if}
+						{/if}
+
+					</td>
+               		<td align="center">{$orderContent[i].Quantity}</td>
+               		<td align="right" nowrap="nowrap">{$orderContent[i].PriceToShow}</td>
+             		</tr>
+				{/section}
+				<tr class="gridsfooter"><td colspan="3"></td></tr>
+				
+				{if $order.order_discount}
+				<tr>
+					<td colspan="2">{"usr_custinfo_group_discount"|transcape}{$order.order_discount_percent|string_format:', %0.1f%%'}</td>
+					<td align="right">{$order.order_discount_valueToShow}</td>
+				</tr>
+				{/if}
+				{if $order.shipping_cost || $order.tax}
+				<tr>
+					<td colspan="2">{"ordr_subtotal"|translate}</td>
+					<td align="right">{$order.clear_total_priceToShow}</td>
+				</tr>
+				{/if}
+				{if $order.shipping_cost}
+				<tr>
+					<td colspan="2">{"ordr_shipping_handling_cost"|translate}</td>
+					<td align="right">{$order.shipping_costToShow}</td>
+				</tr>
+				{/if}
+				{if $order.tax}
+				<tr>
+					<td colspan="2">{"ordr_tax"|translate}</td>
+					<td align="right">{$order.tax_toShow}</td>
+				</tr>
+				{/if}
+				<tr id="ord_total_row">
+					<td colspan="2">{"str_total"|translate}</td>
+					<td align="right">{$order.order_amountToShow}</td>
+				</tr>
+			</table>
+
+		</td>
+	</tr>
+	</table>
+{/if}
+	</body>
+
+</html>

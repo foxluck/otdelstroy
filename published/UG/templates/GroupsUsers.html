@@ -1,0 +1,73 @@
+<script type="text/javascript">
+function moveSelect(from, to) {
+	var users = new Array();
+	jQuery("#" + from + " option:selected").each(function () {
+		users.push(jQuery(this).val());
+		jQuery(this).appendTo("#" + to).attr("selected", "");
+	});	
+	{{if !$create}}
+	if ($("#info-message div").length == 0) {
+		var message = '<div class="info-message-close"><a href="javascript:void(0)" onclick="jQuery(\'#info-message div.info-message\').hide();">[`Close`]</a></div> [`All changes are automatically applied`]';
+		$("#info-message").html('<div class="info-message with-close">' + message + '</div>');
+	}						  		
+	saveUsers(users, from == 'in' ? 'del' : 'add');;
+	{{/if}}
+}
+
+function showMultiSelect(data1, data2) {
+	var str1 = '';
+	for (var i = 0; i < data1[1].length; i++) {
+		var f = data1[1][i];
+		str1 += '<option value="' + f[0] + '">' + f[1] + '</option>';
+	}
+	jQuery("#" + data1[0]).append(str1).dblclick(function () {
+		moveSelect(data1[0], data2[0]);
+	});
+	var str2 = '';
+	for (i = 0; i < data2[1].length; i++) {
+		f = data2[1][i];
+		str2 += '<option value="' + f[0] + '">' + f[1] + '</option>';
+	}
+	jQuery("#" + data2[0]).append(str2).dblclick(function () {
+		moveSelect(data2[0], data1[0]);
+	});	
+}
+var users_in = {{$users_in}}; 
+var users_out = {{$users_out}};
+
+{{if !$create}}
+function saveUsers(users, action) {
+	jQuery.post("index.php?mod=groups&act=users&ajax=1", {action:action, "users[]": users, group_id: {{$group_id}}}, function (response) {
+		if (response.status == 'OK') {
+		}
+	}, "json");
+}
+{{/if}}
+
+	
+jQuery(document).ready(function () {
+	showMultiSelect(['in', users_in], ['out', users_out]);
+});
+</script>
+<form action="" method="post">
+<div style="{{if !$create}}margin: 10px 20px;{{/if}} padding: 20px; background: #F0F3F7">
+<table>
+<tr>
+<td>
+	<h4>[`Included`]</h4>
+	<select id="in" name="users[]" size="8" style="width: 250px;" multiple="multiple"></select>
+</td>
+<td width="20" align="center" valign="middle" style="vertical-align: middle">
+	<div id="groups_control" class="control-btns">
+		<div class="wbs-move-btn"><a  onclick="moveSelect('out', 'in');" href="#">&larr;</a></div>
+		<div class="wbs-move-btn"><a onclick="moveSelect('in', 'out');" href="#">&rarr;</a></div>
+	</div>
+</td>
+<td>
+	<h4>[`Not Included`]</h4>
+	<select id="out" size="8" style="width: 250px;" multiple="multiple"></select>
+</td>
+</tr>
+</table>
+</div>
+</form>

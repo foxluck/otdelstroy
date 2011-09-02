@@ -1,0 +1,16 @@
+<!--!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"-->
+<? if $params.mode=="preview" || $params.iframe ?><? assign var=iframe value=1 ?><? /if ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<link rel='stylesheet' type='text/css' href='<? $WG_SRC ?>widgets/_common/public/css/widget.css'>
+		
+		<style>
+			body, table tr td {font-family: "Trebuchet MS"}
+		</style>
+	</head>
+
+<body>
+	<? include file=$widgetFilename ?>
+</body>

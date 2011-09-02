@@ -1,0 +1,135 @@
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+	<? assign var=colspan value=3 ?>
+	<? if $hideLeftPanel ?>
+		<? assign var=colspan value=1 ?>
+	<? /if ?>
+
+	<!-- Extra top panel -->
+	<? if $extraTopPanel ?>
+		<tr id="treeDocExtraPanelID">
+			<td class="treeExtraTopPanel" colspan=<? $colspan ?>><? include file=$extraTopPanel ?></td>
+		</tr>
+	<? /if ?>
+	<!-- /Extra top panel -->
+
+	<tr class="treeHeaderPanel">
+		<!-- Folder name panel -->
+			<td class="treeHeaderPanelHolder" colspan=<? $colspan ?> valign=top height=30>
+				<table height=27 width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="treeHeaderPanelText">
+							<? if $foldersImage ?>
+								<? if $showFoldersHint == "" ?>
+									<? assign var=showFoldersHint value=$kernelStrings.app_treeshowfld_hint ?>
+								<? /if ?>
+								<a href="<? $foldersImage ?>" title="<? $showFoldersHint ?>"><img src="<? "images/tree_icon.gif"|stylesetitem:"classic":$styleSet ?>" style="margin-top: 2px" border="0" align="left"></a>
+							<? /if ?>
+							<span title="<? $rightPanelHeader|htmlsafe:true:true ?>"><? $rightPanelHeader|htmlsafe:true:true|trunc_str:50 ?></span>
+						</td>
+						<? if $topPanelFile ?>
+							<td class="treeHeaderPanelText" align=right style="padding-right: 5px" width=50><? include file=$topPanelFile ?></td>
+						<? /if ?>
+					</tr>
+				</table>
+			</td>
+		<!-- /Folder name panel -->
+	</tr>
+	<tr>
+		<? if !$hideLeftPanel ?>
+			<? if !$leftPanelWidth ?>
+				<? assign var=leftPanelWidth value="30%" ?>
+			<? /if ?>
+
+			<td width="<? $leftPanelWidth ?>" class="treePanel" valign=top>
+				<!-- Left panel -->
+					<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+						<!-- Left panel header -->
+						<? if !$hideLeftHeader ?>
+							<tr>
+								<td class="treeLeftPanelHeader" height=20>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align=left><b><? $leftPanelHeader ?></b></td>
+											<? if $closeFoldersLink ?>
+												<? if $hideFoldersHint == "" ?>
+													<? assign var=hideFoldersHint value=$kernelStrings.app_treehidefld_hint ?>
+												<? /if ?>
+												<td align=right valign=middle><a title="<? $hideFoldersHint ?>" href="<? $closeFoldersLink ?>"><img src="../../../common/html/classic/images/close_icon.gif" border="0" width="10" height="11" style="margin-top: 2px; margin-right: 5px;"></a></td>
+											<? /if ?>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						<? /if ?>
+						<!-- /Left panel header -->
+
+						<!-- Left panel content -->
+						<tr>
+							<td  valign=top style="padding-left: 5px; padding-top: 5px;">
+								<?include file=$leftPanel ?>
+							</td>
+						</tr>
+						<!-- /Left panel content -->
+					</table>
+				<!-- /Left panel -->
+			</td>
+			<td class="treeSeparator">&nbsp;</td>
+		<? /if ?>
+		<? if !$rightPanelWidth ?>
+			<? assign var=rightPanelWidth value="70%" ?>
+		<? /if ?>
+		<td valign=top class="treePanel" width="<? $rightPanelWidth ?>">
+			<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td valign=top>
+						<!-- Right panel - top bar -->
+						<?include file=$rightTopPanel ?>
+						<? if !$hidePages ?>
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td class="treeNumDocumentsCell" valign=middle>
+										<? $numDocumentsLabel|cat:": "|cat:$numDocuments ?>
+										<?if $showPageSelector ?>
+											&nbsp;<? $kernelStrings.app_pages_text|cat:": " ?>
+												<? foreach from=$pages item=page_item ?>
+													<? if $currentPage != $page_item[0] ?>
+														<a href="<? $page_item[1] ?>"><? $page_item[0] ?></a> 
+													<? else ?>
+														<? $page_item[0]|cat:" " ?>
+													<? /if ?>
+												<? /foreach ?>
+										<?/if?>
+									</td>
+									<? if $thisFolderRights != "" ?>
+										<td class="treeNumDocumentsCell" style="padding-right: 5px" valign=top align=right><nobr>
+											<? $kernelStrings.app_treefldaccessrights_label|cat:": " ?>
+											<? assign var=rightShort value=$tree_access_mode_names.$thisFolderRights ?>
+											<? $kernelStrings.$rightShort ?> - 
+											<? assign var=longKeyindex value=$tree_access_mode_long_names.$thisFolderRights ?>
+											<? $kernelStrings.$longKeyindex ?>
+											<? if $folderIsShared ?>
+												<? if $showSharedPanel ?>
+													[<a href="<? $accessRightsURL ?>"><? $kernelStrings.app_treeshared_label ?></a>]
+												<? else ?>
+													[<? $kernelStrings.app_treeshared_label ?>]
+												<? /if ?>
+											<? else ?>
+													[<? $kernelStrings.app_treenotshared_label ?>]
+											<? /if ?>
+										</nobr></td>
+									<? /if ?>
+								</tr>
+							</table>
+						<? /if ?>
+						<!-- /Right panel - top bar -->
+						<? if !$hideBottomPanel ?>
+							<!-- Right panel - bottom bar -->
+							<?include file=$rightBottomPanel ?>
+							<!-- /Right panel - bottom bar -->
+						<? /if ?>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

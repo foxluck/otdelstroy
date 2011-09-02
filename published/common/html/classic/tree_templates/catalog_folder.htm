@@ -1,0 +1,28 @@
+<? foreach from=$hierarchy key=level item=data ?>
+	<? assign var=folderData value=$folders.$level ?>
+	<div <? if !$topLevel ?>style="padding-left: 10px;"<? /if ?> ID="<? $folderData->ID ?>" >
+		<? assign var=collapsed value=$collapsedFolders.$level ?>
+		<? if $folderData->TYPE == "REGULAR" || ($folderData->TYPE == "RECYCLED" && !$hideRecyced) || $folderData->TYPE == "AVAILABLEFOLDERS" ?>
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td valign="top" class="treeCatalogRow"><nobr>
+						<? if !$hideCollapsing ?>
+							<? if $data ?>
+								<a href="<? $folderData->COLLAPSE_URL ?>"><? switchedOutput val=$collapsed true_val="1" str1=#expand_img# str2=#collapse_img#?></a>
+							<? else ?>
+								<img class="treeImage" border="0" src="../../../common/html/classic/images/5pixsep.gif" width="13" height="13">
+							<? /if ?>
+						<? /if ?>
+
+						<? compare_str assign=is_current arg1=$currentFolder arg2=$level ?>
+						<? if $folderData->TYPE == "REGULAR" || $folderData->TYPE == "AVAILABLEFOLDERS" ?>
+							<? if $folderData->RIGHT > 1 ?><? if !$collapsed ?><img class="treeImage" border="0" src="../../../common/html/classic/images/folder_open.gif" width="14" height="12"><? else ?><img class="treeImage" border="0" src="../../../common/html/classic/images/folder.gif" width="14" height="12"><? /if ?><? else ?><? if !$collapsed ?><img class="treeImage" border="0" src="../../../common/html/classic/images/folder_open_gray.gif" width="14" height="12"><?else?><img class="treeImage" border="0" src="../../../common/html/classic/images/folder_gray.gif" width="14" height="12"><? /if ?><? /if ?><? else ?><img class="treeImage" border="0" src="../../../common/html/classic/images/recycled.gif" width="15" height="16"><? /if ?>&nbsp;</nobr></td>
+					<td class="<?if $is_current != 0 ?>treeCatalogRow<?else?>treeCatalogRowCurrent<?/if?>"><a name="<? $folderData->ID ?>" /><? conditionalLink title=$folderData->NAME|htmlsafe:true:true href=$folderData->ROW_URL text=$folderData->NAME|htmlsafe:true:true|trunc_str:50 ?></td>
+				</tr>
+			</table>
+			<? if ( !$collapsed ) ?>
+				<? include file="../../../common/html/classic/tree_templates/catalog_folder.htm" hierarchy=$data topLevel=false ?>
+			<? /if ?>
+		<? /if ?>
+	</div>
+<? /foreach ?>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<LocalGroups>
+	<LocalGroup name="lgr_general" id="general">
+		<LocalSubGroup name="lsgr_general" id="gen" />
+		<LocalSubGroup name="lsgr_components" id="cpt" />
+		<LocalSubGroup name="lsgr_affiliate_program" id="aff" />
+		<LocalSubGroup name="lsgr_news" id="nws" />
+		<LocalSubGroup name="lsgr_countries_regions" id="cnr" />
+		<LocalSubGroup name="lsgr_currencies" id="cur" />
+		<LocalSubGroup name="lsgr_discounts" id="dsc" />
+		<LocalSubGroup name="lsgr_errors" id="err" />
+		<LocalSubGroup name="lsgr_import_export" id="ine" />
+		<LocalSubGroup name="lsgr_info_pages" id="inf" />
+		<LocalSubGroup name="lsgr_link_exchange" id="lke" />
+		<LocalSubGroup name="lsgr_modules" id="mdl" />
+		<LocalSubGroup name="lsgr_orders" id="ord" />
+		<LocalSubGroup name="lsgr_products" id="prd" />
+		<LocalSubGroup name="lsgr_sms" id="sms" />
+		<LocalSubGroup name="lsgr_subscribers" id="sbr" />
+		<LocalSubGroup name="lsgr_survey" id="srv" />
+		<LocalSubGroup name="lsgr_taxes" id="txs" />
+		<LocalSubGroup name="lsgr_checkout" id="chk" />
+		<LocalSubGroup name="lsgr_customers" id="cmr" />
+		<LocalSubGroup name="lsgr_email" id="eml" />
+		<LocalSubGroup name="lsgr_feedback" id="fdk" />
+		<LocalSubGroup name="lsgr_shopping_cart" id="crt" />
+	</LocalGroup>
+	<LocalGroup name="lgr_front" id="front">
+		<LocalSubGroup name="lsgr_general" id="gen" />
+		<LocalSubGroup name="lsgr_affiliate_program" id="aff" />
+		<LocalSubGroup name="lsgr_news" id="nws" />
+		<LocalSubGroup name="lsgr_countries_regions" id="cnr" />
+		<LocalSubGroup name="lsgr_currencies" id="cur" />
+		<LocalSubGroup name="lsgr_discounts" id="dsc" />
+		<LocalSubGroup name="lsgr_errors" id="err" />
+		<LocalSubGroup name="lsgr_import_export" id="ine" />
+		<LocalSubGroup name="lsgr_info_pages" id="inf" />
+		<LocalSubGroup name="lsgr_link_exchange" id="lke" />
+		<LocalSubGroup name="lsgr_modules" id="mdl" />
+		<LocalSubGroup name="lsgr_orders" id="ord" />
+		<LocalSubGroup name="lsgr_products" id="prd" />
+		<LocalSubGroup name="lsgr_sms" id="sms" />
+		<LocalSubGroup name="lsgr_subscribers" id="sbr" />
+		<LocalSubGroup name="lsgr_survey" id="srv" />
+		<LocalSubGroup name="lsgr_taxes" id="txs" />
+		<LocalSubGroup name="lsgr_checkout" id="chk" />
+		<LocalSubGroup name="lsgr_customers" id="cmr" />
+		<LocalSubGroup name="lsgr_email" id="eml" />
+		<LocalSubGroup name="lsgr_feedback" id="fdk" />
+		<LocalSubGroup name="lsgr_shopping_cart" id="crt" />
+	</LocalGroup>
+	<LocalGroup name="lgr_back" id="back">
+		<LocalSubGroup name="lsgr_general" id="gen" />
+		<LocalSubGroup name="lsgr_localization" id="loc" />
+		<LocalSubGroup name="lsgr_test" id="tst" />
+		<LocalSubGroup name="lsgr_division" id="dvn" />
+		<LocalSubGroup name="lsgr_modules" id="mdl" />
+		<LocalSubGroup name="lsgr_themes" id="thm" />
+		<LocalSubGroup name="lsgr_components" id="cpt" />
+		<LocalSubGroup name="lsgr_products" id="prd" />
+		<LocalSubGroup name="lsgr_reports" id="rep" />
+		<LocalSubGroup name="lsgr_other" id="oth" />
+		<LocalSubGroup name="lsgr_currencies" id="cur" />
+		<LocalSubGroup name="lsgr_immanager" id="imm" />
+		<LocalSubGroup name="lsgr_configuration" id="cfg" />
+		<LocalSubGroup name="lsgr_affiliate_program" id="aff" />
+		<LocalSubGroup name="lsgr_news" id="nws" />
+		<LocalSubGroup name="lsgr_countries_regions" id="cnr" />
+		<LocalSubGroup name="lsgr_discounts" id="dsc" />
+		<LocalSubGroup name="lsgr_errors" id="err" />
+		<LocalSubGroup name="lsgr_import_export" id="ine" />
+		<LocalSubGroup name="lsgr_info_pages" id="inf" />
+		<LocalSubGroup name="lsgr_link_exchange" id="lke" />
+		<LocalSubGroup name="lsgr_modules" id="mdl" />
+		<LocalSubGroup name="lsgr_orders" id="ord" />
+		<LocalSubGroup name="lsgr_sms" id="sms" />
+		<LocalSubGroup name="lsgr_subscribers" id="sbr" />
+		<LocalSubGroup name="lsgr_survey" id="srv" />
+		<LocalSubGroup name="lsgr_taxes" id="txs" />
+		<LocalSubGroup name="lsgr_checkout" id="chk" />
+		<LocalSubGroup name="lsgr_customers" id="cmr" />
+		<LocalSubGroup name="lsgr_email" id="eml" />
+		<LocalSubGroup name="lsgr_feedback" id="fdk" />
+		<LocalSubGroup name="lsgr_shopping_cart" id="crt" />
+	</LocalGroup>
+	<LocalGroup name="lgr_hidden" id="hidden" hidden="1">
+		<LocalSubGroup name="lsgr_general" id="gen" />
+		<LocalSubGroup name="lsgr_components" id="cpt" />
+	</LocalGroup>
+</LocalGroups>

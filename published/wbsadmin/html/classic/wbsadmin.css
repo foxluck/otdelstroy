@@ -1,0 +1,137 @@
+/* Fancy form styles for IE */
+.default {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+h1 {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 16pt;
+	font-weight: normal;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	padding-bottom: 4px;
+
+
+}
+body {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	color: #000000;
+}
+p {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	font-weight: normal;
+	color: #000000;
+}
+
+td {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+	font-weight: normal;
+
+}
+
+.error {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333333;
+	font-weight: normal;
+	background-color: #FFBBBB;
+}
+.comment {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+.pageHeader {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 16pt;
+	font-weight: normal;
+	padding-bottom: 8px;
+
+}
+.formSection {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333333;
+	font-weight: bold;
+	background-color: #EFEFEF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	margin: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	padding-bottom: 1px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+}
+
+.formSubSection {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333333;
+	font-weight: bold;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+}
+
+.readonlyControl {
+	border: 1px solid #ECECEC;
+	background-color: #FCFCFC;
+
+}
+.control {
+	border: 1px solid #CCCCCC;
+	height: 20px;
+}
+.importantItems {
+
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 13pt;
+	font-weight: normal;
+	padding-bottom: 8px;
+}
+.table1LeftCell {
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #999999;
+	border-bottom-color: #999999;
+}
+.table1RightCell {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+
+}
+.accountHistoryCell {
+	padding-left: 8px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #000000;
+}
+.smallFont {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #000000;
+}
+
+input, input.submit {
+	border-width: 1px;
+}

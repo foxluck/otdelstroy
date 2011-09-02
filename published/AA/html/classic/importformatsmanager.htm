@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>
+<? $pageTitle ?>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<? $html_encoding ?>">
+<link href="<? "styles.css"|stylesetitem:"classic":$styleSet ?>" rel="stylesheet" type="text/css">
+<script src="../../../common/html/classic/styles/WebSubMenu.js"></script>
+
+<script language=JavaScript>
+
+	function initFocus()
+	{
+		<? if !$invalidField ?>
+			focusFirstFormControl();
+		<? else ?>
+			focusFormControl( 'formatName[<? $invalidField ?>]' );
+		<? /if ?>
+}
+
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="default" onLoad="initFocus()">
+<? strip ?>
+	<form action="<? $formLink ?>" method="post" enctype="multipart/form-data" name="form">
+		<input type="hidden" name="btndummy">
+		<? include file="../../../common/html/classic/header.htm" ?>
+		<? include file="../../../common/html/classic/errblock.htm" errorStr=$errorStr ?>
+		<? if !$fatalError ?>
+
+			<table border=0 cellpadding=0 cellspacing=2>
+				<? foreach from=$formats key=format_id item=fmt_name ?>
+
+					<? if $edited ?>
+						<? assign var=format_name value=$formatName[$format_id] ?>
+					<? else ?>
+						<? assign var=format_name value=$fmt_name ?>
+					<? /if ?>
+					<tr>
+						<td><input type=checkbox name="selected[]" value="<? $format_id ?>"></td>
+						<td><input type=text style="width: 300px" name="formatName[<? $format_id ?>]" value="<? $format_name|htmlsafe:true:true ?>" maxlength=50></td>
+					</tr>
+				<? foreachelse ?>
+					<tr>
+						<td><? $kernelStrings.app_importformatsnofmt_label ?></td>
+					</tr>
+				<? /foreach ?>
+			</table>
+			<table border=0 cellpadding=0 cellspacing=0 width=500>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class=smallFont><? "<b>"|cat:$kernelStrings.app_tips_label|cat:":</b> "|cat:$kernelStrings.app_imporformats_tipes ?></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+
+			<? if $formatNum ?>
+				<? include file="../../../common/html/classic/button.htm" align="left" name="savebtn" caption=$kernelStrings.app_save_btn formname="form" space_right=10 ?>
+			<? /if ?>
+
+			<? include file="../../../common/html/classic/button.htm" align="left" name="cancelbtn" caption=$kernelStrings.app_cancel_btn formname="form" space_right=10 ?>
+
+			<? if $formatNum ?>
+				<? include file="../../../common/html/classic/button.htm" align="left" name="deletebtn" caption=$kernelStrings.app_importoformats_delete formname="form" space_right=10 ?>
+			<? /if ?>
+		<? /if ?>
+
+		<input name="edited" type="hidden" value="1">
+		<input name="opener" type="hidden" value="<? $opener ?>">
+		<input name="openerParams" type="hidden" value="<? $openerParams ?>">
+		<input name="LIST" type="hidden" value="<? $LIST ?>">
+		<input name="U_ID" type="hidden" value="<? $U_ID ?>">
+
+	<?include file="../../../common/html/classic/pagefooter.htm"?>
+	</form>
+<? /strip ?>
+</body>
+</html>

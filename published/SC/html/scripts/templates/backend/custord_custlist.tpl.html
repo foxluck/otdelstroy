@@ -1,0 +1,588 @@
+{* customers list *}
+
+{if !$customer_details}
+
+<h3><u>{"pgn_customer_search"|translate}</u></h3>
+
+<form name=MainForm method=GET>
+
+<p>{"usr_customer_search_descr"|translate}</p>
+<table border="0" cellspacing="1" cellpadding="5">
+
+	<tr>
+		<td>{"usr_custinfo_login"|translate}</td>
+		<td><input type="text" name="login" value='{$login}'></td>
+	</tr>
+
+	<tr>
+		<td>{"usr_custinfo_first_name"|translate}</td>
+		<td><input type="text" name="first_name" value='{$first_name}'></td>
+	</tr>
+
+	<tr>
+		<td>{"usr_custinfo_last_name"|translate}</td>
+		<td><input type="text" name="last_name" value='{$last_name}'></td>
+	</tr>
+
+	<tr>
+		<td>{"usr_custinfo_email"|translate}</td>
+		<td><input type="text" name="email" value='{$email}'></td>
+	</tr>
+
+	<tr>
+		<td>{"str_group"|translate}:</td>
+		<td>
+			<select name="groupID">
+
+				<option value='0'>
+					{"str_any"|translate}
+				</option>
+
+				{section name=i loop=$customer_groups}
+				<option value='{$customer_groups[i].custgroupID}'
+					{if $groupID == $customer_groups[i].custgroupID}
+						selected
+					{/if}
+				>
+					{$customer_groups[i].custgroup_name}
+				</option>
+				{/section}
+
+			</select>
+		</td>
+	</tr>
+
+	<tr>
+		<td>{"str_status"|translate}:</td>
+		<td>
+			<select name="fActState">
+				<option value='-1'{if $ActState eq -1} selected="selected"{/if}>
+					{"str_any"|translate}
+				</option>
+				<option value='1'{if $ActState eq 1} selected="selected"{/if}>
+					{"usr_account_activated"|translate}
+				</option>
+				<option value='0'{if $ActState eq 0&&$ActState ne ''} selected="selected"{/if}>
+					{"usr_account_notactivated"|translate}
+				</option>
+			</select>
+		</td>
+	</tr>
+
+</table>
+
+	<input type=hidden name='dpt' value='custord'>
+	<input type=hidden name='sub' value='custlist'>
+
+<p> 
+  <input type="submit" name="search" value="{"btn_find"|translate}">
+</p>
+
+<p>
+	{$search_result_string}
+</p>
+
+
+{if $customers}
+
+{if $navigator}
+
+<p>{$navigator}
+{/if}
+
+<p>
+<table border="0" cellpadding="5" cellspacing="1" bgcolor="#56AFD6">
+
+	<tr bgcolor="#BEDDDB"> 
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"usr_custinfo_login"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=Login&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=Login&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"usr_custinfo_first_name"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=first_name&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=first_name&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"usr_custinfo_last_name"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=last_name&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=last_name&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td bgcolor="#BEDDDB">
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"usr_custinfo_email"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=Email&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=Email&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td bgcolor="#BEDDDB">
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"str_group"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=custgroupID&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=custgroupID&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<td>
+			<table>
+				<tr>
+					<td rowspan=2>
+						{"usr_custinfo_regtime"|translate}
+					</td>
+					<td>
+						<a href='{$urlToSort}&sort=reg_datetime&direction=ASC'>
+							<img SRC="./images/arrow_up.gif" border=0>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='{$urlToSort}&sort=reg_datetime&direction=DESC'>
+							<img SRC="./images/arrow_down.gif" border=0>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			{"usr_account_state"|translate}
+		</td>
+		<td>
+			&nbsp;
+		</td>
+
+	</tr>
+
+	{section name=i loop=$customers}
+	<tr bgcolor=white>
+		<td>
+			<a href='admin.php?dpt=custord&sub=custlist&customer_details=contact_info&customerID={$customers[i].customerID}&encodedReturnUrl={$encodedReturnUrl}'>
+				{$customers[i].Login}
+			</a>
+		</td>
+		<td>{$customers[i].first_name}</td>
+		<td>{$customers[i].last_name}</td>
+		<td>{if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}{$customers[i].Email}{else}{"msg_safemode_info_blocked"|translate}{/if}</td>
+		<td>{$customers[i].custgroup_name}</td>
+		<td>{$customers[i].reg_datetime}</td>
+		<td align="center">
+		{if $customers[i].ActivationCode}
+			{"usr_account_notactivated"|translate}
+			<div><a href="{"activateID=`$customers[i].customerID`"|set_query}" onclick="return confirm('{"usr_account_confirm_activate"|translate|replace:'[email]':$customers[i].Email}');">{"btn_activate"|translate}</a></div>
+		{else}
+			{"usr_account_activated"|translate}
+		{/if}
+		</td>
+		<td>
+			{if $customers[i].allowToDelete}
+				<a href="JavaScript:confirmDelete({$customers[i].customerID}, '{"cnfrm_delete"|translate}', 'admin.php?dpt=custord&sub=custlist&encodedReturnUrl={$encodedReturnUrl}&deleteCustomerID=')">
+					<img src="images/remove.jpg" border=0 alt="{"btn_delete"|translate}">
+				</a>
+			{/if}
+		</td>
+	</tr>	
+	{/section}
+
+</table>
+
+<br>
+
+<p>
+	{if $customers_has_been_exported_succefully == 1}
+		{"msg_customers_exported_to_file"|translate}
+		<a href='{$urlToDownloadResult}'>{"btn_download"|translate}</a> ( {$file_size} b ) 
+	{else}
+		<input type=hidden name='count_to_export' value='{$count_to_export}'>
+		<input type=submit name='export_to_excel' value='{"usr_export_userlist_to_csv"|translate}'>
+	{/if}
+</p>
+{/if}
+
+</form>
+
+{else}
+
+<p>
+
+ {if $customerID eq NULL}
+
+	{"srch_no_matches_found"|translate}
+	<p>
+	{if $returnUrl}
+	<a href='{$returnUrl}'>
+	{else}
+	<a href='admin.php?dpt=custord&sub=custlist'>
+	{/if}
+		&lt;&lt;{"usr_customer_search_back_to_form"|translate}
+	</a>
+
+ {else}
+
+
+	{if $returnUrl}
+	<a href='{$returnUrl}'>
+	{else}
+	<a href='admin.php?dpt=custord&sub=custlist'>
+	{/if}
+		&lt;&lt;{"usr_customer_search_back_to_form"|translate}
+	</a>
+
+	<br>
+	<br>
+
+	<table width="90%" border="0" cellpadding="10" cellspacing="1" bgcolor="#56AFD6">
+
+		<tr valign="top"> 
+
+			{if $customer_details == 'contact_info'}			
+				<td width="150" bgcolor="white">
+					{"pgn_contact_information"|translate}
+				</td>
+			{else}
+				<td width="150" bgcolor="#BEDDDB">
+					<a href="admin.php?dpt=custord&sub=custlist&customer_details=contact_info&customerID={$customerID}&encodedReturnUrl={$encodedReturnUrl}">
+						{"pgn_contact_information"|translate}
+					</a>
+				</td>
+			{/if}
+
+			<td width="80%" rowspan="5" bgcolor="white">
+
+
+				{if $customer_details == 'contact_info'}
+				<form method=POST name=MainForm>
+
+				<table>
+					<tr>
+						<td>
+							<strong>{"usr_custinfo_login"|translate}</strong>
+						</td>
+						<td>
+							{$customerInfo.Login}
+						</td>
+					</tr>
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td>
+							<strong>{"usr_custinfo_first_name"|translate}</strong>
+						</td>
+						<td>
+							{$customerInfo.first_name}
+						</td>
+					</tr>
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td>
+							<strong>{"usr_custinfo_last_name"|translate}</strong>
+						</td>
+						<td>
+							{$customerInfo.last_name}
+						</td>
+					</tr>
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td>
+							<strong>{"usr_custinfo_email"|translate}</strong>
+						</td>
+						<td>
+							{if $smarty.const.CONF_BACKEND_SAFEMODE eq 0}{$customerInfo.Email}{else}{"msg_safemode_info_blocked"|translate}{/if}
+						</td>
+					</tr>
+					{section name=i loop=$reg_fields_values}
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td>
+							<strong>{$reg_fields_values[i].reg_field_name}</strong>:
+						</td>
+						<td>
+							{$reg_fields_values[i].reg_field_value}
+						</td>
+					</tr>
+					{/section}
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td valign="top">
+							<strong>{"usrreg_subscribe_for_blognews"|translate}</strong>
+						</td>
+						<td>
+							<input type=checkbox 
+							{if $customerInfo.subscribed4news}
+								checked
+							{/if}
+							name = 'subscribed4news'
+							value='1'
+							>
+							<input type=submit name='subscribed4news_submit' value='{"btn_change"|translate}'>
+						</td>
+					</tr>
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td valign="top">
+							<strong>{"str_group"|translate}</strong>
+						</td>
+						<td>
+							<select name='custgroupID'>
+								<option value='null'>-</option>
+								{section name=i loop=$customer_groups}
+									<option value='{$customer_groups[i].custgroupID}'
+									{if $customer_groups[i].custgroupID == $customerInfo.custgroupID}
+										selected
+									{/if}
+									>
+										{$customer_groups[i].custgroup_name}
+									</option> 
+								{/section}
+							</select>
+							<input type=submit name='custgroupID_submit' value='{"btn_change"|translate}'>
+						</td>
+					</tr>
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td valign="top"><strong>{"usr_account_state"|translate}</strong></td>
+						<td>
+						{if $customerInfo.ActivationCode}
+							{"usr_account_notactivated"|translate}
+							<div><a href="{"activateID=`$customerInfo.customerID`"|set_query}" onclick="return confirm('{"usr_account_confirm_activate"|translate|replace:'[email]':$customerInfo.Email}');">{"btn_activate"|translate}</a></div>
+						{else}
+							{"usr_account_activated"|translate}
+						{/if}
+						</td>
+					</tr>
+					{if $customerInfo.ActivationCode}
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td><strong>{"usr_account_activation_key"|translate}</strong></td>
+						<td>{$customerInfo.ActivationCode}</td>
+					</tr>
+					{/if}
+					{if $customerInfo.allowToDelete}
+					<tr><td colspan="2"><div class="divider_grey"></div></td></tr>
+					<tr>
+						<td></td>
+						<td><input type="button" onclick="if(window.confirm('{"cnfrm_delete"|translate}'))document.location.href='{"&safemode=&deleteCustomerID=`$customerInfo.customerID`"|set_query}';" value="{"lnk_terminate_account"|translate}" /></td>
+					</tr>
+					{/if}
+				</table>
+
+				</form>
+				{/if}
+
+
+				{if $customer_details == 'address_book'}
+
+					<table cellpadding=4>
+					{section name=i loop=$addresses}
+						<tr>
+							<td>
+								<b>{"str_address"|translate} {$smarty.section.i.index+1} 
+									{if $addresses[i].addressID == $defaultAddressID}
+										({"str_default"|translate})
+									{/if}
+								</b>
+								<br>
+								{$addresses[i].addressStr}
+							</td>
+						</tr>
+					{/section}
+					</table>
+
+				{/if}
+
+				{if $customer_details == 'order_history'}
+					{if $orders}
+						<form action='{$urlToSubmit}' method=POST>
+							{include file='backend/admin_order_history.tpl.html'}
+						</form>
+					{else}
+						&lt; {"srch_no_matches_found"|translate} &gt;
+					{/if}
+				{/if}
+
+				{if $customer_details == 'visit_log'}
+
+					{if $visits}
+					<table width=100% border=0 cellspacing=1 cellpadding=2 bgcolor=#56AFD6>
+
+						{if $navigator}
+						<tr>
+							<td colspan=7>{$navigator}</td>
+						</tr>
+						{/if}
+
+						<tr bgcolor=#BEDDDB>
+							<td>
+								<b>IP</b>
+							</td>
+							<td>
+								<b>{"usr_custinfo_logintime"|translate}</b>
+							</td>
+						</tr>
+
+						{section name=i loop=$visits}
+						<tr bgcolor=white>
+							<td>
+								{$visits[i].customer_ip}
+							</td>
+							<td>
+								{$visits[i].customer_logtime}
+							</td>
+						</tr>
+						{/section}
+
+					</table>
+
+					{else}
+						&lt; {"srch_no_matches_found"|translate} &gt;
+					{/if}
+
+				{/if}
+				{if $customer_details == 'affiliate'}
+					{include file="backend/custord_custlist_affiliate.tpl.html"}
+				{/if}{* {if $customer_details == 'affiliate'} *}
+
+			</td>
+		</tr>
+
+		<tr valign="top"> 
+			{if $customer_details == 'address_book'}
+				<td width="150" bgcolor="white">
+					<strong>{"pgn_address_book"|translate}</strong>
+				</td>
+			{else}
+				<td width="150" bgcolor="#BEDDDB">
+					<a href="admin.php?dpt=custord&sub=custlist&customer_details=address_book&customerID={$customerID}&encodedReturnUrl={$encodedReturnUrl}">
+						{"pgn_address_book"|translate}
+					</a>
+				</td>
+			{/if}
+		</tr>
+
+		<tr valign="top"> 
+			{if $customer_details == 'order_history'}
+				<td width="150" bgcolor="white">
+					<strong>{"pgn_order_history"|translate}</strong>
+				</td>
+			{else}
+				<td width="150" bgcolor="#BEDDDB">
+					<a href="admin.php?dpt=custord&sub=custlist&customer_details=order_history&customerID={$customerID}&encodedReturnUrl={$encodedReturnUrl}">
+						{"pgn_order_history"|translate}
+					</a>
+				</td>
+			{/if}
+		</tr>
+
+		<tr valign="top"> 
+
+			{if $customer_details == 'visit_log'}
+				<td width="150" bgcolor="white">
+					<strong>{"pgn_visit_history"|translate}<strong>
+				</td>
+			{else}
+				<td width="150" bgcolor="#BEDDDB">
+					<a href="admin.php?dpt=custord&sub=custlist&customer_details=visit_log&customerID={$customerID}&encodedReturnUrl={$encodedReturnUrl}">
+						{"pgn_visit_history"|translate}
+					</a>
+				</td>				
+			{/if}
+		</tr>
+		<tr valign="top"> 
+
+			{if $customer_details == 'affiliate'}
+				<td width="150" bgcolor="white">
+					<strong>{lbl_pgn_affiliate_program}</strong>
+				</td>
+			{else}
+				<td width="150" bgcolor="#BEDDDB">
+					<a href="admin.php?dpt=custord&sub=custlist&customer_details=affiliate&customerID={$customerID}&encodedReturnUrl={$encodedReturnUrl}">
+					{lbl_pgn_affiliate_program}
+					</a>
+				</td>				
+			{/if}
+		</tr>
+	</table>
+
+ {/if}
+
+{/if}

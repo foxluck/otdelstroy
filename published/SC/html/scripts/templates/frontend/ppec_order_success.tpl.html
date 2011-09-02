@@ -1,0 +1,111 @@
+	{"checkout_msg_thank_you_for_ordering"|translate}
+	
+	<h2>{$smarty.const.PPEC_TXT_ORDER_DETAILS}</h2>
+	<table>
+	<tr>
+		<td width="150" align="right">{"ordr_order"|translate}:</td>
+		<td><strong>#{$order.orderID_view}</strong></td>
+	</tr>
+	<tr>
+		<td align="right">{$smarty.const.PPEC_TXT_TRANSACTION_ID}:</td>
+		<td><strong>{$ppec_transaction_id}</strong></td>
+	</tr>
+	</table>
+	
+	<h2>{lbl_payment}</h2>
+	<table>
+	<tr>
+		<td width="150" align="right">{lbl_payment}:</td>
+		<td><b>{$order.payment_type|escape:'html'}</b></td>
+	</tr>
+	<tr>
+		<td align="right">{"ordr_payee"|translate}:</td>
+		<td><b>{$order.billing_firstname|escape:'html'} {$order.billing_lastname|escape:'html'}</b></td>
+	</tr>
+	<tr>
+		<td align="right">{"ordr_billing_address"|translate}:</td>
+		<td><strong>{$order.billing_country|escape:'html'}</strong></td>
+	</tr>
+	</table>
+	
+	<h2>{lbl_shipping}</h2>
+	<table>
+	<tr>
+		<td width="150" align="right">{lbl_shipping}:</td>
+		<td><b>{$order.shipping_type|escape:'html'}</b> {if $order.shippingServiceInfo}({$order.shippingServiceInfo|escape:'html'}){/if}</td>
+	</tr>
+	<tr>
+		<td align="right">{"ordr_recipient"|translate}:</td>
+		<td><b>{$order.shipping_firstname|escape:'html'} {$order.shipping_lastname|escape:'html'}</b></td>
+	</tr>
+	<tr>
+		<td align="right">{"ordr_shipping_address"|translate}:</td>
+		<td>
+			<b>
+			{if $smarty.const.CONF_ADDRESSFORM_STATE != 2}
+			{$order.shipping_address|escape:'html'}
+			{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_CITY != 2 || $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2 || $smarty.const.CONF_ADDRESSFORM_ZIP != 2}<br />{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_CITY != 2}
+			{$order.shipping_city|escape:'html'}
+			{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_ADDRESS != 2}
+			{$order.shipping_state|escape:'html'}
+			{/if}
+			{if $smarty.const.CONF_ADDRESSFORM_ZIP != 2}
+			{$order.shipping_zip|escape:'html'} 
+			{/if}
+			<br />{$order.shipping_country|escape:'html'}
+			</b>
+		</td>
+	</tr>
+	</table>
+	
+	<h2>{"ordr_ordered_products"|translate}</h2>
+
+	<table width="100%" border="0" cellpadding="5" cellspacing="0" >
+	
+	<tr class="background1"> 
+	<td><strong>{"prdset_product_name"|translate}</strong></td>
+	<td align="center"><strong>{"cart_product_quantity"|translate}</strong></td>
+	<td align="right"><strong>{"ordr_itemprice_excluding_tax"|translate}</strong></td>
+	</tr>
+	
+	{section name=i loop=$orderContent}
+	<tr class="{cycle values='row_odd,row_even'}"> 
+	<td>{$orderContent[i].name|escape:'html'}</td>
+	<td align="center">{$orderContent[i].Quantity|escape:'html'}</td>
+	<td align="right">{$orderContent[i].PriceToShow|escape:'html'}</td>
+	</tr>
+	{/section}
+	<tr><td colspan="3">&nbsp;</td>
+	
+	{if $order.order_discount}
+	<tr>
+		<td colspan="2">{"usr_custinfo_group_discount"|transcape}{$order.order_discount_percent|string_format:', %0.1f%%'}</td>
+		<td align="right">{$order.order_discount_valueToShow}</td>
+	</tr>
+	{/if}
+	{if $order.shipping_cost || $order.tax}
+	<tr>
+		<td colspan="2">{"ordr_subtotal"|translate}</td>
+		<td align="right">{$order.clear_total_priceToShow}</td>
+	</tr>
+	{/if}
+	{if $order.shipping_cost}
+	<tr>
+		<td colspan="2">{"ordr_shipping_handling_cost"|translate}</td>
+		<td align="right">{$order.shipping_costToShow}</td>
+	</tr>
+	{/if}
+	{if $order.tax}
+	<tr>
+		<td colspan="2">{"ordr_tax"|translate}</td>
+		<td align="right">{$order.tax_toShow}</td>
+	</tr>
+	{/if}
+	<tr id="ord_total_row">
+		<td colspan="2">{"str_total"|translate}</td>
+		<td align="right">{$order.order_amountToShow}</td>
+	</tr>
+	</table>

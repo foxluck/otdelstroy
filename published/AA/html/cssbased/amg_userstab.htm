@@ -1,0 +1,20 @@
+<? wbs_note smallFont=false displayNoteMarker=false ?><? $kernelStrings.amgr_membershp_label ?><? /wbs_note ?>
+
+<? wbs_dualComboBox
+	leftCaption=$kernelStrings.amgr_included_label
+	rightCaption=$kernelStrings.amgr_notincluded_label
+
+	leftVariableName="included_users"
+	rightVariableName="notincluded_users"
+
+	leftValues=$included_users
+	rightValues=$notincluded_users
+
+	leftNames=$included_users_names
+	rightNames=$notincluded_users_names
+
+	separated=true
+
+	rows=17
+	width=335
+?>

@@ -1,0 +1,386 @@
+<!-- diagnostic.html -->
+<? if $errorStr ?>
+<div id="message-block" class="error_block">
+<? $errorStr ?>
+</div>
+<? /if ?>
+<? if $messageStr ?>
+<div id="message-block" class="success_block">
+<? $messageStr ?>
+</div>
+<? /if ?>
+
+<? if !$fatalError ?>
+
+<?*==================================================*?>
+<?*diagnostic_section*?>
+
+<? if $diagnosticResult?>
+<table cellspacing="0" cellpadding="5" border="0">
+<?foreach from=$diagnosticResult item=diagnosticResultGroup key=GroupID?>
+<tr><td colspan="3" class="diagnostics-group-header"><?"test_section_`$GroupID`"|translate?></td></tr>
+<?foreach from=$diagnosticResultGroup item=diagnosticResultGroupItem key=subGroup?>
+<tr class="diagnostics-subgroup-header">
+<td colspan="3" title="<?$subGroup?>">
+
+<img 
+src="../classic/images/<?if $diagnosticResultGroupItem.result?>success<?else?>failed<?/if?>.gif" 
+alt="<?$diagnosticResultGroupItem.value|translate?>" 
+title="<?$diagnosticResultGroupItem.value|translate?>">
+
+<?$diagnosticResultGroupItem.description|translate?></td>
+</tr>
+<?foreach from=$diagnosticResultGroupItem.data item=result key=param?>
+<tr class="list-item  <?cycle values="background1,background2" name="lines"?>">
+	<td class="diagnostic-param"><?$param|translate?></td>
+	<?if $result.result === -2?>
+	<td colspan="2"><?$result.value?></td>
+	<?else?>
+	<td>
+	<?strip?>
+	<?if $result.result === 1||$result.result === 2?>
+		<img src="../../../common/html/classic/images/checked.gif" alt="<?"test_success"|translate?>">
+	<?elseif  $result.result === 0?>
+		<img src="../classic/images/failed.gif" alt="<?"test_failed"|translate?>">
+	<?else?>
+		&nbsp;
+	<?/if?>
+	<?$result.value?>
+<?/strip?>
+	</td>
+	<td class="comment"><?if $result.result == 1?>&nbsp;<?else?><?$result.info|translate?>&nbsp;<?/if?></td>
+	<?/if?>
+</tr>
+<?/foreach?>
+<tr><td colspan="3">&nbsp;</td></tr>
+<?/foreach?>
+<?/foreach?>
+</table>
+<?/if?>
+
+<?*diagnostic_section*?>
+
+
+
+<?*view_log_section*?>
+<?if $logsInfo?>
+<table class="list" style="width:auto;">
+<tr>
+<td>&nbsp;</td>
+<td><?"diagnostic_file_name"|translate?></td>
+<td><?"diagnostic_file_size"|translate?></td>
+<td><?"diagnostic_file_permision"|translate?></td>
+<td colspan="4"><?"diagnostic_file_action"|translate?></td>
+</tr>
+<?foreach from=$logsInfo item=logsInfoItem name=logsInfoName ?>
+<tr class="list-item <?cycle values="background1,background2" name="lines"?><?if $logsInfoItem.id eq $id?> selected<?/if?>">
+<td><?if $logsInfoItem.icon?><img src="<?$logsInfoItem.icon.src?>" alt="<?$logsInfoItem.icon.alt?>" height="16" width="16"><?/if?></td>
+	<td title="<?$logsInfoItem.fullpath?>" style="pointer:hand;">
+		<a href="?section=<?$section?>&amp;action=view&amp;id=<?$logsInfoItem.id?>">
+			<?$logsInfoItem.name?>
+		</a>
+		<span class="file-description">&nbsp;<?$logsInfoItem.description?></span>
+	</td>
+
+	<td title="<?"diagnostic_file_download"|translate?>" align="right">
+		<?$logsInfoItem.printSize?>
+	</td>
+
+	<td align="right" style="color:<?if $logsInfoItem.writable?>green<?else?>red<?/if?>"><?$logsInfoItem.perm?></td>
+
+	<td class="action_link">
+	<a href="?section=<?$section?>&amp;action=view&amp;id=<?$logsInfoItem.id?>" title="<?"diagnostic_file_view"|translate?>" style="font-weight: bold;"><?"diagnostic_file_view"|translate?>
+		</a>
+	</td>
+
+	<td class="action_link">
+	<a href="?section=<?$section?>&amp;action=download&amp;id=<?$logsInfoItem.id?>" title="<?"diagnostic_file_download"|translate?>"><?"diagnostic_file_download"|translate?>
+		</a>
+	</td>
+	<td class="action_link">
+		<?if $allowDelete || true?>
+		<a href="?section=<?$section?>&amp;action=delete&amp;id=<?$logsInfoItem.id?>" onclick="return confirm('<?"diagnostic_file_confirm_delete"|translate|escape:'quotes'?>')" title="<?"diagnostic_file_delete"|translate?>"><?"diagnostic_file_delete"|translate?>
+		</a>
+		<?else?>
+		&nbsp;
+		<?/if?>
+	</td>
+	<td class="action_link">
+		<?if true||$logsInfoItem.id && $allowEdit?>
+		<a href="?section=<?$section?>&amp;action=rename&amp;id=<?$logsInfoItem.id?>" title="<?"diagnostic_file_rotate"|translate?>"><?"diagnostic_file_rotate"|translate?>
+		</a>
+		<?else?>
+		&nbsp;
+		<?/if?>
+	</td>
+</tr>
+<? /foreach ?>
+</table>
+<?/if?>
+<?*/view_log_section*?>
+
+
+
+
+<?*file_manager_section*?>
+
+<? if $directoryContent?>
+<form method="post" action="?section=<?$section?>" name="file-manager"> 
+<input type="hidden" name="action" value="chmod">
+<input type="hidden" name="path" value="<?$directoryContent.fullpath?>">
+<table class="list" cellspacing="2" cellpadding="1" width="100%" border="0">
+<thead>
+	<tr>
+		<th colspan="8" align="left">
+		<?assign var="fullpathName" value=""?>
+		<?foreach from=$directoryContent.path item=path name="_navigator"?>
+		<?assign var="fullpathName" value="`$fullpathName``$path.name`"?>
+		<?if $smarty.foreach._navigator.last?>
+		<?$path.name?>
+		<?else?>
+		<a class="path-navigator" href="?section=filemanager&amp;path=<?$path.encoded?>" title="<?$fullpathName?>"><?$path.name?></a> &rarr;
+		<?assign var="upLevel" value="?section=filemanager&amp;path=`$path.encoded`"?>
+		<?/if?>
+		<?/foreach?>
+		<span class="file-description"><?$directoryContent.description|default:"&nbsp;"?></span>
+		</th>
+		<th>
+		<?if $upLevel?>
+		<a href="<?$upLevel?>"><?"diagnostic_up_one_level"|translate?></a>
+		<?else?>
+		<?/if?>
+		</th>
+	</tr>
+
+	<tr>
+	<td colspan="9">&nbsp;</td>
+	</tr>
+
+
+	<tr class="formSection">
+		<th>&nbsp;</th>
+		<th align="left"><?"diagnostic_file_name"|translate?>
+		<span class="file-description" style="float:right;display:inline;"><?"diagnostic_file_description"|translate|default:"&nbsp;"?></span></th>
+		<th><?"diagnostic_file_size"|translate?></th>
+		<th colspan="3"><?"diagnostic_file_action"|translate?></th>		
+		<th align="center"><?"diagnostic_file_owner"|translate?> <span class="file-owner-id">(UID)</span></th>
+		<th align="center"><?"diagnostic_file_ownergroup"|translate?> <span class="file-owner-id">(GID)</span></th>
+		<th align="left"><?"diagnostic_file_permision"|translate?></th>
+	</tr>
+</thead>
+
+<?foreach from=$directoryContent.dirs item=directory name="_dirs"?>
+<tr class="list-item <?cycle values="background1,background2" name="lines"?>" valign="top">
+<td><a href="?section=filemanager&amp;path=<?$directory.encodedpath?>"><?if $directory.icon?><img src="<?$directory.icon.src?>" alt="<?$directory.icon.alt?>" title="<?"diagnostic_folder_view"|translate?>"><?/if?></a></td>
+<td><a href="?section=filemanager&amp;path=<?$directory.encodedpath?>" title="<?if $directory.description?><?$directory.description|strip_tags?><?else?><?"diagnostic_folder_view"|translate|strip_tags?><?/if?>"><?$directory.name?></a>
+<span class="file-description">&nbsp;<?$directory.description?></span></td>
+<td align="right"><?$directory.size?></td>
+<td colspan="3">&nbsp;</td>
+<td align="center" style="white-space:nowrap;"><?$directory.owner.name?> <span class="file-owner-id">(<?$directory.owner.uid?>)</span></td>
+<td align="center" style="white-space:nowrap;"><?$directory.owner.gname?> <span class="file-owner-id">(<?$directory.owner.gid?>)</span></td>
+<td>
+	<div style="display:block;white-space:nowrap;" class="input-enabled">
+		<span style="color:<?if $directory.writable?>green<?else?>red<?/if?>"><?$directory.perm?></span>
+		&nbsp;<a href="#" onclick="var block=(this.parentNode).parentNode;invertDisplayForChildren(block);changeVisibilityByClasses('input-enabled-master','input-disabled-master');return false;" style="font-size: 85%;"><i><?"diagnostic_file_edit_permision"|translate?></i></a>
+	</div>
+	<div style="display:none;white-space:nowrap;" class="input-disabled">
+		<input disabled="disabled" class="individual" type="text" size="3" maxlength="3" name="path_<?$directory.encodedpath?>" value="<?$directory.perm?>">
+		<a href="#" onclick="focusControl('chmod');return false;" style="font-size: 85%;" title="<?"diagnostic_file_edit_permision_link_title"|translate?>"><?"diagnostic_file_edit_permision_link"|translate?></a>
+		<br>
+		<input disabled="disabled" class="individual item-checkbox" name="recursive_<?$directory.encodedpath?>" id="item_recursive_<?$directory.id?>" type="checkbox" value="1" onClick="groupCheckBox('master-checkbox','item-checkbox')">
+		<label for="item_recursive_<?$directory.id?>" style="font-size: 85%;"><?"diagnostic_file_edit_permision_recursive"|translate?></label>
+		<?*<br>
+		<a href="#" onclick="var block=(this.parentNode).parentNode;invertDisplayForChildren(block);return false;" style="font-size: 85%;"><i><?"diagnostic_file_edit_permision_cancel"|translate?></i></a>
+*?>
+			
+	</div>
+</td>
+</tr>
+<?/foreach?>
+
+<?foreach from=$directoryContent.files item=file name="_files"?>
+<tr class="list-item <?cycle values="background1,background2" name="lines"?>" valign="top">
+<td <?if $file.version?><?if $file.version.mtime?>title="<? $file.version.mtime|date_format:'%H:%M:%S %m.%Y'?>"<?/if?><?if $file.version.color?> style="background-color:<? $file.version.color?>;font-weight:bolder;cursor:default;"<?/if?><?/if?>>
+	<?if $file.icon?><img src="<?$file.icon.src?>" alt="<?$file.icon.alt?>" height="16" width="16"><?else?>&nbsp;<?/if?>
+</td>
+<td>
+	
+	<?assign var=defaultAction value=$file.allowedactions.default?>
+	<?if $defaultAction.link?>
+		<a href="<?$defaultAction.link|replace:"%url%":"?section=`$section`"?>" title="<?"diagnostic_file_`$defaultAction.name`"|translate|strip_tags?>" target="<?$defaultAction.target?>">
+			<?$file.name?>
+		</a>
+	<?else?>
+		<?$file.name?>
+	<?/if?>
+	<span class="file-description">&nbsp;<?$file.description?></span>
+</td>
+<td align="right">
+	<?$file.printSize?>
+</td>
+<?assign var="allowedActions" value=$file.allowedactions.default?>
+<td class="action_link">
+	<?if $allowedActions.link?>
+	<b>
+		<a href="<?$allowedActions.link|replace:"%url%":"?section=`$section`"?>" title="<?"diagnostic_file_`$allowedActions.name`"|translate?>" target="<?$allowedActions.target?>">
+			<?"diagnostic_file_`$allowedActions.name`"|translate?>
+		</a>
+	</b>
+	<?else?>
+		&nbsp;
+	<?/if?>
+</td>
+<?if $allowedActions.name eq 'download'?>
+<td class="action_link">&nbsp;</td>
+<?else?>
+<?assign var="allowedActions" value=$file.allowedactions.download?>
+<td class="action_link">
+	<?if $allowedActions.link?>
+		<a href="<?$allowedActions.link|replace:"%url%":"?section=`$section`"?>" title="<?"diagnostic_file_`$allowedActions.name`"|translate?>" target="<?$allowedActions.target?>">
+			<?"diagnostic_file_`$allowedActions.name`"|translate?>
+		</a>
+	<?else?>
+		&nbsp;
+	<?/if?>
+</td>
+<?/if?>
+<?assign var="allowedActions" value=$file.allowedactions.delete?>
+<td class="action_link">
+	<?if $allowedActions.link?>
+		<a href="<?$allowedActions.link|replace:"%url%":"?section=`$section`"?>"  onclick="return confirm('<?"diagnostic_file_confirm_delete"|translate|escape:'quotes'?>')" title="<?"diagnostic_file_`$allowedActions.name`"|translate?>" target="<?$allowedActions.target?>">
+			<?"diagnostic_file_`$allowedActions.name`"|translate?>
+		</a>
+	<?else?>
+		&nbsp;
+	<?/if?>
+</td>
+ 
+<td align="center" style="white-space:nowrap;"><?$file.owner.name?><span class="file-owner-id"> (<?$file.owner.uid?>)</span></td>
+<td align="center" style="white-space:nowrap;"><?$file.owner.gname?><span class="file-owner-id"> (<?$file.owner.uid?>)</span></td>
+<td>
+	<div style="display:block" class="input-enabled">
+		<span style="color:<?if $file.writable?>green<?else?>red<?/if?>"><?$file.perm?></span>
+		&nbsp;<a href="#" onclick="var block=(this.parentNode).parentNode;invertDisplayForChildren(block);changeVisibilityByClasses('input-enabled-master','input-disabled-master');return false;" style="font-size: 85%;"><i><?"diagnostic_file_edit_permision"|translate?></i></a>
+	</div>
+	<div style="display:none" class="input-disabled">
+		<input disabled="disabled" class="individual" type="text" size="3
+		" maxlength="3" name="path_<?$file.encodedpathname?>" value="<?$file.perm?>">
+		<a href="#" onclick="focusControl('chmod');return false;" style="font-size: 85%;" title="<?"diagnostic_file_edit_permision_link_title"|translate?>">
+			<?"diagnostic_file_edit_permision_link"|translate?>
+		</a>
+<?*		&nbsp;<a href="#" onclick="var block=(this.parentNode).parentNode;invertDisplayForChildren(block);return false;" style="font-size: 85%;"><i><?"diagnostic_file_edit_permision_cancel"|translate?></i></a>
+*?>
+	</div>
+</td>
+</tr>
+
+<?/foreach?>
+<tr>
+<td>&nbsp;</td>
+<td colspan="5"><?"diagnostic_files_count"|translate?>:&nbsp;<?$smarty.foreach._files.total?>&nbsp;&nbsp;&nbsp;&nbsp;<?"diagnostic_folders_count"|translate?>:&nbsp;<?$smarty.foreach._dirs.total?></td>
+<td colspan="2"></td>
+<td>
+	<div style="display:block" class="input-enabled-master">
+		<a href="#" onclick="var block=(this.parentNode).parentNode;invertDisplayForChildren(block);changeVisibilityByClasses('input-enabled','input-disabled');return false;" style="font-weight: bold;"><i><?"diagnostic_file_bulk_chmod"|translate?></i></a>
+	</div>
+	<div style="display:none" class="input-disabled-master">
+		<input type="submit" name="chmod" value="<?"diagnostic_file_save_permision"|translate?>">
+	</div>
+</td>
+</tr>
+<?*
+<tr><td colspan="11">&nbsp;</td></tr>
+<tr>
+<td colspan="3">&nbsp;</td>
+<td colspan="5"><label for="mode_ind"><input type="radio" id="mode_ind" name="mode" value="ind" checked="checked" onClick="disableGroups('group','individual',this.checked)"><?"diagnostig_chmod_individual"|translate?></label></td>
+<td colspan="1">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="3">&nbsp;</td>
+<td colspan="5"><label for="mode_group">
+<input type="radio" id="mode_group" name="mode" value="group" onClick="disableGroups('group','individual',!this.checked)">
+<?"diagnostig_chmod_group"|translate?></label></td>
+<td><input class="group" type="text" name="perm" value="777" size="3" disabled="disabled"><input class="group" type="checkbox" value="1" name="recursive" checked="checked" disabled="disabled"></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="7" align="right"></td>
+<td><input type="submit" name="chmod" value="<?"btn_save"|translate?>"></td>
+</tr>
+*?>
+</table>
+</form>
+
+<?/if?>
+
+<?*/file_manager_section*?>
+
+<? /if ?>
+
+<?if $file2view?>
+<div style="display:none;" id="modal-window">
+	<form method="post" action="?section=<?$section?>" name="file-editor">
+		<input type="hidden" name="path" value="<?$directoryContent.fullpath?>">
+		<span id="modal-window-title"><?$file2view.fullpath?></span>
+		<textarea id="modal-window-content" <?if !$file2view.editable ?>readonly="readonly" <?/if?>name="content"><? $file2view.content|escape:"html"?></textarea>
+		<div id="modal-window-control-bar">
+		
+			<? if $file2view.navigator ?><span style="font-size: 80%;"><?$file2view.navigator?> &nbsp;&nbsp;|&nbsp;&nbsp;</span><? /if ?>
+			
+			<?if $file2view.editable&&!$file2view.navigator ?>
+			
+				<input type="submit" name="save" value="<?"btn_save"|translate?>">
+				<input type="hidden" name="action" value="save">
+				<input type="hidden" name="id" value="<?$file2view.id?>">
+			<?elseif  $file2view.editable ?>
+			
+				<em style="font-size: 80%;"><?"diagnostic_file_too_big"|translate?></em>
+			<?/if?>
+			<a name="modal-window-close-button" id="modal-window-close-button" style="cursor: pointer; font-size: 80%; text-decoration: underline;"><?"btn_close"|translate?></a>
+		</div>
+	</form>	
+</div>
+
+<script type="text/javascript">
+<!--
+var Dialog = new modalWindow();
+Dialog.show('modal-window','modal-window-title','modal-window-content','modal-window-control-bar','modal-window-close-button');
+//-->
+</script>
+<?/if?>
+
+
+<?*tools_section*?>
+
+<? if $section eq 'cache'?>
+<form method="post" action="?section=<?$section?>" name="cache-manager">
+
+<input type="hidden" name="action" value="resetcache">
+<table class="list" cellspacing="0" cellpadding="1" border="0">
+
+<tr class="list-item background1">
+	<td valign="top"><input type="checkbox" name="system" value="1" id="system" checked="checked"></td>
+	<td><label for="system"><?"diagnostic_reset_cache_system"|translate?></label><br>
+	<span class="cache-description"><?"diagnostic_reset_cache_system_desc"|translate?></span></td>
+</tr>
+<tr class="list-item background1">
+	<td valign="top"><input type="checkbox" name="smarty" value="1" id="smarty" checked="checked"></td>
+	<td><label for="smarty"><?"diagnostic_reset_cache_smarty"|translate?></label><br>
+	<span class="cache-description"><?"diagnostic_reset_cache_smarty_desc"|translate?></span></td>
+</tr>
+<tr class="list-item background1">
+	<td valign="top"><input type="checkbox" name="localization" value="1" id="localization" checked="checked"></td>
+	<td><label for="localization"><?"diagnostic_reset_cache_localization"|translate?></label><br>
+	<span class="cache-description"><?"diagnostic_reset_cache_localization_desc"|translate?></span></td>	
+</tr>
+<tr class="list-item background1">
+	<td valign="top"><input type="checkbox" name="updatestate" value="1" id="updatestate" checked="checked"></td>
+	<td><label for="updatestate"><?"diagnostic_reset_cache_updatestate"|translate?></label><br>
+	<span class="cache-description"><?"diagnostic_reset_cache_updatestate_desc"|translate?></span></td>	
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan="2"><input type="submit" value="<?"diagnostic_reset_cache"|translate?>"></td></tr>
+</table>
+</form>
+<?/if?>
+<!-- /diagnostic.html -->

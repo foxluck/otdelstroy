@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */ 
+
+/*Верхняя белая полоса на которой расположены лого слева, имя юзера и емейл  - в правой*/
+#header_div { background:#fff;} /*цвет фона*/
+.company_ident td { border-bottom-width:3px;border-bottom-style: solid;border-bottom-color: #e7e7e7;}/*Линия-разделитель между белой шапкой и цветный большим заголовком ниже*/
+
+/*блок с лого компании*/
+.company_ident td.company_logo {  padding-left:20px;} /*отступ слева от логотипа*/
+.company_name {  font-size:17pt;  color:#999; font-family:'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif } /*цвет, размер и гарнитура шрифта для назвния компании*/
+/*правый блок с именем юзера и емейлом*/
+.username a { color:#666; font-size:13.5pt;} /*размер и цвет шрифта для имени юзера*/
+.usermail a {color:#aaa; font-size:8.5pt;}/*размер и цвет шрифта для имени емейла*/
+
+
+
+/* Цветная полоса заголовков основных разделов, цвет, шрифт и размер шрифта
+/* в таблице тикетов и каждом тикете - зеленая*/
+h2.rightlink {color:#fff;  background:#7fbf7f; font-size:14pt; }
+.rightlink a,.rightlink a:visited  { color:#fff; }/*цвет для правой ссылки в зеленом залоговке таблицы тикетов*/
+.rightlink a:hover { color:#233B25;} /*подсветка для правой ссылки в зеленом залоговке таблицы тикетов*/
+
+/*в Базе знаний - желтая */
+h2.rightlink.with_pic { background:#FAFAD2; color:#836437;}
+h2.rightlink.with_pic a, .rightlink.with_pic a:visited  { color:#836437;}
+
+
+
+/*цвет текста в на желтом заголовке "База знаний" */
+h2.rightlink.with_pic a, .rightlink.with_pic a:visited  { color:#836437;}
+
+
+/*правая панель*/
+/*цвет правой панели*/
+.left-panel {/* background:#fff; */}
+.greenbutton .corn_l { background-image:url(../img/corn_l_green.gif); }/*левый фон зеленой кнопки вверху правой панели*/
+.greenbutton .corn_r { background-image:url(../img/corn_r_green.gif); }/*правый фон зеленой кнопки вверху правой панели*/
+.greenbutton a:hover, .greenbutton input:hover { color:#233b25; }/*цвет подсветки текста на голубой кнопке*/
+
+/*Форма отправки нового тикета*/
+.requestform { background:#F7FAF7;border-color:#DAE5DA;} /*цвет фона и обводка формы*/
+.requestform-header { background:#EBF2EB;}/*цвет фона заголовка формы*/
+.form_greenbutton .corn_l { background-image:url(../img/corn_l_green_1.gif); }/*левый фон зеленой кнопки*/
+.form_greenbutton .corn_r { background-image:url(../img/corn_r_green_1.gif); }/*правый фон зеленой кнопки*/
+
+
+/*Форма для повторного открытия тикета */
+.sendForm_reopen { border-color: #CDDFEF; background:#F3F7FB;}/*цвет фона и обводка формы*/
+.send_header_reopen { background:#E4ECF6;} /*цвет фона заголовка формы*/
+.bluebutton .corn_l { background-image:url(../img/corn_l_blue.gif); } /*левый фон голубой кнопки*/
+.bluebutton .corn_r { background-image:url(../img/corn_r_blue.gif); } /*правый фон голубой кнопки*/
+.bluebutton input:hover  { color:#192e44; }/*цвет подсветки текста на голубой кнопке*/
+
+/*Блок ответа от службы поддержки*/
+.R_container, .RI_container {  background:#f7faf7; border-color:#dae5da;} /*цвет фона и обводки для блока */
+	.R_container .comment_header, .RI_container .comment_header  { background-color:#ebf2eb;} /*цвет фона для заголовка блока*/
+	.R_container .r_author, .RI_container .r_author {color:#1d4933;} /*цвет шрифта автора ответа*/
+	.R_container .r_status, .RI_container .r_status {color:#7d9781;} /*цвет шрифта статуса ответа*/
+
+/*Блок сообщения о подаче повторного запроса*/
+.NN_container { background:#F3F7FB; border-color:#CDDFEF; } /*цвет фона и обводки для блока */
+	.NN_container .comment_header{ background-color:#E4ECF6;}/*цвет фона для заголовка блока*/
+	.NN_container .r_author { color:#2e466d} /*цвет шрифта заголовка*/
+	
+
+/* "Manage Your Subscription" */	
+.manage-subscribe .left-panel { background:#F3F7FB;}
+
+
+.manage-subscribe h2.rightlink { background:#5a8ab7; color:#fff;}
